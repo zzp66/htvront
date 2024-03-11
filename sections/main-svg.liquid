@@ -1,0 +1,619 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<style>
+    .main-svg {
+        margin-bottom: 100px;
+    }
+    .main-svg .desc {
+        font-size: 16px;
+        margin-top: 18px;
+        line-height: 26px;
+    }
+    .main-svg .swiper-container {
+        margin-top: 60px;
+        background: #F8F8F8;
+        border-radius: 16px;
+    }
+    .main-svg .swiper-container .swiper-slide {
+        text-align: center;
+        border-radius: 16px;
+    }
+    .main-svg .swiper-container .swiper-slide a {
+        padding: 26px 0;
+    }
+    .main-svg .swiper-container .swiper-slide.active {
+        text-align: center;
+        background: #333333;
+        color: #fff;
+    }
+    .main-svg .svg-items {
+        display: flex;
+        justify-content: start;
+        margin-top: 60px;
+        flex-wrap: wrap;
+    }
+    .main-svg .svg-items .svg-item {
+        max-width: 24%;
+        margin-left: 1.3333333%;
+    }
+    .main-svg .svg-items .svg-item:nth-child(4n + 1) {
+        margin-left: 0;
+    }
+    .main-svg .ratio,
+    .new-svg .ratio {
+        max-height: 384px;
+    }
+    .main-svg .media,
+    .new-svg .media {
+        background: none;
+        position: static;
+        max-height: 384px;
+        border-radius: 16px;
+    }
+    .main-svg .media>*:not(.zoom):not(.deferred-media__poster-button),
+    .new-svg .media>*:not(.zoom):not(.deferred-media__poster-button) {
+        max-width: 100%;
+        position: static;
+        height: auto;
+        width: auto;
+    }
+    .main-svg .card__content,
+    .new-svg .card__content {
+        text-align: center;
+    }
+    .main-svg .svg-title,
+    .new-svg .svg-title {
+        font-size: 16px;
+        line-height: 20px;
+        margin-top: 16px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+/*         height: 40px; */
+    }
+    .main-svg .download,
+    .new-svg .download {
+        font-size: 14px;
+        margin: 20px 0;
+        padding: 13px 32px;
+        display: inline-block;
+        background: #FF7606;
+        border-radius: 6px;
+        cursor: pointer;
+        color: #fff;
+    }
+    .main-svg .download.btn-gray,
+    .new-svg .download.btn-gray {
+        background: #DEDEDE;
+        color: #333;
+        cursor: no-drop;
+    }
+    .main-svg .svg-img,
+    .new-svg .svg-img {
+        display: none;
+        opacity: 0;
+    }
+    .svg-pop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.62);
+        z-index: 999;
+        display: none;
+    }
+    .pop-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 560px;
+        background: #FFFFFF;
+        border-radius: 8px;
+        padding-bottom: 70px;
+    }
+    .pop-hd {
+        text-align: right;
+        padding: 20px;
+    }
+    .pop-hd img {
+        display: inline-block;
+        cursor: pointer;
+    }
+    .pop-bd {
+        text-align: center;
+        margin-top: 8px;
+    }
+    .pop-bd .t {
+        font-size: 20px;
+        line-height: 1;
+    }
+    .pop-bd .desc {
+        font-size: 16px;
+        line-height: 1;
+        color: #444444;
+        margin-top: 16px;
+        margin-bottom: 24px;
+    }
+    .pop-bd .fn-btn {
+        margin-top: 20px;
+    }
+    .pop-bd .fn-btn a {
+        display: inline-block;
+        padding: 13px 99px;
+        background: #FF7606;
+        border-radius: 6px;
+        font-size: 14px;
+        color: #fff;
+        line-height: 18px;
+    }
+    .pop-bd .fn-btn a.bg-gray {
+        background: #CCCCCC;
+        color: #333;
+    }
+    .new-svg {
+        margin-bottom: 100px;
+    }
+    .new-svg .fn-page-width-l>.t {
+        font-size: 24px;
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+    .new-svg .swiper-container {
+        margin-top: 30px;
+        padding: 0 36px;
+    }
+    .new-svg div:empty,
+    .main-svg div:empty {
+        display: block;
+    }
+    .main-svg .swiper-button-next,
+    .new-svg .swiper-button-next {
+        background-image: url(https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/4_01103727-9e64-41e6-a529-8fb9a39b630f.png?v=1653375515);
+        right: 0;
+    }
+    .main-svg .swiper-button-prev,
+    .new-svg .swiper-button-prev {
+        background-image: url(https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/4_01103727-9e64-41e6-a529-8fb9a39b630f.png?v=1653375515);
+        left: 0;
+        transform: rotate(-180deg);
+    }
+    .new-svg .swiper-button-prev,
+    .new-svg .swiper-button-next {
+        background-image: url(https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/2c71d0a7f899ef4e370c409186645292_8566120e-6d05-4bc3-a168-09c2673d640a.png?v=1653375734);
+    }
+    .main-svg .swiper-button-next,
+    .main-svg .swiper-button-prev {
+        width: 16px;
+        height: 24px;
+        margin-top: -12px;
+        background-size: 16px 24px;
+    }
+    .new-svg .fn-page-width-l {
+        max-width: 1672px;
+        margin: 0 auto;
+    }
+    .new-svg .swiper-button-next,
+    .new-svg .swiper-button-prev {
+        width: 36px;
+        height: 100%;
+        margin-top: 0;
+        background-size: 10px 18px;
+        top: 0;
+        background-position: right center;
+        background-color: #fff;
+        opacity: 1;
+    }
+    .new-svg .download {
+        margin-bottom: 0;
+    }
+    .main-svg .pagination-wrapper {
+        margin-top: 30px;
+    }
+    .banner-link{
+      cursor:pointer;
+    }
+    .more-svg{
+      cursor:pointer;
+      width: 150px;
+      height: 40px;
+      border: 2px solid #ff7606;
+      border-radius: 4px;
+      font-size: 18px;
+      text-align: center;
+      font-weight: 600;
+      line-height: 37px;
+      color: #ff7606 !important;
+      margin-top: 10px;
+    }
+    @media (max-width: 1700px) {
+        .new-svg .fn-page-width-l {
+            max-width: 1500px;
+        }
+        .new-svg .swiper-button-next,
+        .new-svg .swiper-button-prev {
+            width: 30px;
+        }
+        .new-svg .swiper-container {
+            padding: 0 30px;
+        }
+    }
+    @media (max-width: 1500px) {
+        .new-svg .fn-page-width-l {
+            max-width: 1260px;
+        }
+    }
+    @media (max-width: 1260px) {
+        .new-svg .fn-page-width-l {
+            max-width: 1024px;
+        }
+    }
+    @media (max-width: 1024px) {
+        .new-svg .fn-page-width-l {
+            max-width: 100%;
+            padding: 0 15px;
+        }
+    }
+    @media (max-width: 749px) {
+        .main-svg .svg-items {
+            justify-content: space-between;
+        }
+        .main-svg .svg-items .svg-item {
+            max-width: 49%;
+            margin-left: 0;
+        }
+    }
+    @media (max-width: 480px) {
+        .main-svg .swiper-container,.main-svg,.main-svg .svg-items {
+            margin-top: 30px;
+        }
+        .main-svg .swiper-container,.main-svg .swiper-container .swiper-slide {
+            border-radius: 8px;
+        }
+        .main-svg .swiper-container .swiper-slide a {
+            padding: 10px 0;
+        }
+        .main-svg .download, .new-svg .download {
+            margin: 15px 0;
+            padding: 8px 20px;
+            border-radius: 4px;
+        }
+        .new-svg .swiper-button-next, .new-svg .swiper-button-prev {
+            width: 10px;
+        }
+        .new-svg .swiper-container {
+            padding: 0 10px;
+        }
+        .main-svg .svg-title, .new-svg .svg-title {
+            font-size: 14px;
+            margin-top: 10px;
+            line-height: 20px;
+/*             height: 40px; */
+        }
+        .main-svg .desc {
+            font-size: 14px;
+            margin-top: 15px;
+            line-height: 22px;
+        }
+        .main-svg,.new-svg {
+            margin-bottom: 50px;
+        }
+        .main-svg .svg-items:after {
+            display: none;
+        }
+       .pop-content {
+           width: 100%;
+       }
+      .more-svg{
+        width: 120px;
+        height: 35px;
+        font-size: 16px;
+        line-height: 34px;
+      }
+    }
+</style>
+
+{%- paginate blog.articles by 12 -%}
+
+<div class="main-svg fn-page-width section-{{ section.id }}-padding">
+    <div class="fn-breadcrumb">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li> > </li>
+            <li>{{ blog.title }}</li>
+        </ul>
+    </div>
+    {%- if section.settings.link != blank -%}
+      <a href="{{ section.settings.link }}" class="banner-link" target="_blank">
+    {%- endif -%}
+    {%- if section.settings.banner_image != blank -%}
+    <img src="{{ section.settings.banner_image | img_url: '1600x' }}" alt="{{ section.settings.banner_image.alt }}">
+    {%- endif -%}
+    {%- if section.settings.link != blank -%}
+      </a>
+    {%- endif -%}
+    {%- if section.settings.desc != blank -%}
+    <div class="desc">{{ section.settings.desc }}</div>
+    {%- endif -%}
+    {%- if section.settings.more_link != blank -%}
+      <a href="{{ section.settings.more_link }}" class="more-svg"  target="_blank">{{ section.settings.link_text }}</a>
+     {%- endif -%}
+    {%- if blog.all_tags != blank -%}
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide t" data-index="0"><a href="{{ blog.url }}" title="All SVG">All SVG</a></div>
+          {% for group_tag in blog.all_tags %}
+          <div class="swiper-slide t" data-index="{{ forloop.index }}">{{ group_tag | link_to_tag: group_tag }}</div>
+          {%- endfor -%}
+        </div>
+        <div class="swiper-button-prev swiper-button-white"></div>
+        <div class="swiper-button-next swiper-button-white"></div>
+    </div>
+    {%- endif -%}
+    <div class="svg-items">
+      {%- for article in blog.articles -%}
+      <div class="svg-item">
+        {%- render 'svg-card',
+            article: article,
+        media_aspect_ratio: article.image.aspect_ratio,
+        show_image: section.settings.show_image,
+        show_excerpt: true
+        -%}
+      </div>
+      {%- endfor -%}
+    </div>
+    {%- if paginate.pages > 1 -%}
+    {%- render 'pagination', paginate: paginate -%}
+    {%- endif -%}
+</div>
+{%- endpaginate -%}
+{% for block in section.blocks %}
+{%- if block.settings.blog.articles != blank -%}
+<div class="new-svg" id="svg{{ forloop.index0 }}">
+    <div class="fn-page-width-l">
+        {%- if block.settings.title != blank -%}
+        <div class="t">{{ block.settings.title }}</div>
+        {%- endif -%}
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                {%- for article in block.settings.blog.articles limit: section.settings.limit -%}
+                <div class="swiper-slide">
+                    {%- render 'svg-card',
+                    article: article,
+                    media_aspect_ratio: article.image.aspect_ratio,
+                    show_image: section.settings.show_image,
+                    show_excerpt: true
+                    -%}
+                </div>
+                {%- endfor -%}
+            </div>
+            <div class="swiper-button-prev swiper-button-black"></div>
+            <div class="swiper-button-next swiper-button-black"></div>
+        </div>
+    </div>
+</div>
+{%- endif -%}
+{% endfor %}
+<div class="svg-pop">
+    <div class="pop-content">
+        <div class="pop-hd"><img src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/3e12345ab87ce30a9294f2a03208e88a_d47bcf45-15d1-430e-a92e-e9b863d2f14d.png?v=1653361039" alt="close.png"></div>
+        <div class="pop-bd">
+            {%- if section.settings.pop_title != blank -%}
+            <div class="t">{{ section.settings.pop_title }}</div>
+            {%- endif -%}
+            {%- if section.settings.pop_desc != blank -%}
+            <div class="desc">{{ section.settings.pop_desc }}</div>
+            {%- endif -%}
+            <div class="fn-btn t"><a href="/account/login" target="_blank">SIGN IN</a></div>
+            <div class="fn-btn t"><a href="/account/register" class="bg-gray" target="_blank">SIGN UP</a></div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function (){
+      var index = 0;
+      var urlWindow = window.location.protocol+"//"+window.location.host+""+window.location.pathname;
+        $('.main-svg .swiper-slide a').each(function(){
+            $this = $(this);
+            if($this[0].href === urlWindow){
+                $this.parent().addClass('active');
+                index = $this.parent().index();
+            }
+//           if(urlWindow.indexOf("summer-beach-svg") !== -1) {
+//             index = 0;
+//             $('.main-svg .swiper-slide').eq(index).addClass('active');
+//           }
+        });
+
+        var tagSwiper = new Swiper('.main-svg .swiper-container', {
+            autoplay: false,
+            slidesPerView: 8,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            observer: true,
+            observeParents: true,
+            spaceBetween: 10,
+            initialSlide: index,
+            breakpoints: {
+                480: {
+                    spaceBetween: 5,
+                    slidesPerView: 3
+                },
+                750: {
+                    slidesPerView: 4
+                },
+                1200: {
+                    slidesPerView: 6
+                }
+            }
+        });
+        var newSwiper = new Swiper('#svg0 .swiper-container', {
+            autoplay: false,
+            slidesPerView: 4,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            observer: true,
+            observeParents: true,
+            spaceBetween: 20,
+            breakpoints: {
+                750: {
+                    slidesPerView: 2
+                }
+            }
+        });
+        var popularSwiper = new Swiper('#svg1 .swiper-container', {
+            autoplay: false,
+            slidesPerView: 4,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            observer: true,
+            observeParents: true,
+            spaceBetween: 20,
+            breakpoints: {
+                750: {
+                    slidesPerView: 2
+                }
+            }
+        });
+        $('.pop-hd img').click(function () {
+            $('.svg-pop').hide();
+        });
+    });
+    function downLoadSvg(id){
+        var email = '{{ customer.email }}';
+        if (email) {
+            let content = $('#Svg' + id).html();
+            let blob = new Blob([content], {type: 'image/svg+xml'});
+            fileName = $('#Svg' + id).attr('data-title') + '.svg';
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = fileName;
+            link.click();
+            window.URL.revokeObjectURL(link.href);
+        } else {
+            $('.svg-pop').show();
+        }
+    }
+</script>
+{% schema %}
+{
+  "name": "Main SVG",
+  "tag": "section",
+  "max_blocks": 2,
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.main-blog.settings.header.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "default": true,
+      "label": "t:sections.main-blog.settings.show_image.label"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "min": 4,
+      "max": 20,
+      "step": 1,
+      "label": "Limit",
+      "default": 8
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner"
+    },
+    {
+      "type":"url",
+      "id":"link",
+      "label":"link"
+    },
+    {
+      "type":"text",
+      "id":"link_text",
+      "label":"link text"
+    },
+    {
+      "type":"url",
+      "id":"more_link",
+      "label":"more link"
+    },
+    {
+      "type": "text",
+      "id": "desc",
+      "label": "描述"
+    },
+    {
+      "type": "text",
+      "id": "pop_title",
+      "default": "Become our member and download SVG for free!",
+      "label": "弹窗标题"
+    },
+    {
+      "type": "text",
+      "id": "pop_desc",
+      "default": "Just sign in or create an account to become our member",
+      "label": "弹窗描述"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 100
+    }
+  ],
+    "blocks":[
+        {
+            "type":"blog",
+            "name":"Blog",
+            "settings":[
+                {
+                    "type":"blog",
+                    "id":"blog",
+                    "label":"SVG"
+                },
+                {
+                    "type":"text",
+                    "id":"title",
+                    "label":"标题"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

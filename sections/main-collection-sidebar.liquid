@@ -1,0 +1,194 @@
+<section class="section-filter">
+
+  
+  <div class="filter-item-1">
+    {%- if collection.products.size == 0 -%}
+      <span class="filter-results">Items 0</span>
+    {%- else -%}      
+       {%- paginate collection.products by 12 -%} 
+    		{% assign products_count = collection.products.size %}
+    	
+      {%- endpaginate -%}
+      <span class="filter-results">Items {{ current_page }}- {{ products_count }} of {{collection.all_products_count}}</span>
+      {% endif %}
+      <a class="clear-all t" href="{{ collection.url }}">Clear all</a> 
+      <a class="view-results" href="javascript:;">View Results</a>    
+  </div>
+
+  <div class="filter-item-2">
+
+    {% for block in section.blocks %}
+
+    {%- assign  heading = block.settings.title -%}
+    {% assign  tags = block.settings.tag_list | newline_to_br | split:'<br />' %}
+    {% assign  values = block.settings.value_list | newline_to_br | split:'<br />' %}
+
+
+
+    <details class="filter-group {{heading | handle}}" open>
+      <summary class="filter-heading">
+        <strong>{{heading}}</strong>
+        {% include 'icon-caret' %}
+      </summary>
+      
+        <ul class="Screen_size">
+          {% for tag in tags %}          
+            {% assign tagCount = 0 %}
+                
+            {%- assign val = values[forloop.index0] | strip -%}
+            {%- for product in collection.products -%}
+                {%- assign product_tag_arr =  product.tags | json -%}   
+                  {%- if product_tag_arr contains val-%}
+                      {%- assign tagCount = tagCount | plus: 1 -%}
+                  {%- endif -%}
+              {% endfor %}
+       
+      			
+   				{%- assign  cur_tags = current_tags | join:''| replace:'?','' -%}
+
+                {% if cur_tags contains val %}
+                    <li class="active">
+                      <input type="checkbox" class="checkbox-filter" id="{{val | handle}}" value="{{val | handle}}" data-val="{{val}}" checked>
+                      <label for="{{val | handle}}">
+                        <i></i>
+                      	<span>{{tag}} ({{tagCount }}) </span> 
+                       </label>
+                      <div style="display:none;">{{tag | link_to_remove_tag: val}}</div>
+                    </li>
+                {% else %}
+                    <li>
+                      <input type="checkbox" class="checkbox-filter" id="{{val | handle}}" value="{{val | handle}}" data-val="{{val}}">
+                      <label for="{{val | handle}}">
+                        <i></i>
+                      	<span>{{tag}} ({{tagCount }}) </span> 
+                       </label>
+                      <div style="display:none;">{{tag | link_to_add_tag: val}}</div>
+                    </li>
+                
+                {% endif %}
+            {% endfor %}
+        
+
+        </ul>
+    
+    </details>
+    {% endfor %}
+  </div>
+</section>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+   
+     var collFilters = jQuery('.checkbox-filter');
+      collFilters.change(function() {
+        var newTags = [];
+        //cancel siblings checkbox
+        $(this).closest('li').siblings().find('input').attr('checked', false);
+        
+        
+        collFilters.each(function() {
+          if (jQuery(this).is(':checked')) {
+            newTags.push(jQuery(this).val());
+          }
+        });
+
+  
+          var query = newTags.join('+');
+          window.location.href = jQuery('{{ 'tag' | link_to_tag: 'tag' }}').attr('href').replace('/' + 'tag', '/' + query);
+
+  
+
+       });
+    
+    
+    
+	
+    
+//    $('.checkbox-filter').off().change( function(){
+//       var newURL = $(this).nextAll('a').attr('href');
+//       window.location.href = newURL;
+//    })
+
+   if(window.matchMedia('(max-width: 899px)').matches){
+    $('.price-to-own,.color-family').removeAttr('open')
+   }else{
+    $('.price-to-own,.color-family').attr('open')
+   }
+
+
+   function showSidebar(){
+     $('.collection-sidebar').addClass('active');
+     $('body').addClass('overflow-hidden-mobile')
+   }
+   function hideSidebar(){
+    $('.collection-sidebar').removeClass('active');
+    $('body').removeClass('overflow-hidden-mobile')
+   }
+
+   $('body').on('click',function(e){
+    //  e.stopProgation()
+    if($(e.target).is('.collection-sidebar')){
+      hideSidebar()     
+    }
+   })
+
+   $('.view-results').on('click',function(){
+      hideSidebar() 
+   })
+   $('.sidebar-toggle').on('click',function(){
+      showSidebar() 
+   })
+
+
+
+
+ })
+ 
+ </script>
+
+{% schema %}
+  {
+    "name": "Collection filter",
+    "max_blocks": 15,
+    "settings": [
+     
+    ],
+    "blocks": [
+      {
+        "type": "tags_group",
+        "name": "Tag group",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Tag Group"
+          },
+          {
+            "type": "textarea",
+            "id": "tag_list",
+            "label": "Tag list (one tag per line)",
+            "default": "First tag ,Second tag ,Third tag",
+            "info": "Tags are case sensitive and must match your product tag exactly"
+          },
+          {
+            "type": "textarea",
+            "id": "value_list",
+            "label": "Value list (one value per line')",
+            "default": "First value ,Second value ,Third value",
+            "info": "Values are case sensitive and must match your product tag above exactly"
+          },
+          {
+            "type": "checkbox",
+            "id": "collapsed",
+            "label": "Collapsed",
+            "default": false
+          }
+        ]
+      }     
+     
+    
+    ]
+  }
+{% endschema %}

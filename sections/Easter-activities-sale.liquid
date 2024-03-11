@@ -1,0 +1,155 @@
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+{{ 'swiper.min.js' | asset_url | script_tag }}
+{{ 'swiper.min.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign ratio = 1
+  if block.settings.product.featured_media and media_aspect_ratio == 'portrait'
+    assign ratio = 0.8
+  elsif block.settings.product.featured_media and media_aspect_ratio == 'adapt'
+    assign ratio = block.settings.product.featured_media.aspect_ratio
+  endif
+  if ratio == 0 or ratio == null
+    assign ratio = 1
+  endif
+  if limit != blank
+    assign limit = limit
+  else
+    assign limit = 5
+  endif
+-%}
+<div class="fn-easter-activies-sale">
+  <div class="easter-activies-sale">
+    {% if section.settings.Easter_one_img != blank %}
+      {% assign image = section.settings.Easter_one_img | img_url: '1600x' %}
+      <img class="Easter_one_img_pc" src="{{ image }}" alt="">
+    {% endif %}
+    {% if section.settings.Easter_one_img != blank %}
+      {% assign image = section.settings.Easter_one_img_moblie | img_url: '750x' %}
+      <img class="Easter_one_img_moblie" src="{{ image }}" alt="">
+    {% endif %}
+    <div class="swiper-wrapper_ul">
+      <div class="swiper-container">
+        <ul class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <li class="swiper-slide_list swiper-slide">
+              <div class="card">
+                <div
+                  class="card__inner hover-to-cart_sale {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }}{% endif %}{% if block.settings.product.featured_media or settings.card_style == 'standard' %} ratio{% endif %}"
+                  style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
+                >
+                  {%- if block.settings.product.featured_media -%}
+                    <a href="{{ block.settings.product.url }}">
+                      <div class="card__media">
+                        <div class="media media--transparent media--hover-effect">
+                          <img
+                            class="img-first"
+                            src="{{ block.settings.product.featured_media | img_url: '480x' }}"
+                            alt="{{ block.settings.product.featured_media.alt | escape }}"
+                            {% unless lazy_load == false %}
+                              loading="lazy"
+                            {% endunless %}
+                          >
+                        </div>
+                      </div>
+                    </a>
+                  {%- endif -%}
+                </div>
+
+                <div class="fn-easter-activies-sale-title t">
+                  <a href="{{ block.settings.product.url }}" class="t">{{ block.settings.product.title | escape }}</a>
+                </div>
+                <div
+                  class="fn-easter-sale--price"
+                >
+                  {% render 'sffers-price', product: block.settings.product, price_class: '' %}
+                </div>
+                <div class="fn-addcart-easter-sale">
+                  {% render 'easter-addCart', product: block.settings.product %}
+                </div>
+                <button class="fn-easter-sale_button t">ADD TO CART</button>
+              </div>
+            </li>
+          {%- endfor -%}
+        </ul>
+        <div class="swiper-scrollbar"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(function (){
+      var sale_arr = ['6801679646853', '6801679843461', '6801679908997','6914343960709', '6914344714373', '6914345500805','6914345566341'];
+    $(".product-form__submit").click(function(){
+      var button_id = $(this).attr('id').substring(9);
+       if(sale_arr.indexOf(button_id) != -1 ) {
+         console.log(button_id,'button_id');
+          $('#cart-notification-form,.fn-addcart-easter_button').hide();
+          $('.fn-easter-sale_button').show();
+          $('.fn-easter-sale_button').attr('disabled',true);
+       } else {
+          $('#cart-notification-form').show();
+       }
+
+    });
+    var mySwiper_a = new Swiper('.fn-easter-activies-sale .swiper-container',{
+      scrollbar: {
+            el: '.swiper-scrollbar',
+        draggable: true,
+      },
+      slidesPerView: 3,
+          spaceBetween: 30,
+
+      breakpoints:{
+        768:{
+           slidesPerView:1.5,
+          spaceBetween:15,
+
+        }
+      }
+    });
+
+  })
+</script>
+{% schema %}
+{
+  "name": "Flash Sale",
+  "max_blocks": 3,
+  "settings": [
+    {
+	"type": "image_picker",
+	"id": "Easter_one_img",
+	"label": {
+		"en": "Image",
+		"zh-CN": "背景图片"
+	}
+},{
+        "type": "image_picker",
+	"id": "Easter_one_img_moblie",
+	"label": {
+		"en": "Moblie Image",
+		"zh-CN": "手机端背景图片"
+	}
+      }
+  ],
+  "blocks": [{
+    "type": "save",
+    "name": {
+        "en": "save product",
+        "zh-CN": "产品"
+    },
+    "settings": [
+      {
+        "type": "product",
+        "id": "product",
+        "label": "productlabel"
+      }
+    ]
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

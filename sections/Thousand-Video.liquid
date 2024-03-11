@@ -1,0 +1,186 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} .thousand-vedio{
+   background: {{ section.settings.bg_color }};
+   padding-bottom:{{section.settings.padding_bottom}}px;
+   padding-top:{{section.settings.padding_top}}px;
+    letter-spacing:0
+  }
+  #shopify-section-{{ section.id }} .thousand-vedio-content{
+    width:{{section.settings.layout}}px;
+    margin:0 auto;
+    background: {{ section.settings.bg_color_content }};
+    padding-bottom:{{section.settings.padding_bottom_content}}px;
+    padding-top:{{section.settings.padding_top_content}}px
+  }
+  #shopify-section-{{ section.id }} .thousand-vedio-title{
+    font-size:{{section.settings.title_size}}px;
+    color:{{section.settings.title_color}};
+    font-weight:bold;
+    text-align:center;
+    margin-bottom:20px;
+    line-height:49px
+  }
+  #shopify-section-{{ section.id }} .fn-Stories-Video{
+    width:{{section.settings.layout_content}}px;
+    height:{{section.settings.layout_height}}px;
+    margin:0 auto;
+  }
+    @media screen and (max-width: 1600px){
+     #shopify-section-{{ section.id }} .thousand-vedio-content{
+       width:84.1%;
+     }
+      #shopify-section-{{ section.id }} .fn-Stories-Video{
+        width:88.43%
+      }
+  }
+   @media screen and (max-width: 1440px){
+      #shopify-section-{{ section.id }} .fn-Stories-Video{
+        height:600px
+      }
+  }
+  @media screen and (max-width: 1024px){
+    #shopify-section-{{ section.id }} .thousand-vedio-content{
+      width:93.6%;
+      padding-bottom:30px;
+    }
+     #shopify-section-{{ section.id }} .thousand-vedio-title{
+       font-size:30px;
+     }
+     #shopify-section-{{ section.id }} .fn-Stories-Video{
+        height:400px
+      }
+  }
+   @media screen and (max-width: 768px){
+    #shopify-section-{{ section.id }} .thousand-vedio-title{
+       font-size:16px;
+      margin-bottom:10px;
+      line-height: 22px;
+     }
+     #shopify-section-{{ section.id }} .thousand-vedio{
+       padding-top:20px;
+       padding-bottom:20px
+     }
+     #shopify-section-{{ section.id }} .thousand-vedio-content{
+       padding-top:10px;
+       padding-bottom:20px
+     }
+      #shopify-section-{{ section.id }} .fn-Stories-Video{
+        height:210px
+      }
+   }
+{%- endstyle -%}
+<div class="thousand-vedio">
+  <div class="thousand-vedio-content">
+    <div class="thousand-vedio-title">{{ section.settings.title }}</div>
+    <div class="fn-Stories-Video">
+      <iframe
+        id="stories-Video-Iframe"
+        width="100%"
+        height="100%"
+        src="{{ section.settings.vedio_link }}"
+        title="YouTube video player"
+        frameborder="no"
+        border="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Thousand Vedio",
+  "settings": [{
+            "type":"color",
+            "id":"bg_color",
+            "label":"背景颜色"
+        },{
+            "type":"range",
+            "id":"padding_top",
+            "min":0,
+            "max": 100,
+            "step":1,
+            "unit":"px",
+            "label":"Padding top",
+            "default": 36
+        },{
+            "type":"range",
+            "id":"padding_bottom",
+            "min":0,
+            "max": 100,
+            "step":1,
+            "unit":"px",
+            "label":"Padding bottom",
+            "default": 100
+        },{
+            "type":"range",
+            "id":"layout",
+            "min":1200,
+            "max": 1920,
+            "step":10,
+            "unit":"px",
+            "label":"内容显示宽度",
+            "default": 1600
+        },{
+            "type":"text",
+            "id":"title",
+            "label":"标题"
+        },{
+           "type":"color",
+            "id":"title_color",
+            "label":"标题颜色"
+        },{
+           "type":"number",
+            "id":"title_size",
+            "label":"标题大小"
+        },{
+        "type":"text",
+         "id":"vedio_link",
+         "label":{
+            "en":"vedio link",
+            "zh-CN":"视频链接"
+          }
+      },{
+            "type":"color",
+            "id":"bg_color_content",
+            "label":"内容背景颜色"
+        },{
+           "type":"number",
+            "id":"layout_content",
+            "label":"视频显示宽度"
+        },{
+           "type":"number",
+            "id":"layout_height",
+            "label":"视频显示高度"
+        },{
+            "type":"range",
+            "id":"padding_top_content",
+            "min":0,
+            "max": 100,
+            "step":1,
+            "unit":"px",
+            "label":"Padding top content",
+            "default": 36
+        },{
+            "type":"range",
+            "id":"padding_bottom_content",
+            "min":0,
+            "max": 100,
+            "step":1,
+            "unit":"px",
+            "label":"Padding bottom content",
+            "default": 100
+        }],
+  "presets": [
+    {
+      "name": "Thousand Vedio"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

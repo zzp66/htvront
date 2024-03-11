@@ -1,0 +1,1528 @@
+{{ 'component-cart.css' | asset_url | stylesheet_tag }}
+{{ 'component-cart-items.css' | asset_url | stylesheet_tag }}
+{{ 'component-totals.css' | asset_url | stylesheet_tag }}
+{{ 'component-discounts.css' | asset_url | stylesheet_tag }}
+{{ 'component-loading-overlay.css' | asset_url | stylesheet_tag -}}
+{{- 'component-cart.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'fn-cart-page.css' | asset_url | stylesheet_tag }}
+{{ 'fn-cart-seckill.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+    h1.cart__empty-text {
+        font-size: 24px;
+    }
+    .fn-warnings-button {
+        font-size: 20px;
+    }
+    .freeActive{
+      border:2px solid #ff7606;
+      border-radius:4px;
+  /*     background-color: #f7f7f7; */
+    }
+    .cart-price-tips{
+      font-size:16px;
+      color:#ff7606;
+      display:none
+    }
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+        padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+      }
+    .totals_price_points{
+      font-size: 20px;
+      font-weight: 600;
+      line-height:22px;
+    }
+    .points-number{
+      display: flex;
+      flex-direction: row;
+      align-items: baseline;
+      justify-content: space-between;
+      padding-top:10px;
+    }
+    .points-number>div>p:nth-child(2){
+      line-height: 13px;
+      padding-top: 5px;
+    }
+    .points-number>div:nth-child(1){
+      position:relative;
+    }
+    .points-number>div:nth-child(2){
+      cursor: pointer;
+      color: #ff7606;
+    }
+    .points-number>div:nth-child(2)>a{
+      text-decoration: underline;
+    }
+    .totals_price_points>img{
+      display:inline-block;
+      cursor: pointer;
+    }
+    .tips-box{
+      position: absolute;
+      z-index: 2;
+      width: 240px;
+      background-color: #fff;
+      border: 1px solid #000;
+      border-radius: 8px;
+      line-height: 19px;
+      top: 60%;
+      right: -70%;
+      padding: 5px 10px;
+      display:none;
+    }
+  .body-mask{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0;
+    top: 0;
+    z-index: 999;
+    display: none;
+  }
+  .coupon-dialog{
+    width:800px;
+    background-color:#fff;
+    border-radius:10px;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    position: fixed;
+    z-index: 1000;
+    display:block;
+    padding-bottom: 70px;
+    max-height: 870px;
+    display:none;
+    overflow-y: auto;
+  }
+  .icon-close-btn{
+      position: absolute;
+      right: 25px;
+      top: 20px;
+      cursor: pointer;
+    }
+.coupons-block{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.coupons-item{
+  position: relative;
+  margin-top:20px;
+}
+.coupons-item .item-module{
+  position: absolute;
+  display: flex;
+  top: 0;
+  color: #000;
+  align-items: center;
+  height:100%;
+  width:100%;
+  letter-spacing: 0;
+}
+.coupons-money{
+  width: 215px;
+  text-align:center;
+  color:#fff;
+  padding-bottom: 20px;
+}
+.coupons-money>div>span:nth-child(1){
+  font-size: 40px;
+  font-weight: bold;
+}
+.coupons-money>div>span:nth-child(2){
+  font-size: 66px;
+  font-weight: bold;
+}
+.coupons-money>span{
+  font-size: 28px;
+  font-weight: bold;
+  color: #670000;
+  line-height: 28px;
+}
+.coupons-rules>.rules-div>p{
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 21px;
+  padding-bottom: 30px;
+  position: relative;
+}
+.coupons-rules>.rules-div>p:nth-last-child(1){
+  padding-bottom:0;
+}
+.coupons-rules{
+  padding:0 20px 0 45px;
+  width: calc(100% - 215px);
+  word-wrap: break-word;
+}
+.coupon-code{
+  position: relative; 
+  margin-top: 25px;
+  color:#fff;
+  font-size: 18px;
+  line-height: 21px;
+}
+.coupons-rules>.rules-div>p:before,.coupon-code:before{
+  content: "";
+  width: 5px;
+  height: 5px;
+  background: #691300;
+  border-radius: 50%;
+  position: absolute;
+  left: -20px;
+  top: 8px;
+}
+.coupon-code:before{
+  top:10px;
+}
+.coupon-code>img{
+  display:inline-block;
+  cursor: pointer;
+  vertical-align: baseline;
+}
+.coupon-box{
+  position: fixed;
+  top: 15%;
+  left: 20px;
+  z-index: 20;
+  cursor: pointer;
+}
+.coupon-title{
+  font-size: 30px;
+  padding: 32px 0 0;
+  text-align: center;
+  font-weight: bold;
+  line-height: 35px;
+}
+.copy-code{
+  width: 120px;
+  height: 40px;
+  background: linear-gradient(270deg, #670000 0%, #830000 100%);
+  border-radius: 6px;
+  font-size: 16px;
+  line-height:39px;    
+  display: inline-block;
+  text-align: center;
+  font-style: normal;
+  font-weight: bold;
+  margin-left: 8px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+.show-in-820{
+  display:none
+} 
+@media screen and (max-width: 1280px) {
+  .coupon-dialog{
+    max-height:90%;
+  }
+}
+@media screen and (max-width: 820px) { 
+  .BFCM-box{
+    width: 114px;
+    height: 75px;
+    background: #FF7606;
+    border-radius: 8px;
+    color:#fff;
+  }
+  .BFCM-box>span:nth-child(1){
+    font-size: 12px;
+    font-weight: bold;
+    display: block;
+    text-align: center;    
+    padding: 5px 0 3px;
+    letter-spacing: 0;
+  }
+  .BFCM-box>span:nth-child(2){
+    width: 97px;
+    height: 32px;
+    background: #fff;
+    border-radius: 4px;
+    font-size: 14px;    
+    display: block;
+    margin: 0 auto;
+    line-height: 32px;
+    text-align: center;
+    color:#FF7606;
+    font-weight:bold;
+  }
+  .show-in-820{
+    display:block;
+  }
+  .show-in-821{
+    display:none;
+  }
+  .coupons-money>div>span:nth-child(2) {
+    font-size: 36px;
+  }
+  .coupons-money>div>span:nth-child(1){
+    font-size:18px;
+  }
+  .coupons-money>span{
+    font-size:16px;
+    line-height:19px;
+  }
+  .coupons-money {
+    width: 100px;
+    padding-bottom:10px;
+  }
+  .coupons-rules {
+    padding: 0 10px 0 25px;
+    width: calc(100% - 100px);
+  }
+  .coupons-rules>.rules-div>p{
+    font-size:14px;
+    line-height:16px;
+    padding-bottom:12px;
+  }
+  .coupon-code{
+    font-size:14px;
+    line-height:16px;
+    margin-top:8px;
+  }
+  .copy-code{
+    width: 96px;
+    height: 36px;
+    background: linear-gradient(270deg, #690101 0%, #820101 100%);
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 35px;
+  }
+  .coupons-rules>.rules-div>p:before, .coupon-code:before{
+    left: -12px;
+    top:6px;
+  }
+  .coupon-code:before{
+    top:10px;
+  }
+  .coupon-title {
+    font-size: 16px;
+    padding-top:15px;
+    line-height: 19px;
+  }
+  .icon-close-btn {
+    width: 22px;
+    right: 18px;
+    top: 8px;
+  }
+  .coupons-item{
+    margin-top:10px;
+  }
+  .coupon-dialog{
+    width:85%;
+    padding-bottom:30px;
+  }
+  .coupon-box{
+    left: auto;
+    right: 10px;
+  }
+}
+  
+@media screen and (max-width: 450px) {
+  .coupon-dialog{
+    width:95%;
+    max-height: 85%;
+  }
+}
+      @media screen and (min-width: 750px) {
+        .section-{{ section.id }}-padding {
+          padding-top: {{ section.settings.padding_top }}px;
+          padding-bottom: {{ section.settings.padding_bottom }}px;
+        }
+      }
+  
+    @media screen and (max-width: 750px) {
+       .totals_price_points{
+        font-size: 16px;
+        line-height: 16px;
+      }
+      .points-number>div>p:nth-child(2) {
+        line-height: 13px;
+      }
+      .points-number>div:nth-child(2)>a{
+        font-size: 12px;
+        letter-spacing: 0;
+        line-height: 17px;
+      }
+      .tips-box{
+        top: 50%;
+        right: -120px;
+      }
+    }
+{%- endstyle -%}
+
+<script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+
+{% assign cartLength = cart.items | size %}
+{% if section.settings.BFCM_image != blank %}
+  <div class="coupon-box">
+    <img src="{{ section.settings.BFCM_image | img_url:'199x' }}" class="show-in-821">
+    <div class="show-in-820 BFCM-box">
+      <span>
+        10% OFF Coupon
+      </span>
+      <span>
+        Get
+      </span>
+    </div>
+  </div>
+{% endif %}
+<div class="body-mask"></div>
+<div class="coupon-dialog">
+   <img class="icon-close-btn" src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/o.png?v=1700631504">
+   <div class="coupon-title">COUPON</div>
+   <div class="coupons-block">
+     {% for block in section.blocks %}
+        {% if block.type == 'coupons' %}
+          <div class="coupons-item">
+         <picture>
+              <source media="(max-width: 820px)" srcset="{{ block.settings.coupon_img_mobile | img_url:'331x' }}">
+              <source media="(min-width: 821px)" srcset="{{ block.settings.coupon_img | img_url:'618x' }}">
+            <img src="{{ block.settings.coupon_img | img_url:'618x' }}">
+          </picture>
+          <div class="item-module deposit-item">
+            <div class="coupons-money">
+              <div>
+                <span>{{ block.settings.currency }}</span><span>{{ block.settings.money }}</span>
+              </div>
+              <span>{{ block.settings.coupon }}</span>
+            </div>
+            <div class="coupons-rules">
+              <div class="rules-div">
+                {{ block.settings.coupons_rules }}
+              </div>
+              {% if block.settings.coupon_code != blank %}
+                <div class="coupon-code">
+                    Code: {{ block.settings.coupon_code }} 
+                    <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Group_18.png?v=1698810268" onclick="copyticket('{{ block.settings.coupon_code }}')">
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+     {% endfor %}
+   </div>
+</div>
+<div class="fn-page-width">
+  <div class="fn-cart-step">
+    <div class="fn-cart-step-number fn-cart-step-number-active">1</div>
+    <div class="fn-cart-step-text fn-cart-step-text-active t">Cart</div>
+    <div class="fn-cart-shop_number">({{ cart.item_count }})</div>
+    <div class="fn-cart-step-line"></div>
+    <div class="fn-cart-step-number">2</div>
+    <div class="fn-cart-step-text">Shipping</div>
+    <div class="fn-cart-step-line"></div>
+    <div class="fn-cart-step-number">3</div>
+    <div class="fn-cart-step-text">Payment</div>
+  </div>
+
+  <div class="t section-header__title">Your Cart</div>
+
+  <div class="fn-cart-layout">
+    <div class="fn-cart-left{% if cartLength > 4 %} active{% endif %}">
+      {% if section.settings.show_gift %}
+        <!-- <div id="cart_djs_timer_box">
+          <div class="fn_timer_img">
+            {% if section.settings.timer_image != blank %}
+              {% assign image = section.settings.timer_image | img_url: '89x' %}
+              <img src="{{ image }}" alt="">
+            {% endif %}
+          </div>
+          <div id="fn-timeing">
+            <div id="fn-timeing-mian">
+              <div class="fn-mian-content">
+                <div class="fn-content-text fn-activities-switch">
+                  Get an <span style="font-weight: bold;">extra 10% OFF</span> if you buy heat press.
+                  <a href="https://www.htvront.com/pages/christmas-activities-2022" class="activities_button t"
+                    >Buy Heat Press</a
+                  >
+                </div>
+                <div class="fn-content-text">
+                  Checkout within <span id="cart_djs_timer"></span>,only 300!
+                  <div id="timing_product">Add a free gift</div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      {% endif %}
+      <cart-items>
+        <div class="cart__warnings {% if cart == empty %} active{% endif %}">
+          <h1 class="cart__empty-text t">You have no items in your shopping cart.</h1>
+          <a href="{{ routes.all_products_collection_url }}" class="button fn-warnings-button">
+            {{ 'general.continue_shopping' | t }}
+          </a>
+        </div>
+        <form
+          action="{{ routes.cart_url }}"
+          class="cart__contents critical-hidden{% if cartLength > 4 %} active{% endif %}"
+          method="post"
+          id="cart"
+        >
+          <div class="cart__items" id="main-cart-items" data-id="{{ section.id }}">
+            <div class="js-contents">
+              {%- if cart != empty -%}
+                <table class="cart-items">
+                  <tbody>
+                    {%- for item in cart.items -%}
+                      <tr
+                        class="cart-item th_pb_cart_line"
+                        id="CartItem-{{ item.index | plus: 1 }}"
+                        data-idth="{{ item.id }}"
+                        data-indexth="{{ forloop.index }}"
+                      >
+                        <td class="cart-item__media">
+                          <a href="{{ item.url }}" class="cart-item__link" aria-hidden="true" tabindex="-1"> </a>
+                          <div class="cart-item__image-container gradient global-media-settings">
+                            <img
+                              src="{{ item.image | image_url: width: 250 }}"
+                              class="cart-item__image"
+                              alt="{{ item.image.alt | escape }}"
+                              loading="lazy"
+                              width="250"
+                              height="{{ 250 | divided_by: item.image.aspect_ratio | ceil }}"
+                            >
+                          </div>
+                        </td>
+                        <td class="cart-item__details">
+                          <div class="fn-item-hd">
+                            {% assign list = '39877185011845,39877184979077,39877184258181,39877184520325,39877184782469,39877184094341,39877183963269,39877184946309,39877184880773,39877184913541,39877184225413,39877183930501,39877184422021,39877184454789,39877184815237,39877184848005,39877184061573'
+                              | split: ','
+                            %}
+                            {% assign flag = false %}
+                            {% assign id = item.id | append: '' %}
+                            {% for i in list %}
+                              {% if id == i %}
+                                {% assign flag = true %}
+                                {% break %}
+                              {% endif %}
+                            {% endfor %}
+                            {% if flag == true %}
+                              <div class="t">{{ item.product.title | escape }}</div>
+                            {% else %}
+                              <a href="{{ item.url }}" class="t">{{ item.product.title | escape }}</a>
+                            {% endif %}
+                            <cart-remove-button
+                              id="Remove-{{ item.index | plus: 1 }}"
+                              data-index="{{ item.index | plus: 1 }}"
+                            >
+                              <a
+                                href="{{ item.url_to_remove }}"
+                                class="button button--tertiary th_pb_remove_cart_item"
+                                id="button-tertiary"
+                                aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
+                              >
+                                {% render 'icon-del' %}
+                              </a>
+                            </cart-remove-button>
+                            <div class="fn-cart-attr">
+                              {%- if item.product.has_only_default_variant == false
+                                or item.properties.size != 0
+                                or item.selling_plan_allocation != null
+                              -%}
+                                <div class="product-option">
+                                  {%- if item.product.has_only_default_variant == false -%}
+                                    <ul>
+                                      {%- for option in item.options_with_values -%}
+                                        <li>
+                                          {{ option.value }}
+                                          <span>/</span>
+                                        </li>
+                                      {%- endfor -%}
+                                    </ul>
+                                  {%- endif -%}
+                                </div>
+                                <p class="product-option">{{ item.selling_plan_allocation.selling_plan.name }}</p>
+                              {%- endif -%}
+                              <ul
+                                class="discounts list-unstyled"
+                                role="list"
+                                aria-label="{{ 'customer.order.discount' | t }}"
+                              >
+                                {%- for discount in item.discounts -%}
+                                  <li class="discounts__discount">
+                                    {%- render 'icon-discount' -%}
+                                    {{ discount.title }}
+                                  </li>
+                                {%- endfor -%}
+                              </ul>
+                            </div>
+                          </div>
+                          {%- assign property_size = item.properties | size -%}
+                          {% if property_size > 0 %}
+                            <span class="th_bundle_discount_text"></span>
+                            {% for p in item.properties %}
+                              {%- if p.first contains 'th_bundle_' -%}{%- continue -%}{%- endif -%}
+                            {% endfor %}
+                          {% endif %}
+                          <div class="fn-item-ft">
+                            <div class="fn-cart-price">
+                              {%- if item.original_price != item.final_price -%}
+                                <div class="cart-item__discounted-prices">
+                                  <div class="visually-hidden">
+                                    {{ 'products.product.price.regular_price' | t }}
+                                  </div>
+                                  <s class="cart-item__old-price product-option">
+                                    <span class="th_item_price">{{- item.original_price | money -}}</span>
+                                  </s>
+                                  <div class="visually-hidden">
+                                    {{ 'products.product.price.sale_price' | t }}
+                                  </div>
+                                  <strong class="cart-item__final-price product-option">
+                                    <span class="th_item_price">{{ item.final_price | money }}</span>
+                                  </strong>
+                                </div>
+                              {%- else -%}
+                                <div class="product-option">
+                                  <span class="original_price t"
+                                    ><span class="th_item_price">{{ item.original_price | money }}</span></span
+                                  ><span class="compare_at_price">{{ item.variant.compare_at_price | money }}</span>
+                                </div>
+                              {%- endif -%}
+                            </div>
+                            <div class="fn-cart-quantity">
+                              <div class="cart-item__quantity-wrapper">
+                                <label class="visually-hidden" for="Quantity-{{ item.index | plus: 1 }}">
+                                  {{ 'products.product.quantity.label' | t }}
+                                </label>
+                                <quantity-input class="quantity" data-id="{{ item.id }}">
+                                  <button class="quantity__button no-js-hidden" name="minus" type="button">
+                                    <span class="visually-hidden">
+                                      {{-
+                                        'products.product.quantity.decrease'
+                                        | t: product: item.product.title
+                                        | escape
+                                      -}}
+                                    </span>
+                                    {% render 'icon-minus' %}
+                                  </button>
+                                  <input
+                                    class="quantity__input"
+                                    type="number"
+                                    name="updates[]"
+                                    value="{{ item.quantity }}"
+                                    min="0"
+                                    aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
+                                    id="updates_{{ item.key }}"
+                                    data-index="{{ item.index | plus: 1 }}"
+                                  >
+                                  <button class="quantity__button no-js-hidden" name="plus" type="button">
+                                    <span class="visually-hidden">
+                                      {{-
+                                        'products.product.quantity.increase'
+                                        | t: product: item.product.title
+                                        | escape
+                                      -}}
+                                    </span>
+                                    {% render 'icon-plus' %}
+                                  </button>
+                                </quantity-input>
+                              </div>
+                              <div
+                                class="cart-item__error"
+                                id="Line-item-error-{{ item.index | plus: 1 }}"
+                                role="alert"
+                              >
+                                <small class="cart-item__error-text"></small>
+                                <svg
+                                  aria-hidden="true"
+                                  focusable="false"
+                                  role="presentation"
+                                  class="icon icon-error"
+                                  viewBox="0 0 13 13"
+                                >
+                                  <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+                                  <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+                                  <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+                                  <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    {%- endfor -%}
+                  </tbody>
+                </table>
+              {%- endif -%}
+            </div>
+          </div>
+          <p class="visually-hidden" id="cart-live-region-text" aria-live="polite" role="status"></p>
+          <p
+            class="visually-hidden"
+            id="shopping-cart-line-item-status"
+            aria-live="polite"
+            aria-hidden="true"
+            role="status"
+          >
+            {{ 'accessibility.loading' | t }}
+          </p>
+        </form>
+        {% if cartLength > 4 %}
+          <div class="fn-cart-content-more" onclick="spreadCartList(this)">
+            <img src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/2022-04-14_1.58.21_5.png?v=1650510260">
+            <div class="fn-cart-content-more_count">({{ cart.items | size | minus: 4 }})</div>
+          </div>
+          <div class="fn-cart-content-pack">
+            <img src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/2022-04-14_1.58.21_5.png?v=1650510260">
+          </div>
+        {% endif %}
+        {%- if section.settings.show_cart_note -%}
+          <div class="fn-cart-content-explain">
+            <div class="fn-cart-content-explain-text t">Special instructions for seller</div>
+            <img src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/2022-04-14_1.58.21_5.png?v=1650510260">
+          </div>
+          <cart-note class="cart__note field">
+            <textarea
+              class="text-area field__input"
+              name="note"
+              form="cart"
+              id="Cart-note"
+              placeholder="{{ 'sections.cart.note' | t }}"
+            >{{ cart.note }}</textarea>
+          </cart-note>
+        {%- endif -%}
+      </cart-items>
+    </div>
+    <div class="fn-cart-right">
+      <div id="main-cart-footer" data-id="{{ section.id }}__cart-footer">
+        <div class="cart__footer">
+          <div class="cart__blocks">
+            {% if section.settings.resource_image != blank %}
+              <div>
+                <a href="{{ section.settings.resouce_link }}">
+                  <img src="{{ section.settings.resource_image | img_url:'522x' }}">
+                </a>
+              </div>
+            {% endif %}
+            <div class="coupon-t">Your promotional coupon</div>
+            {% for block in section.blocks %}
+              {%- case block.type -%}
+                {%- when 'subtotal' -%}
+                  <div class="js-contents" {{ block.shopify_attributes }}>
+                    <div class="totals">
+                      <h3 class="totals__subtotal">{{ 'sections.cart.subtotal' | t }}</h3>
+                      <span class="th_cart_total_price">
+                        <p class="totals__subtotal-value t">{{ cart.total_price | money_with_currency }}</p>
+                      </span>
+                    </div>
+                    <div>
+                      {%- if cart.cart_level_discount_applications.size > 0 -%}
+                        <ul
+                          class="discounts list-unstyled"
+                          role="list"
+                          aria-label="{{ 'customer.order.discount' | t }}"
+                        >
+                          {%- for discount in cart.cart_level_discount_applications -%}
+                            <li class="discounts__discount discounts__discount--position">
+                              {%- render 'icon-discount' -%}
+                              {{ discount.title }}
+                              (-{{ discount.total_allocated_amount | money }})
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      {%- endif -%}
+                    </div>
+                   <div class="fn-cart-point">
+                      {% if section.settings.multiple != 0 and section.settings.multiple != blank %}
+                        <div class="points-number" data-val="{{ section.settings.multiple }}">
+                            <div>
+                              <p class="totals_price_points">
+                                <span>0</span> points for this order
+                                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/tishi.png?v=1693531979">
+                              </p>
+                              <p>Points can redeem products or coupons.</p>
+                              {% if section.settings.points_tips %}
+                                <div class="tips-box">
+                                  {{ section.settings.points_tips }}
+                                </div>
+                              {% endif %}
+                            </div>
+                            {% if section.settings.view_more != blank %}
+                              <div>
+                                <a href="{{ section.settings.view_more }}">View more points benefits</a>
+                              </div>
+                            {% endif %}
+                        </div>
+                      {% endif %}
+                    </div>
+                    <!--
+                      <small class="tax-note caption-large rte">
+                          {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
+                          {{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                          {%- elsif cart.taxes_included -%}
+                          {{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
+                          {%- elsif shop.shipping_policy.body != blank -%}
+                          {{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+                          {%- else -%}
+                          {{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
+                          {%- endif -%}
+                      </small>
+                    -->
+                  </div>
+                {%- when 'buttons' -%}
+                  <div class="cart__ctas" {{ block.shopify_attributes }}>
+                    <noscript>
+                      <button type="submit" class="cart__update-button button button--secondary" form="cart">
+                        {{ 'sections.cart.update' | t }}
+                      </button>
+                    </noscript>
+                    <button
+                      type="submit"
+                      id="checkout"
+                      class="cart__checkout-button button"
+                      name="checkout"
+                      disabled
+                      form="cart"
+                    >
+                      {{ 'sections.cart.checkout' | t }}
+                    </button>
+                  </div>
+                  <div class="cart-price-tips"></div>
+                  <div class="continue-shopping">
+                    <a href="/">CONTINUE SHOPPING</a>
+                  </div>
+                  {%- if additional_checkout_buttons -%}
+                    <div
+                      class="cart__dynamic-checkout-buttons additional-checkout-buttons"
+                      id="additional-checkout-button"
+                    >
+                      {{ content_for_additional_checkout_buttons }}
+                    </div>
+                  {%- endif -%}
+                {%- when 'text' -%}
+                  <div class="fn-cart-payment_hint">
+                    <img class="fn-cart-payment_hint-img" src="{{ block.settings.icon | img_url: '84x' }}">
+                    <div class="fn-cart-payment_hint-content">
+                      <div class="fn-cart-payment_hint-content-title t">{{ block.settings.title }}</div>
+                      {{ block.settings.html }}
+                    </div>
+                  </div>
+              {%- endcase -%}
+            {% endfor %}
+            <div id="cart-errors"></div>
+          </div>
+        </div>
+        <div class="fn-cart-selected_for_you t">Selected For You</div>
+        <div class="fn-cart-swiper">
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              {% for block in section.blocks %}
+                {%- if block.type == 'product' -%}
+                  <div class="swiper-slide item" style="width: 250px;">
+                    {% render 'fn-card-product',
+                      card_product: block.settings.product,
+                      show_secondary_image: true,
+                      limit: 4,
+                      lazy_load: lazy_load
+                    %}
+                  </div>
+                {%- endif -%}
+              {% endfor %}
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="fn-cart-timert">
+  <div class="fn-timert-main">
+    <div class="timert_img">
+      <img
+        id="timert_img"
+        src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Bold_2px_close.png?v=1659337316"
+        alt=""
+      >
+    </div>
+    <div class="timert_title t">Choose Your Gift</div>
+    <div class="fn-gift-activities">
+      <div class="swiper-container">
+        <div class="swiper-wrapper" style="width: 270px;">
+          {% for block in section.blocks %}
+            {%- if block.type == 'Promotion' -%}
+              <div class="swiper-slide">
+                {% render 'fn-gift-product',
+                  card_product: block.settings.gift_product,
+                  limit: 4,
+                  lazy_load: lazy_load
+                %}
+              </div>
+            {%- endif -%}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+    <div class="fn-activities-msg">
+      {{ section.settings.msg_activities }}
+    </div>
+  </div>
+</div>
+
+{% javascript %}
+  
+  
+   
+  class CartNote extends HTMLElement {
+    constructor() {
+      super();
+
+      this.addEventListener('change', debounce((event) => {
+        const body = JSON.stringify({ note: event.target.value });
+        fetch(`${routes.cart_update_url}`, {...fetchConfig(), ...{ body }});
+      }, 300))
+    }
+  }
+
+  customElements.define('cart-note', CartNote);
+
+
+
+
+{% endjavascript %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    function isIE() {
+      const ua = window.navigator.userAgent;
+      const msie = ua.indexOf('MSIE ');
+      const trident = ua.indexOf('Trident/');
+
+      return (msie > 0 || trident > 0);
+    }
+
+    if (!isIE()) return;
+    const cartSubmitInput = document.createElement('input');
+    cartSubmitInput.setAttribute('name', 'checkout');
+    cartSubmitInput.setAttribute('type', 'hidden');
+    document.querySelector('#cart').appendChild(cartSubmitInput);
+    document.querySelector('#checkout').addEventListener('click', function(event) {
+      document.querySelector('#cart').submit();
+    });
+  });
+</script>
+<script src="{{ 'activityProduct-cart.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'Freegift-cart.js' | asset_url }}" defer="defer"></script>
+
+<script>
+  $(function(){
+     $('.coupon-box').click(function(){
+        $('.body-mask,.coupon-dialog').show()
+        $('body').css({"overflow":"hidden"})
+     })
+    $('.icon-close-btn').click(function(){
+        $('.body-mask,.coupon-dialog').hide()
+        $('body').css({"overflow":"auto"})
+    })
+  });
+  function copyticket(code){
+      let url = code;
+      let copyInput = document.createElement('input');
+      document.body.appendChild(copyInput);
+      copyInput.setAttribute('value', url);
+      copyInput.select();
+      document.execCommand("Copy");
+      copyInput.remove();
+      alertMsg()
+    }
+     function alertMsg(){
+      var alertFram = document.createElement("DIV");
+      alertFram.id = "alertFram";
+      alertFram.style.position = "fixed";
+      alertFram.style.width = "100%";
+      alertFram.style.textAlign = "center";
+      alertFram.style.bottom = "40px";
+      alertFram.style.zIndex = "10001";
+      strHtml = " <span style=\"font-family: 微软雅黑;display:inline-block;background:#333;color:#fff;padding:0 20px;line-height:36px;border-radius:6px; \">Copied successfully</span>";
+      alertFram.innerHTML = strHtml;
+      document.body.appendChild(alertFram);
+      setTimeout((function(){
+        alertFram.style.display="none";
+      }),2000);
+    }
+  
+  
+    //   买赠活动
+      $(function(){
+         var carts_s = [],
+           new_cart = {};
+         var carts_arr = [{id: '39891898990725'},{id: '39891896172677'},{id: '39891892863109'},{id: '39891883688069'},{id: '40422213910661'},{id: '40422216073349'},{id: '40422238224517'},{id: '40422220497029'}];
+          {% for item in cart.items %}
+          var items_cartId = {{item.id}};
+          for (let j = 0; j < carts_arr.length; j++) {
+            var old = carts_arr[j];
+            if (items_cartId == old.id) {
+               $('.fn-promotion-button').attr('disabled',true);
+                carts_s.push(old);
+            }
+          }
+          {% endfor %}
+          if(carts_s.length >= 1) {
+           $.post('/cart/change.js', { quantity: 1, id: carts_s[0].id });
+          }
+          if(carts_s.length > 1) {
+          for (let i = 1; i < carts_s.length; i++) {
+            new_cart[carts_s[i].id] = 0;
+          }
+            jQuery.post('cart/update.js', {
+              updates: new_cart
+            });
+            setTimeout(function(){
+                     window.location.reload(); 
+              },1000);
+          }
+          $('.fn-promotion-button').click(function () {
+           $('.fn-promotion-button').hide();
+              setTimeout(function(){
+                   $('.fn-promotion-button').attr('disabled', true);
+                   window.location.reload(); 
+            },1000);
+        });
+  });
+  // 秒杀产品 39811286237317后为addtocart-seckill新增的四个秒杀产品变体属性id
+  $(function(){
+    var arr3 = []
+    var arr_items = [{id:40220905996421},{id:40220915368069},{id:39783385530501},{id:40220915302533},{id:40220915138693},{id:39783384973445},{id:39783384940677},
+                     {id:39783384776837},{id:40223254577285},{id:40174052704389},{id:40174061518981},{id:39783391002757},{id:39783391035525},{id:39783390937221},
+                     {id:39783390969989},{id:39783391068293},{id:39783391101061},{id:39783391133829},{id:39783391166597},{id:39783391199365},{id:40174080360581},
+                     {id:39811285516421},{id:39811285155973},{id:39811285188741},{id:39811285385349},{id:39811285418117},{id:39811285942405},{id:39811286237317},
+                     {id:40498426314885},{id:40498426347653},{id:40498428903557},{id:40498428936325},{id:40498430017669},{id:40498430050437},{id:40498430214277},{id:40498430247045}
+                    ];
+ {% for item in cart.items %}
+    var items_id = {{item.id}};
+    var items_text = 'updates_'+ items_id;
+    for (let j = 0; j < arr_items.length; j++) {
+      var old = arr_items[j];
+      if (items_id == old.id) {
+        arr3.push(old);
+      }
+    }
+    {% endfor %}
+    let arr4 = {}
+    for (let i = 1; i < arr3.length; i++) {
+      arr4[arr3[i].id] = 0;
+
+    }
+    if(arr3.length > 1) {
+      jQuery.post('cart/update.js', {
+        updates: arr4
+      });
+      window.location.reload(); 
+    }
+  })
+  
+    // 七七促销节秒杀产品
+  $(function(){
+    var arr3 = []
+    var arr_items = [{id:40231640236165},{id:39880962408581},{id:40231640531077}];
+ {% for item in cart.items %}
+    var items_id = {{item.id}};
+    var items_text = 'updates_'+ items_id;
+    for (let j = 0; j < arr_items.length; j++) {
+      var old = arr_items[j];
+      if (items_id == old.id) {
+        arr3.push(old);
+      }
+    }
+    {% endfor %}
+    let arr4 = {}
+    for (let i = 1; i < arr3.length; i++) {
+      arr4[arr3[i].id] = 0;
+
+    }
+    if(arr3.length > 1) {
+      jQuery.post('cart/update.js', {
+        updates: arr4
+      });
+      window.location.reload(); 
+    }
+  })
+
+  //杯子热压机二级页面代金券产品
+    $(function(){
+    var arr3 = []
+    var arr_items = [{id:40245803417733}];
+   {% for item in cart.items %}
+      var items_id = {{item.id}};
+      var items_text = 'updates_'+ items_id;
+      for (let j = 0; j < arr_items.length; j++) {
+        var old = arr_items[j];
+        if (items_id == old.id) {
+          arr3.push(old);
+        }
+      }
+    {% endfor %}
+    let arr4 = {}
+    for (let i = 1; i < arr3.length; i++) {
+      arr4[arr3[i].id] = 0;
+
+    }
+    if(arr3.length > 1) {
+      jQuery.post('cart/update.js', {
+        updates: arr4
+      });
+      window.location.reload(); 
+    }
+  })
+  
+//数组查重
+ function getArrDifference(arr1) {
+    var sale_arr2 = []
+    var sale_items = arr1;
+   {% for sale_a in cart.items %}
+      var sale_id = {{sale_a.id}};
+      var sale_text = 'updates_'+ sale_id;
+      for (let j = 0; j < sale_items.length; j++) {
+        var sale_old = sale_items[j];
+        if (sale_id == sale_old) {
+          sale_arr2.push(sale_old);
+        } 
+      }
+  {% endfor %}
+  return sale_arr2
+}
+//购物车数据变化时判断 39811286237317后为addtocart-seckill新增四个秒杀产品变体id
+  function findFreeSale(price){ 
+     let freeList = [39891883688069,39891892863109,39891896172677,39891898990725,40422213910661,40422216073349,40422238224517,40422220497029] //免费礼品
+     let freeSale = [40220905996421,40220915368069,39783385530501,40220915302533,40220915138693,39783384973445,39783384940677,39783384776837,
+                     40223254577285,40174052704389,40174061518981,39783391002757,39783391035525,39783390937221,39783390969989,39783391068293,
+                     39783391101061,39783391133829,39783391166597,39783391199365,40174080360581,39811285516421,39811285155973,39811285188741,
+                     39811285385349,39811285418117,39811285942405,39811286237317,
+                     40498426314885,40498426347653,40498428903557,40498428936325,40498430017669,40498430050437,40498430214277,40498430247045
+                    ]  //秒杀数据
+     // 包邮文案金额可配置项 
+    var freeShippingNum = {{ section.settings.shipping_price }}
+    var giftShipping = '{{ section.settings.shipping_text1 }}'
+    var noGiftShipping = '{{ section.settings.shipping_text2 }}'
+    var giftArr = giftShipping.split(',')
+    var noGiftArr = noGiftShipping.split(',')
+    let residue = ( freeShippingNum -  price)/100
+    // 包邮文案金额可配置项 
+    var giftHtml  = `${ giftArr[0] }${residue}${ giftArr[1] }`
+    var noGiftHtml = `${ noGiftArr[0] }${residue}${ noGiftArr[1] }`
+    
+    if(getArrDifference(freeList).length > 0 && getArrDifference(freeSale).length > 0 ){
+         if(price < freeShippingNum){ 
+            for (let i = 0;i < $('.cart-item').length;i++){
+              if($('.cart-item')[i].getAttribute('data-idth') == getArrDifference(freeList)[0]){  
+                $('.cart-item').eq(i).addClass('freeActive')
+                
+                $('.cart-price-tips').html(giftHtml)
+                $('.cart-price-tips').show()
+                $('#checkout').attr('disabled', true);
+                $('#additional-checkout-button').hide();
+              }else{
+                $('.cart-item').eq(i).removeClass('freeActive')
+              }
+            }            
+          }else{
+              $('#checkout').removeAttr('disabled',false);
+              $('#additional-checkout-button').show();
+              $('.cart-price-tips').hide()
+          }
+        }else{
+              $('#checkout').removeAttr('disabled',false);
+              $('#additional-checkout-button').show();
+               // 积分逻辑
+              var multiple = $('.points-number').attr('data-val')
+              var points_number = Math.floor(price / 100) * multiple
+              $('.totals_price_points>span').text(points_number)
+              if(price < freeShippingNum){
+                $('.cart-price-tips').html(noGiftHtml)
+                $('.cart-price-tips').show()
+              }else{
+                $('.cart-price-tips').hide()
+              }
+        }
+  }
+  $(function (){ 
+    $('.totals_price_points>img').hover(function(){
+        $('.tips-box').css('display','block');
+    } ,function(){
+        $('.tips-box').css('display','none');
+    })
+    var total_price  = {{ cart.total_price }};
+    if(total_price == 0 ){ 
+      $('#checkout').attr('disabled', true);
+      $('#additional-checkout-button').hide();
+    } else { 
+       findFreeSale(total_price)             
+    } 
+    // if($('input[id^=updates_39793160355973]').length !== 0){
+      let nowTime = new Date(); 
+      addCookie('actTime', nowTime , 1);
+      countDownTimerFriday(getCookie('actTime'));
+    // }
+    $('.fn-cart-content-more').click(function (){
+      $('.fn-cart-left form, .fn-cart-left').removeClass('active');
+      $('.fn-cart-content-more').hide();
+      $('.fn-cart-content-pack').show();
+    });
+    $('.fn-cart-content-pack').click(function (){
+      $('.fn-cart-content-more').show();
+      $('.fn-cart-content-pack').hide();
+      $('.fn-cart-left form, .fn-cart-left').addClass('active');
+    });
+    $('.fn-cart-content-explain').click(function (){
+      $('.fn-cart-left .cart__note').toggle(300);
+    });
+    var cartSwiper = new Swiper ('.fn-cart-swiper .swiper-container', {
+      //             loop: true,
+      slidesPerView : 2,
+      spaceBetween : 20,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints:{
+        480:{
+          slidesPerView: 2,
+          spaceBetween: 10
+        },
+        1440:{
+          slidesPerView: 1,
+          spaceBetween: 0
+        }
+      }
+    });
+
+    // var FREE_SHIPPING_THRESHOLD = 69.00;
+    var FREE_SHIPPING_THRESHOLD = 39.00;
+    let total = '{{ cart.total_price }}';
+    let price = total/100.00;
+    let miusVal = (FREE_SHIPPING_THRESHOLD - price).toFixed(2);
+    let html;
+
+    var shippingContainer = document.createElement('div');
+    shippingContainer.className = 'free-shipping';
+    $('#checkout').before(shippingContainer);
+
+    var adjustFreeMessage = function(value) {
+      if (value <= 0) {
+        // shippingContainer.innerText = `Congrats! You've unlocked lucky draw!`;
+        shippingContainer.innerText = `Congrats! You've unlocked Free Shipping!`;
+      } else {
+        // shippingContainer.innerText = `Spend $${value} more and participate in lucky draw`;
+        shippingContainer.innerText = `Spend $${value} more and get free shipping!`;
+      }
+    };
+
+    // adjustFreeMessage(miusVal);
+
+    var handleDiscount = function() {
+      var data = JSON.parse(sessionStorage.getItem('scDiscountData'));
+      if (data && data.subtotalCents ) {
+        var diff = (FREE_SHIPPING_THRESHOLD - (data.subtotalCents / 100).toFixed(2));
+        // Math.round(num*100)/100)
+        // adjustFreeMessage(diff);
+        return;
+      }
+      // adjustFreeMessage(miusVal);
+    }; 
+
+    window.addEventListener('sc:discount.init', handleDiscount);
+    window.addEventListener('sc:discount.calculated', handleDiscount);
+    window.addEventListener('sc:discount.remove', handleDiscount);
+    $(document).on("click",".quantity__button",function(){
+      checkCartItems(({userEmail,cartToken,cartItemKeysStr,cartProductKeyArr,cartProductQuantity,totalPrice})=>{  
+         activities_arr.forEach((item, index) => {
+              if(cartProductKeyArr.indexOf(item.id) != -1){ 
+                $('.fn-activities-switch').show();
+            }else { 
+                $('.fn-activities-switch').hide();
+            }
+         })   
+        findFreeSale(totalPrice)  
+      },2000)
+    });
+  });
+  function addCookie(objName, objValue, objHours){//添加cookie 
+    var str = objName + "=" + escape(objValue);
+    if (objHours > 0) {//为0时不设定过期时间，浏览器关闭时cookie自动消失 
+      var date = new Date();
+      var ms = objHours * 3600 * 1000;
+      date.setTime(date.getTime() + ms);
+      str += "; expires=" + date.toGMTString();
+    }
+    document.cookie = str;
+  }
+  function getCookie(objName){
+    var arrStr = document.cookie.split("; ");
+    for (var i = 0; i < arrStr.length; i++) {
+      var temp = arrStr[i].split("=");
+      if (temp[0] == objName)
+        return unescape(temp[1]);
+    }
+  }
+    // 页面计时器
+    $('#timing_product').click(function () {
+        $('.fn-cart-timert').show();
+  });
+      $('#timert_img').click(function () {
+        $('.fn-cart-timert').hide();
+  });
+  var activities_arr = [{id: '40046939373701'},{id: '40046938521733'},{id: '40046936817797'},{id: '40046936326277'}];
+  
+  $('.button--tertiary').click(function () {
+      checkCartItems(({userEmail,cartToken,cartItemKeysStr,cartProductKeyArr,cartProductQuantity,totalPrice})=>{  
+         activities_arr.forEach((item, index) => {
+              if(cartProductKeyArr.indexOf(item.id) != -1){
+                $('.fn-activities-switch').show();
+            }
+         })
+         findFreeSale(totalPrice)
+      })
+  }); 
+  // $('.quantity__button ').click(function () {
+    
+  // });
+     
+  <!--     修改免费礼品 -->
+    $(function(){
+        checkCartItems(({userEmail,cartToken,cartItemKeysStr,cartProductKeyArr,cartProductQuantity})=>{  
+          if(cartProductQuantity['39793160355973'] !== 0){
+            $.post('/cart/change.js', { quantity: 0, id: 39793160355973 });
+          }
+          if(cartProductQuantity['40013634470021'] > 0 && cartProductQuantity['40013634470021'] !== 1){
+          $.post('/cart/change.js', { quantity: 1, id: 40013634470021 });
+        }
+         activities_arr.forEach((item, index) => {
+              if(cartProductKeyArr.indexOf(item.id) != -1){
+                $('.fn-activities-switch').show();
+            }
+            
+         })
+      })
+    })
+var mySwiper = new Swiper('.fn-gift-activities .swiper-container', {
+    slidesPerView: 2,//首页展示几个
+    slidesPerGroup: 1,
+    spaceBetween: 20,//间隔宽度
+    pagination: {        
+      clickable: true
+    },
+   observer:true,
+   observeParents:true,
+      navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints:{
+      480:{
+          spaceBetween: 10
+      }
+  }
+})
+
+
+
+
+
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.main-cart-items.name",
+  "class": "fn-cart",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "default": false,
+      "label": "t:sections.main-cart-items.settings.show_vendor.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cart_note",
+      "default": false,
+      "label": "t:sections.main-cart-footer.settings.show_cart_note.label"
+    },
+    {
+      "type": "html",
+      "id": "msg_activities",
+      "label": {
+        "en": "pop-up windows",
+        "zh-CN": "弹窗提示信息"
+      }
+    },
+    {
+          "type": "image_picker",
+          "id": "resource_image",
+          "label": "资源位"
+    },
+    {
+          "type": "text",
+          "id": "resouce_link",
+          "label": "资源位跳转链接"
+    },
+    {
+          "type": "image_picker",
+          "id": "timer_image",
+          "label": "gif"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_gift",
+      "default": false,
+      "label": "启用礼物功能"
+    },
+    {
+      "type":"number",
+      "id":"multiple",
+      "label":"积分倍数"
+    },{
+      "type":"url",
+      "id":"view_more",
+      "label":"view more link"
+    },{
+      "type":"text",
+      "id":"points_tips",
+      "label":"积分规则提示语"
+    },{
+      "type":"image_picker",
+      "id":"BFCM_image",
+      "label":"BFCM image"
+    },{
+      "type":"number",
+      "id":"shipping_price",
+      "label":"free shipping price(price*100)"
+    },{
+      "type":"text",
+      "id":"shipping_text1",
+      "label":"free gift & free shipping(金额用英文逗号表示)"
+    },{
+      "type":"text",
+      "id":"shipping_text2",
+      "label":"free shipping(金额用英文逗号表示)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "subtotal",
+      "name": "t:sections.main-cart-footer.blocks.subtotal.name",
+      "limit": 1
+    },
+    {
+      "type": "buttons",
+      "name": "t:sections.main-cart-footer.blocks.buttons.name",
+      "limit": 1
+    },
+    {
+      "type": "product",
+      "name": "Selected For You",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "productlabel"
+        }
+      ]
+    },
+    {
+      "type": "Promotion",
+      "name": {
+        "en": "Promotion product",
+        "zh-CN": "买赠活动"
+      },
+      "settings": [
+        {
+          "type": "product",
+          "id": "gift_product",
+          "label": "productlabel"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Order tips",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "html",
+          "id": "html",
+          "label": "Html"
+        }
+      ]
+    },
+    {
+      "type":"coupons",
+      "name":"coupons",
+      "settings":[
+        {
+          "type":"image_picker",
+          "id":"coupon_img",
+          "label":"coupon image"
+        },
+        {
+          "type":"image_picker",
+          "id":"coupon_img_mobile",
+          "label":"coupon image mobile"
+        },{
+          "type": "text",
+          "id": "currency",
+          "label": "currency"
+        },{
+          "type": "text",
+          "id": "money",
+          "label": "money"
+        },{
+          "type": "text",
+          "id": "coupon",
+          "label": "coupon"
+        },{
+          "type":"text",
+          "id":"coupon_code",
+          "label":"coupon code"
+        },{
+          "type": "html",
+          "id": "coupons_rules",
+          "label": "coupons rules"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

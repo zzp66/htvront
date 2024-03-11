@@ -1,0 +1,60 @@
+<style>
+  .fans-have-fun-intro{
+    width:100%;
+    background: #FFD591;
+    border: 3px solid #7E3C00;
+    border-radius: 10px 10px 10px 10px;
+    padding:40px 135px;
+    margin-bottom: 40px;
+    background-image:url('https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Frame_13.png?v=1709781445')
+  }
+  .fans-have-fun-intro>p{
+    font-weight: bold;
+    font-size: 28px;
+    color: #7E3C00;
+    line-height: 33px;
+    text-align: center;
+    letter-spacing: -0.5px;
+  }
+  .fans-have-fun-intro>div{
+    font-weight: 600;
+    font-size: 16px;
+    color: #7E3C00;
+    line-height: 24px;
+    text-align: center;
+    padding: 20px 85px 0;
+  }
+  
+@media screen and (max-width:1440px){
+  .fans-have-fun-intro{
+    padding: 20px 50px;
+  }
+  .fans-have-fun-intro>p{
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .fans-have-fun-intro>div{
+    padding: 10px 50px 0;
+  }
+}
+</style>
+<div class="fans-have-fun-intro">
+  <p>{{ section.settings.title }}</p>
+  <div>{{ section.settings.desc }}</div>
+</div>
+{% schema %}
+  {
+    "name": "Fans-have-fun-intro",
+    "settings": [
+      {
+        "type":"text",
+        "id":"title",
+        "label":"title"
+      },{
+        "type":"text",
+        "id":"desc",
+        "label":"desc"
+      }
+    ]
+  }
+{% endschema %}

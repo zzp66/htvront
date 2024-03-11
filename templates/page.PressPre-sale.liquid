@@ -1,0 +1,66 @@
+
+{{ 'Pre-sale.css' | asset_url | stylesheet_tag }}
+<div class="fn-Pre-sale">
+ {% section 'Pre-sale-banner' %}
+ <div class="fn-Pre-nav">
+    <ul class="fn-nav-main">
+      <li class="nav-main-list pagination_active" id="Pre-nav-list">Purchase</li>
+      <li class="nav-main-list">Key Features</li>
+      <li class="nav-main-list">Reviews</li>
+    </ul>
+  <div class="nav-main-buyNow nav-main-PCbutton">Buy It Now</div>
+  <div class="nav-main-buyNow nav-main-cellphonebutton">Buy</div>
+ </div>
+  <div class="fn-nav-content" id="nav-main">
+    <div class="nav-content-list nav-sale-Purchase">
+       {% section 'purchase' %}
+    <div class="nav-content-Purchase">
+       {% section 'Pre-sale-Discounts' %}
+    </div>
+    </div>
+    <div class="nav-content-list nav-content-Features">
+      {% section 'Pre-sale-features' %}
+    </div>
+    <div class="nav-content-list nav-content-Reviews">
+       {% section 'Pre-sale-reviews' %}
+    </div>
+</div>
+</div>
+<script>
+  // 视频点击自动播放
+  $('.fn-sale-banner').click(function () {
+        $('.fn-video-mask').show();
+        $('#pressVideo').trigger('play');
+  });
+  $('.fn-mask').click(function () {
+        $('.fn-video-mask').hide();
+        $('#pressVideo').trigger('pause');
+  });
+    $('.nav-main-list').click(function () {
+        $('html, body').animate({
+          scrollTop: $('#nav-main').offset().top - 200 //65为设置的偏移值
+        });
+       var Pre_index =  $(this).index();
+        $(this).addClass('pagination_active').siblings().removeClass('pagination_active');
+        $('.nav-content-list').eq(Pre_index).show().siblings().hide();
+  });
+  // 两个购买按钮
+    $('.fn-purchase-leftattribute').click(function () {
+     var a_index =  $(this).index();
+      $(this).addClass('purchase_active').siblings().removeClass('purchase_active');
+      $('.leftbutton').eq(a_index).show().siblings().hide();
+});
+      $('.fn-purchase-rightattribute').click(function () {
+     var r_index =  $(this).index();
+      $(this).addClass('purchase_active').siblings().removeClass('purchase_active');
+      $('.rightbutton').eq(r_index).show().siblings().hide();
+});
+  // 点击回到顶部并且切换
+    $('.nav-main-buyNow,#demovideo-button').click(function (){
+      $('#Pre-nav-list').addClass('pagination_active').siblings().removeClass('pagination_active');
+      $('.nav-sale-Purchase').show().siblings().hide();
+      $('html, body').animate({
+          scrollTop: $('#nav-main').offset().top - 200 //65为设置的偏移值
+        });
+  });
+</script>

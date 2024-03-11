@@ -1,0 +1,104 @@
+<div class="black-friday-nav">
+  <div class="swiper-container">
+      <ul class="swiper-wrapper black-friday-nav-content">
+          {% for block in section.blocks %}
+            <li class="swiper-slide">
+              <a href="#{{ block.settings.nav_id }}" class="black-friday-nav-item" onclick="getClick('{{ block.settings.nav_id }}')">
+                {% if block.settings.nav_icon != blank %}
+                    <img
+                      src="{{ block.settings.nav_icon | img_url: '24x' }}"
+                      alt="{{ image.alt }}" />
+                {% endif %}
+                  <p class="black-friday-nav-text">
+                    {{ block.settings.nav_text }}
+                  </p>
+              </a>
+            </li>
+        {% endfor %}
+      </ul>
+  </div>
+</div>
+<script>
+  $(function(){
+    let height = $('.black-friday-banner')[0].offsetHeight
+    window.addEventListener("scroll", function(event) {
+        var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+        var navheight = 0 
+      if(document.body.clientWidth >= 990){
+        navheight = 60
+      }else{
+        navheight = 45
+      }
+         if(scrollTop >= height + 110){  
+             $('.black-friday-nav').css({
+               position: "fixed",
+               top: navheight + "px",
+               zIndex: 222
+             })
+         }else{
+           $('.black-friday-nav').css({
+               position: "initial"
+             })
+         }
+     });
+
+     var mySwiper_a = new Swiper('.black-friday-nav .swiper-container',{
+         slidesPerView: 4,
+          spaceBetween: 15,
+    });
+    var arr = document.getElementsByClassName('hoverLi')
+    var navName = document.getElementsByClassName('black-friday-nav')[0]
+     for (let i = 0, length = arr.length; i < length; i++) {
+        arr[i].addEventListener("mouseover", function(event) { 
+          var navStyleFixed = $('.black-friday-nav').attr("style").indexOf("fixed"); 
+          if(navStyleFixed != -1){
+            navName.style.display = 'none';
+          }else{
+            navName.style.display = 'block';
+          }
+        });
+         arr[i].addEventListener("mouseout", function(event) { 
+           navName.style.display = 'block';
+        });
+     }
+  })
+</script>
+{% schema %}
+  {
+    "name": "Black Friday Nav",
+    "settings": [
+      {
+        "type":"color",
+        "id":"text_color",
+        "label":"text color"
+      },{
+        "type":"text",
+        "id":"font_size",
+        "label":"font size"
+      }
+    ],
+    "blocks":[{
+      "type": "images",
+      "name": "nav",
+      "settings":[{
+        "type":"image_picker",
+        "id":"nav_icon",
+        "label":"nav icon"
+      },{
+        "type":"text",
+        "id":"nav_text",
+        "label":"nav text"
+      },{
+        "type":"text",
+        "id":"nav_id",
+        "label":"nav id(与下方块id一致，无空格，不能重复)"
+      }]
+    }]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

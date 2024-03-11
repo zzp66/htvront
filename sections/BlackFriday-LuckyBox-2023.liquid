@@ -1,0 +1,139 @@
+<div class="black-friday-lucky-box common-width" id="{{ section.settings.id }}">
+  <div class="black-module-title">
+    <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Union.png?v=1698741824">
+    <p>{{ section.settings.title }}</p>
+    <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Union_1.png?v=1698741824">
+  </div>
+  <div class="black-module-desc">
+    {{ section.settings.desc }}
+  </div>
+  <div class="lucky-box-main">
+    <div class="swiper-container blackfriday-box-swiper">
+      <div class="swiper-wrapper ">
+        {% for block in section.blocks %}
+         <div class="luckybox-item swiper-slide">
+            <div class="block-lucky-box">
+              {%- if block.settings.product.featured_media -%}
+                <a href="{{ block.settings.product.url }}" class="luckybox-image">
+                  <img
+                    class="img-first"
+                    src="{{ block.settings.product.featured_media | img_url: '362x' }}"
+                    alt="{{ block.settings.product.featured_media.alt | escape }}"
+                    {% unless lazy_load == false %}
+                      loading="lazy"
+                    {% endunless %}
+                  >
+                </a>
+              {%- endif -%}
+              <div class="luckybox-layout">
+                <div class="luckybox-sale-title t">
+                  <a href="{{ block.settings.product.url }}" class="t">{{ block.settings.product.title | escape }}</a>
+                </div>
+                <div class="luckybox-rules">
+                  {{ block.settings.product_rules }}
+                </div>
+                <div class="block--price">
+                  {% render 'sffers-price', product: block.settings.product, price_class: '' %}
+                </div>
+                 <div class="heatPress-addcart-sale">
+                  {% render 'easter-addCart', product: block.settings.product %}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <picture>
+        <source media="(max-width: 450px)" srcset="{{ section.settings.stair_image_mobile | img_url:'339x' }}">
+        <source media="(min-width: 451px)" srcset="{{ section.settings.stair_image | img_url:'802x' }}">
+        <img src="{{ section.settings.stair_image | img_url:'802x' }}" class="stair-image">
+      </picture>
+     </div>
+    <div class="swiper-scrollbar" id="blackfriday-luckybox-swiper-scrollbar"></div>
+  </div>
+</div>
+<script>
+    var mySwiper_b = new Swiper('.blackfriday-box-swiper',{
+      slidesPerView: 2, 
+      spaceBetween:20,
+      slidesPerColumn: 2,
+      slidesPerColumnFill : 'row',
+      scrollbar: {
+        el: '#blackfriday-luckybox-swiper-scrollbar',
+      },
+     breakpoints:{
+        1720: {
+          slidesPerView: 2, 
+          spaceBetween:15,
+        },
+       820:{
+           slidesPerView:3,
+          spaceBetween:10,  
+         slidesPerColumn: 1,
+       },
+        768:{
+           slidesPerView:2.8,
+           spaceBetween:6,
+           slidesPerColumn: 1
+        },
+        480:{
+           slidesPerView:2.2,
+           spaceBetween:6, 
+         slidesPerColumn: 1,
+        }
+      }
+    });
+</script>
+{% schema %}
+  {
+    "name": "Black Friday Lucky Box",
+    "settings": [
+      {
+        "type":"text",
+        "id":"id",
+        "label":"id(页面唯一性，全英文)"
+      },
+      {
+        "type":"text",
+        "id":"title",
+        "label":"title"
+      },
+      {
+        "type":"text",
+        "id":"desc",
+        "label":"desc"
+      },{
+        "type":"image_picker",
+        "id":"stair_image",
+        "label":"stair image"
+      },{
+        "type":"image_picker",
+        "id":"stair_image_mobile",
+        "label":"stair image mobile"
+      }
+    ],
+    "max_blocks":3,
+    "blocks":[{
+      "type":"product",
+      "name": "product",
+      "settings": [
+        {
+          "type":"product",
+          "id":"product",
+          "label":"product item"
+        },
+        {
+          "type":"html",
+          "id":"product_rules",
+          "label":"product rules"
+        }
+      ]
+    }]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

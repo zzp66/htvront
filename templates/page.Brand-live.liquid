@@ -1,0 +1,17 @@
+{{ 'Brand-live.css' | asset_url | stylesheet_tag }}
+<div class="fn-brand-live">
+ {% section 'Brand-live-banner' %}
+ {% section 'Brand-live-video' %}
+ {% section 'Brand-live-column' %}
+ {% section 'Brand-live-HDOutput' %}
+ {% section 'Brand-live-featurewall' %}
+</div>
+<script>
+// 视频
+  $('.fn-featurewall-masking').click(function () {
+        $(this).next().show();
+  });
+  $('.mask-close').click(function () {
+        $('.fn-video-mask').hide();
+  });
+</script>

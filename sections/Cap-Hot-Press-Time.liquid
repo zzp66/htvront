@@ -1,0 +1,235 @@
+<style>
+    #countdown_time {
+        display: none;
+    }
+    .cap-hot-press-time {
+        letter-spacing: 0;
+        background-color: #FFF1E0;
+        padding: 7px 0 30px 0
+    }
+    .cap-hot-time-content {
+        position: relative;
+        width: fit-content;
+        margin: 0 auto;
+    }
+    .cup-presell-time-content {
+        position: absolute;
+        top: 42px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .cup-presell-time-desc {
+        font-size: 26px;
+        font-weight: bold;
+        color: #6D3309;
+        line-height: 30px;
+        margin-bottom: 27px;
+        text-align: center
+    }
+    .timer-count {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .time-box {
+        width: 106px;
+        height: 106px;
+        background: linear-gradient(180deg, #FFDAAE 0%, #FFE6C7 100%);
+        box-shadow: inset 2px 2px 5px 0px rgba(227, 102, 32, 0.5);
+        border-radius: 10px 10px 10px 10px;
+        opacity: 1;
+        border-image: linear-gradient(180deg, rgba(245, 174, 68, 1), rgba(255, 203, 140, 1)) 2 2;
+        text-align: center;
+        margin-right: 42px
+    }
+    .time-box:last-child {
+        margin-right: 0
+    }
+    .format_span_time {
+        margin-top: 15px
+    }
+    .format_span_time .t {
+        font-size: 38px;
+        font-weight: bold;
+        color: #6D3309;
+        line-height: 45px;
+    }
+    .timer-text {
+        font-size: 20px;
+        font-weight: 400;
+        color: #813E0E;
+        line-height: 23px;
+    }
+    @media screen and (max-width: 750px) {
+        .cap-hot-press-time {
+            padding: 15px 12px 20px 12px
+        }
+        .cup-presell-time-content {
+            top: 22%;
+            width: 73%
+        }
+        .cup-presell-time-desc {
+            margin-bottom: 11.5%
+        }
+        .time-box {
+            margin-right: 0;
+            width: 20%;
+            height: auto;
+            padding: 10px;
+        }
+        .format_span_time {
+            margin-top: 0;
+        }
+    }
+    @media screen and (max-width: 550px) {
+        .cup-presell-time-content {;
+            width: 80%
+        }
+        .cup-presell-time-desc {
+            margin-bottom: 7%
+        }
+        .time-box {
+            width: 22%
+        }
+    }
+    @media screen and (max-width: 480px) {
+        .cup-presell-time-content {;
+            width: 85%
+        }
+        .cup-presell-time-desc {
+            font-size: 16px;
+            line-height: 19px;
+            margin-bottom: 9%;
+        }
+        .format_span_time .t {
+            font-size: 25px;
+            line-height: 29px;
+        }
+        .timer-text {
+            font-size: 13px;
+            line-height: 15px;
+        }
+    }
+    @media screen and (max-width: 414px) {
+        .cup-presell-time-desc {
+            margin-bottom: 6.5%
+        }
+    }
+    @media screen and (max-width: 375px) {
+        .time-box {
+            padding-bottom: 0
+        }
+    }
+</style>
+<div class="cap-hot-press-time">
+    <div class="cap-hot-time-content">
+        <picture>
+            <source media="(max-width: 750px)"
+                    srcset="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Group_373_2x_acbad129-96ce-4618-9aae-10dbc81e78f7.png?v=1707036612"/>
+            <source media="(min-width: 751px)"
+                    srcset="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Group_363.png?v=1707034927">
+            <img class="cap-hot-time-bg"
+                 src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Group_363.png?v=1707034927"/>
+        </picture>
+        <div class="cup-presell-time-content">
+            <div class="cup-presell-time-desc">{{ section.settings.title }}</div>
+            <div class="timer-count">
+                <div class="time-box">
+                    <div class="format_span_time">
+                        <div>
+                            <span id="days" class="days format_span t">00</span>
+                        </div>
+                    </div>
+                    <span class="timer-text">Days</span>
+                </div>
+                <div class="time-box">
+                    <div class="format_span_time">
+                        <div>
+                            <span id='hour' class="hour format_span t">00</span>
+                        </div>
+                    </div>
+                    <span class="timer-text">Hours</span>
+                </div>
+                <div class="time-box">
+                    <div class="format_span_time">
+                        <div>
+                            <span id='minute' class="minute format_span t">00</span>
+                        </div>
+                    </div>
+                    <span class="timer-text">Mins</span>
+                </div>
+                <div class="time-box">
+                    <div class="format_span_time">
+                        <div>
+                            <span id='second' class="second format_span t">00</span>
+                        </div>
+                    </div>
+                    <span class="timer-text">Secs</span>
+                </div>
+            </div>
+        </div>
+        <div id="countdown_time">{{ section.settings.countdown_time }}</div>
+    </div>
+</div>
+<script>
+    // var p_times = '2023-3-10 14:35:00';
+    var p_times = $('#countdown_time').text();
+    //获取元素
+    var days = $("#days")[0];
+    var hour = $("#hour")[0];
+    var minute = $("#minute")[0];
+    var second = $("#second")[0];
+    //获取截止时间的时间戳（单位毫秒）
+    var inputTime = new Date("" + p_times.replace(/-/g, "/"));
+    //我们先调用countDown函数，可以避免在打开界面后停一秒后才开始倒计时
+    countDown();
+    //定时器 每隔一秒变化一次
+    var timer_s = setInterval(countDown, 1000);
+    function countDown() {
+        //获取当前时间的时间戳（单位毫秒）
+        var nowTime = +new Date();
+        //把剩余时间毫秒数转化为秒
+        var times = (inputTime - nowTime) / 1000;
+        if (times > 0) {
+            var d = Math.floor(times / 60 / 60 / 24);
+            //计算小时数 转化为整数
+            //如果小时数小于 10，要变成 0 + 数字的形式 赋值给盒子
+            days.innerHTML = d < 10 ? "0" + d : d;
+            var h = Math.floor(times / 60 / 60 % 24);
+            //计算小时数 转化为整数
+            //如果小时数小于 10，要变成 0 + 数字的形式 赋值给盒子
+            hour.innerHTML = h < 10 ? "0" + h : h;
+            //计算分钟数 转化为整数
+            var m = parseInt(times / 60 % 60);
+            //如果分钟数小于 10，要变成 0 + 数字的形式 赋值给盒子
+            minute.innerHTML = m < 10 ? "0" + m : m;
+            //计算描述 转化为整数
+            var s = parseInt(times % 60);
+            // //如果秒钟数小于 10，要变成 0 + 数字的形式 赋值给盒子
+            second.innerHTML = s < 10 ? "0" + s : s;
+        } else {
+            clearInterval(timer_s);
+        }
+    }
+</script>
+{% schema %}{
+    "name":"Cap Hot Press Time",
+    "settings":[
+        {
+            "type":"text",
+            "id":"title",
+            "label":"title"
+        },
+        {
+            "type":"text",
+            "id":"countdown_time",
+            "label":"text"
+        }
+    ],
+    "presets":[
+        {
+            "name":"Cap Hot Press Time"
+        }
+    ]
+}
+{% endschema %}

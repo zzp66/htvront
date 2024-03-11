@@ -1,0 +1,73 @@
+<div class="fn-header-FreeGift">
+    <div class="fn-FreeGift-content">
+      <div class="fn-FreeGift-main">
+        <h3 class="t FreeGift-title">    
+            {{section.settings.FreeGift_title}}
+        </h3>
+        <div class="FreeGift-list">
+            {{section.settings.FreeGift_desc}}
+        </div>
+      </div>
+<div class="fn-FreeGift-main fn-computer-FreeGiftimgge">
+{% if section.settings.image_FreeGift != blank %}
+{% assign image = section.settings.image_FreeGift | img_url: '1456x' %}
+<img src="{{ image }}" alt="">
+{% endif %}
+</div>
+<div class="fn-FreeGift-main fn-mobile-FreeGiftimgge">
+{% if section.settings.image_FreeGiftmobile != blank %}
+{% assign image = section.settings.image_FreeGiftmobile | img_url: '375x' %}
+<img src="{{ image }}" alt="">
+{% endif %}
+</div>
+  </div>
+</div>
+<div class="fn-FreeGift-comment">
+  <div class="t comment_title">Customer reviews</div>
+  <div id="wc_store_review_page" class="wc_review_main_content" data-url="{{ shop.url }}" data-limit="0"></div>
+</div>
+  {% schema %}
+  {
+      "name": "hot press FreeGift",
+      "settings": [
+          {
+              "type": "text",
+              "id": "FreeGift_title",
+              "label": {
+                  "en": "title",
+                  "zh-CN": "标题"
+              }
+          },
+          {
+            "type": "html",
+            "id": "FreeGift_desc",
+            "label": {
+              "en": "Free Heat Press",
+              "zh-CN": "免费的热压机"
+            }
+          },
+        {
+			"type": "image_picker",
+			"id": "image_FreeGift",
+			"label": {
+				"en": "Image",
+				"zh-CN": "图片"
+			}
+		},
+          {
+			"type": "image_picker",
+			"id": "image_FreeGiftmobile",
+			"label": {
+				"en": "Image",
+				"zh-CN": "图片"
+			}
+		}
+      ]
+  }
+  {% endschema %}
+  
+  {% stylesheet %}
+  {% endstylesheet %}
+  
+  {% javascript %}
+  {% endjavascript %}

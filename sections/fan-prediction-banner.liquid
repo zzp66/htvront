@@ -1,0 +1,34 @@
+<div class="Fan-Prediction-Background">
+    {% if section.settings.prediction_background != blank %}
+        {% assign image = section.settings.prediction_background | img_url: '1920x' %}
+        <img class="Fan-Prediction_Background" src="{{ image }}" alt="">
+    {% endif %}
+    {% if section.settings.prediction_background_mobile != blank %}
+        {% assign image = section.settings.prediction_background_mobile | img_url: '375x' %}
+        <img class="Fan-Prediction_Background_Mobile" src="{{ image }}" alt="">
+    {% endif %}
+</div>
+
+<script></script>
+
+{% schema %}
+{
+"name":"fan-prediction-banner",
+"settings":[
+{
+			"type": "image_picker",
+			"id": "prediction_background",
+			"label": {
+				"en": "background"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "prediction_background_mobile",
+			"label": {
+				"en": "mobile background"
+			}
+		}
+]
+}
+{% endschema %}

@@ -1,0 +1,232 @@
+.fn-expresscheck-heat_press {
+    display: flex;
+    font-size: 12px;
+    line-height: 17px;
+    color: #333;
+    margin-top: 40px;
+    justify-content: center;
+}
+.fn-expresscheck-heat_press_link {
+    border-bottom: 1px solid #333;
+}
+.fn-expresscheck-heat_press {
+    display: flex;
+    font-size: 12px;
+    line-height: 17px;
+    color: #333;
+    margin-top: 40px;
+}
+.fn-expresscheck-main {
+    position: relative;
+}
+img.fn-expresscheck-mobilebannerimg {
+    display: none;
+}
+.fn-expresscheck-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    padding: 60px 89px;
+    min-height: 330px;
+    border-radius: 16px;
+}
+.fn-expresscheck-succeedtitle.t,
+.fn-expresscheck-contenttitle.t {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    text-align: center;
+    line-height: 24px;
+    margin-bottom: 30px;
+  letter-spacing: -0.5px;
+}
+.fn-expresscheck-Inputquantico {
+    display: flex;
+    align-items: center;
+}
+.fn-expresscheck-button {
+    background-color: #ff7506;
+    font-size: 12px;
+    color: #fff;
+    border: none;
+    height: 40px;
+    line-height: 40px;
+    font-weight: 700;
+    border-radius: 4px;
+    width: 98px;
+    text-align: center;
+    margin-left: 10px;
+    cursor: pointer;
+}
+input.fn-Inputquantico_orderform {
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 0 10px;
+    font-size: 12px;
+    width: 335px;
+}
+.fn-expresscheck-formalerror {
+    display: none;
+    width: 371px;
+    height: 36px;
+    font-size: 12px;
+    font-family: OpenSans;
+    color: #FF3D3D;
+    line-height: 18px;
+    margin-top: 4px;
+}
+.fn-expresscheck-timequantum {
+    font-size: 26px;
+    font-weight: bold;
+    color: #FF7606;
+    line-height: 26px;
+    text-align: center;
+}
+.fn-expresscheck-icon {
+    text-align: -webkit-center;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+.fn-expresscheck-succeeded {
+    display: none;
+}
+.fn-expresscheck-Correctprompt {
+    max-width: 409px;
+    font-size: 12px;
+    font-family: OpenSans;
+    color: #333333;
+    line-height: 22px;
+    letter-spacing: -0.5px;
+    margin: auto;
+    text-align: center;
+}
+span.fn-expresscheck-backtrack {
+    border-bottom: 1px solid;
+    cursor: pointer;
+}
+.fn-expresscheck-notbelong {
+    max-width: 424px;
+    letter-spacing: -0.5px;
+    display: none;
+}
+span.t.fn-expresscheck-NoDatetitle {
+    font-size: 14px;
+    line-height: 14px;
+}
+.fn-expresscheck-NoDateicon {
+      color: #fff;
+    width: 12px;
+    height: 12px;
+    background-color: #ff1515;
+    display: inline-block;
+    line-height: 13px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+}
+.fn-expresscheck-NoDatetext {
+    font-size: 12px;
+}
+.fn-expresscheck-NoDate {
+    /* height: 14px; */
+    margin-top: 12px;
+}
+@media screen and (max-width: 1024px) {
+.fn-expresscheck-content {
+    padding: 30px 40px;
+    min-height: 280px;
+}
+  .fn-expresscheck-succeedtitle.t, .fn-expresscheck-contenttitle.t {
+    font-size: 18px;
+    line-height: 18px;
+    margin-bottom: 20px;
+}
+  input.fn-Inputquantico_orderform {
+    height: 35px;
+}
+  .fn-expresscheck-button {
+    height: 35px;
+    line-height: 35px;
+
+}
+  .fn-expresscheck-timequantum {
+    font-size: 13px;
+    line-height: 13px;
+}
+}
+@media screen and (max-width: 768px) {
+.fn-expresscheck-Inputquantico {
+/*     flex-wrap: wrap; */
+}
+  .fn-expresscheck-button {
+      margin-left: 6px;
+      width: 30%;
+}
+  input.fn-Inputquantico_orderform {
+     width: 66%;
+/*     margin-bottom: 10px; */
+}
+.fn-expresscheck-content {
+    padding: 30px 20px;
+    min-height: 176px;
+    width: calc(100% - 60px);
+      border-radius: 8px;
+}
+  .fn-expresscheck-NoDatetext {
+    line-height: 16px;
+}
+  .fn-expresscheck-NoDate {
+    margin-top: 5px;
+}
+.fn-expresscheck-succeedtitle.t, .fn-expresscheck-contenttitle.t {
+    margin-bottom: 12px;
+    font-size: 12px;
+    line-height: 12px;
+}
+  .fn-expresscheck-Correctprompt {
+    line-height: 18px;
+}
+  .fn-expresscheck-timequantum {
+    font-size: 16px;
+    line-height: 16px;
+}
+  .fn-expresscheck-icon {
+    margin: 10px 0;
+}
+  .fn-expresscheck-icon img {
+    width: 30px;
+  }
+/*   div#shopify-section-express-check-main {
+    min-height: calc(100vh - 406px);
+} */
+  span.t.fn-expresscheck-NoDatetitle {
+    font-size: 12px;
+    line-height: 12px;
+}
+  img.fn-expresscheck-bannerimg {
+    display: none;
+}
+  img.fn-expresscheck-mobilebannerimg {
+    display: block;
+    width: 100%;
+}
+  .fn-expresscheck-NoDateicon {
+    width: 10px;
+    height: 10px;
+    line-height: 12px;
+}
+  .fn-expresscheck-formalerror {
+    width: 246px;
+    height: 36px;
+    letter-spacing: -0.5px;
+}
+}
+@media screen and (max-width: 480px) {
+input.fn-Inputquantico_orderform {
+/*     width: 180px; */
+}
+}

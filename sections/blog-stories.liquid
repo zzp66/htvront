@@ -1,0 +1,60 @@
+<div class="blog-stories-title">
+  {{ section.settings.title }}
+</div>
+<div class="blog-stories-content">
+  {% for block in section.blocks %}
+    {%- paginate block.settings.blog.articles by 12 -%}
+      <div class="blog-stories-items">
+        {% for article in block.settings.blog.articles %}
+          <div class="blog-stories-item">
+            {% if article.image != blank %}
+              <img src="{{ article.image.src | image_url: width: 520 }}">
+            {% endif %}
+            <div class="stories-layout stories-describe">
+              <a href="{{ article.url }}">
+                <p class="stories-article-title">{{ article.title }}</p>
+                <p class="stories-article-desc">{{ article.author }}</p>
+              </a>
+              <a href="{{ article.url }}">
+                <div class="stories-reader">Read</div>
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      {%- if paginate.pages > 1 -%}
+        {%- render 'pagination', paginate: paginate -%}
+      {%- endif -%}
+    {%- endpaginate -%}
+  {% endfor %}
+</div>
+{% schema %}
+{
+  "name": "Blog Stories",
+  "max_blocks": 1,
+  "settings": [{
+          "type":"text",
+          "id":"title",
+          "label":"title"
+      }],
+  "blocks":[
+        {
+            "type":"blog",
+            "name":"Blog",
+            "settings":[
+                {
+                    "type":"blog",
+                    "id":"blog",
+                    "label":"blog"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

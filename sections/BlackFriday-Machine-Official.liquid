@@ -1,0 +1,795 @@
+<style>
+  .machine-top{
+    margin-bottom:30px;
+    position: relative;
+  }
+  .machine-top .product-item{
+    border-radius: 8px 8px 8px 8px;
+    position:relative; 
+    display: flex;
+    padding: 23px 17px 26px 23px;
+    background-color: #5E0101;
+    border-radius: 8px;
+    max-width: 902px;
+    z-index: 2;
+  }
+  .machine-top>img{
+    position: absolute;
+    right: -45px;
+    top: -118px;
+  }
+  .machine-top .product-image{
+    min-width:478px;
+  }
+  .machine-top .product-layout{
+    margin-left:12px;
+    position:relative; 
+  }
+  .product-sale-title{
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 23px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    letter-spacing: 0;
+  }
+  .product-rules li{
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+    line-height: 19px;
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+  }
+  .product-rules li:before{
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 5px;
+  }
+  .product-rules{
+    margin-top: 15px;
+    min-height: 191px;
+  }
+  .machine-top .fn-color-attr ul li,
+  .machine-bottom .fn-color-attr ul li{
+    width: 40px;
+    height: 40px;
+  }
+  .machine-top .fn-color-attr ul li+li,
+  .machine-bottom .fn-color-attr ul li+li{
+    margin-left: 10px;
+    color:#fff;
+  }
+  .machine-top .fn-color-attr ul li img,
+  .machine-bottom .fn-color-attr ul li img{
+    width: 40px;
+    height: 40px;
+  }
+  .coupon-price>span:nth-child(1){
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
+    padding-right:5px;
+  }
+  .price-content{
+    color: #FF4141;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 28px;
+  }
+  .machine-bottom .price-label{
+    font-size: 14px;
+    color: #fff;
+    font-weight: bold;
+    padding-right:5px;
+  }
+  .machine-top .code,.machine-bottom .code{
+    display: flex;
+    color: #fff;
+    font-weight: bold;
+    align-items: baseline;
+  }
+  .machine-top .code>span:nth-child(1){
+    font-size:16px;
+  }
+  .machine-top .code>span:nth-child(2){
+    font-size:18px;
+    padding:0 3px 0 5px;
+  }
+  .machine-bottom .code-label{
+    font-size:14px;
+    display:inline-block;
+  }
+  .machine-bottom .code-content{
+    font-size:16px;
+    padding:0 3px 0 5px;
+    display:inline-block;
+  }
+  .machine-top .code>img,.machine-bottom .code>img{
+    height: 14px;
+    cursor: pointer;
+  }
+  .machine-top .block--price{
+    display:flex;
+    font-size: 16px;
+    align-items: baseline;
+    color:#fff;
+    margin-bottom:10px;
+    margin-top:5px;
+  }
+  .machine-top .block--price>span:nth-child(1),.machine-bottom .block--price .price-label{
+    padding-right:5px;
+  }
+  .machine-bottom .block--price{
+    display:flex;
+    font-size: 14px;
+    align-items: baseline;
+    color:#fff;
+    margin-bottom:10px
+  }
+  .machine-top .price-item--sale.price-item--last,.machine-bottom .price-item--sale.price-item--last{
+    font-size: 16px;
+    color: #fff;
+    display:none;
+  }
+  .machine-top .fn-compareat_price .fn-compare-at_price{
+    text-decoration: none;
+    font-size:16px;
+    color:#fff;
+  }
+  .machine-top .price__regular .price-item--regular{
+    font-size:16px;
+    color:#fff;
+  }
+  .machine-bottom .price__regular .price-item--regular{
+    font-size: 16px;
+    color: #fff;
+  }
+  .machine-bottom .fn-compareat_price .fn-compare-at_price{
+    font-size:16px;
+    text-decoration: none;
+    color:#fff;
+    /* display:none; */
+  }
+  .machine-top .button--full-width{
+    width: 347px;
+    height: 46px;
+    background: linear-gradient(91deg, #CD0101 0%, #8E0101 100%);
+    border-radius: 4px 4px 4px 4px;
+    padding: 0;
+    margin: 0;
+    min-width: auto;
+    --border-offset: none;
+    min-height: auto;
+    --border-opacity: none;
+  }
+  .machine-bottom .button--full-width{
+    height: 46px;
+    background: linear-gradient(91deg, #CD0101 0%, #8E0101 100%);
+    border-radius: 8px;
+    opacity: 1;
+    --border-offset: none;
+    padding: 0;
+    --border-opacity: none;
+  }
+  .machine-top .fn-color-attr{
+    margin-bottom:10px;
+    height:40px;
+  }
+  .machine-bottom .fn-color-attr{
+    margin-bottom:5px;
+    height:40px;
+  }
+  .zone-machine>p:nth-child(1){
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 38px;
+    margin-bottom: 10px;
+  }
+  .zone-machine>p:nth-child(2){
+    font-size: 16px;
+    margin-bottom: 20px;
+    line-height: 19px;
+  }
+  .machine-bottom {
+    display:flex;
+    position: relative;
+    z-index: 2;
+  }
+  .block-product-item{
+    background-color:#5E0101;
+    border-radius: 8px;
+    width: 33.33%;
+  }
+  .block-box{
+    padding:13px;
+  }
+  .block-product-item:nth-child(1){
+    margin-left:0;
+  }
+  .product-item .img-first,.block-product-item .img-first{
+    border-radius: 6px;
+  }
+  .block-sale-title{
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 21px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    margin-top:7px;
+    height:42px;
+  }
+  /* .blackfriday-machine-swiper{
+    width:100%;
+  } */
+  .custom-box{
+    height:95px;
+    padding-top: 5px;
+  }
+  .custom-box-big{
+     height:108px; 
+  }
+  .price-label, .price-content {
+    display: inline-block;
+  }
+ @media screen and (max-width: 1720px){
+   .machine-top .product-image {
+      min-width: auto;
+   }
+   .zone-machine>p:nth-child(1){
+     font-size:28px;
+   }
+   .machine-top .product-item{
+      max-width: 60%;
+    }
+    .machine-top>img{
+      width:43%;
+    }
+    .machine-bottom .fn-color-attr {
+      height: 28px;
+      margin: 5px 0;
+    }
+ }
+  @media screen and (max-width: 1520px){
+     .machine-top>img{
+      top: -20%;
+    }
+    .machine-top .fn-color-attr {
+      height: 28px;
+      margin: 5px 0;
+    }
+    .machine-top .fn-color-attr ul li, .machine-bottom .fn-color-attr ul li {
+      width: 28px;
+      height: 28px;
+    }
+    .machine-top .fn-color-attr ul li img, .machine-bottom .fn-color-attr ul li img {
+      width: 28px;
+      height: 28px;
+    }
+  }
+  @media screen and (max-width: 1440px){
+    .block-product-item:nth-child(1){
+      margin-left:0;
+    }
+    .product-image .img-first{
+      margin:0 auto;
+    }
+    .machine-top .product-item{
+      padding:15px;
+    }
+    .machine-main {
+      flex-direction: column;
+    }
+    .machine-top{
+      margin-bottom: 15px;
+    }
+    .machine-top .fn-color-attr ul li img, .machine-bottom .fn-color-attr ul li img{
+      width:25px;
+      height:25px;
+    }
+    .machine-top .fn-color-attr ul li, .machine-bottom .fn-color-attr ul li{
+      width:25px;
+      height:25px;
+    }
+    .block-product-item {
+      margin-left: 15px;
+    }
+    .machine-top>img{
+      top: -30%;
+    }
+    .machine-top>img {
+      width: 40%;
+    }
+  }
+ @media screen and (max-width: 1280px){
+   .machine-top>img{
+      width: 38%;
+      right: 0%;
+   }
+ }
+  @media screen and (max-width: 1024px){
+    .machine-top>img{
+      display:none;
+    }
+    .machine-top .product-item{
+      max-width:100%;
+    }
+  }
+  @media screen and (max-width: 820px){
+    .zone-machine{
+      border-radius: 6px;
+      box-shadow: 0px 6px 6px 0px rgba(95,4,4,0.25);
+      padding: 14px 6px 15px;
+      margin-top:30px;
+    }
+    .zone-machine>p:nth-child(1){
+      font-size: 16px;
+      line-height: 22px;
+      margin-bottom: 5px;
+    }
+    .zone-machine>p:nth-child(2){
+      font-size: 14px;
+      line-height: 16px;
+      margin-bottom: 8px;
+    }
+    .machine-top .product-item{
+      flex-direction: column;
+      padding: 10px 5px;
+    }
+    .machine-top{
+      margin-bottom:10px;
+    }
+    .product-sale-title{
+      font-size: 16px;
+      line-height: 19px;
+      margin-top: 10px;
+    }
+    .product-rules {
+      min-height: auto;
+      margin-top: 8px;
+    }
+    .product-rules li{
+      margin-bottom: 6px;
+      font-size: 14px;
+      line-height: 16px;
+    }
+    .product-rules li:before{
+      width: 6px;
+      height: 6px;
+    }
+    .machine-top .product-layout{
+      margin-left:0;
+    }
+    .machine-bottom .price-label,.machine-top .code>span:nth-child(1),.machine-top .block--price,.machine-top .fn-compareat_price .fn-compare-at_price,.machine-top .price-item--sale.price-item--last, .machine-bottom .price-item--sale.price-item--last{
+      font-size:14px;
+    }
+    .machine-bottom .fn-compareat_price .fn-compare-at_price{
+      font-size:14px;
+    }
+    .machine-top .code>span:nth-child(2){
+      font-size:16px;
+    }
+    .machine-top .block--price{
+      align-items: center;
+    }
+    .price-content{
+      line-height:28px;
+    }
+    .machine-top .button--full-width{
+      width: 100%;
+      height: 42px;
+      font-size: 14px;
+    }
+    .machine-bottom{
+      justify-content: center;
+    }
+    .block-product-item{
+      width:48%;
+      border-radius: 4px;
+      margin-left:8px;
+      padding:0;
+    }
+    .machine-bottom .fn-color-attr ul li img{
+      width:23px;
+      height:23px;
+    }
+    .machine-bottom .fn-color-attr ul li{
+      width:23px;
+      height:23px;
+    }
+    .machine-bottom .fn-color-attr{
+      height:23px;
+    }
+    .machine-bottom .fn-color-attr ul li+li{
+      margin-left:6px
+    }
+    .block-sale-title{
+      font-size: 14px;
+      line-height: 18px;
+      height: 38px;
+    }
+    .machine-bottom .price-content{
+      font-size:16px;
+      line-height: 19px;
+    }
+    .machine-bottom .code{
+      display: block;
+      font-size:14px;
+    }
+    .machine-bottom .coupon-price{
+      font-size:14px;
+    }
+    .machine-bottom .block--price{
+      font-size:14px;
+      display:block;
+    }
+    .machine-bottom .block--price .price{
+      display: inline-block;
+    }
+    .machine-bottom .code>img{
+      display: inline-block;
+    }
+    .machine-bottom .code-label{
+      font-size:14px;
+    }
+    .machine-bottom .code-content{
+      font-size:14px;
+    }
+    .machine-bottom .button--full-width{
+      height: 40px;
+      font-size: 14px;
+      min-height: 40px;
+    }
+    .block-box{
+      padding: 5px 5px 10px;
+    }
+    .machine-top .block--price>span:nth-child(1), .machine-bottom .block--price .price-label{
+      font-size:14px;
+    }
+  }
+  
+  @media screen and (max-width: 750px){
+    
+    .block-product-item{
+      width:auto;
+      margin-left:0;
+    }
+  }
+  
+  @media screen and (max-width: 540px){
+    .custom-box {
+      min-height: 12rem;
+    }
+  }
+  @media screen and (max-width: 480px){
+    body{
+     -webkit-text-size-adjust: none;
+    }
+   .block-layout .code-label,.block-layout .price-label,.block-layout .code-content{
+      font-size:14px !important;
+    }
+    .code-label,.price-label{
+      display:block
+    }
+    .block-layout .price-content{
+      font-size:16px !important
+    }
+    .custom-box {
+      min-height: 16rem;
+    }
+  }
+  .swiper-slide{
+      margin-left:0 !important;
+    }
+</style>
+<div class="black-friday-machine common-width" id="{{ section.settings.id }}">
+   <div class="black-module-title">
+    <p>{{ section.settings.title }}</p>
+  </div>
+  <div class="black-module-desc">
+    {{ section.settings.desc }}
+  </div>
+  <div class="machine-top">
+     <div class="product-item">
+        {%- if section.settings.product.featured_media -%}
+          <a href="{{ section.settings.product.url }}" class="product-image">
+            <img
+              class="img-first"
+              src="{{ section.settings.product.featured_media | img_url: '478x' }}"
+              alt="{{ section.settings.product.featured_media.alt | escape }}"
+              {% unless lazy_load == false %}
+                loading="lazy"
+              {% endunless %}
+            >
+          </a>
+        {%- endif -%}
+        <div class="product-layout">
+          <div class="product-sale-title t">
+            <a href="{{ section.settings.product.url }}" class="t">{{ section.settings.product.title | escape }}</a>
+          </div>
+          <div class="product-rules">
+            {{ section.settings.product_rules }}
+          </div>
+          <div class="fn-color-attr">
+            {%- for option in section.settings.product.options_with_values -%}
+              {%- if option.name == 'Colors' or option.name == 'Color' -%}
+                <ul>
+                  {%- if option.name == 'Colors' -%}
+                    {% assign colorList = section.settings.product.options_by_name.Colors.values | slice: 0, 5 %}
+                  {%- else -%}
+                    {% assign colorList = section.settings.product.options_by_name.Color.values | slice: 0, 5 %}
+                  {%- endif -%}
+                  {%- for value in colorList -%}
+                    <li>
+                      <a href="{{ section.settings.product.url }}?variant={{ section.settings.product.variants[forloop.index0].id }}">
+                        {%- if section.settings.product.variants[forloop.index0].featured_image != blank -%}
+                          <img
+                            src="{{ section.settings.product.variants[forloop.index0].featured_image | img_url: '50x50' }}"
+                            alt="{{ value }}"
+                          >
+                        {%- endif -%}
+                      </a>
+                    </li>
+                  {% endfor %}
+                  {%- if option.name == 'Colors' -%}
+                    {% assign size = section.settings.product.options_by_name.Colors.values | size | minus: 5 %}
+                  {%- else -%}
+                    {% assign size = section.settings.product.options_by_name.Color.values | size | minus: 5 %}
+                  {%- endif -%}
+                  {%- if size > 0 -%}
+                    <li class="color-quantity">
+                      <a href="{{ section.settings.product.url }}">+{{ size }}</a>
+                    </li>
+                  {%- endif -%}
+                </ul>
+              {%- endif -%}
+            {% endfor %}
+          </div>
+          <div class="custom-box-big">
+            <div class="price-code">
+              {% if section.settings.code != blank %}
+                <div class="code">
+                  <span>Coupon Code:</span>
+                  <span>{{ section.settings.code }}</span>
+                  <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Group_18.png?v=1698810268" onclick="copyticket('{{ section.settings.code }}')" >
+                </div>
+              {% endif %}
+            </div>
+            <div class="coupon-price">
+              {% if section.settings.coupon_price != blank %}
+                <span>Bottom Price:</span>
+                <span class="price-content">{{ section.settings.coupon_price }}</span>
+              {% endif %}
+            </div>
+            <div class="block--price">
+              <span>Regular Price:</span>
+              {% render 'sffers-price', product: section.settings.product, price_class: '' %}
+            </div>
+          </div>
+           <div class="heatPress-addcart-sale">
+            {% render 'easter-addCart', product: section.settings.product %}
+          </div>
+        </div>
+      </div>
+     <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Mask_group_1b2eac1c-3fe8-42d8-b6bf-10c5246e9018.png?v=1699582963">
+  </div>
+  <div class="machine-bottom">
+    <div class="swiper-container blackfriday-machine-swiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="block-product-item swiper-slide">
+            <div class="block-box">
+              {%- if block.settings.product.featured_media -%}
+              <a href="{{ block.settings.product.url }}" class="product-image">
+                <img
+                  class="img-first"
+                  src="{{ block.settings.product.featured_media | img_url: '462x' }}"
+                  alt="{{ block.settings.product.featured_media.alt | escape }}"
+                  {% unless lazy_load == false %}
+                    loading="lazy"
+                  {% endunless %}
+                >
+              </a>
+              {%- endif -%}
+              <div class="block-layout">
+                <div class="block-sale-title t">
+                  <a href="{{ block.settings.product.url }}" class="t">{{ block.settings.product.title | escape }}</a>
+                </div>
+                <div class="fn-color-attr">
+                  {%- for option in block.settings.product.options_with_values -%}
+                    {%- if option.name == 'Colors' or option.name == 'Color' -%}
+                      <ul>
+                        {%- if option.name == 'Colors' -%}
+                          {% assign colorList = block.settings.product.options_by_name.Colors.values | slice: 0, 5 %}
+                        {%- else -%}
+                          {% assign colorList = block.settings.product.options_by_name.Color.values | slice: 0, 5 %}
+                        {%- endif -%}
+                        {%- for value in colorList -%}
+                          <li>
+                            <a href="{{ block.settings.product.url }}?variant={{ block.settings.product.variants[forloop.index0].id }}">
+                              {%- if block.settings.product.variants[forloop.index0].featured_image != blank -%}
+                                <img
+                                  src="{{ block.settings.product.variants[forloop.index0].featured_image | img_url: '50x50' }}"
+                                  alt="{{ value }}"
+                                >
+                              {%- endif -%}
+                            </a>
+                          </li>
+                        {% endfor %}
+                        {%- if option.name == 'Colors' -%}
+                          {% assign size = block.settings.product.options_by_name.Colors.values | size | minus: 5 %}
+                        {%- else -%}
+                          {% assign size = block.settings.product.options_by_name.Color.values | size | minus: 5 %}
+                        {%- endif -%}
+                        {%- if size > 0 -%}
+                          <li class="color-quantity">
+                            <a href="{{ block.settings.product.url }}">+{{ size }}</a>
+                          </li>
+                        {%- endif -%}
+                      </ul>
+                    {%- endif -%}
+                  {% endfor %}
+                </div>
+                <div class="custom-box">
+                  <div class="price-code">
+                    {% if block.settings.code != blank %}
+                      <div class="code">
+                        <div class="code-label">Coupon Code:</div>
+                        <div class="code-content">{{ block.settings.code }}</div>
+                        <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Group_18.png?v=1698810268" onclick="copyticket('{{ block.settings.code }}')" >
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div class="coupon-price">
+                    {% if block.settings.coupon_price != blank %}
+                      <div class="price-label">Bottom Price:</div>
+                      <div class="price-content">{{ block.settings.coupon_price }}</div>
+                    {% endif %}
+                  </div>
+                  <div class="block--price">
+                    <div class="price-label">Regular Price:</div>
+                    {% render 'sffers-price', product: block.settings.product, price_class: '' %}
+                  </div>
+                </div>
+                <div class="heatPress-addcart-sale">
+                  {% render 'easter-addCart', product: block.settings.product %}
+                </div>
+              </div>
+            </div>
+          </div>  
+        {% endfor %}
+      </div>
+    </div>
+    <div class="swiper-scrollbar" id="blackfriday-machine-swiper-scrollbar"></div>
+  </div>
+</div>
+<script>
+  function copyticket(code){
+    let url = code;
+    let copyInput = document.createElement('input');
+    	document.body.appendChild(copyInput);
+    	copyInput.setAttribute('value', url);
+    	copyInput.select();
+    	document.execCommand("Copy");
+    	copyInput.remove();
+        alertMsg()
+  }
+   function alertMsg(){
+      var alertFram = document.createElement("DIV");
+      alertFram.id = "alertFram";
+      alertFram.style.position = "fixed";
+      alertFram.style.width = "100%";
+      alertFram.style.textAlign = "center";
+      alertFram.style.bottom = "40px";
+      alertFram.style.zIndex = "10001";
+      strHtml = " <span style=\"font-family: 微软雅黑;display:inline-block;background:#333;color:#fff;padding:0 20px;line-height:36px;border-radius:6px; \">Copied successfully</span>";
+      alertFram.innerHTML = strHtml;
+      document.body.appendChild(alertFram);
+      setTimeout((function(){
+        alertFram.style.display="none";
+      }),2000);
+    }
+  
+  $(function(){
+     var mySwiper_c = new Swiper('.blackfriday-machine-swiper',{
+     slidesPerView: 3, 
+      spaceBetween:24,
+       scrollbar: {
+        el: '#blackfriday-machine-swiper-scrollbar'
+      },
+      breakpoints:{
+        1024:{
+           slidesPerView:3,
+          spaceBetween:10,
+        },
+        768:{
+           slidesPerView:2.8,
+           spaceBetween:6,
+        },
+        480:{
+           slidesPerView:2.2,
+           spaceBetween:6,
+        }
+      }
+    });
+
+  })
+  
+</script>
+{% schema %}
+  {
+    "name": "Black Friday Machine",
+    "settings": [
+      {
+        "type":"text",
+        "id":"id",
+        "label":"id(页面唯一性，全英文)"
+      },{
+        "type":"text",
+        "id":"title",
+        "label":"title"
+      },
+      {
+        "type":"text",
+        "id":"desc",
+        "label":"desc"
+      },{
+        "type":"product",
+        "id":"product",
+        "label":"product"
+      },{
+        "type":"html",
+        "id":"product_rules",
+        "label":"product desc"
+      },{
+        "type":"text",
+        "id":"code",
+        "label":"code"
+      },{
+        "type":"text",
+        "id":"coupon_price",
+        "label":"bottom price"
+      }
+    ],
+    "max_blocks":3,
+    "blocks":[{
+      "type":"product",
+      "name": "product",
+      "settings": [
+       {
+          "type": "product",
+          "id": "product",
+          "label": "product item"
+        },{
+          "type":"text",
+          "id":"code",
+          "label":"code"
+        },{
+          "type":"text",
+          "id":"coupon_price",
+          "label":"coupon price"
+        }
+      ]
+    }]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

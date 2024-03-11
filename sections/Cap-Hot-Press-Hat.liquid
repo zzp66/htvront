@@ -1,0 +1,294 @@
+{% style %}
+  #shopify-section-{{ section.id }} .cap-hot-press-hat{
+    background-color:{{ section.settings.bg_color }}
+  }
+{% endstyle %}
+<style>
+    .cap-hot-press-hat {
+        padding: 30px 0 40px
+    }
+    .cap-hot-hat-content {
+        width: 1338px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+    }
+    .cap-hot-hat-item {
+        width: calc(50% - 20px);
+    }
+    .cap-hot-hat-item > div {
+        position: relative;
+    }
+    .cap-hot-hat-hover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(79, 47, 10, 0.5);
+        display: none
+    }
+    .cap-hot-hat-hover > div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .video-play-btn {
+        margin: 0 auto 19px;
+        cursor: pointer;
+    }
+    .cap-hot-hat-desc {
+        font-size: 18px;
+        font-weight: bold;
+        color: #FFF1E0;
+        line-height: 21px;
+    }
+    .cap-hot-hat-title {
+        display: none
+    }
+    .fn-Stories-mask {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        left: 0;
+        top: 0;
+        z-index: 999;
+        display: none;
+    }
+    .fn-Stories-mask .fn-Storiesmask-main {
+        cursor: pointer;
+    }
+    .fn-Stories-Video {
+        width: 100%;
+        height: 653px;
+    }
+    .fn-Stories-Video iframe {
+        border-radius: 10px
+    }
+    .fn-Stories-mask > div {
+        margin: 0 auto;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        background-color: #fff;
+        border-radius: 16px;
+        padding: 3.9% 6.2%;
+        width: 74.85%;
+    }
+    .fn-Stories-mask .mask-close {
+        position: absolute;
+        top: 21px;
+        right: 25px;
+    }
+    @media screen and (max-width: 1366px) {
+        .cap-hot-hat-content {
+            width: 1110px
+        }
+        .cap-hot-hat-hover {
+            display: block;
+            background: none;
+        }
+        .cap-hot-hat-desc {
+            display: none
+        }
+        .cap-hot-hat-title {
+            display: block;
+            background: #FFD9AC;
+            padding: 15px 12px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #6D3309;
+            line-height: 16px;
+            border-radius: 0 0 10px 10px;
+        }
+        .cap-hot-hat-image {
+            width: 100%
+        }
+    }
+    @media screen and (max-width: 1200px) {
+        .cap-hot-hat-content {
+            width: 96%
+        }
+    }
+    @media screen and (max-width: 820px) {
+        .fn-Stories-Video {
+            height: 300px;
+        }
+        .fn-Stories-mask .mask-close {
+            top: 5px;
+            right: 5px;
+        }
+    }
+    @media screen and (max-width: 768px) {
+        .cap-hot-press-hat {
+            padding: 10px
+        }
+        .cap-hot-hat-content {
+            width: 100%;
+            flex-direction: column;
+        }
+        .cap-hot-hat-item {
+            width: 100%;
+            margin-bottom: 12px
+        }
+        .video-play-btn {
+            width: 27px
+        }
+        .fn-Stories-mask > div {
+            width: 100%;
+            border-radius: 0;
+            padding: 5.1% 6.9%;
+        }
+        .fn-Stories-mask-mobile > div {
+            width: 93.6%;
+        }
+        .fn-Stories-mask .mask-close {
+            top: 3px;
+            right: 4px;
+        }
+        .fn-Stories-mask .mask-close img {
+            width: 19px;
+            height: 19px
+        }
+        .fn-Stories-Video {
+            height: 230px;
+        }
+        .fn-Stories-Video iframe {
+            border-radius: 0
+        }
+    }
+</style>
+<div class="cap-hot-press-hat" id="{{ section.settings.id }}">
+    <div class="cap-module-title">
+        <div class="cap-module-host-title">{{ section.settings.title }}</div>
+        <div class="cap-module-desc-title">{{ section.settings.desc }}</div>
+    </div>
+    <div class="cap-hot-hat-content">
+        {% for block in section.blocks %}
+        <div class="cap-hot-hat-item">
+            <div>
+                <picture>
+                    <source media="(max-width: 1366px)" srcset="{{ block.settings.image_mobile | img_url:'648x' }}">
+                    <source media="(min-width: 1367px)" srcset="{{ block.settings.image | img_url:'648x' }}">
+                    <img class="cap-hot-hat-image" src="{{ block.settings.image | img_url:'648x' }}">
+                </picture>
+                <div class="cap-hot-hat-hover">
+                    <div>
+                        <img
+                                class="video-play-btn"
+                                src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Group_365.png?v=1707116579"
+                                onclick="christmasFunction('1','{{ block.settings.video_url }}')"
+                        >
+                        <div class="cap-hot-hat-desc">{{ block.settings.title }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="cap-hot-hat-title">{{ block.settings.title }}</div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="fn-Stories-mask" id="cap-hat-press-hat-mask">
+    <div>
+        <div class="fn-Storiesmask-main">
+            <div class="mask-close" onclick="christmasFunction('2')">
+                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/7_8ba31ff8-9cdf-403b-ac36-d36b25abab80.png?v=1683355188">
+            </div>
+            <div class="fn-Stories-Video">
+                <iframe
+                        id="hat-Video-Iframe"
+                        width="100%"
+                        height="100%"
+                        src=""
+                        title="YouTube video player"
+                        frameborder="no"
+                        border="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                ></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function christmasFunction(e, link) {
+        if (e == 1) {
+            $('#hat-Video-Iframe').eq(0).attr('src', link)
+            $('#cap-hat-press-hat-mask').show();
+        }
+        if (e == 2) {
+            $('#cap-hat-press-hat-mask').hide();
+            $('#hat-Video-Iframe').eq(0).attr('src', '')
+        }
+    }
+    $('.cap-hot-hat-item div').on('mouseenter', function (e) {
+        if (document.body.clientWidth <= 1366) return
+        $(this).children('.cap-hot-hat-hover').show()
+    }).on('mouseleave', function (e) {
+        if (document.body.clientWidth <= 1366) return
+        $(this).children('.cap-hot-hat-hover').hide()
+    })
+</script>
+{% schema %}
+{
+    "name":"Cap Hot Press Hat",
+    "settings":[
+        {
+            "type":"text",
+            "id":"id",
+            "label":"id(页面唯一性，全英文)"
+        },
+        {
+            "type":"color",
+            "id":"bg_color",
+            "label":"bg_color"
+        },
+        {
+            "type":"text",
+            "id":"title",
+            "label":"title"
+        },
+        {
+            "type":"text",
+            "id":"desc",
+            "label":"desc"
+        }
+    ],
+    "blocks":[
+        {
+            "type":"product",
+            "name":"product",
+            "settings":[
+                {
+                    "type":"text",
+                    "id":"title",
+                    "label":"title"
+                },
+                {
+                    "type":"image_picker",
+                    "id":"image",
+                    "label":"image"
+                },
+                {
+                    "type":"image_picker",
+                    "id":"image_mobile",
+                    "label":"image mobile"
+                },
+                {
+                    "type":"text",
+                    "id":"video_url",
+                    "label":"video url"
+                }
+            ]
+        }
+    ],
+    "presets":[
+        {
+            "name":"Cap Hot Press Hat"
+        }
+    ]
+}
+{% endschema %}

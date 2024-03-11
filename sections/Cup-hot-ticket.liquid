@@ -1,0 +1,191 @@
+<div class="Cup-hot-ticket">
+  <div class="cup-buy-ticket">
+    <div>
+      <picture>
+        <source media="(max-width: 750px)" srcset="{{ section.settings.image_mobile | img_url:'662x' }}">
+        <source media="(min-width: 751px)" srcset="{{ section.settings.image | img_url:'770x' }}">
+        <img src="{{ section.settings.image | img_url:'770x' }}">
+      </picture>
+    </div>
+    <div class="cup-buy-right">
+      <div class="cup-hot-title">
+        {{ section.settings.rate }}
+      </div>
+      <div class="cup-buy-describe">
+        {{ section.settings.describe }}
+      </div>
+      <div class="cup-buy-button">
+        <product-form class="product-form">
+          <div class="product-form__error-message-wrapper" role="alert" hidden>
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-error" viewBox="0 0 13 13">
+              <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+              <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+              <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+              <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+            </svg>
+            <span class="product-form__error-message"></span>
+          </div>
+          {%- form 'product',
+            section.settings.product,
+            id: product_form_id,
+            class: 'form',
+            novalidate: 'novalidate',
+            data-type: 'add-to-cart-form'
+          -%}
+            <input
+              type="hidden"
+              name="id"
+              value="{{ section.settings.product.selected_or_first_available_variant.id }}"
+              disabled
+            >
+            <div class="product-form__buttons">
+              <div
+                data-shopify="payment-button"
+                data-has-selling-plan="true"
+                data-has-fixed-selling-plan="false"
+                class="shopify-payment-button"
+                onclick="buyNow('{{ section.settings.product.selected_or_first_available_variant.id }}')"
+              ></div>
+            </div>
+          {%- endform -%}
+        </product-form>
+      </div>
+    </div>
+  </div>
+  <div class="cup-copy-ticket">
+    <div class="cup-hot-title">
+      {{ section.settings.assistant }}
+    </div>
+    <div class="cup-tickets">
+      {% for block in section.blocks %}
+        <div class="cup-ticket-item">
+          <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/12_2x_31437510-228f-4da8-a9b0-c2084f139075.png?v=1689216075">
+          <div class="cup-ticket-main">
+            <div class="cup-ticket-money">
+              <div class="cup-ticket-currency">
+                <span>{{ block.settings.currency }}</span>{{ block.settings.money }}
+              </div>
+              <div class="cup-ticket-desc">
+                {{ block.settings.desc }}
+              </div>
+            </div>
+            <div class="cup-ticket-message">
+              <div>
+                <div class="cup-hot-label">Code Validity:&nbsp;</div>
+                <div class="cup-hot-value">
+                  {{ block.settings.code_validity }}
+                </div>
+              </div>
+              <div>
+                <div class="cup-hot-label">Quantity:&nbsp;</div>
+                <div class="cup-hot-value">
+                  {{ block.settings.quantity }}
+                </div>
+              </div>
+              <div>
+                <div class="cup-hot-label">Code:&nbsp;</div>
+                <div class="cup-hot-value">
+                  {{ block.settings.code }}
+                </div>
+                <div class="cup-copy-btn" onclick="copyticket('{{ block.settings.code }}')">copy</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<script>
+  function copyticket(code){
+    let url = code;
+    let copyInput = document.createElement('input');
+    	document.body.appendChild(copyInput);
+    	copyInput.setAttribute('value', url);
+    	copyInput.select();
+    	document.execCommand("Copy");
+    	copyInput.remove();
+        alertMsg()
+  }
+   function alertMsg(){
+      var alertFram = document.createElement("DIV");
+      alertFram.id = "alertFram";
+      alertFram.style.position = "fixed";
+      alertFram.style.width = "100%";
+      alertFram.style.textAlign = "center";
+      alertFram.style.bottom = "40px";
+      alertFram.style.zIndex = "10001";
+      strHtml = " <span style=\"font-family: 微软雅黑;display:inline-block;background:#333;color:#fff;padding:0 20px;line-height:36px;border-radius:6px; \">Copied successfully</span>";
+      alertFram.innerHTML = strHtml;
+      document.body.appendChild(alertFram);
+      setTimeout((function(){
+        alertFram.style.display="none";
+      }),2000);
+    }
+</script>
+{% schema %}
+{
+  "name": "Cup hot ticket",
+  "settings": [{
+    "type":"image_picker",
+    "id":"image",
+    "label":"image"
+  },{
+    "type":"image_picker",
+    "id":"image_mobile",
+    "label":"image mobile"
+  },{
+    "type":"text",
+    "id":"rate",
+    "label":"rate"
+  },{
+    "type":"html",
+    "id":"describe",
+    "label":"describe"
+  },{
+    "type":"product",
+    "id":"product",
+    "label":"product"
+  },{
+    "type":"text",
+    "id":"assistant",
+    "label":"assistant title"
+  }],
+  "blocks":[{
+    "type":"ticket",
+    "name": "ticket",
+    "settings": [{
+          "type": "text",
+          "id": "currency",
+          "label": "currency"
+        },{
+          "type": "text",
+          "id": "money",
+          "label": "money"
+        },{
+          "type": "text",
+          "id": "desc",
+          "label": "desc"
+        },{
+          "type": "text",
+          "id": "code_validity",
+          "label": "Code Validity"
+        },{
+          "type": "text",
+          "id": "quantity",
+          "label": "quantity"
+        },{
+          "type": "text",
+          "id": "code",
+          "label": "code"
+        }
+    ]
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

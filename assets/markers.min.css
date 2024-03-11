@@ -1,0 +1,14 @@
+/**
+ * Minified by jsDelivr using clean-css v5.3.0.
+ * Original file: /npm/photo-sphere-viewer@4.6.4/dist/plugins/markers.css
+ *
+ * Do NOT use SRI with dynamically generated files! More information: https://www.jsdelivr.com/using-sri-with-dynamic-files
+ */
+/*!
+ * Photo Sphere Viewer 4.6.4
+ * @copyright 2014-2015 Jérémy Heleine
+ * @copyright 2015-2022 Damien "Mistic" Sorel
+ * @licence MIT (https://opensource.org/licenses/MIT)
+ */
+.psv-markers{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;position:absolute;z-index:10;width:100%;height:100%}.psv-markers-svg-container{position:absolute;top:0;left:0;width:100%;height:100%;z-index:20}.psv-marker{display:none}.psv-marker--normal{position:absolute;top:0;left:0;z-index:30;background-size:contain;background-repeat:no-repeat}.psv-marker--transparent{display:block;opacity:0}.psv-marker--visible{display:block}.psv-marker--has-content,.psv-marker--has-tooltip{cursor:pointer}
+/*# sourceMappingURL=/sm/9843a3252965748e7596584974a90b315e31c238f0e2b6105d9ec4f8c4df6162.map */

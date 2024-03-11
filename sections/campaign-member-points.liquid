@@ -1,0 +1,219 @@
+{%- style -%}
+#shopify-section-{{ section.id }} .campaign-member-points {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    margin-top: {{ section.settings.margin_top }}px;
+    margin-bottom: {{ section.settings.margin_bottom }}px;
+    background-color: {{ section.settings.bg_color }};
+}
+{%- endstyle -%}
+<style>
+    .campaign-member-points .fn-relative {
+        position: relative;
+    }
+    .campaign-member-points .campaign-text {
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 83%;
+        align-items: center;
+        color: #fff;
+    }
+    .campaign-member-points .campaign-text .desc {
+        font-size: 26px;
+        line-height: 30px;
+    }
+    .campaign-member-points .campaign-text .more {
+        margin: 0;
+    }
+    .campaign-member-points .t {
+        font-size: 48px;
+        line-height: 54px;
+        margin-top: 100px;
+        text-align: center;
+    }
+    .campaign-member-points .more a {
+        display: inline-block;
+        padding: 15px 49px;
+        font-size: 20px;
+        line-height: 1;
+        background: #FF7606;
+        border-radius: 6px;
+        border: none;
+        width: auto;
+        height: auto;
+        color: #fff;
+    }
+    .phone {
+        display: none;
+    }
+    @media (max-width: 749px){
+        .campaign-member-points .campaign-text .desc {
+            font-size: 20px;
+            line-height: 24px;
+        }
+        .campaign-member-points .more a {
+            padding: 14px 32px;
+        }
+        .pc {
+            display: none;
+        }
+        .phone {
+            display: block;
+        }
+    }
+    @media (max-width: 480px){
+        .campaign-member-points .t {
+            font-size: 18px;
+            line-height: 22px;
+            margin-top: 50px;
+        }
+        .campaign-member-points .campaign-text .desc {
+            font-size: 14px;
+            line-height: 18px;
+        }
+        .campaign-member-points .more a {
+            font-size: 14px;
+            padding: 8px 30px;
+        }
+        .campaign-member-points .campaign-text {
+            display: block;
+        }
+        .campaign-member-points .campaign-text .more {
+            margin: 0;
+            padding: 0;
+            text-align: left;
+            margin-top: 10px;
+        }
+        .campaign-member-points {
+            padding: 50px 0;
+        }
+    }
+</style>
+<div class="campaign-member-points">
+    <div class="{{ section.settings.layout }}">
+        <div class="fn-relative">
+            {%- if section.settings.image != blank -%}
+            <div class="campaign-img">
+                <img class="pc" src="{{ section.settings.image | img_url: '1600x' }}" alt="{{ section.settings.image.alt }}">
+                <img class="phone" src="{{ section.settings.phone_image | img_url: '1600x' }}" alt="{{ section.settings.phone_image.alt }}">
+            </div>
+            {%- endif -%}
+            <div class="campaign-text">
+                {%- if section.settings.desc != blank -%}
+                <div class="desc">{{ section.settings.desc }}</div>
+                {%- endif -%}
+                {%- if section.settings.link != blank -%}
+                <div class="more extra-t"><a href="{{ section.settings.link }}">{{ section.settings.label }}</a></div>
+                {%- endif -%}
+            </div>
+        </div>
+    </div>
+</div>
+{% schema %}
+{
+    "name":"Campaign Member Points",
+    "settings":[
+        {
+            "type":"text",
+            "id":"desc",
+            "default":"Member points earned in the future will be 1.5 times the usual",
+            "label":"描述"
+        },
+        {
+            "type":"color",
+            "id":"bg_color",
+            "label":"背景颜色"
+        },
+        {
+            "type":"image_picker",
+            "id":"image",
+            "label":"图片"
+        },
+        {
+            "type":"image_picker",
+            "id":"phone_image",
+            "label":"手机图片"
+        },
+        {
+            "type":"url",
+            "id":"link",
+            "label":"链接"
+        },
+        {
+            "type":"text",
+            "id":"label",
+            "default":"TO VIEW",
+            "label":"链接文字"
+        },
+        {
+            "type":"range",
+            "id":"padding_top",
+            "min":0,
+            "max": 200,
+            "step": 2,
+            "unit":"px",
+            "label":"t:sections.all.padding.padding_top",
+            "default": 102
+        },
+        {
+            "type":"range",
+            "id":"padding_bottom",
+            "min":0,
+            "max": 200,
+            "step": 2,
+            "unit":"px",
+            "label":"t:sections.all.padding.padding_bottom",
+            "default": 0
+        },
+        {
+            "type":"range",
+            "id":"margin_top",
+            "min":0,
+            "max": 100,
+            "step": 2,
+            "unit":"px",
+            "label":"Top margin",
+            "default": 0
+        },
+        {
+            "type":"range",
+            "id":"margin_bottom",
+            "min":0,
+            "max":100,
+            "step": 2,
+            "unit":"px",
+            "label":"Bottom margin",
+            "default": 0
+        },
+        {
+            "type":"select",
+            "id":"layout",
+            "options":[
+                {
+                    "value":"fn-page-width-l",
+                    "label":"全屏"
+                },
+                {
+                    "value":"fn-page-width",
+                    "label":"内容区域显示1600"
+                },
+                {
+                    "value":"fn-page-width-s",
+                    "label":"内容区域显示1200"
+                }
+            ],
+            "default":"fn-page-width",
+            "label":"内容显示宽度"
+        }
+    ],
+    "presets":[
+        {
+            "name":"Campaign Member Points"
+        }
+    ]
+}
+{% endschema %}

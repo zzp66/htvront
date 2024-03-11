@@ -1,0 +1,474 @@
+{% style %}
+  #shopify-section-{{ section.id }} .cap-press-products{
+    background: url({{ section.settings.image_bg | img_url:'1920x' }}) no-repeat;
+    background-size: 100% 100%;
+  }
+{% endstyle %}
+<style>
+  .cap-press-products{
+    padding:30px 0 40px;
+  }
+  .cap-products-included{
+    width: 1364px;
+    background: #FFEDDD;
+    border-radius: 10px;
+    padding:24px 44px 24px 50px;
+    margin: 0 auto;
+    display:flex;
+    justify-content: space-between;
+  }
+  .cap-press-products .cap-module-title>div{
+    top:10px;
+  }
+  .included-html>p{
+    font-size: 24px;
+    font-weight: bold;
+    color: #802704;
+    line-height: 28px;
+  }
+  .included-html>ul>li{
+    font-size: 20px;
+    font-weight: 400;
+    color: #802704;
+    line-height: 23px;
+    margin-top: 35px;
+    position: relative;
+    padding-left: 20px;
+  }
+  .included-html>ul>li:before{
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: #802704;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .cap-press-products .products-steps{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 85px;
+    margin-top: 40px;
+  }
+  .products-steps .step-item{
+    width: 355px;
+    text-align: center;
+    letter-spacing:0;
+    margin-right: 47px;
+    position: relative;
+  }
+  .products-steps .step-item:nth-last-child(1){
+    margin-right:0;
+  }
+  .products-steps .step-item>div>p{
+    font-size: 24px;
+    font-weight: bold;
+    color: #802704;
+    line-height: 28px;
+    padding: 12px 0 5px;
+  }
+  .products-steps .step-item>div>div{
+    font-size: 18px;
+    font-weight: 400;
+    color: #802704;
+    line-height: 28px;
+  }
+  .arc-box{
+    position: absolute;
+    width: 416px;
+    height: 50%;
+    border: 14px solid #FFEDDD;
+    border-radius: 60px 60px 0px 0px;
+    border-bottom: none;
+    left: -30px;
+    top: -33px;
+  }
+  .step-item .arc-box:before{
+    content: '';
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background: #FFFDEF;
+    border-radius: 50%;
+    border: 5px solid #FFEDDD;
+    left: -25px;
+    bottom: -7px;
+    z-index: 2;
+  }
+  .step-item:nth-child(2) .arc-box:before{
+    right: -25px;
+    left:auto;
+    bottom: -22px;
+  }
+  .step-item:nth-child(4) .arc-box:before{
+    bottom: -22px;
+  }
+  .step-item:nth-child(3) .arc-box:after{
+     content: '';
+      position: absolute;
+      width: 35px;
+      height: 35px;
+      background: #FFFDEF;
+      border-radius: 50%;
+      border: 5px solid #FFEDDD;
+      right: -25px;
+      bottom: -7px;
+      z-index: 2;
+  }
+  .step-item:nth-child(1) .arc-box:after,.step-item:nth-last-child(1) .arc-box:after{
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 24px;
+    background-color: #FFEDDD;
+    border-radius: 40%;
+    left: -14px;
+    bottom: -22px;
+  }
+  .step-item:nth-last-child(1) .arc-box:after{
+    bottom: -37px;
+  }
+  .step-item:nth-child(2n) .arc-box{
+    bottom: -40px;
+    top: auto;
+    transform: rotate(180deg);
+    height: 67%;
+  }
+  .cap-module-title{
+    position: relative;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+  .cap-module-title>div{
+    position: absolute;
+    top: 14px;
+    width: 100%;
+    font-size: 36px;
+    font-weight: bold;
+    color: #802704;
+    line-height: 49px;
+  }
+  .cap-module-title img{
+      margin:0 auto;
+  }
+   @media screen and (max-width: 1600px){
+     .cap-press-products .products-steps{
+        width:80%;
+        margin:50px auto 70px;
+     }
+     .products-steps .step-item{
+       width:25%;
+     }
+     .arc-box{
+       width:121%;
+     }
+   }
+   @media screen and (max-width: 1440px){
+      .step-item:nth-child(2n) .arc-box {
+        bottom: -27px;
+      }
+     .arc-box {
+      width: 124%;
+     }
+     .cap-products-included{
+       width:85%;
+     }
+     .included-html{
+       width:30%;
+     }
+   }
+   @media screen and (max-width: 1280px){
+     .cap-press-products .products-steps{
+       width:90%;
+     }
+     .included-html{
+       width:40%;
+     }
+     .included-html>ul>li{
+       margin-top:20px;
+     }
+   }
+  @media screen and (max-width: 1180px){
+    .cap-press-products .cap-module-title>div {
+        font-size: 24px;
+        line-height: 38px;
+        top: 20px;
+    }
+  }
+  @media screen and (max-width: 1024px){
+    .arc-box {
+      width: 131%;
+    }
+    .included-html>ul>li {
+      margin-top: 10px;
+    }
+    .included-html{
+      width:50%;
+    }
+  }
+   @media screen and (max-width: 820px){
+     .cap-products-included{
+        padding: 10px 8px 15px;
+        flex-direction: column;
+     }
+     .included-html {
+      width: 100%;
+      padding-left: 20px;
+    }
+     .included-html>p{
+       font-size:14px;
+       line-height:16px;
+     }
+     .included-html>ul>li{
+       font-size:14px;
+       line-height:16px;
+     }
+     .included-html>ul>li:before{
+       width:4px;
+       height:4px;
+     }
+     .included-html>ul>li{
+       margin-top:5px;
+     }
+     .included-html>ul{
+       padding:5px 0 7px;
+     }
+     .cap-press-products .products-steps{
+        width: 95%;
+        flex-wrap: wrap;
+     }
+     .products-steps .step-item {
+       width: 48%;
+       margin-right: 10px;
+       margin-bottom:33px;
+    }
+     .products-steps .step-item:nth-child(2n){
+       margin-right:0;
+     }
+     .step-item .arc-box:before,.step-item:nth-child(1) .arc-box:after,.step-item:nth-last-child(1) .arc-box:after,.step-item:nth-child(3) .arc-box:after{
+       content:none;
+     }
+      .step-item:nth-child(1) .arc-box{
+        width: 90%;
+        border-radius: 16px;
+        right: 0;
+        left: auto;
+        border: none;
+        height: 8px;
+        background-color: #FFEDDD;
+        top: -5%;
+      }
+     .step-item:nth-child(2) .arc-box{
+        height: 110%;
+        transform: rotate(0);
+        width: 110%;
+        bottom: 0;
+        top: -5%;
+        border: 8px solid #FFEDDD;
+        border-left: 0;
+        border-radius:0 15px 15px 0;
+        left: auto;
+        right: -2%;
+     }
+     .step-item:nth-child(3) .arc-box{
+        border: 8px solid #FFEDDD;
+        height: 110%;
+        border-radius: 15px 0 0 15px;
+        border-right: 0;
+        top: -5%;
+        width: 110%;
+        left: -5%;
+     }
+     .step-item:nth-child(4) .arc-box{
+        transform: rotate(0);
+        border: none;
+        height: 8px;
+        bottom: -5%;
+        background-color: #FFEDDD;
+        width: 90%;
+        border-radius: 15px;
+     }
+     .products-steps .step-item>div>p{
+        font-size: 14px;
+        line-height: 15px;
+        padding: 5px 0;
+     }
+     .products-steps .step-item>div>div{
+        font-size: 14px;
+        line-height: 16px;
+        padding:0 20px;
+       min-height:35px;
+     }
+     .products-steps .step-item:before{
+       content:'';
+      width: 21px;
+      height: 21px;
+      background: #FFFDEF;
+      border-radius: 50%;
+      border: 5px solid #FFEDDD;
+      position: absolute;
+      bottom: -27px;
+      z-index: 2;
+      left: 50%;
+      transform: translateX(-50%);
+     }
+   }
+  @media screen and (max-width: 768px){
+    .cap-press-products{
+      background: #FFFDEF !important;
+    }
+  }
+   @media screen and (max-width: 750px){
+     .cap-press-products .products-steps{
+       margin:20px auto ;
+     }
+     .step-item:nth-child(3) .arc-box{
+       height: 111%;
+       top: -6%;
+     }
+     .cap-products-included{
+       width:93.6%;
+     }
+   }
+   @media screen and (max-width: 480px){
+     .cap-press-products .cap-module-title>div{
+        font-size: 16px;
+        line-height: 19px;
+        top: 19%;
+      }
+     .cap-press-products .products-steps {
+        margin-bottom: 0;
+        width:90%
+     }
+     .step-item:nth-child(2) .arc-box{
+        right: -8%;
+        top: -7%;
+        height: 115%;
+        width: 115%;
+     }
+     .step-item:nth-child(3) .arc-box {
+        height: 115%;
+        top: -6.8%;
+        width: 115%;
+        left: -8%;
+     }
+     .step-item:nth-child(1) .arc-box{
+       top:-7%;
+     }
+     .step-item:nth-child(4) .arc-box{
+       bottom:-8%;
+     }
+   }
+   @media screen and (max-width: 410px){
+    .step-item:nth-child(3) .arc-box{
+          top: -7.5%;
+    } 
+     @media screen and (max-width: 390px){
+       .step-item:nth-child(3) .arc-box{
+         top: -9%;
+         height: 117%;
+       }
+     }
+   }
+</style>
+<div class="cap-press-products"  id="{{ section.settings.id }}">
+  <div class="cap-module-title">
+    <picture>
+      <source media="(max-width: 750px)" srcset="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20240111-112909.png?v=1704943776">
+      <source media="(min-width: 751px)" srcset="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Group_52_2.png?v=1704868626">
+      <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Group_52_2.png?v=1704868626">
+    </picture>
+    <div>{{ section.settings.title }}</div>
+  </div>
+  <div class="products-steps">
+    {% for block in section.blocks %}
+      <div class="step-item">
+         <picture>
+          <source media="(max-width: 750px)" srcset="{{ block.settings.image_mobile | img_url:'320x'}}">
+          <source media="(min-width: 751px)" srcset="{{ block.settings.image | img_url:'355x'}}">
+          <img src="{{ block.settings.image | img_url:'355x'}}">
+        </picture>
+        <div>
+          <p>{{ block.settings.title }}</p>
+          <div>{{ block.settings.desc }}</div>
+        </div>
+        <div class="arc-box"></div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="cap-products-included">
+      <div class="included-html">
+        {{ section.settings.bottom_html }}
+      </div>
+      <div>
+        <img src="{{ section.settings.bottom_image | img_url:'946x'}}">
+      </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Cap Press Products",
+    "settings": [
+       {
+        "type": "text",
+        "id": "id",
+        "label": "id(页面唯一性，全英文)"
+      },
+       {
+        "type": "image_picker",
+        "id":"image_bg",
+        "label":"image_bg"
+      },
+      {
+        "type":"text",
+        "id":"title",
+        "label":"title"
+      },{
+        "type":"html",
+        "id":"bottom_html",
+        "label":"bottom html"
+      },{
+        "type": "image_picker",
+        "id":"bottom_image",
+        "label":"bottom image"
+      }
+    ],
+     "blocks":[
+       {
+        "type":"product",
+        "name": "product",
+        "settings": [
+          {
+          "type":"text",
+          "id":"title",
+          "label":"title"
+         },{
+          "type":"text",
+          "id":"desc",
+          "label":"desc"
+         },{
+          "type":"image_picker",
+          "id":"image",
+          "label":"image"
+         },{
+          "type":"image_picker",
+          "id":"image_mobile",
+          "label":"image mobile"
+         }]
+       }
+     ],
+    "presets":[
+        {
+          "name":"Cap Press Products"
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

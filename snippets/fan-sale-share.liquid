@@ -1,0 +1,68 @@
+{% if request.page_type == 'article' or request.page_type == 'blog' %}
+  {% capture permalinkURL %}{{ shop.url }}{{ article.url }}{% endcapture %}
+  {% capture shareTitle %}{{ article.title | url_param_escape }}{% endcapture %}
+{% elsif request.page_type == 'product' %}
+  {% capture permalinkURL %}{{ shop.url }}{{ product.url }}{% endcapture %}
+  {% capture shareTitle %}{{ product.title | url_param_escape }}{% endcapture %}
+{% elsif request.page_type == 'page' %}
+  {% capture permalinkURL %}{{ shop.url }}{{ page.url }}{% endcapture %}
+  {% capture shareTitle %}{{ page.title | url_param_escape }}{% endcapture %}
+{% elsif request.page_type == 'collection' %}
+  {% capture permalinkURL %}{{ shop.url }}{{ collection.url }}{% endcapture %}
+  {% capture shareTitle %}{{ page.title | url_param_escape }}{% endcapture %}
+{% elsif request.page_type == 'index' %}
+  {% capture permalinkURL %}{{ shop.url }}{% endcapture %}
+  {% capture shareTitle %}{{ page.title | url_param_escape }}{% endcapture %}
+{% elsif request.page_type == 'password' %}
+  {% capture permalinkURL %}{{ shop.url }}{% endcapture %}
+  {% capture shareTitle %}{% unless shop.metafields.global.description_tag == blank %}{{ shop.metafields.global.description_tag | url_param_escape }}{% else %}{{ shop.name | url_param_escape }}{% endunless %}{% endcapture %}
+{% endif %}
+<div class="fan-sale-share">
+  <div>
+    <a
+      target="_blank"
+      href="//www.facebook.com/sharer.php?u={{ permalinkURL }}&title='The 2nd HTVRONT Fans Carnival'"
+      class="share-facebook"
+      title="{{ 'The 2nd HTVRONT Fans Carnival@HTVRONT' | t }}"
+    >
+      <img
+        class="fan-sale-share-icon"
+        src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/img_v2_330b376d-885a-42ab-a7b8-44a7491d07ag_d7f740bf-0119-4f97-877b-f1536e39587b.png?v=1678947493"
+        alt=""
+      >
+    </a>
+    <a
+      target="_blank"
+      href="https://www.instagram.com?u={{ permalinkURL }}&title='The 2nd HTVRONT Fans Carnival'@HTVRONT"
+      title="{{ 'The 2nd HTVRONT Fans Carnival@HTVRONT' }}"
+      class="share-pinterest"
+      target="_blank"
+      aria-describedby="a11y-new-window-external-message"
+    >
+      <img
+        class="fan-sale-share-icon"
+        src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/img_v2_13f37c31-b718-4166-b05b-70116a72324g_MIDDLE_21e139d6-8ba1-4f46-a598-c25e5cc5f92c.png?v=1678947493"
+        alt=""
+      >
+    </a>
+    <a
+      target="_blank"
+      href="https://vt.tiktok.com/share"
+      title="{{ 'The 2nd HTVRONT Fans Carnival@HTVRONT' }}"
+      class="share-pinterest"
+      target="_blank"
+      aria-describedby="a11y-new-window-external-message"
+    >
+      <img
+        class="fan-sale-share-icon"
+        src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/img_v2_fbde4bc5-2a03-4adc-9a53-7d9160f4e57g_0b21c88f-8f39-49b0-ab47-41600dd67f94.png?v=1678947493"
+        alt=""
+      >
+    </a>
+
+    <img
+      class="fan-sale-share-icon fan-sale-share-more"
+      src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/11_17ff4632-3399-4e30-a1d2-0a14e97f69d4.png?v=1678947389"
+    >
+  </div>
+</div>

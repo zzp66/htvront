@@ -1,0 +1,72 @@
+<div class="fn-discountstore-body">
+  <div class="t fn-discountstore-mainheade">
+        {% if section.settings.mainheade_imges != blank %}
+          <img src="{{  section.settings.mainheade_imges | img_url: '737x' }}" alt="">
+      {% endif %}
+  </div>
+  <ul class="fn-discountstore-main_ul">
+  {% for block in section.blocks %}
+    <li class="fn-discountstore-main_list">
+      {% if block.settings.discountstore_bac != blank %}
+          <img src="{{  block.settings.discountstore_bac | img_url: '392x' }}" alt="">
+      {% endif %}
+      <div class="fn-discountstore-main_list_content">
+             {% render 'fn-discountstore-products',
+              card_product: block.settings.discountstore_product,
+              product_title: block.settings.product_title,
+              %}
+       </div>
+    </li>
+   {%- endfor -%}
+</ul>
+</div>
+{% schema %}
+  {
+    "name": "discount store",
+    "settings": [
+        {
+             "type":"image_picker",
+             "id":"mainheade_imges",
+             "label":{
+             "en":"mainheade image",
+             "zh-CN":"标题图片"
+           }
+         }
+    ],
+    "blocks": [
+     {
+       "type": "product",
+       "name": {
+         "en": "Christmas Event Products",
+         "zh-CN": "圣诞活动产品"
+       },
+       "settings": [
+          {
+               "type":"image_picker",
+               "id":"discountstore_bac",
+               "label":{
+               "en":"background img",
+               "zh-CN":"背景图片"
+             }
+          },
+          {
+            "type": "product",
+            "id": "discountstore_product",
+            "label": "product"
+          },
+          {
+            "type": "text",
+            "id": "product_title",
+            "label": "title"
+         }
+       ]
+     }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

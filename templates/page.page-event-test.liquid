@@ -1,0 +1,79 @@
+<style>
+  .svg-pop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.62);
+        z-index: 999;
+        display: none;
+    }
+    .pop-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 560px;
+        background: #FFFFFF;
+        border-radius: 8px;
+        padding-bottom: 70px;
+    }
+    .pop-hd {
+        text-align: right;
+        padding: 20px;
+    }
+    .pop-hd img {
+        display: inline-block;
+        cursor: pointer;
+    }
+    .pop-bd {
+        text-align: center;
+        margin-top: 8px;
+    }
+    .pop-bd .t {
+        font-size: 20px;
+        line-height: 1;
+    }
+    .pop-bd .desc {
+        font-size: 16px;
+        line-height: 1;
+        color: #444444;
+        margin-top: 16px;
+        margin-bottom: 24px;
+    }
+    .pop-bd .fn-btn {
+        margin-top: 20px;
+    }
+    .pop-bd .fn-btn a {
+        display: inline-block;
+        padding: 13px 99px;
+        background: #FF7606;
+        border-radius: 6px;
+        font-size: 14px;
+        color: #fff;
+        line-height: 18px;
+    }
+    .pop-bd .fn-btn a.bg-gray {
+        background: #CCCCCC;
+        color: #333;
+    }
+    @media (max-width: 480px) {
+       .pop-content {
+           width: 100%;
+       }
+    }
+</style>
+{% section 'event-banner' %}
+{% section 'event-product' %}
+<div class="svg-pop">
+    <div class="pop-content">
+        <div class="pop-hd"><img src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/3e12345ab87ce30a9294f2a03208e88a_d47bcf45-15d1-430e-a92e-e9b863d2f14d.png?v=1653361039" alt="close.png"></div>
+        <div class="pop-bd">
+            <div class="t">Become our member and download SVG for free!</div>
+            <div class="desc">Just sign in or create an account to become our member</div>
+            <div class="fn-btn t"><a href="/account/login" target="_blank">SIGN IN</a></div>
+            <div class="fn-btn t"><a href="/account/register" class="bg-gray" target="_blank">SIGN UP</a></div>
+        </div>
+    </div>
+</div>

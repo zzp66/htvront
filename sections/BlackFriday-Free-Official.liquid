@@ -1,0 +1,199 @@
+<div class="black-friday-free common-width" id="{{ section.settings.nav_id }}">
+  <div class="free-title">
+    {{ section.settings.title }}
+  </div>
+  <div class="free-desc">
+    {{ section.settings.desc }}
+  </div>
+  <div class="free-module">
+    <div class="free-image">
+      <picture>
+        <source media="(max-width: 820px)" srcset="{{ section.settings.left_image_mobile | img_url:'337x' }}">
+        <source media="(min-width: 821px)" srcset="{{ section.settings.left_image | img_url:'652x' }}">
+        <img src="{{ section.settings.left_image | img_url:'652x' }}">
+      </picture>
+    </div>
+    <div class="free-right">
+      <div class="free-customers">
+        <picture>
+          <source media="(max-width: 820px)" srcset="{{ section.settings.customers_bg_mobile | img_url:'292x' }}">
+          <source media="(min-width: 821px)" srcset="{{ section.settings.customers_bg | img_url:'406x' }}">
+          <img src="{{ section.settings.customers_bg | img_url:'406x' }}">
+        </picture>
+        <p>{{ section.settings.customers_tips }}</p>
+      </div>
+      <div class="free-swiper">
+        <picture>
+          <source media="(max-width: 820px)" srcset="{{ section.settings.swiper_bg_mobile | img_url:'350x' }}">
+          <source media="(min-width: 821px)" srcset="{{ section.settings.swiper_bg | img_url:'848x' }}">
+          <img src="{{ section.settings.swiper_bg | img_url:'848x' }}">
+        </picture>
+        <div class="swiper-free">
+          <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+              <div class="swiper-slide">{{ block.settings.text }}</div>
+            {% endfor %}
+          </div>
+        </div>
+        <span class="free-swiper-border-top"></span>
+        <span class="free-swiper-border-bottom"></span>
+      </div>
+      <div class="free-rules show-in-821">
+        {% if section.settings.rules != blank %}
+           <p class="rules">Rules :</p>
+        {% endif %}
+        {{ section.settings.rules }}
+      </div>
+      <div class="free-rules-mobile show-in-820">
+        {% if section.settings.rules != blank %}
+           <p class="rules">Rules : </p>
+        {% endif %}
+        <div class="check-rules-free">
+          <span class="rules-dialog-free">?</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="dialog-ul">
+   <img
+    class="icon-draw-close close-btn"
+    src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/1_1127fe7a-ad88-4e6e-b202-62ef346a37b3.png?v=1698990834"
+  >
+  <p>Rules</p>
+  {{ section.settings.rules }}
+</div>
+<div class="draw-body-mask mask-free"></div>
+<script>
+  getGiftOrderList();
+   function getGiftOrderList(){
+    $.ajax({
+      url: "https://qn.htvront.com/black-friday/formal/getGiftOrderList",
+      method: "GET",
+      data: {market: 'US_HTVRONT(shopify)'},
+      success: function (data) {
+         var arr = data.data
+         for (let i = 0; i < arr.length; i++) {
+            var div = '<div class="swiper-slide">' + '<span>' + arr[i].email + ' paid $' + arr[i].amount + ' won a ' + arr[i].productName + '</span>' + '</div>'
+             $('.swiper-free .swiper-wrapper').append(div)
+        }
+      },
+      error: function (xhr, status, error) {
+      }
+    });
+  }
+  $(function(){
+     $('.check-rules-free').click(function(){
+       $('.dialog-ul').show()
+       $('.draw-body-mask').css('display',"block")
+       $('body').css({"overflow":"hidden"})
+     })
+    $('.close-btn').on('click',function(){
+       $('.dialog-ul').hide()
+       $('.draw-body-mask').css('display',"none")
+       $('body').css({"overflow":"auto"})
+     })
+    var mySwiper_g = new Swiper('.swiper-free', {
+    	autoplay: true,
+        direction: 'vertical',
+        speed: 1000,
+        simulateTouch: false,
+        noSwiping: true,
+        allowTouchMove: false,
+        loop: true,
+        slidesPerView: 1, 
+        slideNextClass : 'my-slide-next',
+        observer: true, 
+        observeParents: true ,
+        grid: {
+          fill: 'column',
+          rows: 3,
+        },
+        height: 74,
+        breakpoints:{
+          1660:{
+           height:66 
+          },
+          1520:{
+           height:59
+          },
+          1280:{
+           height:51
+          },
+          1024:{
+            height:74
+          },
+          820:{
+            height:68
+          }
+      }
+    })
+  })
+</script>
+{% schema %}
+  {
+    "name": "Black Friday Free",
+    "settings": [
+       {
+        "type":"text",
+        "id":"nav_id",
+        "label":"id(页面唯一性，全英文)"
+      },{
+         "type":"text",
+         "id":"title",
+         "label":"title"
+      },{
+         "type":"html",
+         "id":"desc",
+         "label":"desc"
+      },{
+         "type":"image_picker",
+         "id":"left_image",
+         "label":"image"
+      },{
+         "type":"image_picker",
+         "id":"left_image_mobile",
+         "label":"image mobile"
+      },{
+         "type":"image_picker",
+         "id":"customers_bg",
+         "label":"customers background"
+      },{
+         "type":"image_picker",
+         "id":"customers_bg_mobile",
+         "label":"customers background mobile"
+      },{
+         "type":"text",
+         "id":"customers_tips",
+         "label":"customers tips"
+      },{
+         "type":"html",
+         "id":"rules",
+         "label":"rules"
+      },{
+         "type":"image_picker",
+         "id":"swiper_bg",
+         "label":"swiper background"
+      },{
+         "type":"image_picker",
+         "id":"swiper_bg_mobile",
+         "label":"swiper background mobile"
+      }
+    ],
+    "blocks":[{
+      "type":"scroll_text",
+      "name": "Scroll text",
+      "settings": [{
+        "type":"html",
+        "id":"text",
+        "label":"text"
+      }]
+   }]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

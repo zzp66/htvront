@@ -1,0 +1,511 @@
+<style>
+  .zone-flash-sale{
+    margin-top:40px;
+  }
+  .zone-flash-sale .sale-title{
+    width: 1080px;
+    height: 112px;
+    background: #FFF6D6;
+    box-shadow: 0px 6px 14px 0px rgba(95,4,4,0.25);
+    border-radius: 20px;
+    text-align:center;    
+    margin: 0 auto;
+    position:relative;
+  }
+  .zone-flash-sale .sale-title>span{
+    font-size: 32px;
+    font-weight: bold;
+    color: #C63D39;
+    line-height: 112px;
+  }
+  .flash-sale-product{
+    width:100%;
+    background: #FFF6D6;
+    box-shadow: 0px 6px 14px 0px rgba(95,4,4,0.25);
+    border-radius: 20px;
+    margin-top: 33px;
+    padding: 24px 15px 0;
+    overflow: hidden;
+  }
+  .sale-title .left-icon{
+    position: absolute;
+    top: 78px;
+    left: 30px;
+  }
+  .sale-title .right-icon{
+    position: absolute;
+    top: 78px;
+    right: 30px;
+  }
+  .item-title{
+    background: linear-gradient(180deg, #FFDB80 0%, #FFA800 100%);
+    border-radius: 64px;
+    display: inline-block;
+    padding: 8px;
+  }
+  .item-title-bg{
+    background: linear-gradient(180deg, #FFDA7C 0%, #FFECBB 100%);
+    box-shadow: inset 0px 5px 5px 0px rgba(73,21,5,0.25);
+    border-radius: 64px;
+    display: inline-block;
+    padding: 18px 38px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #D37200;
+  }
+  .flash-sale-item{
+    text-align:center;
+    margin-bottom: 30px;
+  }
+  .item-title-bg>img{
+    display: inline-block;
+    vertical-align: sub;
+  }
+  .item-bundle{
+    display:flex;
+    margin-top:20px;
+  }
+  .product-buy,.product-give{
+    display:flex;
+    background-color:#fff;
+    padding:16px 23px 20px 15px;
+    border-radius:8px;
+    width: 50%;
+  }
+  .product-buy{
+    margin-right:15px;
+  }
+  .item-product-layout{
+    margin-left:13px;
+    text-align: left;
+    position: relative;
+  }
+  .item-product-image{
+    min-width:374px;
+  }
+  .item-product-sale-title{
+    font-size: 20px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 23px;
+    margin-top: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  .item-product-rules>ul>li{
+    font-size: 16px;
+    font-weight: 400;
+    color: #333333;
+    line-height: 22px;
+  }
+  .item-product-rules>ul{
+    margin: 10px 0 20px 0;
+  }
+  .item-bundle .fn-compareat_price{
+    flex-direction: row;
+    align-items: baseline;
+  }
+  .item-bundle .price-item--sale,.item-bundle .price-item--regular{
+    color: #FF6301;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .item-bundle .fn-compareat_price .fn-compare-at_price{
+    color:#333;
+    padding-left: 5px;
+  }
+  .item-bundle .button--full-width {
+    display: flex;
+    width: 100%;
+    height: 46px;
+    background: linear-gradient(91deg, #FE4E43 0%, #FF7B36 100%);
+    border-radius: 4px 4px 4px 4px;
+    padding: 0;
+    --border-offset: none;
+    --border-opacity: none;
+    min-height: 46px;
+  }
+  .item-block--price{
+    margin-bottom:5px;
+  }
+  .item-bundle .fn-color-attr{
+    height: 40px;
+  }
+  .item-bundle .fn-color-attr ul li img {
+    width: 40px;
+    height: 40px;
+  }
+  .item-bundle .fn-color-attr ul li+li {
+    margin-left: 10px;
+  }
+  .item-bundle .fn-color-attr ul li {
+    width: 40px;
+    height: 40px;
+  }
+  .box-position{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+  }
+  .show-in-mobile{
+    display:none;
+  }
+  @media screen and (max-width: 1720px){
+    .product-buy, .product-give{
+      width: 49%;
+    }
+    .item-bundle .button--full-width{
+      width: 90%;
+    }
+    .item-product-image{
+      min-width:auto;
+    }
+    .box-position{
+      position: relative;
+    }
+    .zone-flash-sale .sale-title>span{
+      font-size:28px;
+    }
+  }
+  @media screen and (max-width: 1440px){
+    .zone-flash-sale .sale-title{
+      width: 850px;
+    }
+    .item-title-bg{
+      padding: 16px 20px;
+      font-size: 18px;
+    }
+  }
+  @media screen and (max-width: 820px){
+    .zone-flash-sale{
+      margin-top:20px;
+    }
+    .zone-flash-sale .sale-title{
+      width:100%;
+      height: auto;
+      padding: 20px 30px;
+      min-height: 60px;
+      border-radius: 6px;
+    }
+    .product-buy, .product-give{
+      flex-direction: column;    
+      padding: 5px 5px 8px;
+    }
+    .product-buy {
+      margin-right: 8px;
+    }
+    .flash-sale-product{
+      padding: 20px 5px 0;
+      margin-top: 10px;
+      border-radius: 6px;
+    }
+    .item-bundle{
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .item-bundle .button--full-width{
+      width: 100%;
+      height: 40px;
+      min-height: 40px;
+      font-size: 14px;
+    }
+    .item-product-sale-title{
+      font-size: 14px;
+      line-height: 16px;
+    }
+    .item-product-rules{
+      display:none;
+    }
+    .item-product-layout{
+      margin-left:0;
+    }
+    .item-bundle .fn-color-attr {
+      height: 25px;
+      margin: 5px 0;
+    }
+    .item-bundle .fn-color-attr ul li {
+      width: 25px;
+      height: 25px;
+    }
+    .item-bundle .fn-color-attr ul li img {
+      width: 25px;
+      height: 25px;
+    }
+    .item-bundle .price-item--sale, .item-bundle .price-item--regular{
+      font-size:16px;
+    }
+    .item-bundle .fn-compareat_price .fn-compare-at_price{
+      font-size:14px;
+    }
+    .item-title-bg>img{
+      width:17px;
+    }
+    .item-title-bg{
+      font-size:14px;
+      line-height: 16px;
+    }
+    .zone-flash-sale .sale-title>span{
+      line-height: 19px;
+      font-size: 16px;
+    }
+    .show-in-pc{
+      display:none;
+    }
+    .show-in-mobile{
+      display:block;
+    }
+    .sale-title .left-icon {
+      top: 80%;
+      left: 16px;
+    }
+    .sale-title .right-icon {
+      top: 80%;
+      right: 16px;
+    }
+    .item-title{
+      margin: 0 10px;
+    }
+    .flash-sale-item{
+      margin-bottom:15px;
+    }
+  }
+  @media screen and (max-width: 450px){
+    .zone-flash-sale .sale-title{
+      padding: 10px 30px;
+    }
+    .item-title-bg{
+      padding: 10px 15px;
+      
+    }
+  }
+</style>
+{% if section.settings.title != blank %}
+  
+<div class="zone-flash-sale" id="{{ section.settings.id }}">
+  <div class="sale-title">
+    <span>{{ section.settings.title }}</span>
+    <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Group_82.png?v=1697445923" class="left-icon show-in-pc">
+    <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Group_81.png?v=1697445923" class="right-icon show-in-pc">
+    
+    <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Group_83.png?v=1697590691" class="left-icon show-in-mobile">
+    <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Group_84.png?v=1697590691" class="right-icon show-in-mobile">
+  </div>
+  <div class="flash-sale-product">
+    {% for block in section.blocks %}
+      <div class="flash-sale-item">
+        <div class="item-title">
+           <div class="item-title-bg">
+             {% if block.settings.icon != blank %}
+               <img src="{{ block.settings.icon | img_url:'33x' }}">
+             {% endif %}
+             <span>{{ block.settings.title }}</span>
+           </div>
+        </div>
+        <div class="item-bundle">
+          {%- if block.settings.product_buy -%}
+            <div class="product-buy">
+              {%- if block.settings.product_buy.featured_media -%}
+                <a href="{{ section.settings.product_buy.url }}" class="item-product-image">
+                  <img
+                    class="item-img-first"
+                    src="{{ block.settings.product_buy.featured_media | img_url: '374x' }}"
+                    alt="{{ block.settings.product_buy.featured_media.alt | escape }}"
+                    {% unless lazy_load == false %}
+                      loading="lazy"
+                    {% endunless %}
+                  >
+                </a>
+              {%- endif -%}
+              <div class="item-product-layout">
+                <div class="item-product-sale-title t">
+                  <a href="{{ block.settings.product_buy.url }}" class="t">{{ block.settings.product_buy.title | escape }}</a>
+                </div>
+                <div class="item-product-rules">
+                  {{ block.settings.rules_buy }}
+                </div>
+                <div class="fn-color-attr">
+                  {%- for option in block.settings.product_buy.options_with_values -%}
+                    {%- if option.name == 'Colors' or option.name == 'Color' -%}
+                      <ul>
+                        {%- if option.name == 'Colors' -%}
+                          {% assign colorList = block.settings.product_buy.options_by_name.Colors.values | slice: 0, 5 %}
+                        {%- else -%}
+                          {% assign colorList = block.settings.product_buy.options_by_name.Color.values | slice: 0, 5 %}
+                        {%- endif -%}
+                        {%- for value in colorList -%}
+                          <li>
+                            <a href="{{ block.settings.product_buy.url }}?variant={{ block.settings.product_buy.variants[forloop.index0].id }}">
+                              {%- if block.settings.product_buy.variants[forloop.index0].featured_image != blank -%}
+                                <img
+                                  src="{{ block.settings.product_buy.variants[forloop.index0].featured_image | img_url: '50x50' }}"
+                                  alt="{{ value }}"
+                                >
+                              {%- endif -%}
+                            </a>
+                          </li>
+                        {% endfor %}
+                        {%- if option.name == 'Colors' -%}
+                          {% assign size = block.settings.product_buy.options_by_name.Colors.values | size | minus: 5 %}
+                        {%- else -%}
+                          {% assign size = block.settings.product_buy.options_by_name.Color.values | size | minus: 5 %}
+                        {%- endif -%}
+                        {%- if size > 0 -%}
+                          <li class="color-quantity">
+                            <a href="{{ block.settings.product_buy.url }}">+{{ size }}</a>
+                          </li>
+                        {%- endif -%}
+                      </ul>
+                    {%- endif -%}
+                  {% endfor %}
+                </div>
+                <div class="box-position">
+                  <div class="item-block--price">
+                    {% render 'sffers-price', product: block.settings.product_buy, price_class: '' %}
+                  </div>
+                   <div class="item-addcart-sale">
+                    {% render 'easter-addCart', product: block.settings.product_buy %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+          {%- if block.settings.product_give -%}
+            <div class="product-give">
+              {%- if block.settings.product_give.featured_media -%}
+                <a href="{{ section.settings.product_give.url }}" class="item-product-image">
+                  <img
+                    class="item-img-first"
+                    src="{{ block.settings.product_give.featured_media | img_url: '374x' }}"
+                    alt="{{ block.settings.product_give.featured_media.alt | escape }}"
+                    {% unless lazy_load == false %}
+                      loading="lazy"
+                    {% endunless %}
+                  >
+                </a>
+              {%- endif -%}
+              <div class="item-product-layout">
+                <div class="item-product-sale-title t">
+                  <a href="{{ block.settings.product_give.url }}" class="t">{{ block.settings.product_give.title | escape }}</a>
+                </div>
+                <div class="item-product-rules">
+                  {{ block.settings.rules_give }}
+                </div>
+                <div class="fn-color-attr">
+                  {%- for option in block.settings.product_give.options_with_values -%}
+                    {%- if option.name == 'Colors' or option.name == 'Color' -%}
+                      <ul>
+                        {%- if option.name == 'Colors' -%}
+                          {% assign colorList = block.settings.product_give.options_by_name.Colors.values | slice: 0, 5 %}
+                        {%- else -%}
+                          {% assign colorList = block.settings.product_give.options_by_name.Color.values | slice: 0, 5 %}
+                        {%- endif -%}
+                        {%- for value in colorList -%}
+                          <li>
+                            <a href="{{ block.settings.product_give.url }}?variant={{ block.settings.product_give.variants[forloop.index0].id }}">
+                              {%- if block.settings.product_give.variants[forloop.index0].featured_image != blank -%}
+                                <img
+                                  src="{{ block.settings.product_give.variants[forloop.index0].featured_image | img_url: '50x50' }}"
+                                  alt="{{ value }}"
+                                >
+                              {%- endif -%}
+                            </a>
+                          </li>
+                        {% endfor %}
+                        {%- if option.name == 'Colors' -%}
+                          {% assign size = block.settings.product_give.options_by_name.Colors.values | size | minus: 5 %}
+                        {%- else -%}
+                          {% assign size = block.settings.product_give.options_by_name.Color.values | size | minus: 5 %}
+                        {%- endif -%}
+                        {%- if size > 0 -%}
+                          <li class="color-quantity">
+                            <a href="{{ block.settings.product_give.url }}">+{{ size }}</a>
+                          </li>
+                        {%- endif -%}
+                      </ul>
+                    {%- endif -%}
+                  {% endfor %}
+                </div>
+                <div class="box-position">
+                  <div class="item-block--price">
+                    {% render 'sffers-price', product: block.settings.product_give, price_class: '' %}
+                  </div>
+                   <div class="item-addcart-sale">
+                    {% render 'easter-addCart', product: block.settings.product_give %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+{% schema %}
+  {
+    "name": "Zone-Flash-Sale",
+    "settings": [
+      {
+        "type":"text",
+        "id":"id",
+        "label":"id(页面唯一性，全英文)"
+      },{
+        "type":"text",
+        "id":"title",
+        "label":"title"
+      }
+    ],  
+    "blocks":[{
+      "type": "bundle",
+      "name":  "product",
+      "settings": [
+        {
+        "type":"text",
+        "id":"id",
+        "label":"id(模块唯一性，全英文)"
+       },{
+          "type":"image_picker",
+          "id":"icon",
+          "label":"icon"
+        },{
+          "type":"text",
+          "id":"title",
+          "label":"title"
+        },
+        {
+          "type": "product",
+          "id": "product_buy",
+          "label": "product buy"
+        },{
+          "type":"html",
+          "id":"rules_buy",
+          "label":"rules buy"
+        },
+        {
+          "type": "product",
+          "id": "product_give",
+          "label": "product give"
+        },{
+          "type":"html",
+          "id":"rules_give",
+          "label":"rules give"
+        }
+      ]
+    }],
+    "presets": [
+      {
+        "name": "Zone-Flash-Sale"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,709 @@
+{%- style -%}
+#shopify-section-{{ section.id }} .selected-vinyl-bundle {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    margin-top: {{ section.settings.margin_top }}px;
+    margin-bottom: {{ section.settings.margin_bottom }}px;
+    background-color: {{ section.settings.bg_color }};
+    {% if section.settings.bg_image != blank %} 
+      background: url({{section.settings.bg_image | img_url: '1920x' }}) no-repeat;
+      background-size: 100%;
+    {% endif %}
+}
+#shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-title{
+  color:{{ section.settings.title_color}};
+  font-size:{{section.settings.title_size}}px;
+  line-height:49px;
+}
+#shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-text{
+     color:{{ section.settings.title_desc_color}};
+     font-size:{{section.settings.title_desc_size}}px
+}
+#shopify-section-{{ section.id }} .activities-Bundle-list{
+    background-color: {{ section.settings.bg_product_color }};
+    {% if section.settings.bg_product_image != blank %} 
+      background:url({{section.settings.bg_product_image | img_url: '1920x' }}) no-repeat;
+      background-size: 100%;
+    {% endif %}
+    padding:{{section.settings.product_padding}}px;
+    margin-top:{{section.settings.product_margin_top}}px;
+    border-radius:{{section.settings.product_radius}}px;
+}
+#shopify-section-{{ section.id }}  .selected-vinyl-bundle .download_svg{
+  color:{{ section.settings.color_SVG}};
+  box-shadow: 0 6px 7px 2px {{ section.settings.shadow_SVG}};  
+  border-radius:{{ section.settings.color_SVG_radius}}px; 
+}
+#shopify-section-{{ section.id }}  .selected-vinyl-bundle .download_svg:before{
+  content: "";
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  left:0;
+  border-radius:{{ section.settings.color_SVG_radius}}px;
+  background:{{ section.settings.color_SVG_bg}};
+  opacity:{{section.settings.color_SVG_transparency}};
+}  
+#shopify-section-{{ section.id }}  .selected-vinyl-bundle .activities-Bundle-product .button--full-width{
+  width:{{section.settings.button_width}}%;
+  height: {{section.settings.button_height}}px;
+  background: {{section.settings.button_bg_color}};
+  border-radius: {{section.settings.button_radius}}px;
+  color:{{section.settings.button_color}};
+  font-size: {{section.settings.button_font_size}}px;
+}
+ #shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-product .fn-product-title .t{
+    color:{{section.settings.product_title_color}};
+    font-size: {{section.settings.product_title_font_size}}px;
+ }
+ #shopify-section-{{ section.id }} .selected-vinyl-bundle li.Bundle-product_explain_list{
+    font-size: {{section.settings.product_list_font_size}}px;
+    color: {{section.settings.product_list_color}};
+    line-height: {{section.settings.product_list_line_height}}px;
+   }
+ #shopify-section-{{ section.id }} ul.Bundle-product_explain{
+   margin-top:{{section.settings.product_list_margin_top}}%;
+   margin-bottom:{{section.settings.product_list_margin_bottom}}%;
+ }
+  #shopify-section-{{ section.id }} .Bundle-product_explain_list+.Bundle-product_explain_list{
+    margin-top:{{section.settings.product_li_margin_top}}%;
+  }
+  #shopify-section-{{ section.id }} .selected-vinyl-bundle span.original_price.t{
+    font-size: {{section.settings.product_price_font_size}}px;
+    color: {{section.settings.product_price_color}};
+  }
+ #shopify-section-{{ section.id }} ul.fn-Bundle-price{
+    margin-bottom:{{section.settings.product_price_margin_bottom}}%;
+  }
+   #shopify-section-{{ section.id }} .activities-Bundle-product .fn-color-attr{
+      height:calc({{section.settings.product_color_width}}px + 6px)
+  }
+  #shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-product .fn-color-attr ul li{
+    width: {{section.settings.product_color_width}}px !important;
+    height:{{section.settings.product_color_width}}px;
+  }
+  #shopify-section-{{ section.id }} .activities-Bundle-product .fn-color-attr ul li.swiper-slide-active{
+    box-shadow: 0px 0px 0px 3px {{section.settings.product_color_border}};
+  }
+  #shopify-section-{{ section.id }} .activities-Bundle-product .fn-color-attr ul li img{
+    width: {{section.settings.product_color_width}}px;
+    height:{{section.settings.product_color_width}}px;
+  }
+ #shopify-section-{{ section.id }} .fn-addcart_bundle{
+    margin-top:{{section.settings.button_margin_top}}%;
+  }
+  #shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-left_img{
+    width:{{section.settings.product_left_image}}%;
+  }
+  #shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-product{
+    width:calc(100% - {{section.settings.product_left_image}}% - 2%);
+  }
+  {% if section.settings.title_desc_liner %}
+    #shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-text{
+          position:relative;
+          text-align:center;
+          max-width: calc(100% - 128px);
+          margin: 0 auto;
+    }
+      #shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-text::before,
+      #shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-text::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        background: {{section.settings.title_desc_liner_color}};
+        width: 51px;
+        height: 2px;
+    }    
+      #shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-text::before{
+          left:-61px;
+        }
+     #shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-text::after{
+        right:-61px
+      }
+  {% endif %}
+  @media screen and (max-width: 1230px){
+    #shopify-section-{{ section.id }} .activities-Bundle-product .fn-color-attr{
+      height:46px
+    }
+    #shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-product .fn-color-attr ul li{
+      width:40px !important;
+      height:40px
+    }
+    #shopify-section-{{ section.id }}  .selected-vinyl-bundle .activities-Bundle-product .button--full-width{
+      width:100%;
+      height:38px;
+      min-height:38px;
+    }
+  }
+  @media screen and (max-width: 768px){
+    #shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-title{
+      font-size:21px;
+      line-height:28px
+    }
+    #shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-text{
+      font-size:13px;
+      line-height:19px
+    }
+    {% if section.settings.title_desc_liner %}
+      #shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-text::before,
+      #shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-text::after{
+        width:40px
+      }
+    #shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-text::before{
+      left:-50px
+    }
+    #shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-text::after{
+      right:-50px
+    }
+    {% endif %}
+   #shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-product,#shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-left_img,#shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-product .card__inner.hover-to-cart.ratio,#shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-product .fn-product-head{
+      width:100%;
+      display:block
+    }
+    #shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-product .card__inner.hover-to-cart.ratio,#shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-left_img{
+      margin-bottom:10px
+    }
+    #shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-product .card__inner.hover-to-cart.ratio img,#shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-left_img img{
+      margin:0 auto
+    }
+    #shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-product .fn-product-head{
+      margin-left:0
+    }
+    #shopify-section-{{ section.id }} .Bundle-product_explain_list+.Bundle-product_explain_list{
+      margin-top:10px
+    }
+    #shopify-section-{{ section.id }} ul.Bundle-product_explain{
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+     #shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-product .fn-product-title .t{
+       font-size:16px;
+     }
+     #shopify-section-{{ section.id }} .selected-vinyl-bundle li.Bundle-product_explain_list{
+       font-size:14px
+     }
+    #shopify-section-{{ section.id }} .selected-vinyl-bundle span.original_price.t{
+      font-size:18px
+    }
+    #shopify-section-{{ section.id }} ul.fn-Bundle-price{
+      margin-bottom:15px
+    }
+    #shopify-section-{{ section.id }} .activities-Bundle-product .fn-color-attr{
+      height:42px
+    }
+    #shopify-section-{{ section.id }} .selected-vinyl-bundle .activities-Bundle-product .fn-color-attr ul li{
+      width:32px !important;
+      height:32px
+    }
+
+   #shopify-section-{{ section.id }} .fn-addcart_bundle{
+     margin-top:15px
+   }
+  }
+{%- endstyle -%}
+<style>
+  .selected-vinyl-bundle .activities-Bundle-title{
+    position:relative;
+    text-align:center;
+    padding-left:17px;
+    padding-right:17px;  
+  }
+  .selected-vinyl-bundle .activities-Bundle-title img{
+    margin:0 auto
+  }
+  .selected-vinyl-bundle .activities-Bundle-text{
+    display: table;
+    margin:0 auto;
+    text-align:center
+  }
+
+  .selected-vinyl-bundle .activities-Bundle-list{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .selected-vinyl-bundle .activities-Bundle-left_img{
+    position:relative
+  }
+  .selected-vinyl-bundle .download_svg{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 9.2%;
+    width: 240px;
+    height: 50px;
+    font-size: 16px;
+    font-family: PingFangSC-Semibold,PingFang SC;
+    font-weight: 600;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+  }
+  .selected-vinyl-bundle li.fn-Bundle-price_list,.selected-vinyl-bundle li.Bundle-product-Colors_image{
+    display:none;
+    line-height: initial;
+  }
+ .selected-vinyl-bundle li.fn-Bundle-price_list:nth-child(1),.selected-vinyl-bundle li.Bundle-product-Colors_image:nth-child(1){
+   display:block
+ }
+ .selected-vinyl-bundle .card.activities-Bundle-product_card{
+    display:flex
+  }
+  .selected-vinyl-bundle .activities-Bundle-product .card__inner.hover-to-cart.ratio{
+    width:54.71%
+  }
+ .selected-vinyl-bundle .activities-Bundle-product .fn-product-head{
+    width: 39.4%;
+    margin-left: 28px;
+  }
+  .selected-vinyl-bundle .activities-Bundle-product .fn-product-title{
+    width:100%;
+    line-height:24px
+  }
+  .selected-vinyl-bundle .activities-Bundle-product .fn-product-title .t{
+    height: auto;
+  }
+  .selected-vinyl-bundle .activities-Bundle-product .button--full-width{
+    --border-offset: none;
+    --border-opacity: none;    
+  }
+  .selected-vinyl-bundle li.Bundle-product_explain_list{
+    list-style-type: disc;
+    margin-left:6%
+  }
+  .selected-vinyl-bundle .activities-Bundle-product .fn-color-attr ul li{
+    border: 0px solid #fff;
+  }
+  .selected-vinyl-bundle .activities-Bundle-product .fn-color-attr ul li:nth-child(1){
+    margin-left: 3px;
+  }
+  .selected-vinyl-bundle .fn-color-attr ul{
+    align-items:center
+  }
+/*   .activities-Bundle-product .fn-color-attr ul li+li{
+    margin-left:15px
+  } */
+  @media (max-width: 1230px){
+    .selected-vinyl-bundle .card.activities-Bundle-product_card{
+      align-items:center
+    }
+  }
+  @media screen and (max-width: 768px){
+    .selected-vinyl-bundle .card.activities-Bundle-product_card,.selected-vinyl-bundle .activities-Bundle-list{
+      display:block
+    }
+    
+  }
+</style>
+<div class="selected-vinyl-bundle">
+    <div class="t activities-Bundle-title {{ section.settings.layout }}"> 
+      {% if section.settings.title_image != blank %}
+        <img src="{{ section.settings.title_image | img_url:section.settings.title_image_width }}" />
+      {% endif %}
+    {{ section.settings.title }}
+    </div>
+    <div class="{{ section.settings.layout }}">
+      <div class="activities-Bundle-text">
+        {{ section.settings.desc }}
+      </div>    
+   </div>
+    <ul class="activities-Bundle-ul {{ section.settings.layout }}" >
+        {% for block in section.blocks %}
+          <li class="activities-Bundle-list">
+            <div class="activities-Bundle-left_img">
+               {% if block.settings.Bundle_left_img != blank %}
+               {% assign image = block.settings.Bundle_left_img | img_url: '655x' %}
+                <img src="{{ image }}" alt="">
+               {% endif %}
+              {% if section.settings.down_SVG %}
+                    <div id="svg{{ forloop.index0 }}" data-title="SVG" style="display: none;">{{ block.settings.svg }}</div>
+                   <div class="download_svg" onclick="downLoadSvg({{ forloop.index0 }})"><p>Download Free Svg</p></div>
+                {% endif %}
+            </div>
+            <div class="activities-Bundle-product">
+                {% render 'activities-Bundle-product',
+                  card_product: block.settings.Bundle_product,
+                  Bundle_html_text: block.settings.Bundle_html_text
+                %}
+            </div>
+          </li>
+       {% endfor %}
+      </ul>
+</div>
+<script>
+        // 下载svg
+    function downLoadSvg(id){
+        // var email = '{{ customer.email }}';
+        // if (email) {
+            let content = $('#svg' + id).html();
+            let blob = new Blob([content], {type: 'image/svg+xml'});
+            fileName = $('#svg' + id).attr('data-title') + '.svg';
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = fileName;
+            link.click();
+            window.URL.revokeObjectURL(link.href);
+        // } else {
+        //     $('.svg-pop').show();
+        // }
+    }
+    </script>
+{% schema %}
+  {
+    "name": "selected-vinyl-bundle",
+    "settings":[
+        {
+            "type":"text",
+            "id":"title",
+            "label":"标题"
+        },{
+            "type":"image_picker",
+            "id":"title_image",
+            "label":"标题图片"
+        },{
+            "type":"text",
+            "id":"title_image_width",
+            "label":"标题图片宽度"
+        },{
+           "type":"color",
+            "id":"title_color",
+            "label":"标题颜色"
+        },{
+           "type":"number",
+            "id":"title_size",
+            "label":"标题大小"
+        },
+        {
+            "type":"text",
+            "id":"desc",
+            "label":"描述"
+        },{
+           "type":"color",
+            "id":"title_desc_color",
+            "label":"描述颜色"
+        },{
+           "type":"checkbox",
+            "id":"title_desc_liner",
+            "label":"描述分割线"
+        },{
+           "type":"color",
+            "id":"title_desc_liner_color",
+            "label":"描述分割线颜色"
+        },{
+           "type":"number",
+            "id":"title_desc_size",
+            "label":"描述标题大小"
+        },
+        {
+            "type":"image_picker",
+            "id":"bg_image",
+            "label":"背景图片"
+        },
+        {
+            "type":"color",
+            "id":"bg_color",
+            "label":"背景颜色(优先显示背景图片)"
+        },
+        {
+            "type":"range",
+            "id":"padding_top",
+            "min":0,
+            "max": 200,
+            "step":4,
+            "unit":"px",
+            "label":"t:sections.all.padding.padding_top",
+            "default": 36
+        },
+        {
+            "type":"range",
+            "id":"padding_bottom",
+            "min":0,
+            "max": 200,
+            "step":4,
+            "unit":"px",
+            "label":"t:sections.all.padding.padding_bottom",
+            "default": 100
+        },
+        {
+            "type":"range",
+            "id":"margin_top",
+            "min":0,
+            "max": 100,
+            "step":4,
+            "unit":"px",
+            "label":"Top margin",
+            "default":0
+        },
+        {
+            "type":"range",
+            "id":"margin_bottom",
+            "min":0,
+            "max": 100,
+            "step":4,
+            "unit":"px",
+            "label":"Bottom margin",
+            "default": 0
+        },
+        {
+            "type":"select",
+            "id":"layout",
+            "options":[
+                {
+                    "value":"fn-page-width-l",
+                    "label":"全屏"
+                },
+                {
+                    "value":"fn-page-width",
+                    "label":"内容区域显示1600"
+                },
+                {
+                    "value":"fn-page-width-s",
+                    "label":"内容区域显示1200"
+                }
+            ],
+            "default":"fn-page-width",
+            "label":"内容显示宽度"
+        },{
+            "type":"image_picker",
+            "id":"bg_product_image",
+            "label":"产品块背景图片"
+        },
+        {
+            "type":"color",
+            "id":"bg_product_color",
+            "label":"产品块背景颜色(优先显示背景图片)"
+        },
+       {
+            "type":"range",
+            "id":"product_padding",
+            "label":"产品块padding",
+             "min":0,
+            "max": 100,
+             "default": 20
+        },
+        {
+            "type":"range",
+            "id":"product_radius",
+            "label":"产品块圆角",
+             "min":0,
+             "max": 100,
+             "default": 20
+        },
+        {
+            "type":"range",
+            "id":"product_margin_top",
+            "label":"产品块margin_top",
+            "min":0,
+            "max": 100,
+             "default": 20
+        },{
+            "type":"range",
+            "id":"product_left_image",
+            "label":"product_left_image",
+             "min":0,
+             "max": 100,
+             "default": 50,
+              "unit":"%"
+        },{
+            "type":"checkbox",
+            "id":"down_SVG",
+            "default":false,
+            "label":{
+              "en":"down_SVG",
+              "cn":"下载SVG显示"
+            }
+          },{
+            "type":"color",
+            "id":"color_SVG",
+            "label":"SVG字体颜色"
+        },{
+            "type":"color",
+            "id":"color_SVG_bg",
+            "label":"SVG背景颜色"
+        },{
+            "type":"range",
+            "id":"color_SVG_radius",
+            "label":"SVG圆角",
+             "min":0,
+             "max": 100,
+             "default": 20
+        },{
+            "type":"range",
+            "id":"color_SVG_transparency",
+            "label":"SVG背景透明度",
+             "min":0,
+             "max": 1,
+              "step":0.1,
+             "default": 0
+        },{
+            "type":"color",
+            "id":"shadow_SVG",
+            "label":"SVG阴影颜色"
+        },{
+            "type":"color",
+            "id":"product_title_color",
+            "label":"product_title_color"
+        },{
+           "type":"number",
+            "id":"product_title_font_size",
+            "label":"product_title_font_size"
+        },{
+           "type":"number",
+            "id":"product_list_font_size",
+            "label":"product_list_font_size"
+        },{
+            "type":"color",
+            "id":"product_list_color",
+            "label":"product_list_color"
+        },{
+           "type":"number",
+            "id":"product_list_line_height",
+            "label":"product_list_line_height"
+        },{
+           "type":"range",
+            "id":"product_list_margin_top",
+            "label":"product_list_margin_top",
+            "min":0,
+            "max": 50,
+            "unit":"%",
+            "default": 5
+        },{
+           "type":"range",
+            "id":"product_list_margin_bottom",
+            "label":"product_list_margin_bottom",
+            "min":0,
+            "max": 50,
+            "unit":"%",
+            "default": 5
+        },{
+           "type":"range",
+            "id":"product_li_margin_top",
+            "label":"product_li_margin_top",
+            "min":0,
+            "max": 50,
+            "unit":"%",
+            "default": 5
+        },{
+            "type":"color",
+            "id":"product_price_color",
+            "label":"product_price_color"
+        },{
+           "type":"range",
+            "id":"product_price_margin_bottom",
+            "label":"product_price_margin_bottom",
+            "min":0,
+            "max": 50,
+            "unit":"%",
+            "default": 5
+        },{
+           "type":"number",
+            "id":"product_price_font_size",
+            "label":"product_price_font_size"
+        },{
+           "type":"number",
+            "id":"product_color_width",
+            "label":"product_attribute_width(宽度同高度)"
+        },{
+            "type":"color",
+            "id":"product_color_border",
+            "label":"product_color_border"
+        },{
+            "type":"range",
+            "id":"button_width",
+            "min":0,
+            "max": 100,
+            "unit":"%",
+            "label":"Button width",
+            "default": 78
+        },{
+            "type":"range",
+            "id":"button_height",
+            "min":0,
+            "max": 100,
+            "unit":"px",
+            "label":"Button height",
+            "default": 50
+        },{
+            "type":"range",
+            "id":"button_radius",
+            "label":"button圆角",
+             "min":0,
+             "max": 100,
+             "default": 20
+        },{
+            "type":"color",
+            "id":"button_color",
+            "label":"button_color",
+            "default":"#ffffff"
+        },{
+            "type":"color",
+            "id":"button_bg_color",
+            "label":"button_bg_color",
+            "default":"#ff7606"
+        },{
+           "type":"number",
+            "id":"button_font_size",
+            "label":"button font size"
+        },{
+           "type":"range",
+            "id":"button_margin_top",
+            "label":"button_margin_top",
+            "min":0,
+            "max": 50,
+            "unit":"%",
+          "default": 2
+        }
+    ],
+     "blocks": [
+      {
+        "type": "bundle",
+        "name": {
+          "en": "bundle"
+        },
+        "settings": [
+            {
+    			"type": "image_picker",
+    			"id": "Bundle_left_img",
+    			"label": {
+    				"en": "left image"
+    			}
+    		},
+            {
+    			"type": "html",
+    			"id": "svg",
+    			"label": {
+    				"en": "SVG"
+    			}
+    		},
+           {
+              "type": "product",
+              "id": "Bundle_product",
+              "label": "Bundle product"
+            },
+           {
+              "type": "html",
+              "id": "Bundle_html_text",
+              "label": "html text"
+            }
+          
+        ]
+      }
+  ],
+    "presets":[
+        {
+            "name":"Selected Vinyl Bundle",
+            "blocks":[
+                {
+                    "type":"bundle"
+                }
+            ]
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

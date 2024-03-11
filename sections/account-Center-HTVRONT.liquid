@@ -1,0 +1,180 @@
+<div class="fn-Center-HTVRONT classify">
+  <div class="fn-classify-title fn-shop-title">Shop on HTVRONT</div>
+  <ul class="fn-htvront-list">
+        {% for block in section.blocks %}
+    <li class="fn-list-on">
+    <div class="fn-list-image">
+      <div class="fn-classify-img">
+        {% if block.settings.image != blank %}
+         {% assign image = block.settings.image | img_url: '40x' %}
+        <img src="{{ image }}" alt="">
+        {% endif %}
+      </div>
+      <a href="">
+        {{block.settings.htvront_1}}
+      </a>
+    </div>
+    <div class="box">
+      {% if block.settings.htvrontlink_2 != blank %}
+      <a href="{{ block.settings.htvrontlink_2 }}">
+        {% endif %}
+        {{block.settings.htvront_2}}
+        {% if block.settings.htvrontlink_2 != blank %}
+      </a>
+      {% endif %}
+    </div>
+    <div class="box">
+      {% if block.settings.htvrontlink_3 != blank %}
+      <a href="{{ block.settings.htvrontlink_3 }}">
+        {% endif %}
+        {{block.settings.htvront_3}}
+        {% if block.settings.htvrontlink_3 != blank %}
+      </a>
+      {% endif %}
+    </div>
+    <div class="box">
+      {% if block.settings.htvrontlink_4 != blank %}
+      <a href="{{ block.settings.htvrontlink_4 }}">
+        {% endif %}
+        {{block.settings.htvront_4}}
+        {% if block.settings.htvrontlink_4 != blank %}
+      </a>
+      {% endif %}
+    </div>
+    <div class="box">
+      {% if block.settings.htvrontlink_5 != blank %}
+      <a href="{{ block.settings.htvrontlink_5 }}">
+        {% endif %}
+        {{block.settings.htvront_5}}
+        {% if block.settings.htvrontlink_5 != blank %}
+      </a>
+      {% endif %}
+    </div>
+    <div class="box">
+      {% if block.settings.htvrontlink_6 != blank %}
+      <a href="{{ block.settings.htvrontlink_6 }}">
+        {% endif %}
+        {{block.settings.htvront_6}}
+        {% if block.settings.htvrontlink_6 != blank %}
+      </a>
+      {% endif %}
+    </div>
+        </li>
+    {% endfor %}
+  </ul>
+</div>
+{% schema %}
+  {
+    "name": "Center HTVRONT",
+    "settings": [
+
+    ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": {
+        "en": "Center HTVRONT",
+        "zh-CN": "Center HTVRONT"
+      },
+      "settings": [
+        {
+          "type": "text",
+          "id": "htvront_1",
+          "label": {
+            "en": "htvront text1",
+            "zh-CN": "文本"
+          }
+        },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": {
+        "en": "Image",
+        "zh-CN": "图片"
+      }
+     },
+     {
+          "type": "text",
+          "id": "htvront_2",
+          "label": {
+            "en": "htvront text2",
+            "zh-CN": "文本"
+          }
+        }, 
+        {
+          "type": "url",
+          "id": "htvrontlink_2",
+          "label": {
+            "en": "htvront Link2",
+            "zh-CN": "链接"
+          }
+        },
+        {
+          "type": "text",
+          "id": "htvront_3",
+          "label": {
+            "en": "htvront text3",
+            "zh-CN": "文本"
+          }
+        },
+        {
+          "type": "url",
+          "id": "htvrontlink_3",
+          "label": {
+            "en": "htvront Link3",
+            "zh-CN": "链接"
+          }
+        },
+        {
+          "type": "text",
+          "id": "htvront_4",
+          "label": {
+            "en": "htvront text4",
+            "zh-CN": "文本"
+          }
+        },
+        {
+          "type": "url",
+          "id": "htvrontlink_4",
+          "label": {
+            "en": "htvront Link4",
+            "zh-CN": "链接"
+          }
+        }, 
+        {
+          "type": "text",
+          "id": "htvront_5",
+          "label": {
+            "en": "htvront text5",
+            "zh-CN": "文本"
+          }
+        }, 
+        {
+          "type": "url",
+          "id": "htvrontlink_5",
+          "label": {
+            "en": "htvront Link5",
+            "zh-CN": "链接"
+          }
+        },
+        {
+          "type": "text",
+          "id": "htvront_6",
+          "label": {
+            "en": "htvront text6",
+            "zh-CN": "文本"
+          }
+        },
+        {
+          "type": "url",
+          "id": "htvrontlink_6",
+          "label": {
+            "en": "htvront Link6",
+            "zh-CN": "链接"
+          }
+        }
+      ]
+    }
+  ]
+  }
+{% endschema %}

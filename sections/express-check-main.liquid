@@ -1,0 +1,88 @@
+<div class="fn-express-check">
+  <div class="fn-expresscheck-main">
+        {% if section.settings.check_banner != blank %}
+            {% assign image = section.settings.check_banner | img_url: '1920x' %}
+            <img  class="fn-expresscheck-bannerimg" src="{{ image }}" alt="">
+        {% endif %}
+        {% if section.settings.mobile_banner != blank %}
+            {% assign image = section.settings.mobile_banner | img_url: '768x' %}
+            <img  class="fn-expresscheck-mobilebannerimg" src="{{ image }}" alt="">
+        {% endif %}
+        <div class="fn-expresscheck-content">
+          <div class="fn-expresscheck-orderinquiry">
+                <div class="fn-expresscheck-contenttitle t">{{  section.settings.check_title }}</div>
+                <div class="fn-expresscheck-Inputquantico">
+                  <input type="text" name="Inputquantico_orderform" placeholder="Enter order number" class="fn-Inputquantico_orderform">
+                  <div class="fn-expresscheck-button">Check</div>
+                </div>
+          </div>
+          <div class="fn-expresscheck-succeeded">
+                <div class="fn-expresscheck-succeedtitle t">Shipping Time For Order '<span id="succeed_name"></span>'</div>
+                <div class="fn-expresscheck-timequantum"></div>
+                <div  class="fn-expresscheck-icon">
+                    <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/ca930508ba76b74cc9ba8525a115f657_fb7cc297-7ae8-47d4-937e-13b6c8b64883.png?v=1665567145" alt="">
+                </div>
+                <div class="fn-expresscheck-Correctprompt">
+                    A confirmation email will be sent to you within one week before delivery, Thanks for your patience! <span class="fn-expresscheck-backtrack">Return check</span>
+                </div>
+          </div>
+          <div class="fn-expresscheck-formalerror">
+                *Your order number is wrong (correct order number for example: #HTVRONT******)
+          </div>
+          <div class="fn-expresscheck-notbelong">
+                <div class="fn-expresscheck-NoDate">
+                  <span class="fn-expresscheck-NoDateicon">!</span>
+                  <span class="t fn-expresscheck-NoDatetitle">No Date</span>
+                </div>
+                <div class="fn-expresscheck-NoDatetext">* Please check whether your order number is a pre-sale heat press order;</div>
+                <div class="fn-expresscheck-NoDatetext">* Due to the problem of system data acquisition timeliness, the delivery information can only be queried 48 hours(Holidays are postponed) after the order is placed.</div>
+          </div>
+           <div class="fn-expresscheck-heat_press">
+                <div class="fn-expresscheck-heat_press_text">View More: </div>
+                <div class="fn-expresscheck-heat_press_link">
+                  <a href="https://www.htvront.com/blogs/news/statement-of-the-delivery-of-auto-heat-press">
+                    Statement of the Delivery of Auto Heat Press
+                  </a>
+                </div>
+          </div>
+        </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "express check",
+    "settings": [
+        {
+			"type": "image_picker",
+			"id": "check_banner",
+			"label": {
+				"en": "express check banner",
+				"zh-CN": "图片"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "mobile_banner",
+			"label": {
+				"en": "mobile banner",
+				"zh-CN": "手机图片"
+			}
+		},
+        {
+            "type": "text",
+            "id": "check_title",
+            "label": {
+                "en": "check title ",
+                "zh-CN": "文本标题"
+            }
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

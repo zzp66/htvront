@@ -1,0 +1,107 @@
+<div class="fn-vote-FAQ">
+      <div class="fn-FAQ-title t">FAQ</div>
+      <div class="fn-FAQ-header">
+        <div class="fn-FAQheader-title t"> {{  section.settings.FAQheader_title }}</div>
+        <div class="fn-FAQheader-text">{{  section.settings.FAQheader_text }}</div>
+      </div>
+    <div class="product__accordion accordion">
+          <details open>
+              <summary>
+                  <div class="summary__title t">{{  section.settings.FAQmain_title }}</div>
+                  <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret faq_active" viewbox="0 0 10 6">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+                      </path></svg>
+              </summary>
+              <div class="summary__content">{{ section.settings.FAQmain_text }}</div>
+          </details>
+    </div>
+    {% for block in section.blocks %}
+      <div class="product__accordion accordion">
+          <details>
+              <summary>
+                  <div class="summary__title t">{{ block.settings.FAQ_subtitle }}</div>
+                  <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewbox="0 0 10 6">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+                      </path></svg>
+              </summary>
+              <div class="summary__content">{{ block.settings.FAQ_content }}</div>
+          </details>
+    </div>
+    {% endfor %}
+    <div class="fn-summary__email">If you have any other concerns, please feel free to email us at <span class="fn-support-mail">support@htvront.com.</span></div>
+    <div class="fn-FAQsummary-button">Contact us</div>
+</div>
+ <script>
+</script>
+{% schema %}
+  {
+    "name": "vote FAQ",
+    "settings": [
+          {
+            "type": "text",
+            "id": "FAQheader_title",
+            "label": {
+                "en": "FAQ header title ",
+                "zh-CN": "文本标题"
+            }
+        },
+        {
+            "type": "text",
+            "id": "FAQheader_text",
+            "label": {
+                "en": "FAQ header text ",
+                "zh-CN": "文本"
+            }
+        },
+        {
+            "type": "text",
+            "id": "FAQmain_title",
+            "label": {
+                "en": "title ",
+                "zh-CN": "文本标题"
+            }
+        },
+        {
+            "type": "text",
+            "id": "FAQmain_text",
+            "label": {
+                "en": "text ",
+                "zh-CN": "文本"
+            }
+        }
+    ],  
+    "blocks": [
+    {
+      "type": "FAQcontent",
+      "name": {
+        "en": "FAQ content",
+        "zh-CN": "内容"
+      },
+      "settings": [
+        {
+          "type":"text",
+          "id":"FAQ_subtitle",
+          "label":{
+          "en":"FAQ subtitle",
+          "zh-CN":"faq标题"
+          }
+        },
+        {
+          "type":"html",
+          "id":"FAQ_content",
+          "label":{
+          "en":"FAQ content",
+          "zh-CN":"faq内容"
+          }
+        }
+      ]
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

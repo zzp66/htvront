@@ -1,0 +1,203 @@
+<style>
+  .bundles-width{
+    width:1600px;
+    margin: 0 auto;
+    display:flex;
+  }
+  .bundle-image{
+    width:380px;
+  }
+  .bundle-product-item .button--full-width{
+    padding:0;
+  }
+  .swiper-bundles{
+    width:100%;
+    padding-bottom: 20px;
+  }
+  .bundle-sale-title{
+    height:50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  .bundle-layout .price{
+    height:48px;
+  }
+  .swiper-box{
+    position:relative;
+  }
+  .bundle-image {
+    width: 24%;
+  }
+  .swiper-box{
+    width:76%;
+    overflow: hidden;
+    margin-left:20px
+  }
+  @media screen and (max-width:1720px){
+    .bundles-width{
+      width:83.3%;
+      overflow: hidden;
+      padding-bottom: 20px;
+    }
+  }
+ @media screen and (max-width:750px){
+    .bundles-width{
+      width:93.6%;
+    }
+    .bundle-image{
+      width:280px;
+      flex-shrink: 0;
+      overflow: hidden;
+      z-index: 2;
+    }
+   .swiper-scrollbar {
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      margin: 0 auto;
+      bottom: -10px;
+   }
+ }
+</style>
+<div class="super-shopping-bundles">
+  <div class="bundles-width">
+    <div class="bundle-image">
+        <img src="{{ section.settings.image | img_url: '380x' }}" alt="">
+    </div>
+    <div class="swiper-box">
+      <div class="swiper-bundles">
+        <div class="swiper-wrapper bundles-wrapper">
+         {% for block in section.blocks %}
+            <div class="bundle-product-item swiper-slide">
+                {%- if block.settings.product.featured_media -%}
+                  <a href="{{ block.settings.product.url }}">
+                    <img
+                      class="img-first"
+                      src="{{ block.settings.product.featured_media | img_url: '420x' }}"
+                      alt="{{ block.settings.product.featured_media.alt | escape }}"
+                      {% unless lazy_load == false %}
+                        loading="lazy"
+                      {% endunless %}
+                    >
+                  </a>
+                {%- endif -%}
+              <div>
+                <div class="bundle-layout">
+                  <div class="bundle-sale-title t">
+                    <a href="{{ block.settings.product.url }}" class="t">{{ block.settings.product.title | escape }}</a>
+                  </div>
+                  <div class="bundle--price">
+                    {% render 'sffers-price', product: block.settings.product, price_class: '' %}
+                  </div>
+                  <div class="price-code">
+                    {% if block.settings.code != blank %}
+                      <div class="code">
+                        <span>Code: {{ block.settings.code }}</span>
+                        <span class="show-pc" onclick="copyticket({{ block.settings.code }})">copy</span>
+                        <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/8_23556d6b-f24f-4b67-8f64-73196bf27b0a.png?v=1691375251" onclick="copyticket({{ block.settings.code }})" class="show-mobile">
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div class="fn-color-attr">
+                    {%- for option in block.settings.product.options_with_values -%}
+                      {%- if option.name == 'Colors' or option.name == 'Color' -%}
+                        <ul>
+                          {%- if option.name == 'Colors' -%}
+                            {% assign colorList = block.settings.product.options_by_name.Colors.values | slice: 0, 5 %}
+                          {%- else -%}
+                            {% assign colorList = block.settings.product.options_by_name.Color.values | slice: 0, 5 %}
+                          {%- endif -%}
+                          {%- for value in colorList -%}
+                            <li>
+                              <a href="{{ block.settings.product.url }}?variant={{ block.settings.product.variants[forloop.index0].id }}">
+                                {%- if block.settings.product.variants[forloop.index0].featured_image != blank -%}
+                                  <img
+                                    src="{{ block.settings.product.variants[forloop.index0].featured_image | img_url: '50x50' }}"
+                                    alt="{{ value }}"
+                                  >
+                                {%- endif -%}
+                              </a>
+                            </li>
+                          {% endfor %}
+                          {%- if option.name == 'Colors' -%}
+                            {% assign size = block.settings.product.options_by_name.Colors.values | size | minus: 5 %}
+                          {%- else -%}
+                            {% assign size = block.settings.product.options_by_name.Color.values | size | minus: 5 %}
+                          {%- endif -%}
+                          {%- if size > 0 -%}
+                            <li class="color-quantity">
+                              <a href="{{ block.settings.product.url }}">+{{ size }}</a>
+                            </li>
+                          {%- endif -%}
+                        </ul>
+                      {%- endif -%}
+                    {% endfor %}
+                  </div>
+                   <div class="heatPress-addcart-sale">
+                    {% render 'easter-addCart', product: block.settings.product %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+        <div class="swiper-scrollbar"></div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<script>
+   var mySwiper2 = new Swiper('.swiper-bundles',{
+     slidesPerView: 3,
+     spaceBetween: 20,
+     scrollbar: {
+      el: '.swiper-scrollbar'
+    },
+   breakpoints:{
+      768:{
+         slidesPerView:1.2,
+         spaceBetween:7,
+      }
+    }
+  })
+</script>
+{% schema %}
+  {
+    "name": "Super-Shopping-Bundles",
+    "settings": [
+      {
+        "type":"image_picker",
+        "id":"image",
+        "label":"image"
+      }
+    ],
+    "blocks":[
+      {
+        "type":"bundle",
+        "name":"bundle",
+        "settings":[
+          {
+            "type": "product",
+            "id": "product",
+            "label": "product item"
+          }
+        ]
+      }
+    ],
+    "presets":[
+      {
+        "name":"Super-Shopping-Bundles"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

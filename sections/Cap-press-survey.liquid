@@ -1,0 +1,687 @@
+{% style %}
+  #shopify-section-{{ section.id }} .cap-press-survey{
+    background: url({{ section.settings.image_bg | img_url:'1920x' }}) no-repeat;
+    background-size: 100% 100%;
+  }
+  @media screen and (max-width: 768px){
+    #shopify-section-{{ section.id }} .cap-press-survey{
+      background: #FFFDEF;
+    }
+  }
+{% endstyle %}
+<style>
+  .cap-press-survey{
+    padding:32px 0;
+    letter-spacing: 0;
+  }
+  .cap-survey-content{
+    margin-left:437px;
+    display:flex;
+  }
+  .cap-survey-left{
+    margin-right:34px
+  }
+  .cap-survey-right{
+    max-width:465px;
+  }
+  .cap-survey-title{
+    font-size: 36px;
+    font-weight: bold;
+    color: #802704;
+    line-height: 42px;
+  }
+  .cap-survey-desc{
+    font-size: 20px;
+    font-weight: 400;
+    color: #802704;
+    line-height: 23px;
+    margin-top:8px;
+    margin-bottom:32px
+  }
+  .cap-survey-btn{
+    width: 202px;
+    height: 56px;
+    line-height:56px;
+    background: #A45822;
+    border-radius: 8px 8px 8px 8px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-align:center;
+    cursor:pointer;
+  }
+  
+  /* 弹窗的样式 */
+  .survey-body-mask{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0;
+    top: 0;
+    z-index: 999;
+    display: none;
+  }
+  .survey-dialog{
+    width:900px;
+    height:800px;
+    background-color:#FFFDEF;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    position: fixed;
+    z-index: 1000;
+    display:none;
+    padding:16px 0 66px 0;
+    color: #802704;
+  }
+  .icon-survey-close{
+    position: absolute;
+    right: 25px;
+    top: 20px;
+    cursor: pointer;
+  }
+  .survey-dialog .title{
+    font-size: 20px;
+    font-weight: bold;
+    color: #802704;
+    line-height: 23px;
+    text-align: center;
+    margin:0 auto;
+    padding-bottom:10px;
+  }
+  .survey-question{
+    padding:0 30px;
+    overflow-y:auto;
+    max-height: 660px;
+  }
+  .multiple-tab>span{
+    padding:8px 15px;
+    font-size: 16px;
+    color: #802704;
+    background: #FFEDD2;
+    display:inline-block;
+    margin:0 8px 10px 0;
+    cursor:pointer;
+  }
+  .multiple-tab>span.active{
+    background: #FFC56E;
+  }
+  .survey-question .second-title{
+    font-size: 16px;
+    font-weight: bold;
+    color: #802704;
+    line-height: 19px;
+    margin-bottom: 12px;
+  }
+  .survey-question>div{
+    margin-bottom:10px;
+  }
+  .survey-submit{
+    padding-top:10px;
+  }
+  .email-input{
+    height: 42px;
+    border-radius: 4px;
+    border: 1px solid #802704;
+    outline: none;
+    background: none;
+    color: #802704;
+    padding-left: 10px;
+    font-size: 16px;
+    width: 100%;
+  }
+  .arrow-icon{
+    vertical-align: 3px;
+  }
+  .first-tab input[type="radio"] {
+    display: none;
+  }
+  .first-tab input[type="radio"] {
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    clip: auto;
+    appearance: none;
+    vertical-align: -1px;
+    position: relative;
+    margin: 0;
+  }
+  .first-tab input[type="radio"]:before{
+    content: '';
+    width: 12px;
+    height: 12px;
+    border: 1px solid #802704;
+    display: inline-block;
+    border-radius: 50%;
+  }
+  .first-tab input[type="radio"]:checked:before{
+    content: '';
+    width: 12px;
+    height: 12px;
+    border: 1px solid #802704;
+    display: inline-block;
+    border-radius: 50%;
+  }
+  .first-tab input[type="radio"]:checked:after{
+    content: '';
+    width: 8px;
+    height: 8px;
+    text-align: center;
+    background: #802704;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+  }
+  .first-tab label{
+    color:#802704;
+    cursor:pointer;
+  }
+  .text-input{
+    display: block;
+    width: 100%;
+    height: 42px;
+    border-radius: 4px;
+    border: 1px solid #802704;
+    background: none;
+    padding-left: 10px;
+    color: #802704;
+    display:none;
+  }
+  .second-tab{
+    display:none;
+    padding-left: 10px;
+  }
+  .first-tab{
+    margin-bottom:8px;
+    font-size: 16px;
+  }
+  .first-tab .tab-title{
+    cursor:pointer;
+    display: inline-block;
+  }
+  .second-tab.active{
+    display:block;
+  }
+  .tab-title .close-icon{
+    display:inline-block;
+  }
+  .tab-title .open-icon{
+    display:none;
+  }
+  .tab-title.active .close-icon{
+    display:none;
+  }
+  .tab-title.active .open-icon{
+    display:inline-block;
+  }
+  .survey-submit>div{
+    width: 160px;
+    height: 48px;
+    background: #A45822;
+    border-radius: 6px;
+    margin: 0 auto;
+    line-height: 48px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+  }
+  .survey-submit-message,.error-message,.finish-message{
+    text-align: center;
+    font-size: 14px;
+    color: #A45822;
+    display:none;
+  }
+  .survey-submit .loading-svg{
+    padding-top:6px;    
+    margin: 0 auto;
+  }
+  #survey_loading{
+    display:none;
+  }
+  .submit-finish{
+    display:none;
+  }
+   @media screen and (max-width: 1440px){
+     .cap-survey-content{
+       margin-left:18%
+     }
+   }
+  @media screen and (max-width: 1280px){
+     .cap-survey-content{
+       margin-left:12%
+     }
+    .survey-dialog{
+      width: 70%;
+      height: 85%;
+     }
+    .survey-question{
+      max-height: calc(100% - 65px);
+    }
+   }
+  @media screen and (max-width: 1080px){
+     .cap-survey-content{
+       margin-left:18px
+     }
+    .cap-survey-title{
+      font-size:24px;
+      line-height:36px
+    }
+   }
+  @media screen and (max-width: 768px){
+    .cap-press-survey{
+      padding:20px 0 30px
+    }
+    .cap-survey-content{
+      width:90%;
+      margin:0 auto;
+      flex-flow: column-reverse
+    }
+    .cap-survey-right{
+      max-width:100%;
+      width:100%
+    }
+    .cap-survey-btn{
+      width:163px
+    }
+    .cap-survey-left{
+      margin:11px auto 0 auto
+    }
+    
+  }
+  @media screen and (max-width: 480px){
+    .cap-survey-title{
+      font-size:16px;
+      line-height:19px;
+    }
+    .cap-survey-desc{
+      font-size:14px;
+      line-height:16px;
+      margin-bottom:12px
+    }
+    .cap-survey-btn{
+      font-size:14px;
+      height:44px;
+      line-height:44px
+    }
+    .cap-survey-left{
+      width: 81.5%;
+    }
+    .icon-survey-close{
+      width: 18px;
+      top: 15px;
+      right: 15px;
+    }
+    .survey-question{
+      padding:0 10px;
+    }
+    .survey-dialog .title{
+      font-size: 16px;
+      line-height: 21px;
+    }
+    .survey-question .second-title{
+      font-size: 14px;
+      line-height: 16px;
+      margin-bottom: 10px;
+    }
+    .survey-dialog {
+      width: 93%;
+      height: 90%;
+    }
+    .survey-submit>div{
+      width: 162px;
+      height: 44px;
+      background: #A45822;
+      line-height: 44px;
+      font-size: 14px;
+    }
+  }
+</style>
+<div class="cap-press-survey"  id="{{ section.settings.id }}">
+  <div class="cap-survey-content">
+    <div class="cap-survey-left">
+      <img src="{{ section.settings.image_left | img_url:'371x' }}" />
+    </div>
+    <div class="cap-survey-right">
+      <div class="cap-survey-title">
+        {{ section.settings.title }}
+      </div>
+      <div class="cap-survey-desc">
+        {{ section.settings.description }}
+      </div>
+      {% if section.settings.btn_hidden %}
+        <div class="cap-survey-btn">GO NOW</div>  
+      {% endif %}
+    </div>
+  </div>
+</div>
+<div class="survey-body-mask"></div>
+<div class="survey-dialog">
+   <img
+      class="icon-survey-close close-btn"
+      src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/a016b412f93b877a827866a90379da25.png?v=1704260498"
+    >
+  <div class="title">Questionnaire</div>
+  <div class="survey-question">
+    <div class="email-box">
+      <p class="second-title">1.Please enter your email</p>
+      <div>
+         <input class="email-input" type="text" placeholder="">
+      </div>
+    </div>
+    <div class="single-choice">
+      <p class="second-title">2.Where did you learn about the new HTVRONT Hat Heat Press?（single-choice</p>
+      <div class="single-tab">
+        <div class="first-tab">
+          <div>
+             <input type="radio" name="radio" value="HTVRONT Official Website" id="radio1">
+             <label for="radio1">HTVRONT Official Website</label>
+          </div>
+        </div>
+        <div class="first-tab">
+          <div class="tab-title">
+            <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/1_1db5aeaf-6cf1-44cc-8dd4-f96450fadd68.png?v=1704265515" class="arrow-icon close-icon">
+            <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/b8cdf73e159b7d07a94a29462cc2a15d.png?v=1704265516" class="arrow-icon open-icon">
+            <span>HTVRONT Social Accounts</span>
+          </div>
+          <div class="second-tab">
+            <div class="tab-item">
+              <input type="radio" name="radio" value="Facebook" id="radio2">
+              <label for="radio2">Facebook</label>
+            </div>
+            <div class="tab-item">
+              <input type="radio" name="radio" value="TikTok" id="radio3">
+              <label for="radio3">TikTok</label>
+            </div>
+            <div class="tab-item">
+              <input type="radio" name="radio" value="Instagram" id="radio4">
+              <label for="radio4">Instagram</label>
+            </div>
+            <div class="tab-item">
+              <input type="radio" name="radio" value="YouTube" id="radio5">
+              <label for="radio5">YouTube</label>
+            </div>
+          </div>
+        </div>
+        <div class="first-tab">
+          <div class="tab-title">
+            <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/1_1db5aeaf-6cf1-44cc-8dd4-f96450fadd68.png?v=1704265515" class="arrow-icon close-icon">
+            <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/b8cdf73e159b7d07a94a29462cc2a15d.png?v=1704265516" class="arrow-icon open-icon">
+            <span>Influencer</span>
+          </div>
+          <div class="second-tab">
+            <div class="tab-item">
+              <input type="radio" name="radio" value="beverlygarcia94" id="radio6">
+              <label for="radio6">beverlygarcia94</label>
+            </div>
+            <div class="tab-item">
+              <input type="radio" name="radio" value="wishingstarwarehouse" id="radio13">
+              <label for="radio13">wishingstarwarehouse</label>
+            </div>
+            <div class="tab-item">
+              <input type="radio" name="radio" value="homegoodiys" id="radio14">
+              <label for="radio14">homegoodiys</label>
+            </div>
+            <div class="tab-item">
+              <input type="radio" name="radio" value="vibe.desings" id="radio15">
+              <label for="radio15">vibe.desings</label>
+            </div>
+            <div class="tab-item">
+              <input type="radio" name="radio" value="soniacaminante" id="radio16">
+              <label for="radio16">soniacaminante</label>
+            </div>
+            <div class="tab-item">
+              <input type="radio" name="radio" value="Other" id="radio7" class="other-input">
+              <label for="radio7">Other</label>
+              <input type="text" name="text" class="text-input other">
+            </div>
+          </div>
+        </div>
+        <div class="first-tab">
+          <div class="tab-title">
+            <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/1_1db5aeaf-6cf1-44cc-8dd4-f96450fadd68.png?v=1704265515" class="arrow-icon close-icon">
+            <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/b8cdf73e159b7d07a94a29462cc2a15d.png?v=1704265516" class="arrow-icon open-icon">
+            <span>Online News Resources</span>
+          </div>
+          <div class="second-tab">
+            <div class="tab-item">
+              <input type="radio" name="radio" value="michellespartyplanit" id="radio8">
+              <label for="radio8">michellespartyplanit</label>
+            </div>
+            <div class="tab-item">
+              <input type="radio" name="radio" value="CraftingwithDelonda" id="radio17">
+              <label for="radio17">CraftingwithDelonda</label>
+            </div>
+            <div class="tab-item">
+              <input type="radio" name="radio" value="honestbrandreviews" id="radio18">
+              <label for="radio18">honestbrandreviews</label>
+            </div>
+            <div class="tab-item">
+              <input type="radio" name="radio" value="thehowtohome" id="radio19">
+              <label for="radio19">thehowtohome</label>
+            </div>
+            <div class="tab-item">
+              <input type="radio" name="radio" value="doodlecraftblog" id="radio20">
+              <label for="radio20">doodlecraftblog</label>
+            </div>
+          </div>
+        </div>
+        <div class="first-tab">
+          <div class="tab-title">
+            <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/1_1db5aeaf-6cf1-44cc-8dd4-f96450fadd68.png?v=1704265515" class="arrow-icon close-icon">
+            <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/b8cdf73e159b7d07a94a29462cc2a15d.png?v=1704265516" class="arrow-icon open-icon">
+            <span>Search Engine</span>
+          </div>
+          <div class="second-tab">
+            <div class="tab-item">
+              <input type="radio" name="radio" value="Google" id="radio9">
+              <label for="radio9">Google</label>
+            </div>
+            <div class="tab-item">
+              <input type="radio" name="radio" value="Bing" id="radio10">
+              <label for="radio10">Bing</label>
+            </div>
+          </div>
+        </div>
+        <div class="first-tab">
+          <div>
+             <input type="radio" name="radio" value="Livestream" id="radio11">
+             <label for="radio11">Livestream</label>
+          </div>
+        </div>
+        <div class="first-tab">
+          <div>
+             <input type="radio" name="radio" value="Other(Please Specify)" id="radio12">
+             <label for="radio12">Other(Please Specify)</label>
+             <input type="text" name="text" class="text-input specify">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="multiple-choices">
+      <p class="second-title">3.What features do you like about the hat heat press?（multiple choices）</p>
+      <div class="multiple-tab">
+        <span>Nice-looking</span>
+        <span>Cheap price</span>
+        <span>Easy-to-use</span>
+        <span>Compact size</span>
+        <span>Wide application</span>
+        <span>DIY fun</span>
+        <span>High security</span>
+        <span>Great customer service</span>
+      </div>
+    </div>
+  </div>
+  <div class="survey-submit">
+    <div id="survey_submit">
+      <span class="submit-text">Submit</span>
+    </div>
+    <div class="close-btn submit-finish">
+      <span class="submit-text">Finish</span>
+    </div>
+    <div id="survey_loading">
+      <div class="loading-svg">
+         <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+          <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="survey-submit-message">*Please complete the form before submitting</div>
+  <div class="error-message">*Please enter the correct email address.</div>
+  <div class="finish-message">Thank you for your participation!</div>
+</div>
+<script>
+   $(function(){
+     $('#survey_submit').on('click',function(){
+       $('#survey_loading').show();
+       $('#survey_submit').hide();
+       var understand = '';
+       var email = '';
+       var characteristic = '';
+       var reg=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+       email = $('.email-input').val()
+       if(!reg.test(email)){
+         $('.error-message').show()
+         $('#survey_loading').hide();
+         $('#survey_submit').show();
+          return false;
+       }else{
+         $('.error-message').hide()
+       }
+       $('input[name="radio"]').each(function(index,item){
+          if($(item).attr('checked') === 'checked'){
+             if($(item).val() === 'Other(Please Specify)'){
+               understand = $('.text-input.specify').val()
+             }else if($(item).val() === 'Other'){
+               understand = $('.text-input.other').val()
+             }else{
+                understand = $(item).val()
+             }
+          }
+       })
+       $('.multiple-tab span').each(function(index,item){
+         if($(item).hasClass('active')){
+           characteristic += $(item).text()+ ",";
+         }
+       })
+       if(!understand || !email || !characteristic){
+         $('.survey-submit-message').show();
+         $('#survey_loading').hide();
+         $('#survey_submit').show();
+         return
+       }else{
+         $('.survey-submit-message').hide();
+       }
+       var data = {market: "US_HTVRONT(shopify)",email: email,understand:understand,characteristic:characteristic}
+       var jsonData = JSON.stringify(data)
+       $.ajax({
+        url: "https://qn.htvront.com/hat/pressing/submit",
+        method: "POST",
+        data: jsonData,
+        contentType: 'application/json',
+        success: function(res) {
+          $('.tab-title,.second-tab').removeClass('active')
+          $('.email-input,.text-input.other,.text-input.specify').val('')
+          $('input[name="radio"]').each(function(index,item){
+            $(item).attr('checked',false)
+          })
+          $('.multiple-tab span').each(function(index,item){
+             $(item).removeClass('active')
+           })
+          $('.submit-finish,.finish-message').show();
+          $('#survey_loading,#survey_submit').hide();
+        },
+        error:function(xhr,status,error){}
+       })
+     })
+     $('.cap-survey-btn').click(function(){
+        $('.survey-dialog,.survey-body-mask').show()
+        $('body').css({"overflow":"hidden"})
+     })
+     $('.close-btn').click(function(){
+        $('.tab-title,.second-tab').removeClass('active')
+        $('.email-input,.text-input.other,.text-input.specify').val('')
+        $('input[name="radio"]').each(function(index,item){
+          $(item).attr('checked',false)
+        })
+        $('.multiple-tab span').each(function(index,item){
+           $(item).removeClass('active')
+         })
+        $('#survey_submit').show();
+        $('.survey-dialog,.survey-body-mask,#survey_loading,.submit-finish,.finish-message,.text-input.other,.text-input.specify,.error-message').hide()
+        $('body').css({"overflow":"auto"})
+     })
+     $('.multiple-tab span').click(function(){
+       $(this).toggleClass('active')
+     })
+     $('.tab-title').click(function(){
+       $(this).toggleClass('active')
+       $(this).siblings().toggleClass('active')
+     })
+     $('input[name="radio"]').change(function(){
+         $(this).attr('checked',true)
+         var currentRadio = $('input[name="radio"]:checked');
+        $('input[name="radio"]').not(currentRadio).removeAttr('checked');
+        if($(this).val() == 'Other'){
+          $('.text-input.other').show()
+        }else{
+          $('.text-input.other').hide()
+        }
+        if($(this).val() == 'Other(Please Specify)'){
+           $('.text-input.specify').show()
+        }else{
+          $('.text-input.specify').hide()
+        }
+     })
+   })
+</script>
+{% schema %}
+  {
+    "name": "Cap Press Survey",
+    "settings": [
+       {
+        "type": "text",
+        "id": "id",
+        "label": "id(页面唯一性，全英文)"
+      },
+      {
+        "type": "image_picker",
+        "id":"image_bg",
+        "label":"image_bg"
+      },
+      {
+        "type": "image_picker",
+        "id":"image_left",
+        "label":"image_left"
+      },{
+        "type": "text",
+        "id":"title",
+        "label":"title"
+      },{
+        "type": "text",
+        "id":"description",
+        "label":"text"
+      },{
+        "type": "checkbox",
+        "id":"btn_hidden",
+        "label":"goNow_hidden"
+      }
+    ],
+    "presets":[
+        {
+            "name":"Cap Press Survey"
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

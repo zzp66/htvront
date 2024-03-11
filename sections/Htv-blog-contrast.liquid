@@ -1,0 +1,410 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} .htv-blog-contrast{
+    background:{{ section.settings.bgColor }};
+  }
+{%- endstyle -%}
+<style>
+  .htv-blog-contrast{
+    padding:50px 0 40px 0
+  }
+  .htv-blog-content{
+    width:1600px;
+    margin:0 auto;
+    background: #FBEBD5;
+    border-radius: 10px;
+  }
+  .htv-blog-tabs{
+    display:flex
+  }
+  .htv-blog-tab{
+    width:50%;
+    text-align:center;
+    height: 80px;
+    line-height: 80px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #D68029;
+    cursor: pointer;
+  }
+  .htv-blog-noactivea{
+    background:url('https://cdn.shopify.com/s/files/1/0356/5997/2741/files/1_8d918562-7fde-4f49-8615-4c7b03a737e5.png?v=1690273000') no-repeat;
+    background-size: 100% 100%;
+    color:#FFFFFF
+  }
+  .htv-blog-noactiveb{
+    background:url('https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230726-111407.png?v=1690341607')  no-repeat;
+    background-size: 100% 100%;
+    color:#FFFFFF
+  }
+  .htv-contrast-content{
+    display:flex;
+    padding: 20px 30px;
+    align-items: center;
+  }
+  .htv-contrast-content>div{
+    margin-right:20px;
+    flex:1
+  }
+  .htv-contrast-content .htv-contrast-text{
+    margin-right:0px
+  }
+  .htv-contrast-product{
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding:14px 15px 26px 17px
+  }
+  .contrast-text-item{
+    margin-bottom:37px;
+    color:#884A16
+  }
+  .contrast-item-title{
+    display:flex;
+    font-size: 19px;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+  }
+  .contrast-item-title img{
+    margin-right:7px
+  }
+  .contrast-item-content{
+    font-size: 14px;
+    line-height: 19px;
+    text-align: justify;
+  }
+  .contrast-item-content p{
+    font-size: 16px;
+    font-weight: bold;
+    color: #884A16;
+    line-height: 22px;
+    text-align:center;
+    margin-bottom:4px;
+    margin-top:10px
+  }
+  .htv-blog-contrast .fn-product-layout{
+    margin-top: 35px;
+  }
+  .htv-blog-contrast .fn-product-title .t{
+     font-size: 16px;
+    line-height: 26px;
+    height:48px
+  }
+  .htv-blog-contrast .fn-product-price{
+       width: 28%;
+     }
+  .htv-blog-contrast .fn-compareat_price{
+    text-align: right;
+  }
+  .htv-blog-contrast .fn-compareat_price .fn-compare-at_price{
+    font-weight: normal;
+    margin-top:8px
+  }
+  .htv-blog-contrast .fn-color-attr{
+    margin-top:26px;
+    margin-bottom:20px
+  }
+  .htv-blog-contrast .fn-color-attr ul li{
+    width: 40px;
+    height: 40px;
+  }
+  .htv-blog-contrast .fn-color-attr ul li img{
+    width: 39px;
+    height: 39px;
+  }
+   .htv-blog-contrast .fn-color-attr ul li+li{
+     margin-left:14px
+   }
+  .htv-blog-contrast .button--full-width{
+    border-radius: 4px;
+    border: 1px solid #FF7606;
+    font-size:16px;
+    color:#FF7606;
+    background:#fff;
+    height: 64.68px;
+    padding:0;
+    --border-opacity: none;
+    --border-offset: none;
+  }
+  .htv-blog-sublimation{
+    display:none
+  }
+  @media screen and (max-width: 1650px){
+    .htv-blog-content{
+      width:83.33%
+    }
+  }
+  @media screen and (max-width: 1440px){
+    .htv-blog-tab{
+      height: 60px;
+      line-height: 60px;
+    }
+    .contrast-text-item{
+      margin-bottom:20px
+    }
+    .contrast-text-item:nth-child(2){
+      margin-bottom:0
+    }
+  }
+  @media screen and (max-width: 1366px){
+    .htv-contrast-content{
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+    .htv-contrast-content>div{
+      flex:initial;
+      margin-right:0
+    }
+    .htv-contrast-product{
+      width:49%;
+      margin-bottom:20px
+    }
+    .htv-contrast-text{
+      width:80%;
+      margin-left:0
+    }
+    .contrast-text-item{
+      margin-bottom:37px
+    }
+  }
+  @media screen and (max-width: 1180px){
+    .htv-blog-contrast .fn-product-layout{
+      margin-top:15px
+    }
+    .htv-blog-contrast .fn-color-attr{
+      margin-top:15px;
+      margin-bottom:15px
+    }
+    .htv-blog-contrast .button--full-width{
+      height:45px;
+      min-height:45px
+    }
+  }
+  @media screen and (max-width: 750px){
+    .htv-blog-contrast{
+      padding:20px 0
+    }
+    .htv-blog-content{
+      width:93.6%;
+      border-radius:4px
+    }
+    .htv-blog-tab {
+      height: 40px;
+      line-height: 40px;
+      font-size: 14px;
+    }
+    .htv-contrast-content{
+      padding:10px 6px;
+      justify-content: space-between;
+    }
+    .htv-contrast-product{
+      padding:5px 4px 11px 5px;
+      border-radius:4px
+    }
+
+    .htv-blog-contrast .fn-product-title .t{
+      font-size: 14px;
+      line-height: 19px;
+      height: 38px;
+    }
+     .htv-blog-contrast .fn-product-layout{
+      margin-top:2px
+    }
+    .htv-blog-contrast .fn-color-attr{
+      margin-top:5px;
+      margin-bottom:5px;
+      height: 18px;
+    }
+    .htv-blog-contrast .button--full-width{
+      height:32px;
+      min-height:32px;
+      border-radius:2px;
+      font-size: 14px;
+    }
+    .htv-blog-contrast .fn-compareat_price{
+      flex-direction: inherit;
+      text-align: left;
+      align-items: baseline;
+    }
+    .htv-blog-contrast .fn-compareat_price .fn-compare-at_price{
+      margin-top:0;
+      margin-left: 4px;
+    }
+    .fn-color-attr ul .color-quantity{
+      line-height: 1;
+    }
+    .htv-blog-contrast .fn-color-attr ul li{
+      width: 18px;
+      height: 18px;
+    }
+    .htv-blog-contrast .fn-color-attr ul li+li{
+      margin-left:2px
+    }
+    .htv-blog-contrast .fn-color-attr ul li img{
+      width: 16px;
+      height: 16px;
+    }
+    .contrast-item-title{
+      font-size:16px
+    }
+    .contrast-item-content p{
+      margin-top: 7px;
+      font-size:14px
+    }
+    .contrast-text-item{
+      margin-bottom:10px
+    }
+    .contrast-text-item:nth-child(2){
+      margin-bottom:20px
+    }
+    .htv-contrast-text{
+      width:100%
+    }
+  }
+</style>
+<div class="htv-blog-contrast">
+  <div class="htv-blog-content">
+    <div class="htv-blog-tabs">
+      {% for block in section.blocks %}
+        <div class="htv-blog-tab">{{ block.settings.title }}</div>
+      {% endfor %}
+    </div>
+    {% for block in section.blocks %}
+      {% assign className = 'htv-blog-transfer' %}
+      {% assign className = 'htv-blog-transfer' %}
+      {% if forloop.index == 1 %}
+        {% assign className = 'htv-blog-transfer' %}
+      {% else %}
+        {% assign className = 'htv-blog-sublimation' %}
+      {% endif %}
+      <div class="{{ className }} htv-contrast-content">
+        <div class="htv-contrast-product">
+          {% render 'product-Model',
+            card_product: block.settings.producta,
+            progress: false,
+            colorSize: true,
+            buttonSeat: 'fileSteam',
+            buttonText: 'ADD TO CART',
+            title: 'flex',
+            pirce: 'intitle'
+          %}
+        </div>
+        <div class="htv-contrast-product">
+          {% render 'product-Model',
+            card_product: block.settings.productb,
+            progress: false,
+            colorSize: true,
+            buttonSeat: 'fileSteam',
+            buttonText: 'ADD TO CART',
+            title: 'flex',
+            pirce: 'intitle'
+          %}
+        </div>
+        <div class="htv-contrast-text">
+          <div class="contrast-text-item">
+            <div class="contrast-item-title">
+              <img src="{{ block.settings.props_icon | img_url:'32x' }}">
+              {{ block.settings.props_title }}
+            </div>
+            <div class="contrast-item-content">
+              {{ block.settings.props_content }}
+            </div>
+          </div>
+          <div class="contrast-text-item">
+            <div class="contrast-item-title">
+              <img src="{{ block.settings.cons_icon | img_url:'38x' }}">
+              {{ block.settings.cons_title }}
+            </div>
+            <div class="contrast-item-content">
+              {{ block.settings.cons_content }}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+<script>
+  $(function(){
+     $('.htv-blog-tab').eq(1).addClass('htv-blog-noactivea')
+     $('.htv-blog-sublimation').eq(0).hide()
+      $('.htv-blog-tab').click(function(){
+        var inde = $(this).index()
+        if(inde == 0){
+          $('.htv-blog-tab').eq(1).addClass('htv-blog-noactivea')
+          $('.htv-blog-tab').eq(0).removeClass('htv-blog-noactiveb')
+          $('.htv-blog-transfer').eq(0).show()
+          $('.htv-blog-sublimation').eq(0).hide()
+        }else{
+          $('.htv-blog-tab').eq(0).addClass('htv-blog-noactiveb')
+          $('.htv-blog-tab').eq(1).removeClass('htv-blog-noactivea')
+          $('.htv-blog-transfer').eq(0).hide()
+          $('.htv-blog-sublimation').eq(0).css('display',"flex")
+        }
+      })
+  })
+</script>
+{% schema %}
+{
+  "name": "Htv Blog Contrast",
+  "max_blocks": 2,
+  "settings": [
+    {
+      "type":"color",
+      "id":"bgColor",
+      "label":"bgColor"
+    }
+  ],
+  "blocks":[
+    {
+      "type":"desecription",
+      "name":"contrast",
+      "settings":[{
+        "type":"text",
+        "id":"title",
+        "label":"title"
+      },{
+        "type":"product",
+        "id":"producta",
+        "label":"producta"
+      },{
+        "type":"product",
+        "id":"productb",
+        "label":"productb"
+      },{
+        "type":"text",
+        "id":"props_title",
+        "label":"props-title"
+      },{
+        "type":"image_picker",
+        "id":"props_icon",
+        "label":"props-title-icon"
+      },{
+        "type":"text",
+        "id":"cons_title",
+        "label":"cons-title"
+      },{
+        "type":"image_picker",
+        "id":"cons_icon",
+        "label":"cons-title-icon"
+      },{
+        "type":"html",
+        "id":"props_content",
+        "label":"props-content"
+      },{
+        "type":"html",
+        "id":"cons_content",
+        "label":"cons-content"
+      }]
+    }
+  ],
+  "presets":[{
+      "name":"Htv Blog Contrast"
+    }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

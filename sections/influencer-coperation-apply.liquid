@@ -1,0 +1,43 @@
+<div class="influencer-sidebar-apply">
+  {% if section.settings.selfFlag %}
+    <a href="javascript:void(0)" id="selfApply"></a>
+  {% else %}
+    <a href="{{ section.settings.link }}" target="_blank"></a>
+  {% endif %}
+
+  {% assign image = section.settings.img | img_url: '62x' %}
+  <img src="{{ image }}">
+  <p>Apply</p>
+</div>
+
+{% schema %}
+{
+  "name": "Coperation Apply",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "img",
+      "label": "img"
+    },
+    {
+      "type": "checkbox",
+      "id": "selfFlag",
+      "label": "self selection flag"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "best seller link"
+    }
+  ],
+  "presets": [{
+    "name": "Influencer Coperation Apply"
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,131 @@
+<style>
+  .fans-buy-more-bond{
+    padding:40px 20px 0;
+  }
+  .bond-title{
+   text-align:center; 
+  }
+  .bond-title>p{
+    font-weight: bold;
+    font-size: 40px;
+    color: #7E3C00;
+    line-height: 47px;
+  }
+  .bond-title>span{
+    font-weight: 600;
+    font-size: 16px;
+    color: #7E3C00;
+    line-height: 19px;
+    display: inline-block;
+    padding:0 203px;
+    margin: 15px 0 20px;
+  }
+  .bond-content{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+  }
+  .bond-item{
+    background: #FFFFFF;
+    border-radius: 20px;
+    border: 3px solid #7E3C00;
+    margin-bottom: 20px;
+    width: 49.5%;
+  }
+  .bond-item:nth-child(1){
+    width:100%;
+  }
+  .bond-item .image-box{
+    height:390px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .bond-item .item-text{
+    font-weight: 600;
+    font-size: 20px;
+    color: #7E3C00;
+    line-height: 23px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90px;
+    background: #FFF4E2;
+    border-radius: 0 0 20px 20px;
+    border-top: 3px solid #7E3C00;
+  }
+ @media screen and (max-width: 1440px) {
+   .fans-buy-more-bond{
+    padding: 20px 20px 0;
+   }
+   .bond-title>p{
+     font-size: 30px;
+     line-height: 34px;
+   }
+ }
+</style>
+<div class="fans-buy-more-bond buy-more-style">
+  <div class="bond-title">
+    <p>{{ section.settings.title }}</p>
+    <span>{{ section.settings.desc }}</span>
+  </div>
+  <div class="bond-content">
+    {% for block in section.blocks %}
+      <div class="bond-item">
+        <div class="image-box">
+           {% assign imageUrl = block.settings.image_url | append: 'x' %}
+           {% assign imageUrlMobile = block.settings.image_mobile_url | append: 'x' %}
+            <picture>
+              <source media="(max-width: 750px)" srcset="{{ block.settings.image_mobile | img_url:imageUrlMobile}}">
+              <source media="(min-width: 751px)" srcset="{{ block.settings.image | img_url:imageUrl}}">
+              <img src="{{ block.settings.image | img_url: imageUrl }}" class="bond-image">
+            </picture>
+        </div>
+        <div class="item-text">
+          {{ block.settings.html_text }}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Fans-buy-more-bond",
+    "settings": [
+      {
+        "type":"text",
+        "id":"title",
+        "label":"title"
+      },{
+        "type":"text",
+        "id":"desc",
+        "label":"desc"
+      }
+    ],
+    "blocks":[{
+      "type":"block",
+      "name": "block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },{
+          "type":"html",
+          "id":"html_text",
+          "label":"text"
+        },{
+            "type":"text",
+            "id":"image_url",
+            "label":"图片宽度尺寸（PC）"
+        },
+        {
+            "type":"text",
+            "id":"image_mobile_url",
+            "label":"图片宽度尺寸（移动）"
+        }
+      ]
+    }]
+  }
+{% endschema %}

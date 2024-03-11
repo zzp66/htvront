@@ -1,0 +1,114 @@
+<style>
+  .cup-join-buttons{
+    width: 80px;
+    height: 196px;
+    background: linear-gradient(180deg, #2F0000 0%, #1C0000 100%);
+    box-shadow: 0px 12px 12px 4px rgba(59,0,0,0.8);
+    border-radius: 5px;
+    padding:10px 7px 17px 7px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    position: fixed;
+    right: 0;
+    top: 60%;
+    z-index:10;
+    align-items: center;
+  }
+  .cup-join-buttons>a{
+    width: 58px;
+    height: 58px;
+    background: #FFFFFF;
+    box-shadow: 0px 8px 10px 1px rgba(0,0,0,0.25);
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .cup-join-buttons>a:nth-child(2){
+    margin-bottom:10px;
+  }
+  .cup-join-buttons>a>img{
+    margin:0 auto;
+    padding-top: 10px;
+  }
+  .cup-join-buttons>p{
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    letter-spacing: 0;    
+    padding-bottom: 8px;
+    color: #fff;
+  }
+  @media screen and (max-width:750px){
+    .cup-join-buttons{
+      width: 49px;
+      height: 140px;
+      left: 0;
+      padding: 2px 5px 12px 4px;
+      box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.1);
+    }
+    .cup-join-buttons>a{
+      width: 40px;
+      height: 40px;
+      box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.1), 0px 2px 4px 0px rgba(0,0,0,0.18);
+    }
+    .cup-join-buttons>a>img{
+      width:28px;
+      padding-top: 7px;
+    }
+    .cup-join-buttons>a:nth-child(2){
+      margin-bottom:5px;
+    }
+    .cup-join-buttons>p{
+      line-height:19px;
+      padding-bottom: 3px;
+    }
+  }
+</style>
+<div class="cup-join-buttons">
+  <p>Share on</p>
+  <a href="{{ section.settings.twitter_link }}" target="_blank" onclick="getClick('{{ section.settings.twitter_id }}')">
+    <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/33d94a9e-447d-4bf0-9e04-7bb741eeea4f_1.png?v=1698886980">
+  </a>
+  <a href="{{ section.settings.facebook_link }}" target="_blank" id="{{ section.settings.facebook_id }}"onclick="getClick('{{ section.settings.facebook_id }}')">
+    <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/img_v2_330b376d-885a-42ab-a7b8-44a7491d07ag_1.png?v=1690184277">
+  </a>
+</div>
+<script>
+  function getClick(name){
+     $.ajax({
+      type: 'get',
+      dataType: 'json',
+      url: 'https://qn.htvront.com/htvront-blindBox/click',
+      data: {site: 'US',module:'运营资源位',clickName:name}
+    });
+  }
+</script>
+{% schema %}
+  {
+    "name": "Black Friday Share",
+    "settings": [
+      {
+        "type":"text",
+        "id":"twitter_id",
+        "label":"twitter id"
+      },{
+        "type":"url",
+        "id":"twitter_link",
+        "label":"Twitter Link"
+      },{
+        "type":"text",
+        "id":"facebook_id",
+        "label":"Facebook id"
+      },{
+        "type":"url",
+        "id":"facebook_link",
+        "label":"Facebook Link"
+      }
+    ],
+    "presets":[
+        {
+          "name":"Black Friday Share"
+        }
+    ]
+  }
+{% endschema %}

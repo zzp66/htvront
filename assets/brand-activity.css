@@ -1,0 +1,195 @@
+.fn-activity-banner {
+    position: relative;
+}
+.fn-activity-hot {
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+.fn-hot-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFFFFF;
+    line-height: 24px;
+}
+.fn-hot-text {
+    font-size: 16px;
+    color: #fff;
+    line-height: 18px;
+    margin-top: 14px;
+      letter-spacing: -0.1px;
+}
+.state-color-orange {
+   background: #FF7606;
+}
+.state-orange {
+   background: #FF7606;
+}
+.state-blue {
+    background: #0675FF;
+}
+.fn-activity-nav {
+    max-width: 790px;
+    margin: 80px auto 0 auto;
+}
+ul.fn-activity-lsit {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 60px;
+      cursor: pointer;
+}
+ul.fn-activity-lsit li {
+    width: 250px;
+    height: 50px;
+    line-height: 50px;
+    background: #F5F5F5;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
+}
+ul.fn-activity-lsit>.activity_active{
+    background: #FF7606;
+    color: #fff;
+}
+.activity-content-list {
+  display: none;
+}
+.nav-all-events {
+  display: block;
+}
+.fn-all-events {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+ul.fn-events-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 80px;
+}
+ul.fn-events-list li {
+    background: #FFFFFF;
+    box-shadow: 0 4px 14px #0000000a;
+    border-radius: 16px;
+    margin-bottom: 30px;
+}
+.fn-events-tab {
+    position: relative;
+}
+.fn-events-state {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 164px;
+    height: 50px;
+    border-radius: 10px 0px 16px 0px;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.fn-events-guild {
+    max-width: 385px;
+    justify-content: space-between;
+}
+a.fn-more-link,.fn-events-note, .fn-events-guild {
+    display: flex;
+    align-items: center;
+}
+.note_icon {
+    margin-right: 10px;
+}
+p.fn-events-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    line-height: 18px;
+    margin: 18px 0 18px 0;
+}
+.fn-calendar-text,
+span.more_text,
+.fn-location-text {
+    font-size: 14px;
+    color: #333333;
+}
+span.more_text {
+    display: inline-block;
+    font-weight: bold;
+    line-height: 14px;
+    margin-right: 10px;
+}
+a.fn-more-link {
+    margin: 40px 0 30px 0;
+}
+.fn-events-container {
+    padding: 0 32px;
+}
+@media screen and (min-width: 1024px) and (max-width: 1440px){
+ul.fn-events-list li {
+    width: 49.3%;
+}
+  ul.fn-events-list {
+    padding: 0 20px;
+}
+}
+@media screen and (min-width: 769px) and (max-width: 1024px){
+ul.fn-events-list li {
+    width: 49.3%;
+}
+  ul.fn-events-list {
+    padding: 0 20px;
+}
+}
+@media screen and (max-width: 768px){
+ul.fn-events-list li {
+    width: 49.3%;
+}
+  ul.fn-events-list {
+    padding: 0 20px;
+}
+  .fn-activity-nav {
+    margin: 35px auto 0;
+}
+  ul.fn-activity-lsit li {
+    max-width: 115px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: -0.5px;
+}
+  ul.fn-activity-lsit {
+    padding: 0 5px;
+    margin-bottom: 30px;
+}
+  ul.fn-events-list {
+    padding: 0px 5px;
+}
+  ul.fn-events-list li {
+    width: 100%;
+}
+  .fn-events-state {
+    width: 100px;
+    height: 35px;
+    border-radius: 5px 0 5px;
+    line-height: 35px;
+    font-size: 12px;
+}
+.fn-events-container {
+    padding: 0 10px;
+}
+  span.more_text, .fn-location-text,.fn-calendar-text {
+    font-size: 12px;
+    color: #333;
+}
+  p.fn-events-title {
+    font-size: 14px;
+}
+}

@@ -1,0 +1,424 @@
+<style>
+  .super-shopping-bundles{
+    text-align:center;
+    color: #723600;
+    padding-top:50px;
+  }
+  .bundle-width{
+    width:1600px;
+    margin:0 auto;
+    position: relative;
+  }
+  .super-shopping-bundles .share-title-text{
+    transform: translateX(-50%);
+  }
+  .super-shopping-bundles .fn-bg-in{
+    padding:20px 30px 14px 19px;
+  }
+  .bundle-list{
+    display:flex;
+    flex-wrap: wrap;
+    position:relative;
+  }
+  .shopping-bundle-item{
+    width:24.3%;
+    margin:0 14px 16px 0;
+    border-radius: 8px;
+    padding: 11px 12px 13px 13px;
+    background-color: #fff;
+    z-index:2;
+  }
+  .bundle-layout .price{
+    height: 48px;
+  }
+  .bundle-sale-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    height: 48px;
+    font-size: 16px;
+    line-height: 25px;
+    width: 70%;
+    text-align: left;
+  }
+  .bundle--price{
+    width:30%;    
+    text-align: right;
+  }
+  .shopping-bundle-item:nth-child(4n){
+    margin-right: 0;
+  }
+  .super-shopping-bundles .share-sold{
+    position: absolute;
+    left: 11px;
+    bottom: 8px;
+  }
+  .bundle-image-box{
+    position: relative;
+  }
+  .bundle-layout>div:nth-of-type(1){
+    display:flex;
+    justify-content: space-between;
+    margin-top: 15px
+  }
+  .bundle--price .price__regular .price-item--regular,.bundle--price .fn-compareat_price{
+    font-size: 24px;
+    font-weight: bold;
+    color: #ECA62F;
+    line-height: 26px;
+  }
+  .bundle--price .fn-compareat_price .fn-compare-at_price{
+    font-size: 16px;
+    color: #723600;
+    line-height: 22px;
+    font-weight: 400;
+  }
+  .bundle-layout .fn-color-attr{
+    margin-bottom:15px;
+    height:30px;
+  }
+  .bundle-layout .fn-color-attr ul li{
+    width: 30px;
+    height: 30px;
+  }
+  .bundle-layout .fn-color-attr ul li+li{
+    margin-left:10px;
+  }
+  .bundle-layout .button--full-width{
+    height: 49px;
+    background: linear-gradient(180deg, #FFB56A 0%, #E7583F 100%);
+    border-radius: 4px;
+    --border-offset: none;
+    --border-opacity: none;
+  }
+  .shopping-bundle-image{
+    width: 24.3%;
+    position: relative;
+  }
+  .shopping-bundle-image p{
+    font-size: 20px;
+    font-weight: bold;
+    color: #EB6847;
+    margin-top: 20px;
+    z-index: 2;
+    position:absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    width:100%;
+  }
+  .shopping-bundle-image>img{
+    position: absolute;
+    right: 0;
+    bottom: 18px;
+  }
+  .fn-color-attr{
+    margin-top:15px;
+  }
+  @media screen and (max-width:1720px){
+    .bundle-width{
+      width:88%;
+    }
+    .shopping-bundle-item{
+      margin-right:10px;
+    }
+    .shopping-bundle-image>img{
+      bottom: 11%;
+    }
+  }
+   @media screen and (max-width:1280px){
+     .super-shopping-bundles .share-title-text{
+       width:100%;
+     }
+   }
+  @media screen and (max-width: 1140px){
+    .shopping-bundle-item {
+        margin-right: 8px;
+    }
+  }
+  @media screen and (max-width:1024px){
+    .shopping-bundle-item{
+      width:24%;
+      padding: 5px 5px 10px;
+    }
+    .shopping-bundle-image p{
+      font-size: 16px;
+      margin-top: 15px;
+    }
+    .bundle-layout>div:nth-of-type(1){
+      flex-direction: column;
+      margin-top: 5px;
+    }
+    .bundle-sale-title{
+      width: 100%;
+      font-size: 14px;
+      height: 40px;
+      line-height: 19px;
+    }
+    .bundle--price{
+      width: 100%;
+      text-align: left;
+    }
+    .bundle--price .price__regular .price-item--regular, .bundle--price .fn-compareat_price{
+      flex-direction: row;
+      font-size: 14px;
+      line-height: 19px;
+    }
+    .bundle--price .fn-compareat_price .fn-compare-at_price{
+      font-size: 12px;
+    }
+    .super-shopping-bundles .share-sold{
+      position: unset;
+    }
+    .share-sold{
+      width: 100px;
+      font-size: 14px;
+      margin-top:6px;
+    }
+    .share-sold>div:nth-child(1){
+      padding-left: 0;
+    }
+    .bundle-layout .price {
+      height: 20px;
+    }
+    .bundle-layout .fn-color-attr{
+      margin:5px 0;
+      height: 18px;
+    }
+    .fn-color-attr ul li img {
+      width: 18px;
+      height: 18px;
+    }
+    .bundle-layout .fn-color-attr ul li {
+      width: 18px;
+      height: 18px;
+    }
+    .bundle-layout .fn-color-attr ul li+li {
+      margin-left: 5px;
+    }
+    .bundle-layout .button--full-width{
+      height: 40px;
+      border-radius: 2px;
+      min-height: 40px;
+      font-size: 14px;
+      padding:0;
+    }
+  }
+   @media screen and (max-width:820px){
+     .super-shopping-bundles{
+       padding-top:15px;
+     }
+     .bundle-width{
+       width:93.6%;
+     }
+     .super-shopping-bundles .fn-bg-in {
+      padding: 14px 7px 0;
+    }
+     .shopping-bundle-item{
+       margin-right: 5px;
+     }
+     .shopping-bundle-item{
+       margin-bottom: 10px;
+     }
+   }
+  @media screen and (max-width:750px){
+    .shopping-bundle-item{
+      width:48.5%;
+    }
+    .bundle-list {
+      flex-wrap: wrap;
+    }
+    .shopping-bundle-item:nth-child(even){
+      margin-right: 0;
+    }
+    .shopping-bundle-image{
+      flex:1;
+    }
+    .shopping-bundle-image>img {
+      bottom: 12px;
+    }
+    .shopping-bundle-image p{
+      width: 96px;
+      font-size: 14px;
+      line-height: 19px;
+    }
+  }
+</style>
+<div class="super-shopping-bundles" id="{{ section.settings.id }}">
+  <div class="bundle-width">
+    <div class="fn-bg-small-out">
+      <div class="fn-bg-small-in"></div>
+    </div>
+    <div class="fn-bg-out">
+      <div class="fn-bg-in">
+        <div class="share-title">
+          <picture>
+            <source media="(max-width: 820px)" srcset="{{ section.settings.title_background_mobile | img_url:'348x' }}">
+            <source media="(min-width: 821px)" srcset="{{ section.settings.title_background | img_url:'1104x' }}">
+            <img src="{{ section.settings.title_background | img_url:'1104x' }}">
+          </picture>
+          <div class="share-title-text">
+            <p>{{ section.settings.title }}</p>
+            <p>{{ section.settings.desc }}</p>
+          </div>
+        </div>
+        <div class="bundle-list">
+        {% for block in section.blocks %}
+          <div class="shopping-bundle-item">
+            <div class="bundle-image-box">
+              {%- if block.settings.product.featured_media -%}
+                <a href="{{ block.settings.product.url }}">
+                  <img
+                    class="img-first"
+                    src="{{ block.settings.product.featured_media | img_url: '420x' }}"
+                    alt="{{ block.settings.product.featured_media.alt | escape }}"
+                    {% unless lazy_load == false %}
+                      loading="lazy"
+                    {% endunless %}
+                  >
+                </a>
+                <div class="share-height">
+                  {% if block.settings.sold_num != blank %}
+                   <div class="share-sold">
+                    <div>
+                      <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/4_2x_af7b34f9-0e99-46a0-ae4f-3ddb66119908.png?v=1693968507" >
+                      <span>Sold</span>
+                    </div>
+                    <div>
+                      {{ block.settings.sold_num }}
+                    </div>
+                  </div>
+                {% endif %}
+                </div>
+              {%- endif -%}
+            </div>
+            <div>
+              <div class="bundle-layout">
+                <div>
+                  <div class="bundle-sale-title t">
+                    <a href="{{ block.settings.product.url }}" class="t">{{ block.settings.product.title | escape }}</a>
+                  </div>
+                  <div class="bundle--price">
+                    {% render 'sffers-price', product: block.settings.product, price_class: '' %}
+                  </div>
+                </div>
+                <div class="fn-color-attr">
+                  {%- for option in block.settings.product.options_with_values -%}
+                    {%- if option.name == 'Colors' or option.name == 'Color' -%}
+                      <ul>
+                        {%- if option.name == 'Colors' -%}
+                          {% assign colorList = block.settings.product.options_by_name.Colors.values | slice: 0, 5 %}
+                        {%- else -%}
+                          {% assign colorList = block.settings.product.options_by_name.Color.values | slice: 0, 5 %}
+                        {%- endif -%}
+                        {%- for value in colorList -%}
+                          <li>
+                            <a href="{{ block.settings.product.url }}?variant={{ block.settings.product.variants[forloop.index0].id }}">
+                              {%- if block.settings.product.variants[forloop.index0].featured_image != blank -%}
+                                <img
+                                  src="{{ block.settings.product.variants[forloop.index0].featured_image | img_url: '50x50' }}"
+                                  alt="{{ value }}"
+                                >
+                              {%- endif -%}
+                            </a>
+                          </li>
+                        {% endfor %}
+                        {%- if option.name == 'Colors' -%}
+                          {% assign size = block.settings.product.options_by_name.Colors.values | size | minus: 5 %}
+                        {%- else -%}
+                          {% assign size = block.settings.product.options_by_name.Color.values | size | minus: 5 %}
+                        {%- endif -%}
+                        {%- if size > 0 -%}
+                          <li class="color-quantity">
+                            <a href="{{ block.settings.product.url }}">+{{ size }}</a>
+                          </li>
+                        {%- endif -%}
+                      </ul>
+                    {%- endif -%}
+                  {% endfor %}
+                </div>
+                 <div class="bundle-addcart-sale">
+                  {% render 'easter-addCart', product: block.settings.product %}
+                </div>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+        {% if section.settings.bundle_image != blank %}
+          <div class="shopping-bundle-image">
+            <p>{{ section.settings.bundle_title }}</p>
+            <img src="{{ section.settings.bundle_image | img_url:'404x' }}">
+          </div>
+        {% endif %}
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Super-Shopping-Bundles",
+    "settings": [
+       {
+        "type": "text",
+        "id": "id",
+        "label": "id(页面唯一性，全英文)"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "title"
+      },{
+        "type": "text",
+        "id": "desc",
+        "label": "desc"
+      },{
+        "type":"image_picker",
+        "id":"title_background",
+        "label":"title background"
+      },{
+        "type":"image_picker",
+        "id":"title_background_mobile",
+        "label":"title background mobile"
+      },{
+        "type":"text",
+        "id":"bundle_title",
+        "label":"bundle title"
+      },{
+        "type":"image_picker",
+        "id":"bundle_image",
+        "label":"bundle image"
+      }
+    ],
+    "max_blocks": 3,
+     "blocks":[
+      {
+        "type":"bundle",
+        "name":"bundle",
+        "settings":[
+          {
+            "type": "product",
+            "id": "product",
+            "label": "product item"
+          },{
+            "type":"text",
+            "id":"sold_num",
+            "label":"sold number"
+          }
+        ]
+      }
+    ],
+    "presets":[
+        {
+          "name":"Super-Shopping-Bundles"
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

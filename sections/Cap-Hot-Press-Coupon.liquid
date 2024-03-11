@@ -1,0 +1,350 @@
+{% style %}
+  #shopify-section-{{ section.id }} .cap-hot-press-coupon{
+    background-color:{{ section.settings.bg_color }}
+  }
+{% endstyle %}
+<style>
+    .cap-hot-press-coupon{
+        padding:30px 0 40px;
+        letter-spacing: 0;
+    }
+    .cap-hot-coupon-content {
+        max-width: 1276px;
+        margin: 0 auto;
+        position: relative;
+    }
+    .cap-hot-coupon-content .text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        color: {{ section.settings.font_color }};
+    }
+    .cap-hot-coupon-content .left {
+        width: 37%;
+        text-align: center;
+    }
+    .cap-hot-coupon-content .left .coupon-t span {
+        font-size: 40px;
+        font-weight: bold;
+    }
+    .cap-hot-coupon-content .left .coupon-t .code {
+        font-size: 60px;
+        margin-left: 12px;
+        line-height: 70px;
+    }
+    .cap-hot-coupon-content .left .btn {
+        width: 310px;
+        height: 88px;
+        background: #FBE2C4;
+        border-radius: 49px;
+        margin: 0 auto;
+        line-height: 88px;
+        font-size: 30px;
+        font-weight: bold;
+        color: #E9B67A;
+        margin-top: 20px;
+    }
+    .cap-hot-coupon-content .coupon-right {
+        width: 63%;
+    }
+    .cap-hot-coupon-content .coupon-right .t {
+        font-size: 50px;
+        line-height: 70px;
+        max-width: 672px;
+        margin: 0 auto;
+    }
+    .cap-hot-coupon-content .coupon-right .desc {
+        max-width: 672px;
+        margin: 0 auto;
+        font-size: 18px;
+        line-height: 26px;
+    }
+    .cap-hot-coupon-content .coupon-right .btn {
+        max-width: 672px;
+        margin: 15px auto 0 auto;
+    }
+    .cap-hot-coupon-content .coupon-right .btn span {
+        width: 162px;
+        height: 48px;
+        background: linear-gradient(90deg, #FF9A31 0%, #FF8931 100%);
+        border-radius: 6px 6px 6px 6px;
+        line-height: 48px;
+        font-size: 16px;
+        text-align: center;
+        color: #FFFFFF;
+        display: inline-block;
+        cursor: pointer;
+    }
+    @media screen and (max-width: 1200px) and (min-width: 1025px){
+        .cap-hot-coupon-content .coupon-right .t {
+            font-size: 36px;
+            line-height: 48px;
+            max-width: 90%;
+        }
+        .cap-hot-coupon-content .coupon-right .desc {
+            max-width: 90%;
+            font-size: 14px;
+            line-height: 22px;
+        }
+        .cap-hot-coupon-content .coupon-right .btn {
+            max-width: 90%;
+        }
+        .cap-hot-coupon-content .left .coupon-t span {
+            font-size: 32px;
+        }
+        .cap-hot-coupon-content .left .coupon-t .code {
+            font-size: 42px;
+            line-height: 58px;
+        }
+        .cap-hot-coupon-content .left .btn {
+            height: 58px;
+            line-height: 58px;
+            font-size: 24px;
+        }
+    }
+    @media screen and (max-width: 1024px) and (min-width: 701px){
+          
+        .cap-hot-coupon-content .coupon-right .t {
+            font-size: 24px;
+            line-height: 36px;
+        }
+        .cap-hot-coupon-content .left .coupon-t span {
+            font-size: 28px;
+        }
+        .cap-hot-coupon-content .left .coupon-t .code {
+            font-size: 36px;
+            line-height: 46px;
+        }
+        .cap-hot-coupon-content .left .btn {
+            height: 40px;
+            line-height: 40px;
+            font-size: 20px;
+            max-width: 80%;
+            margin-top: 5px;
+        }
+        .cap-hot-coupon-content .coupon-right .btn span {
+            width: 140px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 14px;
+        }
+        .cap-hot-coupon-content .coupon-right .desc {
+            font-size: 12px;
+            line-height: 18px;
+        }
+        .cap-hot-coupon-content .coupon-right .t {
+            max-width: 90%;
+        }
+        .cap-hot-coupon-content .coupon-right .desc {
+            max-width: 90%;
+        }
+        .cap-hot-coupon-content .coupon-right .btn {
+            max-width: 90%;
+        }
+    }
+   @media screen and (max-width: 768px){
+     .cap-hot-coupon-content {
+        max-width: 93.6%;
+      }
+   }
+    @media screen and (max-width: 700px){
+        .cap-hot-coupon-content .coupon-right {
+            width: 100%;
+            height: 66.5%;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-wrap: wrap;
+            align-content: start;
+            margin-top: 10%;
+        }
+        .cap-hot-coupon-content .left {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-wrap: wrap;
+            align-content: center;
+        }
+        .cap-hot-coupon-content .left > div {
+            width: 100%;
+        }
+        .cap-hot-coupon-content .left {
+            width: 100%;
+            height: 34.5%;
+        }
+        .cap-hot-coupon-content .coupon-right > div {
+            width: 90%;
+        }
+    }
+    @media screen and (max-width: 480px){
+        .cap-hot-coupon-content .coupon-right .t {
+            font-size: 20px;
+            line-height: 28px;
+        }
+        .cap-hot-coupon-content .left .coupon-t span {
+            font-size: 22px;
+        }
+        .cap-hot-coupon-content .left .coupon-t .code {
+            font-size: 30px;
+            line-height: 42px;
+        }
+        .cap-hot-coupon-content .left .btn {
+            height: 40px;
+            line-height: 40px;
+            font-size: 20px;
+            max-width: 80%;
+            margin-top: 5px;
+        }
+        .cap-hot-coupon-content .coupon-right .btn span {
+            width: 140px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 14px;
+        }
+        .cap-hot-coupon-content .coupon-right .desc {
+            font-size: 12px;
+            line-height: 18px;
+        }
+        .cap-hot-coupon-content .coupon-right {
+            margin-top: 0;
+            align-content: center;
+        }
+    }
+</style>
+<div class="cap-hot-press-coupon" id="{{ section.settings.card_id }}">
+    <div class="cap-module-title">
+        <div class="cap-module-host-title">{{ section.settings.title }}</div>
+    </div>
+    <div class="cap-hot-coupon-content">
+        <picture>
+            <source media="(max-width: 700px)" srcset="{{ section.settings.phone_image | img_url: '700x' }}">
+            <source media="(min-width: 751px)" srcset="{{ section.settings.image | img_url: '1276x' }}">
+            <img src="{{ section.settings.image | img_url: '1276x' }}">
+        </picture>
+        <div class="text">
+            <div class="left">
+                <div class="coupon-t"><span>{{ section.settings.currency }}</span><span class="code">{{ section.settings.discount }}</span></div>
+                <div class="btn">COUPON</div>
+            </div>
+            <div class="coupon-right">
+                <div class="t">{{ section.settings.discount_title }}</div>
+                <div class="desc">{{ section.settings.desc }}</div>
+                <div class="btn coupon-copy-code"><span>{{ section.settings.coupon_label }}</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        $('.coupon-copy-code').click(function(){
+            let url = "{{section.settings.coupon}}";
+            let copyInput = document.createElement('input');
+            document.body.appendChild(copyInput);
+            copyInput.setAttribute('value', url);
+            copyInput.select();
+            document.execCommand("Copy");
+            copyInput.remove();
+            alertMsg()
+        })
+        function alertMsg(){
+            var alertFram = document.createElement("DIV");
+            alertFram.id = "alertFram";
+            alertFram.style.position = "fixed";
+            alertFram.style.width = "100%";
+            alertFram.style.textAlign = "center";
+            alertFram.style.bottom = "40px";
+            alertFram.style.zIndex = "10001";
+            strHtml = " <span style=\"font-family: 微软雅黑;display:inline-block;background:#333;color:#fff;padding:0 20px;line-height:36px;border-radius:6px; \">Copied successfully</span>";
+            alertFram.innerHTML = strHtml;
+            document.body.appendChild(alertFram);
+            setTimeout((function(){
+                alertFram.style.display="none";
+            }),2000);
+        }
+    })
+</script>
+{% schema %}
+{
+    "name":"Cap Hot Press Coupon",
+    "settings":[
+        {
+            "type":"color",
+            "id":"bg_color",
+            "label":"background color"
+        },
+        {
+            "type":"text",
+            "id":"title",
+            "label":"Title"
+        },
+        {
+            "type":"text",
+            "id":"card_id",
+            "label":"id"
+        },
+        {
+            "type":"image_picker",
+            "id":"image",
+            "label":"Image"
+        },
+        {
+            "type":"image_picker",
+            "id":"phone_image",
+            "label":"Phone Image"
+        },
+        {
+            "type":"text",
+            "id":"currency",
+            "label":"Currency Symbol",
+            "default":"$"
+        },
+        {
+            "type":"text",
+            "id":"discount",
+            "label":"Discount",
+            "default":"10 OFF"
+        },
+        {
+            "type":"text",
+            "id":"discount_title",
+            "label":"Discount Title",
+            "default":"$1 = $10"
+        },
+        {
+            "type":"textarea",
+            "id":"desc",
+            "label":"Desc",
+            "default":"<p>Users who pay a $1 deposit during the warm-up can enjoy $10 off on hat heat press (machine or bundle)；</p><p>Each user can enjoy the deal once, and no refunds are available.</p><p>Validity: 20th Feb, 2024 - 5th Mar, 20</p><p>Code: S20</p>"
+        },
+        {
+            "type":"text",
+            "id":"coupon",
+            "label":"Coupon",
+            "default":"S20"
+        },
+        {
+            "type":"text",
+            "id":"coupon_label",
+            "label":"Coupon Label",
+            "default":"Copy the code"
+        },
+        {
+            "type":"color",
+            "id":"font_color",
+            "label":"Font Color",
+            "default":"#802704"
+        }
+    ],
+    "presets":[
+        {
+            "name":"Cap Hot Press Coupon"
+        }
+    ]
+}
+{% endschema %}

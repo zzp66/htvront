@@ -1,0 +1,157 @@
+{{ 'Halloween-Specials.css' | asset_url | stylesheet_tag }}
+<div class="fn-Halloween-Specialsmain">
+  {% section 'page-HalloweenSpecials-banner' %}
+    <div class="fn-Halloween-Specialsbody">
+        <div class="fn-LuckyBagnavmain_nav" id="fn-LuckyBagnavmain_nav">
+          <div class="fn-LuckyBagnavmain_headnav">
+              <div class="fn-LuckyBagnavmain_navright fn-LuckyBagnavmain_navbutton">Project Bundle</div>
+              <div class="fn-LuckyBagnavmain_navleft fn-LuckyBagnavmain_navbutton nav_active" id="navleft">Halloween Lucky Bag</div>
+            
+<!--               <div class="fn-LuckyBagnavmain_navleft fn-LuckyBagnavmain_navbutton nav_active" id="navleft">Halloween Specials</div>
+              <div class="fn-LuckyBagnavmain_navright fn-LuckyBagnavmain_navbutton">Halloween Lucky Bag</div> -->
+           </div>
+        </div>
+        {% section 'page-HalloweenSpecials-LuckyBagnav' %}
+        {% section 'page-HalloweenSpecials-making' %}
+        {% section 'page-HalloweenSpecials' %}
+  </div>
+</div>
+  <div class="fn-Specialsvideo-mask">
+    <div class="fn-mask">
+        <div class="mask-close" id="mask-close">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 40 40"><defs><style>.a{fill:none;}.b{fill:#fff;}</style></defs><g transform="translate(-946 -8)"><rect class="a" width="40" height="40" transform="translate(946 8)"/><g transform="translate(301.594 -673.883) rotate(45)"><rect class="b" width="4" height="31" rx="2" transform="translate(964 11)"/><rect class="b" width="4" height="31" rx="2" transform="translate(950.5 28.5) rotate(-90)"/></g></g></svg>
+        </div>
+        <div class="fn-Specials-Video">
+          <ul class="fn-Specials-Videoul">
+              <li class="fn-Specials-Videolist">
+                 <div id="playerid_Making"></div>
+              </li>
+              <li class="fn-Specials-Videolist">
+                 <div id="playerid_Treatcostume"></div>
+              </li>
+              <li class="fn-Specials-Videolist">
+                 <div id="playerid_Treat2"></div>
+              </li>
+              <li class="fn-Specials-Videolist">
+                <div id="playerid_Treat1"></div>
+              </li>
+              <li class="fn-Specials-Videolist">
+                 <div id="playerid_Treatghouls"></div>
+              </li>
+          </ul>
+          <ul class="fn-Specials-Videocontent">
+            <li class="fn-Specials-Videocontent_list">
+                <div class="fn-Specials-Videocontent_title t">Halloween Projects Making</div>
+                <div class="fn-Specials-Videocontent_text">
+                   Halloween is for having fun. Any Halloween idea should be realized instead of just existing in people's minds! Let's turn this "HAPPY HALLOWEEN" into a decorative pattern on your T-shirts. Live up to crazy Halloween ideas with various HTVRONT HTV!
+                </div>
+            </li>
+            <li class="fn-Specials-Videocontent_list">
+                <div class="fn-Specials-Videocontent_title t">Halloween Costume</div>
+                <div class="fn-Specials-Videocontent_text">We will use HTVRONT Chameleon HTV to design this Halloween Pattern. Its unique material gives the
+                  impression of different colors when viewed at different angles.No matter what you’re looking for, you’ll be
+                  delighted by this eye-catching look all the time!
+                </div>
+            </li>
+            <li class="fn-Specials-Videocontent_list">
+                <div class="fn-Specials-Videocontent_title t">Trick or Treat 2</div>
+                <div class="fn-Specials-Videocontent_text">As soon as you read “Trick or Treat,” Halloween must have been the first thing in your mind to pop up. We sublimate the classic phrase on the T-shirt for this Halloween season using HTVRONT sublimation paper. Bring you an unforgettable Halloween!
+                </div>
+            </li>
+            <li class="fn-Specials-Videocontent_list">
+                <div class="fn-Specials-Videocontent_title t">Trick or Treat 1</div>
+                <div class="fn-Specials-Videocontent_text">“Trick or Treat” we have all heard this catchy Halloween phrase. How about wearing it on your shirts?! It must be stylish and unique with our Glitter HTV! Classic collection words to represent the whole festival or occasion!
+                </div>
+            </li>
+            <li class="fn-Specials-Videocontent_list">
+                <div class="fn-Specials-Videocontent_title t">Let's go, ghouls!</div>
+                <div class="fn-Specials-Videocontent_text">Lots of strange creatures wander around during Halloween! They may be ghosts, ghouls, monsters, zombies, etc. Don't be afraid! HTVRONAT HTV with rich colors will make them much more adorable on your Halloween garments! Let's enjoy the season with them.
+                </div>
+            </li>
+          </ul>
+        </div>
+
+    </div>
+  </div>
+<script type="text/javascript" src="http://www.youtube.com/player_api"> </script>           
+<script>
+
+var player_Making;
+var playerid_Treatcostume;
+var playerid_Treat1;
+var playerid_Treat2;
+var playerid_Treatghouls;
+
+  
+function myFunction(e){
+  $('.fn-Specialsvideo-mask').show();
+  $('.fn-Specials-Videolist').eq(e).show().siblings().hide();
+  $('.fn-Specials-Videocontent_list').eq(e).show().siblings().hide();
+  
+}
+  function onYouTubeIframeAPIReady() {
+        player_Making = new YT.Player('playerid_Making', {
+          videoId: '2RKYYEkcNCM',
+        });
+        playerid_Treatcostume = new YT.Player('playerid_Treatcostume', {
+          videoId: '7nowIKowX8Q',
+        });
+        playerid_Treat1 = new YT.Player('playerid_Treat1', {
+          videoId: 'Ng6EBOubibg',
+        });
+        playerid_Treat2 = new YT.Player('playerid_Treat2', {
+          videoId: 'CxyJjC9BKek',
+        });
+        playerid_Treatghouls = new YT.Player('playerid_Treatghouls', {
+          videoId: 'YNbe3eCclBo',
+        });
+    
+  }
+  $('#mask-close').click(function(){
+           $('.fn-Specialsvideo-mask').hide();
+           player_Making.pauseVideo();
+           playerid_Treatcostume.pauseVideo();
+           playerid_Treat1.pauseVideo();
+           playerid_Treatghouls.pauseVideo();
+           playerid_Treat2.pauseVideo();
+  })
+  $('.fn-LuckyBagnavmain_navbutton').click(function () {
+       $(this).addClass('nav_active').siblings().removeClass('nav_active');
+});
+    $('.fn-LuckyBagnavmain_navright').click(function () {
+        $('html, body').animate({
+          scrollTop: $('#fn-HalloweenSpecials').offset().top - 120 //65为设置的偏移值
+        });
+});
+      $('.fn-LuckyBagnavmain_navleft').click(function () {
+        $(window).scrollTop($('#fn-LuckyBagnavmain_nav').offset().top - 100);
+});
+$(function(){
+     var clientWidth_day = document.body.clientWidth;
+    if(clientWidth_day < '999') {
+      $('.fn-Halloween-Specialsmain').css('background-image','url(https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20_e007a826-555a-46d2-8f1c-91ce9d48c3e2.png?v=1666688819)');
+      $('#fn-makingmain_times_imges').attr("src","https://cdn.shopify.com/s/files/1/0356/5997/2741/files/8d7077ab7b7e17ed32d1185b5d474d4d_4.png?v=1666663293");
+      $('#fn-Specials-bannerimg_a').attr("src","https://cdn.shopify.com/s/files/1/0356/5997/2741/files/29_331f0777-0e6a-4f03-a35c-2cfdbb548e63.png?v=1666754011");
+    }
+  // 回到顶部
+     var backTop1 = document.getElementById("navleft")
+     backTop1.addEventListener("click", function (e) {
+       let a = document.createElement("a")
+       a.href = "#topAnchor"
+       e.target.appendChild(a)
+       a.onclick = function (e) {
+         e.stopPropagation()
+       }
+       a.click()
+       e.target.removeChild(a)
+     })
+ });
+  $(function(){
+    var url_a = window.location.toString();//进这个页面的url
+    if(url_a.indexOf("halloween_specials") !== -1) {
+      $(window).scrollTop($('#shopify-section-page-HalloweenSpecials').offset().top - 100);//滚动到锚点位置
+    }
+  });
+  
+
+</script>

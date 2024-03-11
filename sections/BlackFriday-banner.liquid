@@ -1,0 +1,162 @@
+<div class="fn-BlackFriday-banner">
+   {% if section.settings.BlackFriday_banner != blank %}
+      {% assign image = section.settings.BlackFriday_banner | img_url: '1920x' %}
+      <img class="fn-BlackFriday-bannerimg" src="{{ image }}" alt="">
+  {% endif %}
+  {% if section.settings.BlackFriday_cellphonebanner != blank %}
+      {% assign image = section.settings.BlackFriday_cellphonebanner | img_url: '750x' %}
+      <img class="fn-BlackFriday-cellphoneimg" src="{{ image }}" alt="">
+  {% endif %}
+  
+<!--   <div class="fn-BlackFriday-bannervideo">
+        <img  onclick="blackFunction('0')" src="{{ section.settings.bannervideo_icon | img_url: '120x' }}" alt="">
+  </div> -->
+<!--   导航标签 -->
+<!--   <div class="fn-BlackFriday-bannertag">
+     <ul class="fn-BlackFriday-bannerul">
+      {% for block in section.blocks %}
+         <li class="fn-BlackFriday-bannerlist">
+          {% if block.settings.brand_options != blank %}
+              {% assign image = block.settings.brand_options | img_url: '169x' %}
+              <img src="{{ image }}" alt="">
+          {% endif %}
+      {% endfor %}
+     </ul>
+  </div> -->
+     <div class="fn-makingmain-time">
+<!--        <div class="fn-makingmain-time_copy">
+            <img class="fn-makingmain-times_img" src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/7_aa2b87bd-8cbe-4539-81e3-39e41e0a6095.png?v=1668840217" alt="">
+             <div class="fn-makingmain-times_text t fn-makingmain-times_code" id="fn-makingmain-times_code">COUPON CODE: <span class="fn-timescode-card" id="fn-timescode-card">BF30</span> <img id="fn-makingmain-times_icon" class="fn-makingmain-times_icon" src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/72c9b88c76039f4609bea4f1ff87410b_3c124bc2-2b37-4450-be4e-09f6d21e0e8e.png?v=1668840242" alt=""></div>
+       </div> -->
+<!--        <div class="fn-makingmain-times_text t">Limit Time Sale</div> -->
+       <div class="fn-makingmain-timebody">
+          <div >
+              <div class="fn-time-format"><span class="BlackFriday_days format_span t">00</span></div>
+              <div class="fn-time-format_text">
+                   Day
+             </div>
+         </div>
+         <div class="fn-little"> : </div>
+         <div >
+              <div class="fn-time-format"><span class="BlackFriday_hour format_span t">00</span></div>
+              <div class="fn-time-format_text">
+                   Hours
+             </div>
+         </div>
+         <div class="fn-little"> : </div>
+          <div >
+              <div class="fn-time-format"><span class="BlackFriday_minutes format_span t">00</span></div>
+              <div class="fn-time-format_text">
+                   Minutes
+             </div>
+         </div>
+           <div class="fn-little"> : </div>
+         <div >
+              <div class="fn-time-format"><span class="BlackFriday_seconds format_span t">00</span></div>
+              <div class="fn-time-format_text">
+                   Seconds
+             </div>
+         </div>
+       </div>
+  </div>
+</div>
+<div class="fn-format-activitytime">{{ section.settings.activity_time }}</div>
+<script>
+  var activity_time = $('.fn-format-activitytime').text();
+  //获取元素
+  var BlackFriday_days  = document.querySelector(".BlackFriday_days");
+  var BlackFriday_hour = document.querySelector(".BlackFriday_hour");
+  var BlackFriday_minutes = document.querySelector(".BlackFriday_minutes");
+  var BlackFriday_seconds = document.querySelector(".BlackFriday_seconds");
+  //获取截止时间的时间戳（单位毫秒）
+    
+  var BlackFridayTime_bag = +new Date(""+ activity_time); 
+  //我们先调用countDown函数，可以避免在打开界面后停一秒后才开始倒计时
+  countDown();
+  //定时器 每隔一秒变化一次
+  var BlackFriday_tims = setInterval(countDown, 1000);
+  function countDown() {
+      //获取当前时间的时间戳（单位毫秒）
+      var nowTimes_bag = +new Date();
+      //把剩余时间毫秒数转化为秒
+      var times_bag = (BlackFridayTime_bag - nowTimes_bag) / 1000;
+      if (times_bag > 0) {
+      var bag_d = Math.floor(times_bag /60 / 60 / 24 );
+      //计算天数 转化为整数
+      //如果天数小于 10，要变成 0 + 数字的形式 赋值给盒子
+      BlackFriday_days.innerHTML = bag_d;
+      var bag_h = Math.floor(times_bag /60 / 60 % 24);
+      //计算小时数 转化为整数
+      //如果小时数小于 10，要变成 0 + 数字的形式 赋值给盒子
+      BlackFriday_hour.innerHTML = bag_h < 10 ? "0" + bag_h : bag_h;
+      //计算分钟数 转化为整数
+      var bag_m = parseInt(times_bag / 60 % 60);
+      //如果分钟数小于 10，要变成 0 + 数字的形式 赋值给盒子
+      BlackFriday_minutes.innerHTML = bag_m < 10 ? "0" + bag_m : bag_m;
+      //计算描述 转化为整数
+      var bag_s = parseInt(times_bag % 60);
+      //如果秒钟数小于 10，要变成 0 + 数字的形式 赋值给盒子
+      BlackFriday_seconds.innerHTML = bag_s < 10 ? "0" + bag_s : bag_s;
+      } else {
+        clearInterval(BlackFriday_tims); 
+      }
+  }
+</script>
+{% schema %}
+  {
+    "name": "Black Friday banner",
+    "settings": [
+          {
+			"type": "image_picker",
+			"id": "BlackFriday_banner",
+			"label": {
+				"en": "The left background"
+			}
+		},
+       {
+			"type": "image_picker",
+			"id": "BlackFriday_cellphonebanner",
+			"label": {
+				"en": "cellphone background"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "bannervideo_icon",
+			"label": {
+				"en": "video icon"
+			}
+		},
+       {
+            "type":"text",
+            "id":"activity_time",
+            "label":"Event countdown"
+        }
+    ],
+      "blocks": [
+    {
+      "type": "banner",
+      "name": {
+        "en": "banner tag",
+        "zh-CN": "广告标签"
+      },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "brand_options",
+          "label": {
+            "en": "banner Opthion",
+            "zh-CN": "广告图片"
+          }
+        }
+      ]
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

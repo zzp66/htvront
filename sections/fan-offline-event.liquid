@@ -1,0 +1,116 @@
+<div class="online-content">
+  <div class="online-img">
+    <div class="swiper-container" id="online-swiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          {% if block.settings.swiper_picker != blank %}
+            <div class="swiper-slide">
+              <img
+                src="{{ block.settings.swiper_picker| img_url:'800x' }}"
+              >
+              <p class="swiper-slide_text">{{ block.settings.swiper_picker_text }}</p>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="swiper-button-prev" id="online-swiper-button-prev"></div>
+    <div class="swiper-button-next" id="online-swiper-button-next"></div>
+  </div>
+  <div class="online-message">
+    <div class="online-tips">HTVRONT Fans Carnival Offline Event</div>
+    <div class="online-title">{{ section.settings['fan-offline-title'] }}</div>
+    <div class="online-desicription">
+      {{ section.settings['fan-offline-description'] }}
+    </div>
+    <div>
+      <p class="online-bold">Date & Time:</p>
+      <p class="online-desicription">{{ section.settings['fan-offline-date'] }}</p>
+    </div>
+    <div>
+      <p class="online-bold">Location:</p>
+      <p class="online-desicription">{{ section.settings['fan-offline-location'] }}</p>
+    </div>
+    <div>
+      <p class="online-bold">Address:</p>
+      <p class="online-desicription">{{ section.settings['fan-offline-address'] }}</p>
+    </div>
+    <div>
+      <p class="online-desicription">
+        {{ section.settings['fan-offline-other'] }}
+      </p>
+    </div>
+    <div class="online-button">Sign Up Now</div>
+  </div>
+</div>
+<script>
+  $(function(){
+    $('.online-button').click(function(){
+       $('.fan-offlineSign').show()
+      $('body').css({
+        "overflow":"hidden"
+      })
+    })
+  })
+</script>
+{% schema %}
+{
+  "name": "fan-offline-event",
+  "settings": [
+    {
+          "type": "text",
+          "id": "fan-offline-title",
+          "label": "大标题"
+        },
+    {
+          "type": "text",
+          "id": "fan-offline-description",
+          "label": "描述"
+        },
+    {
+          "type": "text",
+          "id": "fan-offline-date",
+          "label": "Date & Time"
+        },
+    {
+          "type": "text",
+          "id": "fan-offline-location",
+          "label": "Location"
+        },
+    {
+          "type": "text",
+          "id": "fan-offline-address",
+          "label": "Address"
+        },{
+          "type": "text",
+          "id": "fan-offline-other",
+          "label": "other"
+        }
+  ],
+   "blocks": [{
+      "type": "save",
+      "name": {
+          "en": "swiper_image",
+          "zh-CN": "轮播图"
+      },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "swiper_picker",
+          "label": "image_picker"
+        },{
+          "type": "text",
+          "id": "swiper_picker_text",
+          "label": "image_picker_text"
+        }
+      ]
+    }
+    ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

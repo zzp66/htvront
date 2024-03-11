@@ -1,0 +1,339 @@
+{%- style -%}
+#shopify-section-{{ section.id }} .campaign-special-deal {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    margin-top: {{ section.settings.margin_top }}px;
+    margin-bottom: {{ section.settings.margin_bottom }}px;
+    background-color: {{ section.settings.bg_color }};
+}
+#shopify-section-{{ section.id }} .campaign-special-deal .swiper-button-prev,
+#shopify-section-{{ section.id }} .campaign-special-deal .swiper-button-next {
+    background-color: {{ section.settings.bg_color }};
+}
+{%- endstyle -%}
+<style>
+    .campaign-special-deal .campaign-text {
+        text-align: center;
+        color: #fff;
+    }
+    .campaign-special-deal .campaign-text .t {
+        font-size: 48px;
+        line-height: 54px;
+    }
+    .campaign-special-deal .campaign-text .time {
+        margin-top: 26px;
+        font-size: 24px;
+        line-height: 28px;
+    }
+    .campaign-special-deal .more a {
+        display: inline-block;
+        padding: 15px 49px;
+        font-size: 20px;
+        line-height: 1;
+        background: #FF7606;
+        border-radius: 6px;
+        border: none;
+        width: auto;
+        height: auto;
+        color: #fff;
+    }
+    .campaign-special-deal .media--transparent {
+        position: static;
+    }
+    .campaign-special-deal .campaign-product .fn-page-width {
+        max-width: 1780px;
+    }
+    .campaign-special-deal .campaign-product .fn-page-width-s {
+        max-width: 1375px;
+    }
+    .campaign-product .swiper-container {
+        padding: 60px 90px 80px 90px;
+    }
+    .campaign-special-deal .campaign-product .swiper-slide {
+        box-shadow: 0 6px 10px 0 rgb(33 56 198 / 14%);
+        border-radius: 16px;
+        overflow: hidden;
+        background: #fff;
+    }
+    .campaign-special-deal .campaign-product .more a {
+        padding: 13px 69px;
+        box-shadow: 0 4px 10px 0 rgba(5, 25, 158, 0.16);
+    }
+    .campaign-special-deal .campaign-product .fn-product-head {
+        padding: 0 12px;
+    }
+    .campaign-special-deal .campaign-product .fn-size-attr {
+        margin-bottom: 36px;
+        padding: 0 12px;
+    }
+    .campaign-special-deal div:empty {
+        display: block;
+    }
+    .campaign-special-deal .swiper-button-prev,
+    .campaign-special-deal .swiper-button-next {
+        width: 80px;
+        height: 100%;
+        top: 0;
+        background-size: 30px 30px;
+        margin-top: 0;
+    }
+    .campaign-special-deal .swiper-button-prev {
+        left: 0;
+        background-image: url(https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/8_d9c3313c-23d0-48fd-8415-49bdf0205b56.png?v=1652941672);
+        background-position: left;
+    }
+    .campaign-special-deal .swiper-button-next {
+        right: 0;
+        background-image: url(https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/8_ed823584-66c4-4b24-a97b-b8012b647e7a.png?v=1652941672);
+        background-position: right;
+    }
+    .campaign-special-deal .swiper-button-next.swiper-button-disabled,
+    .campaign-special-deal .swiper-button-prev.swiper-button-disabled {
+        opacity: 1;
+    }
+    @media (max-width: 749px){
+        .campaign-special-deal .campaign-text .t {
+            font-size: 36px;
+            line-height: 40px;
+        }
+        .campaign-special-deal .campaign-text .time {
+            margin-top: 12px;
+        }
+        .campaign-special-deal .swiper-button-prev,
+        .campaign-special-deal .swiper-button-next {
+            width: 30px;
+            background-color: transparent;
+        }
+        .campaign-special-deal .campaign-product .swiper-container {
+            padding: 60px 0;
+        }
+        .campaign-special-deal .campaign-product .more a {
+            font-size: 12px;
+        }
+    }
+    @media (max-width: 480px){
+    #shopify-section-template--14236092760197__16529437257d0d36cb .campaign-special-deal {
+    padding-top: 36px;
+    padding-bottom: 30px;
+}
+        .campaign-special-deal .campaign-text .t {
+            font-size: 18px;
+            line-height: 22px;
+        }
+        .campaign-special-deal .campaign-text .time {
+            margin-top: 6px;
+            font-size: 14px;
+            line-height: 18px;
+        }
+        .campaign-special-deal .campaign-product .swiper-container {
+            padding: 30px 0;
+        }
+        .campaign-special-deal {
+            padding: 50px 0;
+        }
+        .campaign-special-deal .campaign-product .fn-size-attr {
+            margin-bottom: 20px;
+        }
+    }
+</style>
+<div class="campaign-special-deal" id="campaign_flashsale">
+    <div class="{{ section.settings.layout }} fn-relative">
+        <div class="campaign-text">
+            {%- if section.settings.title != blank -%}
+            <div class="t">{{ section.settings.title }}</div>
+            {%- endif -%}
+            {%- if section.settings.time != blank -%}
+            <div class="time">{{ section.settings.time }}</div>
+            {%- endif -%}
+        </div>
+    </div>
+    <div class="campaign-product">
+        {% for block in section.blocks %}
+        <div class="{{ section.settings.layout }} swiper-container">
+            <div class="swiper-wrapper">
+                {%- for product in block.settings.collection.products limit: section.settings.products_to_show -%}
+                <div class="swiper-slide item">
+                    {% render 'fn-card-product',
+                    card_product: product,
+                    show_secondary_image: section.settings.show_secondary_image
+                    %}
+                </div>
+                {%- endfor -%}
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+        {%- endfor -%}
+<!--         {%- if section.settings.activity_link != blank -%}
+        <div class="more"><a href="{{ section.settings.activity_link }}">{{ section.settings.activity_label }}</a></div>
+        {%- endif -%} -->
+    </div>
+</div>
+
+
+<script>
+  $(function(){
+    var url = window.location.toString();//进这个页面的url
+    if(url.indexOf("campaign_flashsale") !== -1) {
+      $('#campaign_6672929128581,#campaign_6690174009477,#campaign_6690175025285,#campaign_6698072047749').hide();
+      var t = $('#campaign_flashsale').offset().top;
+      $(window).scrollTop(t);//滚动到锚点位置
+    }
+  });
+    $(function(){
+       $('#campaign_6672929128581,#campaign_6690174009477,#campaign_6690175025285,#campaign_6698072047749').hide();
+        var recommendSwiper = new Swiper('.campaign-special-deal .swiper-container', {
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            loop: false,
+            slidesPerView: 3,
+            slidesPerGroup: 3,
+            spaceBetween: 20,
+            breakpoints:{
+                750:{
+                    loop: true,
+                    slidesPerView: 2,
+                    slidesPerGroup: 1,
+                    spaceBetween: 10
+                }
+            }
+        });
+    });
+</script>
+
+{% schema %}
+{
+    "name":"Campaign Special Deal",
+    "max_blocks": 1,
+    "settings":[
+        {
+            "type":"checkbox",
+            "id":"show_secondary_image",
+            "default":false,
+            "label":"t:sections.featured-collection.settings.show_secondary_image.label"
+        },
+        {
+            "type":"text",
+            "id":"title",
+            "default":"Special Deal",
+            "label":"标题"
+        },
+        {
+            "type":"text",
+            "id":"time",
+            "default":"crafter’s best offer, tiem: may 9 — may 30",
+            "label":"时间"
+        },
+        {
+            "type":"color",
+            "id":"bg_color",
+            "label":"背景颜色"
+        },
+        {
+            "type":"url",
+            "id":"activity_link",
+            "label":"更多产品链接"
+        },
+        {
+            "type":"text",
+            "id":"activity_label",
+            "default":"VIEW MORE",
+            "label":"更多产品链接文字"
+        },
+        {
+            "type": "range",
+            "id": "products_to_show",
+            "min": 3,
+            "max": 12,
+            "step": 1,
+            "default": 6,
+            "label":"t:sections.featured-collection.settings.products_to_show.label"
+        },
+        {
+            "type":"range",
+            "id":"padding_top",
+            "min":0,
+            "max": 200,
+            "step": 2,
+            "unit":"px",
+            "label":"t:sections.all.padding.padding_top",
+            "default": 94
+        },
+        {
+            "type":"range",
+            "id":"padding_bottom",
+            "min":0,
+            "max": 200,
+            "step":4,
+            "unit":"px",
+            "label":"t:sections.all.padding.padding_bottom",
+            "default": 100
+        },
+        {
+            "type":"range",
+            "id":"margin_top",
+            "min":0,
+            "max": 100,
+            "step":4,
+            "unit":"px",
+            "label":"Top margin",
+            "default": 0
+        },
+        {
+            "type":"range",
+            "id":"margin_bottom",
+            "min":0,
+            "max":100,
+            "step":4,
+            "unit":"px",
+            "label":"Bottom margin",
+            "default": 0
+        },
+        {
+            "type":"select",
+            "id":"layout",
+            "options":[
+                {
+                    "value":"fn-page-width-l",
+                    "label":"全屏"
+                },
+                {
+                    "value":"fn-page-width",
+                    "label":"内容区域显示1600"
+                },
+                {
+                    "value":"fn-page-width-s",
+                    "label":"内容区域显示1375"
+                }
+            ],
+            "default":"fn-page-width-s",
+            "label":"内容显示宽度"
+        }
+    ],
+    "blocks":[
+        {
+            "type":"collection",
+            "name":"collection",
+            "settings":[
+                {
+                    "type":"collection",
+                    "id":"collection",
+                    "label":"Collection"
+                }
+            ]
+        }
+    ],
+    "presets":[
+        {
+            "name":"Campaign Special Deal",
+            "blocks":[
+                {
+                    "type":"collection"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

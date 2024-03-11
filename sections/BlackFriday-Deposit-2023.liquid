@@ -1,0 +1,294 @@
+<div class="black-friday-deposit common-width" id="{{ section.settings.nav_id }}">
+  <div class="black-module-title">
+    <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Union.png?v=1698741824">
+    <p>{{ section.settings.title }}</p>
+    <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Union_1.png?v=1698741824">
+  </div>
+  <div class="black-module-desc">
+    {{ section.settings.desc }}
+  </div>
+  <div class="deposit-main show-in-821">
+    <div class="deposit-rules-box">
+      <p class="deposit-equation">{{ section.settings.deposit_equation }}</p>
+      <p class="deposit-date">{{ section.settings.deposit_date }}</p>
+      <div class="deposit-rules">{{ section.settings.deposit_rules }}</div>
+      <div class="deposit-button">
+        <div class="addcart-sale">
+          {% render 'addCart-Model' ,product: section.settings.product, buttonText: 'Add to Cart' %}
+        </div>
+        <button class="cup-sale_button t">Add to Cart</button>
+        <div>
+          <product-form class="product-form">
+             <div class="product-form__error-message-wrapper" role="alert" hidden>
+              <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-error" viewBox="0 0 13 13">
+                <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+                <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+                <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+                <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+              </svg>
+              <span class="product-form__error-message"></span>
+            </div>
+            {%- form 'product',
+              section.settings.product,
+              id: product_form_id,
+              class: 'form',
+              novalidate: 'novalidate',
+              data-type: 'add-to-cart-form'
+            -%}
+              <input
+                type="hidden"
+                name="id"
+                value="{{ section.settings.product.selected_or_first_available_variant.id }}"
+                disabled
+              >
+              <div class="product-form__buttons">
+                <div
+                  data-shopify="payment-button"
+                  data-has-selling-plan="true"
+                  data-has-fixed-selling-plan="false"
+                  class="shopify-payment-button"
+                  onclick="buyNow('{{ section.settings.product.selected_or_first_available_variant.id }}')"
+                ></div>
+              </div>
+            {%- endform -%}
+          </product-form>
+        </div>
+      </div>
+    </div>
+    <div class="deposit-image">
+      <img src="{{ section.settings.deposit_image | img_url:'296x'  }}">
+      <span>{{ section.settings.deposit_text }}</span>
+      <span>{{ section.settings.deposit_desc }}</span>
+    </div>
+    <div class="deposit-coupons">
+      {% for block in section.blocks %}
+        <div class="coupons-item">
+          <img src="{{ block.settings.coupons_image | img_url:'454x'  }}">
+          <div class="item-module">
+            <div class="coupons-money">
+              <div>
+                <span>{{ block.settings.currency }}</span><span>{{ block.settings.money }}</span>
+              </div>
+              <span>{{ block.settings.coupon }}</span>
+            </div>
+            <div class="coupons-rules">
+              {{ block.settings.coupons_rules }}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+                  
+  <div class="deposit-main show-in-820">
+    <div class="deposit-mobile-top">
+      <div class="deposit-image">
+        <img src="{{ section.settings.deposit_image_mobile | img_url:'148x'  }}">
+        <span>{{ section.settings.deposit_text }}</span>
+        <span>{{ section.settings.deposit_desc }}</span>
+      </div>
+       <div class="deposit-rules-box">
+        <p class="deposit-equation">{{ section.settings.deposit_equation }}</p>
+        <p class="deposit-date">{{ section.settings.deposit_date }}</p>
+        <div class="check-rules">
+          <span>Check rules</span>
+          <span>?</span>
+          <div class="deposit-rules">{{ section.settings.deposit_rules }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="deposit-button">
+      <div class="addcart-sale">
+        {% render 'addCart-Model' ,product: section.settings.product, buttonText: 'Add to Cart' %}
+      </div>
+      <button class="cup-sale_button t">Add to Cart</button>
+      <div class="buy-it-now-btn">
+        <product-form class="product-form">
+           <div class="product-form__error-message-wrapper" role="alert" hidden>
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-error" viewBox="0 0 13 13">
+              <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+              <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+              <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+              <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+            </svg>
+            <span class="product-form__error-message"></span>
+          </div>
+          {%- form 'product',
+            section.settings.product,
+            id: product_form_id,
+            class: 'form',
+            novalidate: 'novalidate',
+            data-type: 'add-to-cart-form'
+          -%}
+            <input
+              type="hidden"
+              name="id"
+              value="{{ section.settings.product.selected_or_first_available_variant.id }}"
+              disabled
+            >
+            <div class="product-form__buttons">
+              <div
+                data-shopify="payment-button"
+                data-has-selling-plan="true"
+                data-has-fixed-selling-plan="false"
+                class="shopify-payment-button"
+                onclick="buyNow('{{ section.settings.product.selected_or_first_available_variant.id }}')"
+              ></div>
+            </div>
+          {%- endform -%}
+        </product-form>
+      </div>
+    </div>
+    <div class="deposit-coupons">
+      {% for block in section.blocks %}
+        <div class="coupons-item">
+          <img src="{{ block.settings.coupons_image_mobile | img_url:'168x'  }}">
+          <div class="item-module">
+            <div class="coupons-money">
+              <div>
+                <span>{{ block.settings.currency }}</span><span>{{ block.settings.money }}</span>
+              </div>
+              <span>{{ block.settings.coupon }}</span>
+            </div>
+            <div class="coupons-rules">
+              {{ block.settings.coupons_rules }}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<script>
+   $(function (){
+      var sale_arr = ['6867715653765'];
+      $(".deposit-button .product-form__submit").click(function(){
+        var button_id = $(this).attr('id').substring(9);
+         if(sale_arr.indexOf(button_id) != -1 ) {
+            $('.addcart-sale').hide();
+            $('.cup-sale_button').css({'display':'inline-block','margin-right':'10px'});
+         } else {
+            $('.addcart-sale').show();
+         }  
+      });
+     $(".deposit-button .cup-sale_button").click(function(){
+        alertTips()
+     })
+     $('.check-rules span').click(function(){
+       $('.check-rules .deposit-rules').toggle()
+     })
+  })
+  function alertTips(){
+    var alertFram = document.createElement("DIV");
+    alertFram.id = "alertFram";
+    alertFram.style.position = "fixed";
+    alertFram.style.width = "100%";
+    alertFram.style.textAlign = "center";
+    alertFram.style.bottom = "40px";
+    alertFram.style.zIndex = "10001";
+    strHtml = " <span style=\"font-family: 微软雅黑;display:inline-block;background:#333;color:#fff;padding:0 20px;line-height:36px;border-radius:6px; \">A deposit has already been added to your cart.</span>";
+    alertFram.innerHTML = strHtml;
+    document.body.appendChild(alertFram);
+    setTimeout((function(){
+      alertFram.style.display="none";
+    }),2000);
+  }
+</script>
+{% schema %}
+  {
+    "name": "Black-Friday-Deposit",
+    "settings": [
+      {
+        "type":"text",
+        "id":"nav_id",
+        "label":"id(页面唯一性，全英文)"
+      },
+      {
+        "type":"text",
+        "id":"title",
+        "label":"title"
+      },
+      {
+        "type":"text",
+        "id":"desc",
+        "label":"desc"
+      },
+      {
+        "type":"product",
+        "id":"product",
+        "label":"product"
+      },
+      {
+        "type":"text",
+        "id":"deposit_equation",
+        "label":"deposit equation"
+      },
+      {
+        "type":"text",
+        "id":"deposit_date",
+        "label":"deposit date"
+      },
+      {
+        "type":"html",
+        "id":"deposit_rules",
+        "label":"deposit rules"
+      },{
+        "type":"image_picker",
+        "id":"deposit_image",
+        "label":"deposit image"
+      },{
+        "type":"image_picker",
+        "id":"deposit_image_mobile",
+        "label":"deposit image mobile"
+      },{
+        "type": "text",
+        "id": "deposit_text",
+        "label": "deposit text"
+      },{
+        "type": "text",
+        "id": "deposit_desc",
+        "label": "deposit desc"
+      }
+    ],
+    "max_blocks":2,
+    "blocks":[{
+      "type":"coupons",
+      "name": "coupons",
+      "settings": [
+        {
+          "type":"image_picker",
+          "id":"coupons_image",
+          "label":"coupons image"
+        },
+        {
+          "type":"image_picker",
+          "id":"coupons_image_mobile",
+          "label":"coupons image mobile"
+        },{
+          "type": "text",
+          "id": "currency",
+          "label": "currency"
+        },{
+          "type": "text",
+          "id": "money",
+          "label": "money"
+        },{
+          "type": "text",
+          "id": "coupon",
+          "label": "coupon"
+        },{
+          "type": "html",
+          "id": "coupons_rules",
+          "label": "coupons rules"
+        }
+      ]
+    }]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

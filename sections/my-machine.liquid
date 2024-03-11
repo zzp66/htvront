@@ -1,0 +1,1033 @@
+  {% assign gift = section.settings.gift_box | img_url: '245x' %}
+<style>
+  .put-explain {
+    color: #333;
+}
+p.Reselect {
+    display: inline-block;
+    margin-top: 20px;
+    max-width: 160px;
+    border-bottom: 1px solid #333;
+    cursor: pointer;
+    color: #333;
+}
+  #model_other {
+    display: none;
+  }
+  ul#fn-machine-productImages {
+    max-width: 384px;
+    margin: 0px auto;
+  }
+  #fn-machine-productImages .sale__item.sale__item--my-machine div:nth-child(1) {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 16px;
+    padding: 16px 0;
+    margin: 12px 0 30px 0;
+        color: #333;
+  }
+  #fn-machine-productImages .sale__item.sale__item--my-machine div:nth-child(2) {
+    max-width: 250px;
+    height: 48px;
+    background: #FC7405;
+    border-radius: 6px;
+    margin: 0 auto;
+    color: #fff;
+    line-height: 48px;
+  }
+  .put-explain div:nth-child(1) {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 16px;
+    margin: 36px 0 8px 0;
+  }
+  .put-explain div:nth-child(2) {
+    font-size: 14px;
+    line-height: 14px;
+  }
+  .from-title.put-title {
+    font-size: 18px !important;
+  }
+  .down-white {
+    display: none;
+  }
+  .plate {
+    background: #3479DF !important;
+    color: #fff !important;
+  }
+  .machine .b {
+    fill: #fff;
+  }
+  .sect_machine {
+    font-size: 18px;
+    line-height: 18px;
+    text-align: center;
+    font-weight: 600;
+    margin: 48px 0 22px 0;
+  }
+  .main-machine .machine-header {
+    border-radius: 8px 8px 0 0;
+  }
+  .main-machine .machine-content {
+    border-radius: 8px;
+  }
+  .machine-desc {
+    font-size: 16px;
+  }
+  .fn-subhead {
+    display: flex;
+    align-items: center;
+    max-width: 383px;
+    margin: 0 auto;
+  }
+  .machine-desc {
+    font-size: 16px;
+    margin: 0 auto;
+    max-width: 470px;
+  }
+  .fn-subhead img {
+    margin-right: 5px;
+  }
+  .main-machine .machine,.main-machine .machine-tips {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    left: 0;
+    top: 0;
+    z-index: 999;
+    display: none;
+  }
+  .main-machine .machine-content,.main-machine .machine-tips-content{
+    max-width: 830px;
+    margin: 0 auto;
+    background: #fff;
+    transform: translateY(-50%);
+    top: 50%;
+    position: relative;
+  }
+  .main-machine .machine-header,.main-machine .machine-tips-header {
+    padding: 27px 0;
+    position: relative;
+    background: #FF7606;
+    text-align: center;
+    font-size: 24px;
+    color: #fff;
+    font-weight: bold;
+    line-height: 30px;
+  }
+  .main-machine .machine-header .fn-close,
+  .main-machine .machine-tips-header .fn-close {
+    position: absolute;
+    right: 22px;
+    top: 50%;
+    line-height: 0;
+    transform: translate(0, -50%);
+  }
+  .main-machine .machine-body,.main-machine .login-body,
+  .main-machine .sign-in-form,.main-machine .sign-up-form {
+    max-width: 605px;
+    margin: 0 auto;
+    padding: 30px 0 73px 0;
+  }
+  .main-machine .machine-body.active{
+    display: none;
+  }
+  .main-machine .machine-desc li {
+    margin-bottom: 0;
+    line-height: 24px;
+    font-size: 22px;
+    color: #333;
+  }
+  .main-machine .machine-desc li + li {
+    margin-top: 14px;
+  }
+  .main-machine .machine-desc li span {
+    vertical-align: top;
+    margin-left: 20px;
+  }
+  .main-machine .from-title {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 18px;
+    line-height: 28px;
+    color: #333;
+  }
+  .main-machine .select-click {
+    position: relative;
+    cursor: pointer;
+  }
+  .main-machine .select-click + .select-click{
+    margin-top: 15px;
+  }
+  .main-machine .down-white,
+  .main-machine .down-svg {
+    position: absolute;
+    right: 20px;
+    top: 22px;
+    line-height: 0;
+  }
+  .main-machine .machine-from h5 {
+    background-color: #EEEEEE;
+    /*     border: 1px solid #B9B9B9; */
+    border-radius: 6px;
+    font-size: 16px;
+    padding: 14px 0;
+    text-align: center;
+    color: #333;
+    margin-bottom: 0;
+  }
+  .main-machine .machine-from ul {
+    padding: 16px 0;
+    margin-bottom: 0;
+    display: none;
+    position: absolute;
+    top: 52px;
+    width: 100%;
+    z-index: 2;
+    left: 0;
+    max-height: 180px;
+    overflow-y: auto;
+    border-radius: 6px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.1);
+  }
+  .main-machine .machine-from ul>li {
+    background-color: #fff;
+    border-radius: 0;
+    font-size: 16px;
+    text-align: center;
+    color: #333;
+    margin-bottom: 0;
+    line-height: 16px;
+  }
+  .main-machine .machine-from ul>li:hover {
+    font-weight: 600;
+  }
+  .main-machine .machine-from ul>li + li {
+    /*     border-top: 1px solid #B9B9B9; */
+    padding: 20px 0 0 0;
+  }
+  .main-machine .machine-from input[type="text"]:focus,
+  .main-machine .machine-from input[type="search"]:focus,
+  .machine-from input[type="password"]:focus,
+  .main-machine .machine-from input[type="email"]:focus,
+  .main-machine .machine-from input[type="file"]:focus,
+  .main-machine .machine-from input[type="number"]:focus,
+  .main-machine .machine-from input[type="tel"]:focus,
+  .main-machine .machine-from textarea:focus,
+  .main-machine .machine-from select:focus{
+    border: 1px solid #B9B9B9;
+    border-radius: 0;
+    outline: none;
+  }
+  .main-machine .other-hidden {
+    display: none;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+  .main-machine .other-hidden.active{
+    display: flex;
+    height: 48px;
+  }
+  .main-machine .other-hidden input {
+    margin: 0;
+    border-color: #B9B9B9;
+    width: 100%;
+    border-width: 1px;
+    box-shadow: none;
+    border: 1px solid #CCCCCC;
+    border-radius: 6px;
+    padding: 0 10px;
+  }
+  .main-machine .other-hidden span {
+    width: 90px;
+    margin-left: 10px;
+    text-align: center;
+    background: #fc7405;
+    color: #fff;
+    line-height: 48px;
+    border-radius: 6px;
+  }
+  .main-machine .machine-btn {
+    width: 100%;
+    border: none;
+    background: #FF7606;
+    margin-top: 30px;
+    color: #fff;
+    height: 48px;
+    line-height: 48px;
+    font-size: 16px;
+    border-radius: 6px;
+  }
+  .main-machine .login-body{
+    display: none;
+    padding: 20px 0 67px 0;
+    text-align: center;
+  }
+  .main-machine .login-body.active{
+    display: block;
+  }
+  .main-machine .login-body .from-title {
+    margin-bottom: 0;
+    margin-top: 20px;
+  }
+  .main-machine .login-body .login{
+    margin-top: 30px;
+  }
+  .main-machine .login-body .login a{
+    display: block;
+    width: 100%;
+    font-size: 28px;
+    color: #FFFFFF;
+    background: #FF7606;
+    height: 64px;
+    line-height: 64px;
+  }
+  .main-machine .from-title.orange {
+    color: #FF7606;
+    margin-top: 40px;
+  }
+  .main-machine .no-login-flex {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .main-machine .no-login-flex a {
+    width: 48%;
+    background: #FF7606;
+    height: 64px;
+    line-height: 64px;
+    color: #fff;
+    font-size: 28px;
+  }
+  .main-machine .sign-in-form,.main-machine .sign-up-form {
+    display: none;
+    padding: 68px 0;
+  }
+  .main-machine .sign-in-form.active,.main-machine .sign-up-form.active {
+    display: block;
+  }
+  .main-machine .sign-in-form input,.main-machine .sign-up-form input {
+    height: 60px;
+    line-height: 60px;
+    border: 1px solid #B9B9B9;
+    border-radius: 0;
+    margin-bottom: 0;
+  }
+  .main-machine .sign-in-form .btn,.main-machine .sign-up-form .btn {
+    width: 100%;
+    background: #FF7606;
+    font-size: 28px;
+    padding: 0;
+    box-shadow: none;
+    border: none;
+    margin-top: 30px;
+  }
+  .main-machine .sign-in-form #CustomerPassword,
+  .main-machine .sign-up-form #LastName,
+  .main-machine .sign-up-form #Email,
+  .main-machine .sign-up-form #CreatePassword{
+    margin-top: 35px;
+  }
+  .main-machine .forget-link {
+    line-height: 32px;
+    font-size: 24px;
+    color: #FF7606;
+    margin-top: 10px;
+    display: block;
+  }
+  /* .main-machine .creat-account{
+  font-size: 24px;
+  color: #FF7606;
+  margin-top: 14px;
+  text-align: center;
+  } */
+  .main-machine .machine-content form {
+    margin-bottom: 0;
+    max-width: 385px;
+    margin: 0 auto;
+  }
+  .main-machine .window-open{
+    display: none;
+    background-color: #e8360e;
+    color: #fff;
+    width: 80%;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    padding: 12px 0;
+    line-height: 1;
+  }
+  .main-machine .window-open-true{
+    background-color: #e8360e;
+    color: #fff;
+    width: 80%;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    padding: 12px 0;
+    line-height: 1;
+  }
+  .main-machine .window-open.orange,.main-machine .window-open-true.orange{
+    background-color: #f5a623;
+    width: 100%;
+    padding: 15px 30px;
+    font-size: 14px;
+    line-height: 1.5em;
+  }
+  .main-machine #my-machine-program #__pf .underline {
+    width: 50%;
+    height: 3px;
+    border-radius: 20px;
+    margin: 10px auto 0 auto;
+    background-color: #f5a623;
+  }
+  .main-machine button[cart-show="false"]{
+    display: none;
+  }
+  .main-machine .machine-prompt{
+    display: none;
+    color: #e8360e;
+    margin-top: 10px;
+  }
+  .main-machine .machine-prompt.active{
+    display: block;
+  }
+  .main-machine .machine-flex {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0;
+    cursor: pointer;
+    flex-wrap: wrap;
+  }
+  .main-machine .machine-tips-body .from-title {
+    padding: 100px 0;
+    margin-bottom: 0;
+  }
+  .main-machine .machine-tips-header {
+    min-height: 64px;
+  }
+  .main-machine .machine-tips-body {
+    text-align: center;
+  }
+  .main-machine .machine-open {
+    display: inline-block;
+    padding: 16px 110px;
+    background: #FF7606;
+    line-height: 1;
+    color: #fff6eb;
+    font-size: 28px;
+    margin-bottom: 80px;
+    cursor: pointer;
+  }
+  @media screen and (max-width: 991px){
+    .main-machine .machine-body,
+    .main-machine .login-body,
+    .main-machine .sign-in-form,
+    .main-machine .sign-up-form {
+      padding: 30px 15px;
+    }
+  }
+  @media screen and (max-width: 768px){
+    .main-machine .select-click + .select-click{
+      margin-top: 15px;
+    }
+    .main-machine .machine-content, .main-machine .machine-tips-content {
+      max-width: 500px;
+    }
+    .main-machine .machine-header, .main-machine .machine-tips-header {
+      padding: 20px 0;
+      font-size: 20px;
+      line-height: 20px;
+    }
+    .main-machine .machine-body, .main-machine .login-body, .main-machine .sign-in-form, .main-machine .sign-up-form {
+      padding: 20px 15px 40px 15px;
+    }
+    . .main-machine .from-title,
+    .main-machine .machine-desc li {
+      font-size: 16px;
+    }
+    .sect_machine {
+      font-size: 16px;
+      line-height: 16px;
+      margin: 25px 0 25px 0;
+    }
+    .main-machine .from-title {
+      margin-bottom: 10px;
+    }
+    .machine-desc {
+      font-size: 13px;
+    }
+    .main-machine .machine-from h5,
+    .main-machine .machine-from ul>li {
+      font-size: 16px;
+    }
+    .main-machine .machine-btn {
+      margin-top: 25px;
+    }
+    .main-machine .login-body .from-title {
+      margin-top: 15px;
+    }
+    .put-explain div:nth-child(1) {
+      font-size: 16px;
+      margin: 25px 0 10px 0;
+    }
+    .main-machine .no-login-flex span,
+    .main-machine .machine-btn {
+      height: 48px;
+      line-height: 48px;
+      font-size: 16px;
+    }
+    .main-machine .from-title.orange {
+      margin-top: 20px;
+    }
+    .main-machine .machine-from ul{
+      top: 49px;
+    }
+    .main-machine .machine-flex {
+      margin-top: 0;
+    }
+    .main-machine .machine-tips-body .from-title {
+      padding: 50px 0;
+    }
+    .main-machine .machine-open {
+      margin-bottom: 30px;
+    }
+  }
+  @media screen and (max-width: 480px){
+    .main-machine .other-hidden.active {
+      height: 40px;
+    }
+    .main-machine .select-click + .select-click{
+      margin-top: 10px;
+    }
+    .fn-subhead {
+      line-height: 13px;
+    }
+    .fn-subhead +  .fn-subhead {
+      margin-top: 5px;
+    }
+    .main-machine .machine-btn {
+      margin-top: 20px;
+    }
+    .main-machine .machine-content form {
+      margin-bottom: 0;
+      max-width: 250px;
+      margin: 0 auto;
+    }
+    .main-machine .machine-content, .main-machine .machine-tips-content {
+      max-width: 330px;
+    }
+    .main-machine .machine-header, .main-machine .machine-tips-header {
+      padding: 9px 0;
+      font-size: 15px;
+      line-height: 15px;
+    }
+    .main-machine .machine-body, .main-machine .login-body, .main-machine .sign-in-form, .main-machine .sign-up-form {
+      padding: 15px 15px 40px 15px;
+    }
+    .main-machine .from-title {
+      margin-bottom: 10px;
+      font-size: 13px;
+      line-height: 13px;
+    }
+    .main-machine .machine-desc li {
+      font-size: 16px;
+    }
+    .sect_machine {
+      font-size: 12px;
+      line-height: 12px;
+      font-weight: bold;
+      margin: 15px 0 10px 0;
+    }
+    .machine-desc {
+      font-size: 13px;
+    }
+    .main-machine .machine-from h5 {
+      padding: 12px 0;
+      font-size: 12px;
+    }
+    .main-machine .down-white, .main-machine .down-svg {
+      position: absolute;
+      right: 20px;
+      top: 14px;
+      line-height: 0;
+    }
+    .main-machine .machine-from ul>li {
+      font-size: 12px;
+    }
+    /* .main-machine .machine-btn {
+    margin-top: 15px;
+  } */
+    .main-machine .machine-header {
+      border-radius: 10px 10px 0 0;
+    }
+    .main-machine .machine-content {
+      border-radius: 10px;
+    }
+    .main-machine .login-body .from-title {
+      margin-top: 15px;
+    }
+    .put-explain div:nth-child(1) {
+      font-size: 13px;
+      margin: 15px 0 10px 0;
+    }
+    .put-explain div:nth-child(2) {
+      font-size: 12px;
+      line-height: 12px;
+    }
+    #fn-machine-productImages .sale__item.sale__item--my-machine div:nth-child(1) {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 12px;
+      padding: 13px 0;
+      margin: 12px 0 20px 0;
+    }
+    #fn-machine-productImages .sale__item.sale__item--my-machine div:nth-child(2) {
+      max-width: 250px;
+      height: 40px;
+      background: #FC7405;
+      border-radius: 6px;
+      margin: 0 auto;
+      color: #fff;
+      line-height: 40px;
+      font-size: 12px;
+    }
+    .main-machine .no-login-flex span, .main-machine .machine-btn {
+      height: 40px;
+      line-height: 40px;
+      font-size: 12px;
+    }
+    .main-machine .from-title.orange {
+      margin-top: 20px;
+    }
+    .main-machine .machine-from ul{
+      top: 40px;
+    }
+    .main-machine .machine-flex {
+      margin-top: 0;
+    }
+    .main-machine .machine-tips-body .from-title {
+      padding: 50px 0;
+    }
+    .main-machine .machine-open {
+      margin-bottom: 30px;
+    }
+    .from-title.put-title {
+      font-size: 13px !important;
+    }
+  }
+</style>
+<div class="machine">
+    <div class="machine-content">
+        {% if section.settings.model_title %}
+        <div class="machine-header">
+            <div class="machine-title">{{ section.settings.model_title }}</div>
+            <div class="fn-close">{% render 'close' %}</div>
+        </div>
+        {% endif %}
+        <div class="machine-body">
+            {% if section.settings.from_title %}
+            <div class="from-title">{{ section.settings.from_title }}</div>
+            {% endif %}
+          {% if section.settings.model_desc %}
+          <div class="machine-desc">{{ section.settings.model_desc }}</div>
+          {% endif %}
+            <div class="machine-from">
+                <form method="get" id="machineAjax">
+                    <div class="select-click">
+                        <h5 id="brand_h">Brand</h5>
+                        <div class="down-svg"><img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/5704bb627dde3201267ad0ee9bd19d8d.png?v=1656898321" alt=""></div>
+                        <div class="down-white"><img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/4_768bf76a-1691-467a-bf1f-9f32d07d37eb.png?v=1656904374" alt=""></div>
+                        <ul>
+                            {% for block in section.blocks %}
+                            {% if block.type == "brand" %}
+                            <li class="option-click option-brand">{{ block.settings.brand_options }}</li>
+                            {% endif %}
+                            {% endfor %}
+                            <li class="other" id="brandOther">other</li>
+                        </ul>
+                        <div class="other-hidden">
+<!--                             <input type="text" name="brand" value="" placeholder="Please fill in your Brand"> -->
+                          <input id="CN_NAME" type="text" name="model" value="" placeholder="Please fill in your Model">
+<!--                             <span>OK</span> -->
+                        </div>
+                    </div>
+                    <div class="select-click select-clickModel">
+                        <h5 id="model_h">Model</h5>
+<!--                         <div class="down-svg">{% render 'down' %}</div> -->
+                      <div class="down-svg"><img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/5704bb627dde3201267ad0ee9bd19d8d.png?v=1656898321" alt=""></div>
+                      <div class="down-white"><img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/4_768bf76a-1691-467a-bf1f-9f32d07d37eb.png?v=1656904374" alt=""></div>
+                        <ul>
+                            {% for block in section.blocks %}
+                            {% if block.type == "model" %}
+                            <li class="option-click option-model">{{ block.settings.model_options }}</li>
+                            {% endif %}
+                            {% endfor %}
+<!--                             <li class="other" id="modelOther">other</li> -->
+                        </ul>
+<!--                         <div class="other-hidden">
+                            <input id="CN_NAME" type="text" name="model" value="" placeholder="Please fill in your Model">
+                            <span id="other-ok">OK</span>
+                        </div> -->
+                    </div>
+                    <div class="machine-prompt">Please enter your brand and model</div>
+                    <button type="button" class="machine-btn">Confirm</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="login-body">
+          {% if section.settings.from_title %}
+          <div class="from-title put-title">{{ section.settings.from_title }}</div>
+          {% endif %}
+          <div class="put-explain">
+            <div>My Machine</div>
+            <div>Your saved machine can be used to find your machine supplies faster and easier.</div>
+          </div>
+          <div  id="model_options">
+            <ul id="fn-machine-productImages">
+              {% for block in section.blocks %}
+              {% if block.type == "model" %}
+              <li class="sale__item sale__item--{{section.id}}">
+                <div>{{ block.settings.model_options }}</div>
+                <div>
+                  {% if block.settings.gift_imageLinks != blank %}
+                  <a href="{{ block.settings.gift_imageLinks }}">
+                    {% endif %}
+                    shop Supplies
+                    {% if block.settings.gift_imageLinks != blank %}
+                  </a>
+                  {% endif %}
+                </div>
+                <div> <p class="Reselect">Reselect your machine</p> </div>
+              </li>
+              {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+          <div id="model_other">
+            <ul id="fn-machine-productImages">
+              <li class="sale__item sale__item--{{section.id}}">
+                <div id="rest">other</div>
+                <div>
+                  <a href="https://www.htvront.com/collections/cricut-maker">
+                    shop Supplies
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </div>
+
+</div>
+<script>
+  // 获取本地存储 品牌和机型
+function getData() {
+    let getIndex = localStorage.getItem( 'dataIndex');
+    if (getIndex != null) {
+      $('.main-machine .login-body,.main-machine .machine-body').addClass('active');
+        $("#fn-machine-productImages > li").eq(getIndex).show().siblings().hide();
+    }
+}
+function addCookie(objName, objValue, objHours){//添加cookie
+    var str = objName + "=" + escape(objValue);
+    if (objHours > 0) {
+        var date = new Date();
+        var ms = objHours * 3600 * 1000;
+        date.setTime(date.getTime() + ms);
+        str += "; expires=" + date.toGMTString();
+    }
+    document.cookie = str;
+}
+function getCookie(objName){
+    var arrStr = document.cookie.split("; ");
+    for (var i = 0; i < arrStr.length; i++) {
+        var temp = arrStr[i].split("=");
+        if (temp[0] == objName)
+            return unescape(temp[1]);
+    }
+}
+  
+$(function () {
+    $('.my-machine').click(function () {
+        $('.main-machine .machine').show();
+        getData();
+    });
+      $('.Reselect').click(function () {
+      $('.main-machine .login-body,.main-machine .machine-body').removeClass('active');
+    });
+  
+    $('.main-machine .machine-header .fn-close').click(function () {
+        $('.main-machine .machine,.main-machine .select-click ul').hide();
+        $('.main-machine .login-body,.main-machine .sign-in-form,.main-machine .sign-up-form,.main-machine .machine-body,.main-machine .other-hidden').removeClass('active');
+        $('.main-machine .option-click').show();
+    });
+    $('.main-machine .select-click h5').click(function () {
+      $(this).addClass("plate");
+      $(this).parent().siblings().children('h5').removeClass("plate");
+      $(this).siblings('.down-svg').hide();
+      $(this).siblings('.down-white').show();
+      $(this).siblings('ul').toggle(300);
+      $(this).parent().siblings().children('ul').hide(300);
+    });
+    $('.main-machine .option-click').click(function () {
+      $(this).parent().siblings('h5').removeClass("plate");
+      $(this).parent().siblings('.down-svg').show();
+      $(this).parent().siblings('.down-white').hide();
+      $(this).parents().siblings('.select-clickModel').show();
+      let optionText = $(this).text();
+      $(this).parent().siblings('h5').text(optionText);
+      $(this).parent().siblings('.other-hidden').removeClass('active');
+      $(this).parent('ul').hide(300);
+      $(this).parent().siblings().children('input').val(optionText);
+      $(this).parents().siblings().children().find('.option-click').show();
+    });
+  $('.main-machine .option-model').click(function () {
+    var getindex =  $(this).index();
+    localStorage.setItem('dataIndex', getindex);
+    $("#fn-machine-productImages > li").eq(getindex).show().siblings().hide();
+  });
+  
+    //二级联动
+    $('.main-machine .option-brand').click(function () {
+        let optionText = $(this).text();
+      $(this).parents().siblings('.select-clickModel').children('#model_h').text('Model');
+        $(this).parents().siblings().children().find('.option-click').each(function(){
+            let titleArr = $(this).text();
+            if(titleArr.indexOf(optionText) === -1){
+                $(this).hide();
+            }
+        });
+    });
+    $('.main-machine .other').click(function () {
+      let optionText = $(this).text();
+      $(this).parent('ul').hide(300);
+      $(this).parent().siblings('h5').text(optionText);
+      $('.other-hidden').addClass('active');
+      $(this).parents().siblings().children().find('.option-click').hide();
+      $(this).parents().siblings('.select-clickModel').hide();
+    });
+  $('.main-machine .machine-btn').click(function () {
+    var model_h = $('#model_h').text(),
+        brand_h = $('#brand_h').text();
+    if(brand_h !== 'other') {
+      $('#model_other').hide();
+      $('#model_options').show();
+      if(brand_h === 'Brand' || model_h === 'Model') {
+        $('.main-machine .machine-prompt').addClass('active');
+      } else {
+        $('.main-machine .machine-prompt').removeClass('active');
+        $('.main-machine .login-body,.main-machine .machine-body').addClass('active');
+      }
+    } else {
+      $('#model_other').show();
+      $('#model_options').hide();
+       var model_val = $('#CN_NAME').val();
+      $('#rest').html(model_val);
+      $('.main-machine .machine-prompt').removeClass('active');
+      $('.main-machine .login-body,.main-machine .machine-body').addClass('active');
+    }
+  });
+});
+    $(function () {
+   getData();
+  })
+  //     $('.main-machine .machine-open').click(function () {
+//         $('.main-machine .machine').show();
+//         $('.main-machine .machine-tips').hide();
+//     });
+//     $('.main-machine .machine-tips-header .fn-close').click(function () {
+//         $('.main-machine .machine-tips').hide();
+//     });
+//     $('.main-machine .other-hidden span').click(function () {
+//         let optionText = $(this).siblings('input').val();
+//         if(optionText === ''){
+//             $('.main-machine .machine-prompt').addClass('active');
+//         } else {
+//             $(this).parent().siblings('h5').text(optionText);
+//             $(this).parent().removeClass('active');
+//             $('.main-machine .machine-prompt').removeClass('active');
+//         }
+//     });
+//     $('.main-machine .creat-account').click(function () {
+//         $('.main-machine .sign-up-form').addClass('active');
+//         $('.main-machine .sign-in-form').removeClass('active');
+//         $('.main-machine .machine-header .machine-title').text('Create Account');
+//     });
+//     $('.main-machine .machine-btn').click(function () {
+//         var model = $('input[name="model"]').val(),
+//             brand = $('input[name="brand"]').val();
+//         let valueFrom = model + ',' + brand;
+//         let userEmail='{{ customer.email }}';
+//         if(model === '' || brand === '') {
+//             $('.main-machine .machine-prompt').addClass('active');
+//         } else {
+//             $('.main-machine .machine-prompt').removeClass('active');
+//             if(userEmail){
+//                 $.ajax({
+//                     type:'GET',
+//                     dataType:'jsonp',
+//                     jsonp :'callback', //指定一个查询参数名称来覆盖默认的 jsonp 回调参数名 callback
+//                     jsonpCallback: 'handle', //设置回调函数名
+//                     url: 'https://qn.htvront.com:9000/prod-biz-api/htvront/activity/activity',
+//                     data: {user_email: userEmail, model: model, brand: brand},
+//                     success(result){
+//                         $('.main-machine .login-body,.main-machine .machine-body').addClass('active');
+// //                         $('.machine,.select-click ul').hide();
+//                     },
+//                     error(result){
+//                         console.log('error',result.status);
+//                     }
+//                 });
+//             } else {
+//                 $('.main-machine .login-body,.main-machine .machine-body').addClass('active');
+//                 addCookie('machineValue', valueFrom, 1);
+//             }
+//         }
+//     });
+// $(function(){
+//        let userEmail='{{ customer.email }}';
+// 	   $.ajax({
+//          	 type:'GET',
+//           	 dataType:'jsonp',
+//          	 url: 'http://qn.htvront.com:9000/prod-biz-api/htvront/activity/getstate',
+//          	 data: {user_email: userEmail},
+//          	 jsonp :'callback', //指定一个查询参数名称来覆盖默认的 jsonp 回调参数名 callback
+//              jsonpCallback: 'handle', //设置回调函数名
+//           success(result){
+//             if (result.message == 'on') {
+//              $('#email_verification').css("display","none");
+//             }
+//           },
+//           error(result){
+//              console.log('error',result.status);
+//           }
+//     });
+// });
+</script>
+{% schema %}
+  {
+    "name": "My Machine",
+    "class": "main-machine",
+    "settings": [
+    {
+      "type": "text",
+      "id": "model_title",
+      "label": {
+        "en": "Model Title",
+        "zh-CN": "弹窗标题"
+      }
+    },
+    {
+      "type": "text",
+      "id": "from_title",
+      "label": {
+        "en": "From Title",
+        "zh-CN": "首页弹窗提示"
+      }
+    },
+    {
+      "type": "html",
+      "id": "model_desc",
+      "label": {
+        "en": "Model Desc",
+        "zh-CN": "弹窗描述"
+      }
+    },
+    {
+      "type": "image_picker",
+      "id": "gift_box",
+      "label": {
+        "en": "Image",
+        "zh-CN": "图片"
+      }
+    },
+    {
+      "type": "text",
+      "id": "discount_title",
+      "label": {
+        "en": "Discount Title",
+        "zh-CN": "折扣提示"
+      }
+    },
+	{
+      "type": "text",
+      "id": "discounts_Code",
+      "label": {
+        "en": "Discount Title",
+        "zh-CN": "未登录提示"
+      }
+    },
+    {
+      "type": "url",
+      "id": "login_link",
+      "label": {
+        "en": "Logged in jump link",
+        "zh-CN": "已登录跳转链接"
+      }
+    },
+    {
+      "type": "text",
+      "id": "no_login_prompt",
+      "label": {
+        "en": "Not logged in prompt",
+        "zh-CN": "未登录提示"
+      }
+    }
+    ],
+  "blocks": [
+    {
+      "type": "brand",
+      "name": {
+        "en": "Brand",
+        "zh-CN": "品牌"
+      },
+      "settings": [
+        {
+          "type": "text",
+          "id": "brand_options",
+          "label": {
+            "en": "Brand Opthion",
+            "zh-CN": "品牌选项"
+          }
+        }
+      ]
+    },
+    {
+      "type": "model",
+      "name": {
+        "en": "Model",
+        "zh-CN": "机型"
+      },
+      "settings": [
+        {
+          "type": "text",
+          "id": "model_options",
+          "label": {
+            "en": "Model Opthion",
+            "zh-CN": "机型选项"
+          }
+        },
+        {
+        "type":"url",
+        "id":"gift_imageLinks",
+        "label":{
+        "en":"Image links",
+        "zh-CN":"图片链接"
+        }
+        }
+      ]
+    }
+  ]
+  }
+{% endschema %}

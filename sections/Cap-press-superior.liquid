@@ -1,0 +1,183 @@
+{% style %}
+  #shopify-section-{{ section.id }} .cap-press-superior{
+    background: url({{ section.settings.image_bg | img_url:'1920x' }}) no-repeat;
+    background-size: 100% 100%;
+  }
+      @media screen and (max-width: 768px){
+          #shopify-section-{{ section.id }} .cap-press-superior{
+            background: #FFFDEF
+          }
+        }
+{% endstyle %}
+<style>
+  .cap-press-superior{
+    padding:30px 0 60px;
+    letter-spacing: 0;
+  }
+  .cap-superior-content{
+    width:1600px;
+    margin:0 auto
+  }
+  .cap-superior-title{
+    position: relative;
+    text-align:center
+  }
+  .cap-superior-title img{
+    margin:0 auto
+  }
+  .cap-superior-title>div{
+    position: absolute;
+    top:11px;
+    width:100%;
+    font-size: 36px;
+    font-weight: bold;
+    color: #802704;
+    line-height: 49px;
+  }
+  .cap-superior-list{
+    display:flex;
+    flex-wrap: wrap;
+  }
+  .cap-superior-item{
+    margin-right:20px;
+    margin-top:30px
+  }
+  .cap-superior-item:nth-child(3n){
+    margin-right:0
+  }
+  @media screen and (max-width: 1680px){
+    .cap-superior-content{
+      width:83.3%
+    }
+    .cap-superior-item{
+      width:32%;
+      margin-right:2%
+    }
+    
+  }
+  @media screen and (max-width: 1180px){
+    .cap-superior-title>div{
+        font-size:24px;
+        line-height:38px;
+        top:18%
+      }
+    .cap-superior-item{
+      margin-top:20px
+    }
+  }
+  @media screen and (max-width: 768px){
+    .cap-press-superior{
+      padding:20px 0
+    }
+    .cap-superior-content{
+      width:93.6%
+    }
+    .cap-superior-item{
+      width:calc(50% - 3.5px);
+      margin-right:7px;
+      margin-top:10px
+    }
+    .cap-superior-item:nth-child(3n){
+      margin-right:7px
+    }
+    .cap-superior-item:nth-child(2n){
+      margin-right:0
+    }
+  }
+   @media screen and (max-width: 480px){
+    .cap-superior-title>div{
+      font-size:16px;
+      line-height:19px;
+      top:24%
+    }
+    
+  }
+</style>
+<div class="cap-press-superior" id="{{ section.settings.id }}">
+  <div class="cap-superior-content">
+    <div class="cap-superior-title">
+      <picture>
+          <source media="(max-width: 768px)" srcset="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Group_65_2x_802d8666-edb0-4dde-bf70-6d5b8e633cd4.png?v=1704266552">
+          <source media="(min-width: 769px)" srcset="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Group_52.png?v=1704181015">
+          <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Group_52.png?v=1704181015" />
+        </picture>
+      
+      <div>{{ section.settings.title }}</div>
+    </div>
+    <div class="cap-superior-list">
+      {% for block in section.blocks %}
+        <div class="cap-superior-item">
+          {% if block.settings.image != blank  %}
+            <picture>
+              <source media="(max-width: 768px)" srcset="{{ block.settings.image_mobile | img_url:'344x' }}">
+              <source media="(min-width: 769px)" srcset="{{ block.settings.image |img_url:'520x' }}">
+              <img src="{{ block.settings.image |img_url:'520x' }}" alt="{{ block.settings.title }}" />
+            </picture>
+            <h3 style="display:none">{{ block.settings.title }}</h3>
+            <p style="display:none">
+              {{ block.settings.content }}
+            </p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Cap Press Superior",
+    "settings": [
+       {
+        "type": "text",
+        "id": "id",
+        "label": "id(页面唯一性，全英文)"
+      },
+      {
+        "type": "image_picker",
+        "id":"image_bg",
+        "label":"image_bg"
+      },{
+        "type": "text",
+        "id":"title",
+        "label":"title"
+      }
+    ],
+    "blocks":[{
+      "type":"images",
+      "name":"images",
+      "settings":[
+        {
+          "type": "image_picker",
+          "id":"image",
+          "label":"image"
+        },
+        {
+          "type": "image_picker",
+          "id":"image_mobile",
+          "label":"image_mobile"
+        },
+        {
+          "type": "text",
+          "id":"title",
+          "label":"title"
+        },
+        {
+          "type": "text",
+          "id":"content",
+          "label":"content"
+        }
+      ]
+    }],
+    "presets":[
+        {
+            "name":"Cap Press Superior"
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

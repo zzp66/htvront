@@ -1,0 +1,254 @@
+<style>
+.fn-mask-menu .b {
+    fill: #000;
+}
+.fn-mask-menu .fn-close {
+    float: right;
+    cursor: pointer;
+}
+  .fn-contactUs-mask{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    left: 0;
+    top: 0;
+    z-index: 999;
+    display: none;
+}
+.fn-mask-menu {
+    max-width: 520px;
+    margin: 0 auto;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    border-radius: 16px;
+}
+h2.title.title-wrapper--no-top-margin.h1.fn-mask-menutitle {
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    margin-bottom: 34px;
+}
+.fn-mask-message.form-status.form-status-list.form__message {
+    font-size: 12px;
+    margin: 20px 0 0 0;
+}
+  .fn-contact__field {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+  .fn-contact__field .fn-field{
+    width: 49%;
+}
+.fn_field__input {
+    width: 100%;
+    height: 32px;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    padding: 0 10px;
+}
+  .field_message {
+    width: 100%;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+  }
+  .fn_field__Subject {
+    width:100%;
+  }
+textarea#ContactForm-body {
+    padding: 6px 10px;
+    height: 118px;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+}
+  input#ContactForm-Subject {
+    margin: 20px 0;
+}
+.fn-contactUs .contact .icon-success {
+    margin-top: 0;
+}
+  .fn-contactUs a {
+    text-decoration: underline;
+  }
+  .fn-Website {
+    margin-top: 50px;
+    margin-bottom: 80px;
+}
+  h1.fn-contactUs-title.t {
+    font-size: 24px;
+    line-height: 24px;
+    text-align: center;
+  }
+.fn-Website-heder p {
+    line-height: 20px;
+    word-break: break-word;
+}
+  a.fn-Secion-link {
+    display: inline-block;
+  }
+  .fn-Website-title {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 18px;
+    margin-bottom: 14px;
+  }
+  .fn-Website-main {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .fn-main-items,
+  .fn-main-list {
+    display: flex;
+  }
+  .fn-main-items {
+    width: 44%;
+  }
+  .fn-main-tele {
+    margin-left: 15px;
+  }
+  .fn-main-title {
+    margin-bottom: 8px;
+  }
+.fn-main-button {
+    width: 120px;
+    height: 36px;
+    background: #FF7606;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #FFFFFF;
+    line-height: 36px !important;
+    text-align: center;
+    margin-top: 8px;
+    cursor: pointer;
+}
+  .fn-main-tele div {
+    line-height: 18px;
+  }
+  .fn-Website-main {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+  .fn-Commission-main {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+.fn-commission-footer {
+    margin: 80px 0;
+}
+  .contact__button {
+    text-align: center;
+}
+  button.fn-field-button {
+    height: 34px;
+    background: #FF7606;
+    border-radius: 6px;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0 31px;
+}
+.fn-products-button {
+    width: 170px;
+    height: 36px;
+    background: #067AFF;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #FFFFFF;
+    line-height: 36px !important;
+    text-align: center;
+    margin-top: 8px;
+    cursor: pointer;
+}
+  .fn-choose-products {
+    display: none;
+}
+  .fn-choose-products a {
+    text-decoration: none;
+  }
+  @media screen and (min-width: 750px) {
+   .fn-mask-menu .section-main-Contact-form-padding {
+    padding: 25px 40px 46px 40px;
+}
+    .fn-mask-menu .contact__button {
+    margin-top: 3rem;
+}
+  }
+
+  @media (max-width: 769px){
+    .fn-main-items {
+      width: 50%;
+    }
+    .fn-main-list {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+  @media (max-width: 480px){
+    .fn-mask-menu {
+    width: 330px;
+}
+    .fn-contact__field .fn-field {
+    width: 100%;
+}
+        .fn-contact__field .fn-field + .fn-field {
+    margin-top: 2rem;
+}
+    .fn-main-items {
+      width: 100%;
+      margin-bottom: 20px;
+    }s
+    h1.fn-contactUs-title.t {
+      margin-top: 20px;
+    }
+    .fn-commission-footer,
+    .fn-Website {
+      margin: 30px 0;
+    }
+  }
+</style>
+<div class="page-width fn-contactUs">
+  <div class="fn-breadcrumb">
+    <ul>
+      <li style="color: rgba(51, 51, 51, 0.8);"><a href="/">Home</a></li>
+      <li> > </li>
+      <li> {{ page.title }}</li>
+    </ul>
+  </div>
+  <h1 class="fn-contactUs-title t">
+    {{ page.title }}
+  </h1>
+  {% section 'main-Contact-Website' %}
+  {% section 'main-Contact-Commission' %}
+   <div class="fn-contactUs-mask">
+    {% section 'main-Contact-form' %}
+  </div>
+<!--   <div class="more_questions"><div class="t">For more questions,</div><a class="More_link" href="/blogs/faq/tagged/b-shipping">check here</a></div> -->
+</div>
+<script>
+  $(function (){
+        var Contact_url = window.location.search.substr(1);
+        if(Contact_url.indexOf("contact_posted=true") !== -1) {
+          $('.fn-Shopping').hide();
+          $('.fn-choose-products').show();
+      } else {
+          $('.fn-Shopping').show();
+          $('.fn-choose-products').hide();
+      }
+});
+  $('.fn-main-button').click(function (){
+      $('.fn-contactUs-mask').show();
+    });
+    $('.fn-close').click(function (){
+      $('.fn-contactUs-mask').hide();
+    });
+</script>

@@ -1,0 +1,99 @@
+<style>
+    #countdown_time {
+    display: none;
+  }
+</style>
+<div class="fn-prediction-countdown">
+  <div class="fn-time-format">
+    <div class="fn-time-format_img">
+      <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230322-143929.png?v=1679467198">
+    </div>
+    <div class="format_span_time">
+      <span class="days format_span t">00</span>
+    </div>
+  </div>
+  <div class="fn-time-format">
+    <div class="fn-time-format_img">
+      <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/20230309-152832.png?v=1678346931">
+    </div>
+    <div class="format_span_time">
+      <span class="hour format_span t">00</span>
+    </div>
+  </div>
+  <div class="fn-time-format">
+    <div class="fn-time-format_img">
+      <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/20230309-152832.png?v=1678346931">
+    </div>
+    <div class="format_span_time">
+      <span class="minute format_span t">00</span>
+    </div>
+  </div>
+  <div class="fn-time-format">
+    <div class="fn-time-format_img">
+      <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/20230309-152832.png?v=1678346931">
+    </div>
+    <div class="format_span_time">
+      <span class="second format_span t">00</span>
+    </div>
+  </div>
+</div>
+<div id="countdown_time">{{ section.settings.countdown_time }}</div>
+<script>
+  // var p_times = '2023-3-10 14:35:00';
+  var p_times = $('#countdown_time').text();
+  //获取元素
+  var days  = document.querySelector(".days");
+  var hour = document.querySelector(".hour");
+  var minute = document.querySelector(".minute");
+  var second = document.querySelector(".second");
+  //获取截止时间的时间戳（单位毫秒）
+  var inputTime = +new Date(""+ p_times);
+  //我们先调用countDown函数，可以避免在打开界面后停一秒后才开始倒计时
+  countDown();
+  //定时器 每隔一秒变化一次
+  var timer_s = setInterval(countDown, 1000);
+  function countDown() {
+      //获取当前时间的时间戳（单位毫秒）
+      var nowTime = +new Date();
+      //把剩余时间毫秒数转化为秒
+      var times = (inputTime - nowTime) / 1000;
+      if (times > 0) {
+         var d = Math.floor(times /60 / 60 / 24 );
+      //计算小时数 转化为整数
+      //如果小时数小于 10，要变成 0 + 数字的形式 赋值给盒子
+      days.innerHTML = d < 10 ? "0" + d : d;
+      var h = Math.floor(times /60 / 60 % 24 );
+      //计算小时数 转化为整数
+      //如果小时数小于 10，要变成 0 + 数字的形式 赋值给盒子
+      hour.innerHTML = h < 10 ? "0" + h : h;
+      //计算分钟数 转化为整数
+      var m = parseInt(times / 60 % 60);
+      //如果分钟数小于 10，要变成 0 + 数字的形式 赋值给盒子
+      minute.innerHTML = m < 10 ? "0" + m : m;
+      //计算描述 转化为整数
+      var s = parseInt(times % 60);
+      // //如果秒钟数小于 10，要变成 0 + 数字的形式 赋值给盒子
+      second.innerHTML = s < 10 ? "0" + s : s;
+      } else {
+        clearInterval(timer_s);
+      }
+  }
+</script>
+{% schema %}
+{
+  "name": "count down",
+  "settings": [
+     {
+          "type":"text",
+          "id":"countdown_time",
+          "label":"time"
+      }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

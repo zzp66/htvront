@@ -1,0 +1,71 @@
+<div class="fn-Center-ContactUs classify ">
+      <div class="fn-classify-title">Can’t find the answers you’re looking for? Contact Us</div>
+      <ul class="fn-contactUs-list">
+        <li>
+          <div class="us-Email" style="display: flex;">
+            {% if section.settings.image_email != blank %}
+            {% assign image = section.settings.image_email | img_url: '24x' %}
+            <img src="{{ image }}" alt="">
+            {% endif %}
+            <div class="fn-list-title">Send Us an Email</div>
+          </div>
+          <div>Connect: support@htvront.com</div>
+          <div>Operating time:</div>
+          <div>8:30—17:30 (Monday to Friday)</div>
+          <div type="button" class="fn-button-Email buttonIist"><a href="mailto:support@htvront.com">Send Email</a></div>
+        </li>
+        <li>
+          <div style="display: flex;">
+            {% if section.settings.Image_us != blank %}
+            {% assign image = section.settings.Image_us | img_url: '24x' %}
+            <img src="{{ image }}" alt="">
+            {% endif %}
+            <div class="fn-list-title">Chat with Us</div>
+          </div>
+          <div>Live Chat Service Hours.</div>
+          <div>8:30—17:30 (Monday to Friday)</div>
+          <div type="button"  class="fn-button-Consult buttonIist"><a href="{{section.settings.Consult_link}}">Click for Consult</a></div>
+        </li>
+      </ul>
+    </div>
+{% schema %}
+  {
+    "name": "Contact Us",
+    "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_email",
+      "label": {
+        "en": "Image",
+        "zh-CN": "图片"
+      }
+    },
+    {
+      "type": "image_picker",
+      "id": "Image_us",
+      "label": {
+        "en": "Image_us",
+        "zh-CN": "图片"
+      }
+    },
+        {
+          "type": "url",
+          "id": "SendEmail_link",
+          "label": {
+            "en": "Send Email Link1",
+            "zh-CN": "Send Email"
+          }
+        },
+        {
+          "type": "url",
+          "id": "Consult_link",
+          "label": {
+            "en": "Consult Link",
+            "zh-CN": "Consult Link"
+          }
+        }
+    ],
+  "blocks": [
+   ]
+  }
+{% endschema %}

@@ -1,0 +1,85 @@
+<div class="fn-press-more">
+  <div>
+      <h3 class="t particular_title">    
+          {{section.settings.More_title}}
+      </h3>
+  </div>
+  <div>
+    <ul class="fn-more-list">
+      {% for block in section.blocks %}
+          <li>
+            <img src="{{ block.settings.more_img | img_url: '790x' }}" alt="">
+            <p>{{ block.settings.official_title }}</p>
+          </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+<div class="fn-more-icon">
+      {% if section.settings.more_icon != blank %}
+             <img class="fn-computer-moreimgge" src="{{ section.settings.more_icon | img_url: '1212x' }}" alt="">
+      {% endif %}
+      {% if section.settings.more_mobileicon != blank %}
+          <img class="fn-mobile-moreimage" src="{{ section.settings.more_mobileicon | img_url: '375x' }}" alt="">
+      {% endif %}
+</div>
+{% schema %}
+{
+	"name": "More Heat Press",
+	"settings": [{
+			"type": "text",
+			"id": "More_title",
+			"label": {
+				"en": "title",
+				"zh-CN": "标题"
+			}
+		},
+		{
+			"type": "image_picker",
+			"id": "more_icon",
+			"label": {
+				"en": "icon",
+				"zh-CN": "图标"
+			}
+		},
+		{
+			"type": "image_picker",
+			"id": "more_mobileicon",
+			"label": {
+				"en": "icon",
+				"zh-CN": "图标"
+			}
+		}
+	],
+	"blocks": [{
+		"type": "official",
+		"name": {
+			"en": "More Heat Press",
+			"zh-CN": "gif"
+		},
+		"settings": [{
+				"type": "image_picker",
+				"id": "more_img",
+				"label": {
+					"en": "Image",
+					"zh-CN": "图片"
+				}
+			},
+			{
+				"type": "text",
+				"id": "official_title",
+				"label": {
+					"en": "official  title",
+					"zh-CN": "标题"
+				}
+			}
+		]
+	}]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,937 @@
+<style>
+    .fn-cart-step{
+        width: 100%;
+        height: 128px;
+        padding: 0 16%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    .fn-cart-step-number{
+        width: 56px;
+        height: 56px;
+        line-height: 56px;
+        border-radius: 50%;
+        font-size: 26px;
+        background: #CCCCCC;
+        text-align: center;
+        color: #FFFFFF;
+        font-family: var(--font-title-family);
+    }
+    .fn-cart-step-number-active{
+        background: #FF7606;
+    }
+    .fn-cart-step-text{
+        font-size: 24px;
+        color: #999999;
+        margin-left: 13px;
+    }
+    .fn-cart-step-text-active{
+        color: #333333;
+        font-family: var(--font-title-family);
+    }
+    .fn-cart-shop_number{
+        font-size: 20px;
+        color: #333333;
+        margin-left: 10px;
+    }
+    .fn-cart-step-line{
+        width: 27%;
+        height: 2px;
+        background: #D8D8D8;
+        border-radius: 1px;
+        display: block!important;
+        margin: 0 18px;
+    }
+    .fn-cart-content{
+        width: 100%;
+        margin: 0 auto;
+        padding: 24px 8.3%;
+        display: flex;
+        flex-direction: row;
+    }
+    .fn-cart-content-left{
+        width: 63.1%;
+    }
+    .fn-cart-content-items-before{
+        width: 100%;
+        height: 1060px;
+        overFlow-x: hidden;
+        overFlow-y: scroll;
+    }
+    .fn-cart-content-items-later{
+        width: 100%;
+        height: auto;
+        overFlow-x: hidden;
+        overFlow-y: hidden;
+    }
+    .fn-cart-content-items-before::-webkit-scrollbar {
+        width: 10px;
+    }
+    .fn-cart-content-items-before::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background: #CCCCCC;
+    }
+    .fn-cart-content-items-before::-webkit-scrollbar-track {
+        border-radius: 5px;
+        background: rgba(232, 232, 232, 0.6);
+    }
+    .fn-cart-content-item{
+        width: 100%;
+        height:250px;
+        display: flex;
+        flex-direction: row;
+    }
+    .fn-cart-content-item + .fn-cart-content-item{
+        margin-top: 20px;
+    }
+    .fn-cart-content-item-image{
+        background: #f1f1f1;
+    }
+    .fn-cart-content-item-details{
+        height: 100%;
+        margin-left: 20px;
+        margin-right: 8%;
+        padding-right: 20px;
+        position: relative;
+    }
+    .fn-cart-content-item-details-title{
+        font-size: 26px;
+        font-weight: 600;
+        color: #333333;
+    }
+    .fn-cart-content-item-details-title:hover{
+        text-decoration: underline;
+    }
+    .fn-cart-content-item-details-color{
+        height: 20px;
+        font-size: 20px;
+        color: #333333;
+        line-height: 20px;
+        margin-top: 24px;
+    }
+    .fn-cart-content-item-details-del{
+        position: absolute;
+        top: 15px;
+        right: 0;
+    }
+    .fn-cart-content-item-details-price{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: end;
+    }
+    .fn-cart-content-item-details-price-new{
+        height: 36px;
+        font-size: 36px;
+        font-weight: 600;
+        color: #FF7606;
+        line-height: 36px;
+    }
+    .fn-cart-content-item-details-price-old{
+        height: 26px;
+        font-size: 26px;
+        color: rgba(51, 51, 51, 0.6);
+        line-height: 26px;
+        text-decoration:line-through;
+        margin-left: 14px;
+    }
+    .fn-cart-content-item-details-quantity{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 27.2%;
+        min-height: 40px;
+        border-radius: 4px;
+    }
+    .fn-cart-content-item-details-quantity__button-minus{
+        width: 31.3%;
+        border-radius: 4px 2px 2px 4px;
+        border-right: 1px solid #999999;
+    }
+    .fn-cart-content-item-details-quantity__button-plus{
+        width: 31.3%;
+        border-radius: 2px 4px 4px 2px;
+        border-left: 1px solid #999999;
+    }
+    .fn-cart-content-more{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-top: 46px;
+    }
+    .fn-cart-content-more_count{
+        height: 24px;
+        font-size: 24px;
+        color: #333333;
+        line-height: 24px;
+        margin-left: 10px;
+    }
+    .fn-cart-content-explain{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 70px;
+    }
+    .fn-cart-content-explain-text{
+        height: 30px;
+        font-size: 30px;
+        color: #333333;
+        line-height: 22px;
+        margin-right: 16px;
+    }
+    .fn-cart-content-right{
+        width: 36.9%;
+        padding-left: 4.5%;
+    }
+    .fn-cart-space-between{;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .fn-cart-space-between + .fn-cart-space-between{
+        margin-top: 22px;
+    }
+    .fn-cart-space-between-lt{
+        height: 22px;
+        font-size: 22px;
+        color: rgba(51, 51, 51, 0.9);
+        line-height: 22px;
+    }
+    .fn-cart-space-between-rt{
+        height: 24px;
+        font-size: 24px;
+        color: #333333;
+        line-height: 24px;
+    }
+    .fn-cart-space-between-hint{
+        font-size: 16px;
+        color: #333333;
+    }
+    .fn-cart-code_input{
+        width: 75%;
+        height: 40px;
+        border-radius: 4px;
+        border: 1px solid #CCCCCC;
+        padding: 0 10px;
+        font-size: 16px;
+    }
+    .fn-cart-apply_button{
+        width: 22%;
+        height: 40px;
+        background: #CCCCCC;
+        border-radius: 4px;
+        border: none;
+        font-size: 18px;
+        font-weight: 600;
+        color: #FFFFFF;
+    }
+    .fn-cart-check_button{
+        width: 100%;
+        height: 60px;
+        background: #FF7606;
+        border-radius: 6px;
+        border: none;
+        font-size: 24px;
+        font-weight: 600;
+        color: #FFFFFF;
+        margin-top: 30px;
+    }
+    .fn-cart-continue_button{
+        width: 100%;
+        height: 60px;
+        background: #E8E8E8;
+        border-radius: 6px;
+        border: none;
+        font-size: 24px;
+        font-weight: 600;
+        color: #333333;
+        margin: 20px 0;
+    }
+    .fn-cart-space-between-lt_button{
+        width: 48%;
+        height: 60px;
+        background: #5A31F4;
+        border-radius: 6px;
+        border: none;
+    }
+    .fn-cart-space-between-rt_button{
+        width: 48%;
+        height: 60px;
+        background: #FDC33A;
+        border-radius: 6px;
+        border: none;
+    }
+    .fn-cart-space-between-button_img{
+        margin: 0 auto;
+    }
+    .fn-cart-payment_hint{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        margin-top: 49px;
+    }
+    .fn-cart-payment_hint + .fn-cart-payment_hint{
+        margin-top: 34px;
+    }
+    .fn-cart-payment_hint-content{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-left: 20px;
+        height: 84px;
+    }
+    .fn-cart-payment_hint-img{
+        width: 84px;
+        height: 84px;
+    }
+    .fn-cart-payment_hint-logo_list{
+        display: flex;
+        flex-direction: row;
+    }
+    .fn-cart-payment_hint-logo_list img + img{
+        margin-left: 8px;
+    }
+    .fn-cart-payment_hint-content-title{
+        font-size: 20px;
+        line-height: 22px;
+        font-weight: 600;
+        color: #333333;
+        margin-bottom: 8px;
+    }
+    .fn-cart-payment_hint-content-text{
+        font-size: 18px;
+        color: #333333;
+        line-height: 18px;
+    }
+    .fn-cart-selected_for_you{
+        font-size: 30px;
+        color: #333333;
+        margin: 60px auto 30px;
+        text-align: center;
+    }
+    .fn-cart-swiper{
+        width: 100%;
+        height: 340px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        overflow: hidden;
+        list-style: none;
+        padding: 0;
+        z-index: 1;
+    }
+    .fn-cart-swiper-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        display: flex;
+        transition-property: transform;
+        box-sizing: content-box;
+    }
+    .fn-cart-swiper-slide {
+        width: calc( 50% - 10px );
+        height: 100%;
+    }
+    .fn-cart-flex{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+    .fn-cart-product_title{
+        width: 60%;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+        height: 24px;
+        font-size: 18px;
+        font-weight: 600;
+        color: #333333;
+        line-height: 24px;
+    }
+    .fn-cart-product_price{
+        height: 24px;
+        font-size: 24px;
+        font-weight: 600;
+        color: #FF7606;
+        line-height: 24px;
+    }
+    .fn-cart-product_colors{
+        display: flex;
+        flex-direction: row;
+        margin-top: 8px;
+        align-items: center;
+    }
+    .fn-cart-product_color{
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: block !important;
+    }
+    .fn-cart-product_color + .fn-cart-product_color{
+        margin-left: 4px;
+    }
+    .fn-cart-product_colors-size{
+        height: 12px;
+        font-size: 12px;
+        color: #999999;
+        line-height: 12px;
+        margin-left: 10px;
+    }
+    .fn-cart-product_sizes{
+        display: flex;
+        flex-direction: row;
+        margin-top: 10px;
+    }
+    .fn-cart-product_size{
+        height: 12px;
+        font-size: 12px;
+        color: rgba(51, 51, 51, 0.6);
+        line-height: 12px;
+    }
+    .fn-cart-product_size + .fn-cart-product_size{
+        margin-left: 10px;
+    }
+    @media screen and (max-width: 1440px) {
+        .fn-cart-content-items-before{
+            height: 700px;
+        }
+        .fn-cart-content-item{
+            height:160px;
+        }
+        .fn-cart-content-item-image{
+            width: 160px;
+            height: 160px;
+        }
+        .fn-cart-content-item-details-title{
+            font-size: 18px;
+        }
+        .fn-cart-content-item-details-color{
+            height: 16px;
+            font-size: 16px;
+            line-height: 16px;
+            margin-top: 12px;
+        }
+        .fn-cart-content-item-details-price-new{
+            font-size: 30px;
+        }
+        .fn-cart-content-item-details-price-old{
+            font-size: 22px;
+        }
+        .fn-cart-space-between + .fn-cart-space-between{
+            margin-top: 16px;
+        }
+        .fn-cart-space-between-lt{
+            height: 18px;
+            font-size: 18px;
+            line-height: 18px;
+        }
+        .fn-cart-space-between-rt{
+            height: 20px;
+            font-size: 20px;
+            line-height: 20px;
+        }
+        .fn-cart-code_input{
+            height: 36px;
+            font-size: 14px;
+        }
+        .fn-cart-apply_button{
+            height: 36px;
+            font-size: 16px;
+        }
+        .fn-cart-check_button{
+            height: 48px;
+            font-size: 20px;
+            margin-top: 22px;
+        }
+        .fn-cart-continue_button{
+            height: 48px;
+            font-size: 20px;
+            margin: 18px 0;
+        }
+        .fn-cart-space-between-lt_button{
+            height: 48px;
+        }
+        .fn-cart-space-between-rt_button{
+            height: 48px;
+        }
+        .fn-cart-space-between-button_img{
+            width: 90px;
+        }
+        .fn-cart-payment_hint{
+            margin-top: 36px;
+        }
+        .fn-cart-payment_hint + .fn-cart-payment_hint{
+            margin-top: 24px;
+        }
+        .fn-cart-payment_hint-img{
+            width: 60px;
+            height: 60px;
+        }
+        .fn-cart-payment_hint-content{
+            height: 60px;
+            margin-left: 14px;
+        }
+        .fn-cart-payment_hint-content-title{
+            font-size: 16px;
+            line-height: 18px;
+            margin-bottom: 0;
+        }
+        .fn-cart-payment_hint-logo_list img{
+            width: 36px;
+            height: 20px
+        }
+        .fn-cart-payment_hint-logo_list img + img{
+            margin-left: 4px;
+        }
+        .fn-cart-payment_hint-content-text{
+            font-size: 14px;
+        }
+        .fn-cart-selected_for_you{
+            font-size: 24px;
+            margin: 44px auto 22px;
+        }
+        .fn-cart-product_title{
+            height: 20px;
+            font-size: 14px;
+            line-height: 20px;
+        }
+        .fn-cart-product_price{
+            height: 20px;
+            font-size: 20px;
+            line-height: 20px;
+        }
+        .fn-cart-product_colors{
+            margin-top: 4px;
+        }
+        .fn-cart-product_color{
+            width: 16px;
+            height: 16px;
+        }
+        .fn-cart-product_sizes {
+            margin-top: 4px;
+        }
+        .fn-cart-content-more{
+            margin-top: 38px;
+        }
+        .fn-cart-content-more img{
+            width: 20px;
+        }
+        .fn-cart-content-more_count {
+            height: 20px;
+            font-size: 18px;
+            line-height: 20px;
+            margin-left: 8px;
+        }
+        .fn-cart-content-explain {
+            margin-top: 50px;
+        }
+        .fn-cart-content-explain img{
+            width: 20px;
+        }
+        .fn-cart-content-explain-text {
+            height: 26px;
+            font-size: 24px;
+            margin-right: 12px;
+        }
+    }
+    @media screen and (max-width: 1110px) {
+        .fn-cart-content{
+            padding: 24px 12px;
+        }
+        .fn-cart-content-right{
+            padding-left: 3%;
+        }
+    }
+    @media screen and (max-width: 988px) {
+        .fn-cart-content-items-before {
+            height: auto;
+            overFlow-y: hidden;
+        }
+        .fn-cart-content-more{
+            display: none;
+        }
+        .fn-cart-content {
+            flex-direction: column;
+        }
+        .fn-cart-content-left {
+            width: 100%;
+        }
+        .fn-cart-content-item-details {
+            padding-right: 40px;
+        }
+        .fn-cart-content-item-details-del {
+            top: 9px;
+        }
+        .fn-cart-content-right {
+            padding: 0 3%;
+            width: 100%;
+        }
+    }
+    @media screen and (max-width: 630px) {
+        .fn-cart-content-item-details-title {
+            font-size: 16px;
+        }
+        .fn-cart-content-item-details-color {
+            height: 14px;
+            font-size: 14px;
+            line-height: 14px;
+            margin-top: 8px;
+        }
+        .fn-cart-content-item-details-price-new {
+            font-size: 26px;
+        }
+        .fn-cart-content-item-details-price-old {
+            font-size: 18px;
+        }
+        .fn-cart-content-item-details-quantity {
+            width: 100px;
+            min-height: 32px;
+        }
+    }
+    @media screen and (max-width: 553px) {
+        .fn-cart-content-item-details {
+            padding-right: 18px;
+            margin-right: 0;
+        }
+        .fn-cart-content-item-image {
+            width: 120px;
+            height: 120px;
+        }
+        .fn-cart-content-item {
+            height: 120px;
+        }
+        .fn-cart-content-item-details-title {
+            font-size: 14px;
+        }
+        .fn-cart-content-item-details-color {
+            height: 12px;
+            font-size: 12px;
+            line-height: 12px;
+            margin-top: 6px;
+        }
+        .fn-cart-content-item-details-price-new {
+            font-size: 20px;
+            height: 20px;
+            line-height: 20px;
+        }
+        .fn-cart-content-item-details-del {
+            top: 4px;
+        }
+        .fn-cart-content-item + .fn-cart-content-item {
+            margin-top: 10px;
+        }
+    }
+    @media screen and (max-width: 426px) {
+        .fn-cart-content-item-image {
+            width: 90px;
+            height: 90px;
+        }
+        .fn-cart-content-item {
+            height: 90px;
+        }
+        .fn-cart-content-item-details-title {
+            font-size: 12px;
+        }
+        .fn-cart-content-item-details-color {
+            height: 10px;
+            font-size: 10px;
+            line-height: 10px;
+            margin-top: 6px;
+        }
+        .fn-cart-content-item-details-quantity {
+            min-height: 24px;
+        }
+        .fn-cart-content-item-details-price-new {
+            font-size: 16px;
+            height: 16px;
+            line-height: 16px;
+        }
+        .fn-cart-content-item-details-price-old {
+            font-size: 12px;
+            height: 12px;
+            line-height: 12px;
+        }
+        .fn-cart-content-explain-text {
+            height: 14px;
+            line-height: 12px;
+            font-size: 14px;
+            margin-right: 8px;
+        }
+        .fn-cart-content-explain img {
+            width: 14px;
+        }
+    }
+    @media screen and (max-width: 1660px) {
+        .fn-cart-step {
+            height: 100px;
+            padding: 0px 8%;
+        }
+        .fn-cart-step-number {
+            width: 44px;
+            height: 44px;
+            line-height: 44px;
+            font-size: 20px;
+        }
+        .fn-cart-step-text {
+            font-size: 18px;
+        }
+        .fn-cart-shop_number {
+            font-size: 16px;
+        }
+    }
+    @media screen and (max-width: 1110px) {
+        .fn-cart-step {
+            height: 80px;
+        }
+        .fn-cart-step-number {
+            width: 32px;
+            height: 32px;
+            line-height: 32px;
+            font-size: 18px;
+        }
+        .fn-cart-step-text {
+            font-size: 16px;
+            margin-left: 10px;
+        }
+        .fn-cart-shop_number {
+            font-size: 14px;
+        }
+    }
+    @media screen and (max-width: 840px) {
+        .fn-cart-step {
+            height: 60px;
+            padding: 0 6%;
+        }
+        .fn-cart-step-number {
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            font-size: 14px;
+        }
+        .fn-cart-step-text {
+            font-size: 14px;
+            margin-left: 4px;
+        }
+        .fn-cart-shop_number {
+            font-size: 10px;
+            margin-left: 4px;
+        }
+        .fn-cart-step-line {
+            margin: 0 6px;
+        }
+    }
+</style>
+
+<script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+
+<cart-items>
+    <div class="fn-cart-step">
+        <div class="fn-cart-step-number fn-cart-step-number-active">1</div>
+        <div class="fn-cart-step-text fn-cart-step-text-active t">Cart</div>
+        <div class="fn-cart-shop_number">({{ cart.item_count }})</div>
+        <div class="fn-cart-step-line"></div>
+        <div class="fn-cart-step-number">2</div>
+        <div class="fn-cart-step-text">Shipping</div>
+        <div class="fn-cart-step-line"></div>
+        <div class="fn-cart-step-number">3</div>
+        <div class="fn-cart-step-text">Payment</div>
+    </div>
+    <div class="fn-cart-content">
+        <div class="fn-cart-content-left">
+            <form action="{{ routes.cart_url }}" class="cart__contents critical-hidden" method="post" id="cart">
+                {% assign cartLength = cart.items | size %}
+                <div class="{% if cartLength > 4 %}fn-cart-content-items-before{% else %}fn-cart-content-items-later{% endif %}" id="main-cart-items" data-id="{{ section.id }}">
+                    {%- for item in cart.items -%}
+                    <div class="fn-cart-content-item" id="CartItem-{{ item.index | plus: 1 }}">
+                        <img src="{{ item.image | image_url }}" alt="{{ item.image.alt | escape }}" class="fn-cart-content-item-image"/>
+                        <div class="fn-cart-content-item-details">
+                            <a href="{{ item.url }}" class="fn-cart-content-item-details-title">{{ item.product.title | escape }}</a>
+                            <div class="fn-cart-content-item-details-color">{{ item.variant.title }}</div>
+                            <cart-remove-button id="Remove-{{ item.index | plus: 1 }}" data-index="{{ item.index | plus: 1 }}" class="fn-cart-content-item-details-del">
+                                <a href="{{ item.url_to_remove }}" aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
+                                    <img src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/c0283afbab7d3078c3393c3a69916d70.png?v=1650349943"/>
+                                </a>
+                            </cart-remove-button>
+                            <div class="fn-cart-content-item-details-price">
+                                <p class="fn-cart-content-item-details-price-new">{{ item.product.price | money }}</p>
+                                <p class="fn-cart-content-item-details-price-old">{{ item.product.compare_at_price | money }}</p>
+                            </div>
+                            <quantity-input class="quantity fn-cart-content-item-details-quantity">
+                                <button class="quantity__button no-js-hidden fn-cart-content-item-details-quantity__button-minus" name="minus" type="button">
+                                    <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: item.product.title | escape }}</span>
+                                    {% render 'icon-minus' %}
+                                </button>
+                                <input class="quantity__input"
+                                       type="number"
+                                       name="updates[]"
+                                       value="{{ item.quantity }}"
+                                       min="0"
+                                       aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
+                                       id="Quantity-{{ item.index | plus: 1 }}"
+                                       data-index="{{ item.index | plus: 1 }}"
+                                >
+                                <button class="quantity__button no-js-hidden fn-cart-content-item-details-quantity__button-plus" name="plus" type="button">
+                                    <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: item.product.title | escape }}</span>
+                                    {% render 'icon-plus' %}
+                                </button>
+                            </quantity-input>
+                        </div>
+                    </div>
+                    {%- endfor -%}
+                </div>
+                <p class="visually-hidden" id="cart-live-region-text" aria-live="polite" role="status"></p>
+                <p class="visually-hidden" id="shopping-cart-line-item-status" aria-live="polite" aria-hidden="true" role="status">{{ 'accessibility.loading' | t }}</p>
+            </form>
+            {% if cartLength > 4 %}
+            <div class="fn-cart-content-more" onclick="spreadCartList(this)">
+                <img src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/2022-04-14_1.58.21_5.png?v=1650510260"/>
+                <div class="fn-cart-content-more_count">({{ cart.items | size | minus: 4 }})</div>
+            </div>
+            {% endif %}
+            <div class="fn-cart-content-explain">
+                <div class="fn-cart-content-explain-text t">Speccial instructions for seller</div>
+                <img src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/2022-04-14_1.58.21_5.png?v=1650510260"/>
+            </div>
+        </div>
+        <div class="fn-cart-content-right">
+            <div class="fn-cart-space-between">
+                <div class="fn-cart-space-between-lt">Subtotal</div>
+                <div class="fn-cart-space-between-rt t">{{ cart.items_subtotal_price | money_with_currency }}</div>
+            </div>
+            <div class="fn-cart-space-between">
+                <div class="fn-cart-space-between-lt">Your promotional coupon</div>
+            </div>
+            <div class="fn-cart-space-between">
+                <input class="fn-cart-code_input" placeholder="Enter code"/>
+                <button class="fn-cart-apply_button">Apply</button>
+            </div>
+            <div class="fn-cart-space-between">
+                <div class="fn-cart-space-between-lt">Discout</div>
+                <div class="fn-cart-space-between-rt">-$5.00</div>
+            </div>
+            <div class="fn-cart-space-between">
+                <div class="fn-cart-space-between-lt">Total</div>
+                <div class="fn-cart-space-between-rt">$22.76</div>
+            </div>
+            <div class="fn-cart-space-between">
+                <div class="fn-cart-space-between-hint">Spend $22 more and get free shipping!</div>
+            </div>
+            <button class="fn-cart-check_button">CHECK OUT</button>
+            <button class="fn-cart-continue_button">CONTINUE SHOPPING</button>
+            <div class="fn-cart-space-between">
+                <button class="fn-cart-space-between-lt_button">
+                    <img class="fn-cart-space-between-button_img" src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/2022-04-14_1.58.21.png?v=1650437224"/>
+                </button>
+                <button class="fn-cart-space-between-rt_button">
+                    <img class="fn-cart-space-between-button_img" src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/2022-04-14_1.58.21_1.png?v=1650437224"/>
+                </button>
+            </div>
+            <div class="fn-cart-payment_hint">
+                <img class="fn-cart-payment_hint-img" src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/2022-04-14_1.58.21_2.png?v=1650438716"/>
+                <div class="fn-cart-payment_hint-content">
+                    <div class="fn-cart-payment_hint-content-title">SECURED PAYMENT</div>
+                    <div class="fn-cart-payment_hint-logo_list">
+                        <img src="https://cdn.shopifycdn.net/s/files/1/0640/6802/6590/files/amex.png?v=1650252570"/>
+                        <img src="https://cdn.shopifycdn.net/s/files/1/0640/6802/6590/files/11_7a1938e3-5897-431b-a3f0-785def016ffe.png?v=1650252570"/>
+                        <img src="https://cdn.shopifycdn.net/s/files/1/0640/6802/6590/files/12.png?v=1650252570"/>
+                        <img src="https://cdn.shopifycdn.net/s/files/1/0640/6802/6590/files/5.png?v=1650252570"/>
+                        <img src="https://cdn.shopifycdn.net/s/files/1/0640/6802/6590/files/17.png?v=1650252570"/>
+                        <img src="https://cdn.shopifycdn.net/s/files/1/0640/6802/6590/files/12_f24895ab-64a2-46b5-8def-ab823302db8c.png?v=1650252570"/>
+                        <img src="https://cdn.shopifycdn.net/s/files/1/0640/6802/6590/files/12_f24895ab-64a2-46b5-8def-ab823302db8c.png?v=1650252570"/>
+                    </div>
+                </div>
+            </div>
+            <div class="fn-cart-payment_hint">
+                <img class="fn-cart-payment_hint-img" src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/2022-04-14_1.58.21_3.png?v=1650438716"/>
+                <div class="fn-cart-payment_hint-content">
+                    <div class="fn-cart-payment_hint-content-title">FREE SHIPPING OVER $39</div>
+                    <div class="fn-cart-payment_hint-content-text">3 - 15 days delivery</div>
+                </div>
+            </div>
+            <div class="fn-cart-payment_hint">
+                <img class="fn-cart-payment_hint-img" src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/2022-04-14_1.58.21_3.png?v=1650438716"/>
+                <div class="fn-cart-payment_hint-content">
+                    <div class="fn-cart-payment_hint-content-title">PERFECT MONEY BACK GUARANTEE</div>
+                    <div class="fn-cart-payment_hint-content-text">Want you to be 100% satisfied with the products you buy</div>
+                </div>
+            </div>
+            <div class="fn-cart-selected_for_you t">Selected For You</div>
+            <div class="fn-cart-swiper">
+                <div class="fn-cart-swiper-wrapper swiper-wrapper">
+                    {% for block in section.blocks %}
+                    <div class="fn-cart-swiper-slide swiper-slide">
+                        <img src="{{ block.settings.product.featured_media | image_url }}"/>
+                        <div class="fn-cart-flex">
+                            <div class="fn-cart-product_title t">{{ block.settings.product.title | escape }}</div>
+                            <div class="fn-cart-product_price">{{ block.settings.product.price | money }}</div>
+                        </div>
+                        {% assign colorList = block.settings.product.options_by_name['Color'].values | slice: 0, 4 %}
+                        <div class="fn-cart-product_colors">
+                            {% for color in colorList %}
+                            <div class="fn-cart-product_color" style="background-color: {{color}};"></div>
+                            {% endfor %}
+                            <div class="fn-cart-product_colors-size">+{{ block.settings.product.options_by_name['Color'].values | size }}more</div>
+                        </div>
+                        <div class="fn-cart-product_sizes">
+                            {% for valueSize in block.settings.product.options_by_name['Size'].values %}
+                            <div class="fn-cart-product_size">{{ valueSize }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </div>
+    <div id="main-cart-footer"></div>
+    <div id="cart-errors"></div>
+</cart-items>
+<script>
+    // 加载Swiper
+    var mySwiper = new Swiper ('.fn-cart-swiper', {
+        direction: 'horizontal', // 垂直切换选项
+        loop: true, // 循环模式选项
+        slidesPerView : 2,
+        spaceBetween : 20,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        }
+    })
+    // 展开购物车
+    function spreadCartList(e){
+        document.getElementById("main-cart-items").classList.remove('fn-cart-content-items-before');
+        document.getElementById("main-cart-items").classList.add('fn-cart-content-items-later');
+        e.style.display = "none"
+    }
+</script>
+{% schema %}
+{
+    "name":"cart items",
+    "settings":[
+
+    ],
+    "blocks":[
+        {
+            "type":"product",
+            "name":"Selected For You",
+            "settings":[
+                {
+                    "type":"product",
+                    "id":"product",
+                    "label":"productlabel"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,129 @@
+<style>
+  .cup-more-choices{
+    background: #FFFBF7;
+    padding:50px 0 60px 0;
+    text-align:center;
+  }
+  .cup-more-choices>h1{
+    font-size:36px;
+  }
+  .cup-choices-btn{
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+  }
+  .cup-choices-btn>a{
+    width: 330px;
+    height: 80px;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 8px 0px rgba(201,155,124,0.5);
+    border-radius: 8px;
+  }
+  .cup-choices-btn>a img{
+    margin:0 auto;
+  }
+  .cup-choices-btn>a:nth-child(1){
+    margin-right:50px;
+    padding-top: 6px;
+  }
+  .cup-choices-btn>a:nth-child(2){
+     padding-top:12px;
+  }
+  @media screen and (max-width: 750px){
+    .cup-more-choices{
+      padding:18px 0 21px 0;
+    }
+    .cup-more-choices>h1{
+      font-size:16px;
+    }
+    .cup-choices-btn>a{
+      width: 171px;
+      height: 40px;
+    }
+    .cup-choices-btn>a:nth-child(2){
+      padding-top:8px;
+    }
+    .cup-choices-btn>a:nth-child(1){
+      margin-right: 10px;
+    }
+  }
+  @media screen and (max-width:450px){
+    .cup-choices-btn{
+      padding-top:10px;
+    }
+  }
+</style>
+<div class="cup-more-choices">
+  <h1>{{ section.settings.title }}</h1>
+  <div class="cup-choices-btn">
+    {% for block in section.blocks %}
+      <a href="javascript:;" onclick="jumpAjax('{{ block.settings.name }}','{{ block.settings.link }}')">
+       <picture>
+         <source media="(max-width: 750px)" srcset="{{ block.settings.icon_img_mobile | img_url:'97x' }}">
+         <source media="(min-width: 751px)" srcset="{{ block.settings.icon_img | img_url:'228x' }}">
+         <img src="{{ block.settings.icon_img | img_url:'228x' }}">
+       </picture>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+<script>
+  function jumpAjax(name,url){
+    if(url){
+      window.open(url)
+    }
+    $.ajax({
+        type: 'get',
+        dataType: 'json',
+        url: 'https://qn.htvront.com/htvront-blindBox/click',
+        data: {site: 'US',module:'{{page_title}}',clickName:name}
+      });
+  }
+</script>
+{% schema %}
+  {
+    "name": "Cup-More-Choices",
+    "settings": [
+      {
+        "type":"text",
+        "id":"title",
+        "label":"title"
+      }
+    ],
+    "blocks":[{
+      "name":"icon",
+      "type":"icon",
+      "settings":[ 
+        {
+          "type":"url",
+          "id":"link",
+          "label":"link"
+        },
+        {
+          "type":"text",
+          "id":"name",
+          "label":"name(唯一，必填)"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_img",
+          "label": "icon image"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_img_mobile",
+          "label": "icon image mobile"
+        }
+      ]
+    }],
+    "presets":[{
+      "name":"Cup-More-Choices"
+    }]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

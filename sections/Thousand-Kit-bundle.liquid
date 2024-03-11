@@ -1,0 +1,507 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} .thousand-kit-bundle{
+    background: {{ section.settings.bg_color }};
+    padding-bottom:{{section.settings.padding_bottom}}px;
+   padding-top:{{section.settings.padding_top}}px
+  }
+  #shopify-section-{{ section.id }} .kit-bundle-content{
+    background: {{ section.settings.layout_color_bg }};
+  }
+  #shopify-section-{{ section.id }} .kit-bundle-title{
+    font-size:{{ section.settings.title_size }}px;
+    color:{{ section.settings.title_color }};
+    font-weight: bold;
+    text-align:center;
+    margin-bottom:20px;
+    line-height:49px
+  }
+  #shopify-section-{{ section.id }} .thousand-kit-bundle .shopify-payment-button__button--unbranded{
+    color:{{ section.settings.add_color }};
+    background: {{ section.settings.add_color_bg }};
+    border:1px solid {{ section.settings.add_color_border }}
+  }
+  #shopify-section-{{ section.id }} .thousand-kit-bundle .shopify-payment-button__button--unbranded:hover:not([disabled]){
+    background: {{ section.settings.add_color_bg }};
+  }
+  #shopify-section-{{ section.id }} .thousand-kit-bundle .kit-bundle-description{
+    background: {{ section.settings.descripton_bg_color }};
+    color:{{ section.settings.text_color }};
+  }
+  @media screen and (max-width: 1024px){
+     #shopify-section-{{ section.id }} .kit-bundle-title{
+        font-size:30px
+      }
+  }
+  @media screen and (max-width: 768px){
+      #shopify-section-{{ section.id }} .kit-bundle-title{
+        font-size:16px;
+        margin-bottom:10px;
+        line-height: 22px;
+      }
+      #shopify-section-{{ section.id }} .thousand-kit-bundle{
+        padding-bottom:20px;
+        padding-top:20px
+      }
+   }
+{%- endstyle -%}
+<style>
+     .kit-bundle-content{
+       width:84.1%;
+       padding:33px 20px 47px 20px;
+       margin:0 auto;
+       letter-spacing:0
+     }
+     .kit-bundle-show,.kit-bundle-steps{
+       display:flex;
+     }
+     .kit-bundle-show{
+       padding-bottom:59px;
+       width: 100%;
+       justify-content: space-between;
+     }
+     .kit-bundle-swiper{
+       width:66.28%;
+       position: relative;
+     }
+     .kit-bundle-swiper img{
+       width:100%
+     }
+     .kit-bundle-swiper .swiper-scrollbar{
+       width: 100%;
+       height: 4px;
+       bottom: -20px;
+     }
+     .kit-bundle-step{
+       position: relative;
+       margin-right:16px;
+       padding-top:50px;
+
+     }
+     .kit-bundle-step:last-child{
+       margin-right:0
+     }
+     .kit-bundle-step .kit-bundle-step-title{
+       position: absolute;
+       width: 100%;
+       top: 0;
+       text-align: center;
+       line-height: 50px;
+       font-weight: 600;
+       color: #333333;
+       font-size:24px
+     }
+     .kit-bundle-step::before{
+       content: '';
+       display: block;
+       position: absolute;
+       top: 0;
+       background-image: url("https://cdn.shopify.com/s/files/1/0356/5997/2741/files/6_35dc3a0a-e242-44e3-bdb7-25a8e5fc0db4.png");
+       width: calc(100% + 15px );
+       height: 50px;
+       background-repeat: no-repeat;
+       background-size: 100% 100%;
+     }
+     .kit-bundle-step:first-child::before{
+       background-image: url("https://cdn.shopify.com/s/files/1/0356/5997/2741/files/1180cf092a9e7e1b81b02ffdffefa6ff_c4eca6f5-18fa-4d0b-a440-8bc00b9cf813.png?v=1684826058");
+     }
+     .kit-bundle-step:last-child::before{
+       background-image: url("https://cdn.shopify.com/s/files/1/0356/5997/2741/files/7_9315764e-999d-46ce-a708-f4c94449b5b3.png?v=1684826059");
+       width: 100%
+     }
+     .kit-bundle-description{
+        width: 32.6%;
+        max-height: 508px;
+        padding: 3.25% 2.3% 0 2.15%;
+     }
+  .thousand-kit-bundle .shopify-payment-button__button--unbranded{
+      width:178px;
+      height:40px;
+      min-height:40px;
+      line-height:40px;
+      padding:0;
+      border-radius: 4px;
+       --border-offset: none;
+      --border-opacity: none;
+      font-size: 16px;
+   }
+  .kit-bundle-description li.Bundle-product_explain_list{
+    list-style-type: disc;
+    margin-left:6%
+  }
+  .kit-description-title{
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 20px;
+    margin-bottom:15px
+  }
+  .kit-description-titles{
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 16px;
+    margin-bottom:11px
+  }
+  .kit-bundle-description .Bundle-product_explain{
+    margin-bottom:26px
+  }
+  .kit-bundle-description .kit-description-desc{
+    margin-bottom:30px
+  }
+  .kit-bundle-description .shopify-payment-button__more-options{
+    display:none
+  }
+  @media screen and (max-width: 1440px){
+      .kit-description-title{
+        font-size:18px;
+        margin-bottom:12px
+      }
+    .kit-description-titles{
+      margin-bottom:10px
+    }
+    .kit-bundle-description{
+      padding-right:2.15%;
+      padding-top: 2%;
+    }
+    .kit-bundle-description .Bundle-product_explain,.kit-bundle-description .kit-description-desc{
+       margin-bottom:12px
+    }
+    .kit-bundle-step{
+      padding-top:40px
+    }
+    .kit-bundle-step::before{
+      width: calc(100% + 10px );
+      height:40px;
+    }
+    .kit-bundle-step .kit-bundle-step-title{
+      line-height:40px
+    }
+  }
+  @media screen and (max-width: 1330px){
+    .kit-bundle-description{
+      padding-top:1.5%
+    }
+    .kit-bundle-description li.Bundle-product_explain_list,.kit-bundle-description .kit-description-desc{
+      line-height:22px
+    }
+  }
+  @media screen and (max-width: 1024px){
+    .kit-bundle-content{
+      width:93.6%;
+      padding:17px 11px 19px 11px
+    }
+  }
+  @media screen and (max-width: 820px){
+    .kit-bundle-content .swiper-scrollbar{
+      display:none
+    }
+    .kit-bundle-show{
+      display:block
+    }
+    .kit-bundle-swiper,.kit-bundle-description{
+      width:100%
+    }
+    .kit-bundle-description{
+      margin-top:10px
+    }
+   .kit-bundle-content .swiper-pagination-bullet{
+      width: 16.78px;
+      height: 2px;
+    }
+    .swiper-pagination-bullet-active{
+      opacity:1;
+      background:#ffffff
+    }
+    .kit-bundle-description{
+      padding:12px 14px 20px 14px
+    }
+    .kit-bundle-description li.Bundle-product_explain_list{
+      margin-left:3%
+    }
+    .kit-bundle-show{
+      padding-bottom:10px
+    }
+    .kit-bundle-steps{
+      flex-wrap: wrap;
+    }
+    .kit-bundle-step{
+      width:calc(50% - 3px);
+      margin-right:6px;
+      margin-bottom:11px
+    }
+    .kit-bundle-step:nth-child(2n){
+      margin-right:0
+    }
+    .kit-description-titles{
+      font-size:14px
+    }
+    .thousand-kit-bundle .shopify-payment-button__button--unbranded{
+      height:36px;
+      line-height:36px;
+      min-height:36px;
+      font-size:14px
+    }
+    .kit-bundle-step .kit-bundle-step-title{
+      font-size:14px
+    }
+  }
+  @media screen and (max-width: 750px){
+    .kit-bundle-step{
+      padding-top:21px
+    }
+    .kit-bundle-step::before{
+      width: calc(100% + 6px );
+      height:21px;
+    }
+    .kit-bundle-description li.Bundle-product_explain_list{
+      margin-left:6%
+    }
+    .kit-bundle-step .kit-bundle-step-title{
+      line-height:21px
+    }
+    .kit-description-titles{
+      margin-bottom:6px
+    }
+    .kit-bundle-description .Bundle-product_explain,.kit-bundle-description .kit-description-desc{
+       margin-bottom:10px
+    }
+    .kit-description-title{
+      font-size:16px
+    }
+  }
+</style>
+<div class="thousand-kit-bundle" id="{{ section.settings.id }}">
+  <div class="kit-bundle-content">
+    <div class="kit-bundle-title">{{ section.settings.title }}</div>
+    <div class="kit-bundle-show">
+      <div class="kit-bundle-swiper">
+        <div class="swiper-container" id="swiper-container{{ section.id }}">
+          <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+              {% if block.type == 'image' %}
+                <div class="swiper-slide">
+                  <img src="{{ block.settings.image_picker | img_url:'508x' }}" alt="{{section.settings.image_picker.alt | escape }}">
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="swiper-pagination" id="swiper-pagination{{ section.id }}"></div>
+        </div>
+        <div class="swiper-scrollbar" id="swiper-scrollbar{{ section.id }}"></div>
+      </div>
+      <div class="kit-bundle-description">
+        <div class="kit-description-title">{{ section.settings.product_title }}</div>
+        <div class="kit-description-titles">{{ section.settings.product_title2 }}</div>
+        <div>{{ section.settings.Bundle_html_text }}</div>
+        <div class="kit-description-titles">{{ section.settings.product_title3 }}</div>
+        <div class="kit-description-desc">{{ section.settings.product_desc }}</div>
+        <div>
+          <product-form class="product-form">
+            <div class="product-form__error-message-wrapper" role="alert" hidden>
+              <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-error" viewBox="0 0 13 13">
+                <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+                <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+                <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+                <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+              </svg>
+              <span class="product-form__error-message"></span>
+            </div>
+            {%- form 'product',
+              section.settings.product,
+              id: product_form_id,
+              class: 'form',
+              novalidate: 'novalidate',
+              data-type: 'add-to-cart-form'
+            -%}
+              <input
+                type="hidden"
+                name="id"
+                value="{{ section.settings.product.selected_or_first_available_variant.id }}"
+                disabled
+              >
+              <div class="product-form__buttons">
+                <div
+                  data-shopify="payment-button"
+                  data-has-selling-plan="true"
+                  data-has-fixed-selling-plan="false"
+                  class="shopify-payment-button"
+                  onclick="buyNow('{{ section.settings.product.selected_or_first_available_variant.id }}')"
+                ></div>
+              </div>
+            {%- endform -%}
+          </product-form>
+        </div>
+      </div>
+    </div>
+    <div class="kit-bundle-steps">
+      {% for block in section.blocks %}
+        {% if block.type == 'steps' %}
+          <div class="kit-bundle-step">
+            <img src="{{ block.settings.image_picker | img_url:'378x' }}" alt="{{block.settings.image_picker.alt | escape }}">
+            <div class="kit-bundle-step-title">{{ block.settings.image_title }}</div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<script>
+  $(function(){
+      var mySwiper = new Swiper('#swiper-container{{ section.id }}', {
+        slidesPerView: 2,
+        spaceBetween: 18,
+        scrollbar: {
+          el: '#swiper-scrollbar{{ section.id }}',
+        },
+        breakpoints:{
+          820: {
+            pagination: {
+              el: '#swiper-pagination{{ section.id }}',
+            }
+          },
+          750: {
+            slidesPerView: 1,
+            spaceBetween: 18,
+            pagination: {
+              el: '#swiper-pagination{{ section.id }}',
+            }
+          }
+        }
+      })
+  })
+</script>
+<script>
+  var userEmail='{{ customer.email }}';
+  function buyNow(id){
+         $.ajax({
+                  type:'GET',
+                  dataType:'jsonp',
+                  jsonp :'callback',
+                  url: 'https://qn.htvront.com/htvront-thousands-page-entity/page',
+                  data: {userEmail: userEmail,pageName:'{{page_title}}',productId:id}
+       });
+   }
+</script>
+{% schema %}
+{
+  "name": "Thousand Kit Bundle",
+  "settings": [{
+            "type":"color",
+            "id":"bg_color",
+            "label":"背景颜色"
+        },{
+           "type":"color",
+            "id":"layout_color_bg",
+            "label":"内容背景颜色"
+        },{
+          "type": "text",
+          "id": "title",
+          "label": "title"
+        },{
+          "type": "text",
+          "id": "id",
+          "label": "id(页面唯一性，全英文)"
+        },{
+            "type":"range",
+            "id":"padding_top",
+            "min":0,
+            "max": 100,
+            "step":1,
+            "unit":"px",
+            "label":"Padding top",
+            "default": 36
+        },{
+            "type":"range",
+            "id":"padding_bottom",
+            "min":0,
+            "max": 100,
+            "step":1,
+            "unit":"px",
+            "label":"Padding bottom",
+            "default": 100
+        },{
+           "type":"color",
+            "id":"title_color",
+            "label":"标题颜色"
+        },{
+           "type":"number",
+            "id":"title_size",
+            "label":"标题大小"
+        },{
+          "type":"color",
+          "id":"descripton_bg_color",
+          "label":"descripton bg color"
+        },{
+          "type":"color",
+          "id":"add_color",
+          "label":"add_color"
+        },{
+          "type":"color",
+          "id":"add_color_bg",
+          "label":"add_color_bg"
+        },{
+          "type":"color",
+          "id":"add_color_border",
+          "label":"add_color_border"
+        },{
+          "type": "text",
+          "id": "product_title",
+          "label": "title1"
+        },{
+          "type": "text",
+          "id": "product_title2",
+          "label": "title2"
+        },{
+              "type": "html",
+              "id": "Bundle_html_text",
+              "label": "html text"
+        },{
+          "type": "text",
+          "id": "product_title3",
+          "label": "title3"
+        },{
+          "type": "text",
+          "id": "product_desc",
+          "label": "desc"
+        },{
+          "type":"color",
+          "id":"text_color",
+          "label":"text color"
+        },{
+          "type": "product",
+          "id": "product",
+          "label": "product"
+        }
+  ],
+  "blocks":[{
+    "type":"image",
+    "name":"show",
+    "settings":[{
+      "type": "image_picker",
+      "id":"image_picker",
+      "label":"image"
+    }]
+  },{
+    "type":"steps",
+    "name":"step",
+    "settings":[{
+      "type": "image_picker",
+      "id":"image_picker",
+      "label":"image"
+    },{
+          "type": "text",
+          "id": "image_title",
+          "label": "title"
+        }]
+  }],
+  "presets": [
+    {
+      "name": "Thousand Kit Bundle"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

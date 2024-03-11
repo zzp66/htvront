@@ -1,0 +1,118 @@
+{% comment %}
+    Renders a product card
+
+    Accepts:
+    - card_product: {Object} Product Liquid object (optional)
+    - show_secondary_image: {Boolean} Show the secondary image on hover. Default: false (optional)
+    - extend_height: {Boolean} Card height extends to available container space. Default: true (optional)
+    - lazy_load: {Boolean} Image should be lazy loaded. Default: true (optional)
+
+    Usage:
+    {% render 'fn-card-product' %}
+{% endcomment %}
+
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+{%- if card_product and card_product != empty -%}
+  {%- liquid
+    assign ratio = 1
+    if card_product.featured_media and media_aspect_ratio == 'portrait'
+      assign ratio = 0.8
+    elsif card_product.featured_media and media_aspect_ratio == 'adapt'
+      assign ratio = card_product.featured_media.aspect_ratio
+    endif
+    if ratio == 0 or ratio == nil
+      assign ratio = 1
+    endif
+    if limit != blank
+      assign limit = limit
+    else
+      assign limit = 5
+    endif
+  -%}
+ <div class="fn-MyVote-lists fn-mychoice-vote" id="vot_{{ card_product.id }}">
+<div class="card-wrapper">
+  <div class="card fn-Progress-product">
+    <div class="medias">
+       <div class="swiper-container" style="width: 385px;">
+         <div class="swiper-wrapper">
+           <div class="swiper-slide">
+               <img class="img-first" src="{{ card_product.featured_media | img_url: '385x' }}" alt="{{ card_product.featured_media.alt | escape }}" {% unless lazy_load == false %}loading="lazy"{% endunless %}>
+            </div>
+           <div class="swiper-slide">
+              <img src="{{ card_product.media[1] | img_url: '385x' }}" alt="{{ card_product.media[1].alt | escape }}" loading="lazy">
+           </div>
+         </div>
+         <div class="fn-online-addcart">
+             {% render 'fn-myvote-addcart', product: card_product%}
+         </div>
+         <div class="fn-Pattern-state t fn-mychoice-state" id="ocl_{{ card_product.id }}">online</div>
+             <div class="swiper-button-prev"></div>
+             <div class="swiper-button-next"></div>
+       </div>
+    </div>
+    <div class="fn-Progress-head">
+        <div class="fn-Progress-title t">
+         {{ card_product.title | escape }}
+        </div>
+         <div class="fn-Progress-producttext">{{ card_product.description }}</div>
+          <div class="fn-Progress-prices t">
+            {% render 'Progress-price', product: card_product, price_class: '' %}
+        </div>
+        <div class="fn-Progress-Pollingdata">
+            <div class="fn-Progress-rogressbar fn-Progress-barid" id="bar_{{ card_product.id }}">
+              <div class="container fn-content_target">
+                  <div class="content_target"></div>
+              </div>
+              <div class="container fn-content_exceed">
+                  <div class="exceed_expectation"></div>
+              </div>
+            </div>
+            <div class="fn-Progress-praise vote_btn" id="votea_{{ card_product.id }}">
+                 <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/5c1c18adb65c7850c0e95c123d529df6_d023cfca-a851-4c02-9b5f-951172165468.png?v=1663594472" alt="">
+            </div>
+        </div>
+        <div class="fn-rogressbar-number" id="myvote_{{ card_product.id }}">
+           <div>Goal: <span class="fn-rogressbarnumber-value"></span> supporter</div>
+           <div>Supporter: <span class="fn-rogressbar_overstep"></span></div>
+       </div>
+  </div>
+ </div>
+</div>
+</div>
+
+
+         <div class="fn-Progress-body fn-vote-body">
+              <div class="fn-Progress-mask">
+                  <div class="fn-Progress-close">
+                     <img id="timert_Progressimg" src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Bold_2px_close.png?v=1659337316" alt="">
+                  </div>
+                  <div class="fn-Progress-contentlike">
+                       <div class="t contentlike_title">Voted Successfully</div>
+                       <div class="t contentlike_text">You have supported <span class="fn-Progress-productname">XXXX-!</span> </div>
+                       <div class="discount_coupon">You get $5 coupon for the website <br>Discounts will be sent to your email after the voting period ends.</div>
+                  </div>
+                  <div class="fn-Progress-cancellike">
+                      <div class="t contentlike_title">Cancel The Vote</div>
+                      <div class="t contentlike_text">You Have Supported <span class="fn-Progress-productname">xxxxxxxx</span>
+                  </div>
+                      <div class="discount_coupon">After online, Enjoy 20% OFF on purchase;</div>
+                      <div class="fn-selector_button">
+                          <div class="Cancel_Vote">Cancel Vote</div>
+                          <div class="Dont_cancel">No, Thanks</div>
+                      </div>
+                 </div>
+                </div>
+         </div>
+
+  
+{%- endif -%}
+ <script>
+    var mySwiper_Progress = new Swiper('.fn-Progress-product .swiper-container', {
+        navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+       observer:true,//修改swiper自己或子元素时，自动初始化swiper
+       observeParents:true//修改swiper的父元素时，自动初始化swiper
+    });
+</script>

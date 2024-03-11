@@ -1,0 +1,217 @@
+<style>
+    .cup-author{
+      background: #FFF6EB;
+      padding:50px 0 60px 0;
+      letter-spacing: 0;
+    }
+    .cup-author-title{
+      font-size: 36px;
+      font-weight: bold;
+      color: #333333;
+      line-height: 49px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .cup-author-content{
+      width: 1600px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .cup-author-item{
+      padding:20px 0;
+      background:#ffffff;
+      border-radius: 4px;
+      height:auto
+    }
+    .cup-author-item>img{
+      margin:0 auto;
+      min-height: 49px;
+      max-height: 114px;
+      max-width:calc(100% - 60px)
+    }
+  .cup-author-item>p{
+    padding:0 30px;
+    font-size: 20px;
+    color: #333333;
+    line-height: 27px;
+  }
+  .cup-author-share{
+      display: flex;
+      position: absolute;
+      top: -70px;
+      right: 0;
+  }
+  .cup-author-share>p{
+    font-size:18px
+  }
+  .cup-author-share>a{
+    margin-left:14px
+  }
+   @media screen and (max-width: 1720px){
+    .cup-author-content{
+      width:83.33%
+    }
+  }
+    @media screen and (max-width: 1180px){
+      .cup-author-title{
+        font-size:32px
+      }
+    }
+    @media screen and (max-width: 750px){
+      .cup-author{
+         padding:20px 0 60px
+       }
+       .cup-author-content{
+        width:93.6%
+       }
+      .cup-author-title{
+        font-size:16px;
+        margin-bottom:10px;
+        line-height:22px
+      }
+      .cup-author-item{
+        padding:13px 0;
+      }
+       .cup-author-item>img{
+         max-width:calc(100% - 30px);
+         min-height: 27px;
+         max-height: 47px;
+       }
+      .cup-author-item>p{
+        padding:0 15px;
+        font-size: 14px;
+        line-height: 20px;
+      }
+      .cup-author-share{
+        top:auto;
+        bottom:-40px
+      }
+      .cup-author-share>p{
+        font-size:14px
+      }
+      .cup-author-share>a{
+        margin-left:10px
+      }
+      .cup-author-share img{
+        width:28px
+      }
+    }
+</style>
+<div class="cup-author">
+  <div class="cup-author-title">
+    {{ section.settings.title }}
+  </div>
+  <div class="cup-author-content">
+    <div class="swiper-wrapper_ul">
+      <div class="swiper-container" id="cup-swiper-container">
+        <ul class="swiper-wrapper">
+          {% for block in section.blocks %}
+            {% if block.type == 'brand' %}
+              <li class="swiper-slide cup-author-item">
+                <img src="{{ block.settings.image | img_url:'' }}">
+                <p>
+                  {{ block.settings.content }}
+                </p>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="cup-author-share">
+      <p>Share on</p>
+      {% for block in section.blocks %}
+        {% if block.type == 'share' %}
+          <!--
+            <a href="https://www.pinterest.com/pin/create/button/?url=https://www.htvront.com/pages/thousand-faces&media=https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/10x6ft_5_520x.png?v=1689643805&description=The 2nd HTVRONT Fans Carnival@HTVRONT">
+          -->
+          <a href="{{ block.settings.link }}" title="{{ 'The 2nd HTVRONT Fans Carnival@HTVRONT' }}" target="_blank">
+            <img src="{{ block.settings.share_icon | img_url:'32x' }}">
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<script>
+  $(function(){
+    var mySwiper_cup = new Swiper('#cup-swiper-container',{
+      slidesPerView: 4,
+      spaceBetween: 20,
+      breakpoints:{
+        768:{
+           slidesPerView:1.8,
+           spaceBetween:10
+        }
+      }
+    });
+  })
+</script>
+{% schema %}
+{
+  "name": "Cup-Author",
+  "settings": [
+    {
+        "type":"text",
+        "id":"title",
+        "label":"title"
+    }
+  ],
+  "blocks":[
+    {
+      "type":"brand",
+      "name":{
+        "en":"image",
+        "zh-CN":"image"
+        },
+      "settings":[
+          {
+          "type":"image_picker",
+          "id":"image",
+          "label":{
+            "en":"icon",
+            "zh-CN":"图片"
+            }
+          },
+        {
+          "type":"text",
+          "id":"content",
+          "label":"content"
+        }
+      ]
+    },{
+      "type":"share",
+      "name":"share",
+      "settings":[
+        {
+          "type":"image_picker",
+          "id":"share_icon",
+          "label":{
+            "en":"icon",
+            "zh-CN":"图标"
+            }
+          },
+        {
+          "type":"text",
+          "id":"link",
+          "label":"链接"
+        }
+      ]
+    }
+  ],
+  "presets":[{
+    "name":"Cup-Author",
+    "blocks":[
+        {
+        "type":"brand"
+        }
+      ]
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

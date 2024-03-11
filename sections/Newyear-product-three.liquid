@@ -1,0 +1,121 @@
+<div class="fn-Newyear-shirt_three">
+  {% if section.settings.Newyear_three_img != blank %}
+    {% assign image = section.settings.Newyear_three_img | img_url: '1920x' %}
+    <img class="Newyear_three_imgpc" src="{{ image }}" alt="">
+  {% endif %}
+    <div class="fn-Newyear-swipe_three fn-Newyear-swipe_three_pc">
+      <div class="fn-button-three_save">
+          <div class="swiper-button-next_three"></div>
+          <div class="swiper-button-prev_three"></div>
+      </div>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+              <div class="swiper-slide swiper-slide_list">
+                {% render 'fn-shirt-product',
+                    card_product: block.settings.product_three,
+                    show_secondary_image: section.settings.show_secondary_image
+                %}
+              </div>
+          {%- endfor -%}
+        </div>
+      </div>
+  </div>
+  <div class="fn-Newyear-swipe_three fn-Newyear-swipe_three_mobile">
+    <ul class="swiper-wrapper_ul">
+      <li class="swiper-slide_list">
+          {% if section.settings.Newyear_three_imgmobile != blank %}
+            {% assign image = section.settings.Newyear_three_imgmobile | img_url: '768x' %}
+            <img class="Newyear_three_imgmobile" src="{{ image }}" alt="">
+          {% endif %}
+      </li>
+      {% for block in section.blocks %}
+          <li class="swiper-slide_list">
+              {% render 'fn-shirt-product',
+                  card_product: block.settings.product_three,
+                  show_secondary_image: section.settings.show_secondary_image
+              %}
+          </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+  <script>
+    var Swiper_save_a = new Swiper('.fn-Newyear-shirt_three .swiper-container', {
+      slidesPerView : 3,
+      slidesPerGroup : 3,
+      spaceBetween : 30,
+      navigation: {
+        nextEl: '.swiper-button-prev_three',
+        prevEl: '.swiper-button-next_three',
+      },
+      breakpoints:{
+        768:{
+            slidesPerView: 2,
+            slidesPerGroup: 2,
+            spaceBetween : 15,
+        },
+        1024:{
+            slidesPerView : 2,
+            slidesPerGroup : 2,
+            spaceBetween : 15,
+        },
+         1200:{
+            slidesPerView : 2,
+            slidesPerGroup : 2,
+        },
+        1440:{
+            spaceBetween : 20,
+        }
+      }
+    })
+    </script>
+{% schema %}
+  {
+    "name": "product three",
+    "max_blocks": 5,
+    "settings": [
+        {
+			"type": "image_picker",
+			"id": "Newyear_three_img",
+			"label": {
+				"en": "Image",
+				"zh-CN": "图片"
+			}
+		},       
+      {
+			"type": "image_picker",
+			"id": "Newyear_three_imgmobile",
+			"label": {
+				"en": "mobile Image",
+				"zh-CN": "手机图片"
+			}
+		},
+       {
+          "type": "checkbox",
+          "id": "show_secondary_image",
+          "label": "checkbox"
+        }
+    ],
+    "blocks": [{
+      "type": "save",
+      "name": {
+          "en": "save product",
+          "zh-CN": "产品"
+      },
+      "settings": [
+        {
+          "type": "product",
+          "id": "product_three",
+          "label": "productlabel"
+        }
+      ]
+	}]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

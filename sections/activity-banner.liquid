@@ -1,0 +1,47 @@
+<div class="fn-activity-banner">
+  {% if section.settings.activity_img != blank %}
+    {% assign image = section.settings.activity_img | img_url: '1920x' %}
+    <img src="{{ image }}" alt="">
+  {% endif %}
+  <div class="fn-activity-hot">
+    <div class="fn-hot-title">{{ section.settings.hot_title }}</div>
+    <div class="fn-hot-text">{{ section.settings.hot_text }}</div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "activity banner",
+    "settings": [
+        {
+			"type": "image_picker",
+			"id": "activity_img",
+			"label": {
+				"en": "Image",
+				"zh-CN": "图片"
+			}
+		},
+        {
+            "type": "text",
+            "id": "hot_title",
+            "label": {
+                "en": "title",
+                "zh-CN": "标题"
+            }
+        },
+        {
+            "type": "text",
+            "id": "hot_text",
+            "label": {
+                "en": "text",
+                "zh-CN": "文本"
+            }
+        }
+     ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

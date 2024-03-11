@@ -1,0 +1,156 @@
+
+<div class="fn-Event-products">
+  <div class="fn-Eventproducts-left">
+  {% if section.settings.Eventproducts_left != blank %}
+      {% assign image = section.settings.Eventproducts_left | img_url: '602x' %}
+         <img class="fn-BlackFriday-headimg" src="{{ image }}" alt="">
+      {% endif %}
+      <div class="fn-Eventproducts-products">
+          <div  class="fn-Eventproducts-productstitle t">Pre-deposit $1 For Extra $10</div>
+            {% if section.settings.products_imges != blank %}
+            {% assign image = section.settings.products_imges | img_url: '430x' %}
+               <img class="fn-Eventproducts-productsimg" src="{{ image }}" alt="">
+            {% endif %}
+          <div class="fn-Eventproducts-productstext t">The $10 coupon is valid for all products</div>
+          <ul class="fn-Eventproducts-productsul">
+            <li class="fn-Eventproducts-productslist">Pre-deposit only on Nov. 22nd-24rd. </li>
+            <li class="fn-Eventproducts-productslist">The $10 coupon will be sent to your email before the event on Nov. 25th.<span onclick="blackFunction('1')"> <img class="fn-Eventproducts-productsicon" src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/f67d2fcd07b4351eaec6ae350ccdea40_758b3bc3-733d-4df4-b9f6-49325a2c7522.png?v=1668130191" alt=""></span></li>
+          </ul>
+          <div class="fn-Eventproducts-productsprice t">Only $1</div>
+          <div class="fn-Eventproducts-productsbutton">
+               {% render 'fn-Eventproducts_Lucky',
+                card_product: section.settings.Eventproducts_only,
+                cart_inventory: section.settings.Purchase_sale,
+                %}
+          </div>
+        <div class="fn-Eventproducts-examine">*It is already in your cart or order, please check.</div>
+       </div>
+  </div>
+  <div class="fn-Eventproducts-right">
+    {% if section.settings.Eventproducts_right != blank %}
+      {% assign image = section.settings.Eventproducts_right | img_url: '962x' %}
+         <img class="fn-BlackFriday-headimg" src="{{ image }}" alt="">
+      {% endif %}
+      <div class="fn-Eventproducts-products">
+        <div class="fn-Eventproducts-productstitle t">Limit Qty Offer</div>
+          <div class="fn-Eventproducts-Purchase">
+            <div class="fn-Eventproducts-Purchaseleft">
+                {% if section.settings.Purchaseleft_img != blank %}
+                {% assign image = section.settings.Purchaseleft_img | img_url: '347x' %}
+                  <a href="https://www.htvront.com/products/heat-press-machine-10x10-materials-kit?_pos=4&_psq=%E3%80%90Black+Friday%E3%80%91&_ss=e&_v=1.0">
+                   <img class="fn-Eventproducts-Purchaseimg" src="{{ image }}" alt="">
+                  </a>
+                {% endif %}
+              <div class="t fn-Eventproducts-Purchaserighttext">【Black Friday】Heat Press Machine & HTV Vinyl KIT(26pc)</div>
+                <div class="fn-Eventproducts-Purchaserightul">
+                      <div class="fn-Eventproducts-Purchaserightlist">Black Friday price: </div>
+                      <div class="fn-Eventproducts-Purchaserightprice t">$109.99 <span class="fn-Eventproducts-discountprice">$219.99</span></div>
+                </div>
+              <div class="fn-Eventproducts-productsbutton">
+                   {% render 'fn-PurchaseLucky-product',
+                    cart_inventory: section.settings.Purchaseleft_inventory,
+                    card_product: section.settings.Purchaseleft_a,
+                    %}
+              </div>
+            </div>
+            <div class="fn-Eventproducts-Purchaseright">
+                {% if section.settings.Purchaseright_img != blank %}
+                {% assign image = section.settings.Purchaseright_img | img_url: '347x' %}
+                  <a href="https://www.htvront.com/products/mini-heat-press-machine-htv-vinyl-bundle?_pos=3&_psq=%E3%80%90Black+Friday%E3%80%91&_ss=e&_v=1.0">
+                   <img class="fn-Eventproducts-Purchaseimg" src="{{ image }}" alt="">
+                  </a>
+                {% endif %}
+                <div class="t fn-Eventproducts-Purchaserighttext">【Black Friday】Mini Heat Press Machine & HTV Vinyl Bundle</div>
+                <div class="fn-Eventproducts-Purchaserightul">
+                      <div class="fn-Eventproducts-Purchaserightlist">Black Friday price: </div>
+                      <div class="fn-Eventproducts-Purchaserightprice t">$49.99 <span class="fn-Eventproducts-discountprice">$99.99</span></div>
+                </div>
+                <div class="fn-Eventproducts-productsbutton">
+                     {% render 'fn-PurchaseLucky-productright',
+                      cart_inventory: section.settings.Purchaseright_inventory,
+                      card_product: section.settings.Purchaseright_b,
+                      %}
+                </div>
+            </div>
+          </div>
+       </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Event products",
+    "settings": [
+        {
+			"type": "image_picker",
+			"id": "Eventproducts_left",
+			"label": {
+				"en": "The left background"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "Eventproducts_right",
+			"label": {
+				"en": "The right background"
+			}
+		},
+              {
+			"type": "image_picker",
+			"id": "products_imges",
+			"label": {
+				"en": "product img"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "Purchaseleft_img",
+			"label": {
+				"en": "product img"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "Purchaseright_img",
+			"label": {
+				"en": "product img"
+			}
+		},
+        {
+          "type": "product",
+          "id": "Eventproducts_only",
+          "label": "product"
+        },
+        {
+          "type": "product",
+          "id": "Purchaseleft_a",
+          "label": "product"
+        },
+        {
+          "type": "product",
+          "id": "Purchaseright_b",
+          "label": "product"
+        },
+        {
+            "type":"text",
+            "id":"Purchase_sale",
+            "label":"Number of products sold"
+        },
+       {
+            "type":"text",
+            "id":"Purchaseleft_inventory",
+            "label":"left product inventory"
+        },
+        {
+            "type":"text",
+            "id":"Purchaseright_inventory",
+            "label":"right product inventory"
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

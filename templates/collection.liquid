@@ -1,0 +1,20 @@
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+<div class="ivan-collection">
+    <div class="fn-page-width">
+        {% include 'breadcrumbs' %}
+        <div class="collection-wrapper">
+            <div class="collection-sidebar">
+                {% section 'main-collection-sidebar' %}
+            </div>
+            <div class="collection-content">
+                {% section 'main-collection-banner' %}
+                {% section 'main-collection-linklist' %}
+                {% section 'main-collection-product-grid' %}
+                <div class="collection-description">
+                    {{collection.description}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

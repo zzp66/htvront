@@ -1,0 +1,89 @@
+{{ 'FAhot-press.css' | asset_url | stylesheet_tag }}
+<div class="fn-FAhot-press">
+  <div class="fn-press-header">
+    <div class="fn-header-banner">
+            <img class="fn-bannerimgge" src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/asdasd.jpg?v=1658806640" alt="">
+<!--       <img class="fn-computer-bannerimgge" src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/asdasd.jpg?v=1658806640" alt="">
+      <img class="fn-mobile-bannerimage" src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/DSC06629_9c79d4ad-85f1-460f-a32e-97c4897697da.png?v=1658457128" alt=""> -->
+      <div class="fn-header-nav" id="minbav">
+            <div class="fn-header-subnav active subnav-left">About Auto Heat Press</div>
+            <div class="fn-header-subnav subnav-right">Win Free Auto Heat Press</div>
+      </div>
+    </div>
+    <div class="fn-press-main fn-press-switch">
+    {% section 'FAhot-press-video' %}
+    {% section 'FAhot-press-swiper' %}
+    {% section 'FAhot-press-more' %}
+    {% section 'FAhot-press-msg' %}
+    {% section 'FAhot-press-added' %}
+    </div>
+    <div class="fn-press-main fn-press-shop">
+         {% section 'FAhot-press-FreeGift' %}
+         <div class="fn-press-subscription" id="voucher">
+             <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/11_9e38e9d2-f2a5-4a5e-9ab8-82e4893f212c.png?v=1658390411" alt="">
+            {% section 'FAhot-press-newsletter' %}
+         </div>    
+         {% section 'FAhot-press-findMore' %}
+    </div>
+  </div>  
+</div>
+<script>
+  $('.fn-column-button >a').click(function () {
+        var b_text = $(this).text();
+      if( b_text.indexOf('Join Now') !== -1) {
+        $('.subnav-right').addClass('active');
+        $('.subnav-left').removeClass('active');
+        $('.fn-press-shop,.fn-press-main').toggle();
+               $('html, body').animate({
+          scrollTop: $('#minbav').offset().top - 65 //65为设置的偏移值
+        });
+      }
+    });
+    $('.fn-header-subnav').click(function () {
+        $(this).addClass('active');
+        $(this).siblings().removeClass('active');
+        $('.fn-press-shop,.fn-press-main').toggle();
+  });
+  $('.fn-agency-main>a').click(function (){
+      $('html, body').animate({
+        scrollTop: $('#voucher').offset().top - 65 //65为设置的偏移值
+      });
+  });
+    $('.fn-bannerimgge').click(function (){
+        $('.subnav-right').addClass('active');
+        $('.subnav-left').removeClass('active');
+        $('.fn-press-shop').show();
+        $('.fn-press-switch').hide();
+                     $('html, body').animate({
+          scrollTop: $('#anchor').offset().top - 65 //65为设置的偏移值
+        });
+  });
+// 视频点击自动播放
+  $('.fn-video-button').click(function () {
+        $('.fn-video-mask').show();
+        $('#pressVideo').trigger('play');
+  });
+  $('.fn-mask').click(function () {
+        $('.fn-video-mask').hide();
+        $('#pressVideo').trigger('pause');
+  });
+$(function (){
+        var fahot_url = window.location.search.substr(1);
+        if(fahot_url.indexOf("customer_posted=true") !== -1) {
+        $('.subnav-right').addClass('active');
+        $('.subnav-left').removeClass('active');
+        $('.fn-press-shop,.fn-press-main').toggle();
+          $('.fn-subscription.fn-voucher-email').hide();
+          $('.fn-subscription.fn-voucher-desc').show();
+        $('html, body').animate({
+          scrollTop: $('#voucher').offset().top - 65 //65为设置的偏移值
+        });
+      } else {
+           $('.fn-subscription.fn-voucher-email').show();
+          $('.fn-subscription.fn-voucher-desc').hide();
+         $('html, body').animate({
+          scrollTop: $('#voucher').offset().top - 65 //65为设置的偏移值
+        });
+      }
+});
+</script>

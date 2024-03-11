@@ -1,0 +1,39 @@
+{% if request.page_type == 'article' or request.page_type == 'blog' %}
+  {% capture permalinkURL %}{{ shop.url }}{{ article.url }}{% endcapture %}
+  {% capture shareTitle %}{{ article.title | url_param_escape }}{% endcapture %}
+{% elsif request.page_type == 'product' %}
+  {% capture permalinkURL %}{{ shop.url }}{{ product.url }}{% endcapture %}
+  {% capture shareTitle %}{{ product.title | url_param_escape }}{% endcapture %}
+{% elsif request.page_type == 'page' %}
+  {% capture permalinkURL %}{{ shop.url }}{{ page.url }}{% endcapture %}
+  {% capture shareTitle %}{{ page.title | url_param_escape }}{% endcapture %}
+{% elsif request.page_type == 'collection' %}
+  {% capture permalinkURL %}{{ shop.url }}{{ collection.url }}{% endcapture %}
+  {% capture shareTitle %}{{ page.title | url_param_escape }}{% endcapture %}
+{% elsif request.page_type == 'index' %}
+  {% capture permalinkURL %}{{ shop.url }}{% endcapture %}
+  {% capture shareTitle %}{{ page.title | url_param_escape }}{% endcapture %}
+{% elsif request.page_type == 'password' %}
+  {% capture permalinkURL %}{{ shop.url }}{% endcapture %}
+  {% capture shareTitle %}{% unless shop.metafields.global.description_tag == blank %}{{ shop.metafields.global.description_tag | url_param_escape }}{% else %}{{ shop.name | url_param_escape }}{% endunless %}{% endcapture %}
+{% endif %}
+
+{% assign shareButtonStyle = settings.social_sharing_style %}
+	<div id="sharing" class=" GlobalShare_a {{ shareButtonStyle }}" data-permalink="{{ permalinkURL }}">
+      <div class="fn-share">share :</div>
+      <a target="_blank" href="//twitter.com/share?text={{ shareTitle }}&amp;url={{ permalinkURL }}"onclick="toaddcart();"  class="share-twitter" title="{{ 'general.social.alt_text.share_on_twitter' | t }}">
+        <span class="icon icon-twitter">  <img src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/twitter43.png?v=1653362662" alt=""></span>
+      </a>
+      <a target="_blank" href="//pinterest.com/pin/create/button/?url={{ permalinkURL }}&amp;media=http:{% if request.page_type == 'product' %}{{ product | img_url: '1024x1024' }}{% else %}{{ article | img_url: '1024x1024' }}{% endif %}&amp;description={{ shareTitle }}" class="share-pinterest" title="{{ 'general.social.alt_text.share_on_pinterest' | t }}">
+        <span class="icon icon-pinterest">  <img src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/NG.png?v=1653362662" alt=""></span>
+      </a>
+<!--       <a target="_blank" href="{{ settings.social_instagram_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}"onclick="toaddcart();"  class="share-pinterest" style="background-color:#F742A8;" target="_blank" aria-describedby="a11y-new-window-external-message">
+        <span class="icon icon-instagram">  <img src="" alt=""></span>
+      </a> -->
+      <a target="_blank" href="//www.facebook.com/sharer.php?u={{ permalinkURL }}" onclick="toaddcart();"  class="share-facebook" title="{{ 'general.social.alt_text.share_on_facebook' | t }}">
+        <span class="icon icon-facebook">  <img src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/facebook_facebook52.png?v=1653362662" alt=""></span>
+      </a>
+</div>
+
+
+

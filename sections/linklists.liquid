@@ -1,0 +1,44 @@
+
+<script>
+
+    var linklists = [
+        
+        {% for link1 in linklists.header.links %}
+    {
+        
+
+            link:{
+
+                title:{{link1.title}},
+
+                sublink:{
+
+                }
+    
+                {% for link2 in link1.links %}
+
+
+
+
+
+                    {% for link3 in link2.links %}  
+                        
+
+
+                    
+
+                    {% endfor %}
+
+
+
+                
+                {% endfor %}
+
+
+            },
+
+
+        }
+        {% endfor %}
+]
+</script>

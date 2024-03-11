@@ -1,0 +1,34 @@
+<div class="Fan-Sale-Background">
+    {% if section.settings.fanSale_background != blank %}
+        {% assign image = section.settings.fanSale_background | img_url: '1920x' %}
+        <img class="fanSale_Background" src="{{ image }}" alt="">
+    {% endif %}
+    {% if section.settings.fanSale_background_mobile != blank %}
+        {% assign image = section.settings.fanSale_background_mobile | img_url: '375x' %}
+        <img class="fanSale_Background_Mobile" src="{{ image }}" alt="">
+    {% endif %}
+</div>
+
+<script></script>
+
+{% schema %}
+{
+"name":"fan-sale-banner",
+"settings":[
+{
+			"type": "image_picker",
+			"id": "fanSale_background",
+			"label": {
+				"en": "background"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "fanSale_background_mobile",
+			"label": {
+				"en": "mobile background"
+			}
+		}
+]
+}
+{% endschema %}

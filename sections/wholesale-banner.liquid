@@ -1,0 +1,47 @@
+<div class="fn-wholesale-banner">
+  {% if section.settings.wholesale_img != blank %}
+    {% assign image = section.settings.wholesale_img | img_url: '1920x' %}
+    <img src="{{ image }}" alt="">
+  {% endif %}
+      <div class="fn-wholesale-mains">
+        <div class="t fn-wholesale-bannertitle">{{  section.settings.banner_title }}</div>
+        <div class="fn-wholesale-bannertext">{{  section.settings.banner_text }}</div>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "wholesale banner",
+    "settings": [
+        {
+			"type": "image_picker",
+			"id": "wholesale_img",
+			"label": {
+				"en": "Image",
+				"zh-CN": "图片"
+			}
+		},
+        {
+            "type": "text",
+            "id": "banner_title",
+            "label": {
+                "en": "banner title ",
+                "zh-CN": "文本标题"
+            }
+        },
+        {
+            "type": "text",
+            "id": "banner_text",
+            "label": {
+                "en": "banner text ",
+                "zh-CN": "文本"
+            }
+        }
+     ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

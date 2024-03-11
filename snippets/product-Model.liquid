@@ -1,0 +1,178 @@
+{% comment %}
+  Renders a product card
+
+  Accepts:
+  - card_product: {Object} Product Liquid object (optional)
+  - show_secondary_image: {Boolean} Show the secondary image on hover. Default: false (optional)
+  - extend_height: {Boolean} Card height extends to available container space. Default: true (optional)
+  - lazy_load: {Boolean} Image should be lazy loaded. Default: true (optional)
+
+  Usage:
+  {% render 'product-Model' %}
+{% endcomment %}
+
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+{%- if card_product and card_product != empty -%}
+  {%- liquid
+    assign ratio = 1
+    if card_product.featured_media and media_aspect_ratio == 'portrait'
+      assign ratio = 0.8
+    elsif card_product.featured_media and media_aspect_ratio == 'adapt'
+      assign ratio = card_product.featured_media.aspect_ratio
+    endif
+    if ratio == 0 or ratio == null
+      assign ratio = 1
+    endif
+    if limit != blank
+      assign limit = limit
+    else
+      assign limit = 5
+      if progress != empty
+        assign progress = progress
+      else
+        assign progress = false
+      endif
+    endif
+  -%}
+  <div class="card-wrapper">
+    <div class="card">
+      <div
+        class="card__inner hover-to-cart {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }}{% endif %}{% if card_product.featured_media or settings.card_style == 'standard' %} ratio{% endif %}"
+        style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
+      >
+      {% if buttonSeat == 'inImage' %}
+        <div class="fn-addcart">
+        {% render 'addCart-Model', product: card_product, buttonText: buttonText %}
+        </div>
+      {% endif %}
+        {%- if card_product.featured_media -%}
+          <a href="{{ card_product.url }}">
+            <div class="card__media">
+              <div class="media media--transparent {% if show_secondary_image %} media--hover-effect {% endif %}}">
+                <img
+                  class="img-first"
+                  src="{{ card_product.featured_media | img_url: '355x' }}"
+                  alt="{{ card_product.featured_media.alt | escape }}"
+                  {% unless lazy_load == false %}
+                    loading="lazy"
+                  {% endunless %}
+                >
+                {%- if card_product.media[3] != null and show_secondary_image -%}
+                  <img
+                    src="{{ card_product.media[3] | img_url: '355x' }}"
+                    alt="{{ card_product.media[3].alt | escape }}"
+                    loading="lazy"
+                  >
+                {%- endif -%}
+              </div>
+            </div>
+          </a>
+        {%- endif -%}
+      </div>
+      <div class="fn-product-head">
+        <!-- 标题布局 -->
+        {% if title == 'flex' %}
+          <div class="fn-product-layout">
+            <div class="fn-product-title">
+              <a href="{{ card_product.url }}" class="t">{{ card_product.title | escape }}</a>
+            </div>
+            {% if pirce == 'intitle' %}
+              <div class="fn-product-price">
+                {% render 'sffers-price', product: card_product, price_class: '' %}
+              </div>
+            {% endif %}
+          </div>
+        {% else %}
+          <div class="fn-product-title">
+            <a href="{{ card_product.url }}" class="t">{{ card_product.title | escape }}</a>
+          </div>
+        {% endif %}
+        <!-- 颜色尺寸展示 -->
+        {% if colorSize %}
+          <div class="fn-color-attr">
+            {%- for option in card_product.options_with_values -%}
+              {%- if option.name == 'Colors' or option.name == 'Color' -%}
+                <ul>
+                  {%- if option.name == 'Colors' -%}
+                    {% assign colorList = card_product.options_by_name.Colors.values | slice: 0, limit %}
+                  {%- else -%}
+                    {% assign colorList = card_product.options_by_name.Color.values | slice: 0, limit %}
+                  {%- endif -%}
+                  {%- for value in colorList -%}
+                    <li>
+                      <a href="{{ card_product.url }}?variant={{ card_product.variants[forloop.index0].id }}">
+                        {%- if card_product.variants[forloop.index0].featured_image != blank -%}
+                          <img
+                            src="{{ card_product.variants[forloop.index0].featured_image | img_url: '50x50' }}"
+                            alt="{{ value }}"
+                          >
+                        {%- endif -%}
+                      </a>
+                    </li>
+                  {% endfor %}
+                  {%- if option.name == 'Colors' -%}
+                    {% assign size = card_product.options_by_name.Colors.values | size | minus: limit %}
+                  {%- else -%}
+                    {% assign size = card_product.options_by_name.Color.values | size | minus: limit %}
+                  {%- endif -%}
+                  {%- if size > 0 -%}
+                    <li class="color-quantity">
+                      <a href="{{ card_product.url }}">+{{ size }}</a>
+                    </li>
+                  {%- endif -%}
+                </ul>
+              {%- endif -%}
+            {% endfor %}
+          </div>
+        {% endif %}
+        <!-- 价格显示 -->
+        {% if pirce == 'normal' %}
+          <div class="fn-product-price">
+            {% render 'sffers-price', product: card_product, price_class: '' %}
+          </div>
+        {% endif %}
+        <!-- 按钮显示 -->
+        {% if buttonSeat == 'fileSteam' %}
+        <div class="fn-color-attrs">
+          {% render 'addCart-Model', product: card_product, buttonText: buttonText %}
+        </div>
+          {% endif %}
+        <!-- 进度条显示 -->
+        {% if progress %}
+          <div class="fn-discounts-productssold">
+            Only
+            <span class="fn-discounts-inventoryright" id="fn-schedule_{{ card_product.id }}">
+              {% for variant in card_product.variants %}
+                {{ variant.inventory_quantity }},
+              {% endfor %}
+            </span>
+            left
+          </div>
+          <div class="fn-discounts-progressbar">
+            <div class="fn-discounts-progressbarone"></div>
+            <div class="fn-discounts-progressbartwo" id="fn-lowprice_{{ card_product.id }}"></div>
+          </div>
+          <script>
+            $(function (){
+                if({{progress}}){
+                  var lowpriceWidth = document.body.clientWidth;
+                // 总的目标值remaining_schedule_s
+                     var lowprice_schedule_s  = {{ schedule_sum }};
+                // 实际数值
+                    var sum_schedule = $("#fn-schedule_{{ card_product.id }}").text();
+                    let lowprice_schedule=0
+                sum_schedule.split(',').map(item=>{
+                  lowprice_schedule += parseFloat(item)?parseFloat(item):0
+                })
+                $("#fn-schedule_{{ card_product.id }}").text(lowprice_schedule)
+                var a =(lowprice_schedule/lowprice_schedule_s)*100
+                  $('#fn-lowprice_{{ card_product.id }}').css("width",a+'%');
+              }
+
+            })
+          </script>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{%- endif -%}

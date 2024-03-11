@@ -1,0 +1,168 @@
+{% style %}
+  #shopify-section-{{ section.id }} .cap-hot-press-freegift{
+    background-color: {{ section.settings.bg_color }};
+  }
+{% endstyle %}
+<style>
+    .cap-hot-press-freegift {
+        padding: 30px 0 40px;
+    }
+    .caphotpress-freegift-swiper {
+        margin: 0 208px;
+    }
+    .caphotpress-freegift-swiper .swiper-slide {
+        border-radius: 8px 8px 8px 8px;
+        background: #FFF1E0;
+    }
+    .caphotpress-freegift-swiper .swiper-slide > div {
+        padding: 13px 13px 18px;
+    }
+    .caphotpress-freegift-swiper .button--full-width {
+        padding: 0;
+        height: 46px;
+        min-height: 46px;
+        background: linear-gradient(91deg, #FF9A30 0%, #FF8830 100%);
+        border-radius: 4px;
+        --border-offset: none;
+        --border-opacity: none;
+        font-size: 18px;
+    }
+    .caphotpress-freegift-swiper .fn-product-title .t {
+        color: #71132E;
+        font-size: 18px;
+    }
+    .caphotpress-freegift-swiper .swiper-slide:nth-last-child(1) {
+        margin-right: 0 !important;
+    }
+    @media screen and (max-width: 1600px) {
+        .caphotpress-freegift-swiper {
+            margin: 0 10%;
+        }
+    }
+    @media screen and (max-width: 1024px) {
+        .caphotpress-freegift-swiper .button--full-width {
+            font-size: 14px;
+            height: 40px;
+            min-height: 40px;
+        }
+        .caphotpress-freegift-swiper .fn-product-title .t {
+            font-size: 14px;
+        }
+        .caphotpress-freegift-swiper .fn-product-price span {
+            font-size: 16px;
+        }
+    }
+    @media screen and (max-width: 750px) {
+        .caphotpress-freegift-swiper {
+            width: 95%;
+            margin: 0 auto;
+        }
+        .cap-hot-press-freegift {
+            padding: 10px 0 12px;
+        }
+    }
+    @media screen and (max-width: 480px) {
+        .caphotpress-freegift-swiper .swiper-slide > div {
+            padding: 3px 3px 12px;
+        }
+    }
+</style>
+<div class="cap-hot-press-freegift" id="{{ section.settings.id }}">
+    <div class="cap-module-title">
+        <div class="cap-module-host-title">{{ section.settings.title }}</div>
+        <div class="cap-module-desc-title">{{ section.settings.desc }}</div>
+    </div>
+    <div class="swiper-container caphotpress-freegift-swiper">
+        <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+            <div class="swiper-slide">
+                <div>
+                    {% render 'product-Model',
+                    card_product: block.settings.product_item,
+                    progress: false,
+                    colorSize: true,
+                    buttonSeat: 'fileSteam',
+                    buttonText: 'Add To Cart',
+                    title: 'flex',
+                    pirce: 'intitle'
+                    %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="swiper-scrollbar" id="caphotpress-freegift-swiper-scrollbar"></div>
+</div>
+<script>
+    var mySwiper_k = new Swiper('.caphotpress-freegift-swiper', {
+        slidesPerView: 3,
+        spaceBetween: 20,
+        scrollbar: {
+            el: '#caphotpress-freegift-swiper-scrollbar',
+        },
+        breakpoints: {
+            750: {
+                slidesPerView: 2.2,
+                spaceBetween: 7,
+            }
+        }
+    });
+    $(function () {
+        var gift_arr = ['6716454273157', '6716455682181', '6716455944325', '6716456140933', '6892368363653', '6892370329733', '6892388122757', '6892374622341','6830968897669','6830969028741','6714275496069'];
+        $(".caphotpress-freegift-swiper .product-form__submit").click(function () {
+            var button_id = $(this).attr('id').substring(9);
+            if (gift_arr.indexOf(button_id) != -1) {
+                setTimeout(function () {
+                    $('.caphotpress-freegift-swiper .product-form__submit').attr('disabled', true);
+                }, 1000);
+            } else {
+                $('.caphotpress-freegift-swiper .product-form__submit').attr('disabled', false);
+            }
+        });
+    })
+</script>
+{% schema %}
+{
+    "name":"Cap Hot Press FreeGift",
+    "settings":[
+        {
+            "type":"text",
+            "id":"id",
+            "label":"id(页面唯一性，全英文)"
+        },
+        {
+            "type":"color",
+            "id":"bg_color",
+            "label":"bg_color"
+        },
+        {
+            "type":"text",
+            "id":"title",
+            "label":"title"
+        },
+        {
+            "type":"text",
+            "id":"desc",
+            "label":"desc"
+        }
+    ],
+    "blocks":[
+        {
+            "name":"product",
+            "type":"product",
+            "settings":[
+                {
+                    "type":"product",
+                    "id":"product_item",
+                    "label":"product"
+                }
+            ]
+        }
+    ],
+    "presets":[
+        {
+            "name":"Cap Hot Press FreeGift"
+        }
+    ]
+}
+{% endschema %}

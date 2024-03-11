@@ -1,0 +1,174 @@
+<style>
+    .fn-blog .fn-page-width {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .fn-blog .item {
+        max-width: 32%;
+        background: #F1F1F1;
+        border-radius: 20px;
+    }
+    .fn-blog .fn-text {
+        padding: 30px;
+    }
+    .fn-blog .fn-title {
+        font-size: 18px;
+        line-height: 1;
+    }
+    .fn-blog .fn-excerpt {
+        font-size: 14px;
+        color: rgba(51, 51, 51, .8);
+        line-height: 30px;
+        margin-top: 10px;
+    }
+    .fn-blog .more {
+        margin-top: 50px;
+    }
+    .fn-blog .fn-text .more {
+        display: inline-block;
+        padding: 11px 40px;
+        font-size: 22px;
+        line-height: 1;
+        border: 1px solid #333333;
+        border-radius: 10px;
+        margin-top: 34px;
+    }
+    .fn-blog-content-image img {
+        width: 100%;
+    }
+    .fn-customer-link {
+        height: 50px;
+        border: 2px solid #333333;
+        border-radius: 10px;
+        text-align: center;
+        width: 30%;
+        margin: 0 auto;
+        font-size: 24px;
+        color: #333333;
+    }
+    @media screen and (max-width: 750px) {
+        .fn-blog-content .item {
+            max-width: 100%;
+        }
+        .fn-blog .fn-text {
+            padding: 20px;
+        }
+        .fn-blog .fn-text .more,
+        .fn-blog .fn-excerpt,
+        .fn-blog .fn-title {
+            font-size: 12px;
+        }
+        .fn-blog .fn-text .more {
+            padding: 10px 25px;
+            font-size: 12px;
+            border: 2px solid #333333;
+            margin-top: 15px;
+        }
+        .item:nth-child(2) {
+            width: 49%;
+        }
+        .item:nth-child(3) {
+            width: 49%;
+        }
+        .fn-blog-content .item + .item {
+            margin-top: 20px;
+        }
+        .fn-blog .item {
+            max-width: 100%;
+        }
+        .fn-blog .item + .item {
+            margin-top: 20px;
+        }
+        .fn-blog .item {
+            border-radius: 10px;
+        }
+    }
+    @media screen and (max-width: 375px) {
+        .fn-blog .fn-text {
+            padding: 10px;
+        }
+        .fn-blog .item {
+            border-radius: 5px;
+        }
+        .fn-blog .more {
+            margin-top: 30px;
+        }
+    }
+</style>
+<div class="fn-blog">
+    {% if section.settings.feedback_title != blank %}
+    <div class="extra-t">{{ section.settings.feedback_title }}</div>
+    {% endif %}
+    <div class="fn-page-width">
+        {% for block in section.blocks %}
+        {% assign article = block.settings.blog %}
+        {% assign image = article.image | img_url: '520x' %}
+        <div class="item">
+            <a href="{{ article.url }}">
+                <img src="{{ image }}" alt="{{ article.image.alt | escape }}">
+                <div class="fn-text">
+                    <div class="fn-title t">{{ article.title }}</div>
+                    <div class="fn-excerpt">{{ article.excerpt | truncate: 100 }}</div>
+                    <div class="more">READ</div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="more"><a href="{{ section.settings.feedback_link }}">MORE</a></div>
+</div>
+{% schema %}
+{
+    "name":"Index Featured Blog",
+    "class": "fn-index-section",
+    "settings":[
+        {
+            "type":"text",
+            "id":"feedback_title",
+            "label":{
+                "en":"Title",
+                "zh-CN":"标题"
+            }
+        },
+        {
+            "type":"url",
+            "id":"feedback_link",
+            "label":{
+                "en":"Magic Link",
+                "zh-CN":"使用指南"
+            }
+        }
+    ],
+    "max_blocks": 3,
+    "blocks":[
+        {
+            "type":"blog",
+            "name":{
+                "en":"Blog",
+                "zh-CN":"博客"
+            },
+            "settings":[
+                {
+                    "type":"article",
+                    "id":"blog",
+                    "label":{
+                        "en":"Blog",
+                        "zh-CN":"博客"
+                    }
+                }
+            ]
+        }
+    ],
+    "presets":[
+        {
+            "name":"Index Featured Blog",
+            "blocks":[
+                {
+                    "type":"blog"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

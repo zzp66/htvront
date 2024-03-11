@@ -1,0 +1,209 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} .connect-stories{
+   background: {{ section.settings.bg_color }};
+   padding-bottom:{{section.settings.padding_bottom}}px;
+   padding-top:{{section.settings.padding_top}}px;
+    letter-spacing:0
+  }
+  #shopify-section-{{ section.id }} .connect-stories-content{
+    width:{{section.settings.layout}}px;
+    margin:0 auto
+  }
+  @media screen and (max-width: 1900px){
+    #shopify-section-{{ section.id }} .connect-stories-content{
+      width:83.33%;
+    }
+  }
+  @media screen and (max-width: 1180px){
+    #shopify-section-{{ section.id }} .connect-stories{
+      padding-top:0;
+      padding-bottom:30px
+    }
+    #shopify-section-{{ section.id }} .connect-stories-content{
+      width:93.6%;
+    }
+  }
+{%- endstyle -%}
+<style>
+  .connect-stories-layout{
+    display:flex;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 13px 0px rgba(0,0,0,0.18);
+    border-radius: 10px;
+  }
+  .connect-stories-message{
+    padding-left: 3.5%;
+    padding-right: 6.9%;
+    padding-top:7.75%;
+    width: 33.2%;
+  }
+  .connect-stories-title{
+    font-size: 36px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 49px;
+  }
+  .connect-stories-desc{
+    font-size: 18px;
+    color: #333333;
+    line-height: 30px;
+    margin:20px 0
+  }
+  .connect-stories-email{
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 24px;
+  }
+  .connect-stories-email a{
+    text-decoration: underline;
+    display: inline;
+  }
+  @media screen and (max-width: 1440px){
+    .connect-stories-message{
+      padding:2% 2% 0 1%
+    }
+    .connect-stories-title{
+      font-size:24px;
+      line-height:36px
+    }
+  }
+  @media screen and (max-width: 1180px){
+    .connect-stories-title{
+       font-size:18px;
+       line-height:24px
+    }
+    .connect-stories-desc{
+      font-size:14px;
+      line-height:22px
+    }
+     .connect-stories-email{
+        font-size: 14px;
+        line-height: 22px;
+      }
+    .connect-stories-desc{
+      margin: 15px 0;
+    }
+  }
+   @media screen and (max-width: 750px){
+     .connect-stories-layout{
+      display:block
+    }
+    .show-in-pc{
+      display:none
+    }
+    .show-in-mobile{
+      display:block
+    }
+     .connect-stories-message{
+       width:100%;
+       padding:16px 24px 15px 16px
+     }
+     .connect-stories-title{
+       text-align:center
+     }
+    .connect-stories .show-in-mobile{
+      width:100%
+    }
+  }
+</style>
+<div class="connect-stories">
+  <div class="connect-stories-content connect-stories-layout">
+    <div class="connect-stories-message">
+      <div class="connect-stories-title">
+        {{ section.settings.title }}
+      </div>
+      <div class="connect-stories-desc">
+        {{ section.settings.desc }}
+      </div>
+      <div class="connect-stories-email">
+        Email:<a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+      </div>
+    </div>
+    <div>
+      {% if section.settings.image != blank %}
+        <img class="show-in-pc" src="{{ section.settings.image | img_url:'1095x' }}">
+      {% endif %}
+      {% if section.settings.image_mobile != blank %}
+        <img class="show-in-mobile" src="{{ section.settings.image_mobile | img_url:'351x' }}">
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Connect Story",
+  "settings": [{
+            "type":"color",
+            "id":"bg_color",
+            "label":"背景颜色"
+        },{
+            "type":"range",
+            "id":"padding_top",
+            "min":0,
+            "max": 100,
+            "step":1,
+            "unit":"px",
+            "label":"padding_top",
+            "default": 36
+        },{
+            "type":"range",
+            "id":"padding_bottom",
+            "min":0,
+            "max": 100,
+            "step":1,
+            "unit":"px",
+            "label":"padding_bottom",
+            "default": 100
+        },{
+            "type":"range",
+            "id":"layout",
+            "min":1200,
+            "max": 1920,
+            "step":10,
+            "unit":"px",
+            "label":"内容显示宽度",
+            "default": 1600
+        },{
+      "type":"image_picker",
+      "id":"image",
+      "label":{
+        "en":"Image",
+        "zh-CN":"图片"
+        }
+      },{
+      "type":"image_picker",
+      "id":"image_mobile",
+      "label":{
+        "en":"Image Mobile",
+        "zh-CN":"手机端图片"
+        }
+      },{
+            "type":"text",
+            "id":"title",
+            "label":"标题"
+        },{
+            "type":"text",
+            "id":"desc",
+            "label":"描述"
+        },{
+        "type":"text",
+         "id":"email",
+         "label":{
+            "en":"email",
+            "zh-CN":"邮箱"
+          }
+      }],
+  "presets":[
+    {
+    "name":"Connect Story"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

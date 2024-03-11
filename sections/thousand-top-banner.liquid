@@ -1,0 +1,147 @@
+{{ 'thousand-markpoint.js' | asset_url | script_tag }}
+<style>
+  .thousand-top-banner .swiper-button-next,.thousand-top-banner .swiper-button-prev{
+    width: 50px;
+    height: 50px;
+    background-size: auto;
+    margin-top:0;
+    translate: 0 -50%;
+  }
+  .thousand-top-banner .swiper-button-next{
+    background-image:url("https://cdn.shopify.com/s/files/1/0356/5997/2741/files/33c8d119574feab9f253f2f5a27adacf_ed17528f-5d1f-46f2-b54e-a94efcb40379.png?v=1684808010");
+    right:160px;
+  }
+   .thousand-top-banner .swiper-button-prev{
+     background-image:url("https://cdn.shopify.com/s/files/1/0356/5997/2741/files/33c8d119574feab9f253f2f5a27adacf_ed17528f-5d1f-46f2-b54e-a94efcb40379.png?v=1684808010");
+     transform: rotate(180deg);
+     left:160px;
+   }
+  .thousand-top-banner .swiper-button-prev.swiper-button-disabled{
+    background-image:url("https://cdn.shopify.com/s/files/1/0356/5997/2741/files/ca930508ba76b74cc9ba8525a115f657_51fc3ad3-cebc-4272-a641-819c252afd73.png?v=1684808010");
+    transform: rotate(360deg);
+  }
+  .thousand-top-banner .swiper-button-next.swiper-button-disabled{
+    background-image:url("https://cdn.shopify.com/s/files/1/0356/5997/2741/files/ca930508ba76b74cc9ba8525a115f657_51fc3ad3-cebc-4272-a641-819c252afd73.png?v=1684808010");
+    transform: rotate(180deg);
+  }
+  .thousand-top-banner .swiper-pagination-bullet{
+    width: 33px;
+    height: 2px;
+    background: #ffffff;
+    opacity: 0.5;
+  }
+  .thousand-top-banner .swiper-pagination-bullet-active{
+    background: #ffffff;
+    opacity: 1;
+  }
+  .thousand-top-banner .show-in-mobile{
+    display:none
+  }
+  .swiper-slide-img{
+    width:100%
+  }
+  @media screen and (max-width: 750px){
+    .thousand-top-banner .swiper-button-next,.thousand-top-banner .swiper-button-prev{
+      display:none
+    }
+    .thousand-top-banner .show-in-mobile{
+      display:block
+    }
+    .thousand-top-banner .show-in-pc{
+      display:none
+    }
+  }
+</style>
+<div class="thousand-top-banner">
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        <div class="swiper-slide">
+          <a
+            href="{{ block.settings.link }}"
+            onclick="
+              thousandMarkPoint({
+                id: '{{ block.settings.bannerId }}',
+                userEmail: '{{ customer.email }}',
+                pageName: '{{page_title}}'
+              })
+            "
+          >
+            {% if block.settings.crad_image != blank %}
+              <img
+                class="show-in-pc swiper-slide-img"
+                src="{{ block.settings.crad_image | img_url: '1920x' }}"
+                alt="{{ image.alt }}"
+              >
+            {% endif %}
+            {% if block.settings.crad_image_mobile != blank %}
+              <img
+                class="show-in-mobile swiper-slide-img"
+                src="{{ block.settings.crad_image_mobile | img_url:'375x' }}"
+                alt="{{ image.alt }}"
+              >
+            {% endif %}
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+<script>
+  $(function(){
+    var bannerSwiper = new Swiper('.thousand-top-banner .swiper-container', {
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints:{
+        750: {
+          pagination: {
+            el: '.swiper-pagination',
+          }
+        }
+      }
+    });
+  })
+</script>
+{% schema %}
+{
+  "name": "Thousand banner model",
+  "settings": [],
+    "blocks":[{
+      "type": "images",
+      "name": "crad_image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "crad_image",
+          "label": "image"
+        },{
+          "type": "image_picker",
+          "id": "crad_image_mobile",
+          "label": "image mobile"
+        },{
+          "type": "url",
+          "id": "link",
+          "label": "banner url"
+        },{
+          "type": "text",
+          "id": "bannerId",
+          "label": "markpoint banner id（以banner_开头，且需唯一性）"
+        }
+      ]
+    }],
+  "presets": [{
+    "name": "Thousand banner model"
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,31 @@
+<div class="black-friday-banner">
+   <picture>
+    <source media="(max-width: 750px)" srcset="{{ section.settings.image_mobile | img_url:'750x' }}">
+    <source media="(min-width: 751px)" srcset="{{ section.settings.image | img_url:'1920x' }}">
+    <img src="{{ section.settings.image | img_url:'1920x' }}">
+  </picture>
+</div>
+
+{% schema %}
+  {
+    "name": "Black Friday banner",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label":"image"
+	  },
+      {
+	    "type": "image_picker",
+		"id": "image_mobile",
+		"label":"image mobile"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

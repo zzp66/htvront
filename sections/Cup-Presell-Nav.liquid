@@ -1,0 +1,196 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} .cup-presell-nav-text{
+    color: {{ section.settings.text_color }};
+    font-size:{{section.settings.font_size}}px;
+  }
+  @media screen and (max-width: 1024px){
+    #shopify-section-{{ section.id }} .cup-presell-nav-text{
+      font-size:14px;
+    }
+  }
+{%- endstyle -%}
+<style>
+  .cup-presell-nav{
+    height:50px;
+    width:100%;
+    line-height:50px;
+    background-image:url('{{ section.settings.background_image | img_url:'1920x' }}');
+    background-size: 100% 100%;
+    background-position: center;
+    box-shadow: inset 0px 1px 10px 0px rgba(104,56,0,0.1);
+    letter-spacing: 0;
+  }
+  .cup-presell-nav-content,.cup-presell-nav-item{
+    align-items: center;
+    height: 50px;    
+  }
+  .cup-presell-nav .swiper-container{
+    width:1300px;
+    margin:0 auto
+  }
+  .cup-presell-nav-item{
+    display:flex
+  }
+  .cup-presell-nav-text{
+    margin-left:7px;
+    font-weight: bold;
+  }
+  @media screen and (max-width: 1440px){
+    .cup-presell-nav .swiper-container{
+      width:68%
+    }
+  }
+   @media screen and (max-width: 1330px){
+   .cup-presell-nav .swiper-container{
+      width:88%
+    }
+  }
+  @media screen and (max-width: 1024px){
+    .cup-presell-nav .swiper-container{
+      width:96%
+    }
+    .cup-presell-nav-item>img{
+      width:16px
+    }
+  }
+  @media screen and (max-width: 750px){
+    .cup-presell-nav .swiper-container{
+      width:95%
+    }
+    .cup-presell-nav{
+      line-height:16px
+    }
+  }
+</style>
+<div class="cup-presell-nav">
+  <div class="swiper-container">
+      <ul class="swiper-wrapper cup-presell-nav-content">
+          {% for block in section.blocks %}
+            <li class="swiper-slide">
+              <a href="#{{ block.settings.nav_id }}" class="cup-presell-nav-item" onclick="getClick('{{ block.settings.nav_id }}')">
+                {% if block.settings.nav_icon != blank %}
+                    <img
+                      src="{{ block.settings.nav_icon | img_url: '24x' }}"
+                      alt="{{ image.alt }}" />
+                {% endif %}
+                  <p class="cup-presell-nav-text">
+                    {{ block.settings.nav_text }}
+                  </p>
+              </a>
+            </li>
+        {% endfor %}
+      </ul>
+  </div>
+</div>
+<script>
+  function getClick(item){
+    $.ajax({
+      type: 'get',
+      dataType: 'json',
+      url: 'https://qn.htvront.com/htvront-blindBox/click',
+      data: {site: 'US',module:'{{page_title}}',clickName:item}
+    });
+  }
+  $(function(){
+    let height = $('.cup-presell-banner')[0].offsetHeight
+    window.addEventListener("scroll", function(event) {
+        var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+        var navheight = 0 
+      if(document.body.clientWidth >= 990){
+        navheight = 60
+      }else{
+        navheight = 45
+      }
+         if(scrollTop >= height + 110){  
+             $('.cup-presell-nav').css({
+               position: "fixed",
+               top: navheight + "px",
+               zIndex: 222
+             })
+         }else{
+           $('.cup-presell-nav').css({
+               position: "initial"
+             })
+         }
+     });
+
+     var mySwiper_a = new Swiper('.cup-presell-nav .swiper-container',{
+          slidesPerView: 4,
+          spaceBetween: 15,
+
+          breakpoints:{
+            768:{
+               slidesPerView:3,
+              spaceBetween:15,
+            },450:{
+               slidesPerView:2.2,
+              spaceBetween:15,
+            }
+      }
+    });
+    var arr = document.getElementsByClassName('hoverLi')
+    var navName = document.getElementsByClassName('cup-presell-nav')[0]
+     for (let i = 0, length = arr.length; i < length; i++) {
+        arr[i].addEventListener("mouseover", function(event) { 
+          var navStyleFixed = $('.cup-presell-nav').attr("style").indexOf("fixed"); 
+          if(navStyleFixed != -1){
+            navName.style.display = 'none';
+          }else{
+            navName.style.display = 'block';
+          }
+        });
+         arr[i].addEventListener("mouseout", function(event) { 
+           navName.style.display = 'block';
+        });
+     }
+  })
+</script>
+{% schema %}
+  {
+    "name": "Cup-Presell-Nav",
+    "settings": [
+      {
+        "type":"image_picker",
+        "id":"background_image",
+        "label":"background image"
+      },
+      {
+        "type":"color",
+        "id":"text_color",
+        "label":"text color"
+      },{
+        "type":"text",
+        "id":"font_size",
+        "label":"font size"
+      }
+    ],
+    "blocks":[{
+      "type": "images",
+      "name": "nav",
+      "settings":[{
+        "type":"image_picker",
+        "id":"nav_icon",
+        "label":"nav icon"
+      },{
+        "type":"text",
+        "id":"nav_text",
+        "label":"nav text"
+      },{
+        "type":"text",
+        "id":"nav_id",
+        "label":"nav id(与下方块id一致，无空格，不能重复)"
+      }]
+    }],
+    "presets":[
+      {
+        "name":"Cup-Presell-Nav"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,333 @@
+<style>
+  .fn-blog-home {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+  .fn-blog-home .fn-breadcrumb ul {
+    font-size: 14px;
+  }
+  .fn-spot-news {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 100px;
+  }
+  .fn-news-content {
+    width: 655px;
+    padding: 32px;
+    box-shadow: 0px 4px 14px 0px rgb(0 0 0 / 6%);
+    border-radius: 16px;
+  }
+  .fn-content-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 1;
+  }
+  .fn-content-list {
+    padding: 20px 0;
+  }
+  .fn-news-content ul li:nth-child(2) {
+    border-top: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+  }
+  .fn-article-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 6px;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* 这里是超出几行省略 */
+    overflow: hidden;
+    line-height: 1;
+  }
+  .fn-article-headtitle {
+    font-size: 16px;
+    font-weight: bold;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .fn-article-footetitle {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;				
+    text-overflow: ellipsis;	
+    display: -webkit-box;	
+    -webkit-line-clamp: 2;
+    line-clamp: 2;					
+    -webkit-box-orient: vertical;
+  }
+  .fn-article-excerpt {
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+    margin-bottom: 6px;
+  }
+  .fn-article-excerpt-text {
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+    margin-bottom: 30px;
+/*     text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;				
+    text-overflow: ellipsis;	
+    display: -webkit-box;	
+    -webkit-line-clamp: 3;
+    line-clamp: 3;					
+    -webkit-box-orient: vertical; */
+  }
+  .fn-article-time {
+    font-size: 12px;
+    color: #101010;
+  }
+  .fn-content-button {
+    margin-top: 70px;
+    text-align: center;
+    font-size: 12px;
+    color: #333;
+  }
+  .fn-craft-button:hover,
+  .fn-content-button:hover {
+    color: #FC7506;
+  }
+  .fn-craft-ideas {
+    /*     margin: 100px 0 50px 0; */
+  }
+  .fn-craft-head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+  }
+  .fn-machines-content ul,
+  .fn-craft-content ul {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .fn-craft-content ul li{
+    width: 24%;
+  }
+  .fn-guide-content ul li{
+    width: 32.33%;
+  }
+.fn-machines-content .fn-machines-list {
+    width: 49%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+  .fn-img-right,
+  .fn-machines-imges{
+    width: 48.8%;
+  }
+  .fn-craft-button {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .fn-article-imges {
+    height: 380px;
+  }
+  .fn-craft-imges {
+    height: 385px;
+  }
+  .fn-machines-imges {
+    height: 220px;
+  }
+    .fn-article-a {
+    height: 220px;
+  }
+  .fn-machines-imges img,
+  .fn-craft-imges img,
+  .fn-article-imges img{
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+  }
+  .fn-craft-imges,
+  .fn-article-imges {
+    margin-bottom: 14px;
+  }
+  .fn-beginners-guide {
+    background: #f9f9f9;
+    padding: 40px 160px;
+    margin: 60px 0;
+  }
+  @media screen and (min-width: 1024px) and (max-width: 1580px) {
+    .fn-news-img img,
+    .fn-news-img {
+      width: 100%;
+    }
+    .fn-news-img {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .fn-blog-home {
+      padding: 0 20px;
+    }
+    .fn-news-content {
+      width: 100%;
+    }
+    .fn-breadcrumb {
+      margin: 32px 20px;
+    }
+    .fn-craft-content ul li {
+      width: 32%;
+      margin-bottom: 20px;
+    }
+    .fn-craft-imges {
+      height: 300px;
+    }
+    .fn-beginners-guide {
+      padding: 40px 20px;
+    }
+  }
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    .fn-blog-home .fn-breadcrumb ul {
+    font-size: 18px;
+}
+   .fn-blog-home .fn-breadcrumb {
+    margin: 25px 20px;
+}
+    .fn-news-img img,
+    .fn-news-img {
+      width: 100%;
+    }
+    .fn-news-img {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .fn-blog-home {
+      padding: 0 20px;
+    }
+    .fn-news-content {
+      width: 100%;
+    }
+    .fn-breadcrumb {
+      margin: 32px 20px;
+    }
+    .fn-craft-content ul li {
+      width: 48.5%;
+      margin-bottom: 20px;
+    }
+    .fn-craft-imges {
+      height: 213px;
+    }
+    .fn-beginners-guide {
+      padding: 40px 20px;
+    }
+  }
+/*   @media screen and (min-width: 769px) { 
+  .fn-article-title:hover{
+    border-bottom: 1px solid;
+  }
+  } */
+  @media screen and (max-width: 768px) {
+    .fn-blog-home .fn-breadcrumb {
+      display: none;
+    }
+    .fn-news-img img,
+    .fn-news-img {
+      width: 100%;
+    }
+    .fn-news-img {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .fn-blog-home {
+      padding: 0 5px;
+      margin-top: 5px;
+    }
+    .fn-news-content {
+      padding: 15px;
+    }
+    .fn-content-title {
+      font-size: 18px;
+    }
+    .fn-content-list {
+      padding: 15px 0;
+    }
+    .fn-article-title,
+    .fn-article-headtitle {
+      font-size: 16px;
+    }
+    .fn-content-button {
+      margin-top: 30px;
+    }
+    .fn-spot-news {
+      margin-bottom: 50px;
+    }
+    .fn-craft-button {
+      font-size: 12px;
+      font-weight: 400;
+    }
+    .fn-craft-content {
+      padding: 0 10px;
+    }
+    .fn-craft-head {
+      margin-bottom: 30px;
+      padding: 0 10px;
+    }
+    .fn-article-excerpt-text {
+      margin-bottom: 20px;
+    }
+    .fn-beginners-guide {
+      margin: 5px 0 30px 0;
+    }
+    .fn-news-content {
+      width: 100%;
+    }
+
+    .fn-breadcrumb {
+      margin: 32px 20px;
+    }
+    .fn-craft-content ul li {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .fn-craft-imges {
+      height: 213px;
+    }
+    .fn-beginners-guide {
+      padding: 40px 6px 15px 6px;
+    }
+    .fn-article-imges {
+      height: 297px;
+    }
+    .fn-machines-content {
+      padding: 0 10px;
+    }
+    .fn-machines-content .fn-machines-list {
+      width: 100%;
+    }
+    .fn-machines-content .fn-machines-list {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .fn-img-right, .fn-machines-imges {
+      width: 100%;
+    }
+  }
+</style>
+<div class="fn-blog-home">
+  <div class="fn-breadcrumb">
+    <ul>
+      <li style="color: rgba(51, 51, 51, 0.8);"><a href="/">Home</a></li>
+      <li> > </li>
+      <li>Our Blog</li>
+    </ul>
+  </div>
+  {% section 'bole-spot-news' %}
+  {% section 'bole-craft-ideas' %}
+</div>
+{% section 'bole-beginners-guide' %}
+<div class="fn-blog-home">
+  {% section 'bole-cutting-machines' %}
+</div>

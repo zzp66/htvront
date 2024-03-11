@@ -1,0 +1,219 @@
+{% style %}
+  #shopify-section-{{ section.id }} .cap-hot-press-ways{
+    background-color:{{ section.settings.bg_color }}
+  }
+{% endstyle %}
+<style>
+    .cap-hot-press-ways {
+        padding: 30px 0 35px;
+        letter-spacing: 0;
+    }
+    .cap-hot-ways-content {
+        width: 1063px;
+        margin: 0 auto
+    }
+    .cap-hot-ways-icon {
+        display: flex;
+        justify-content: space-around;
+        padding-bottom: 10px;
+        margin-top: 15px;
+    }
+    .cap-hot-ways-icon-title {
+        font-size: 16px;
+        font-weight: 400;
+        color: #6D3309;
+        line-height: 19px;
+        text-align: center;
+    }
+    .cap-hot-ways-icon-item {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 93px;
+    }
+    .cap-hot-ways-step-item {
+        margin-top: 20px;
+        display: flex;
+    }
+    .cap-hot-ways-step-text {
+        padding: 40px 100px 15px 26px
+    }
+    .cap-hot-ways-step-title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #6D3309;
+        line-height: 21px;
+        margin-bottom: 11px
+    }
+    .cap-hot-ways-step-desc {
+        font-size: 16px;
+        font-weight: 400;
+        color: #6D3309;
+        line-height: 22px;
+    }
+    @media screen and (max-width: 1180px) {
+        .cap-hot-ways-content {
+            width: 90%;
+        }
+        .cap-hot-ways-step-item img {
+            width: 48.75%
+        }
+    }
+    @media screen and (max-width: 768px) {
+        .cap-hot-press-ways {
+            padding: 10px 0
+        }
+        .cap-hot-ways-content {
+            width: 95%
+        }
+        .cap-hot-ways-icon {
+            flex-wrap: wrap;
+            margin-top: 0
+        }
+        .cap-hot-ways-icon-item {
+            width: 35%;
+            margin-top: 20px;
+            padding-bottom: 0
+        }
+        .cap-hot-ways-icon-item img {
+            max-width: 37px
+        }
+        .cap-hot-ways-step-item {
+            flex-direction: column !important;
+        }
+        .cap-hot-ways-step-item img {
+            width: 100%;
+            margin: 0 !important
+        }
+        .cap-hot-ways-step-text {
+            padding: 15px 0px;
+        }
+        .cap-hot-ways-step-desc {
+            font-size: 14px;
+            line-height: 20px;
+            margin-top: 10px;
+        }
+        .cap-hot-ways-icon-title, .cap-hot-ways-step-title {
+            font-size: 16px;
+            line-height: 22px;
+            margin-top: 10px;
+        }
+        .cap-hot-ways-step-title {
+            margin-bottom: 4px
+        }
+    }
+</style>
+<div class="cap-hot-press-ways" id="{{ section.settings.card_id }}">
+    <div class="cap-module-title">
+        <div class="cap-module-host-title">{{ section.settings.title }}</div>
+        <div class="cap-module-desc-title">{{ section.settings.title_desc }}</div>
+    </div>
+    <div class="cap-hot-ways-content">
+        <div class="cap-hot-ways-icon">
+            {% for block in section.blocks %}
+            {% if block.type == 'icon' %}
+            <div class="cap-hot-ways-icon-item">
+                <img src="{{ block.settings.icon | img_url:'48x' }}">
+                <div class="cap-hot-ways-icon-title">{{ block.settings.title }}</div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class="cap-hot-ways-step">
+            {% for block in section.blocks %}
+            {% if block.type == 'step' %}
+            {% if block.settings.layout %}
+            {% assign layout = 'row-reverse' %}
+            {% assign margin = 'margin-left' %}
+            {% else %}
+            {% assign layout = 'row' %}
+            {% assign margin = 'margin-right' %}
+            {% endif %}
+            <div class="cap-hot-ways-step-item" style="flex-direction:{{ layout }}">
+                <img src="{{ block.settings.image | img_url:'518x' }}" style="{{ margin }}:2.5%">
+                <div class="cap-hot-ways-step-text">
+                    <div class="cap-hot-ways-step-title">
+                        {{ block.settings.title }}
+                    </div>
+                    <div class="cap-hot-ways-step-desc">
+                        {{ block.settings.desc }}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% schema %}
+{
+    "name":"Cap Hot Press Ways",
+    "settings":[
+        {
+            "type":"color",
+            "id":"bg_color",
+            "label":"background color"
+        },
+        {
+            "type":"text",
+            "id":"title",
+            "label":"title"
+        },
+        {
+            "type":"text",
+            "id":"card_id",
+            "label":"id"
+        }
+    ],
+    "blocks":[
+        {
+            "type":"icon",
+            "name":"icon",
+            "settings":[
+                {
+                    "type":"image_picker",
+                    "id":"icon",
+                    "label":"icon"
+                },
+                {
+                    "type":"text",
+                    "id":"title",
+                    "label":"title"
+                }
+            ]
+        },
+        {
+            "type":"step",
+            "name":"step",
+            "settings":[
+                {
+                    "type":"image_picker",
+                    "id":"image",
+                    "label":"image"
+                },
+                {
+                    "type":"text",
+                    "id":"title",
+                    "label":"title"
+                },
+                {
+                    "type":"text",
+                    "id":"desc",
+                    "label":"desc"
+                },
+                {
+                    "type":"checkbox",
+                    "id":"layout",
+                    "label":"image right"
+                }
+            ]
+        }
+    ],
+    "presets":[
+        {
+            "name":"Cap Hot Press Ways"
+        }
+    ]
+}
+{% endschema %}

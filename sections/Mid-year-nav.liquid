@@ -1,0 +1,161 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} .mid-year-nav-text{
+    color: {{ section.settings.text_color }};
+    font-size:{{section.settings.font_size}}px;
+  }
+  @media screen and (max-width: 1024px){
+    #shopify-section-{{ section.id }} .mid-year-nav-text{
+      font-size:14px;
+    }
+  }
+{%- endstyle -%}
+<style>
+  .mid-year-nav{
+    height:50px;
+    width:100%;
+    line-height:50px;
+    background: linear-gradient(90deg, #FAAF2B 0%, #FEFACB 52%, #FFBA3F 100%);
+    box-shadow: inset 0px 1px 10px 0px rgba(104,56,0,0.1);
+    letter-spacing: 0;
+  }
+  .mid-year-nav-content,.mid-year-nav-item{
+    align-items: center;
+    height: 50px;
+  }
+  .mid-year-nav .swiper-container{
+    width:1300px;
+    margin:0 auto
+  }
+  .mid-year-nav-item{
+    display:flex
+  }
+  .mid-year-nav-text{
+    margin-left:7px;
+    font-weight: bold;
+  }
+  @media screen and (max-width: 1440px){
+    .mid-year-nav .swiper-container{
+      width:68%
+    }
+  }
+   @media screen and (max-width: 1330px){
+   .mid-year-nav .swiper-container{
+      width:88%
+    }
+  }
+  @media screen and (max-width: 1024px){
+    .mid-year-nav .swiper-container{
+      width:96%
+    }
+    .mid-year-nav-item>img{
+      width:16px
+    }
+  }
+  @media screen and (max-width: 750px){
+    .mid-year-nav .swiper-container{
+      width:95%
+    }
+    .mid-year-nav{
+      line-height:16px
+    }
+  }
+</style>
+<div class="mid-year-nav">
+  <div class="swiper-container">
+          <ul class="swiper-wrapper mid-year-nav-content">
+              {% for block in section.blocks %}
+                <li class="swiper-slide">
+                  <a href="#{{ block.settings.nav_id }}" class="mid-year-nav-item">
+                    {% if block.settings.nav_icon != blank %}
+                        <img
+                          src="{{ block.settings.nav_icon | img_url: '24x' }}"
+                          alt="{{ image.alt }}" />
+                    {% endif %}
+                      <p class="mid-year-nav-text">
+                        {{ block.settings.nav_text }}
+                      </p>
+                  </a>
+                </li>
+            {% endfor %}
+          </ul>
+  </div>
+</div>
+<script>
+  $(function(){
+    let height = $('.fn-marketing-banner')[0].offsetHeight
+    window.addEventListener("scroll", function(event) {
+        var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+        var navheight = 0 
+      if(document.body.clientWidth >= 990){
+        navheight = 60
+      }else{
+        navheight = 45
+      }
+         if(scrollTop >= height + 110){  
+             $('.mid-year-nav').css({
+               position: "fixed",
+               top: navheight + "px",
+               zIndex: 2
+             })
+         }else{
+           $('.mid-year-nav').css({
+               position: "initial"
+             })
+         }
+     });
+
+     var mySwiper_a = new Swiper('.mid-year-nav .swiper-container',{
+          slidesPerView: 4,
+          spaceBetween: 15,
+
+          breakpoints:{
+            768:{
+               slidesPerView:3,
+              spaceBetween:15,
+            }
+      }
+    });
+  })
+</script>
+{% schema %}
+  {
+    "name": "Mid Year Nav",
+    "settings": [{
+          "type":"color",
+          "id":"text_color",
+          "label":"text color"
+        },{
+          "type":"text",
+          "id":"font_size",
+          "label":"font size"
+        }],
+    "blocks":[{
+      "type": "images",
+      "name": "nav",
+      "settings":[{
+        "type":"image_picker",
+        "id":"nav_icon",
+        "label":"nav icon"
+      },{
+        "type":"text",
+        "id":"nav_text",
+        "label":"nav text"
+      },{
+        "type":"text",
+        "id":"nav_id",
+        "label":"nav id(与下方块id一致，无空格，不能重复)"
+      }]
+    }],
+      "presets": [
+        {
+          "name": "Mid Year Nav"
+        }
+      ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

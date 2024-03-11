@@ -1,0 +1,201 @@
+<style>
+  #fn-mask{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0;
+    top: 0;
+    z-index: 999;
+    display:block;
+  }
+  .fn-activity-end{
+    width:800px;
+    height:auto;
+    background-image:url('{{ section.settings.bg_image | img_url:'800x' }}');
+    background-size: 100% 100%;
+    background-position: center;
+    {% if section.settings.bg_color %}
+      background:{{section.settings.bg_color}};
+    {% endif %}
+    box-shadow: 0px 8px 10px 0px rgba(0,0,0,0.8);
+    border-radius: 20px;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    position: fixed;
+    z-index: 1000;
+    padding:36px 0 55px;
+  }
+  .fn-title{
+    font-size: 30px;
+    font-weight: bold;
+    color: {{section.settings.title_color}};
+    line-height: 35px;
+    text-align: center;
+    margin-bottom:30px;
+  }
+  .fn-text p{
+    color: {{section.settings.text_color}};
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    padding-bottom: 12px;
+  }
+  .fn-text{
+    margin-bottom:15px;
+    padding:0 80px;
+  }
+  .fn-button a{
+    width: 258px;
+    height: 60px;
+    background: {{ section.settings.btn_color }};
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: {{section.settings.btn_text_color}};
+    text-align: center;
+    line-height: 59px;
+    cursor: pointer;
+    display: inline-block;
+    margin-right:15px;
+    margin-bottom: 10px;
+  }
+  .fn-button a:nth-last-child(1){
+    margin-right:0;
+  }
+  .fn-button{
+    display: flex;
+    justify-content: center;
+  }
+  @media screen and (max-width: 820px){
+     .fn-activity-end{
+       background:{{section.settings.bg_color_mobile}};
+       width:85%;
+       padding: 20px 0 30px;
+     }
+      .fn-title{
+        margin-bottom: 15px;
+        line-height: 24px;
+        font-size: 20px;
+      }
+      .fn-text p{
+        font-size: 14px;
+        line-height: 16px;
+      }
+      .fn-button a{
+        border-radius: 8px;
+        margin-right: 5px;
+        line-height: 44px;
+        width: 200px;
+        font-size: 14px;
+        height: 45px;
+      }
+      .fn-text {
+        padding: 0 30px;
+      }
+   }
+  @media screen and (max-width: 500px){
+    .fn-button{
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
+{% if section.settings.mask_set == 'true'%}
+  <div class="fn-mask" id="fn-mask"></div>
+  <div class="fn-activity-end">
+    <p class="fn-title">{{ section.settings.title }}</p>
+    <div class="fn-text">{{ section.settings.text }}</div>
+    <div class="fn-button">
+    {% for block in section.blocks %}
+      <a target="_blank" href="{{ block.settings.btn_link }}">{{ block.settings.btn_text }}</a>
+    {% endfor %}
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Valentines-Mask-Module",
+    "settings": [
+      {
+        "type":"radio",
+        "id":"mask_set",
+        "label":"蒙版开关",
+        "default": "false",
+         "options": [
+          {
+            "value": "true",
+            "label": "true"
+          },
+          {
+            "value": "false",
+            "label": "false"
+          }
+        ]
+      },
+      {
+        "type":"color",
+        "id":"bg_color",
+        "label":"background color"
+      },
+      {
+        "type":"image_picker",
+        "id":"bg_image",
+        "label":"background image"
+      },{
+        "type":"text",
+        "id":"title",
+        "label":"title"
+      },
+      {
+        "type":"color",
+        "id":"title_color",
+        "label":"title color"
+      },{
+        "type":"html",
+        "id":"text",
+        "label":"text(正文文本html格式)"
+      },{
+        "type":"color",
+        "id":"text_color",
+        "label":"text color"
+      },{
+        "type":"color",
+        "id":"btn_text_color",
+        "label":"按钮字体颜色"
+      },{
+        "type":"text",
+        "id": "btn_color",
+        "label":"按钮背景色(带#号或者渐变色)"
+      }
+    ],
+     "blocks":[{
+      "type":"button",
+      "name": "button",
+      "settings": [
+        {
+          "type":"text",
+          "id":"btn_text",
+          "label":"button text"
+        },{
+          "type":"url",
+          "id":"btn_link",
+          "label":"button link"
+        }
+      ]
+     }],
+    "presets": [
+      {
+        "name": "Valentines-Mask-Module"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

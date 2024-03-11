@@ -1,0 +1,135 @@
+<div class="fn-valentinesday-machine">
+    {% if section.settings.machine_title_img != blank %}
+        {% assign image = section.settings.machine_title_img | img_url: '1052x' %}
+           <img class="fn-valentinesday-discounts_img" src="{{ image }}" alt="">
+    {% endif %}
+    {% if section.settings.machine_mobile_img != blank %}
+        {% assign image = section.settings.machine_mobile_img | img_url: '375x' %}
+           <img class="fn-valentinesday-mobile_img" src="{{ image }}" alt="">
+    {% endif %}
+    <div class="fn-machine-main">
+        {% if section.settings.machine_img != blank %}
+            {% assign image = section.settings.machine_img | img_url: '606x' %}
+               <img class="fn-machine_left_img" src="{{ image }}" alt="">
+        {% endif %}
+        <div class="fn-pressmachine-product">
+             {% render 'fn-pressmachine-products',
+                 card_product: section.settings.machine_product,
+                 Collection_time: section.settings.Collection_times,
+                 coupon_img: section.settings.coupon_img,
+                 coupon_mobile_img: section.settings.coupon_mobile_img,
+              %}
+       </div>
+    </div>
+</div>
+ <script>
+     var p_times = $('#press_time').text();
+     //获取元素
+     var days  = document.querySelector(".days");
+     var hour = document.querySelector(".hour");
+     var minute = document.querySelector(".minute");
+     var second = document.querySelector(".second");
+     //获取截止时间的时间戳（单位毫秒）
+     var inputTime = +new Date(""+ p_times);
+     //我们先调用countDown函数，可以避免在打开界面后停一秒后才开始倒计时
+     countDown();
+     //定时器 每隔一秒变化一次
+     var timer_s = setInterval(countDown, 1000);
+     function countDown() {
+         //获取当前时间的时间戳（单位毫秒）
+         var nowTime = +new Date();
+         //把剩余时间毫秒数转化为秒
+         var times = (inputTime - nowTime) / 1000;
+         if (times > 0) {
+            var d = Math.floor(times /60 / 60 / 24 );
+         //计算小时数 转化为整数
+         //如果小时数小于 10，要变成 0 + 数字的形式 赋值给盒子
+         days.innerHTML = d < 10 ? "0" + d : d;
+         var h = Math.floor(times /60 / 60 % 24 );
+         //计算小时数 转化为整数
+         //如果小时数小于 10，要变成 0 + 数字的形式 赋值给盒子
+         hour.innerHTML = h < 10 ? "0" + h : h;
+         //计算分钟数 转化为整数
+         var m = parseInt(times / 60 % 60);
+         //如果分钟数小于 10，要变成 0 + 数字的形式 赋值给盒子
+         minute.innerHTML = m < 10 ? "0" + m : m;
+         //计算描述 转化为整数
+         var s = parseInt(times % 60);
+         // //如果秒钟数小于 10，要变成 0 + 数字的形式 赋值给盒子
+         second.innerHTML = s < 10 ? "0" + s : s;
+         } else {
+           clearInterval(timer_s); 
+         }
+     }
+ </script>
+{% schema %}
+  {
+    "name": "machine",
+    "settings": [
+        {
+			"type": "image_picker",
+			"id": "machine_title_img",
+			"label": {
+				"en": "title image"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "machine_mobile_img",
+			"label": {
+				"en": "mobile image"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "coupon_img",
+			"label": {
+				"en": "coupon image"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "coupon_mobile_img",
+			"label": {
+				"en": "coupon mobile image"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "machine_img",
+			"label": {
+				"en": "image"
+			}
+		},
+        {
+            "type":"text",
+            "id":"machine_producttitle",
+            "label":"product title"
+        },
+        {
+          "type":"url",
+          "id":"machine_link",
+          "label":{
+          "en":"link",
+          "zh-CN":"链接"
+          }
+        },
+        {
+          "type": "product",
+          "id": "machine_product",
+          "label": "product"
+        },
+        {
+            "type":"text",
+            "id":"Collection_times",
+            "label":"times"
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

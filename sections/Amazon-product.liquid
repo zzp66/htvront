@@ -1,0 +1,336 @@
+<style>
+  .amazon-product{
+    background-color: #FFEADB;
+  }
+  .product-content{
+    width: 1600px;
+    margin: 0 auto;
+    padding-bottom:25px;
+  }
+  .product-content>p{
+    height: 103px;
+    line-height: 118px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 32px;
+  }
+  .product-box{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .product-bundle{
+    margin: 0 20px 25px 0;
+    text-align: center;
+  }
+  .product-bundle:nth-child(3n){
+    margin-right:0;
+  }
+  .product-bundle>p{
+    font-size: 18px;
+    font-weight: bold;
+    padding-top: 10px;
+    letter-spacing: 0;
+  }
+  .product-bundle>a{
+    cursor: pointer;
+    width: 248px;
+    height: 60px;
+    background: linear-gradient(180deg, #FFA868 0%, #F77E6E 100%);
+    border-radius: 4px;
+    color: #fff;
+    line-height: 60px;
+    margin: 10px auto 0;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+  }
+  .product-bundle .button-icon{
+    position: absolute;
+    top: 25px;
+    right: 61px;
+    display:none;
+  }
+  .product-bundle>a:hover .button-icon{
+     display:block;
+  }
+  .product-price>span:nth-child(1){
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .product-price>span:nth-child(2){
+    font-size: 16px;
+    text-decoration: line-through;
+  }
+  .discount-code{
+    font-size:14px;
+  }
+  .discount-code>span:nth-child(2){
+    font-weight: bold;
+  }
+  .discount-code>img{
+    display:inline-block;
+    vertical-align: baseline;
+    cursor: pointer;
+  }
+  .show-mobile{
+    display:none;
+  }
+   @media screen and (max-width:1720px){
+     .product-content{
+         width: 83.3%;
+      }
+     .product-bundle{
+        margin: 0 15px 25px 0;
+        width: 32.33%;
+     }
+     .product-bundle>p{
+        line-height: 20px;
+        min-height: 50px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+     }
+   }
+  @media screen and (max-width:1440px){
+    .product-bundle{
+       margin-right:10px;
+    }
+    .product-bundle>p{
+      font-size:16px;
+    }
+  }
+  @media screen and (max-width:1180px){
+    .product-content{
+      width: 93.6%;
+    }
+    .product-bundle>a{
+      width: 80%;
+      height:50px;
+      line-height:50px;
+    }
+    .product-bundle .button-icon{
+       right: 25%;
+       top: 19px;
+    }
+  }
+   @media screen and (max-width:900px){
+     .product-bundle .button-icon{
+       right: 20%;
+     }
+   }
+  @media screen and (max-width:750px){
+    .product-box{
+      justify-content: space-between;
+      padding: 0 10px
+    }
+    .product-content>p{
+      height: 70px;
+      font-size: 24px;
+      line-height: 70px;
+    }
+    .product-bundle{
+      width: 48%;
+    }
+    .product-bundle:nth-child(odd){
+      margin-right: 10px;
+    }
+    .product-bundle:nth-child(even){
+      margin-right: 0;
+    }
+    .product-bundle>p{
+      font-size:14px;
+      min-height: 45px;
+      line-height: 18px;
+    }
+    .product-price>span:nth-child(1){
+      font-size:18px;
+    }
+    .product-price>span:nth-child(2){
+      font-size:14px;
+    }
+    .show-mobile{
+      display:block;
+    }
+    .show-pc{
+      display:none;
+    }
+    .product-price{
+      margin-top:-3px;
+    }
+    .product-bundle>a{
+      margin: 2px auto 5px;
+    }
+    .discount-code{
+      line-height:19px;
+    }
+    .product-bundle>a:hover .button-icon{
+      display:none;
+    }
+  }
+  @media screen and (max-width:450px){
+    .product-bundle>a{
+      width: 112px;
+      height: 40px;
+      font-size: 14px;
+      line-height:40px;
+    }
+    .product-bundle{
+      width: 48.9%;
+      margin-bottom:22px;
+    }
+    .product-bundle:nth-child(odd) {
+      margin-right: 7px;
+    }
+    .product-content{
+      width: 100%;
+      padding: 0 10px;
+    }
+    .product-content{
+      padding-bottom:18px;
+    }
+    .product-box{
+      padding: 0 
+    }
+  }
+</style>
+<div class="amazon-product">
+  <div class="product-content">
+    <p>{{ section.settings.title }}</p>
+    <div class="product-box">
+      {% for block in section.blocks %}
+        <div class="product-bundle">
+          <img src="{{ block.settings.image | img_url:'520x' }}">
+           <p>{{ block.settings.product_title }}</p>
+           <div class="product-price">
+              <span>{{ block.settings.discount_price }}</span>
+              <span>{{ block.settings.original_price }}</span>
+           </div>
+          <div class="discount-code show-pc">
+            <span>{{ block.settings.discount_text }}</span>
+            <span>{{ block.settings.discount_code }}</span>
+            {% if block.settings.discount_code != blank %}
+              <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/8_a649c377-f938-44d0-862d-e4f6bbc1eb73.png?v=1689640260" onclick="copyticket('{{ block.settings.discount_code }}')">
+            {% endif %}
+          </div>
+          {% if block.settings.product_id  != blank %}
+             <a href="javascript:;" onclick="jumpAjax('{{ block.settings.product_id }}','{{ block.settings.button_link }}')">
+               {{ block.settings.button_text }}
+               <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/081dce1d1472a05b025d4114e903faa0.png?v=1689643313" class="button-icon">
+             </a>
+          {% endif %}
+          <div class="discount-code show-mobile">
+            <span>{{ block.settings.discount_text }}</span>
+            <span>{{ block.settings.discount_code }}</span>
+            {% if block.settings.discount_code != blank %}
+              <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/8_a649c377-f938-44d0-862d-e4f6bbc1eb73.png?v=1689640260" onclick="copyticket('{{ block.settings.discount_code }})'">
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Amazon Product",
+    "settings": [{
+      "type":"text",
+      "id":"title",
+      "label":"title"
+    }],
+    "blocks":[
+      {
+        "name":"bundle",
+        "type":"bundle",
+        "settings":[
+          {
+            "type": "text",
+            "id": "product_id",
+            "label": "product(必填)"
+          },
+         {
+            "type": "image_picker",
+            "id": "image",
+            "label": "image"
+          },{
+            "type":"text",
+            "id":"product_title",
+            "label":"product title"
+          },{
+            "type":"text",
+            "id":"discount_price",
+            "label":"discount prices"
+          },{
+            "type":"text",
+            "id":"original_price",
+            "label":"original price"
+          },{
+            "type":"text",
+            "id":"discount_text",
+            "label":"discount text"
+          },{
+            "type":"text",
+            "id":"discount_code",
+            "label":"discount code"
+          },{
+            "type":"text",
+            "id":"button_text",
+            "label":"button text"
+          },{
+            "type":"url",
+            "id":"button_link",
+            "label":"button link"
+          }]
+      }
+    ],
+    "presets":[{
+      "name":"Amazon Product"
+    }]
+  }
+{% endschema %}
+<script>
+   function jumpAjax(item,url){
+    if(url){
+      window.open(url)
+    }
+    $.ajax({
+      type: 'get',
+      dataType: 'json',
+      url: 'https://qn.htvront.com/htvront-blindBox/click',
+      data: {site: 'US',module:'{{page_title}}',clickName:item}
+    });
+  }
+  function copyticket(code){
+    let url = code;
+    let copyInput = document.createElement('input');
+    	document.body.appendChild(copyInput);
+    	copyInput.setAttribute('value', url);
+    	copyInput.select();
+    	document.execCommand("Copy");
+    	copyInput.remove();
+        alertMsg()
+  }
+   function alertMsg(){
+      var alertFram = document.createElement("DIV");
+      alertFram.id = "alertFram";
+      alertFram.style.position = "fixed";
+      alertFram.style.width = "100%";
+      alertFram.style.textAlign = "center";
+      alertFram.style.bottom = "40px";
+      alertFram.style.zIndex = "10001";
+      strHtml = " <span style=\"font-family: 微软雅黑;display:inline-block;background:#333;color:#fff;padding:0 20px;line-height:36px;border-radius:6px; \">Copied successfully</span>";
+      alertFram.innerHTML = strHtml;
+      document.body.appendChild(alertFram);
+      setTimeout((function(){
+        alertFram.style.display="none";
+      }),2000);
+    }
+</script>
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

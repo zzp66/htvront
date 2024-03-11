@@ -1,0 +1,112 @@
+<div class="fn-vote-aboutus">
+      <div class="fn-aboutus-header">
+      <div class="fn-Polls-main">
+        {% if section.settings.Polls_img != blank %}
+            {% assign image = section.settings.Polls_img | img_url: '1195x' %}
+            <img class="fn-Polls_img" src="{{ image }}" alt="">
+        {% endif %}
+        {% if section.settings.mobile_Polls_img != blank %}
+            {% assign image = section.settings.mobile_Polls_img | img_url: '1195x' %}
+            <img id="fn-mobile_Polls_img" src="{{ image }}" alt="">
+        {% endif %}
+        <div class="fn-Polls-text">
+            <div class="fn-aboutus-headertitle t">{{  section.settings.Polls_text }}</div>
+        </div>
+      </div>
+  </div>
+        <div class="fn-aboutus-banner fn-voteaboutus-banner">
+      <div class="fn-aboutus-title t">{{ section.settings.Polls_title }}</div>
+        {% if section.settings.vote_banner != blank %}
+            {% assign image = section.settings.vote_banner | img_url: '1195x' %}
+            <img class="fn-aboutus-bannerimg fn-banner_aboutusimg" src="{{ image }}" alt="">
+        {% endif %}
+        {% if section.settings.mobile_vote_banner != blank %}
+            {% assign image = section.settings.mobile_vote_banner | img_url: '1195x' %}
+            <img id="fn-aboutus-mobileimg" src="{{ image }}" alt="">
+        {% endif %}
+        <div class="fn-vote--bannermain">
+            <div class="t fn-aboutus-bannertitle">{{  section.settings.banner_title }}</div>
+            <div class="fn-aboutus-bannertext">{{  section.settings.banner_text }}</div>
+        </div>
+    </div>
+
+
+
+</div>
+{% schema %}
+  {
+    "name": "vote aboutus",
+    "settings": [
+        {
+			"type": "image_picker",
+			"id": "Polls_img",
+			"label": {
+				"en": "Polls img",
+				"zh-CN": "图片"
+			}
+		}, 
+        {
+			"type": "image_picker",
+			"id": "mobile_Polls_img",
+			"label": {
+				"en": "mobile Polls img",
+				"zh-CN": "手机图片"
+			}
+		}, 
+        {
+            "type": "text",
+            "id": "Polls_text",
+            "label": {
+                "en": "Polls ",
+                "zh-CN": "文本"
+            }
+        },
+       {
+            "type": "text",
+            "id": "Polls_title",
+            "label": {
+                "en": "Polls ",
+                "zh-CN": "文本"
+            }
+        },
+        {
+			"type": "image_picker",
+			"id": "vote_banner",
+			"label": {
+				"en": "about us banner",
+				"zh-CN": "图片"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "mobile_vote_banner",
+			"label": {
+				"en": "mobile about us banner",
+				"zh-CN": "手机图片"
+			}
+		},
+        {
+            "type": "text",
+            "id": "banner_title",
+            "label": {
+                "en": "about us banner title ",
+                "zh-CN": "文本标题"
+            }
+        },
+        {
+            "type": "html",
+            "id": "banner_text",
+            "label": {
+                "en": "about us banner text ",
+                "zh-CN": "文本"
+            }
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

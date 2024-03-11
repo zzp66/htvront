@@ -1,0 +1,78 @@
+
+{{ 'Valentines-Day.css' | asset_url | stylesheet_tag }}
+<div class="fn-valentinesday">
+ <img class="fn-valentinesday_bac" src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/img_v2_1ab7108e-6ceb-4a9c-9b20-f602202f0c1g.png?v=1675838887" alt="">
+ <img class="fn-valentinesday_mobile" src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230210-154137.png?v=1676014910" alt="">
+ <div class="fn-valentinesday-mian">
+      {% section 'valentinesday-banner' %}
+      {% section 'valentinesday-machine' %}
+      {% section 'valentinesday-discounts' %}
+      {% section 'valentinesday-ideas' %}
+      {% section 'valentinesday-offers' %}
+      <div class="fn-modalbox-body">
+        <div class="fn-modalbox-main">
+              <div class="fn-modalbox-list">
+                  {% section 'Valentinesday-newsletter' %}
+              </div>
+              <div class="fn-modalbox-list fn-playerid_Making_a">
+                <div class="mask-close" onclick="myFunction_close()">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 40 40"><defs><style>.a{fill:none;}.b{fill:#fff;}</style></defs><g transform="translate(-946 -8)"><rect class="a" width="40" height="40" transform="translate(946 8)"/><g transform="translate(301.594 -673.883) rotate(45)"><rect class="b" width="4" height="31" rx="2" transform="translate(964 11)"/><rect class="b" width="4" height="31" rx="2" transform="translate(950.5 28.5) rotate(-90)"/></g></g></svg>
+                </div>
+                <div id="playerid_Making_a"></div>
+              </div>
+              <div class="fn-modalbox-list fn-playerid_Treatcostume_a">
+                <div class="mask-close" onclick="myFunction_close()">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 40 40"><defs><style>.a{fill:none;}.b{fill:#fff;}</style></defs><g transform="translate(-946 -8)"><rect class="a" width="40" height="40" transform="translate(946 8)"/><g transform="translate(301.594 -673.883) rotate(45)"><rect class="b" width="4" height="31" rx="2" transform="translate(964 11)"/><rect class="b" width="4" height="31" rx="2" transform="translate(950.5 28.5) rotate(-90)"/></g></g></svg>
+                </div>
+                 <div id="playerid_Treatcostume_a"></div>
+              </div>
+        </div>
+      </div>
+  </div>
+</div>
+<script type="text/javascript" src="http://www.youtube.com/player_api"> </script>           
+<script>
+var day_Making;
+var day_Treatcostume;
+function onYouTubeIframeAPIReady() {
+        day_Making = new YT.Player('playerid_Making_a', {
+          videoId: 'qjLCukC6kLs',
+        });
+        day_Treatcostume = new YT.Player('playerid_Treatcostume_a', {
+          videoId: 'GYyfp9SjAf4',
+        });
+  }
+function myFunction(e){
+  $('.fn-modalbox-main').show();
+  $('.fn-modalbox-list').eq(e).show().siblings().hide();
+}
+$('.fn-ideas-more_icon').click(function(){
+  $('.fn-modalbox-main').show();
+    var a_index = $(this).parents('.fn-ideas-list').index();
+  $('.fn-modalbox-list').eq(a_index).show().siblings().hide();
+})
+
+
+function myFunction_close(){
+   $('.fn-modalbox-main').hide();
+}
+function buttonSubmit(){
+   $('.fn-field-wrapper').hide();
+}
+  
+ $(function(){
+   var url_day = window.location.toString();//进这个页面的url
+ // console.log('url_day',url_day);
+    if(url_day.indexOf("valentines-day-activities-bundle") !== -1) {
+        $('html, body').animate({
+          scrollTop: $('#shopify-section-valentinesday-discounts').offset().top - 120 //65为设置的偏移值
+        });
+    }
+       if(url_day.indexOf("valentines-day-activities-offer") !== -1) {
+        $('html, body').animate({
+          scrollTop: $('#shopify-section-valentinesday-offers').offset().top - 50 //65为设置的偏移值
+        });
+    }
+ 
+})
+</script>

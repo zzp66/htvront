@@ -1,0 +1,138 @@
+<div class="black-friday-deposit common-width" id="{{ section.settings.nav_id }}">
+  <div class="black-module-title">
+    <picture>
+      <source media="(max-width: 710px)" srcset="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/deposit-app.png?v=1699923190">
+      <source media="(min-width: 711px)" srcset="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/deposit-title.png?v=1699855079">
+      <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/deposit-title.png?v=1699855079">
+    </picture>
+    <div>{{ section.settings.title }}</div>
+  </div>
+  <div class="bg-out-box">
+    <div class="bg-in-box">
+      <div class="deposit-module-coupon">
+        {% for block in section.blocks %}
+          <div class="coupons-item">
+             <picture>
+              {% if forloop.index == 3 %}
+                <source media="(max-width: 820px)" srcset="{{ block.settings.coupons_image_mobile | img_url:'331x' }}">
+              {% else %}
+                <source media="(max-width: 820px)" srcset="{{ block.settings.coupons_image_mobile | img_url:'191x' }}">
+              {% endif %}
+              <source media="(min-width: 821px)" srcset="{{ block.settings.coupon_image | img_url:'454x' }}">
+              <img src="{{ block.settings.coupon_image | img_url:'454x' }}">
+            </picture>
+            <div class="item-module deposit-item">
+              <div class="coupons-money">
+                <div>
+                  <span>{{ block.settings.currency }}</span><span>{{ block.settings.money }}</span>
+                </div>
+                <span>{{ block.settings.coupon }}</span>
+              </div>
+              <div class="coupons-rules">
+                {% if block.settings.coupon_code != blank %}
+                  <div class="coupon-code">
+                      Code: {{ block.settings.coupon_code }} 
+                      <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Group_18.png?v=1698810268" onclick="copyticket('{{ block.settings.coupon_code }}')">
+                  </div>
+                {% endif %}
+                <div class="rules-div">
+                  {{ block.settings.coupons_rules }}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="deposit-module-rules">
+        <div class="deposit-explain">
+          {{ section.settings.deposit_explain }}
+        </div>
+        <div class="deposit-rules">
+          {{ section.settings.deposit_rules }}
+        </div>
+      </div>
+      <div class="deposit-module-image">
+        <picture>
+          <source media="(max-width: 820px)" srcset="{{ section.settings.deposit_image_mobile | img_url:'335x' }}">
+          <source media="(min-width: 821px)" srcset="{{ section.settings.deposit_image | img_url:'513x' }}">
+          <img src="{{ section.settings.deposit_image | img_url:'513x' }}">
+        </picture>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Black-Friday-Deposit",
+    "settings": [
+      {
+        "type":"text",
+        "id":"nav_id",
+        "label":"id(页面唯一性，全英文)"
+      }, {
+        "type": "text",
+        "id": "title",
+        "label": "title"
+      },
+      {
+        "type":"html",
+        "id":"deposit_explain",
+        "label":"deposit explain"
+      },{
+        "type":"html",
+        "id":"deposit_rules",
+        "label":"deposit rules"
+      },{
+        "type":"image_picker",
+        "id":"deposit_image",
+        "label":"deposit image"
+      },{
+        "type":"image_picker",
+        "id":"deposit_image_mobile",
+        "label":"deposit image mobile"
+      }
+    ],
+    "max_blocks":2,
+    "blocks":[{
+      "type":"coupon",
+      "name": "coupon",
+      "settings": [
+       {
+          "type": "image_picker",
+          "id": "coupon_image",
+          "label": "coupon image"
+        },{
+          "type":"image_picker",
+          "id":"coupons_image_mobile",
+          "label":"coupons image mobile"
+        },{
+          "type": "text",
+          "id": "currency",
+          "label": "currency"
+        },{
+          "type": "text",
+          "id": "money",
+          "label": "money"
+        },{
+          "type": "text",
+          "id": "coupon",
+          "label": "coupon"
+        },{
+          "type":"text",
+          "id":"coupon_code",
+          "label":"coupon code"
+        },{
+          "type": "html",
+          "id": "coupons_rules",
+          "label": "coupons rules"
+        }
+      ]
+    }]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

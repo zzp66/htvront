@@ -1,0 +1,62 @@
+{{ 'Fans-sale-2024.css' | asset_url | stylesheet_tag }}
+<div class="Fans-sale">
+  <div class="fans-sale-banner">
+    {% section 'fans-banner-2024' %}
+    <div class="fans-sale-first-nav">
+      <div class="scroll-nav-background">
+        <ul class="fan-tabs">
+          <li class="fan-tab" id="hotSale">
+            <div class="fan-tab-title">Hot Sale</div>
+          </li>
+          <li class="fan-tab" id="haveFun">
+            <div class="fan-tab-title">Have Fun</div>
+          </li>
+          <li class="fan-tab fan-tab-active" id="buyMore">
+            <div class="fan-tab-title">Buy More</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="fans-sale-background">
+    <div class="fans-sale-main">
+      <div class="fan-sale fan-tab-content" for="hotSale">
+        {% section 'fans-hot-sale' %}
+      </div>
+      <div class="fan-sale fan-tab-content" for="haveFun">
+        <div class="fans-have-fun">
+          <div class="fans-have-fun-content">
+            {% section 'fans-have-fun-intro' %}
+            {% section 'fans-have-fun-interact'%}
+            {% section 'fans-have-fun-notice' %}
+            {% section 'fans-have-fun-video' %}
+            {% section 'fans-have-fun-swiper' %}
+          </div>
+        </div>
+      </div>
+      <div class="fan-sale fan-tab-content" for="buyMore">
+        <div class="fans-buy-more">
+          <div class="fans-buy-more-content">
+            {% section 'fans-buy-more-bond' %}
+            {% section 'fans-buy-more-image1' %}
+            {% section 'fans-buy-more-image2' %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $('.fan-tab-content').eq(2).show()
+  $('.fan-tab').click(function () {
+      let index = $(this).index()
+      let nowTab = $(this).context.id
+      $('.fan-tab-content').eq(index).show().siblings().hide()
+      if (index !== 0) {
+          $('.fan-tab').eq(index).prev().addClass('fan-tab-prev').siblings().removeClass('fan-tab-prev')
+      } else {
+          $('.fan-tab').eq(index).siblings().removeClass('fan-tab-prev')
+      }
+      $('.fan-tab').eq(index).addClass('fan-tab-active').siblings().removeClass('fan-tab-active')
+  })
+</script>

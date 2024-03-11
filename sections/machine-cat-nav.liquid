@@ -1,0 +1,259 @@
+<style>
+    nav.fn-breadcrumb {
+        margin: 20px 0 40px 0;
+    }
+    .fn-category .fn-breadcrumb {
+        display: flex;
+        width: 100%;
+        /* padding: 0 160px; */
+        max-width: 1600px;
+        margin: 25px auto;
+    }
+    a.home_text, .breadcrumb__sep,.HTV_Vinyl {
+        font-size: 16px;
+        color: #333333;
+    }
+/*     .HTV_Vinyl {
+        font-weight: bold;
+    } */
+    span.breadcrumb__sep {
+        padding: 0 15px;
+    }
+    .fn-category-navigation {
+        /* padding: 0 180px; */
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+    .fn-category .fn-breadcrumb {
+        display: flex;
+    }
+    .fn-category ul.fn-category-bar {
+        display: flex;
+        justify-content: space-between;
+    }
+    .fn-category-bar :nth-child(1) {
+
+    }
+    .fn-category .fn-Category-header {
+        text-align: center;
+        width: 18%;
+        padding: 7px 3px;
+        font-size: 20px;
+        font-weight: 400;
+        color: #333333;
+        background: rgba(51, 51, 51, 0.1);
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    .fn-category .menu_color {
+        background: #333;
+        font-weight: bold;
+        color: #FEFEFE;
+    }
+    .fn-category-bar a{
+
+    }
+    .fn-category-navigation.fn-swiper-mobile {
+    display: none;
+  }
+    .fn-category-navigation.fn-swiper-pc {
+    display: none;
+  }
+    @media screen and (min-width: 1251px) and (max-width: 1620px) {
+        .fn-category .fn-Category-header {
+            font-size: 20px;
+        }
+        .fn-category-navigation {
+            padding: 0 20px;
+        }
+        .fn-category .fn-breadcrumb {
+            padding: 0 20px;
+        }
+    }
+    @media screen and (min-width: 992px) and (max-width: 1250px) {
+        .fn-category .fn-breadcrumb, .fn-category .fn-category-navigation {
+            padding: 0px 50px;
+        }
+        .fn-category .fn-Category-header {
+            font-size: 20px;
+        }
+    }
+    @media screen and (min-width: 768px) and (max-width: 991px){
+        .fn-category .fn-breadcrumb, .fn-category-navigation {
+            padding: 0 30px;
+        }
+        .fn-category .fn-Category-header {
+            font-size: 16px;
+        }
+        nav.fn-breadcrumb {
+            margin: 20px 0 20px 0;
+        }
+        .fn-category .fn-Category-header {
+            font-size: 12px;
+        }
+        a.home_text, .breadcrumb__sep, .HTV_Vinyl {
+            font-size: 14px;
+        }
+    }
+        @media screen and (min-width: 768px){
+       .fn-category-navigation.fn-swiper-pc {
+        display: block;
+      }
+    }
+    @media screen and (min-width: 480px) and (max-width: 768px){
+            .fn-category-navigation.fn-swiper-mobile {
+        display: block;
+      }
+        .fn-category .fn-breadcrumb, .fn-category-navigation {
+            padding: 0 16px;
+        }
+        .fn-category .fn-Category-header {
+            font-size: 14px;
+        }
+        nav.fn-breadcrumb {
+            margin: 20px 0 20px 0;
+        }
+        .fn-category .fn-Category-header {
+            font-size: 12px;
+        }
+        a.home_text, .breadcrumb__sep, .HTV_Vinyl {
+            font-size: 14px;
+        }
+    }
+    @media (max-width: 480px){
+            .fn-category-navigation.fn-swiper-mobile {
+        display: block;
+      }
+        .fn-category .fn-breadcrumb, .fn-category-navigation {
+            padding: 0 8px;
+        }
+        nav.fn-breadcrumb {
+            margin: 20px 0 20px 0;
+        }
+        .fn-category .fn-Category-header {
+            font-size: 12px;
+        }
+        a.home_text, .breadcrumb__sep, .HTV_Vinyl {
+            font-size: 14px;
+        }
+      .fn-category .fn-Category-header {
+    width: 23%;
+}
+    }
+</style>
+<div class="fn-category fn-page-width">
+    <nav class="fn-breadcrumb" role="navigation" aria-label="breadcrumbs"><a href="/" title="Back to the frontpage" class="home_text">Home</a><span aria-hidden="true" class="breadcrumb__sep">›</span><span class="HTV_Vinyl">{{ collection.title }}</span></nav>
+    <div class="fn-category-navigation fn-swiper-mobile">
+    <div class="swiper-container">
+      <div class="swiper-wrapper fn-category-bar id="fn-category-bar"">
+        {% for block in section.blocks %}
+        {% if block.type == "Category_header" %}
+        {% if block.settings.category_bar != blank %}
+         <div class="swiper-slide fn-Category-header">
+          {% if block.settings.category_Link != blank %}
+          <a href="{{ block.settings.category_Link }}">
+            {% endif %}
+            {{  block.settings.category_bar }}
+            {% if block.settings.category_Link != blank %}
+          </a>
+          {% endif %}
+       </div>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="fn-category-navigation fn-swiper-pc">
+    <ul class="fn-category-bar" id="fn-category-bar">
+      {% for block in section.blocks %}
+      {% if block.type == "Category_header" %}
+      {% if block.settings.category_bar != blank %}
+      <li class="fn-Category-header">
+        {% if block.settings.category_Link != blank %}
+        <a href="{{ block.settings.category_Link }}">
+          {% endif %}
+          {{  block.settings.category_bar }}
+          {% if block.settings.category_Link != blank %}
+        </a>
+        {% endif %}
+      </li>
+      {% endif %}
+      {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<script>
+        var initial_Slide = 0;
+    $(function(){
+      $('.fn-Category-header>a').each(function(){
+        $this = $(this);
+        var urlWindow = window.location.protocol+"//"+window.location.host+""+window.location.pathname;
+        if($this[0].href === urlWindow){
+          initial_Slide =  $this.parent().index();
+          $this.parent().addClass('menu_color');
+          $this.parent().siblings().children().removeClass('menu_color');
+        }
+      });
+//       let initial_Slide = aa;
+                                    console.log(initial_Slide);
+      var mySwiper = new Swiper('.swiper-container', {
+        initialSlide: initial_Slide,
+        breakpoints: {
+          480: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+            centeredSlides: true,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          }
+        }
+      })
+    })
+</script>
+{% schema %}
+{
+    "name":"Machine category Nav",
+    "settings":[
+
+    ],
+    "blocks":[
+        {
+            "type":"Category_header",
+            "name":"category navigation",
+            "settings":[
+                {
+                    "type":"text",
+                    "id":"category_bar",
+                    "label":{
+                        "en":"category_bar",
+                        "zh-CN":"类目导航"
+                    }
+                },
+                {
+                    "type":"url",
+                    "id":"category_Link",
+                    "label":{
+                        "en":"category links",
+                        "zh-CN":"类目链接"
+                    }
+                }
+            ]
+        }
+    ],
+    "presets":[
+        {
+            "name":"Machine category Nav",
+            "blocks":[
+                {
+                    "type":"Category_header"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

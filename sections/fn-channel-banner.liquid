@@ -1,0 +1,47 @@
+<div class="fn-channel-banner">
+  {% if section.settings.channel_img != blank %}
+    {% assign image = section.settings.channel_img | img_url: '1920x' %}
+    <img src="{{ image }}" alt="" loading="lazy">
+  {% endif %}
+  <div class="fn-banner-main">
+    <div class="fn-banner-title">{{ section.settings.explain_title }}</div>
+    <div class="fn-banner-explain">{{ section.settings.explain_content }}</div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "channel banner",
+    "settings": [
+        {
+			"type": "image_picker",
+			"id": "channel_img",
+			"label": {
+				"en": "Image",
+				"zh-CN": "图片"
+			}
+		},
+        {
+            "type": "text",
+            "id": "explain_title",
+            "label": {
+            "en": "explain title",
+            "zh-CN": "标题"
+            }
+		},
+        {
+          "type": "text",
+          "id": "explain_content",
+          "label": {
+          "en": "explain content",
+          "zh-CN": "内容"
+          }
+        }
+     ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

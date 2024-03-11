@@ -1,0 +1,35 @@
+{{ 'Mother_Day.css' | asset_url | stylesheet_tag }}
+<div class="Mother_day">
+    <div>
+        {% section 'mother-best-deal' %}
+        {% section 'mother-exclusive-bundle' %}
+        {% section 'mother-craft-bundle' %}   
+        {% section 'mother-sale-off' %}
+    </div>
+</div>
+<script>
+   $(function(){
+   var url_day = window.location.toString();//进这个页面的url
+    if(url_day.indexOf("mothers-day-best-deal-ever") !== -1) {
+        $('html, body').animate({
+          scrollTop: $('#shopify-section-mother-best-deal').offset().top - 120 //65为设置的偏移值
+        });
+    }
+       if(url_day.indexOf("mothers-day-exclusiv-bundle") !== -1) {
+        $('html, body').animate({
+          scrollTop: $('#shopify-section-mother-exclusive-bundle').offset().top - 60 //65为设置的偏移值
+        });
+    }
+     if(url_day.indexOf("mothers-day-ultimate-craft-bundle") !== -1) {
+        $('html, body').animate({
+          scrollTop: $('#shopify-section-mother-craft-bundle').offset().top - 60 //65为设置的偏移值
+        });
+    }
+     if(url_day.indexOf("mothers-day-30-off") !== -1) {
+        $('html, body').animate({
+          scrollTop: $('#shopify-section-mother-sale-off').offset().top - 60 //65为设置的偏移值
+        });
+    }
+ 
+})
+</script>

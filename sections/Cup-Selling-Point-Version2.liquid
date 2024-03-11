@@ -1,0 +1,218 @@
+<style>
+  .cup-selling-point{
+    background-image:url('{{ section.settings.background_image | img_url:'1920x' }}');
+    background-size: 100% 100%;
+    background-position: center;
+  }
+  .cup-selling-title{
+    font-size: 36px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 49px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .cup-selling-content{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .cup-selling-item{
+    margin-bottom:19px;
+    position:relative;
+    width:49.5%
+  }
+  .cup-selling-item>div{
+    position:absolute;
+    bottom: 0;
+    text-align: center;
+    opacity: 0;
+  }
+  .cup-selling-item>div>h1{
+    font-size:24px;
+    padding-bottom: 5px;
+    letter-spacing: 0;
+  }
+  .cup-selling-item>div>p{
+    font-size:16px;
+  }
+  .cup-selling-potion-box{
+    width: 1600px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 25px 30px 40px 30px;
+    box-shadow:0 6px 14px #4822034d;
+    position:relative;
+  }
+  .empty-box-top{
+    position: absolute;
+    width: 100%;
+    height: 12px;
+    top: -12px;
+    left: 0;
+    background-color: #fff;
+  }
+  .empty-box-bottom{
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    bottom: -20px;
+    left: 0;
+    background-color: #fff;
+  }
+  .cup-selling-content .empty-box-bottom{
+    height: 22px;
+    bottom: -22px;
+  }
+  @media screen and (max-width: 1720px){
+    .cup-selling-potion-box{
+      width:83.33%
+    }
+  }
+   @media screen and (max-width: 1440px){
+    .cup-selling-item{
+      width:49.2%
+    }
+  }
+  @media screen and (max-width: 1180px){
+    .cup-selling-title{
+      font-size:32px
+    }
+    .cup-selling-potion-box{
+      width: 93.6%;
+      box-shadow: 0px 5px 10px 0px rgba(72,34,3,0.3);
+    }
+    .empty-box-top{
+      height: 10px;
+      top: -8px;
+    }
+    .empty-box-bottom{
+      height: 18px;
+      bottom: -16px;
+    }
+    .cup-selling-content .empty-box-bottom{
+      height: 18px;
+      bottom: -16px;
+    }
+  }
+  @media screen and (max-width: 750px){
+    .cup-selling-point{
+      background-image:url('{{ section.settings.background_image_mobile | img_url:'750x' }}');
+      background-size: 100% 100%;
+      background-position: center;
+    }
+    .cup-selling-potion-box{
+      padding: 7px 10px 10px;
+    }
+    .cup-selling-title{
+      font-size:16px;
+      margin-bottom:10px;
+      line-height:22px
+    }
+    .cup-selling-item{
+      width:100%;
+      margin-bottom:9px
+    }
+  }
+  @media screen and (max-width: 450px){
+    padding-bottom:3px;
+  }
+</style>
+<div class="cup-selling-point">
+  <div class="cup-selling-potion-box">
+    <!-- 遮盖阴影 -->
+    <span class="empty-box-top"></span>
+    <span class="empty-box-bottom"></span>
+    <!-- 遮盖阴影 -->
+    <div class="cup-selling-title">
+      {{ section.settings.title }}
+    </div>
+    <div class="cup-selling-content">
+      {% for block in section.blocks %}
+        <div class="cup-selling-item">
+            <picture>
+              <source media="(max-width: 750px)" srcset="{{ block.settings.image_mobile | img_url:'750x' }}">
+              <source media="(min-width: 751px)" srcset="{{block.settings.image | img_url:'790x' }}">
+              <img src="{{ block.settings.image | img_url:'790x' }}" alt="{{ block.settings.image.alt }}">
+            </picture>
+            <div>
+              <h1>{{ block.settings.title }}</h1>
+              <p>{{ block.settings.text }}</p>
+            </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Cup-Selling-Point2",
+  "max_blocks":4,
+  "settings": [
+    {
+     "type":"image_picker",
+     "id":"background_image",
+     "label":"background image"
+    },{
+     "type":"image_picker",
+     "id":"background_image_mobile",
+     "label":"background image mobile"
+    },
+    {
+      "type":"text",
+      "id":"title",
+      "label":"title"
+    }
+  ],
+  "blocks":[
+    {
+      "type":"brand",
+      "name":{
+        "en":"image",
+        "zh-CN":"image"
+        },
+      "settings":[
+         {
+          "type":"image_picker",
+          "id":"image",
+          "label":{
+            "en":"Image",
+            "zh-CN":"图片"
+           }
+         },
+        {
+          "type":"image_picker",
+          "id":"image_mobile",
+          "label":"image mobile"
+        },
+        {
+          "type":"text",
+          "id":"title",
+          "label":"title"
+        },
+        {
+          "type":"text",
+          "id":"text",
+          "label":"text"
+        }
+      ]
+    }
+  ],
+  "presets":[{
+    "name":"Cup-Selling-Point-Version2",
+    "blocks":[
+        {
+        "type":"brand"
+        }
+      ]
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,374 @@
+{% style %}
+  #shopify-section-{{ section.id }} .cap-hot-press-heat{
+    background:{{ section.settings.image_color }}
+  }
+    @media screen and (max-width: 768px){
+      #shopify-section-{{ section.id }} .cap-hot-press-heat{
+        background:{{ section.settings.image_color }};
+      }
+    }
+{% endstyle %}
+<style>
+    .cap-hot-press-heat {
+        padding-bottom: 20px;
+        padding-top: 30px;
+        letter-spacing: 0
+    }
+    .cap-hot-press-content {
+        width: 1370px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 20px 10px;
+        background: linear-gradient(180deg, #FFE9CF 0%, #FFD9AB 100%);
+        box-shadow: inset 0px 5px 10px 0px rgba(235, 132, 37, 0.5);
+        border-radius: 10px 10px 10px 10px;
+        opacity: 1;
+        border: 5px solid;
+        border-image: linear-gradient(180deg, rgba(255, 212, 160, 1), rgba(251, 203, 148, 1)) 5 5;
+        /* background-origin: border-box;
+        background-clip: content-box, border-box; */
+        clip-path: inset(0 round 10px);
+        flex-wrap: wrap;
+    }
+    .cap-hot-press-item {
+        width: calc(50% - 3px);
+        display: flex;
+        justify-content: space-between;
+        background: linear-gradient(180deg, #FFD8A9 0%, #FFE8CD 100%);
+        box-shadow: 0px 4px 4px 0px rgba(194, 103, 37, 0.2);
+        border-radius: 8px 8px 8px 8px;
+        opacity: 1;
+        border: 3px solid;
+        border-image: linear-gradient(180deg, rgba(255, 193, 120, 1), rgba(255, 212, 159, 1)) 3 3;
+        clip-path: inset(0 round 5px);
+        margin-bottom:10px;
+    }
+    .cap-hot-press-box {
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 14px;
+        background: #FFF1E0;
+        border-radius: 6px 6px 6px 6px;
+    }
+    .cap-hot-press-box-bg {
+        position: absolute;
+        right: 0;
+        bottom: 0
+    }
+    .cap-hot-press-image {
+        margin-right: 9px
+    }
+    .cap-hot-press-image img{
+      max-width:303px;
+    }
+    .cap-hot-press-product {
+        display: flex;
+        flex-direction: column;
+      position:relative;
+      z-index:2;
+          width: 100%;
+    }
+    .cap-hot-press-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: #883f97;
+        line-height: 23px;
+        margin-bottom: 11px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    }
+    .cap-hot-press-list {
+        flex: 1;
+    }
+    .cap-hot-press-list li {
+        position: relative;
+        padding-left: 20px;
+        font-size: 16px;
+        font-weight: 400;
+        color: #883f97;
+        line-height: 26px;
+    }
+    .cap-hot-press-list li::before {
+        content: '';
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: #FF8B31;
+        position: absolute;
+        left: 5px;
+        top: 10px;
+    }
+    .cap-hot-press-heat .fn-compareat_price,.cap-hot-press-heat .price__regular .price-item--regular {
+        flex-direction: row;
+        align-items: baseline;
+        font-size: 18px;
+        font-weight: bold;
+        color: #b657b4;
+        line-height: 21px;
+        margin-bottom: 8px
+    }
+    .cap-hot-press-heat .fn-compareat_price .fn-compare-at_price {
+        font-size: 14px;
+        font-weight: 400;
+        color: #b657b4;
+        line-height: 16px;
+        margin-left: 5px
+    }
+    .cap-hot-press-addtocart {
+        position: relative;
+        z-index: 2
+    }
+    .cap-hot-press-product .button--full-width {
+        background: linear-gradient(180deg,#f769a5,#ec5cbb,#ee88cb 0%,#c545b0 94%);
+        border-radius: 4px 4px 4px 4px;
+        min-height: 46px;
+        height: 46px;
+        --border-offset: none;
+        --border-opacity: none;
+        font-size: 16px;
+        font-weight: bold;
+        color: #FFFFFF;
+        line-height: 26px;
+    }
+    #shopify-section-{{ section.id }} .cap-module-title .cap-module-host-title:before{
+      background: {{ section.settings.title_icon_color }} !important;
+    }
+    #shopify-section-{{ section.id }} .cap-module-title .cap-module-host-title{
+        color: {{section.settings.title_color}} !important;
+    }
+    #shopify-section-{{ section.id }} .cap-module-title .cap-module-desc-title{
+      color:{{section.settings.desc_color}} !important;
+    }
+    #shopify-section-{{ section.id }} .cap-hot-press-box{
+      background: {{ section.settings.box_bg_color }} !important;
+    }
+    #shopify-section-{{ section.id }} .cap-hot-press-item{
+      border-color:{{ section.settings.box_border_color }} !important;
+      background:none !important;
+      border-image: none !important;
+    }
+    #shopify-section-{{ section.id }} .cap-hot-press-content{
+      box-shadow:none !important;
+      background:{{ section.settings.big_box_bg_color }} !important;
+      border-image: none !important;
+      border-color:{{ section.settings.big_box_border_color }} !important;
+    }
+    @media screen and (max-width: 1440px) {
+        .cap-hot-press-content {
+            width: 1110px
+        }
+      .cap-hot-press-image img{
+          max-width: 215px;
+      }
+    }
+    @media screen and (max-width: 1180px) {
+        .cap-hot-press-content {
+            width: 95%;
+            padding: 12px
+        }
+        .cap-hot-press-title {
+            font-size: 14px;
+            margin-bottom: 8px
+        }
+        .cap-hot-press-box {
+            padding: 6px 4px
+        }
+        .cap-hot-press-list li {
+            padding-left: 11px;
+            font-size: 14px;
+            line-height: 22px;
+        }
+        .cap-hot-press-list li::before {
+            left: 2px
+        }
+        .cap-hot-press-heat .fn-compareat_price,.cap-hot-press-heat .price__regular .price-item--regular {
+            font-size: 16px;
+            line-height: 19px;
+            margin-bottom: 4px
+        }
+        .cap-hot-press-product .button--full-width {
+            min-height: 44px;
+            height: 44px;
+            font-size: 14px
+        }
+    }
+   @media screen and (max-width: 820px) {
+    .cap-hot-press-image img{
+          max-width: 100%;
+    }
+   }
+    @media screen and (max-width: 768px) {
+        .cap-hot-press-heat {
+            padding: 10px
+        }
+        .cap-hot-press-content {
+            width: 100%;
+            background: none;
+            box-shadow: none;
+            border-radius: 0;
+            border: 0;
+            padding: 0;
+        }
+        .cap-hot-press-item {
+            background: none;
+            box-shadow: none;
+            border-radius: 0;
+            border: 0;
+        }
+        .cap-hot-press-box {
+            flex-direction: column;
+            justify-content: start;
+        }
+        .cap-hot-press-box-bg {
+            display: none
+        }
+        .cap-hot-press-image {
+            margin-right: 0;
+            margin-bottom: 12px;
+        }
+        .cap-hot-press-image img {
+            width: 100%
+        }
+        .cap-hot-press-list {
+            margin-bottom: 6px;
+            min-height: 88px;
+        }
+    }
+  @media screen and (max-width: 480px) {
+    .cap-hot-press-list{
+        min-height: 16rem;
+    }
+    .cap-hot-press-title{
+      height:45px;
+    }
+    .cap-hot-press-image{
+      margin-bottom: 5px;
+    }
+  }
+</style>
+<div class="cap-hot-press-heat" id="{{ section.settings.id }}">
+    <div class="cap-module-title">
+        <div class="cap-module-host-title">{{ section.settings.title }}</div>
+        <div class="cap-module-desc-title">{{ section.settings.desc }}</div>
+    </div>
+    <div class="cap-hot-press-content">
+        {% for block in section.blocks %}
+        <div class="cap-hot-press-item">
+            <div class="cap-hot-press-box">
+                <div class="cap-hot-press-image">
+                  <a href="{{ block.settings.product.url }}">
+                    <img src="{{ block.settings.product.featured_media | img_url:'303x' }}">
+                  </a>
+                </div>
+                <div class="cap-hot-press-product">
+                    <div class="cap-hot-press-title">
+                      <a href="{{ block.settings.product.url }}">
+                        {{ block.settings.product.title }}
+                      </a>
+                    </div>
+                    <div class="cap-hot-press-list">
+                        {{ block.settings.list_desc }}
+                    </div>
+                    <div class="cap-hot-press-price">
+                        {% render 'sffers-price', product: block.settings.product, price_class: '' %}
+                    </div>
+                    <div class="cap-hot-press-addtocart">
+                        {% render 'addCart-Model', product: block.settings.product, buttonText: 'Add To Cart' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% schema %}
+{
+    "name":"Womens-Day-New-Bundles",
+    "settings":[
+        {
+            "type":"text",
+            "id":"id",
+            "label":"id(页面唯一性，全英文)"
+        },
+        {
+            "type":"color",
+            "id":"image_color",
+            "label":"image_color"
+        },
+        {
+          "type":"color",
+          "id":"title_icon_color",
+          "label":"title icon color"
+        },
+        {
+          "type":"color",
+          "id":"title_color",
+          "label":"title  color"
+        },
+        {
+          "type":"color",
+          "id":"desc_color",
+          "label":"desc color"
+        },
+        {
+          "type":"color",
+          "id":"box_bg_color",
+          "label":"box background color"
+        },
+        {
+          "type":"color",
+          "id":"box_border_color",
+          "label":"box border color"
+        },
+        {
+          "type":"color",
+          "id":"big_box_bg_color",
+          "label":"big box background color"
+        },
+        {
+          "type":"color",
+          "id":"big_box_border_color",
+          "label":"big box border color"
+        },
+        {
+            "type":"text",
+            "id":"title",
+            "label":"title"
+        },
+        {
+            "type":"text",
+            "id":"desc",
+            "label":"desc"
+        }
+    ],
+    "blocks":[
+        {
+            "type":"product",
+            "name":"product",
+            "settings":[
+                {
+                    "type":"product",
+                    "id":"product",
+                    "label":"product"
+                },
+                {
+                    "type":"html",
+                    "id":"list_desc",
+                    "label":"list desc"
+                }
+            ]
+        }
+    ],
+    "presets":[
+        {
+            "name":"Womens-Day-New-Bundles"
+        }
+    ]
+}
+{% endschema %}

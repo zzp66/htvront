@@ -1,0 +1,257 @@
+<style>
+  .super-shopping-nav{
+    position: fixed;
+    left: 34px;
+    top: 50%;
+    z-index:10;
+  }
+  .nav-click{
+    display: flex;
+    padding: 15px 20px;
+    align-items: center;
+    margin-bottom: 12px;
+    position:relative;
+  }
+  .nav-click .text{
+    font-size: 18px;
+    font-weight: bold;
+    margin-left:5px;
+    color: #FC5A76;
+    position: absolute;
+    padding:12px 20px 0 75px;
+    display:none;
+  }
+  .nav-click.checked .text{
+    background: #FFE6EA;
+    border-radius: 38px;
+    height: 100%;
+    left: 0;
+    display:block;
+    width:175px;
+  }
+  .icon-light{
+    display:none;
+  }
+  .nav-text{
+    position: absolute;
+    left: 60px;
+    top: 16px;
+    width:140px;
+  }
+  .nav-text>div{
+    min-height:45px;
+  }
+  .nav-text>div>span{
+    display:block;
+    font-size: 16px;
+    line-height: 22px;
+    color: #FDEACA;
+    text-shadow: #3F1B00 2px 2px 2px;
+  }
+  .nav-icon{
+    background: #FFACB9;
+    border-radius: 38px;
+    padding: 5px 0px;
+  }
+  .nav-icon>div>a{
+    width:43px;
+    height:43px;
+    position: relative;
+  }
+  .nav-icon>div>a>img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+  }
+  .nav-icon>div.active{
+    background-image:url('{{ section.settings.nav_bg_light | img_url:'285x' }}');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .nav-text>div:nth-last-child(1),.nav-icon>div:nth-last-child(1){
+    margin-bottom:0;
+  }
+  .nav-text>div,.nav-icon>div{
+    margin-bottom:23px;
+  }
+  .nav-text>div.active{
+    font-weight:bold;
+  }
+  .nav-click .icon{
+    position: relative;
+    z-index: 2;
+  }
+  .nav-click.checked:before{
+    content: '';
+    position: absolute;
+    background-color: #FF6D8D;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    z-index: 1;
+    left: 11px;
+  }
+  .nav-click.checked .icon>div{
+    position: relative;
+    z-index: 2;
+  }
+  .nav-click:nth-last-child(1){
+    margin-bottom:0;
+  }
+  
+  @media screen and (max-width: 1024px){
+    .nav-click{
+      padding: 0;
+      margin-bottom:0;
+      justify-content: center;
+    }
+    .nav-click .icon{
+      padding:15px;
+    }
+    .nav-click .text{
+      display:none;
+    }
+  }
+  @media screen and (max-width: 820px){
+    .nav-text{
+      display:none;
+    }
+    .super-shopping-nav{
+      left: 10px;
+    }
+    .nav-icon>div>a {
+      width: 40px;
+      height: 40px;
+    }
+    .nav-text>div, .nav-icon>div {
+      margin-bottom: 12px;
+    }
+    .nav-box{
+      padding:15px 5px;
+    }
+  }
+  @media screen and (max-width: 480px){
+    .nav-click.checked .text{
+      display:none;
+    }
+    .nav-click.checked:before{
+      left:3px;
+    }
+    .super-shopping-nav{
+      left:0;
+    }
+    .nav-click .icon{
+    padding: 15px 10px;
+   }
+    .nav-click.checked:before{
+          width: 45px;
+    height: 45px;
+    }
+    .super-shopping-nav{
+    top:30%;
+    }
+  }
+</style>
+<div class="super-shopping-nav">
+  <div class="nav-box">
+    <div class="nav-icon">
+      {% for block in section.blocks %}
+        <a class="nav-click" href="#{{ block.settings.nav_id }}">
+          <div class="icon">
+            <div class="icon-deep">
+             <img src="{{ block.settings.icon_deep | img_url: '30x' }}" />
+            </div>
+            <div class="icon-light">
+             <img src="{{ block.settings.icon_light | img_url: '30x' }}" />
+            </div>
+          </div>
+          <div class="text">{{ block.settings.nav_text }}</div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<script>
+   $(document).ready(function(){
+        // 滚动锚点
+       $(window).scroll(function() {
+         if(isClick) return ''; 
+        var scrollTop = $(this).scrollTop();
+        var scrollHeight = $(document).height();
+        var windowHeight = $(this).height();
+        $(".nav-click").each(function(index) {
+          var href = $(this).attr('href');
+          var targetTop = $(href).offset().top;
+          var targetHeight = $(href).height();
+          if (scrollTop >= targetTop && scrollTop < targetTop + targetHeight) {
+             $(this).children('.icon').children('.icon-light').show();
+             $(this).children('.icon').children('.icon-deep').hide();
+             $(this).addClass("checked").siblings().removeClass('checked');
+          } else {
+             $(this).removeClass('checked');
+             $(this).children('.icon').children('.icon-light').hide();
+             $(this).children('.icon').children('.icon-deep').show();
+          }
+        });
+      });
+   })
+   var isClick = false,
+   timer = 0;
+    // 点击锚点
+   $('.nav-click').click(function(){
+     isClick = true;
+     clearTimeout(timer); 
+     var index = $(this).index();
+     $(this).addClass("checked").siblings().removeClass('checked');
+     $(this).children('.icon').children('.icon-light').show();
+     $(this).children('.icon').children('.icon-deep').hide();
+     $(this).siblings().children('.icon').children('.icon-light').hide().siblings().show();
+     timer = setTimeout(function(){
+        isClick = false;
+      },1000)
+     var nav_id = $(this).attr('id')
+     $.ajax({
+      type: 'get',
+      dataType: 'json',
+      url: 'https://qn.htvront.com/htvront-blindBox/click',
+      data: {site: 'US',module:'运营资源位',clickName:nav_id}
+    });
+   });
+</script>
+{% schema %}
+  {
+    "name": "Valentinesday-Nav",
+    "settings": [
+      
+    ], 
+    "blocks":[{
+      "type":"nav",
+      "name": "nav",
+      "settings":[
+        {
+          "type":"image_picker",
+          "id":"icon_deep",
+          "label":"icon deep"
+        },{
+          "type":"image_picker",
+          "id":"icon_light",
+          "label":"icon light"
+        },{
+          "type":"html",
+          "id":"nav_text",
+          "label":"nav text"
+        },{
+          "type":"text",
+          "id":"nav_id",
+          "label":"nav id(与下方块id一致，无空格，不能重复)"
+        }
+      ]
+    }],
+    "presets":[
+        {
+          "name":"Valentinesday-Nav"
+        }
+    ]
+  }
+{% endschema %}

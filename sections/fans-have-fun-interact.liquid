@@ -1,0 +1,130 @@
+<style>
+  .fans-have-fun-interact{
+    display:flex;
+    padding:57px 20px 63px 8px;
+    align-items: center;
+  }
+  .interact-content{
+    margin-left:22px;
+  }
+  .interact-item{
+    display:flex;
+  }
+  .interact-item-box{
+    background:linear-gradient(339deg, rgba(255, 222, 170, 1), rgba(255, 242, 222, 1));
+    padding:2px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .interact-item-box:nth-last-child(1){
+    margin-bottom:0;
+  }
+  .interact-item{
+    background: linear-gradient( 308deg, #FEF7EB 0%, #FBF4E8 64%, #FFFCF8 82%);
+    border-radius: 20px;
+    padding: 18px 18px 18px 38px;
+    align-items: center;
+  }
+  .interact-item>span{
+    width: 60px;
+    height: 60px;
+    background: linear-gradient( 137deg, #FFA900 0%, #F49F14 100%);
+    border-radius: 100px 100px 0px 100px;
+    text-align: center;
+    line-height: 60px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+    min-width: 60px;
+    margin-right: 20px;
+  }
+  .interact-item>div>p{
+    font-weight: bold;
+    font-size: 24px;
+    color: #7E3C00;
+    line-height: 28px;
+    margin-bottom: 10px;
+  }
+  .interact-item>div>span{
+    font-weight: 600;
+    font-size: 18px;
+    color: #F49F12;
+    line-height: 21px;
+    display: inline-block;
+  }
+  
+@media screen and (max-width:1440px){
+  .fans-have-fun-interact{
+    padding: 30px 20px 30px 8px;
+  }
+  .fans-have-fun-interact>img{
+    width:50%;
+  }
+  .interact-item{
+    padding: 12px 12px 12px 25px;
+  }
+  .interact-item>span {
+    width: 50px;
+    height: 55px;
+    line-height: 55px;
+    font-size: 28px;
+  }
+  .interact-item>div>p{
+    font-size: 20px;
+    line-height: 22px;
+    margin-bottom: 10px;
+  }
+  .interact-item>div>span{
+    font-size: 16px;
+    line-height: 20px;
+    display: inline-block;
+  }
+}
+</style>
+<div class="fans-have-fun-interact have-fun-style">
+  <img src="{{ section.settings.image | img_url:'725x' }}">
+  <div class="interact-content">
+    {% for block in section.blocks %}
+      <div class="interact-item-box">
+        <div class="interact-item">
+          <span>{{ block.settings.serial_number }}</span>
+          <div>
+            <p>{{ block.settings.title }}</p>
+            <span>{{ block.settings.desc }}</span>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Fans-have-fun-interact",
+    "settings": [
+      {
+        "type":"image_picker",
+        "id":"image",
+        "label":"image"
+      }
+    ],
+    "blocks":[{
+      "type":"block",
+      "name": "block",
+      "settings": [
+       {
+          "type": "text",
+          "id": "serial_number",
+          "label": "serial mumber"
+        },{
+          "type":"text",
+          "id":"title",
+          "label":"title"
+        },{
+          "type":"text",
+          "id":"desc",
+          "label":"desc"
+        }
+      ]
+    }]
+  }
+{% endschema %}

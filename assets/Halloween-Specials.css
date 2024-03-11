@@ -1,0 +1,988 @@
+span.fn-bagnav_tims {
+    color: #ff7606;
+    font-weight: bold;
+}
+span.times_text_Up {
+    font-weight: bold;
+}
+.fn-LuckyBagnavmain-content_picetext:before {
+    content: "";
+    width: 100%;
+    height: 1px;
+    display: inline-block;
+    background: #fff;
+    /* vertical-align: middle; */
+    top: 18px;
+    position: relative;
+}
+.fn-HalloweenSpecials .fn-compareat_price .fn-compare-at_price {
+    font-size: 14px;
+    line-height: 22px;
+}
+span.fn-LuckyBagnavmain-content_picetext_p {
+    font-weight: bold;
+    color: red;
+}
+.fn-time-format_text {
+    font-size: 18px;
+    letter-spacing: -0.5px;
+}
+.fn-Specials-Videolist iframe{
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+}
+.fn-Specials-bannerimg_mobile {
+  display: none;
+}
+.fn-Halloween-Specialsbody {
+    padding: 0 0 400px;
+}
+.fn-Specialsvideo-mask {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    left: 0;
+    top: 0;
+    z-index: 999;
+    display: none;
+}
+.fn-Specialsvideo-mask .fn-mask {
+    max-width: 800px;
+    margin: 0 auto;
+    transform: translateY(-50%);
+    top: 50%;
+    position: relative;
+    background-color: #fff;
+    border-radius: 16px;
+    cursor: pointer;
+}
+.fn-Specialsvideo-mask .mask-close {
+    text-align: center;
+    float: right;
+    margin-right: -45px;
+    margin-top: -45px;
+}
+.fn-Specials-Videocontent {
+    padding: 30px 71px 64px 40px;
+}
+.fn-Specials-Videocontent_title.t {
+    font-size: 22px;
+    line-height: 30px;
+    text-align: center;
+    margin-bottom: 14px;
+}
+.fn-Specials-Videocontent_text {
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0;
+}
+#orderright_time,
+.fn-Specials-Videocontent li,
+.fn-Specials-Videoul li {
+  display: none;
+}
+.fn-Specials-Videocontent li:nth-child(1),
+.fn-Specials-Videoul li:nth-child(1) {
+  display: block;
+}
+li.fn-Specials-Videolist {
+    width: 100%;
+    height: 420px;
+    background-color: #352262;
+    color: #fff;
+    border-radius: 15px;
+}
+.fn-LuckyBagnavmain_navbutton.nav_active {
+    background: #B08FFF;
+    color: #573A9B;
+}
+.fn-LuckyBagnavmain_content_Lucky_Bag .product-form__submit {
+    padding: 0;
+    min-height: calc(4rem + var(--buttons-border-width) * 2);
+    margin-top: 16px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+.fn-LuckyBagnavmain_content_Lucky_Bag .product-form__buttons {
+    width: 150px;
+}
+.fn-HalloweenSpecials-banner, 
+.fn-Halloween-LuckyBagnav, 
+.fn-LuckyBagnavmain_contentright, 
+.fn-LuckyBagnavmain_contentleft,
+.fn-making_headmain,
+.fn-makingmain_content{
+     position: relative;
+  }
+.fn-Specials-bannermain {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 34%;
+}
+.fn-Specials-bannermain_toptitle.t {
+    color: #FFFFFF;
+    font-size: 36px;
+    line-height: 36px;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+}
+.fn-LuckyBagnavmain_contenttext,
+.fn-Specials-bannermain_bottomtext,
+.fn-Specials-bannermain_text {
+    color: #fff;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0px;
+}
+.fn-Specials-bannermain_bottomtext {
+    max-width: 287px;
+}
+.fn-Specials-bannermain_bottomtitle.t,
+.fn-makingmain_contenttitle.t{
+    color: #fff;
+    font-size: 18px;
+    line-height: 18px;
+    margin-bottom: 24px;
+    letter-spacing: 0;
+}
+.fn-Specials-bannermain_bottom {
+    display: flex;
+    justify-content: center;
+/*     margin-top: 110px; */
+}
+.fn-makingmain_button,
+.fn-LuckyBagnavmain_button,
+.fn-Specials-bannermain_button {
+    width: 130px;
+    height: 40px;
+    border-radius: 6px;
+    border: 1px solid #FF7606;
+    line-height: 40px;
+    color: #ff7606;
+    cursor: pointer;
+}
+.fn-Specials-bannermain_button {
+    margin: 28px auto auto;
+}
+.fn-makingmain_button:hover,
+.fn-LuckyBagnavmain_button:hover,
+.fn-Specials-bannermain_button:hover {
+    background: rgba(255,118,6,0.3);
+}
+.fn-LuckyBagnavmain_headnav {
+    display: flex;
+}
+.fn-LuckyBagnavmain_nav {
+    width: 100%;
+}
+.fn-LuckyBagnavmain_headnav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 472px;
+    height: 60px;
+    background: #573A9B;
+    box-shadow: 0px 4px 14px 0px rgb(0 0 0 / 20%);
+    border-radius: 10px;
+    margin: auto;
+    line-height: 40px;
+    color: #fff;
+}
+.fn-LuckyBagnavmain_navright, .fn-LuckyBagnavmain_navleft {
+    width: 176px;
+    height: 42px;
+    border-radius: 10px;
+    border: 1px solid #B08FFF;
+    text-align: center;
+    cursor: pointer;
+}
+span.fn-LuckyBagnavmain-contenttext_pice.t {
+    display: inline-block;
+    color: #ff7606;
+    line-height: 22px;
+    font-size: 16px;
+}
+.fn-LuckyBagnavmain_contenttext_pice {
+    margin-top: 26px;
+}
+.fn-LuckyBagnavmain-content_picetext {
+    display: inline-block;
+    font-size: 12px;
+    color: #fff;
+}
+.fn-LuckyBagnavmain_navright {
+    margin-right: 20px;
+}
+.fn-LuckyBagnavmain_content {
+    display: flex;
+}
+.fn-LuckyBagnavmain_content_a {
+    position: absolute;
+    left: 40px;
+    top: 38.5%;
+    transform: translate(0, -50%);
+}
+.fn-LuckyBagnavmain_content_Lucky_Bag {
+    position: absolute;
+    left: 40%;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 479px;
+}
+.fn-LuckyBagnavmain_contentleft {
+    margin-right: 40px;
+}
+.fn-LuckyBagnavmain_button {
+    text-align: center;
+    margin-top: 16px;
+}
+.fn-LuckyBagnavmain_contenttitle.t {
+    font-size: 20px;
+    color: #fff;
+    line-height: 27px;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+}
+.fn-LuckyBagnavmain_content {
+    display: flex;
+    align-items: center;
+}
+.fn-LuckyBagnavmain_contentright .fn-LuckyBagnavmain_contenttext {
+    max-width: 594px;
+}
+.fn-LuckyBagnavmain_nav {
+    width: 100%;
+    position: sticky;
+    top: 60px;
+    z-index: 2;
+    margin-bottom: -19px;
+}
+.fn-HalloweenSpecials-banner {
+    margin-bottom: 87px;
+}
+.fn-Halloween-Specialsmain {
+    background-size: cover;
+    background-image: url(https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/8_b6bd4a8e-4e8c-40cd-955f-b0bc9b91daf3.png?v=1666313438);
+    background-repeat: no-repeat;
+/*     padding: 88px 0 515px 0; */
+}
+.fn-Halloween-making,.fn-Halloween-LuckyBagnav, .fn-HalloweenSpecials {
+    max-width: 1600px;
+    margin: auto;
+}
+.fn-makingmain_headtitle {
+    font-size: 36px;
+    color: #573a9b;
+    line-height: 48px;
+    text-shadow: 0px 4px 14px rgb(0 0 0 / 10%);
+    background: linear-gradient(360deg,#814F42 0%,#FF7606 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+    width: 100%;
+}
+.fn-making_headmain {
+    text-align: -webkit-center;
+/*     max-width: 480px; */
+    margin: 59px auto 13px auto;
+}
+.fn-makingmain_contenttext {
+    font-size: 14px;
+    color: #FFFFFF;
+    line-height: 19px;
+}
+.fn-making-main {
+    display: flex;
+    justify-content: space-between;
+}
+.fn-makingmain_button {
+    margin-top: 24px;
+}
+.fn-makingmain_orderright,
+.fn-makingmain_content_right,
+.fn-makingmain_content_left {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+}
+.fn-makingmain_content_right,
+.fn-makingmain_content_left {
+    text-align: -webkit-center;
+}
+.fn-makingmain_orderleft {
+    position: absolute;
+    left: 11%;
+    top: 15%;
+}
+.fn-makingmain_orderright,
+.fn-makingmain_orderleft {
+  color: #fff;
+  letter-spacing: 0;
+}
+.fn-makingmain-times_title.t {
+    font-size: 18px;
+    line-height: 24px;
+}
+.fn-makingmain-times_text {
+    font-size: 14px;
+    line-height: 19px;
+}
+.fn-making-main.fn-making-main_order {
+    margin-top: 30px;
+}
+.fn-HalloweenSpecials-title.t {
+    font-size: 32px;
+    background: #fdbd41;
+    border-radius: 16px;
+    max-width: 500px;
+    text-align: center;
+    margin: 0 auto 20px auto;
+}
+.fn-free-ordertitle.t {
+    font-size: 24px;
+    line-height: 33px;
+    margin-bottom: 20px;
+}
+.fn-free-ordermain {
+    display: flex;
+}
+.fn-free-ordericon {
+    width: 16px;
+    margin: 6px 5px 0 0;
+}
+.fn-free-ordermain {
+    display: flex;
+    margin-top: 15px;
+}
+.fn-makingmain-timebody {
+    display: flex;
+    justify-content: center;
+}
+.fn-time-format {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(180deg, #F5CE6C 0%, #FFB574 100%);
+    border-radius: 8px;
+    border: 1px solid #F5D670;
+}
+.fn-time-format {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(180deg,#F5CE6C 0%,#FFB574 100%);
+    border-radius: 8px;
+    border: 1px solid #F5D670;
+    font-size: 32px;
+    line-height: 70px;
+    font-weight: bold;
+}
+.fn-little {
+    font-size: 32px;
+    line-height: 70px;
+    font-weight: bold;
+    margin: 0 18px;
+    color: #f7c86e;
+}
+.fn-makingmain-times_text {
+    font-size: 14px;
+    line-height: 19px;
+    margin: 12px 0 35px;
+}
+.fn-makingmain-timeproject {
+  display: none;
+}
+.fn-makingmain-timeproject {
+    width: 130px;
+    height: 40px;
+    background: #FF7606;
+    border-radius: 6px;
+    line-height: 40px;
+    margin: auto;
+    font-size: 14px;
+    margin-top: 30px;
+}
+li.fn-free-ordertext.fn-makingmain_contenttext {
+    margin-bottom: 10px;
+}
+.fn-freeorder-p {
+      line-height: 26px;
+}
+ul.fn-HalloweenSpecials-oneul {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+ul.fn-HalloweenSpecials-oneul .fn-HalloweenSpecials-list {
+    width: 23.55%;
+    border-radius: 16px;
+    border: 5px solid #FF7606;
+    background-color: #fff;
+}
+.fn-HalloweenSpecials-recommend_list {
+    width: 23.55%;
+    border-radius: 16px;
+    background-color: #fff;
+}
+.fn-HalloweenSpecials .fn-product-head {
+    padding: 0 16px 22px 14px;
+}
+.fn-HalloweenSpecials img.img-first {
+    border-radius: 11px 11px 0 0;
+}
+.fn-HalloweenSpecials-layout {
+    margin: 10px;
+}
+.fn-HalloweenSpecials-one .product-form__submit {
+    padding: 0;
+    min-height: calc(4.2rem + var(--buttons-border-width) * 2);
+    margin-top: 77px;
+}
+.fn-HalloweenSpecials .fn-product-title .t {
+    height: 44px;
+    line-height: 22px;
+}
+.fn-HalloweenSpecials .fn-product-price span {
+    font-size: 18px;
+}
+.fn-HalloweenSpecials .fn-product-layout {
+    margin-top: 20px;
+}
+.fn-Halloween-Specialsmain .button:not([disabled]):hover::after {
+    --border-offset: 0;
+      box-shadow: 0;
+    }
+.fn-HalloweenSpecials-two {
+    margin-top: 30px;
+}
+.fn-HalloweenSpecials-two .product-form__submit {
+    padding: 0;
+    min-height: calc(4.2rem + var(--buttons-border-width) * 2);
+    margin-top: 22px;
+}
+.fn-HalloweenSpecials-two .fn-HalloweenSpecials-recommend_list {
+    width: 23.55%;
+    border-radius: 16px;
+    background-color: #fff;
+    margin-bottom: 30px;
+}
+.fn-Specials-bannermain_bottomtext {
+    color: rgba(255,255,255,0.8);
+}
+    .fn-LuckyBagnavmain_contenttext_a {
+      color: rgba(255,255,255,0.6);
+}
+@media screen and (min-width: 1024px) {
+  .fn-Specials-bannermain_a {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: -10.3%;
+}
+  .fn-LuckyBagnavmain_content {
+    height: 400px;
+}
+  .fn-free-orderul li:before {
+           content: "";
+           width: 8px;
+           height: 8px;
+           display: inline-block;
+           border-radius: 50%;
+           background: #6F4CC1;
+           vertical-align: middle;
+           margin-right: 10px;
+}
+  ul.fn-free-orderul {
+    margin-left: 5px;
+}
+}
+@media screen and (max-width: 1440px) {
+
+  .fn-Halloween-Specialsbody {
+    padding: 0 10px 400px 10px;
+}
+.fn-Specials-bannermain_toptitle.t {
+    font-size: 30px;
+    line-height: 30px;
+}
+  .fn-Specials-bannermain_button {
+    margin: 20px auto auto;
+}
+  .fn-makingmain_button, .fn-LuckyBagnavmain_button, .fn-Specials-bannermain_button {
+    height: 35px;
+    line-height: 35px;
+}
+  
+.fn-Specials-bannermain {
+    top: 35%;
+}
+  .fn-Specials-bannermain_a {
+    bottom: -14%;
+}
+  .fn-Specials-bannermain_bottom {
+/*     margin-top: 50px; */
+}
+  .fn-Specials-bannermain_bottomtitle.t, .fn-makingmain_contenttitle.t {
+    color: #fff;
+    font-size: 16px;
+    line-height: 16px;
+    margin-bottom: 20px;
+}
+  .fn-Specials-bannermain_button {
+    margin: 20px auto auto;
+}
+  .fn-makingmain_button, .fn-LuckyBagnavmain_button, .fn-Specials-bannermain_button {
+    line-height: 32px;
+}
+  .fn-LuckyBagnavmain_nav {
+    margin-bottom: -30px;
+}
+  .fn-Halloween-Specialsmain {
+/*     padding: 0 0 100px 0; */
+}
+  .fn-LuckyBagnavmain_contenttitle.t {
+    font-size: 18px;
+    line-height: 25px;
+}
+  .fn-LuckyBagnavmain_contenttext, .fn-Specials-bannermain_bottomtext, .fn-Specials-bannermain_text {
+    font-size: 12px;
+    line-height: 20px;
+}
+
+  .fn-making_headmain {
+    margin: 50px auto 13px;
+}
+  .fn-makingmain_headtitle {
+    font-size: 30px;
+    line-height: 42px;
+}
+  .fn-makingmain_content.fn-makingmain_topcontent {
+    width: 49.3%;
+}
+  .fn-free-ordertitle.t {
+    font-size: 20px;
+    line-height: 31px;
+    margin-bottom: 18px;
+}
+  .fn-makingmain_contenttext {
+    font-size: 12px;
+    color: #fff;
+    line-height: 17px;
+}
+  .fn-freeorder-p {
+      line-height: 17px;
+}
+}
+@media screen and (max-width: 1024px) {
+.fn-bannermain_bottom-left {
+    margin-right: 20px;
+}
+.fn-Specials-bannermain_a {
+    bottom: -42%;
+    padding: 0 12px 0 13px;
+}
+  .fn-HalloweenSpecials-banner {
+    margin-bottom: 175px;
+}
+  .fn-LuckyBagnavmain_nav {
+    margin-bottom: -86px;
+}
+  .fn-LuckyBagnavmain_contentleft {
+    margin-right: 20px;
+}
+  .fn-LuckyBagnavmain_content_a {
+    left: 20px;
+    top: 30px;
+}
+  .fn-making_headmain {
+    margin: 0 auto 13px;
+}
+  .fn-free-ordertitle.t {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 10px;
+}
+  .fn-makingmain_orderleft {
+    left: 0;
+    top: 7%;
+}
+  .fn-free-orderul li:before {
+    width: 5px;
+    height: 5px;
+    margin-right: 10px;
+}
+}
+@media screen and (max-width: 998px) {
+  .fn-LuckyBagnavmain_content_Lucky_Bag {
+    position: absolute;
+    left: 35px;
+    top: 78.3%;
+    transform: translateY(-50%);
+    max-width: 479px;
+}
+  .fn-Specials-bannermain_a {
+    display: none;
+}
+.fn-Specials-bannerimg_mobile {
+    display: block;
+    width: 100%;
+/*     margin-bottom: 20px; */
+}
+  .fn-bannermain_bottom_a {
+    text-align: center;
+}
+  .fn-Specials-bannerimg_pc {
+  display: none;
+}
+  .fn-Specials-bannermain {
+    top: 20%;
+}
+  .fn-HalloweenSpecials-banner {
+    margin-bottom: 0;
+}
+ .fn-HalloweenSpecials-banner .fn-bannermain_bottom-left {
+    margin-right: 0;
+}
+  .fn-making-main,
+  .fn-LuckyBagnavmain_content,
+  .fn-Specials-bannermain_bottom {
+    flex-wrap: wrap;
+}
+  .fn-LuckyBagnavmain_content {
+        flex-direction: column-reverse;
+  }
+  .fn-makingmain_content.fn-makingmain_topcontent,
+  .fn-LuckyBagnavmain_contentleft,
+  .fn-LuckyBagnavmain_contentright,
+  .fn-bannermain_bottom-left,
+  .fn-bannermain_bottom-right,
+  .fn-Specials-bannerimg,
+  .fn-makingmain_content{
+    width:100%;
+  }
+.fn-bannermain_bottom-right {
+    margin: 20px 0;
+}
+.fn-LuckyBagnavmain_contentleft {
+    margin-right: 0;
+    margin-top: 20px;
+}
+  .fn-LuckyBagnavmain_nav {
+    margin-bottom: -16px;
+}
+  .fn-making_headmain {
+    margin: 10px auto 13px;
+}
+  .fn-makingmain_content.fn-makingmain_topcontent:first-child {
+    margin-bottom: 20px;
+  }
+  ul.fn-HalloweenSpecials-oneul .fn-HalloweenSpecials-list {
+    width: 49%;
+    margin-top: 10px;
+}
+  .fn-HalloweenSpecials-two .fn-HalloweenSpecials-recommend_list {
+    width: 49%;
+    margin-bottom: 10px;
+}
+    .fn-Specialsvideo-mask .fn-mask {
+    max-width: calc(100% - 65px);
+    border-radius: 8px;
+}
+  li.fn-Specials-Videolist {
+    height: 220px;
+    border-radius: 8px;
+}
+  .fn-Specials-Videocontent {
+    padding: 16px 17px 24px 17px;
+}
+  .fn-Specials-Videocontent_title.t {
+    font-size: 12px;
+    line-height: 17px;
+    margin-bottom: 8px;
+}
+  .fn-Specials-Videocontent_text {
+    font-size: 12px;
+    line-height: 22px;
+}
+  .fn-Specialsvideo-mask svg {
+    width: 16px;
+    height: 16px;
+  }
+  .fn-Specialsvideo-mask .mask-close {
+    margin-right: -18px;
+    margin-top: -30px;
+}
+  .fn-Halloween-Specialsbody {
+    padding: 0 10px 241px;
+}
+}
+@media screen and (max-width: 480px) {
+  .fn-HalloweenSpecials .fn-compareat_price .fn-compare-at_price {
+    font-size: 12px;
+    line-height: 20px;
+}
+  .fn-Specials-Videolist iframe{
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+  .fn-Halloween-Specialsbody {
+    padding: 0 12px 347px 13px;
+}
+  .fn-HalloweenSpecials-banner .fn-bannermain_bottom-left,
+  .fn-HalloweenSpecials-banner .fn-bannermain_bottom-right{
+    height: 140px;
+}
+  .fn-HalloweenSpecials-banner .fn-Specials-bannerimg {
+    height: 100%;
+  }
+.fn-Specials-bannermain {
+    top: 22%;
+}
+  .fn-Specials-bannermain_toptitle.t {
+    font-size: 18px;
+    line-height: 18px;
+    margin-bottom: 10px;
+}
+  .fn-makingmain_button, .fn-LuckyBagnavmain_button, .fn-Specials-bannermain_button {
+    height: 28px;
+    line-height: 28px;
+}
+  .fn-bannermain_bottom-right {
+    margin: 10px 0;
+}
+.fn-LuckyBagnavmain_contenttext, .fn-Specials-bannermain_bottomtext, .fn-Specials-bannermain_text {
+/*     letter-spacing: -0.5px; */
+}
+  .fn-Specials-bannermain_bottomtitle.t, .fn-makingmain_contenttitle.t {
+    font-size: 12px;
+    line-height: 17px;
+    margin-bottom: 8px;
+}
+  .fn-Specials-bannermain_button {
+    margin: 14px auto auto;
+}
+  .fn-LuckyBagnavmain_headnav {
+    height: 48px;
+    max-width: 336px;
+}
+  .fn-LuckyBagnavmain_navright {
+    margin-right: 12px;
+}
+  .fn-LuckyBagnavmain_navright, .fn-LuckyBagnavmain_navleft {
+    width: 142px;
+}
+  .fn-LuckyBagnavmain_contentleft {
+    height: 300px;
+}
+  .fn-makingmain_content.fn-makingmain_content_times .fn-Specials-bannerimg,
+  .fn-makingmain_content.fn-makingmain_topcontent .fn-Specials-bannerimg,
+    .fn-LuckyBagnavmain_contentleft .fn-Specials-bannerimg,
+    .fn-LuckyBagnavmain_contentright .fn-Specials-bannerimg{
+    height: 100%;
+}
+  span.fn-LuckyBagnavmain-contenttext_pice.t {
+    line-height: 18px;
+    font-size: 13px;
+}
+  .fn-LuckyBagnavmain-content_picetext {
+    letter-spacing: -0.5px;
+}
+.fn-LuckyBagnavmain_nav {
+    padding: 0 10px;
+    top: 45px;
+}
+  .fn-LuckyBagnavmain_headnav {
+    height: 48px;
+}
+.fn-LuckyBagnavmain_navright, .fn-LuckyBagnavmain_navleft {
+    height: 32px;
+    line-height: 32px;
+    font-size: 12px;
+}
+  .fn-LuckyBagnavmain_contenttitle.t {
+    font-size: 12px;
+    line-height: 17px;
+    margin-bottom: 5px;
+}
+  .fn-LuckyBagnavmain_contenttext.fn-LuckyBagnavmain_contenttext_a {
+    line-height: 18px;
+}
+.fn-LuckyBagnavmain_content_a {
+    left: 25px;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+  .fn-LuckyBagnavmain_contentright .fn-LuckyBagnavmain_contenttext {
+    max-width: 276px;
+/*     -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-box-orient: vertical; */
+}
+  .fn-LuckyBagnavmain_contenttext_pice {
+    margin-top: 5px;
+}
+.fn-LuckyBagnavmain_content_Lucky_Bag .product-form__submit {
+    min-height: calc(2.8rem + var(--buttons-border-width) * 2);
+    min-width: calc(9rem + var(--buttons-border-width) * 2);
+    font-size: 12px;
+    width: 125px;
+    border-radius: 4px;
+}
+.fn-LuckyBagnavmain_content_a.fn-LuckyBagnavmain_content_svg {
+    padding-top: 15px;
+    max-width: 281px;
+}
+  .fn-makingmain_headtitle {
+    font-size: 18px;
+    line-height: 28px;
+    top: 48%;
+}
+.fn-making_headmain {
+    margin: 10px auto 0;
+    max-width: 250px;
+    height: 67px;
+}
+.fn-makingmain_button, .fn-LuckyBagnavmain_button, .fn-Specials-bannermain_button {
+    width: 90px;
+    height: 28px;
+    line-height: 28px;
+    font-size: 12px;
+}
+.fn-makingmain_content.fn-makingmain_topcontent:first-child {
+    margin-bottom: 10px;
+}
+    .fn-makingmain_content.fn-makingmain_topcontent {
+    height: 180px;
+      
+}
+  .fn-making-main.fn-making-main_order {
+    margin-top: 10px;
+}
+  .fn-makingmain_content.fn-makingmain_content_orderleft {
+    height: 391px;
+}
+    .fn-makingmain_content.fn-makingmain_content_orderleft .fn-Specials-bannerimg {
+    height: 100%;
+}
+.fn-makingmain_content.fn-makingmain_content_orderleft .fn-makingmain_orderleft {
+    padding: 0 40px 0 20px;
+}
+  .fn-free-ordertitle.t {
+    font-size: 12px;
+    line-height: 17px;
+    margin-bottom: 10px;
+}
+.fn-freeorder-p {
+    line-height: 20px;
+    max-width: 253px;
+}
+  .fn-makingmain_content.fn-makingmain_content_times {
+    height: 200px;
+}
+  li.fn-free-ordertext.fn-makingmain_contenttext {
+    margin-bottom: 10px;
+    line-height: 20px;
+/*     list-style: initial; */
+}
+.fn-free-orderul li:before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    border-radius: 50%;
+    background: #6F4CC1;
+    vertical-align: middle;
+    position: absolute;
+    margin-top: 6px;
+    left: 23px;
+}
+  .fn-makingmain-times_title.t {
+    font-size: 12px;
+    line-height: 17px;
+}
+  .fn-makingmain-timeproject {
+    width: 90px;
+    height: 28px;
+    line-height: 28px;
+    margin: 18px auto auto;
+    font-size: 12px;
+}
+  .fn-makingmain-times_text {
+    font-size: 12px;
+    line-height: 17px;
+    margin: 10px 0 16px;
+}
+  .fn-time-format {
+    width: 62px;
+    height: 62px;
+    font-size: 28px;
+    line-height: 62px;
+}
+  .fn-little {
+    font-size: 28px;
+    line-height: 62px;
+    margin: 0 20px;
+}
+  .fn-HalloweenSpecials .fn-product-layout {
+    margin-top: 10px;
+}
+  .fn-product-price {
+    width: 100%;
+    margin-top: 4px;
+}
+  .fn-HalloweenSpecials-one .product-form__submit {
+    padding: 0;
+    min-height: calc(3.2rem + var(--buttons-border-width) * 2);
+    margin-top: 50px;
+}
+  .fn-HalloweenSpecials .fn-product-head {
+    padding: 0 8px 14px 8px;
+}
+  .fn-HalloweenSpecials-two .product-form__submit {
+    min-height: calc(3.2rem + var(--buttons-border-width) * 2);
+    margin-top: 20px;
+}
+  .fn-HalloweenSpecials .fn-product-title .t {
+    height: 40px;
+    line-height: 20px;
+}
+  .fn-HalloweenSpecials .fn-product-price span {
+    font-size: 14px;
+}
+  .fn-color-attr {
+    height: 20px;
+    margin-top: 14px;
+}
+  .fn-making_headmain.fn-HalloweenSpecials_headmain {
+    max-width: 293px;
+    margin-top: 21px;
+}
+  ul.fn-free-orderul {
+    max-width: 271px;
+    margin-left: 20px;
+}
+  .fn-LuckyBagnavmain_content_Lucky_Bag .product-form__submit {
+    margin-top: 10px;
+}
+  .fn-time-format_text {
+    font-size: 13px;
+    letter-spacing: -.5px;
+    line-height: 18px;
+}
+
+}
+@media screen and (max-width: 375px) {
+  .fn-Halloween-Specialsbody {
+    padding: 0 12px 147px 13px;
+}
+}

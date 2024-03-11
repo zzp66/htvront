@@ -1,0 +1,53 @@
+<div class="fn-cutting-machines">
+  <div class="fn-craft-head">
+    <div class="fn-content-title">Crafting & Cutting Machines</div>
+    <div class="fn-craft-button">
+      <a href="{{ section.settings.machines_link }}">VIEW MORE</a>
+    </div>
+  </div>
+  <div class="fn-machines-content ">
+    <ul>
+       {% assign blogsList = blogs['Crafting-Cutting-Machines'].articles | slice: 0, 4 %}
+      {% for article in blogsList %}
+      <li class="fn-machines-list">
+        {% if article.image.src != blank %}
+          <div class="fn-machines-imges">
+        <a href="{{ article.url }}" class="fn-article-a">
+            <img src="{{ article.image.src | image_url: width: 385 }}" alt="">
+        </a>
+          </div>
+        {% endif %}
+        <div class="fn-img-right">
+        <a href="{{ article.url }}">
+          <div class="fn-article-footetitle">{{article.title}}</div>
+        </a>
+        <div class="fn-article-excerpt-text">{{ article.excerpt | truncate: 148 | strip_html }}</div>
+        <div  class="fn-article-time">{{ article.created_at | date: "%B %d, %Y" }}</div>
+        </div>
+      </li>
+        {% endfor %}
+    </ul>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "cutting machines",
+    "settings": [
+        {
+            "type":"url",
+            "id":"machines_link",
+            "label":{
+                "en":"Craft Ideas link",
+                "zh-CN":"链接"
+            }
+        }
+]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+

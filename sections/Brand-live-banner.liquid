@@ -1,0 +1,38 @@
+<div class="fn-live-banner">
+  {% if section.settings.live_img != blank %}
+    {% assign image = section.settings.live_img | img_url: '1920x' %}
+    <img src="{{ image }}" alt="">
+  {% endif %}
+  <div class="fn-live-state">
+    <div class="fn-underway-title">{{ section.settings.live_title }}</div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "activity banner",
+    "settings": [
+        {
+			"type": "image_picker",
+			"id": "live_img",
+			"label": {
+				"en": "Image",
+				"zh-CN": "图片"
+			}
+		},
+        {
+            "type": "text",
+            "id": "live_title",
+            "label": {
+                "en": "live title",
+                "zh-CN": "标题"
+            }
+        }
+     ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

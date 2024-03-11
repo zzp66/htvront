@@ -1,0 +1,67 @@
+<div class="fn-Discount-product" id="fn-Discount-product"> 
+  <div class="fn-Discount-reminder"><img class="fn-Discount-remindericon" src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/d1a00eb7b0645b5980da99c8971c0df8.png?v=1668839297" alt=""> Copy succeeded</div>
+  <div class="fn-Discountproduct-title t">{{ section.settings.Discount_title }}</div>
+  <ul class="fn-Discount-product_ul">
+    {%- for product in section.settings.Discountlist_collection.products limit: 12 -%}
+            <li class="fn-Discount-product_list">
+              {% render 'fn-BlackFriday-products',
+                  card_product: product,
+              %}
+            </li>
+    {%- endfor -%}
+  </ul>
+  <div class="fn-Discountproduct-links">
+      {% if section.settings.Discountproduct_links != blank %}
+          <a href="{{ section.settings.Discountproduct_links }}">
+      {% endif %}
+         View More
+      {% if section.settings.Discountproduct_links != blank %}
+        </a>
+      {% endif %}
+  </div>
+</div>
+<!-- 拷贝 -->
+<!-- <script src="https://cdn.staticfile.org/clipboard.js/2.0.4/clipboard.min.js"></script> -->
+<!-- <script>
+new ClipboardJS('#fn-makingmain-times_icon', {
+    text: function(trigger) {
+        return $('#fn-timescode-card').text();
+    }
+}).on('success', function(e) {
+  $('.fn-Discount-reminder').slideDown(200);
+  setTimeout(function() {
+    $('.fn-Discount-reminder').slideUp(200);
+  },2000);
+}).on('error', function(e) {
+    alert('Error!');
+});
+</script> -->
+{% schema %}
+  {
+    "name": "Discount product",
+    "settings": [
+        {
+            "type":"text",
+            "id":"Discount_title",
+            "label":"Discount product title"
+        },
+        {
+            "type":"collection",
+            "id":"Discountlist_collection",
+            "label":"the second Collection"
+        },
+        {
+            "type":"url",
+            "id":"Discountproduct_links",
+            "label":"Discountproduct links"
+        }
+      
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

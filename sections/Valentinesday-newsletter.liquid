@@ -1,0 +1,172 @@
+
+<div class="fn-newsletter-mask">
+   {% if section.settings.news_img != blank %}
+        {% assign image = section.settings.news_img | img_url: '570x' %}
+           <img class="fn-news_img" src="{{ image }}" alt="">
+    {% endif %}
+    <div class="fn-newsletter-mask_mian">
+          {% form 'customer', class: 'newsletter-form' %}
+      <div class="fn-newsletter-mask_form">
+          <div class="fn-mask_mian-title t">Subscribe to get $45 OFF COUPON</div>
+          <ul class="fn-mask_mian-ul">
+            <li>
+              <img class="" src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/tag.png?v=1675938933" alt="">
+              <div> <span class="fn-mask_mian_span">$35 Off Coupon</span> for Auto Heat Press</div>
+            </li>
+            <li>
+              <img class="" src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/tag.png?v=1675938933" alt="">
+              <div> <span class="fn-mask_mian_span">$10 Off Coupon</span>  for material, which can be used in store (except for machines & bundles) </div>
+            </li>
+          </ul>
+          <input type="hidden" name="contact[tags]" value="newsletter">
+            <div class="newsletter-form__field-wrapper">
+                <div class="home-emailInput">
+                    <input
+                            id="NewsletterForm--{{ section.id }}"
+                            type="email"
+                            name="contact[email]"
+                            value="{{ form.email }}"
+                            aria-required="true"
+                            autocorrect="off"
+                            autocapitalize="off"
+                            autocomplete="email"
+                            {% if form.errors %}
+                            autofocus
+                            aria-invalid="true"
+                            aria-describedby="Newsletter-error--{{ section.id }}"
+                            {% elsif form.posted_successfully? %}
+                            aria-describedby="Newsletter-success--{{ section.id }}"
+                            {% endif %}
+                            placeholder="Enter your email "
+                            required
+                    >
+                  <button onclick="buttonSubmit()" type="submit" class="fn-home-emailButton t" name="commit" id="Subscribe" aria-label="{{ 'newsletter.button_label' | t }}">
+                     Subscribe
+                  </button>
+                </div>
+            
+            </div>
+          <div class="fn-discount-text">Already subscribed? enter your email to get the discount!</div>
+      </div>
+        <div class="fn-discount-hint" {{ form.posted_successfully }} {{ form.errors }}>
+            <img class="fn-discount-hint_img" src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/2_f7c6c0c9-3b82-49a5-b48f-a46bb44e15ed.png?v=1675945295" alt="">
+            {%- if form.errors -%}
+                <div class="fn-success-text t" >You have already subscribed!</div>
+            {%- endif -%}
+            {%- if form.posted_successfully? -%}
+                <div class="fn-success-text t" >You have successfully subscribed!</div>
+            {%- endif -%}
+            <ul class="fn-discount-hint_ul">
+              <li class="fn-discount-hint_list">
+                Use coupon <span class="fn-discount-hint_bule t">(code: AHPUS)</span> to get <span class="t">$35 off</span>! (only suitable for auto heat press)
+              </li>
+              <li class="fn-discount-hint_list">
+                 Get <span class="t">$10 off coupon</span> ,available on orders over $60 <span class="fn-discount-hint_bule t"></br>(code: HTVUS)</span>
+              </li>
+            </ul>
+            <div class="fn-discount-hint_note"><span class="t">Note :</span>Only 1 Coupon can be applied to 1 orders</div>
+        </div>
+     {% endform %}
+      </div>
+</div>
+<img class="fn-modalbox-close" onclick="myFunction_close()" src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/603772f77d142_2.png?v=1675932489" alt="">
+            
+<script>
+   $(function (){
+     function myFunction_er(){
+      // $('.fn-modalbox-main').show();
+       console.log('66786786876');
+    }
+     $('.fn-discount-hint').hide();
+     var new_url = window.location.search;
+     if(new_url.indexOf("customer_posted") !== -1) {
+       $('.fn-newsletter-mask_form,.fn-discount-text').hide();
+       $('.fn-discount-hint').show();
+       $(".fn-modalbox-main").show();
+     }
+   })
+
+</script>
+            
+{% schema %}
+  {
+    "name": "newsletter",
+      "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.newsletter.settings.color_scheme.options__1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.newsletter.settings.color_scheme.options__2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.newsletter.settings.color_scheme.options__3.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.newsletter.settings.color_scheme.options__4.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.newsletter.settings.color_scheme.options__5.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.newsletter.settings.color_scheme.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "default": true,
+      "label": "t:sections.newsletter.settings.full_width.label"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.newsletter.settings.paragraph.content"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    },
+    {
+        "type": "image_picker",
+        "id": "news_img",
+        "label": {
+            "en": "image"
+        }
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

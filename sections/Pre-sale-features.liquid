@@ -1,0 +1,201 @@
+<div class="fn-sale-features">
+  <div class="fn-features-swiper">
+    <div class="fn-reviews-title t">Special Feature</div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide">
+                    {% if block.settings.img_slide != blank %}
+                            <img src="{{ block.settings.img_slide | img_url: '520x' }}" alt="" >
+                    {% endif %}
+                <div class="fn-slide-feature">
+                  <p class="t">{{ block.settings.slide_title }}</p>
+                  <p>{{ block.settings.slide_text }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+  </div>
+  <div class="fn-features-comparison">
+    <div class="fn-reviews-title t">Comparison</div>
+    <div class="fn-comparison-main">
+        <div>
+          {% if section.settings.image_Comparison1 != blank %}
+                  <img src="{{ section.settings.image_Comparison1 | img_url: '753x' }}" alt="" >
+          {% endif %}
+        </div>
+        <div>
+          {% if section.settings.image_Comparison2 != blank %}
+                  <img src="{{ section.settings.image_Comparison2 | img_url: '655x' }}" alt="" >
+          {% endif %}
+        </div>
+    </div>
+  </div>
+  <div class="fn-comparison-explain">
+      {% if section.settings.image_explain != blank %}
+              <img src="{{ section.settings.image_explain | img_url: '1212x' }}" alt="" >
+      {% endif %}
+  </div>
+   <div class="fn-use-uggestions">
+    <div class="fn-reviews-title t">Use Suggestions</div>
+    <div class="fn-comparison-main">
+        <div>
+          {% if section.settings.image_suggestions != blank %}
+                  <img class="suggestionsPC" src="{{ section.settings.image_suggestions | img_url: '1600x' }}" alt="" >
+          {% endif %}
+          <img class="suggestionscellphone" src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/34_7b93135b-3d63-4945-abcc-6924ad5090bb.png?v=1660899075" alt="" >
+        </div>
+    </div>
+  </div>
+  <div class="fn-demo-video">
+        <div id="features_video">
+         <iframe width="100%" height="100%" src="https://www.youtube.com/embed/RguUTBaKWxY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div>
+          <div class="fn-demovideo-title t">Demo Video</div>
+          <div class="fn-demovideo-text">Check out how HTVRONT Auto Heat Press works with different materials!  From fabric to wood, it can be suited to your different creative projects.</div>
+          <div class="fn-demovideo-button" id="demovideo-button">Buy It Now</div>
+        </div>
+  </div>
+  <div class="fn-Specifications">
+  <div class="fn-reviews-title t">Specifications</div>
+  <div class="fn-Specifications-main">
+        <div>
+          {% if section.settings.image_Specifications1 != blank %}
+                  <img src="{{ section.settings.image_Specifications1 | img_url: '774x' }}" alt="" >
+          {% endif %}
+        </div>
+            <div>
+          {% if section.settings.image_Specifications2 != blank %}
+                  <img src="{{ section.settings.image_Specifications2 | img_url: '790x' }}" alt="" >
+          {% endif %}
+        </div>
+  </div>
+  </div>
+</div>
+<script>
+    $(function(){
+        var swiper = new Swiper('.swiper-container', {
+            breakpoints:{
+                480:{
+                    slidesPerView: 2,
+                    slidesPerGroup: 2,
+                    spaceBetween: 10
+                },
+                1200:{
+                    slidesPerView: 3,
+                    spaceBetween: 20
+                }
+            },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+          slidesPerView: 3,//首页展示几个
+          slidesPerGroup: 3,
+          spaceBetween: 20,//间隔宽度
+          pagination: {        
+            clickable: true
+          },
+         observer:true,//修改swiper自己或子元素时，自动初始化swiper
+         observeParents:true//修改swiper的父元素时，自动初始化swiper
+        });
+    });
+</script>
+{% schema %}
+  {
+    "name": "Special Feature",
+    "settings": [
+      {
+			"type": "image_picker",
+			"id": "image_Comparison1",
+			"label": {
+				"en": "Image",
+				"zh-CN": "图片"
+			}
+		},
+      {
+			"type": "image_picker",
+			"id": "image_Comparison2",
+			"label": {
+				"en": "Image",
+				"zh-CN": "图片"
+			}
+		},
+            {
+			"type": "image_picker",
+			"id": "image_explain",
+			"label": {
+				"en": "explain Image",
+				"zh-CN": "图片"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "image_suggestions",
+			"label": {
+				"en": "Use Suggestions Image",
+				"zh-CN": "图片"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "image_Specifications1",
+			"label": {
+				"en": "Specifications Image",
+				"zh-CN": "图片"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "image_Specifications2",
+			"label": {
+				"en": "Specifications Image",
+				"zh-CN": "图片"
+			}
+		}
+    ],
+	"blocks": [{
+		"type": "SpecialFeature",
+		"name": {
+			"en": "swiper img",
+			"zh-CN": "轮播"
+		},
+		"settings": [
+			{
+				"type": "image_picker",
+				"id": "img_slide",
+				"label": {
+					"en": "Image",
+					"zh-CN": "图片"
+				}
+			},
+          {
+				"type": "text",
+				"id": "slide_title",
+				"label": {
+					"en": "explain title",
+					"zh-CN": "标题"
+				}
+			},
+             {
+				"type": "text",
+				"id": "slide_text",
+				"label": {
+					"en": "explain",
+					"zh-CN": "说明"
+				}
+			}
+		]
+	}]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

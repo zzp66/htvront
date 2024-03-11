@@ -1,0 +1,112 @@
+<div class="Fan-Prediction-Coupon">
+  <div class="Fan-Coupon-details">
+    <div class="Fan-Coupon_back">
+      {% if section.settings.Coupon_bac != blank %}
+         {% assign image = section.settings.Coupon_bac | img_url: '1200x' %}
+         <img class="Fan-Coupon_back_pc" src="{{ image }}" alt="">
+      {% endif %}
+      {% if section.settings.Coupon_bac_mobile != blank %}
+         {% assign image = section.settings.Coupon_bac_mobile | img_url: '353x' %}
+         <img class="Fan-Coupon_back_mobile" src="{{ image }}" alt="">
+      {% endif %}
+    </div>
+    <div class="Fan-Coupon-content">
+      <div class="Fan-Coupon-content_left">
+        <div class="Fan-Coupon-content_coupon">
+          <div class="Fan-Coupon-content_icon">
+            {% if section.settings.Coupon_icon != blank %}
+               {% assign image = section.settings.Coupon_icon | img_url: '171x' %}
+               <img src="{{ image }}" alt="">
+            {% endif %}
+          </div>
+          <div class="Fan-Coupon-content_icon_title t">{{ section.settings.Coupon_icon_title }}</div>
+        </div>
+        <div class="Fan-Coupon-content_icon_text t">{{ section.settings.Coupon_icon_text }}</div>
+      </div>
+      <div class="Fan-Coupon-content_right">
+        {{ section.settings.Coupon_icon_html }}
+      </div>
+    </div>
+    <div class="Fan-Coupon-product">
+      <div class="Fan-Coupon-product_left">
+          <div class="t">[Code:FAN10] HTVRONT Fans Carnival Deposit</div>
+          <div class="t">Only $1</div>
+      </div>
+
+      <div class="Fan-Coupon-product_right">
+            {% render 'fan-coupon-product', product: section.settings.Coupon_product %}
+            <div class="fn-Coupon_button_a t">ADD TO CART</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(function (){
+    $(".fn-Coupon-product_button").click(function(){
+      var button_id = $(this).attr('id').substring(9);
+       if(button_id.indexOf('6803624951941') != -1 ) {
+          $('#cart-notification-form,.fn-Coupon-product_button').hide();
+          $('.fn-Coupon_button_a').show();
+       } else {
+          $('#cart-notification-form').show();
+       }
+
+    });
+
+  })
+</script>
+{% schema %}
+{
+  "name": "fan-prediction-coupon",
+      "settings": [
+        {
+			"type": "image_picker",
+			"id": "Coupon_bac",
+			"label": {
+				"en": "Coupon background"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "Coupon_bac_mobile",
+			"label": {
+				"en": "Coupon background mobile"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "Coupon_icon",
+			"label": {
+				"en": "Coupon icon"
+			}
+		},
+        {
+            "type":"text",
+            "id":"Coupon_icon_title",
+            "label":"Coupon icon title"
+        },
+        {
+            "type":"text",
+            "id":"Coupon_icon_text",
+            "label":"Coupon icon text"
+        },
+        {
+            "type":"html",
+            "id":"Coupon_icon_html",
+            "label":"Coupon icon html"
+        },
+        {
+              "type": "product",
+              "id": "Coupon_product",
+              "label": "Coupon product"
+        }
+    ]
+
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

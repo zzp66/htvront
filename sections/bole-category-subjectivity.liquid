@@ -1,0 +1,75 @@
+{%- paginate blog.articles by 9 -%}
+
+<div class="fn-category-subjectivity">
+  <div class="fn-category-nav">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+        <div class="swiper-slide t" ><a href="{{ block.settings.category_leftLink }}">{{ block.settings.category_title }}</a></div>
+
+<!--         <div class="swiper-slide t" ><a href="https://www.htvront.com/blogs/beginners-guide-precautions">Beginners Guide & Precautions</a></div>
+        <div class="swiper-slide t" > <a href="https://www.htvront.com/blogs/craft-ideas-projects">Craft Ideas & Projects</a></div>
+        <div class="swiper-slide t" ><a href="https://www.htvront.com/blogs/crafting-cutting-machines">Craft & Cutting Machines</a></div>
+        <div class="swiper-slide t"><a href="https://www.htvront.com/blogs/news">What’s New on HTVRONT</a></div> -->
+        {%- endfor -%}
+
+      </div>
+      <!--         <div class="swiper-button-prev swiper-button-white"></div>
+<div class="swiper-button-next swiper-button-white"></div> -->
+    </div>
+  </div>
+  <div class="content">
+    <ul class="fn-category-list">
+      {% for article in blog.articles %}
+      <li class="fn-article-list">
+        {% if article.image.src != blank %}
+          <a href="{{ article.url }}">
+            <div class="fn-article-imges">
+              <img src="{{ article.image.src | image_url: width: 385 }}" alt="">
+            </div>
+          </a>
+        {% endif %}
+        <div class="fn-list-text t">
+          <a href="{{ article.url }}">
+            {{article.title}}
+          </a>
+        </div>
+        <div class="fn-article-excerpt">{{ article.excerpt | truncate: 138 | strip_html }}</div>
+        <div  class="fn-article-time">{{ article.created_at | date: "%B %d, %Y" }}</div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {%- if paginate.pages > 1 -%}
+  {%- render 'pagination', paginate: paginate -%}
+  {%- endif -%}
+</div>
+{%- endpaginate -%}
+{% schema %}
+{
+    "name":"category subjectivity",
+    "class": "fn-index-section",
+    "settings":[],
+    "blocks":[
+        {
+            "type":"collection",
+            "name":"Collection",
+            "settings":[
+                {
+                    "type":"text",
+                    "id":"category_title",
+                    "label":"分类标题"
+                },
+                {
+                    "type":"url",
+                    "id":"category_leftLink",
+                    "label":{
+                        "en":"Image links",
+                        "zh-CN":"分类链接"
+                    }
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

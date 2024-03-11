@@ -1,0 +1,58 @@
+<div class="fn-valentinesday-offers">
+      {% if section.settings.offers_image != blank %}
+          {% assign image = section.settings.offers_image | img_url: '803x' %}
+             <img class="fn-valentinesday-discounts_img" src="{{ image }}" alt="">
+      {% endif %}
+      {% if section.settings.offers_mobile_image != blank %}
+          {% assign image = section.settings.offers_mobile_image | img_url: '331x' %}
+             <img class="fn-valentinesday-discounts_mobile_img" src="{{ image }}" alt="">
+      {% endif %}
+      <ul class="fn-offers-ul">
+        {%- for product in section.settings.document_collection.products limit: 12 -%}
+          <li class="fn-offers-list">
+            {% render 'fn-discounts-offers',
+                card_product: product,
+                show_secondary_image: section.settings.show_secondary_image
+            %}
+          </li>
+        {%- endfor -%}
+      </ul>
+</div>
+{% schema %}
+  {
+    "name": "offers",
+    "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_secondary_image",
+          "default": false,
+          "label": "checkbox"
+        },
+       {
+			"type": "image_picker",
+			"id": "offers_image",
+			"label": {
+				"en": "image"
+			}
+		},
+       {
+			"type": "image_picker",
+			"id": "offers_mobile_image",
+			"label": {
+				"en": "mobile image"
+			}
+		},
+        {
+            "type":"collection",
+            "id":"document_collection",
+            "label":"Collection"
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

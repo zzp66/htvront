@@ -1,0 +1,488 @@
+{{ 'section-main-product.css' | asset_url | stylesheet_tag }}
+{{ 'component-accordion.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-rte.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+{{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
+{{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+{% assign blogsList = blogs['FAQ'].articles %}
+<style>
+  .fn-helpCenter {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+    span.home_text {
+    color: #666666;
+}
+    .fn-helpCenter-text {
+    display: flex;
+  }
+.fn-helpCenter {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+nav.fn-breadcrumb.fn-helpCenter-text {
+    margin: 40px 0 30px 0;
+    line-height: 1px;
+    font-size: 16px;
+}
+.fn-Center-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: -webkit-center;
+    height: 180px;
+    background: #FFE7D4;
+    border-radius: 16px;
+}
+/*   li.fn-list-on {
+} */
+  .fn-list-on box {
+     
+   }
+.fn-search-title {
+  height: 36px;
+  font-size: 36px;
+  color: #FFFFFF;
+  margin-bottom: 30px;
+  margin-right: 150px;
+  font-weight: bold;
+
+}
+  input.fn-Center-input {
+    border: 0;
+    width: 75%;
+    font-size: 16px;
+  }
+  .fn-searchInpu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    width: 540px;
+    height: 50px;
+    padding: 0 12px;
+    border-radius: 8px;
+  }
+  .fn-search-button {
+    width: 92px;
+    font-size: 18px;
+    color: #FFFFFF;
+    height: 34px;
+    background: #FF7606;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .fn-classify-title {
+    height: 24px;
+    font-size: 24px;
+    color: rgba(51, 51, 51, 0.9);
+    line-height: 24px;
+    margin-bottom: 36px;
+    font-weight: bold;
+  }
+    .fn-shop-title {
+    margin-bottom: 20px
+  }
+.fn-Category {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0 100px 0;
+}
+.fn-Category-nav {
+    width: 22%;
+    padding-right: 32px;
+    border-right: 1px solid #D8D8D8;
+}
+  .fn-helpCenter-content {
+    width: 76%;
+}
+  .fn-helpCenter-click {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 24px;
+    height: 24px;
+    line-height: 24px;
+  }
+  ul.fn-child-menu {
+    padding-top: 20px;
+}
+  .fn-helpCenter-t {
+    padding-top: 14px;
+  }
+  span.fn-account-clickicon {
+    margin-left: 20px;
+  }
+  .fn-helpCenter-mun,
+  .fn-account-title {
+    cursor: pointer;
+  }
+  .fn-account-title {
+    height: 20px;
+    font-size: 20px;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .active {
+    color: #FF7606;
+  }
+.fn-Purchasing-title {
+    height: 28px;
+    font-size: 24px;
+    line-height: 28px;
+    margin-bottom: 20px;
+}
+  .fn-questions-title a {
+    text-decoration: underline;
+    height: 20px;
+    font-size: 16px;
+    line-height: 20px;
+    color: #333;
+  }
+  li.fn-questions-title {
+    margin-bottom: 16px;
+}
+  .fn-article_title.t {
+    font-size: 18px;
+    margin-bottom: 10px;
+    line-height: 22px;
+}
+  .fn-article_content {
+    margin-bottom: 32px;
+}
+    .fn-article_content p{
+        color: #333;
+}
+  .fn-detail {
+    margin: 80px 0 100px 0;
+}
+  @media screen and (min-width: 1250px) and (max-width: 1620px) {
+    .fn-helpCenter {
+      margin: 0 20px;
+    }
+    .fn-helpCenter-click {
+      font-size: 20px;
+    }
+  }
+   @media screen and (min-width: 992px) and (max-width: 1249px) {
+     .fn-search-title {
+       font-size: 24px;
+       height: 36px;
+       line-height: 36px;
+       margin-bottom: 0;
+       margin-right: 80px;
+     }
+     .fn-searchInpu {
+       height: 40px;
+       width: 40%;
+     }
+     .fn-search-button {
+       height: 30px;
+       font-size: 16px;
+     }
+     input.fn-Center-input {
+       border: 0;
+       width: 73%;
+     }
+     .fn-Category-nav {
+       padding-right: 15px;
+     }
+     .fn-helpCenter {
+       margin: 0 20px;
+     }
+     .fn-Purchasing-title,
+     .fn-helpCenter-click {
+       font-size: 18px;
+     }
+     .fn-account-title {
+       font-size: 16px;
+     }
+     .fn-Category-icon {
+       width: 12px;
+     }
+  }
+  @media screen and (min-width: 768px) and (max-width: 991px){
+    .fn-search-title {
+      font-size: 24px;
+      height: 36px;
+      line-height: 36px;
+      margin-bottom: 0;
+      margin-right: 80px;
+    }
+    .fn-searchInpu {
+      height: 40px;
+      width: 40%;
+    }
+    .fn-search-button {
+      height: 30px;
+      font-size: 16px;
+    }
+    input.fn-Center-input {
+      border: 0;
+      width: 73%;
+    }
+    .fn-Category-nav {
+      padding-right: 15px;
+    }
+    .fn-helpCenter {
+      margin: 0 20px;
+    }
+    .fn-Purchasing-title,
+    .fn-helpCenter-click {
+      font-size: 18px;
+    }
+    .fn-account-title {
+      font-size: 16px;
+    }
+    .fn-Category-icon {
+      width: 12px;
+    }
+    .fn-Category-nav {
+      width: 100%;
+      border-right: none;
+    }
+    .fn-helpCenter-content {
+      width: 100%;
+    }
+  }
+  @media screen and (min-width: 480px) and (max-width: 767px){
+    .fn-Center-search {
+      flex-flow: column;
+    }
+    .fn-search-title {
+      font-size: 24px;
+      height: 36px;
+      line-height: 36px;
+      margin-bottom: 20px;
+      margin-right: 0;
+    }
+    .fn-searchInpu {
+      height: 40px;
+      width: 65%;
+    }
+    .fn-search-button {
+      height: 30px;
+      font-size: 16px;
+    }
+    input.fn-Center-input {
+      border: 0;
+      width: 73%;
+    }
+    .fn-Category-nav {
+      padding-right: 15px;
+    }
+    .fn-helpCenter {
+      margin: 0 20px;
+    }
+    .fn-Purchasing-title,
+    .fn-helpCenter-click {
+      font-size: 18px;
+    }
+    .fn-account-title {
+      font-size: 16px;
+    }
+    .fn-Category-icon {
+      width: 12px;
+    }
+    .fn-Category-nav {
+      width: 100%;
+      border-right: none;
+    }
+    .fn-helpCenter-content {
+      width: 100%;
+      margin-top: 50px;
+    }
+    .fn-detail {
+      margin-top: 30px;
+    }
+    .fn-article_content {
+      margin-top: 20px;
+    }
+  }
+    @media screen and (max-width: 480px){
+    .fn-Center-search {
+      flex-flow: column;
+    }
+    .fn-search-title {
+      font-size: 24px;
+      height: 36px;
+      line-height: 36px;
+      margin-bottom: 20px;
+      margin-right: 0;
+    }
+    .fn-searchInpu {
+      height: 40px;
+      width: 80%;
+    }
+    .fn-search-button {
+      height: 30px;
+      font-size: 16px;
+    }
+    input.fn-Center-input {
+      border: 0;
+      width: 73%;
+    }
+    .fn-Category-nav {
+      padding-right: 15px;
+    }
+    .fn-helpCenter {
+      margin: 0 10px;
+    }
+    .fn-Purchasing-title,
+    .fn-helpCenter-click {
+      font-size: 18px;
+    }
+    .fn-account-title {
+      font-size: 14px;
+          margin-bottom: 12px;
+    }
+    .fn-Category-icon {
+      width: 12px;
+    }
+    .fn-Category-nav {
+      width: 100%;
+      border-right: none;
+    }
+    .fn-helpCenter-content {
+      width: 100%;
+      margin-top: 40px;
+    }
+    .fn-detail {
+      margin-top: 30px;
+    }
+    .fn-article_content {
+      margin-top: 20px;
+    }
+      li.fn-questions-title {
+        margin-bottom: 14px;
+      }
+      .fn-article_title.t {
+        font-size: 16px;
+      }
+  }
+</style>
+<div class="fn-helpCenter">
+  <nav class="fn-breadcrumb fn-helpCenter-text" role="navigation" aria-label="breadcrumbs">
+    <a href="/" class="home_text">Home</a>
+    <span style="margin: 0 3px;" aria-hidden="true" class="breadcrumb__sep">›</span>
+    <a href="/blogs/faq/help-center" class="home_text">Help Center</a>
+    <span style="margin: 0 3px;" aria-hidden="true" class="breadcrumb__sep">›</span>
+    <span style="font-weight: bold;">Shop on HTVRONT</span>
+  </nav>
+  {% section 'account-Center' %}
+  <div class="fn-Category">
+    <div class="fn-Category-nav">
+      <div class="fn-helpCenter-mun">
+        <div class="t fn-helpCenter-click">Buying on Htvront <span class="fn-Category-icon"><img src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/2c71d0a7f899ef4e370c409186645292_ddc465dc-afa8-4fae-b11b-7185579954c8.png?v=1653447163" alt=""></span></div>
+        <ul class="fn-child-menu">
+          {% for tag in blog.all_tags%}
+          {% if tag contains "B-" %}
+          {% assign blog_tag = tag | remove_first: "B-" %}
+          <li class="fn-account-title" id="faq_{{ forloop.index }}"  data-index="{{ forloop.index }}">{{ blog_tag | link_to_tag: tag }}</li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="fn-helpCenter-mun fn-helpCenter-t">
+        <div class="t fn-helpCenter-click ">Cart & Payment<span class="fn-Category-icon"><img src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/2c71d0a7f899ef4e370c409186645292_ddc465dc-afa8-4fae-b11b-7185579954c8.png?v=1653447163" alt=""></span></div>
+        <ul class="fn-child-menu">
+          {% for tag in blog.all_tags%}
+          {% if tag contains "C-" %}
+          {% assign blog_tag_C = tag | remove_first: "C-" %}
+          <li class="fn-account-title">{{ blog_tag_C | link_to_tag: tag }}</li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="fn-helpCenter-mun fn-helpCenter-t">
+        <div class="t fn-helpCenter-click">Your Orders<span class="fn-Category-icon"><img src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/2c71d0a7f899ef4e370c409186645292_ddc465dc-afa8-4fae-b11b-7185579954c8.png?v=1653447163" alt=""></span></div>
+        <ul class="fn-child-menu">
+          {% for tag in blog.all_tags%}
+          {% if tag contains "O-" %}
+          {% assign blog_tag_O = tag | remove_first: "O-" %}
+          <li  class="fn-account-title">{{ blog_tag_O | link_to_tag: tag }}</li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="fn-helpCenter-mun fn-helpCenter-t">
+        <div class="t fn-helpCenter-click">Your Htvront Account <span class="fn-Category-icon"><img src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/2c71d0a7f899ef4e370c409186645292_ddc465dc-afa8-4fae-b11b-7185579954c8.png?v=1653447163" alt=""></span></div>
+        <ul class="fn-child-menu">
+          {% for tag in blog.all_tags%}
+          {% if tag contains "A-" %}
+          {% assign blog_tag_A = tag | remove_first: "A-" %}
+          <li  class="fn-account-title">{{ blog_tag_A | link_to_tag: tag }}</li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="fn-helpCenter-content">
+      <div>
+        <div id="div1" class="fn-Purchasing-title t">{{ blog.tags }}</div>
+      </div>
+      <div class="fn-questions-menu">
+        <ul class="fn-questions-list">
+          {% for article in blog.articles %}
+          <li class="fn-questions-title">
+            <a class="t_items" href="#article-title-{{article.id}}">
+              {{article.title}}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="fn-detail">
+        {% for article in blog.articles %}
+        <div class="fn-article_title t" id="article-title-{{article.id}}">
+          {{article.title}}
+        </div>
+        <div class="fn-article_content">
+          {{article.content}}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+   var div = document.getElementById("div1");
+//    var s = text(div);  //调用读取元素的文本通用方法
+    $(function (){
+      $('.fn-helpCenter-click').click(function (){
+        $(this).siblings(".fn-child-menu").toggle(200);
+      });
+      var index = 0;
+      $('.fn-child-menu a').each(function(){
+        $this = $(this);
+        var urlWindow = window.location.protocol+"//"+window.location.host+""+window.location.pathname;
+        if($this[0].href === urlWindow){
+          $this.parent().addClass('active');
+          index = $this.parent().index();
+        }
+      });
+    });
+      $(function (){
+      $('.fn-questions-title>a').click(function (){
+           var target = $(this).attr('href');
+        $('html, body').animate({
+          scrollTop: $(target).offset().top - 65 //65为设置的偏移值
+        });
+      });
+//         $('.fn-account-title').click(function(){
+//         console.log('111111111111111');
+//         })
+    });
+  $(function (){
+      var url = window.location.pathname;
+  var url_a = url.substring(url.lastIndexOf('/') + 1, url.length);
+//     			alert(url_a);
+    var str= $('#div1').text();
+    var items_a = url_a.substring(2);
+    
+     $('#div1').text(items_a);
+  })
+</script>

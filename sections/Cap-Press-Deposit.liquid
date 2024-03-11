@@ -1,0 +1,594 @@
+{% style %}
+  #shopify-section-{{ section.id }} .cap-press-deposit{
+    background: url({{ section.settings.image_bg | img_url:'1920x' }}) no-repeat;
+    background-size: 100% 100%;
+  }
+  @media screen and (max-width: 768px){
+         #shopify-section-{{ section.id }} .cap-press-deposit{
+            background: #FFFDEF;
+          }
+      }
+{% endstyle %}
+<style>
+  .cap-press-deposit{
+    padding:40px 0;
+    letter-spacing: 0;
+    background-color: #FFFDEF;
+  }
+  .cap-deposit-content{
+    display:flex;
+    width:1600px;
+    margin:0 auto;
+    justify-content: center;
+  }
+  .cap-deposit-left,.cap-deposit-right{
+    position: relative;
+  }
+  .cap-deposit-item{
+    position: absolute;
+    top:0;
+    height: 100%;
+  }
+  .cap-deposit-left .cap-deposit-item{
+    padding: 24px 20px 24px 38px;
+    display:flex;
+  }
+  .cap-deposit-right .cap-deposit-item{
+    padding:24px 65px 25px 34px;
+    display:flex;
+  }
+  .cap-deposit-title{
+    font-size: 22px;
+    font-weight: bold;
+    color: #802704;
+    line-height: 26px; 
+    margin: 15px 0 12px;
+  }
+  .cap-deposit-desc{
+    font-size: 16px;
+    font-weight: 400;
+    color: #802704;
+    line-height: 19px;
+    margin-bottom:15px;
+  }
+  .cap-deposit-left .ul_list{
+    font-size: 16px;
+    font-weight: 400;
+    color: #802704;
+    line-height: 19px;
+  }
+  .cap-deposit-add{
+    margin-top:10px
+  }
+  .cap-deposit-add .button--full-width{
+    width: 212px;
+    height: 58px;
+    background: linear-gradient(270deg, #EF6D0F 0%, #FF8E4F 100%);
+    border-radius: 6px;
+    z-index: 1;
+    font-size:16px;
+  }
+  .cap-deposit-right .cap-deposit-item .cap-product-image{
+    min-width:328px;
+  }
+  .cap-deposit-flex{
+    display:flex;
+    align-items: baseline;
+  }
+  .cap-deposit-price{
+    font-size: 22px;
+    font-weight: bold;
+    color: #EE6400;
+    line-height: 26px;
+    margin-right:8px
+  }
+  .cap-original-price{
+    color: #EE6400;
+    font-size: 18px;
+    line-height: 22px;
+    text-decoration: line-through;
+  }
+  .cap-deposit-price span{
+    font-size: 28px;
+    line-height: 32px;
+  }
+  .cap-deposit-code{
+    font-size: 20px;
+    font-weight: 400;
+    color: #A45822;
+    line-height: 23px;
+  }
+  .cap-deposit-discount{
+    font-size: 18px;
+    font-weight: bold;
+    color: #A45822;
+    line-height: 21px;
+    margin-top: 20px;
+    margin-bottom: 11px;
+  }
+  .cap-deposit-discount span{
+    font-size: 26px;
+  }
+  .cap-deposit-time{
+    font-size: 18px;
+    font-weight: 400;
+    color: #A45822;
+    line-height: 21px;
+  }
+  .code-copy-btn{
+    display:inline;
+    vertical-align: revert;
+    cursor: pointer;
+  }
+  .cap-deposit-item>div:nth-child(2){
+    margin-left:10px;
+  }
+  .cap-deposit-svg{
+    min-width:328px;
+  }
+  .hide-html{
+    width: 452px;
+    height: 234px;
+    background: #FEFDEF;
+    box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+    border-radius: 6px;
+    opacity: 1;
+    position: absolute;
+    z-index: 2;
+    padding: 18px 35px 14px 20px;
+    color: #7F2706;
+    font-size: 16px;
+    line-height: 24px;
+    top: -25px;
+    left: 135px;
+    display:none;
+  }
+  .hide-html li{
+    position:relative;
+    padding-left: 8px;
+  }
+  .hide-html li:before{
+    content:"";
+    position:absolute;
+    width: 2px;
+    height: 2px;
+    background: #7F2706;
+    border-radius: 50%;
+    left: 0;
+    top: 10px;
+  }
+  .hide-html .icon-close{
+    width: 16px;
+    top: 14px;
+    right: 14px;
+  }
+  .hide-html:before{
+    content:'';
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-right: 15px solid #FEFDEF;
+    border-left: 15px solid transparent;
+    border-bottom: 10px solid transparent;
+    position: absolute;
+    top: 10%;
+    left: -29px;
+  }
+  .show-html{
+    font-size: 16px;
+    color: #802704;
+    line-height: 19px;
+  }
+  .show-html li{
+    padding-bottom:5px;
+    position:relative;
+    padding-left: 15px;
+  }
+  .show-html li:before{
+    content:"";
+    position:absolute;
+    width: 5px;
+    height: 5px;
+    background: #F46F37;
+    border-radius: 50%;
+    left: 0;
+    top: 7px;
+  }
+  .learn-more-box{
+    display:inline-block;
+    cursor: pointer;
+    margin: 5px 0 18px;
+  }
+  .deposit-learn-more>.learn-more-box>span{
+    font-size: 16px;
+    font-weight: 400;
+    color: #802704;
+    line-height: 19px;
+    text-decoration: underline;
+  }
+  .deposit-learn-more>.learn-more-box>i{
+    font-style: normal;
+    width: 19px;
+    height: 19px;
+    background: #802704;
+    border-radius: 50%;
+    display: inline-block;
+    color: #fff;
+    text-align: center;
+    line-height: 19px;
+    margin-left:5px;
+  }
+  .selling-price{
+    font-size: 22px;
+    font-weight: bold;
+    color: #EE6400;
+    line-height: 26px;
+  }
+  .deposit-learn-more{
+    position:relative;
+  }
+  @media screen and (max-width: 1660px){
+    .cap-deposit-content{
+      width:1400px;
+    }
+    .cap-deposit-image img,.cap-deposit-right>.cap-product-image img{
+      height:350px;
+    }
+    .cap-deposit-right .cap-deposit-item .cap-product-image,.cap-deposit-svg{
+      min-width:300px;
+    }
+  }
+  @media screen and (max-width: 1440px){
+    .cap-deposit-content{
+      width:1200px;
+    }
+    .cap-deposit-title{
+      line-height: 20px;
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+    .cap-deposit-right .cap-deposit-item .cap-product-image, .cap-deposit-svg{
+        min-width: auto;
+    }
+    .show-html{
+      font-size: 14px;
+      line-height: 16px;
+    }
+    .learn-more-box{
+        margin: 5px 0 8px;
+    }
+    .selling-price {
+      font-size: 20px;
+      line-height: 22px;
+    }
+    .cap-deposit-add .button--full-width{
+      height:40px;
+    }
+    .cap-deposit-image img, .cap-deposit-right>.cap-product-image img{
+      height:300px;
+    }
+    .cap-deposit-desc{
+      font-size: 14px;
+      line-height: 17px;
+      margin-bottom: 8px;
+    }
+  }
+  @media screen and (max-width: 1300px){
+     .cap-deposit-content{
+      width:88%;
+    }
+  }
+  @media screen and (max-width: 1024px){
+   .cap-deposit-title {
+      line-height: 18px;
+      font-size: 16px;
+    }
+  }
+  @media screen and (max-width: 820px){
+    .cap-deposit-content{
+      flex-direction: column;
+    }
+    .cap-deposit-image img, .cap-deposit-right>.cap-product-image img{
+      height:auto;
+      margin: 0 auto;
+    }
+    .cap-deposit-left .cap-deposit-item{
+      flex-direction: column;
+      width: 100%;
+      padding-top:40px;
+    }
+    .cap-deposit-right .cap-deposit-item{
+      flex-direction: column-reverse;
+      width: 100%;
+      justify-content: flex-end;
+    }
+    .cap-deposit-right .cap-deposit-item .cap-product-image img, .cap-deposit-svg img{
+      margin:0 auto;
+    }
+  }
+  @media screen and (max-width: 480px){
+    .cap-deposit-left .cap-deposit-item{
+      padding: 26px 18px 20px;
+    }
+    .cap-deposit-title{
+      margin: 8px 0;
+      text-align: center;
+    }
+    .show-html{
+      display:none;
+    }
+    .deposit-learn-more>.learn-more-box>span{
+      font-size:14px;
+      line-height:16px;
+    }
+    .learn-more-box {
+      margin: 0;
+    }
+    .deposit-learn-more{
+      text-align:right;
+    }
+    .selling-price{
+      font-size:16px;
+      line-height:19px;
+    }
+    .cap-deposit-add .button--full-width{
+      width:100%;
+      min-height: 40px;
+    }
+    .cap-deposit-right .cap-deposit-item{
+      padding:7px 18px 24px;
+    }
+    .cap-deposit-desc{
+      text-align:center;
+    }
+    .cap-deposit-price{
+      font-size:20px;
+      line-height: 24px;
+    }
+    .cap-deposit-price span {
+      font-size: 22px;
+      line-height: 23px;
+    }
+    .cap-original-price {
+      font-size: 16px;
+      line-height: 19px;
+    }
+    .cap-deposit-flex{
+      justify-content: center;
+      margin-bottom: 7px;
+    }
+    .cap-deposit-item>div:nth-child(2){
+      margin-left:0;
+    }
+    .cap-deposit-content {
+      width: 93.6%;
+    }
+    .hide-html{
+      width: 350px;
+      height: auto;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: left;
+    }
+    .hide-html:before{
+      content:none;
+    }
+  }
+</style>
+<div class="cap-press-deposit" id="{{ section.settings.id }}">
+  <div class="cap-deposit-content">
+    <div class="cap-deposit-left">
+      <div class="cap-deposit-image">
+        <picture>
+          <source media="(max-width: 820px)" srcset="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Subtract_2x_2.png?v=1706233182">
+          <source media="(min-width: 821px)" srcset="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Group_57_70cbe588-88f6-42d2-9008-9247532e9716.png?v=1706232921">
+          <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Group_57_70cbe588-88f6-42d2-9008-9247532e9716.png?v=1706232921">
+        </picture>
+      </div>
+      <div class="cap-deposit-item">
+         <div class="cap-deposit-svg">
+          <picture>
+            <source media="(max-width: 480px)" srcset="{{ section.settings.deposit_image_mobile | img_url:'307x' }}">
+            <source media="(min-width: 481px)" srcset="{{ section.settings.deposit_image | img_url:'829x' }}">
+            <img src="{{ section.settings.deposit_image | img_url:'829x' }}" />
+          </picture>
+        </div>
+        <div>
+          <div class="cap-deposit-title">
+            {{ section.settings.deposit_title }}
+          </div>
+          <div class="show-html">
+            {{ section.settings.deposit_show_html }}
+          </div>
+         
+          {% if section.settings.deposit_hide_html != blank %}
+            <div class="deposit-learn-more">
+               <div class="learn-more-box">
+                  <span>learn more</span>
+                  <i>?</i>
+               </div>
+               <div class="hide-html">
+                 <img class="icon-close hide-html-close" src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/a016b412f93b877a827866a90379da25_bdb00f39-8c50-49b2-9c37-32dca531ef89.png?v=1706083253">
+                {{ section.settings.deposit_hide_html }}
+              </div>
+            </div>
+          {% endif %}
+          <div class="selling-price">
+            {{ section.settings.selling_price }}
+          </div>
+          <div class="cap-deposit-add">
+            {% render 'addCart-Model', product: section.settings.deposit_product, buttonText: 'Add to Cart' %}
+            <p class="cap-press-deposit-tips" style="color: #802704;font-size: 12px;display:none">Only 1 pc per order(Already in your cart)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cap-deposit-right">
+      <div class="cap-product-image">
+        <picture>
+          <source media="(max-width: 820px)" srcset="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Subtract_2x_3.png?v=1706233181">
+          <source media="(min-width: 821px)" srcset="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Mask_group_3.png?v=1706232921">
+          <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Mask_group_3.png?v=1706232921">
+        </picture>
+      </div>
+      <div class="cap-deposit-item">
+        <div class="cap-product-image">
+          <picture>
+            <source media="(max-width: 480px)" srcset="{{ section.settings.product_image_mobile | img_url:'304x' }}">
+            <source media="(min-width: 481px)" srcset="{{ section.settings.product_image | img_url:'547x' }}">
+            <img src="{{ section.settings.product_image | img_url:'547x' }}" />
+          </picture>
+        </div>
+        <div>
+          <div class="cap-deposit-title">
+            {{ section.settings.product_title }}
+          </div>
+          <div class="cap-deposit-desc">
+            {{ section.settings.product_desc }}
+          </div>
+          <div class="cap-deposit-flex">
+            <div class="cap-deposit-price">
+              {{ section.settings.product_price }}
+            </div>
+            <div class="cap-original-price">
+              {{ section.settings.original_price }}
+            </div>
+          </div>
+          <!-- <div class="cap-deposit-discount">
+            {{ section.settings.product_discount }}
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(function (){
+    var gift_arr = ['6883747299461'];
+    $(".cap-deposit-add .product-form__submit").click(function(){
+      var button_id = $(this).attr('id').substring(9);
+       if(gift_arr.indexOf(button_id) != -1 ) {
+           setTimeout(function(){
+               $('.cap-deposit-add .product-form__submit').attr('disabled',true);
+              $('.cap-press-deposit-tips').show()
+            },1000);
+       } else {
+         $('.cap-deposit-add .product-form__submit').attr('disabled',false);
+              $('.cap-press-deposit-tips').hide()
+       }  
+    });
+  })
+  $('.hide-html-close').click(function(){
+    $('.hide-html').hide()
+  })
+  $('.learn-more-box').click(function(){
+    $('.hide-html').show()
+  })
+  $(function(){
+    $('.code-copy-btn').click(function(){
+      let url = "{{section.settings.product_code}}";
+      let copyInput = document.createElement('input');
+    	document.body.appendChild(copyInput);
+    	copyInput.setAttribute('value', url);
+    	copyInput.select();
+    	document.execCommand("Copy");
+    	copyInput.remove();
+        alertMsg()
+    })
+    function alertMsg(){
+      var alertFram = document.createElement("DIV");
+      alertFram.id = "alertFram";
+      alertFram.style.position = "fixed";
+      alertFram.style.width = "100%";
+      alertFram.style.textAlign = "center";
+      alertFram.style.bottom = "40px";
+      alertFram.style.zIndex = "10001";
+      strHtml = " <span style=\"font-family: 微软雅黑;display:inline-block;background:#333;color:#fff;padding:0 20px;line-height:36px;border-radius:6px; \">Copied successfully</span>";
+      alertFram.innerHTML = strHtml;
+      document.body.appendChild(alertFram);
+      setTimeout((function(){
+        alertFram.style.display="none";
+      }),2000);
+    }
+  })
+</script>
+{% schema %}
+  {
+    "name": "Cap Press Deposit",
+    "settings": [ 
+      {
+        "type": "text",
+        "id": "id",
+        "label": "id(页面唯一性，全英文)"
+      },
+      {
+        "type": "image_picker",
+        "id":"image_bg",
+        "label":"image_bg"
+      },{
+        "type":"text",
+        "id":"deposit_title",
+        "label":"deposit_title"
+      },{
+        "type":"html",
+        "id":"deposit_show_html",
+        "label":"deposit_show_html(展示部分规则)"
+      },{
+        "type":"html",
+        "id":"deposit_hide_html",
+        "label":"deposit_hide_html(完整规则)"
+      },{
+        "type":"text",
+        "id":"selling_price",
+        "label":"selling price"
+      },{
+        "type":"product",
+        "id":"deposit_product",
+        "label":"deposit_product"
+      },{
+        "type":"image_picker",
+        "id":"deposit_image",
+        "label":"deposit_image"
+      },{
+        "type":"image_picker",
+        "id":"deposit_image_mobile",
+        "label":"deposit_image mobile"
+      },{
+        "type":"image_picker",
+        "id":"product_image",
+        "label":"product_image"
+      },{
+        "type":"image_picker",
+        "id":"product_image_mobile",
+        "label":"product_image mobile"
+      },{
+        "type":"text",
+        "id":"product_title",
+        "label":"product_title"
+      },{
+        "type":"text",
+        "id":"product_desc",
+        "label":"product_desc"
+      },{
+        "type":"html",
+        "id":"product_price",
+        "label":"product_price"
+      },{
+        "type":"html",
+        "id":"original_price",
+        "label":"original_price"
+      }
+    ],
+    "presets":[
+        {
+            "name":"Cap Press Deposit"
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

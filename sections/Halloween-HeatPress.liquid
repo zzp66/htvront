@@ -1,0 +1,532 @@
+<style>
+  #shopify-section-{{ section.id }} .halloween-heat-press{
+     background-image:url('{{ section.settings.background_image | img_url:'1920x' }}');
+     background-size: 100% 100%;
+     padding: 30px 0;
+     background-position: center;
+  }
+  .heat-press-bg{
+    width:1600px;
+    margin:0 auto;
+    background-image:url('{{ section.settings.module_bg | img_url:'1588x' }}');
+    padding: 40px 20px 20px 20px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .heat-press-bg .second-title>span{
+    color:#fff;
+    font-weight: bold;
+  }
+  .heat-press-product .fn-discounts-productssold{
+    padding:12px 0 6px 0;
+    font-size: 12px;
+    color: #008EB8;
+  }
+  .heat-press-product{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .heat-press-product-item{
+    display:flex;
+    margin-right:20px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px 15px 20px 20px;
+    width:49%;
+    margin-bottom:20px;
+  }
+  .heat-press-product-item:nth-child(even){
+    margin-right:0;
+  } 
+  .heat-press-product-item>div{
+    padding-left:20px;
+  }
+  .heat-press-product-item>a{
+    max-width: 365px;
+    width: 100%;
+    margin: 0 auto;
+    min-width: 365px;
+  }
+  .heat-press-product-item .halloween-sale-title{
+    -webkit-line-clamp: 2;
+    line-height: 24px;
+    width: 100%;
+    font-weight: bold;
+    font-size: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    margin-bottom: 10px;
+    min-height: 48px;
+  }
+  .code{
+    font-size: 18px;
+  }
+  .code>span{
+    vertical-align: middle;
+  }
+  .code>img{
+    display: inline;
+    vertical-align: baseline;
+    cursor: pointer;
+  }
+  .code>span:nth-child(2){
+    width: 65px;
+    height: 30px;
+    background: linear-gradient(180deg, #FFF3E1 0%, #FFC176 77%, #FFF5E9 100%);
+    box-shadow: 0px 1px 2px 0px #754206, inset 0px 1px 3px 0px rgba(255,255,255,0.5);
+    border-radius: 4px;
+    display: inline-block;
+    text-align: center;
+    color: #884A17;
+    font-weight: bold;
+    line-height: 24px;
+    cursor: pointer;
+  }
+  .heat-press-product .heat-press-layout{
+    height: 100%;
+    position: relative;
+    margin-top:0;
+  }
+  .heat-press-product .heat-press--price .fn-compareat_price span,
+  .heat-press-product .heat-press--price .price__regular .price-item--regular{
+    font-size:22px;  
+    font-weight:bold;
+  }
+  .heat-press-product .heatPress-addcart-sale{
+    margin-top: 30px;
+    display:block !important;
+  }
+  .heat-press-bg .title-bg{
+    text-align:center;
+  }
+  .heat-press-bg .title-text{
+    font-size: 36px;
+    font-weight: bold;
+  }
+  .heat-press-bg .second-title{
+    font-size: 18px;
+    padding-bottom:20px;
+  }
+  .show-mobile{
+    display:none !important;
+   }
+  .heat-press-product-item .button--full-width{
+    background: #8B4112;
+    border-radius: 4px;
+    --border-offset: none;
+    --border-opacity: none;
+  }
+  .heat-press-product .heat-press--price .fn-compareat_price{
+    flex-direction: row;
+    align-items: baseline;
+  }
+  .heat-press--price .fn-compareat_price .fn-compare-at_price{
+    font-weight:400;
+    font-size: 18px;
+    color: #2B112C;
+    padding-left: 10px;
+  }
+  .price-code{
+    height:35px;
+    margin: 15px 0 9px 0;
+  }
+  .heat-press-product-item .fn-color-attr li{
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  .heat-press-product-item .fn-color-attr li img{
+     width: 40px;
+     height: 40px;
+  }
+  .inbetweening{
+    background:none;
+    padding:0;
+    position: relative;
+  }
+  .inbetweening img{
+    position: absolute;
+    top: -15px;
+  }
+  @media screen and (max-width: 1720px){
+    .heat-press-bg{
+      width:83.33%;
+      margin:0 auto;
+    }
+    .heat-press-product-item>a{
+      max-width: 50%;
+      min-width: 50%;
+    }
+    .heat-press-product-item .fn-color-attr li{
+      width: 30px;
+      height: 30px;
+      margin-right: 5px;
+    }
+  }
+  @media screen and (max-width:1440px){
+    .heat-press-product-item .halloween-sale-title{
+      line-height: 22px;
+      font-size: 16px;
+    }
+    .code{
+      font-size:12px;
+    }
+    .code>img{
+      width:14px;
+    }
+    .heat-press-product .heat-press--price .fn-compareat_price span, 
+    .heat-press-product .heat-press--price .price__regular .price-item--regular{
+      font-size:20px;  
+    }
+    .heat-press--price .fn-compareat_price .fn-compare-at_price{
+      padding-left:6px;
+    }
+    .heat-press-product .heatPress-addcart-sale{
+      margin-top:10px;
+    }
+    .heat-press-product .fn-discounts-productssold{
+      padding-top:5px;
+    }
+    .code>span:nth-child(2){
+      width: auto;
+      height: auto;
+      padding: 0 10px;
+    }
+    .heat-press-product-item .fn-color-attr li{
+      width: 25px;
+      height: 25px;
+      margin-right: 5px;
+    }
+    .heat-press-product-item .fn-color-attr ul .color-quantity{
+      font-size: 13px;
+      line-height: 25px;
+      margin-left: 10px;
+    }
+    .heat-press-product-item{
+      margin-right:15px;
+    }
+  }
+  @media screen and (max-width:1024px){
+    .heat-press-product-item{
+      padding:10px 10px 20px;
+      flex-direction: column;
+      margin-right: 10px;
+    }
+    .heat-press-product-item>a {
+      max-width: 100%;
+      min-width: 100%;
+    }
+    .heat-press-product-item .button--full-width{
+      padding: 0;
+      height: 40px;
+      min-height: 40px;
+    }
+    .heat-press-product-item .halloween-sale-title{
+      font-size: 14px;
+      line-height: 19px;
+      min-height: 40px;
+      margin: 10px 0;
+    }
+    .heat-press-product .heat-press--price .fn-compareat_price span, 
+    .heat-press-product .heat-press--price .price__regular .price-item--regular{
+      font-size: 16px; 
+    }
+     .heat-press-product-item>div{
+       min-width:100%;
+       padding-left:0;
+     }
+    .heat-press-bg{
+      width: 93.6%;
+      padding: 25px 20px 35px 20px;
+    }
+    .heat-press-bg .title-text{
+      font-size:30px;
+    }
+    .heat-press--price .fn-compareat_price .fn-compare-at_price{
+      font-size:14px;
+    }
+    .price-code{
+      margin:6px 0;
+      height:30px;
+    }
+    .heat-press-bg .fn-color-attr{
+      margin-top:0;
+      height:26px;
+    }
+    .inbetweening img{
+      top:50%;
+      left:50%;
+      transform: translate(-50%,-50%);
+    }
+  }
+   @media screen and (max-width:750px){
+     .show-pc{
+       display:none  !important;
+     }
+     .show-mobile{
+       display:inline-block  !important;
+     }
+     #shopify-section-{{ section.id }} .halloween-heat-press{
+       background:none;
+       padding:10px 0 30px 0;
+     }
+    .heat-press-bg{
+      width:93.6%;
+      background-image:url('{{ section.settings.module_bg_mobile | img_url:'710x' }}');
+    }
+     .heat-press-product-item{
+        flex-direction: column;
+        margin-right: 10px;
+        padding: 12px 7px;
+     }
+     .heat-press-product-item>div{
+       padding:0;
+     }
+     .heat-press-product-item .button--full-width{
+        font-size: 12px;
+        line-height: 31px;
+        border-radius: 4px;
+     }
+     .heat-press-product .fn-discounts-productssold{
+       padding: 4px 0 0 0;
+     }
+     .heat-press-bg .title-text{
+       font-size: 16px;
+     }
+     .heat-press-bg .second-title{
+       font-size:14px;
+     }
+   }
+  @media screen and (max-width:450px){
+    .heat-press-bg{
+      width:95%;
+    }
+    .heat-press-bg{
+      padding:15px 5px;
+    }
+    .heat-press-bg .second-title{
+      padding-bottom:8px;
+    }
+    .heat-press-product-item{
+      margin-right:3px;
+      padding: 5px 5px 12px;
+    }
+    .heat-press-product-item .fn-color-attr ul .color-quantity{
+      margin:0;
+      font-size:12px;
+    }
+    .heat-press-product-item .fn-color-attr li img{
+      width:25px;
+      height:25px;
+    }
+    .heat-press-product-item .halloween-sale-title{
+      margin:5px 0;
+    }
+    .price-code{
+      height: 20px;
+    }
+    .code>img {
+      vertical-align: middle;
+    }
+    .heat-press-product-item .fn-color-attr li img{
+      width: 26px;
+      height: 26px;
+    }
+    .heat-press-product .heatPress-addcart-sale{
+      margin-top:8px;
+    }
+  }
+</style>
+
+<div class="halloween-heat-press" id="{{ section.settings.id }}">
+  <div class="heat-press-bg">
+    <div class="title-bg">
+      <div class="title-text">
+        {{ section.settings.title }}
+      </div>
+      <div class="second-title">
+        {{ section.settings.second_title }}
+      </div>
+    </div>  
+    <div class="heat-press-product">
+       {% for block in section.blocks %}
+          <div class="heat-press-product-item">
+              {%- if block.settings.product.featured_media -%}
+                <a href="{{ block.settings.product.url }}">
+                  <img
+                    class="img-first"
+                    src="{{ block.settings.product.featured_media | img_url: '420x' }}"
+                    alt="{{ block.settings.product.featured_media.alt | escape }}"
+                    {% unless lazy_load == false %}
+                      loading="lazy"
+                    {% endunless %}
+                  >
+                </a>
+              {%- endif -%}
+            <div>
+              <div class="heat-press-layout">
+                <div class="halloween-sale-title t">
+                  <a href="{{ block.settings.product.url }}" class="t">{{ block.settings.product.title | escape }}</a>
+                </div>
+                <div class="heat-press--price">
+                  {% render 'sffers-price', product: block.settings.product, price_class: '' %}
+                </div>
+                <div class="price-code">
+                  {% if block.settings.code != blank %}
+                    <div class="code">
+                      <span>Code: {{ block.settings.code }}</span>
+                      <span class="show-pc" onclick="copyticket({{ block.settings.code }})">copy</span>
+                      <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/8_23556d6b-f24f-4b67-8f64-73196bf27b0a.png?v=1691375251" onclick="copyticket({{ block.settings.code }})" class="show-mobile">
+                    </div>
+                  {% endif %}
+                </div>
+                <div class="fn-color-attr">
+                  {%- for option in block.settings.product.options_with_values -%}
+                    {%- if option.name == 'Colors' or option.name == 'Color' -%}
+                      <ul>
+                        {%- if option.name == 'Colors' -%}
+                          {% assign colorList = block.settings.product.options_by_name.Colors.values | slice: 0, 5 %}
+                        {%- else -%}
+                          {% assign colorList = block.settings.product.options_by_name.Color.values | slice: 0, 5 %}
+                        {%- endif -%}
+                        {%- for value in colorList -%}
+                          <li>
+                            <a href="{{ block.settings.product.url }}?variant={{ block.settings.product.variants[forloop.index0].id }}">
+                              {%- if block.settings.product.variants[forloop.index0].featured_image != blank -%}
+                                <img
+                                  src="{{ block.settings.product.variants[forloop.index0].featured_image | img_url: '50x50' }}"
+                                  alt="{{ value }}"
+                                >
+                              {%- endif -%}
+                            </a>
+                          </li>
+                        {% endfor %}
+                        {%- if option.name == 'Colors' -%}
+                          {% assign size = block.settings.product.options_by_name.Colors.values | size | minus: 5 %}
+                        {%- else -%}
+                          {% assign size = block.settings.product.options_by_name.Color.values | size | minus: 5 %}
+                        {%- endif -%}
+                        {%- if size > 0 -%}
+                          <li class="color-quantity">
+                            <a href="{{ block.settings.product.url }}">+{{ size }}</a>
+                          </li>
+                        {%- endif -%}
+                      </ul>
+                    {%- endif -%}
+                  {% endfor %}
+                </div>
+                 <div class="heatPress-addcart-sale">
+                  {% render 'easter-addCart', product: block.settings.product %}
+                </div>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+        <div class="heat-press-product-item inbetweening">
+          <picture>
+            <source media="(max-width: 1024px)" srcset="{{ section.settings.inbetweening_img_mobile | img_url:'356x' }}">
+            <source media="(min-width: 1025px)" srcset="{{ section.settings.inbetweening_img | img_url:'757x' }}">
+            <img  class="" src="{{ section.settings.inbetweening_img | img_url: '757x' }}" alt="">
+          </picture>
+        </div>
+    </div>
+  </div>
+</div>
+<script>
+  function copyticket(code){
+    let url = code;
+    let copyInput = document.createElement('input');
+    	document.body.appendChild(copyInput);
+    	copyInput.setAttribute('value', url);
+    	copyInput.select();
+    	document.execCommand("Copy");
+    	copyInput.remove();
+        alertMsg()
+  }
+   function alertMsg(){
+      var alertFram = document.createElement("DIV");
+      alertFram.id = "alertFram";
+      alertFram.style.position = "fixed";
+      alertFram.style.width = "100%";
+      alertFram.style.textAlign = "center";
+      alertFram.style.bottom = "40px";
+      alertFram.style.zIndex = "10001";
+      strHtml = " <span style=\"font-family: 微软雅黑;display:inline-block;background:#333;color:#fff;padding:0 20px;line-height:36px;border-radius:6px; \">Copied successfully</span>";
+      alertFram.innerHTML = strHtml;
+      document.body.appendChild(alertFram);
+      setTimeout((function(){
+        alertFram.style.display="none";
+      }),2000);
+    }
+</script>
+{% schema %}
+  {
+    "name":"Halloween Heat Press",
+    "max_blocks": 3,
+    "settings": [
+       {
+        "type": "text",
+        "id": "id",
+        "label": "id(页面唯一性，全英文)"
+        },
+       {
+        "type":"image_picker",
+        "id":"background_image",
+        "label":"background image"
+      },{
+        "type":"image_picker",
+        "id":"module_bg",
+        "label":"module image"
+      },{
+        "type":"image_picker",
+        "id":"module_bg_mobile",
+        "label":"module image mobile"
+      },{
+        "type": "text",
+        "id": "title",
+        "label": "title"
+      },{
+        "type": "text",
+        "id": "second_title",
+        "label": "second title"
+      },{
+         "type":"image_picker",
+         "id":"inbetweening_img",
+         "label":"inbetweening image"
+      },{
+         "type":"image_picker",
+         "id":"inbetweening_img_mobile",
+         "label":"inbetweening image mobile"
+      }
+    ], 
+    "blocks":[{
+      "type": "bundle",
+      "name":  "product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "product item"
+        },{
+          "type":"text",
+          "id":"code",
+          "label":"code"
+        }
+      ]
+    }],
+    "presets":[
+      {
+        "name":"Halloween Heat Press"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

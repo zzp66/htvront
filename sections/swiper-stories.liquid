@@ -1,0 +1,294 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} .swiper-stories{
+    background: {{ section.settings.bg_color }};
+    padding-bottom:{{section.settings.padding_bottom}}px;
+    padding-top:{{section.settings.padding_top}}px
+  }
+  @media screen and (max-width: 1180px){
+    #shopify-section-{{ section.id }} .swiper-stories{
+      padding-top:20px;
+    }
+  }
+  @media screen and (max-width: 820px){
+    #shopify-section-{{ section.id }} .swiper-stories{
+      padding-bottom: 54px;
+    }
+  }
+{%- endstyle -%}
+<style>
+  .swiper-stories{
+    display:flex;
+    align-items:center;
+    letter-spacing:0;
+    padding-left: 6.5%;
+  }
+  .swiper-stories-title{
+    width: 20%;
+    font-size: 36px;
+    font-weight: bold;
+    color: #242424;
+    line-height: 49px;
+    margin-right:3.5%
+  }
+  .swiper-stories-content{
+    position: relative;
+    width:calc(96.5% - 20%);
+  }
+  .swiper-stories-content .swiper-slide img{
+    width:100%
+  }
+  .swiper-stories-content .swiper-button-next,.swiper-stories-content .swiper-button-prev{
+    width: 48px;
+    height: 48px;
+    z-index: 2;
+    top:auto;
+    bottom:-78px
+  }
+  .swiper-stories-content .swiper-button-prev{
+    background: url('https://cdn.shopify.com/s/files/1/0356/5997/2741/files/4_3.png?v=1683188431');
+    right: 223px;
+    left: auto;
+  }
+  .swiper-stories-content .swiper-button-next{
+    background: url('https://cdn.shopify.com/s/files/1/0356/5997/2741/files/4_6fac7793-6c16-46ca-a5de-df388a530305.png?v=1683188431');
+    right: 159px;
+  }
+  .swiper-stories-message{
+    position: absolute;
+    left:20px;
+    bottom:21px;
+    background:#ffffff;
+    border-radius: 25px;
+    display:flex;
+    padding:2px;
+    width:222px
+  }
+  .swiper-stories-avater{
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    overflow:hidden
+  }
+  .swiper-stories-avater img{
+    height:100%
+  }
+  .swiper-stories-author{
+    line-height:46px;
+    font-size: 18px;
+    color: #242424;
+    margin-left:15px;
+    height: 46px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    flex: 1;
+  }
+
+  @media screen and (max-width: 1440px){
+    .swiper-stories-title{
+      font-size:24px;
+      line-height:38px
+    }
+    .swiper-stories-avater{
+      width: 36px;
+      height: 36px;
+    }
+    .swiper-stories-author{
+      height:36px;
+      line-height:36px
+    }
+    .swiper-stories-message{
+      width:70%
+    }
+  }
+  @media screen and (max-width: 1180px){
+    .swiper-stories{
+      padding-left:20px
+    }
+    .swiper-stories-title{
+      margin-right:20px
+    }
+    .swiper-stories-content{
+      width: calc(96.5% - 18.4% + 21px);
+    }
+  }
+   @media screen and (max-width: 820px){
+     .swiper-stories .show-in-pc{
+      display:none
+    }
+   .swiper-stories  .show-in-mobile{
+      display:block
+    }
+    .swiper-stories{
+      display:block;
+      padding-left:12px
+    }
+     .swiper-stories-title{
+       text-align:center;
+       margin-bottom:10px
+     }
+    .swiper-stories-title,.swiper-stories-content{
+       width: 100%;
+    }
+    .swiper-stories .swiper-scrollbar{
+       position:absolute;
+       width: calc(100% - 12px);
+       height: 5px;
+       margin: 0 auto;
+       background: #D8D8D8;
+       bottom: -20px;
+     }
+     .swiper-stories .swiper-scrollbar-drag{
+        background: #242424
+     }
+
+   }
+  @media screen and (max-width: 750px){
+    .swiper-stories-title{
+      font-size:18px;
+      line-height:24px
+    }
+    .swiper-stories-avater{
+      width: 26px;
+      height: 26px;
+    }
+    .swiper-stories-author{
+      height:26px;
+      line-height:26px
+    }
+    .swiper-stories-message{
+      left:10px
+    }
+  }
+</style>
+<div class="swiper-stories">
+  <div class="swiper-stories-title">What you can make with HTVRONT</div>
+  <div class="swiper-stories-content">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="swiper-slide">
+            <img src="{{ block.settings.image | img_url:'400x' }}">
+            <div class="swiper-stories-message">
+              <div class="swiper-stories-avater">
+                {% if block.settings.avater != blank %}
+                  <img src="{{ block.settings.avater | img_url:'46x' }}">
+                {% endif %}
+              </div>
+              <div class="swiper-stories-author">{{ block.settings.author }}</div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="swiper-button-prev show-in-pc" id="stories-swiper-button-prev"></div>
+    <div class="swiper-button-next show-in-pc" id="stories-swiper-button-next"></div>
+    <div class="swiper-scrollbar show-in-mobile" id="stories-swiper-scrollbar"></div>
+  </div>
+</div>
+
+<script>
+  $(function(){
+      var mySwiper = new Swiper('.swiper-stories .swiper-container', {
+        slidesPerView : 3.29,
+        spaceBetween : 20,
+        slidesPerGroup : 3,
+        navigation: {
+           nextEl: '#stories-swiper-button-next',
+           prevEl: '#stories-swiper-button-prev',
+       },
+        breakpoints:{
+          820:{
+            spaceBetween: 10,
+            scrollbar: {
+                el: '#stories-swiper-scrollbar',
+              }
+          },
+          750: {
+              slidesPerView: 1.85,
+              slidesPerGroup : 1,
+              spaceBetween: 10,
+              scrollbar: {
+                  el: '#stories-swiper-scrollbar',
+                }
+          }
+        },
+
+     })
+  })
+</script>
+{% schema %}
+{
+  "name": "Swiper Story",
+  "settings": [{
+            "type":"color",
+            "id":"bg_color",
+            "label":"背景颜色"
+        },{
+            "type":"range",
+            "id":"padding_top",
+            "min":0,
+            "max": 100,
+            "step":1,
+            "unit":"px",
+            "label":"padding_top",
+            "default": 50
+        },{
+            "type":"range",
+            "id":"padding_bottom",
+            "min":0,
+            "max": 100,
+            "step":1,
+            "unit":"px",
+            "label":"padding_bottom",
+            "default": 50
+        }],
+  "blocks":[
+    {
+    "type":"brand",
+    "name":{
+      "en":"image",
+      "zh-CN":"image"
+    },
+    "settings":[{
+      "type":"image_picker",
+      "id":"image",
+      "label":{
+        "en":"Image",
+        "zh-CN":"图片"
+        }
+      },{
+      "type":"image_picker",
+      "id":"avater",
+      "label":{
+        "en":"Avater",
+        "zh-CN":"头像(建议尺寸46x46)"
+        }
+      },{
+      "type":"text",
+      "id":"author",
+      "label":{
+        "en":"author",
+        "zh-CN":"作者"
+        }
+      }]
+    }
+  ],
+  "presets":[
+    {
+    "name":"Swiper Story",
+    "blocks":[
+        {
+        "type":"brand"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,101 @@
+<div class="fn-press-added ">
+  <div>
+      <h3 class="t particular_title">    
+          {{section.settings.added_title}}
+      </h3>
+  </div>
+    <div class="fn-added-data">
+    <ul class="fn-added-list">
+      {% for block in section.blocks %}
+          <li class="fn-list-column">
+            {% if  block.settings.added_img != blank %}
+                <img src="{{ block.settings.added_img | img_url: '790x' }}" alt="">
+            {% endif %}
+            <div class="fn-column-cont">
+              <h3>{{ block.settings.press_title }}</h3>
+              <p>{{ block.settings.press_text }}</p>
+              <div class="fn-column-button">
+                  {% if  block.settings.press_link != blank %}
+                      <a href="{{ block.settings.press_link }}">
+                  {% endif %}
+                         {{ block.settings.link_text }}
+                  {% if  block.settings.press_link != blank %}
+                      </a>
+                  {% endif %}
+              </div>
+            </div>
+          </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% schema %}
+{
+	"name": "Find More",
+	"settings": [
+        {
+			"type": "text",
+			"id": "added_title",
+			"label": {
+				"en": "title",
+				"zh-CN": "标题"
+			}
+		}
+	],
+	"blocks": [{
+		"type": "FindMore",
+		"name": {
+			"en": "Find More",
+			"zh-CN": "Find More"
+		},
+		"settings": [
+			{
+				"type": "image_picker",
+				"id": "added_img",
+				"label": {
+					"en": "Image",
+					"zh-CN": "图片"
+				}
+			},
+           {
+				"type": "text",
+				"id": "press_title",
+				"label": {
+					"en": "Find More title",
+					"zh-CN": "标题"
+				}
+			},
+		{
+			"type": "text",
+			"id": "press_text",
+			"label": {
+				"en": "Find More text",
+				"zh-CN": "说明"
+			}
+		},
+        {
+          "type": "url",
+          "id": "press_link",
+          "label": {
+            "en": "press Link1",
+            "zh-CN": "链接"
+          }
+        },
+		{
+			"type": "text",
+			"id": "link_text",
+			"label": {
+				"en": "link text",
+				"zh-CN": "文本"
+			}
+		}
+		]
+	}]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,133 @@
+<div class="fn-Machine-typeSelection">
+<div class="fn-typeSelection-title">Select your machine below to save to My Machine</div>
+  <div class="fn-machine-from">
+    <form method="get" id="machineAjax">
+      <div class="fn-select-click">
+        <h5 class="fn-brand_h5">Brand</h5>
+        <div class="fn-down-svg"><img src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/2c71d0a7f899ef4e370c409186645292.png?v=1651630547" alt=""></div>
+        <ul>
+          {% for block in section.blocks %}
+          {% if block.type == "brand" %}
+          <li class="fn-option-click fn-option-brand">{{ block.settings.brand_option }}</li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="fn-select-click fn-select-click-picture">
+        <h5 class="fn-model_h5">Model</h5>
+        <div class="fn-down-svg"><img src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/2c71d0a7f899ef4e370c409186645292.png?v=1651630547" alt=""></div>
+
+        <ul>
+          {% for block in section.blocks %}
+          {% if block.type == "model" %}
+          <li class="fn-option-click fn-option-model">{{ block.settings.model_option }}</li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </form>
+  </div>
+<div type="button" id="typeSelection_button" class="fn-typeSelection-button">Conflrm</div>
+
+</div>
+<script>
+$(function () {
+  $('.fn-brand_h5').text(localStorage.getItem("fn-brand")||'Brand')
+  $('.fn-model_h5').text(localStorage.getItem("fn-model")||'Model')
+  $('.machine-header .fn-close').click(function () {
+    $('.machine,.fn-select-click ul').hide();
+    $('.fn-option-click').show();
+  });
+  $('.fn-select-click h5, .fn-down-svg').click(function () {
+    $(this).siblings('ul').toggle(300);
+    $(this).parent().siblings().children('ul').hide(300);
+  });
+  $('.fn-option-click').click(function () {
+    let optionText = $(this).text();
+    $(this).parent().siblings('h5').text(optionText);
+    $(this).parent('ul').hide(300);
+    $(this).parent().siblings().children('input').val(optionText);
+    $(this).parents().siblings().children().find('.fn-option-click').show();
+
+  });
+    $('.fn-option-brand').click(function () {
+    let contentBrand_Text = $(this).text();
+                console.log(contentBrand_Text, 'contentBrand_Text');
+
+    $('.contentBrand').text(contentBrand_Text);
+  });
+    $('.fn-option-model').click(function () {
+    let contentCricutMaker_Text = $(this).text();
+                console.log(contentCricutMaker_Text, 'contentCricutMaker_Text');
+    $('.contentCricutMaker').text(contentCricutMaker_Text);
+  });
+  $('.fn-option-model').click(function () {
+    let modelText = $(this).text();
+    localStorage.setItem("fn-model",modelText);
+    var index =  $(this).index();
+    //                   alert(index, 'index');
+    $("#fn-machine-productImage > li").eq(index).show().siblings().hide();
+  });
+
+  //二级联动
+  $('.fn-option-brand').click(function () {
+    let optionText = $(this).text();
+    localStorage.setItem("fn-brand",optionText);
+    $(this).parents().siblings().children().find('.fn-option-click').each(function(){
+      let titleArr = $(this).text();
+      if(titleArr.indexOf(optionText) === -1){
+        $(this).hide();
+      }
+    });
+  });
+    $('#typeSelection_button').click(function () {
+           $('#Machine_EDIT').show();
+	       $('.fn-Machine-typeSelection').toggle();
+           $('.fn-Machine-content').toggle();
+  });
+
+})
+</script>
+  {% schema %}
+    {
+       "name": "Machine type",
+      "settings": [
+      ],
+    "blocks": [
+      {
+        "type": "brand",
+        "name": {
+          "en": "Brand",
+          "zh-CN": "品牌"
+        },
+        "settings": [
+          {
+            "type": "text",
+            "id": "brand_option",
+            "label": {
+              "en": "Brand Opthion",
+              "zh-CN": "品牌选项"
+            }
+          }
+        ]
+      },
+      {
+        "type": "model",
+        "name": {
+          "en": "Model",
+          "zh-CN": "机型"
+        },
+        "settings": [
+          {
+            "type": "text",
+            "id": "model_option",
+            "label": {
+              "en": "Model Opthion",
+              "zh-CN": "机型选项"
+            }
+          }
+        ]
+      }
+    ]
+    }
+  {% endschema %}

@@ -1,0 +1,95 @@
+<div class="fn-live-video">
+    <div class="fn-streaming-title">
+      {{ section.settings.live_title }}
+  </div>
+  <div class="fn-streaming-mian">
+      <div class="fn-streaming-video">
+        {{ section.settings.live_video }}
+ </div>
+      <div class="fn-streaming-content">
+        <div class="fn-streaming-logo">
+            {% if section.settings.logo_img != blank %}
+            {% assign image = section.settings.logo_img | img_url: '62x' %}
+                <img src="{{ image }}" alt="">
+            {% endif %}
+            <div class="fn-streaming-sidebar">
+              <p class="fn-sidebar-title">{{ section.settings.sidebar_title }}</p>
+              <p class="fn-sidebar-time">{{ section.settings.sidebar_time }}</p>
+            </div>
+        </div>
+        <div>
+            <div class="fn-sidebar-subtitle">{{ section.settings.subtitle }}</div>
+            <div class="fn-sidebar-text">{{ section.settings.idebar_text }}</div>
+        </div>
+      </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Brand live",
+    "settings": [
+        {
+            "type": "text",
+            "id": "live_video",
+            "label": {
+                "en": "video site",
+                "zh-CN": "视频嵌入地址"
+            }
+        },
+        {
+            "type": "text",
+            "id": "live_title",
+            "label": {
+                "en": "live title",
+                "zh-CN": "标题"
+            }
+        },
+        {
+			"type": "image_picker",
+			"id": "logo_img",
+			"label": {
+				"en": "logo",
+				"zh-CN": "标志图片"
+			}
+		},
+        {
+            "type": "text",
+            "id": "sidebar_title",
+            "label": {
+                "en": "sidebar title",
+                "zh-CN": "标题"
+            }
+        },
+        {
+            "type": "text",
+            "id": "sidebar_time",
+            "label": {
+                "en": "time",
+                "zh-CN": "时间"
+            }
+        },
+        {
+            "type": "text",
+            "id": "subtitle",
+            "label": {
+                "en": "subtitle",
+                "zh-CN": "小标题"
+            }
+        },
+        {
+            "type": "richtext",
+            "id": "idebar_text",
+            "label": {
+                "en": "idebar text",
+                "zh-CN": "文本"
+            }
+        }
+     ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

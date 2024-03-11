@@ -1,0 +1,408 @@
+{% style %}
+.blind-box-commodity {
+  background-image:url('{{section.settings.backgroundImg | img_url: '1920x'}}');
+  background-repeat: no-repeat;
+  padding:30px 0px;
+  background-size: cover;
+}
+.blind-box-commodity .blind-box-data {
+  width:1160px;
+  display: flex;
+  background: #97E5C4;
+  align-items: center;
+  margin: 0 auto;
+  border-radius: 16px;
+  padding:30px 0px 30px 30px;
+}
+.blind-box-data .blind-box-product-images {
+  width:460px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.blind-box-data .blind-box-product-description {
+  flex: 1;
+  padding-left: 50px;
+}
+.blind-box-data .blind-box-product-description .blind-box-product-title{
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 30px;
+  color: #067342;
+  margin-bottom: 18px;
+}
+.blind-box-data .blind-box-product-description .blind-box-product-introduce {
+  color:#1B9A61;
+}
+.blind-box-data .blind-box-product-description .blind-box-product-introduce li .radius{
+  background:#1B9A61;
+  display: block;
+  min-width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 10px;    
+  margin-top: 10px;
+  vertical-align: middle;
+}
+.blind-box-data .blind-box-product-description .blind-box-product-introduce li{
+  margin-bottom: 6px;
+  display: flex;
+}
+.blind-box-data .blind-box-product-description .blind-box-product-price{
+  font-size: 22px;
+  font-weight: bold;
+  color: #097645;
+  line-height: 30px;
+  padding: 10px 0;
+}
+.blind-box-data .blind-box-product-description .blind-box-product-discountIntensity{
+  color: #10784A;
+  font-size: 12px;
+  line-height: 28px;
+  width: 123px;
+  height: 28px;
+  background: #40C68A;
+  text-align: center;
+  position: relative;
+}
+.blind-box-data .blind-box-product-description .blind-box-product-discountIntensity::after {
+  position: absolute;
+  content: "";
+  width: 12px;
+  height: 28px;
+  background: #97E5C4;
+  border-radius: 100%;
+  right: 0;
+  top: 50%;
+  transform: translate(50%, -50%);
+}
+.blind-box-data .blind-box-product-description .blind-box-product-discountIntensity::before{
+  position: absolute;
+  content: "";
+  width: 12px;
+  height: 28px;
+  background: #97E5C4;
+  border-radius: 100%;
+  left: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.blind-box-data .blind-box-product-description .blind-box-product-introduction{
+    font-size: 14px;
+    color: #1B9A61;
+    line-height: 19px;
+    display:none;
+}
+.blind-box-product-images input[type="radio"] {
+  display: none;
+}
+.product-form__buttons {
+  padding: 20px 0 10px;
+}
+.product-form__buttons .product-form__commit {
+  background: #26A96F;
+  border-radius: 6px;
+  width:370px;
+  height:40px;
+}
+.product-form__buttons .product-form__commit:hover {
+   --border-opacity: none;
+  --border-offset: none;
+}
+.product-form__buttons .product-form__commit::after {
+  box-shadow:none;
+}
+{% endstyle %}
+{% style %}
+  @media screen and (max-width: 1200px) {
+  .blind-box-commodity .blind-box-data {
+    width:98%;
+    padding: 30px 15px 30px 30px;
+  }
+}
+@media screen and (max-width: 990px) {
+  .blind-box-commodity .blind-box-data {
+    width: 98%;
+    padding: 30px 15px 30px 20px;
+  }
+  .product-form__buttons .product-form__commit {
+    width: 310px;
+  }
+  .blind-box-data .blind-box-product-description {
+    padding-left: 35px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .blind-box-commodity {
+    background-image:url('{{section.settings.cellphoneBackground | img_url: '768x'}}');
+    background-size: cover;
+    padding:20px 0px;  
+  }
+  .blind-box-data .blind-box-product-description .blind-box-product-title {
+    margin: 18px 0px;
+  }
+  .blind-box-commodity .blind-box-data {
+    padding: 30px 102px 30px 100px;
+  }
+  .blind-box-commodity .blind-box-data {
+    flex-direction: column;
+  }
+  .blind-box-data .blind-box-product-description {
+    padding:0px;
+  }
+  .blind-box-data .blind-box-product-images {
+    width:unset;
+  }
+  .product-form__buttons .product-form__commit {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .blind-box-commodity .blind-box-data {
+    padding: 30px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .blind-box-data .blind-box-product-description .blind-box-product-introduce {
+    font-size: 12px;
+  }
+  .blind-box-data .blind-box-product-description .blind-box-product-title {
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height:unset;
+  }
+  .blind-box-commodity .blind-box-data {
+    width: 95%;
+  }
+}
+@media screen and (max-width: 375px) {
+  .blind-box-commodity .blind-box-data {
+    padding: 15px 15px 30px;
+  }
+  .blind-box-data .blind-box-product-description .blind-box-product-introduction {
+    font-size: 12px;
+  }
+}
+{% endstyle %}
+{%- assign product_form_id = 'blind-box-form' -%}
+{%- assign product = section.settings.product -%}
+
+<div class="product-form__error-message-wrapper" role="alert" hidden>
+    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-error" viewBox="0 0 13 13">
+    <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+    <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+    <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+    <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+    </svg>
+    <span class="product-form__error-message"></span>
+</div>
+{% form 'product', product, id: product_form_id, novalidate: 'novalidate' %}
+<input type="hidden" name="quantity" value="1" inputmode="numeric" pattern="[0-9]*">
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+<div class="blind-box-commodity">
+  <div class="blind-box-data">
+    {%- for option in product.options_with_values -%}
+    {%- if option.name == 'Colors' or option.name == 'Color' -%}
+    <div class="blind-box-product-images" id="option_{{ product.id }}">
+      {%- for value in option.values -%}
+      <div data-id="{{  product.variants[forloop.index0].featured_image.id }}" class="blind-box-product-img">
+        {%- if product.variants[forloop.index0].featured_image != blank -%}
+        {{ value }}
+        {%- endif -%}
+      </div>
+      {%- endfor -%}
+    </div>
+    {%- else -%}
+    <div class="js product-form__input">
+        {%- for block in section.blocks -%}
+        {%- case block.type -%}
+        {%- when 'blindBoxCommodity' -%}
+        {%- if block.settings.img != black-%} <img src="{{ block.settings.img | img_url: '1920x' }}"
+          alt="" loading="lazy">
+          {%- endif -%}
+          {%- endcase -%}
+          {%- endfor -%}
+    </div>
+    {%- endif -%}
+    {%- endfor -%}
+    <div class="blind-box-product-description">
+      <div class="blind-box-product-title">{{ section.settings.blindBoxTitle }}</div>
+      <ul class="blind-box-product-introduce">
+      {%- for block in section.blocks -%}
+      {%- case block.type -%}
+      {%- when 'blindBoxCommodityText' -%}
+        <li><span class="radius"></span>{{block.settings.text}}</li>
+      {%- endcase -%}
+      {%- endfor -%}
+      </ul>
+      <div class="blind-box-product-price">{{ product.price | money }}</div>
+      <div class="blind-box-product-discountIntensity">{{ section.settings.blindBoxDiscountIntensity }}</div>
+      {%- for block in section.blocks -%}
+      {%- case block.type -%}
+      {%- when 'blindBoxCommodity' -%}
+     {% assign index = forloop.index %}
+      {%- if index <= 1 -%}
+        <div class="product-form__buttons">
+  <button
+    id="campaign_{{ product.id }}"
+    type="button"
+    class="product-form__commit button button--full-width"
+  >
+      <span class="t">
+        {%- if product.selected_or_first_available_variant.available -%}
+          {{ 'products.product.add_to_cart' | t }}
+        {%- else -%}
+          {{ 'products.product.sold_out' | t }}
+        {%- endif -%}
+      </span>
+      <div class="loading-overlay__spinner hidden">
+        <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+          <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+        </svg>
+      </div>
+  </button>
+</div>
+      {%- endif -%}
+      {%- endcase -%}
+      {%- endfor -%}
+      <div class="blind-box-product-introduction">{{ section.settings.blindBoxIntroduction }}</div>
+    </div>
+  </div>
+</div>
+{% endform %}
+<script>
+  $(function (){
+    var object_i = [{id:6821532598405},{id:6821519753349},{id:6821519949957},{id:6821519982725},{id:6821520212101},{id:6821520310405},{id:6821520605317},{id:6821520736389},{id:6821520801925},{id:6821520900229},{id:6821520998533}];
+   // let id = $(this).siblings('label').attr('data-id')
+   //    $('input[name="id"]').attr('value',id)
+     var product_itemss = {{ product.id }};
+     for (let j = 0; j < object_i.length; j++) {
+            let old = object_i[j];
+            if (product_itemss == old.id) {
+                $('#cart-notification-form').hide();
+              {% for item in cart.items %}
+                  var itemss = {{item.product.id}};
+                  for (let j = 0; j < object_i.length; j++) {
+                    let old = object_i[j];
+                    if (itemss == old.id) {
+                      // $('#campaign_6821532598405').hide();
+                      $('.product-form__commit').attr('disabled', true);
+                      $('.blind-box-product-introduction').css('display','block')
+                      $('#campaign_6821532598405').attr('disabled',true);
+                    }
+                  }
+              {% endfor %}
+            }
+          }
+   
+    $('.product-form__commit').click(function() {
+    let serialize = $("#blind-box-form").serialize();
+      $.post('/cart/add.js', serialize);
+      isclick = false;
+        $.ajax({
+          type: 'get',
+          dataType: 'json',
+          url: "https://qn.htvront.com/htvront-blindBox/click?site=US&module=盲盒结果页&clickName=Add To Cart",
+          success: function (result) {
+            console.log(result);
+          },
+          error: function (err) {
+            console.log(err);
+          }
+        });
+      for (let j = 0; j < object_i.length; j++) {
+              let old = object_i[j];   
+              var product_itemss = {{ product.id }};
+              if (product_itemss == old.id) {
+                $('#cart-notification-form').hide();
+              // $('#campaign_6821532598405').hide();
+                setTimeout(function(){
+                     $('.product-form__commit').attr('disabled', true);
+                $('.blind-box-product-introduction').css('display','block')
+                $('.product-form__commit').text('Item added to your cart')
+                },100);
+              }
+            } 
+    })
+  }); 
+  
+
+</script>
+{% schema %}
+  {
+    "name": "Blind Box Product Data",
+    "settings": [
+      {
+      "type": "image_picker",
+      "id": "backgroundImg",
+      "label": "backgroundImg"
+    },
+    {
+      "type": "image_picker",
+      "id": "cellphoneBackground",
+      "label": "cellphoneBackground"
+    },
+    {
+      "type": "text",
+      "id": "blindBoxTitle",
+      "label": "blindBoxTitle"
+    },
+    {
+      "type": "text",
+      "id": "blindBoxIntroduction",
+      "label": "blindBoxIntroduction"
+    },
+    {
+      "type": "text",
+      "id": "blindBoxDiscountIntensity",
+      "label": "blindBoxDiscountIntensity"
+    },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "product"
+        }
+    ],
+    "blocks": [
+    {
+      "type": "blindBoxCommodity",
+      "name": "blindBoxCommodity",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "img"
+        },
+        {
+          "type": "text",
+          "id": "model",
+          "label": "model"
+        }
+      ]
+    },
+      {
+      "type": "blindBoxCommodityText",
+      "name": "blindBoxCommodityText",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "text"
+        }
+      ]
+    }
+    ],
+  "presets": [
+    {
+      "name": "Blind Box Product Reult"
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

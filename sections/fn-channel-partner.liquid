@@ -1,0 +1,50 @@
+<div class="fn-channel-partner">
+   <div class="fn-partner-title t">{{ section.settings.partner_title }} </div>
+   <div class="fn-partner-text">{{ section.settings.partner_text }} </div>
+  <div class="fn-partner-Contactway">
+  <div class="fn-Contactway-left">
+    <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/bishka-nguyen-nJF42yBkQzg-unsplash.png?v=1661764189" alt="" loading="lazy">
+    <div class="fn-Contactway-msg">
+      <p class="t">Influencer Cooperation Email:</p>
+      <p>branding@htvront.com</p>
+    </div>
+  </div>
+  <div class="fn-Contactway-right">
+    <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/jake-nackos-IF9TK5Uy-KI-unsplash.png?v=1661764189" alt="" loading="lazy">
+    <div class="fn-Contactway-msg">
+      <p class="t">Media Cooperation Email:</p>
+      <p>pr@htvront.com</p>
+    </div>
+  </div>
+</div>
+</div>
+{% schema %}
+  {
+    "name": "partner",
+    "settings": [
+
+        {
+          "type": "text",
+          "id": "partner_title",
+          "label": {
+          "en": "title",
+          "zh-CN": "标题"
+          }
+        },
+        {
+          "type": "text",
+          "id": "partner_text",
+          "label": {
+          "en": "text",
+          "zh-CN": "说明"
+          }
+        }
+     ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

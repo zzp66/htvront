@@ -1,0 +1,149 @@
+<style>
+    #shopify-section-{{ section.id }} .cup-presell-comparison{
+        background-size: 100% 100%;
+        background-position: center;
+        overflow: hidden;
+        background-color:  {{section.settings.background_color}};
+    }
+    .comparison-img{
+        margin:0 auto;
+    }
+    .cup-presell-comparison{
+        padding:30px 0 40px
+    }
+    .cup-presell-comparison>p{
+        font-size: 36px;
+        font-weight: bold;
+        color: #723600;
+        line-height: 49px;
+        text-align: center;
+        padding-top:30px;
+    }
+    @media screen and (max-width: 1720px){
+        .cup-presell-comparison>p{
+            font-size:28px;
+        }
+    }
+    @media screen and (max-width: 1440px){
+        .comparison-img {
+            width: 80%;
+        }
+    }
+    @media screen and (max-width: 820px){
+        .cup-presell-comparison>p{
+            font-size:16px;
+            padding-top:15px;
+            line-height: 22px;
+            padding-bottom:10px;
+        }
+        #shopify-section-{{ section.id }} .cup-presell-comparison{
+            background: {{section.settings.background_color}}
+        }
+    }
+    @media screen and (max-width: 768px){
+        .cup-presell-comparison{
+            padding:10px 0 18px
+        }
+    }
+    @media screen and (max-width: 750px){
+        .cup-presell-comparison>.scroll{
+            overflow-x: scroll;
+            width: 93.3%;
+            margin: 0 auto;
+            margin-bottom:20px;
+        }
+        #shopify-section-{{ section.id }} .cup-presell-comparison>.scroll>div{
+            width:{{ section.settings.image_mobile_url }}px;
+            margin: 0 auto;
+        }
+        .scroll::-webkit-scrollbar {
+            width: 100%;
+            height: 7px;
+        }
+        .scroll::-webkit-scrollbar-thumb {
+            background-color: #FBE2C4;
+            border-radius: 4px;
+        }
+        .scroll::-webkit-scrollbar-track {
+            background: #D4B58F;
+            border-radius: 4px;
+        }
+        .comparison-img{
+            width:100%;
+        }
+    }
+</style>
+<div class="cup-presell-comparison" id="{{ section.settings.id }}">
+    <div class="cap-module-title">
+        <div class="cap-module-host-title">{{ section.settings.title }}</div>
+        <div class="cap-module-desc-title">{{ section.settings.title_desc }}</div>
+    </div>
+    <div class="scroll">
+        <div>
+            {% assign imageUrl = section.settings.image_url | append: 'x' %}
+            {% assign imageUrlMobile = section.settings.image_mobile_url | append: 'x' %}
+            <picture>
+                <source media="(max-width: 750px)" srcset="{{ section.settings.image_mobile | img_url:imageUrlMobile}}">
+                <source media="(min-width: 751px)" srcset="{{ section.settings.image | img_url:imageUrl}}">
+                <img src="{{ section.settings.image | img_url: imageUrl }}" class="comparison-img">
+            </picture>
+        </div>
+    </div>
+</div>
+{% schema %}
+{
+    "name":"Cap Hot Press Comparison",
+    "settings":[
+        {
+            "type":"text",
+            "id":"id",
+            "label":"id(页面唯一性，全英文)"
+        },
+        {
+            "type":"color",
+            "id":"background_color",
+            "label":"background color"
+        },
+        {
+            "type":"image_picker",
+            "id":"background_image",
+            "label":"background image"
+        },
+        {
+            "type":"text",
+            "id":"title",
+            "label":"title"
+        },
+        {
+            "type":"text",
+            "id":"title_desc",
+            "label":"title_desc"
+        },
+        {
+            "type":"image_picker",
+            "id":"image",
+            "label":"image"
+        },
+        {
+            "type":"image_picker",
+            "id":"image_mobile",
+            "label":"image mobile"
+        },
+        {
+            "type":"text",
+            "id":"image_url",
+            "label":"图片尺寸（PC）"
+        },
+        {
+            "type":"text",
+            "id":"image_mobile_url",
+            "label":"图片尺寸（移动）"
+        }
+    ],
+    "presets":[
+        {
+            "name":"Cap Hot Press Comparison"
+        }
+    ]
+}
+{% endschema %}

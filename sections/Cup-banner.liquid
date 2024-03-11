@@ -1,0 +1,606 @@
+<style>
+   .cup-banner-models .show-in-mobile{
+     display: none;
+   }
+  .cup-dialog{
+    width:1200px;
+    height:540px;
+    background-color:#FFF6EB;
+    border-radius: 8px;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    z-index: 1000;
+    display:none;
+  }
+  .icon-cup-close{
+    position: absolute;
+    right: 17px;
+    top: 9px;
+    cursor: pointer;
+  }
+  .cup-dialog .title{
+    height:180px;
+    font-size: 36px;
+    font-weight: bold;
+    color: #333333;
+    margin: 0;
+    text-align: center;
+    line-height: 180px;
+  }
+  .cup-dialog-img{
+    position: absolute;
+    bottom: 0;
+    right: 38px;
+  }
+  .dialog-middle{
+    text-align:center;
+  }
+  .dialog-middle>i{
+    font-size: 24px;
+    color: #333333;
+    line-height: 33px;
+    font-style: normal;
+    padding-right: 15px;
+    vertical-align: middle;
+  }
+  .dialog-middle>p{
+    font-size: 18px;
+    color: #333333;
+    display: inline-block;
+    margin: 10px 0 0 -195px;
+  }
+  .cup-dialog .newsletter-form{
+    max-width: 820px;
+    display: inline-block;
+    text-align: left;
+  }
+  .cup-dialog .newsletter-form__field-wrapper{
+    max-width: 820px;
+  }
+  .cup-dialog .newsletter-form__field-wrapper .field__input{
+    width: 620px;
+    height: 60px;
+    line-height: 60px;
+    border: 1px solid #333333;
+    font-size: 18px;
+    border-radius: 4px;
+    padding: 5px 10px;
+  }
+  .cup-dialog .field__label{
+    display:none;
+  }
+  .cup-dialog .t{
+    width: 190px;
+    height: 60px;
+    background: #884A16;
+    border-radius: 4px;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    vertical-align: middle;
+    letter-spacing: 1px;
+    margin-left: 3px;
+    cursor: pointer;
+  }
+  .cup-body-mask{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0;
+    top: 0;
+    z-index: 999;
+    display: none;
+  }
+  .cup-banner-image{
+    position: relative;
+  }
+  .cup-buttons{
+    position: absolute;
+    top: 354px;
+    left: 132px;
+  }
+  .cup-buttons>a{
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 26px 4px 26px;
+    border: 2px solid #884A16;
+    border-radius: 4px;
+  }
+  .cup-buttons .icon-dialog{
+    padding:13px 34px;
+    background: #884A16;
+    border-radius: 29px;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+  }
+  .cup-buttons .icon-style img{
+    display:inline-block;
+  }
+  .cup-buttons .icon-style i{
+    font-size: 18px;
+    color: #884A16;
+    font-style:normal;
+    vertical-align: middle;
+  }
+  .cup-dialog .newsletter-form__message{
+    display:none;
+  }
+  .cup-buttons>p{
+    font-size: 18px;
+    color: #884A16;
+    line-height: 24px;
+    padding: 18px 0 12px 0;
+  }
+  .icon-style:nth-of-type(1){
+    margin-right:8px;
+  }
+  .learn-more{
+    position: absolute;
+    top: 43%;
+    left: 32.5%;
+    font-size: 30px;
+    font-weight: bold;
+    color: #884A16 !important;
+  }
+  @media screen and (max-width: 1800px){
+    .cup-buttons{
+      left: 7%;
+      top: 54%;
+    }
+    .cup-buttons .icon-dialog{
+      font-size: 22px;
+    }
+  }
+  @media screen and (max-width:1440px){
+    .learn-more{
+      font-size: 23px;
+    }
+  }
+  @media screen and (max-width:1280px){
+    .cup-dialog{
+      width: 88%;
+    }
+    .cup-buttons .icon-dialog{
+      padding: 10px 30px;
+    }
+    .cup-dialog .title{
+      height: 150px;
+      font-size: 32px;
+      line-height: 150px;
+    }
+    .cup-dialog .newsletter-form{
+      max-width: 550px;
+    }
+    .cup-dialog .newsletter-form__field-wrapper{
+      max-width: 550px;
+    }
+    .cup-dialog .newsletter-form__field-wrapper .field__input{
+      width:400px;
+    }
+    .cup-dialog .t{
+      width: 135px;
+    }
+    .dialog-middle>p{
+      margin-left:80px;
+    }
+    .cup-buttons>p{
+      padding:12px 0;
+    }
+    .cup-buttons .icon-style{
+      padding: 3px 16px;
+    }
+    .learn-more{
+      font-size: 21px;
+    }
+  }
+  @media screen and (max-width: 1024px){
+     .learn-more{
+      font-size: 17px;
+    }
+    .cup-buttons .icon-dialog{
+      font-size: 18px;
+      padding: 8px 15px;
+    }
+    .cup-buttons .icon-style{
+      padding:2px 15px;
+    }
+    .dialog-middle>i{
+      font-size: 22px;
+    }
+    .cup-dialog .newsletter-form{
+      max-width: 50rem;
+    }
+    .cup-dialog .newsletter-form__field-wrapper{
+      max-width: 50rem;
+    }
+    .cup-dialog .newsletter-form__field-wrapper .field__input{
+      width: 36rem;
+    }
+    .cup-dialog .t{
+      width: 13rem;
+    }
+    .dialog-middle>p{
+      margin-left: 12rem;
+    }
+    .cup-buttons>p{
+      padding: 5px 0;
+      font-size: 14px;
+    }
+    .cup-buttons .icon-style img{
+      width: 30px;
+    }
+    .cup-buttons .icon-style{
+      padding: 2px 13px;
+    }
+    .icon-style:nth-of-type(1){
+      margin-right:5px;
+    }
+    .cup-buttons .icon-style i{
+      font-size:16px;
+    }
+    .cup-buttons .icon-dialog{
+      font-size: 17px;
+    }
+  }
+  @media screen and (max-width: 820px){
+    .learn-more{
+      font-size: 14px;
+    }
+  }
+  @media screen and (max-width: 750px){
+    .learn-more{
+      font-size: 22px;
+      left: 7%;
+      top: 23%;
+    }
+    .cup-banner-models .show-in-mobile{
+      display:block;
+    }
+    .cup-banner-models .show-in-pc{
+      display: none;
+    }
+    .cup-buttons{
+      top: 28%;
+    }
+    .cup-buttons .icon-dialog{
+      font-size: 18px;
+      letter-spacing: 0.5px;
+    }
+    .cup-buttons .icon-style{
+      padding: 3px 12px;
+      border: 1px solid #884A16;
+      float: left;
+    }
+    .cup-dialog{
+      height: 35rem;
+    }
+    .cup-dialog .title{
+      height: 100px;
+      line-height: 100px;
+      font-size: 24px;
+    }
+    .dialog-middle>i{
+      font-size:16px;
+      padding-right: 5px;
+    }
+    .cup-dialog .newsletter-form{
+      max-width:36rem;
+    }
+    .cup-dialog .newsletter-form__field-wrapper{
+      max-width:36rem;
+    }
+    .cup-dialog .newsletter-form__field-wrapper .field__input{
+      width: 25rem;
+      height: 40px;
+      line-height: 40px
+    }
+    .cup-dialog .t{
+      width: 10rem;
+      height: 40px;
+      font-size: 16px
+    }
+    .dialog-middle>p{
+      font-size: 14px;
+      margin: 0 auto;
+    }
+    .cup-dialog-img{
+      width:16rem;
+    }
+    .cup-buttons>p{
+      width: 250px;
+      padding: 15px 0 5px 0;
+      line-height:22px;
+    }
+    .cup-buttons .icon-style img{
+      width:auto;
+    }
+  }
+  @media screen and (max-width:550px){
+    .cup-dialog{
+      height:25rem;
+      padding: 0 10px;
+    }
+    .cup-dialog .title{
+      height: 60px;
+      font-size: 18px;
+      line-height: 60px;
+    }
+    .cup-dialog .newsletter-form{
+      max-width: 25rem;
+    }
+    .cup-dialog .newsletter-form__field-wrapper{
+      max-width: 25rem;
+    }
+    .cup-dialog .newsletter-form__field-wrapper .field__input{
+      width: 16rem;
+      height: 30px;
+      line-height: 30px;
+    }
+    .cup-dialog .t{
+      width: 8rem;
+      height: 30px;
+      font-size: 14px;
+    }
+    .dialog-middle>p{
+      font-size: 12px;
+    }
+    .cup-dialog-img{
+      width:10rem;
+    }
+    .icon-cup-close{
+      width: 25px;
+      height: 25px;
+    }
+     .learn-more{
+       top: 23.5%;
+     }    
+    .cup-buttons{
+      top:30%;
+    }
+  }
+  @media screen and (max-width: 450px){
+     .cup-dialog .title{
+       font-size: 14px;
+     }
+     .dialog-middle>i{
+       font-size: 14px;
+     }
+    .learn-more{
+      font-size:18px;
+    }
+  }
+   @media screen and (max-width: 375px){
+     .cup-buttons {
+      top: 29%;
+    }
+    .cup-dialog{
+      height:25rem;
+      padding: 0 6px;
+    }
+     .cup-buttons .icon-dialog{
+       font-size:14px;
+     }
+     .cup-buttons>p{
+       padding-top:10px;
+     }
+     .cup-buttons .icon-style{
+       padding:3px 8px;
+     }
+     .cup-buttons .icon-style i{
+       font-size:12px;
+     }
+      .learn-more{
+        top: 23%;
+        font-size: 15px;
+      }
+   }
+</style>
+<div class="cup-banner-models">
+  <div class="cup-banner-image">
+    {%- if section.settings.image != blank -%}
+      <img
+        class="show-in-pc"
+        src="{{ section.settings.image | img_url: '1920x' }}"
+        alt="{{ section.settings.image.alt }}"
+      >
+    {%- endif -%}
+    {%- if section.settings.image_mobile != blank -%}
+      <img
+        class="show-in-mobile"
+        src="{{ section.settings.image_mobile | img_url: '750x' }}"
+        alt="{{ section.settings.image_mobile.alt }}"
+      >
+    {%- endif -%}
+    {% if section.settings.learn_more_url != blank %}
+      <a href="{{ section.settings.learn_more_url }}" class="learn-more">Learn more >></a>
+    {% endif %}
+    <div class="cup-buttons">
+      <button class="icon-dialog">{{ section.settings.big_button_text }}</button>
+      <p>{{ section.settings.tips }}</p>
+      {% for block in section.blocks %}
+         {%- if block.settings.icon_img != blank -%}
+          <a class="icon-style" href="{{ block.settings.icon_link }}">
+           <picture>
+              <source media="(max-width: 750px)" srcset="{{ block.settings.icon_img_mobile | img_url:'25x' }}">
+              <source media="(min-width: 751px)" srcset="{{block.settings.icon_img | img_url:'40x' }}">
+              <img src="{{ block.settings.icon_img | img_url: '40x' }}" alt="{{ block.settings.icon_img.alt }}">
+            </picture>
+            <i>{{ block.settings.icon_text }}</i>
+          </a>
+        {%- endif -%}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="cup-dialog">
+    <img
+      class="icon-cup-close"
+      src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/icon-cup-close.png?v=1688954093"
+    >
+    <div class="title">
+      {{ section.settings.dialog_title }}
+    </div>
+    <div class="dialog-middle">
+      <i>E-mail</i>
+      {% form 'customer', class: 'newsletter-form' %}
+        <input type="hidden" name="contact[tags]" value="newsletter,subcribe_from_cup_warmup">
+        <div class="newsletter-form__field-wrapper">
+          <div class="home-emailInput">
+            <input
+              id="NewsletterForm--{{ section.id }}"
+              type="email"
+              name="contact[email]"
+              class="field__input"
+              value="{{ form.email }}"
+              aria-required="true"
+              autocorrect="off"
+              autocapitalize="off"
+              autocomplete="email"
+              {% if form.errors %}
+                autofocus
+                aria-invalid="true"
+                aria-describedby="Newsletter-error--{{ section.id }}"
+              {% elsif form.posted_successfully? %}
+                aria-describedby="Newsletter-success--{{ section.id }}"
+              {% endif %}
+              placeholder="Enter your email "
+              required
+            >
+            <label class="field__label" for="NewsletterForm--{{ section.id }}">Enter your email </label>
+            <button
+              type="submit"
+              class="home-emailButton t"
+              name="commit"
+              id="Subscribe"
+              aria-label="{{ 'newsletter.button_label' | t }}"
+            >
+              <!-- {% render 'icon-arrow' %} -->
+              Submit
+            </button>
+          </div>
+          {%- if form.errors -%}
+            <small class="newsletter-form__message form__message" id="Newsletter-error--{{ section.id }}">
+              {%- render 'icon-error' -%}
+              {{- form.errors.translated_fields.email | capitalize }}
+              {{ form.errors.messages.email -}}
+            </small>
+          {%- endif -%}
+        </div>
+        {%- if form.posted_successfully? -%}
+          <h3
+            class="newsletter-form__message newsletter-form__message--success form__message"
+            id="Newsletter-success--{{ section.id }}"
+            tabindex="-1"
+            autofocus
+          >
+            {% render 'icon-success' -%}
+            {{- 'newsletter.success' | t }}
+          </h3>
+        {%- endif -%}
+      {% endform %}
+      <p>We will email you the latest pre-sale info and special offers.</p>
+    </div>
+    <img class="cup-dialog-img" src="{{ section.settings.cup_dialog_img | img_url: '1920x' }}">
+  </div>
+  <div class="cup-body-mask"></div>
+</div>
+<script>
+  $(function(){
+    $('.cup-buttons .icon-dialog').on('click',function(){
+       $('.dialog-middle .field__input').val('')
+       $('.cup-dialog').css('display',"block")
+       $('.cup-body-mask').css('display',"block")
+     })
+    $('.cup-dialog .icon-cup-close').on('click',function(){
+       $('.cup-dialog').css('display',"none")
+       $('.cup-body-mask').css('display',"none")
+     })
+  })
+</script>
+{% schema %}
+{
+    "name":"Cup Banner",
+    "settings":[
+        {
+          "type":"image_picker",
+          "id":"image",
+          "label":{
+              "en":"Banner Image",
+              "zh-CN":"图片"
+          }
+        },{
+          "type":"image_picker",
+          "id":"image_mobile",
+          "label":{
+              "en":"Banner Image mobile",
+              "zh-CN":"手机端图片"
+          }
+        },
+        {
+         "type":"url",
+         "id":"learn_more_url",
+         "label":"learn more url"
+        },
+        {
+            "type":"text",
+            "id":"dialog_title",
+            "label":{
+              "en":"Dialog Title",
+              "zh-CN":"弹窗标题"
+            }
+        },{
+          "type":"image_picker",
+          "id":"cup_dialog_img",
+          "label":{
+              "en":"Cup Dialog Image",
+              "zh-CN":"弹窗底部图片"
+          }
+        },{
+          "type":"text",
+          "id":"big_button_text",
+          "label":"Big button text"
+        },{
+          "type":"text",
+          "id":"tips",
+          "label":"tips"
+        }
+    ],
+  "blocks":[{
+      "name":"icon",
+      "type":"bundle",
+       "settings":[
+        {
+          "type": "image_picker",
+          "id": "icon_img",
+          "label": "icon image"
+        },
+         {
+           "type":"image_picker",
+           "id":"icon_img_mobile",
+           "label":"icon image mobile"
+         },
+        {
+         "type":"text",
+          "id":"icon_text",
+          "label":"icon text"
+        },
+         {
+           "type":"url",
+           "id":"icon_link",
+           "label":"icon link"
+         }
+      ]
+    }],
+    "presets":[
+        {
+          "name":"Cup Banner"
+        }
+    ]
+}
+{% endschema %}

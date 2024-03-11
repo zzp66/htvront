@@ -1,0 +1,311 @@
+<style>
+   .Cup-hot-ticket-model{
+     background-image:url('{{ section.settings.background_image | img_url:'1920x' }}');
+     background-size: 100% 100%;
+     background-position: center;
+  }
+  .Cup-hot-ticket {
+    width: 1600px;
+    margin: 0 auto;
+    background: #ffffff;
+    box-shadow: 0 6px 14px #4822034d;
+    border-radius: 10px 10px 0 0;
+    padding: 35px 36px 17px;
+  }
+  .cup-buy-ticket {
+    display: flex;
+  }
+  .cup-buy-right {
+    margin: 30px 0 0 46px;
+    flex: 1;
+  }
+  .cup-buy-right .cup-hot-title {
+    text-align: left;
+  }
+  .cup-hot-title,
+  .fn-video-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 49px;
+    text-align: center;
+  }
+  .cup-buy-describe {
+    font-size: 18px;
+    color: #333333;
+    line-height: 32px;
+    margin: 13px 0 28px 0;
+  }
+  .cup-buy-button .shopify-payment-button__button--unbranded {
+    font-size: 18px;
+    font-weight: bold;
+    --border-opacity: none;
+    --border-offset: none;
+    padding: 0;
+    width: 160px;
+    height: 50px;
+    border-radius: 8px;
+    border: 2px solid #F2AE72;
+    color: #F2AE72;
+    background: #fff;
+  }
+  .cup-buy-button .button--full-width{  
+    width: 160px;
+    height: 50px;
+    background: linear-gradient(172deg, #FFE2B8 0%, #F3AF73 100%);
+    border-radius: 8px;
+    font-size: 18px;
+    padding: 0;
+    --border-opacity: none;
+    --border-offset: none;
+  }
+  .cup-buy-button>div{
+    display:inline-block;
+  }
+  .cup-buy-button>div:nth-child(1){
+    margin-right:10px;
+  }
+  .cup-hot-rate{
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 10px;
+  }
+  .cup-buy-describe>p>span{
+    display: block;
+    font-size: 15px;
+  }
+  .cup-buy-describe>p>span:before{
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: #333333;
+    display: inline-block;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 14px;
+  }
+  .Cup-hot-ticket-model .shopify-payment-button__more-options{
+    display:none;
+  }
+  .cup-sale_button{
+    width: 160px;
+    height: 50px;
+    background: linear-gradient(172deg, #FFE2B8 0%, #F3AF73 100%);
+    border-radius: 8px;
+    font-size: 18px;
+    padding: 0;
+    color:#fff;
+    line-height:50px;
+    text-align:center;
+    cursor: pointer;
+    border:none;
+    display:none;
+    letter-spacing: 1px;
+  }
+  @media screen and (max-width:1720px){
+    .Cup-hot-ticket{
+      width:83.33%
+    }
+    .cup-buy-right{
+      margin: 0 0 0 25px;
+      flex: auto;
+    }
+  }
+   @media screen and (max-width:1180px){
+    .Cup-hot-ticket{
+      width:93.6%;
+    }
+     .cup-buy-button .button--full-width,.cup-buy-button .shopify-payment-button__button--unbranded,.cup-sale_button{
+       width: 120px;
+       height: 40px;
+       border-radius: 4px;
+       font-size:14px;
+       min-height: 40px;
+       min-width: 120px;
+     }
+     .cup-sale_button{
+       line-height: 40px;
+     }
+     .cup-buy-describe,.cup-buy-describe>p>span{
+       font-size:14px;
+     }
+  }
+   @media screen and (max-width:750px){
+    .Cup-hot-ticket-model{
+       background-image:url('{{ section.settings.background_image_mobile | img_url:'750x' }}');
+       background-size: 100% 100%;
+       background-position: center;
+     }
+     .cup-buy-ticket{
+       flex-direction: column;
+     }
+     .Cup-hot-ticket{
+       padding: 20px 10px;
+     }
+     .cup-buy-ticket picture img{
+       margin:0 auto;
+     }
+     .cup-buy-right{
+       margin:0;
+       margin-left:5px;
+     }
+     .cup-hot-rate{
+       font-size:14px;
+       margin:10px 0;
+     }
+     .cup-buy-right .cup-hot-title{
+       font-size: 16px;
+       line-height:16px;
+     }
+     .cup-buy-describe{
+       margin: 5px 0 13px 0;
+     }
+   }
+</style>
+<div class="Cup-hot-ticket-model">
+  <div class="Cup-hot-ticket">
+    <div class="cup-buy-ticket">
+      <div>
+        <picture>
+          <source media="(max-width: 750px)" srcset="{{ section.settings.image_mobile | img_url:'662x' }}">
+          <source media="(min-width: 751px)" srcset="{{ section.settings.image | img_url:'770x' }}">
+          <img src="{{ section.settings.image | img_url:'770x' }}">
+        </picture>
+      </div>
+      <div class="cup-buy-right">
+        <div class="cup-hot-rate">
+          {{ section.settings.rate }}
+        </div>
+        <div class="cup-hot-title">
+          {{ section.settings.title }}
+        </div>
+        <div class="cup-buy-describe">
+          {{ section.settings.describe }}
+        </div>
+        <div class="cup-buy-button">
+          <div class="addcart-sale">
+            {% render 'addCart-Model' ,product: section.settings.product, buttonText: 'Add to Cart' %}
+          </div>
+          <button class="cup-sale_button t">Add to Cart</button>
+          <div>
+            <product-form class="product-form">
+               <div class="product-form__error-message-wrapper" role="alert" hidden>
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-error" viewBox="0 0 13 13">
+                  <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+                  <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+                  <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+                  <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+                </svg>
+                <span class="product-form__error-message"></span>
+              </div>
+              {%- form 'product',
+                section.settings.product,
+                id: product_form_id,
+                class: 'form',
+                novalidate: 'novalidate',
+                data-type: 'add-to-cart-form'
+              -%}
+                <input
+                  type="hidden"
+                  name="id"
+                  value="{{ section.settings.product.selected_or_first_available_variant.id }}"
+                  disabled
+                >
+                <div class="product-form__buttons">
+                  <div
+                    data-shopify="payment-button"
+                    data-has-selling-plan="true"
+                    data-has-fixed-selling-plan="false"
+                    class="shopify-payment-button"
+                    onclick="buyNow('{{ section.settings.product.selected_or_first_available_variant.id }}')"
+                  ></div>
+                </div>
+              {%- endform -%}
+            </product-form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(function (){
+      var sale_arr = ['6836457472133'];
+      $(".cup-buy-button .product-form__submit").click(function(){
+        var button_id = $(this).attr('id').substring(9);
+         if(sale_arr.indexOf(button_id) != -1 ) {
+            $('.addcart-sale').hide();
+            $('.cup-sale_button').css({'display':'inline-block','margin-right':'10px'});
+         } else {
+            $('.addcart-sale').show();
+         }  
+      });
+     $(".cup-buy-button .cup-sale_button").click(function(){
+        alertTips()
+     })
+  })
+  function alertTips(){
+      var alertFram = document.createElement("DIV");
+      alertFram.id = "alertFram";
+      alertFram.style.position = "fixed";
+      alertFram.style.width = "100%";
+      alertFram.style.textAlign = "center";
+      alertFram.style.bottom = "40px";
+      alertFram.style.zIndex = "10001";
+      strHtml = " <span style=\"font-family: 微软雅黑;display:inline-block;background:#333;color:#fff;padding:0 20px;line-height:36px;border-radius:6px; \">A deposit has already been added to your cart.</span>";
+      alertFram.innerHTML = strHtml;
+      document.body.appendChild(alertFram);
+      setTimeout((function(){
+        alertFram.style.display="none";
+      }),2000);
+    }
+</script>
+{% schema %}
+{
+  "name": "Cup hot ticket version2",
+  "settings": [
+    {
+     "type":"image_picker",
+     "id":"background_image",
+     "label":"background image"
+    },{
+     "type":"image_picker",
+     "id":"background_image_mobile",
+     "label":"background image mobile"
+    },{
+    "type":"image_picker",
+    "id":"image",
+    "label":"image"
+    },{
+    "type":"image_picker",
+    "id":"image_mobile",
+    "label":"image mobile"
+    },{
+    "type":"text",
+    "id":"rate",
+    "label":"rate"
+    },{
+    "type":"text",
+    "id":"title",
+    "label":"title"
+    },{
+    "type":"html",
+    "id":"describe",
+    "label":"describe"
+    },{
+    "type":"product",
+    "id":"product",
+    "label":"product"
+  }],
+  "presets":[{
+    "name":"Cup Hot Ticket Version2"
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

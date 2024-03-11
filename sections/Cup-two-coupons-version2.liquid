@@ -1,0 +1,699 @@
+<style>
+  .cup-two-coupons{
+    background-image:url('{{ section.settings.background_image | img_url:'1920x' }}');
+    background-size: 100% 100%;
+    background-position: center;
+    padding:15px 0 25px 0;
+  }  
+  .cup-two-coupons-box{
+    width: 1600px;
+    margin: 0 auto;
+    background: #ffffff;
+    box-shadow:0 6px 14px #4822034d;
+    padding: 5px 40px 30px 40px;
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .coupons-model:nth-child(1){
+    margin-right:20px;
+  }
+  .coupons-model{
+    background: linear-gradient(180deg, #FFF4E6 1%, #FFEEDD 100%);
+    border-radius: 8px;
+    padding:20px 75px;
+  }
+  .coupons-box{
+     background-image:url('{{ section.settings.model_bg_img | img_url:'600x' }}');
+     background-size: 100% 100%;
+     background-position: center;
+  }
+  .top-coupons{
+    padding: 22px 42px 20px 41px;
+    position: relative;
+  }
+  .top-text{
+    position: absolute;
+    top: 44px;
+    width: 100%;
+    text-align: center;
+    left: 0;
+  }
+  .top-text>p{
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 24px;
+  }
+  .top-voucher>p{
+    display:inline-block;
+    color: #E98100;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 27px;
+  }
+  .top-voucher>p>span{
+    font-size:20px;
+  }
+  .top-voucher.single>p{
+    font-size: 60px;
+    line-height: 60px;
+  }
+  .top-vouche.singler>p>span{
+    font-size:40px;
+  }
+  .top-voucher.single>.word-more{
+    font-size: 38px;
+  }
+ .top-voucher.single>.word-more>span{
+    font-size:20px;
+  }
+  .top-voucher.single>.word-more>b{
+    font-size:30px;
+  }
+.top-voucher.single>p>span{
+    font-size:40px;
+  }
+  .top-voucher>span{
+    font-size: 18px;
+    font-weight: bold;
+    padding-left: 10px;
+    color: #E98100;
+  }
+  .top-voucher>img{
+    display:inline-block;
+    vertical-align: baseline;
+    cursor: pointer;
+  }
+  .top-text>.top-voucher:nth-of-type(1){
+    padding:10px 0;
+  }
+  .bottom-coupons>p{
+    font-size: 20px;
+    font-weight: bold;
+    max-width: 425px;
+    text-align: center;
+    line-height: 27px;
+    margin: 0 auto;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .bottom-coupons>span{
+    display: block;
+    font-size: 20px;
+    line-height: 27px;
+    padding-top: 9px;
+    text-align: center;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .bottom-coupons>a:nth-of-type(1)>img{
+    margin: 0 auto;
+    padding: 11px 0 23px 0;
+  }
+  .bottom-coupons>a:nth-of-type(1)>.img-first{
+    padding-bottom:0;
+  }
+  .bottom-coupons{
+    padding:20px 70px;
+  }
+  .bottom-coupons>a:nth-of-type(2){
+    width: 100%;
+    height: 58px;
+    background: linear-gradient(172deg, #FFE2B8 0%, #F3AF73 100%);
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 58px;
+  }
+  .bottom-coupons .fn-color-attr ul li{
+    width:43px;
+    height:43px;
+    margin-right: 9px;
+  }
+  .bottom-coupons .fn-color-attr ul li img{
+    width:43px;
+    height:43px;
+  }
+  .bottom-coupons .fn-color-attr{
+    margin:15px 0;
+    height:43px;
+  }
+  .bottom-coupons .button--full-width{
+    border-radius: 4px;
+    background: linear-gradient(172deg, #FFE2B8 0%, #F3AF73 100%);
+    height: 58px;
+    --border-offset:none;
+    --border-opacity:none;
+    font-size: 20px;
+  }
+ @media screen and (max-width:1720px){
+   .cup-two-coupons-box{
+     width:83.33%;
+     padding:5px 30px 30px;
+   }
+   .coupons-model{
+     padding:20px 30px
+   }
+   .top-text>.top-voucher:nth-of-type(1){
+     padding:0;
+     padding-top:10px;
+   }
+   .top-voucher>p{
+    font-size: 20px;
+    height: 28px;
+    line-height: 28px;
+   }
+   .top-voucher.single>p {
+     font-size: 50px;
+     line-height: 50px;
+   }
+   .top-text>p {
+    font-size: 18px;
+    line-height: 12px
+   }
+   .bottom-coupons>p{
+     font-size: 18px;
+     max-width: 420px;
+     height: 45px;
+   }
+   .bottom-coupons>span{
+     font-size: 18px;
+     line-height: 22px;
+     height: 35px;
+   }
+   .top-voucher>img{
+     width:16px;
+   }
+   .top-voucher.single>p{
+     height:auto;
+   }
+ }
+ @media screen and (max-width:1440px){
+   .bottom-coupons>a:nth-of-type(1)>img{
+     padding-bottom:34px;
+   }
+ }
+ @media screen and (max-width:1280px){
+   .top-voucher.single>.word-more {
+     font-size: 28px;
+   }
+   .top-voucher.single>.word-more>span {
+     font-size: 18px;
+   }
+   .top-voucher.single>.word-more>b {
+    font-size: 24px;
+   }
+   .top-coupons>picture>img{
+     height: 120px;
+   }
+   .bottom-coupons>p{
+      font-size: 16px;
+      max-width: 350px;
+      height: 45px;
+      line-height: 20px;
+   }
+   .bottom-coupons>span{
+     font-size:16px;
+   }
+   .bottom-coupons{
+     padding:20px 30px;
+   }
+   .bottom-coupons>a:nth-of-type(1)>img{
+     padding-bottom:32px;
+   }
+ }
+ @media screen and (max-width:1180px){
+   .cup-two-coupons-box{
+     width:93.6%;
+   }
+   .bottom-coupons>a:nth-of-type(1)>img{
+     padding-bottom:30px;
+   }
+ }
+ @media screen and (max-width:1024px){
+   .top-coupons{
+     padding: 20px;
+   }
+   .top-coupons>picture>img{
+     height: 110px;
+   }
+   .coupons-model{
+     padding:15px;
+   }
+   .bottom-coupons{
+     padding: 10px 20px;
+   }
+   .top-voucher.single>p{
+    font-size: 40px;
+    line-height: 40px;
+   }
+   .bottom-coupons .fn-color-attr{
+     margin: 10px 0;
+   }
+   .bottom-coupons>a:nth-of-type(1)>img{
+     padding-bottom:23px;
+   }
+ }
+ @media screen and (max-width:820px){
+   .coupons-model:nth-child(1){
+     margin-right:10px;
+   }
+   .top-coupons {
+     padding: 10px;
+   }
+   .cup-two-coupons-box{
+     padding: 5px 10px 15px;
+   }
+   .top-coupons{
+     padding:10px;
+   }
+   .top-text{
+     top:24px;
+   }
+   .top-text>.top-voucher:nth-of-type(1){
+     padding-top:5px;
+   }
+   .top-voucher>p {
+     font-size: 18px;
+     height: 25px;
+     line-height: 25px;
+   }
+   .top-voucher>p>span{
+     font-size:16px;
+   }
+   .top-voucher>span{
+     font-size: 14px;
+     padding-left: 5px;
+   }
+   .top-coupons>picture>img{
+     height: 90px;
+   }
+   .bottom-coupons>p {
+     font-size: 14px;
+     max-width: 260px;
+     height: 35px;
+     line-height: 15px;
+   }
+   .bottom-coupons>span {
+     padding-top: 0;
+     font-size: 14px;
+     line-height: 16px;
+     height: 26px;
+   }
+   .bottom-coupons>a:nth-of-type(1)>img{
+     padding: 6px 0 11px 0;
+   }
+   .bottom-coupons>a:nth-of-type(2),.bottom-coupons .button--full-width{
+     height:40px;
+     line-height:40px;
+     font-size: 16px;
+     min-height: 40px;
+   }
+   .top-voucher.single>p{
+     font-size: 35px;
+     line-height: 45px;
+   }
+   .bottom-coupons .fn-color-attr{
+     height:24px;
+   }
+   .bottom-coupons .fn-color-attr ul li img{
+     width: 24px;
+     height: 24px;
+   }
+   .bottom-coupons .fn-color-attr ul li{
+     width: 24px;
+     height: 24px;
+     margin-right: 7px
+   }
+ }
+ @media screen and (max-width:750px){
+   .top-voucher.single>.word-more{
+     font-size: 24px;
+     letter-spacing: -0.5px;
+   }
+   .top-voucher.single>.word-more>span {
+     font-size: 16px;
+   }
+   .top-voucher.single>.word-more>b {
+    font-size: 22px;
+   }
+   .coupons-box{
+     background-image:url('{{ section.settings.model_bg_img_mobile | img_url:'750x' }}');
+     background-size: 100% 100%;
+     background-position: center;
+   }
+   .cup-two-coupons{
+     background-image:url('{{ section.settings.background_image_mobile | img_url:'750x' }}');
+     background-size: 100% 100%;
+     background-position: center;
+   }
+   .cup-two-coupons-box{
+     flex-direction: column;
+   }
+   .top-coupons>picture>img{
+     height: 180px;
+     width: 100%;
+   }
+   .top-text>p{
+     line-height:18px;
+   }
+   .top-voucher>img{
+     width:22px;
+   }
+   .top-voucher.single>span,.top-voucher.single>p>span,.top-voucher>p{
+     font-size:20px;
+   }
+   .top-voucher.single>p{
+     font-size:30px;
+   }
+   .bottom-coupons>p,.bottom-coupons>span{
+     font-size: 16px;
+   }
+   .bottom-coupons>p{
+     max-width: 360px;
+   }
+   .top-voucher>p>span{
+     font-size:14px;
+   }
+   .bottom-coupons{
+     padding: 60px 20px 12px;
+   }
+   .coupons-model:nth-child(1){
+     margin-right:0;
+     margin-bottom:10px;
+   }
+  .top-coupons {
+    padding: 15px 12px;
+  }
+ }
+ @media screen and (max-width:450px){
+   .top-voucher.single>span{
+     font-size: 16px;
+   }
+   .top-voucher.single>img {
+     width: 18px;
+   }
+  .top-coupons>picture>img{
+     height: 100%;
+   }
+   .bottom-coupons{
+      padding: 25px 15px 15px;;
+   }
+   .coupons-model{
+     padding:10px;
+   }
+   .bottom-coupons>p{
+      max-width: 265px;
+      height: 50px;
+   }
+   .coupons-box{
+     background-size: 100% 105%;
+   }
+   .top-text>.top-voucher:nth-of-type(1){
+     padding-top:12px;
+   }
+   .top-text>p{
+     padding-top: 5px;
+   }
+ }
+ @media screen and (max-width:375px){
+    .top-voucher.single>span{
+     font-size: 14px;
+   }
+   .top-voucher.single>img {
+     width: 16px;
+   }
+}
+</style>
+<div class="cup-two-coupons">
+  <div class="cup-two-coupons-box">
+    {% for block in section.blocks %}
+      <div class="coupons-model">
+        <div class="coupons-box">
+         {% if block.type == 'bundle' %}
+           <div class="top-coupons">
+             <picture>
+              <source media="(max-width: 750px)" srcset="{{ section.settings.top_bg_img_mobile | img_url:'566x' }}">
+              <source media="(min-width: 751px)" srcset="{{ section.settings.top_bg_img | img_url:'517x' }}">
+              <img src="{{ section.settings.top_bg_img | img_url:'517x' }}">
+            </picture>
+            <div class="top-text">
+              <p>{{ block.settings.title }}</p>
+              {% if block.settings.code_2 != blank %}
+                {% assign CLASS_NAME = "top-voucher" %}
+              {% else %}
+                {% assign CLASS_NAME = "top-voucher single" %}
+              {% endif %}
+              <div class="{{ CLASS_NAME }}">
+                  {{ block.settings.voucher_1 }}
+                  {% if block.settings.code_1 != blank %}
+                    <span>CODE: {{ block.settings.code_1 }}</span>
+                    <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/13_1291c84e-d2e5-4ed5-b050-65ba03739508.png?v=1692259186" onclick="copyticket('{{ block.settings.code_1 }}')">
+                  {% endif %}
+              </div>
+              <div  class="{{ CLASS_NAME }}">
+                  {{ block.settings.voucher_2 }}
+                  {% if block.settings.code_2 != blank %}
+                    <span>CODE: {{ block.settings.code_2 }}</span>
+                    <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/13_1291c84e-d2e5-4ed5-b050-65ba03739508.png?v=1692259186" onclick="copyticket('{{ block.settings.code_2 }}')">
+                  {% endif %}
+              </div>
+            </div>
+          </div>
+           <div class="bottom-coupons">
+             <p>{{ block.settings.tips }}</p>
+             <span>{{ block.settings.validity_date }}</span>
+             <a href="{{ block.settings.button_url }}">
+              <img src="{{ block.settings.product_image | img_url:'460x' }}">
+             </a>
+             <a href="{{ block.settings.button_url }}">{{ block.settings.button_text }}</a>
+           </div>
+         {% endif %}
+         {% if block.type == 'product' %}
+           <div class="top-coupons">
+             <picture>
+              <source media="(max-width: 750px)" srcset="{{ section.settings.top_bg_img_mobile | img_url:'566x' }}">
+              <source media="(min-width: 751px)" srcset="{{ section.settings.top_bg_img | img_url:'517x' }}">
+              <img src="{{ section.settings.top_bg_img | img_url:'517x' }}">
+            </picture>
+            <div class="top-text">
+              <p>{{ block.settings.title }}</p>
+              {% if block.settings.code_2 != blank %}
+                {% assign CLASS_NAME = "top-voucher" %}
+              {% else %}
+                {% assign CLASS_NAME = "top-voucher single" %}
+              {% endif %}
+              <div class="{{ CLASS_NAME }}">
+                 {{ block.settings.voucher_1 }}
+                  {% if block.settings.code_1 != blank %}
+                    <span>CODE: {{ block.settings.code_1 }}</span>
+                    <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/13_1291c84e-d2e5-4ed5-b050-65ba03739508.png?v=1692259186" onclick="copyticket('{{ block.settings.code_1 }}')">
+                  {% endif %}
+              </div>
+              <div class="{{ CLASS_NAME }}">
+                  {{ block.settings.voucher_2 }}
+                  {% if block.settings.code_2 != blank %}
+                    <span>CODE: {{ block.settings.code_2 }}</span>
+                    <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/13_1291c84e-d2e5-4ed5-b050-65ba03739508.png?v=1692259186" onclick="copyticket('{{ block.settings.code_2 }}')">
+                  {% endif %}
+              </div>
+            </div>
+          </div>
+          <div class="bottom-coupons">
+            <p>{{ block.settings.tips }}</p>
+            <span>{{ block.settings.validity_date }}</span>
+            {%- if block.settings.product.featured_media -%}
+              <a href="{{ block.settings.product.url }}">
+                <img
+                  class="img-first"
+                  src="{{ block.settings.product.featured_media | img_url: '460x' }}"
+                  alt="{{ block.settings.product.featured_media.alt | escape }}"
+                  {% unless lazy_load == false %}
+                    loading="lazy"
+                  {% endunless %}
+                >
+              </a>
+            {%- endif -%}
+            <div class="fn-color-attr">
+              {%- for option in block.settings.product.options_with_values -%}
+                {%- if option.name == 'Colors' or option.name == 'Color' -%}
+                  <ul>
+                    {%- if option.name == 'Colors' -%}
+                      {% assign colorList = block.settings.product.options_by_name.Colors.values | slice: 0, 5 %}
+                    {%- else -%}
+                      {% assign colorList = block.settings.product.options_by_name.Color.values | slice: 0, 5 %}
+                    {%- endif -%}
+                    {%- for value in colorList -%}
+                      <li>
+                        <a href="{{ block.settings.product.url }}?variant={{ block.settings.product.variants[forloop.index0].id }}">
+                          {%- if block.settings.product.variants[forloop.index0].featured_image != blank -%}
+                            <img
+                              src="{{ block.settings.product.variants[forloop.index0].featured_image | img_url: '50x50' }}"
+                              alt="{{ value }}"
+                            >
+                          {%- endif -%}
+                        </a>
+                      </li>
+                    {% endfor %}
+                    {%- if option.name == 'Colors' -%}
+                      {% assign size = block.settings.product.options_by_name.Colors.values | size | minus: 5 %}
+                    {%- else -%}
+                      {% assign size = block.settings.product.options_by_name.Color.values | size | minus: 5 %}
+                    {%- endif -%}
+                    {%- if size > 0 -%}
+                      <li class="color-quantity">
+                        <a href="{{ block.settings.product.url }}">+{{ size }}</a>
+                      </li>
+                    {%- endif -%}
+                  </ul>
+                {%- endif -%}
+              {% endfor %}
+            </div>
+             <div class="heatPress-addcart-sale">
+              {% render 'easter-addCart', product: block.settings.product %}
+            </div>
+          </div>
+         {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Cup Two Coupons Version2",
+    "settings": [
+      {
+       "type":"image_picker",
+       "id":"background_image",
+       "label":"background image"
+      },{
+       "type":"image_picker",
+       "id":"background_image_mobile",
+       "label":"background image mobile"
+      },
+      {
+       "type":"image_picker",
+       "id":"model_bg_img",
+       "label":"model background image"
+      },{
+       "type":"image_picker",
+       "id":"model_bg_img_mobile",
+       "label":"model background image mobile"
+      },{
+       "type":"image_picker",
+       "id":"top_bg_img",
+       "label":"top background image"
+      },{
+       "type":"image_picker",
+       "id":"top_bg_img_mobile",
+       "label":"top background image mobile"
+      }
+    ],
+    "max_blocks":2,
+    "blocks":[
+        {
+         "name":"bundle",
+         "type":"bundle",
+         "settings":[
+         {
+           "type":"text",
+           "id":"title",
+           "label":"title"
+          },{
+           "type":"html",
+           "id":"voucher_1",
+           "label":"voucher1"
+          },{
+           "type":"text",
+           "id":"code_1",
+           "label":"code1"
+          },{
+           "type":"html",
+           "id":"voucher_2",
+           "label":"voucher2"
+          },{
+           "type":"text",
+           "id":"code_2",
+           "label":"code2"
+          },{
+           "type":"text",
+           "id":"tips",
+           "label":"tips"
+          },{
+           "type":"text",
+           "id":"validity_date",
+           "label":"validity date"
+          },{
+           "type":"image_picker",
+           "id":"product_image",
+           "label":"product image"
+          },{
+           "type":"text",
+           "id":"button_text",
+           "label":"button text"
+          },{
+           "type":"url",
+           "id":"button_url",
+           "label":"button url"
+          }
+        ]
+      },{
+      "type":"product",
+      "name":"product",
+       "settings":[
+         {
+          "type":"product",
+          "id":"product",
+          "label":"product"
+          },{
+           "type":"text",
+           "id":"title",
+           "label":"title"
+          },{
+           "type":"html",
+           "id":"voucher_1",
+           "label":"voucher1"
+          },{
+           "type":"text",
+           "id":"code_1",
+           "label":"code1"
+          },{
+           "type":"html",
+           "id":"voucher_2",
+           "label":"voucher2"
+          },{
+           "type":"text",
+           "id":"code_2",
+           "label":"code2"
+          },{
+           "type":"text",
+           "id":"tips",
+           "label":"tips"
+          },{
+           "type":"text",
+           "id":"validity_date",
+           "label":"validity date"
+          }
+       ]
+    }
+  ],
+    "presets":[
+        {
+          "name":"Cup-Two-Coupons-Version2"
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

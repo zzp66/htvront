@@ -1,0 +1,412 @@
+<style>
+  .oxi-social-login {
+    margin-top: 10px;
+}
+    .fn-login{
+        width: 100%;
+        height: 800px;
+        margin: 0 auto;
+        padding: 0;
+        position: relative;
+        overflow: hidden;
+        list-style: none;
+        z-index: 1;
+    }
+    .fn-login-content{
+        width: 70%;
+        height: 80%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #ffffff;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: row;
+        flex: 1;
+    }
+    .fn-login-content-left{
+        width: 50%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: 8px;
+        position: relative;
+    }
+    .fn-login-content-left-title{
+        height: 24px;
+        font-size: 24px;
+        font-weight: bold;
+        color: #FFFFFF;
+        line-height: 24px;
+        margin-top: 80px;
+        margin-bottom: 60px;
+        text-align: center;
+    }
+    .fn-login-content-left-menus{
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .fn-login-content-left-menus-item{
+        width: 50%;
+    }
+    .fn-login-content-left-menus-item-icon{
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+    }
+    .fn-login-content-left-menus-item-text{
+        font-size: 20px;
+        color: #FFFFFF;
+        line-height: 20px;
+        text-align: center;
+        margin: 10px auto 50px;
+        max-width: 185px;
+    }
+    .fn-login-content-right{
+        width: 50%;
+        height: 100%;
+        position: relative;
+    }
+    .fn-login-content-right-form{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 57%;
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+    .fn-login-content-right-form-label{
+        font-size: 22px;
+        color: #333333;
+        line-height: 22px;
+        margin-bottom: 16px;
+    }
+    .fn-login-required{
+        color: #E22020;
+        font-size: 22px;
+    }
+    .fn-login-content-right-form-input{
+        width: 100%;
+        height: 46px;
+        border-radius: 4px;
+        border: 1px solid #CCCCCC;
+        box-sizing: border-box;
+        font-size: 16px;
+        padding-left: 16px;
+    }
+    .margin-bottom24{
+        margin-bottom: 24px;
+    }
+    .margin-bottom10{
+        margin-bottom: 10px;
+    }
+    .fn-login-content-right-form-tips{
+        height: 16px;
+        font-size: 16px;
+        color: rgba(51, 51, 51, 0.8);
+        line-height: 16px;
+        margin-bottom: 24px;
+    }
+    .fn-login-content-right-form-button{
+        width: 100%;
+        height: 46px;
+        background: #FF7606;
+        border-radius: 4px;
+        border: none;
+        font-size: 18px;
+        font-weight: bold;
+        color: #FFFFFF;
+        cursor: pointer;
+    }
+    .fn-login-content-right-form-or{
+        height: 18px;
+        font-size: 18px;
+        color: rgba(51, 51, 51, 0.8);
+        line-height: 18px;
+        margin: 16px auto;
+        text-align: center;
+    }
+    .fn-login-content-right-form-logo_button{
+        width: 100%;
+        height: 46px;
+        background: #E8E8E8;
+        border-radius: 2px;
+        border: none;
+        font-size: 16px;
+        color: #333333;
+        margin-top: 18px;
+        position: relative;
+        cursor: pointer;
+    }
+    .fn-login-content-right-form-logo_button-logo{
+        width: 46px;
+        height: 46px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .fn-login-content-right-form-create_account{
+        width: 100%;
+        height: 46px;
+        background: #FF7606;
+        border-radius: 4px;
+        border: none;
+        font-size: 18px;
+        font-weight: bold;
+        color: #FFFFFF!important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+  #RecoverPasswordForm {
+    text-align: center;
+    position: relative;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+  input#RecoverEmail {
+    height: 46px;
+    width: 57%;
+    border-radius: 4px;
+    border: 1px solid #CCCCCC;
+    padding: 16px;
+    font-size: 16px;
+  }
+  p.fn-password-text {
+    margin: 15px 0;
+    font-size: 18px;
+    font-family: OpenSans;
+    color: rgba(51, 51, 51, 0.8);
+}
+  .customer_submit {
+    margin: 15px 0;
+    width: 57%;
+    height: 46px;
+    background: #FF7606;
+    border-radius: 4px;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+  #RecoverEmail-email-error {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+  #RecoverEmail-email-error svg {
+    height: 30px;
+}
+  h1.t.fn-password-title {
+    font-size: 26px;
+}
+    @media screen and (max-width: 1024px){
+        .fn-login-content {
+            width: 90%;
+        }
+    }
+    @media screen and (max-width: 750px){
+      .fn-login-content-left-menus-item-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+}
+      .fn-login-content-right-form-or,
+      .fn-login-content-right-form-tips,
+      .margin-bottom24 {
+    margin-bottom: 10px;
+}
+      #RecoverPasswordForm {
+        text-align: center;
+        position: relative;
+        left: 0;
+        top: 0;
+        transform: translate(0, 0);
+      }
+        .fn-login-content-left {
+            background-size: cover;
+        }
+        .fn-login-content-left,.fn-login-content-right {
+            width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+        .fn-login-content-left {
+            margin-top: 0px;
+        }
+        .fn-login {
+            width: 100%;
+        }
+        .fn-login-content {
+            flex-wrap: wrap;
+            height: auto;
+            position: static;
+            transform: none;
+            margin: 0 auto;
+            background: none;
+            flex-direction: column-reverse;
+        }
+        .fn-login-content-left-title {
+            line-height: 1;
+            font-size: 16px;
+            padding: 20px 0;
+            margin: 0;
+        }
+        .fn-login-content-left-menus-item-text {
+            font-size: 12px;
+            line-height: 16px;
+            text-align: center;
+            margin: 10px auto 10px;
+            max-width: 100%;
+        }
+        .fn-login-content-left-menus-item {
+            width: 32.33333%;
+        }
+        .fn-login-content-left-menus {
+            width: 96%;
+        }
+        .fn-login-content-left-menus {
+            padding: 20px 0;
+        }
+        .fn-login-content-right-form {
+            position: static;
+            transform: none;
+            width: 100%;
+        }
+    }
+</style>
+{%- style -%}
+    .fn-login {
+        background-image: url({{ settings.login_register_bg | image_url }});
+    }
+    .fn-login-content-left{
+        background-image: url({{ settings.login_register_text_bg | image_url }});
+    }
+{%- endstyle -%}
+<div class="fn-login">
+    <div class="fn-login-content">
+        <div class="fn-login-content-left">
+            <div class="fn-login-content-left-title">{{ settings.login_register_content_title }}</div>
+            <div class="fn-login-content-left-menus">
+                {{ settings.login_register_content }}
+            </div>
+        </div>
+        <div class="fn-login-content-right">
+          <div id="CustomerLoginForm">
+            {%- form 'customer_login', novalidate: 'novalidate' -%}
+            <div class="fn-login-content-right-form">
+              <div class="fn-login-content-right-form-label">
+                Email<span class="fn-login-required">*</span>
+              </div>
+              <input
+                     type="email"
+                     name="customer[email]"
+                     id="CustomerEmail"
+                     autocomplete="email"
+                     autocorrect="off"
+                     autocapitalize="off"
+                     {% if form.errors contains 'form' %}
+                     aria-invalid="true"
+                     {% endif %}
+                     class="fn-login-content-right-form-input margin-bottom24"
+                     >
+              <div class="fn-login-content-right-form-label">
+                Password<span class="fn-login-required">*</span>
+              </div>
+              <input
+                     type="password"
+                     value=""
+                     name="customer[password]"
+                     id="CustomerPassword"
+                     autocomplete="current-password"
+                     {% if form.errors contains 'form' %}
+                     aria-invalid="true"
+                     {% endif %}
+                     class="fn-login-content-right-form-input margin-bottom10"
+                     >
+              <div class="fn-login-content-right-form-tips">
+                <a href="#" onclick="showRecoverPasswordForm();return false;">{{ 'customer.login_page.forgot_password' | t }}</a>
+              </div>
+              <button class="fn-login-content-right-form-button">
+                {{ 'customer.login_page.sign_in' | t }}
+              </button>
+              <div class="fn-login-content-right-form-or">OR</div>
+              <a class="fn-login-content-right-form-create_account" href="{{ routes.account_register_url }}">
+                Create Account
+              </a>
+               <div class='oxi-social-login'></div>
+            </div>
+            {%- endform -%}
+          </div>
+          <div id="RecoverPasswordForm" style="display: none;">
+            <h1 class="t fn-password-title" tabindex="-1">
+              {{ 'customer.recover_password.title' | t }}
+            </h1>
+            <p class="fn-password-text">
+              {{ 'customer.recover_password.subtext' | t }}
+            </p>
+
+            {%- form 'recover_customer_password' -%}
+            {% assign recover_success = form.posted_successfully? %}
+            <div>
+              <input type="email"
+                     value=""
+                     name="email"
+                     id="RecoverEmail"
+                     autocorrect="off"
+                     autocapitalize="off"
+                     autocomplete="email"
+                     {% if form.errors %}
+                     aria-invalid="true"
+                     aria-describedby="RecoverEmail-email-error"
+                     autofocus
+                     {% endif %}
+                     placeholder="{{ 'customer.login_page.email' | t }}"
+                     >
+            </div>
+            {%- if form.errors -%}
+            <small id="RecoverEmail-email-error" class="form__message">
+              <svg aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 13 13">
+                <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+                <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+                <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+                <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+                  </svg>
+                {{ form.errors.messages['form'] }}
+                </small>
+              {%- endif -%}
+
+              <button class="customer_submit">
+                {{ 'customer.login_page.submit' | t }}
+              </button>
+               <a href="#" onclick="hideRecoverPasswordForm();return false;">{{ 'customer.login_page.cancel' | t }}</a>
+              {%- endform -%}
+              </div>
+        </div>
+    </div>
+</div>
+<script>
+  function showRecoverPasswordForm() {
+    document.getElementById('RecoverPasswordForm').style.display = 'block';
+    document.getElementById('CustomerLoginForm').style.display='none';
+  }
+
+  function hideRecoverPasswordForm() {
+    document.getElementById('RecoverPasswordForm').style.display = 'none';
+    document.getElementById('CustomerLoginForm').style.display = 'block';
+  }
+
+  if (window.location.hash == '#recover') { showRecoverPasswordForm() }
+
+  {% if reset_success %}
+    document.getElementById('ResetSuccess').style.display = 'block';
+  {% endif %}
+</script>

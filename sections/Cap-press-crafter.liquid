@@ -1,0 +1,260 @@
+{% style %}
+  #shopify-section-{{ section.id }} .cap-press-crafter{
+    background: url({{ section.settings.image_bg | img_url:'1920x' }}) no-repeat;
+    background-size: 100% 100%;
+  }
+      @media screen and (max-width: 768px){
+          #shopify-section-{{ section.id }} .cap-press-crafter{
+            background: #FFFDEF
+          }
+        }
+{% endstyle %}
+<style>
+  .cap-press-crafter{
+    padding:30px 0 40px;
+    letter-spacing: 0;
+  }
+  .cap-crafter-content{
+    width:1600px;
+    margin:0 auto
+  }
+  .cap-crafter-title{
+    position: relative;
+    text-align:center
+  }
+  .cap-crafter-title img{
+    margin:0 auto
+  }
+  .cap-crafter-title>div{
+    position: absolute;
+    top:11px;
+    width:100%;
+    font-size: 36px;
+    font-weight: bold;
+    color: #802704;
+    line-height: 49px;
+  }
+  .cap-crafter-desc{
+    font-size: 18px;
+    font-weight: 400;
+    color: #802704;
+    line-height: 21px;
+    text-align: center;
+  }
+  .cap-crafter-list{
+    display:flex;
+    margin-top: 20px;
+  }
+  .cap-crafter-item{
+    margin-right:19px;
+    background: #FFEDDD;
+    border-radius: 8px 8px 8px 8px;
+    padding:17px 26px 20px 26px;
+    flex: 1;
+  }
+  .cap-crafter-item:last-child{
+    margin-right:0
+  }
+  .cap-crafter-userinfo{
+    display: flex;
+    align-items: center;
+  }
+  .cap-crafter-username{
+    margin-left:12px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #802704;
+    line-height: 21px;
+    max-height:42px;
+    overflow: hidden;  
+    text-overflow: ellipsis; 
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    flex:1;
+    overflow-wrap: break-word;
+  }
+  .cap-crafter-message{
+    font-size: 16px;
+    font-weight: 400;
+    color: #802704;
+    line-height: 19px;
+    margin:10px 0;
+    height:38px;
+    overflow: hidden;  
+    text-overflow: ellipsis; 
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+   .cap-crafter-userinfo img{
+      width:46px
+    }
+    @media screen and (max-width: 1680px){
+    .cap-crafter-content{
+      width:83.3%
+    }
+    .cap-crafter-item{
+      width:23.5%;
+      margin-right:2%
+    }
+    
+  }
+  @media screen and (max-width: 1180px){
+     .cap-crafter-title>div{
+        font-size:24px;
+        line-height:38px;
+        top:18%
+      }
+    .cap-crafter-item{
+      padding:15px
+    }
+    }
+  @media screen and (max-width: 768px){
+    .cap-press-crafter{
+      padding:20px 0 26px
+    }
+    .cap-crafter-content{
+      width:93.6%
+    }
+    .cap-crafter-title>div{
+      top:24%
+    }
+    .cap-crafter-list{
+      flex-wrap: wrap;
+      margin-top:11px
+    }
+     .cap-crafter-item{
+      width:49%;
+      margin-right:2%;
+      margin-bottom:10px;
+       padding:12px 8px 15px 
+    }
+    .cap-crafter-item:nth-child(2n){
+      margin-right:0
+    }
+    .cap-crafter-userinfo img{
+      width:29px
+    }
+    .cap-crafter-message{
+      height:48px;
+      -webkit-line-clamp: 3;
+      font-size:14px;
+      line-height:16px;
+      margin:8px 0
+    }
+    .cap-crafter-username{
+      margin-left:5px;
+      font-size:14px
+    }
+  }
+ @media screen and (max-width: 480px){
+    .cap-crafter-title>div{
+      font-size:16px;
+      line-height:19px;
+      top:24%
+    }
+    .cap-crafter-desc{
+      font-size:14px
+    }
+    .cap-crafter-title img{
+        max-width:279px
+      }
+  }
+</style>
+<div class="cap-press-crafter" id="{{ section.settings.id }}">
+  <div class="cap-crafter-content">
+    <div class="cap-crafter-title">
+      
+      <picture>
+          <source media="(max-width: 768px)" srcset="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Group_67_2x_3dd8efe8-4975-4c0c-89c3-6af102200423.png?v=1704267578">
+          <source media="(min-width: 769px)" srcset="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Group_53.png?v=1704182203">
+          <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Group_53.png?v=1704182203" />
+        </picture>
+      <div>{{ section.settings.title }}</div>
+    </div>
+    <div class="cap-crafter-desc">
+      {{ section.settings.desc }}
+    </div>
+    <div class="cap-crafter-list">
+      {% for block in section.blocks %}
+        <div class="cap-crafter-item">
+          <div class="cap-crafter-userinfo">
+            <img src="{{ block.settings.avatar | img_url:'46x' }}" />
+            <div class="cap-crafter-username">
+              {{ block.settings.name }}
+            </div>
+          </div>
+          <div class="cap-crafter-message">
+            {{ block.settings.description }}
+          </div>
+          <div class="cap-crafter-images">
+            <img src="{{ block.settings.images | img_url:'333x' }}" />
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Cap Press Crafter",
+    "settings": [
+      {
+        "type": "text",
+        "id": "id",
+        "label": "id(页面唯一性，全英文)"
+      },
+      {  
+        "type": "image_picker",
+        "id":"image_bg",
+        "label":"image_bg"
+      },{
+        "type": "text",
+        "id":"title",
+        "label":"title"
+      },{
+        "type": "text",
+        "id":"desc",
+        "label":"desc"
+      }
+    ],
+    "blocks":[{
+      "type":"images",
+      "name":"images",
+      "settings":[
+        {
+          "type": "image_picker",
+          "id":"avatar",
+          "label":"avatar"
+        },
+        {
+          "type": "text",
+          "id":"name",
+          "label":"name"
+        },
+        {
+          "type": "text",
+          "id":"description",
+          "label": "description"
+        },
+        {
+          "type": "image_picker",
+          "id":"images",
+          "label":"images"
+        }
+      ]
+    }],
+    "presets":[
+        {
+            "name":"Cap Press Crafter"
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

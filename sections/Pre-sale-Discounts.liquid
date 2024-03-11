@@ -1,0 +1,40 @@
+
+<div class="discounts">
+    {% if section.settings.image_discounts != blank %}
+        {% assign image = section.settings.image_discounts | img_url: '1394x' %}
+        <img class="fn-discountsPC" src="{{ image }}" alt="">
+    {% endif %}
+    {% if section.settings.image_discountsCellphone != blank %}
+        {% assign image = section.settings.image_discountsCellphone | img_url: '768x' %}
+        <img class="fn-discountsCellphone" src="{{ image }}" alt="">
+    {% endif %}
+</div>
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": [
+      {
+			"type": "image_picker",
+			"id": "image_discounts",
+			"label": {
+				"en": "Image",
+				"zh-CN": "图片"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "image_discountsCellphone",
+			"label": {
+				"en": "Image",
+				"zh-CN": "图片"
+			}
+		}
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

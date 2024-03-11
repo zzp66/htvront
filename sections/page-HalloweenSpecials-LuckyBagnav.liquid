@@ -1,0 +1,139 @@
+
+  <div class="fn-Halloween-LuckyBagnav">
+        <div class="fn-LuckyBagnavmain_content">
+          <div class="fn-LuckyBagnavmain_contentleft">
+               {% if section.settings.contentleft_img != blank %}
+                  {% assign image = section.settings.contentleft_img | img_url: '600x' %}
+                  <img class="fn-Specials-bannerimg" src="{{ image }}" alt="">
+              {% endif %}
+              <div class="fn-LuckyBagnavmain_content_a fn-LuckyBagnavmain_content_svg">
+                  <div class="fn-LuckyBagnavmain_contenttitle t">{{ section.settings.contentleft_title }}</div>
+                  <div class="fn-LuckyBagnavmain_contenttext">{{ section.settings.contentleft_text }}</div>
+                  <div class="fn-LuckyBagnavmain_button">
+                    <a href="{{ section.settings.Lucky_svglink }}">View More</a>
+                  </div>
+              </div>
+          </div>
+          <div class="fn-LuckyBagnavmain_contentright">
+              {% if section.settings.contentright_img != blank %}
+                  {% assign image = section.settings.contentright_img | img_url: '960x' %}
+                  <img class="fn-Specials-bannerimg" id="fn-Specials-bannerimg_a" src="{{ image }}" alt="">
+              {% endif %}
+              <div class="fn-LuckyBagnavmain_content_Lucky_Bag">
+                  <div class="fn-LuckyBagnavmain_contenttitle t">{{ section.settings.contentright_title }}</div>
+                  <div class="fn-LuckyBagnavmain_contenttext fn-LuckyBagnavmain_contenttext_a">{{ section.settings.contentright_text }}</div>
+                  <div class="fn-LuckyBagnavmain_contenttext_pice">
+                    <span class="fn-LuckyBagnavmain-contenttext_pice t">Only $39.99 </span>
+<!--                     <span class="fn-LuckyBagnavmain-content_picetext">(Reduced to <span class="fn-LuckyBagnavmain-content_picetext_p">$39.99</span> on Oct 27)</span></div> -->
+                    <span class="fn-LuckyBagnavmain-content_picetext">($79.99)</span>
+                  </div>
+                
+                  <div class="fn-LuckyBagnavmain_productbutton">
+                       {% render 'fn-Posts-product_Lucky',
+                        card_product: section.settings.product_Lucky,
+                        %}
+                  </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  
+  <script>
+  //获取元素
+  var hour_nav = document.querySelector(".hour_nav");
+  var minute_nav = document.querySelector(".minute_nav");
+  var second_nav = document.querySelector(".second_nav");
+  //获取截止时间的时间戳（单位毫秒）
+  var inputTime_bag = +new Date("2022-11-01 15:00:00");
+  //我们先调用countDown函数，可以避免在打开界面后停一秒后才开始倒计时
+  countDown();
+  //定时器 每隔一秒变化一次
+  var bagnav_tims = setInterval(countDown, 1000);
+  function countDown() {
+      //获取当前时间的时间戳（单位毫秒）
+      var nowTime_bag = +new Date();
+      //把剩余时间毫秒数转化为秒
+      var times_bag = (inputTime_bag - nowTime_bag) / 1000;
+      if (times_bag > 0) {
+      var bag_h = Math.floor(times_bag /60 / 60);
+      //计算小时数 转化为整数
+      //如果小时数小于 10，要变成 0 + 数字的形式 赋值给盒子
+      hour_nav.innerHTML = bag_h < 10 ? "0" + bag_h : bag_h;
+      //计算分钟数 转化为整数
+      var bag_m = parseInt(times_bag / 60 % 60);
+      //如果分钟数小于 10，要变成 0 + 数字的形式 赋值给盒子
+      minute_nav.innerHTML = bag_m < 10 ? "0" + bag_m : bag_m;
+      //计算描述 转化为整数
+      var bag_s = parseInt(times_bag % 60);
+      //如果秒钟数小于 10，要变成 0 + 数字的形式 赋值给盒子
+      second_nav.innerHTML = bag_s < 10 ? "0" + bag_s : bag_s;
+      } else {
+        clearInterval(bagnav_tims); 
+      }
+  }
+  </script>
+{% schema %}
+  {
+    "name": "Lucky Bag nav",
+    "settings": [
+        {
+			"type": "text",
+			"id": "contentleft_title",
+			"label": {
+				"en": "title"
+			}
+		},
+        {
+			"type": "text",
+			"id": "contentleft_text",
+			"label": {
+				"en": "text"
+			}
+		},
+        {
+          "type": "url",
+          "id": "Lucky_svglink",
+          "label": "Lucky svg link"
+        },
+        {
+			"type": "image_picker",
+			"id": "contentleft_img",
+			"label": {
+				"en": "The left background"
+			}
+		},
+        {
+			"type": "text",
+			"id": "contentright_title",
+			"label": {
+				"en": "title"
+			}
+		},
+        {
+			"type": "html",
+			"id": "contentright_text",
+			"label": {
+				"en": "text"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "contentright_img",
+			"label": {
+				"en": "The right background"
+			}
+		},
+        {
+          "type": "product",
+          "id": "product_Lucky",
+          "label": "product"
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

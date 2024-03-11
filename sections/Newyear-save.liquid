@@ -1,0 +1,98 @@
+<div class="fn-Newyear-gif_img">
+  {% if section.settings.Newyear_gif_img != blank %}
+    {% assign image = section.settings.Newyear_gif_img | img_url: '596x' %}
+    <img class="fn-gifimg_pc" src="{{ image }}" alt="">
+  {% endif %}
+  {% if section.settings.Newyear_gif_mobileimg != blank %}
+    {% assign image = section.settings.Newyear_gif_mobileimg | img_url: '596x' %}
+    <img class="fn-gifimg_mobile" src="{{ image }}" alt="">
+  {% endif %}
+</div>
+<div class="fn-Newyear-Gift-making">
+<div class="fn-Newyear-Gift-making_title t">{{ section.settings.Newyear_gif_title }}</div>
+<div class="fn-Newyear-Gift-making_text">{{ section.settings.Newyear_gif_text }} <span>{{ section.settings.Newyear_gif_text1 }}</span> </div>
+</div>
+ <ul class="fn-Newyear-save_ul">
+{% for block in section.blocks %}
+  <li class="fn-Newyear-save_list">
+      {% render 'fn-save-product',
+          card_product: block.settings.product,
+          show_secondary_image: block.settings.show_image
+      %}
+  </li>
+      {% endfor %}
+ </ul>
+{% schema %}
+  {
+    "name": "Gift making",
+    "settings": [
+        {
+			"type": "image_picker",
+			"id": "Newyear_gif_img",
+			"label": {
+				"en": "Image",
+				"zh-CN": "图片"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "Newyear_gif_mobileimg",
+			"label": {
+				"en": "mobile Image",
+				"zh-CN": "手机图片"
+			}
+		},
+        {
+			"type": "text",
+			"id": "Newyear_gif_title",
+			"label": {
+				"en": "title",
+				"zh-CN": "标题"
+			}
+		},
+        {
+			"type": "text",
+			"id": "Newyear_gif_text",
+			"label": {
+				"en": "text",
+				"zh-CN": "文本"
+			}
+		},
+        {
+			"type": "text",
+			"id": "Newyear_gif_text1",
+			"label": {
+				"en": "text",
+				"zh-CN": "文本"
+			}
+		}
+    ],
+    "blocks": [{
+      "type": "save",
+      "name": {
+          "en": "save product",
+          "zh-CN": "优惠产品"
+      },
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_image",
+          "default": false,
+          "label": "checkbox"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "productlabel"
+        }
+      ]
+	}]
+  }
+  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

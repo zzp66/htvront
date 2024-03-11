@@ -1,0 +1,736 @@
+<style>
+  body{
+    letter-spacing: 0;
+    color: #2B112C;
+    background-color:#D74907 !important;
+  }
+   #shopify-section-{{ section.id }} .halloween-product{
+     background-image:url('{{ section.settings.background_image | img_url:'1920x' }}');
+     background-size: 100% 100%;
+     padding: 68px 0 32px 0;
+     background-position: center;
+  }
+  .product-module{
+    width:1600px;
+    margin:0 auto;
+    background: linear-gradient(180deg, #FFE187 0%, #FFB161 100%);
+    border-radius: 10px;
+    padding:30px 24px 40px 24px;
+  }
+  .product-module>p{
+    text-align:center;
+  }
+  .product-module>p:nth-child(1){
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 49px;
+  }
+  .product-module>p:nth-child(2){
+    font-size: 18px;
+    color: #2B112C;
+    line-height: 24px;
+    padding:10px 0 20px 0;
+  }
+  .bottom-product-module{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .halloween-product-model-items{
+    width:24.5%;
+    margin-right:11px;
+    background-color: #fff;
+    padding: 11px 12px 20px 13px;
+    border-radius: 8px;
+  }
+  .halloween-product-model-items:nth-last-child(1){
+    margin-right:0;
+  }
+  .halloween-product-model-items .fn-product-title .t{
+    height: 48px;    
+    font-size: 16px;
+    line-height: 22px;
+  }
+  .halloween-product-model-items .fn-compareat_price .fn-compare-at_price{
+    padding-top: 5px;
+    font-size: 16px;    
+    color: #656565;
+    font-weight:400;
+  }
+  .halloween-product-model-items .fn-compareat_price{
+    text-align:right;
+  }
+  .halloween-product-model-items .fn-color-attr{
+    margin:15px 0;
+  }
+  .halloween-product .button--full-width{
+    background: linear-gradient(180deg, #FFE188 0%, #FFB766 100%);
+    border-radius: 4px;
+    --border-offset: none;
+    --border-opacity: none;
+  }
+  .top-module{
+    display:flex;
+    margin-bottom:20px;
+  }
+  .halloween-product-box{
+    background-color:#fff;
+    border-radius: 8px;
+    padding: 18px 18px 20px;
+    max-width:409px;
+  }
+  .halloween-product-box>p{
+    font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 12px;
+  }
+  .box-layout .t{
+    font-size: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+  .box-layout .fn-compareat_price{
+    flex-direction:row;
+    align-items: baseline;
+  }
+  .box-layout .price-item--sale{
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .box-layout .fn-compareat_price .fn-compare-at_price{
+    font-size:16px;
+    padding-left: 5px;
+    color: #2B112C;
+  }
+  .addcart-sale{
+    margin-top:28px;
+  }
+  .box-layout>ul{
+    padding:8px 0 10px 0;
+  }
+  .box-layout>ul>li{
+    font-size:18px;
+    line-height:24px;
+    padding-bottom:10px;
+  }
+  .box-layout>ul>li:before{
+    content:'';
+    width: 28px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: bottom;
+    margin-right:6px;
+    background-image:url('{{ section.settings.icon_image | img_url:'28x' }}');
+    background-size: 100% 100%;
+  }
+   .Thousand-svg-down,.Thousand-svg-close{
+     position: absolute;
+   }
+   .Thousand-svg-close{
+     border-radius:50%;
+     text-align:center;
+     background: #FFFFFF;
+     right: -10px;
+     top: 10px;
+     cursor: pointer;
+   }
+   .Thousand-svg-btn{
+     background: #FFFFFF;
+     box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.11);
+     border-radius: 4px;
+     padding: 6px 6px 10px;
+     left: 0;
+     display:none
+   }
+   .Thousand-down{
+     box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.11);
+     border-radius: 4px;
+     font-size: 14px;
+     font-weight: bold;
+     line-height: 36px;
+     text-align:center;
+     margin-top:10px;
+     cursor: pointer;
+     --border-opacity: none;
+     --border-offset: none;
+     background: linear-gradient(180deg, #FFE188 0%, #FFB766 100%);
+     color:#fff;
+   }
+  .svg-box{
+    position:relative;
+    margin-right:17px;
+  }
+  .svg-box>img{
+    border-radius: 8px;
+  }
+  .Thousand-svg-item{
+     display:none
+   }
+   .Thousand-svg-icon{
+     animation:flicker 1s ease 0s infinite alternate
+   }
+   @keyframes flicker{
+     0% {transform:scale(0.8)}
+     100%{transform:scale(1.1)}
+   }
+  .show-in-1024{
+    display:none !important;;
+  }
+  @media screen and (max-width:1720px){
+     .product-module{
+        width: 83.3%;
+     }
+    .halloween-product-box>a{
+      max-width: 23rem;
+      margin: 0 auto;
+    }
+  }
+  @media screen and (max-width:1440px){
+    .halloween-product .fn-product-title{
+      width: 70%;
+    }
+    .halloween-product .fn-product-price{
+      width: 25%;
+    }
+    .halloween-product-box>p{
+      font-size: 20px;
+      padding-bottom: 5px;
+    }
+    .box-layout .t{
+      font-size: 16px;
+    }
+    .box-layout>ul>li{
+      font-size: 14px;
+      line-height: 15px;
+      padding-bottom: 8px;
+    }
+    .box-layout>ul>li:before{
+      width: 24px;
+      height: 20px;
+    }
+    .addcart-sale{
+      margin-top: 15px;
+    }
+    .halloween-product-box{
+      padding: 10px 10px 20px;
+    }
+    .halloween-product-box>a{
+      max-width: 20rem;
+    }
+  }
+  @media screen and (max-width: 1280px){
+     .halloween-product-box>a{
+       max-width: 14rem;
+     }
+   }
+  @media screen and (max-width: 1024px){
+    .show-in-1024{
+      display:block !important;    
+    }
+    .show-in-1920{
+      display:none !important;
+    }
+     .top-module{
+       flex-direction: column;
+     }
+    .svg-box{
+      margin-right: 0;
+      margin-bottom: 19px;
+    }
+    .halloween-product-box{
+      max-width:100%;
+      padding: 15px 20px 20px;
+    }
+    .halloween-product-box>p{
+      text-align:center;
+      font-size: 16px;
+    }
+    .halloween-product-box>a{
+      max-width:100%;
+    }
+    .halloween-product-box>a>img{
+      margin:0 auto;
+    }
+    .box-layout .t>a{
+      padding-top:8px;
+      font-size:14px;
+    }
+    .box-layout .t{
+      font-size:14px;
+    }
+    .box-layout>ul>li:before{
+      width:20px;
+      height:16px;
+    }
+    .box-layout .price-item--sale{
+      font-size:18px;
+    }
+    .box-layout .fn-compareat_price .fn-compare-at_price{
+      font-size:14px;
+    }
+    .bottom-product-module{
+      /* overflow-x:scroll; */
+      position:relative;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+    .halloween-product-model-items{
+      min-width:275px;
+    }
+    .halloween-product .fn-product-layout{
+      flex-direction: column;
+    }
+    .halloween-product .fn-product-title{
+      width:100%;
+    }
+    .halloween-product .fn-product-price{
+      width:100%;
+      height:24px;
+    }
+    .halloween-product-model-items .fn-compareat_price{
+      flex-direction: row;
+    }
+    .halloween-product .fn-product-price span{
+      float:left;
+    }
+    .halloween-product-model-items .fn-compareat_price .fn-compare-at_price{
+      padding-left: 2px;
+    }
+    .Thousand-svg-down{
+      display:none;
+    }
+    .Thousand-svg-item{
+      position:absolute;
+      display: flex;
+      bottom: 10px;
+      right:0
+    }
+    .Thousand-svg-image{
+      position: relative;
+      margin-right:10px;
+      background: rgba(241,241,241,0.8);
+      border-radius: 4px;
+    }
+    .Thousand-down-icon{
+      position: absolute;
+      bottom: 3px;
+      right: 3px;
+      background-color: #ffffff;
+      box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2);
+      border-radius: 2px;
+      padding: 3px 5px;
+    }
+    .product-module{
+      padding: 25px 20px 35px 20px;
+    }
+    .product-module>p:nth-child(1){
+      font-size:30px;
+    }
+    .product-module .swiper-scrollbar{
+        position:absolute;
+        width: 100%;
+        height: 2px;
+        margin: 0 auto;
+        background: #fff;
+        bottom: -15px;
+      }
+     .swiper-scrollbar-drag{
+         background: #CC3305
+      }
+    .halloween-product .button--full-width{
+      padding:0;
+    }
+  }
+  @media screen and (max-width:750px){
+    body{
+      color:#333;
+    }
+     #shopify-section-{{ section.id }} .halloween-product{
+       background-image:url('{{ section.settings.background_image_mobile | img_url:'750x' }}');
+       background-size: 100% 100%;
+       padding:15px 0 10px 0;
+       background-position: center
+     }
+    .product-module{
+      width: 93.6%;
+    }
+    .halloween-product .fn-product-price span{
+      font-size:14px;
+    }
+    .halloween-product-model-items .fn-compareat_price .fn-compare-at_price{
+      font-size:12px;
+      padding-top: 2px;
+    }
+    .product-module>p:nth-child(1){
+      font-size:16px;
+      line-height:22px;
+    }
+    .product-module>p:nth-child(2){
+      font-size:14px;
+      line-height:19px;
+      padding-top: 5px;
+    }
+  }
+   @media screen and (max-width:450px){
+     .product-module{
+       width:95%;
+     }
+     .Thousand-svg-image{
+       margin-right:5px;
+     }
+     .Thousand-svg-item{
+       bottom:6px;
+     }
+     .product-module{
+       padding: 14px 5px 20px;
+     }
+     .product-module>p:nth-child(2){
+       padding-bottom:10px;
+     }
+     .halloween-product-box{
+       border-radius: 4px;
+     }
+     .halloween-product .button--full-width{
+       border-radius: 6px;
+       min-height: 40px;
+       padding: 0;
+     }
+     .halloween-product-model-items .button--full-width{
+       border-radius: 2px;
+     }
+     .addcart-sale{
+       margin-top:10px;
+     }
+     .top-module{
+       margin-bottom:10px;
+     }
+     .halloween-product-model-items{
+       min-width:150px;
+       padding:5px;
+       margin-right: 6px;
+     }
+     .halloween-product-model-items .fn-product-title .t{
+       height: 40px;
+       font-size: 14px;
+       line-height: 19px;
+     }
+     .halloween-product .fn-product-layout{
+       margin-top:5px;
+     }
+     .halloween-product .fn-product-price{
+       height: 17px;
+       margin-top: 5px;
+     }
+     .halloween-product-model-items .fn-color-attr{
+       margin:5px 0;
+     }
+     .bottom-product-module{
+       padding-bottom: 12px
+     }
+     .bottom-product-module::-webkit-scrollbar {
+        background-color: #fff;
+        height: 2px;
+        border-radius: 1px;
+    }
+    .bottom-product-module::-webkit-scrollbar-thumb {
+      background-color: #CC3305;
+    }
+    .product-module .swiper-scrollbar{
+      bottom: 0;
+    }
+   }
+</style>
+<div class="halloween-product">
+  <div class="product-module">
+     <p>{{ section.settings.title }}</p>
+     <p>{{ section.settings.second_title }}</p>
+     <div class="top-module">
+       <div class="svg-box">
+          <img src="{{ section.settings.box_image | img_url:'1126x' }}">
+          {% for block in section.blocks %}
+            {% if block.type == 'svg' %}
+              <div class="Thousand-svg-down" style="left:{{ block.settings.svg_left }}%;top:{{  block.settings.svg_top }}%">
+                <img
+                  class="Thousand-svg-icon"
+                  src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/5_2.png?v=1684117224"
+                >
+            {% if block.settings.svg_box == 'bottom' %}
+              {% assign top = 'auto' %}
+              {% assign bottom = '-10px' %}
+            {% else %}
+              {% assign top = '-236px' %}
+              {% assign bottom = 'auto' %}
+            {% endif %}
+            <div class="Thousand-svg-btn" style="top:{{top}};bottom:{{ bottom }}">
+              <div>
+                <img src="{{ block.settings.svg_image | img_url:'130x' }}">
+                <div
+                  class="Thousand-down svg-down-{{  block.settings.svg_id }}"
+                  onclick="downSvg('{{  block.settings.svg_id }}')"
+                  id="{{ block.settings.svg_id }}"
+                >
+                  Download SVG
+                  <div data-title="SVG" style="display: none;">
+                    {{ block.settings.svg }}
+                  </div>
+                </div>
+                <div class="Thousand-svg-close">
+                  <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/7_1_b09d3dbf-6d63-48b6-8dc4-062450fed661.png?v=1684117231">
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+      <div class="Thousand-svg-item">
+        {% for block in section.blocks %}
+          {% if block.type == 'svg' %}
+            <div class="Thousand-svg-image">
+              <img src="{{ block.settings.svg_image | img_url:'60x' }}">
+              <div
+                class="Thousand-down-icon svg-down-{{  block.settings.svg_id }}"
+                onclick="downSvg('{{  block.settings.svg_id }}')"
+                id="{{ block.settings.svg_id }}"
+              >
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/2_b3727fe5-44ff-473d-afdb-650ff503c3e5.png?v=1684206550"
+                >
+                <div data-title="SVG" style="display: none;">
+                  {{ block.settings.svg }}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+       </div>
+      </div>
+        <div class="halloween-product-box">
+            <p>{{ section.settings.bundle_title }}</p>
+            {%- if section.settings.bundle_product.featured_media -%}
+              <a href="{{ section.settings.bundle_product.url }}">
+                <img
+                  class="img-first"
+                  src="{{ section.settings.bundle_product.featured_media | img_url: '420x' }}"
+                  alt="{{ section.settings.bundle_product.featured_media.alt | escape }}"
+                  {% unless lazy_load == false %}
+                    loading="lazy"
+                  {% endunless %}
+                >
+              </a>
+            {%- endif -%}
+          <div>
+            <div class="box-layout">
+              <div class="sale-title t">
+                <a href="{{ section.settings.bundle_product.url }}" class="t">{{ section.settings.bundle_product.title | escape }}</a>
+              </div>
+              <ul>
+                {{ section.settings.bundle_text }}
+              </ul>
+              <div class="halloween-product-price">
+                {% render 'sffers-price', product: section.settings.bundle_product, price_class: '' %}
+              </div>
+               <div class="addcart-sale">
+                {% render 'easter-addCart', product: section.settings.bundle_product %}
+              </div>
+            </div>
+          </div>
+       </div>
+     </div>
+     <div class="bottom-module">
+        <div class="bottom-product-module">
+           {% for block in section.blocks %}
+            {% if block.type == 'bundle' %}
+              <div class="halloween-product-model-items swiper-slide show-in-1920">
+                {% render 'product-Model',
+                    card_product: block.settings.product,
+                    colorSize: true,
+                    buttonSeat: 'fileSteam',
+                    buttonText: 'ADD TO CART',
+                    title: 'flex',
+                    pirce: 'intitle',
+                  %}
+              </div>
+            {% endif %}
+          {% endfor %}
+          <div class=" swiper-container show-in-1024"  id="swiper-container_{{ section.id }}">
+            <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+              {% if block.type == 'bundle' %}
+                <div class="halloween-product-model-items swiper-slide">
+                  {% render 'product-Model',
+                      card_product: block.settings.product,
+                      colorSize: true,
+                      buttonSeat: 'fileSteam',
+                      buttonText: 'ADD TO CART',
+                      title: 'flex',
+                      pirce: 'intitle',
+                    %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <div class="swiper-scrollbar show-in-1024" id="stories-swiper-scrollbar_{{ section.id }}"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+   var mySwiper = new Swiper('#swiper-container_{{ section.id }}',{
+    spaceBetween :20,
+    observer: true, 
+    observeParents: true ,
+     freeMode:true,
+     slidesPerView: 'auto', 
+    scrollbar: {
+      el: '#stories-swiper-scrollbar_{{ section.id }}',
+    },
+    breakpoints:{
+      1024:{
+        spaceBetween: 11,
+      },
+      750: {
+        spaceBetween: 6,
+      }
+    }
+  })
+  //显示svg下载图标
+  $('.Thousand-svg-icon').on('mouseenter', function(e){
+       $(this).siblings('.Thousand-svg-btn').show()
+  })
+  //关闭svg下载图标
+  $('.Thousand-svg-close').on('click',function(){
+    $(this).parent().parent().hide()
+  })
+  //下载SVG
+  function downSvg(id){
+   let content = $('.svg-down-'+id).eq(0).children(":last-child").html();
+    fetch(content).then(res=>res.blob()).then(blob=>{
+      const a = document.createElement('a');
+      const url = window.URL.createObjectURL(blob);
+      a.download = 'svg'
+      a.href = url
+      a.click()
+      window.URL.revokeObjectURL(url);
+      a.remove()
+      $.ajax({
+          type:'GET',
+          dataType:'json',
+          url: 'https://qn.htvront.com/htvront-thousands-page-entity/page',
+          data: {userEmail: '',pageName:'{{page_title}}',productId:id}
+      });
+    })
+  }
+</script>
+{% schema %}
+  {
+    "name": "US Halloween Product",
+    "settings": [
+      {
+        "type":"image_picker",
+        "id":"background_image",
+        "label":"background image"
+      },{
+        "type":"image_picker",
+        "id":"background_image_mobile",
+        "label":"background image mobile"
+      },{
+        "type": "text",
+        "id": "title",
+        "label": "title"
+      },{
+        "type": "text",
+        "id": "second_title",
+        "label": "second title"
+      },
+      {
+        "type":"image_picker",
+        "id":"box_image",
+        "label":"box image"
+      },
+      { 
+        "type":"text",
+        "id":"bundle_title",
+        "label":"bundle title"
+      },{
+        "type": "product",
+        "id": "bundle_product",
+        "label": "bundle product"
+      },{
+        "type":"html",
+        "id":"bundle_text",
+        "label":"bundle text"
+      },{
+        "type":"image_picker",
+        "id":"icon_image",
+        "label":"icon image"
+      }
+    ],
+    "blocks":[{
+      "type": "bundle",
+      "name":  "product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "product"
+        }
+      ]
+    },{
+    "type": "svg",
+    "name": "svg",
+    "settings": [{
+          "type": "image_picker",
+          "id": "svg_image",
+          "label": "image"
+        },{
+          "type": "html",
+          "id": "svg",
+          "label": "SVG"
+    	},{
+            "type": "text",
+            "id": "svg_id",
+            "label": "SVG id (整个块唯一性,格式svg_)"
+    	},{
+          "type":"number",
+          "id":"svg_left",
+          "label":"按钮位置left(%)",
+          "default": 1
+        },{
+          "type":"number",
+          "id":"svg_top",
+          "label":"按钮位置top(%)",
+          "default": 1
+        },{
+          "type": "select",
+          "id": "svg_box",
+          "label": "弹出框位置",
+          "options": [
+            {
+              "value": "top",
+              "label": "居上"
+            },
+            {
+              "value": "bottom",
+              "label": "居下"
+            }
+          ],
+          "default": "top"
+    	}]
+    }],
+    "presets":[
+      {
+        "name":"US Halloween Product"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

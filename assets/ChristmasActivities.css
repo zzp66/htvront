@@ -1,0 +1,672 @@
+.fn-christmasactivities-mobile_content,
+.fn-christmasactivities-combo_mobilemain_backdrop,
+.fn-christmasactivities-bests_mobilemain_backdrop,
+.fn-christmasactivities-world_mobilemain_backdrop,
+.fn-discountstore-main_list,
+.fn-christmasactivities-bestsmain,
+.fn-christmasactivities-worldmain,
+.fn-christmasactivities-main_list,
+.fn-christmasactivities,
+.fn-christmas-progressbar {
+  position: relative;
+}
+.fn-christmasactivities-body {
+  position: absolute;
+  left: 50%;
+  top: 127px;
+  transform: translate(-50%);
+  width: calc(100% - 400px);
+}
+.fn-christmasactivities-main_ul {
+  margin-top: 562px;
+  position: relative;
+  right: 7.5%;
+}
+.fn-christmasactivities-header {
+  text-align: center;
+}
+
+.fn-christmasactivities-header_title.t {
+  font-size: 70px;
+  font-family: ziquzhizhimangguoti;
+  color: #ffffff;
+  line-height: 84px;
+  text-shadow: 2px 8px 17px #660016;
+  -webkit-text-stroke: 2px #276d1b;
+  text-stroke: 2px #276d1b;
+}
+.fn-christmasactivities-header_text {
+  font-size: 30px;
+  font-family: OpenSans;
+  color: #ffffff;
+  line-height: 41px;
+  margin-top: 20px;
+}
+.fn-christmasactivities-header_button {
+  width: 180px;
+  height: 60px;
+  background: #237b32;
+  border-radius: 8px;
+  line-height: 60px;
+  margin: 40px auto 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+}
+.fn-christmasactivities-main_list_main {
+  position: absolute;
+  right: 9%;
+  bottom: 2%;
+  display: flex;
+}
+.t.fn-main_list_content_title {
+  font-size: 28px;
+  color: #8c0000;
+  line-height: 28px;
+  margin: 12px 0;
+}
+.fn-main_list_content_text {
+  font-size: 14px;
+  color: #a41818;
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+span.price-item.price-item--regular,
+span.price-item--sale.price-item--last {
+  font-size: 38px;
+  font-weight: 700;
+  color: #fa0007;
+  line-height: 48px;
+}
+.product-form__submit {
+  min-height: calc(4.8rem + var(--buttons-border-width) * 2);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  background: #ff2e34;
+}
+.fn-sum {
+  display: none;
+}
+.fn-christmas-progressbarone {
+  position: absolute;
+  height: 6px;
+  background-color: #399449;
+  border-radius: 12px;
+  max-width: 382px;
+}
+.fn-main_list_content-progressbar {
+  width: 382px;
+  background-color: #d8d8d8;
+  height: 6px;
+  border-radius: 4px;
+}
+.fn-christmasactivities-main_list_content {
+  margin-left: 28px;
+}
+.fn-christmas-productssold {
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 19px;
+}
+.fn-christmasactivities-worldmain_main {
+  position: absolute;
+  right: 10%;
+  bottom: 9%;
+  display: flex;
+  flex-flow: row-reverse;
+  align-items: center;
+}
+.fn-christmasactivities-worldmain_main.fn-christmasactivities-worldmain_main_world {
+  bottom: 3%;
+}
+.fn-christmasactivities-bestsmain_backdrop img,
+.fn-christmasactivities-worldmain_backdrop img {
+  margin: 40px auto 0 151px;
+}
+.fn-christmasactivities-worldmain_content {
+  margin-right: 50px;
+}
+.fn-christmasactivities-bestsmain_main {
+  position: absolute;
+  right: 16%;
+  bottom: 1%;
+  display: flex;
+  align-items: center;
+}
+.fn-christmasactivities-bestsmain_content {
+  margin-left: 27px;
+}
+.t.fn-discountstore-mainheade {
+  text-align: -webkit-center;
+  margin-top: 60px;
+  margin-bottom: 45px;
+}
+.fn-discountstore-main_list_content {
+  position: absolute;
+  left: 50%;
+  bottom: 23px;
+  transform: translate(-50%);
+  text-align: center;
+}
+ul.fn-discountstore-main_ul {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto 0 170px;
+}
+.fn-discountstore-product_title {
+  font-size: 20px;
+  color: #8c0000;
+  line-height: 28px;
+}
+.fn-color-attr {
+  height: 34px;
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+.fn-color-attr ul li {
+  width: 34px;
+  height: 34px;
+}
+.fn-compareat_price {
+  display: flex;
+}
+.fn-christmas-price .fn-compareat_price {
+  flex-direction: initial;
+  align-items: center;
+}
+.fn-discountstore-body span.price-item.price-item--regular,
+.fn-discountstore-body span.price-item--sale.price-item--last {
+  font-size: 18px;
+  color: #fa0007;
+  line-height: 24px;
+}
+.fn-compareat_price .fn-compare-at_price {
+  font-size: 12px;
+}
+.fn-discountstore-main_list_content .product-form__submit {
+  min-height: calc(4rem + var(--buttons-border-width) * 2);
+  width: 340px;
+}
+.fn-christmas-price {
+  margin-bottom: 12px;
+}
+.fn-color-attr ul {
+  display: flex;
+  justify-content: center;
+}
+.fn-compareat_price .fn-compare-at_price {
+  margin-left: 12px;
+}
+.fn-BlackFriday-mask {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  left: 0;
+  top: 0;
+  z-index: 999;
+  display: none;
+}
+.fn-BlackFriday-mask .fn-BlackFridaymask-main {
+  margin: 0 auto;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  background-color: #fff;
+  border-radius: 16px;
+  cursor: pointer;
+}
+.fn-ChristmasActivities-Video {
+  width: 900px;
+  height: 560px;
+}
+.fn-ChristmasActivities-Video iframe {
+  border-radius: 10px;
+}
+.fn-BlackFriday-mask .mask-close {
+  margin-right: -45px;
+  margin-top: -45px;
+  float: right;
+}
+.fn-christmasFunction {
+  cursor: pointer;
+  position: absolute;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 17px;
+  color: #fff;
+  letter-spacing: -0.5px;
+  animation: glow 800ms ease-out infinite alternate;
+}
+.fn-christmasFunction:before {
+  content: "";
+  width: 100%;
+  height: 1px;
+  display: inline-block;
+  background: #fff;
+  bottom: -20px;
+  position: relative;
+}
+.Beignners.fn-christmasFunction {
+  top: 10.3%;
+  left: 17%;
+}
+.Learner.fn-christmasFunction {
+  top: 25%;
+  left: 6.5%;
+}
+.htvfever.fn-christmasFunction {
+  top: 50%;
+  left: 9.3%;
+}
+.diymasters.fn-christmasFunction {
+  bottom: 32%;
+  left: 1.5%;
+}
+.extra.fn-christmasFunction {
+  bottom: 9.3%;
+  left: 9.3%;
+}
+@keyframes glow {
+  0% {
+    color: #fff;
+  }
+  100% {
+    color: #6f6;
+  }
+}
+.fn-christmasFunction:hover {
+  animation: forwards;
+}
+.fn-discountstore-mobileimg,
+.fn-christmasactivities-combo_mobile,
+.fn-christmasactivities-bests_mobile,
+.fn-christmasactivities-world_mobile,
+.fn-christmasactivities-mobile_heade img,
+.fn-christmasactivities-mobile_heade_a,
+.fn-christmasactivities-backdrop_mobile,
+.fn-christmasactivities-main_mobile {
+  display: none;
+}
+@media screen and (min-width: 1300px) and (max-width: 1440px) {
+  .fn-christmasactivities {
+    height: 3700px;
+  }
+  .fn-christmasactivities img {
+    height: 100%;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .fn-christmasactivities-main_ul {
+    margin-top: 340px;
+    position: relative;
+    right: 17.5%;
+  }
+  .fn-christmasactivities-main_list_backdrop {
+    width: 1250px;
+  }
+  .Products_titleimges {
+    max-width: 415px;
+  }
+  .fn-christmasactivities-main_list_content img {
+    width: 185px;
+  }
+  .t.fn-main_list_content_title {
+    font-size: 18px;
+    line-height: 24px;
+    margin: 10px 0;
+  }
+  .fn-main_list_content_text {
+    font-size: 12px;
+    line-height: 18px;
+    margin-bottom: 5px;
+  }
+  span.price-item.price-item--regular,
+  span.price-item--sale.price-item--last {
+    font-size: 18px;
+    line-height: 28px;
+  }
+  .fn-christmas-price {
+    margin-bottom: 5px;
+  }
+  .product-form__submit {
+    min-height: calc(3.3rem + var(--buttons-border-width) * 2);
+    border-radius: 8px;
+    margin-bottom: 5px;
+    background: #ff2e34;
+  }
+  .fn-christmas-productssold {
+    margin-bottom: 5px;
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .fn-christmasactivities-main_list_main {
+    position: absolute;
+    right: -9%;
+    bottom: 10%;
+  }
+  .Beignners.fn-christmasFunction {
+    top: 9.3%;
+    left: 20.3%;
+  }
+  .Learner.fn-christmasFunction {
+    top: 24.3%;
+    left: 7.5%;
+  }
+  .htvfever.fn-christmasFunction {
+    top: 49.3%;
+    left: 11%;
+  }
+  .extra.fn-christmasFunction {
+    bottom: 9.3%;
+    left: 10.3%;
+  }
+  .fn-christmasactivities-bestsmain_backdrop img,
+  .fn-christmasactivities-worldmain_backdrop img {
+    margin: 40px auto 0 37px;
+  }
+  .fn-christmasactivities-worldmain_main {
+    right: 0%;
+    bottom: 15%;
+  }
+  .fn-christmasactivities-worldmain_main.fn-christmasactivities-worldmain_main_world {
+    bottom: 15%;
+  }
+  .fn-christmasactivities-bestsmain_main {
+    right: 8%;
+    bottom: 10%;
+  }
+  .t.fn-discountstore-mainheade img {
+    width: 400px;
+    margin-left: 120px;
+  }
+  li.fn-discountstore-main_list {
+    width: 32.3%;
+  }
+  ul.fn-discountstore-main_ul {
+    margin: 0 auto 0 70px;
+  }
+  .fn-discountstore-product_title {
+    font-size: 16px;
+    line-height: 22px;
+  }
+  .fn-color-attr {
+    height: 30px;
+    margin-top: 5px;
+    margin-bottom: 8px;
+  }
+  .fn-discountstore-body span.price-item.price-item--regular,
+  .fn-discountstore-body span.price-item--sale.price-item--last {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .fn-compareat_price .fn-compare-at_price {
+    margin-left: 8px;
+  }
+  .fn-discountstore-main_list_content .product-form__submit {
+    min-height: calc(3rem + var(--buttons-border-width) * 2);
+    width: 265px;
+  }
+}
+@media screen and (max-width: 750px) {
+  .fn-discountstore-pcimg,
+  .fn-christmasactivities-world,
+  .fn-christmasactivities-bests,
+  .fn-christmasactivities-world,
+  .fn-christmasactivities-backdrop,
+  .fn-christmasactivities-main_ul {
+    display: none;
+  }
+  .fn-discountstore-mobileimg,
+  .fn-christmasactivities-combo_mobile,
+  .fn-christmasactivities-bests_mobile,
+  .fn-christmasactivities-world_mobile,
+  .fn-christmasactivities-mobile_heade img,
+  .fn-christmasactivities-mobile_heade_a,
+  .fn-christmasactivities-backdrop_mobile {
+    display: block;
+  }
+  .fn-christmasactivities {
+    /*     height: 2260px; */
+    background-image: url("https://cdn.shopify.com/s/files/1/0568/8043/1157/files/35_f781086d-0602-4761-86c5-7c563c6f9ec6.png?v=1670460833");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .fn-christmasactivities-main_mobile {
+    display: block;
+    margin-top: 105px;
+  }
+  .fn-christmasactivities-body {
+    position: static;
+    transform: none;
+    width: 100%;
+    padding-top: 25px;
+  }
+  .fn-christmasactivities-mobile_heade {
+    position: relative;
+    top: 32px;
+  }
+  .fn-christmasactivities-mobile_heade_a {
+    height: 12px;
+  }
+  .fn-christmasactivities-header_title.t {
+    font-size: 19px;
+    line-height: 23px;
+    text-shadow: 2px 1px 4px #660016;
+  }
+  .fn-christmasactivities-header_text {
+    font-size: 12px;
+    line-height: 17px;
+    margin-top: 5px;
+  }
+  .fn-christmasactivities-header_button {
+    width: 100px;
+    height: 28px;
+    line-height: 28px;
+    margin: 9px auto 0;
+    font-size: 12px;
+  }
+  .fn-christmasactivities-mobile__list_content {
+    position: absolute;
+    bottom: 3%;
+    left: 2%;
+    display: flex;
+    align-items: end;
+  }
+  .fn-main_list_content-progressbar {
+    width: 120px;
+  }
+  /*   .fn-christmasactivities-body {
+    position: absolute;
+    left: 50%;
+    top: 25px;
+    transform: translate(-50%);
+    width: calc(100% - 12px);
+  } */
+  .fn-christmas-productssold {
+    margin-bottom: 4px;
+    font-size: 12px;
+    line-height: 14px;
+    margin-top: 6px;
+  }
+  span.price-item.price-item--regular,
+  span.price-item--sale.price-item--last {
+    font-size: 16px;
+    line-height: 16px;
+  }
+  .product-form__submit {
+    min-height: calc(2.4rem + var(--buttons-border-width) * 2);
+    font-size: 12px;
+    width: 120px;
+    padding: 0;
+  }
+  .fn-main_list_content-progressbar,
+  .fn-christmas-progressbarone {
+    height: 4px;
+  }
+  .price {
+    font-size: 1.6rem;
+    line-height: 16px;
+  }
+  .fn-christmas-price {
+    margin-bottom: 5px;
+    margin-top: 3px;
+  }
+  .fn-christmasactivities-mobile__list_best {
+    margin-left: 5px;
+  }
+  .fn-christmasactivities-mobile__title_world {
+    margin-right: 24px;
+  }
+  .fn-christmasactivities-worldmain_main {
+    right: 15%;
+    bottom: 12%;
+  }
+  .fn-christmasactivities-combo_mobile,
+  .fn-christmasactivities-bests_mobile,
+  .fn-christmasactivities-world_mobile {
+    margin-top: 30px;
+  }
+  .fn-christmasactivities-bestsmain_main {
+    bottom: 11%;
+  }
+  .fn-christmasactivities-mobile__title_bests {
+    margin-left: 12px;
+  }
+  .fn-christmasactivities-combomain_main {
+    display: flex;
+    position: absolute;
+    bottom: 3%;
+    left: 8%;
+    flex-flow: row-reverse;
+    align-items: end;
+  }
+  .t.fn-discountstore-mainheade {
+    text-align: -webkit-center;
+    margin-top: 26px;
+    margin-bottom: 20px;
+  }
+  li.fn-discountstore-main_list {
+    width: 49%;
+    text-align: -webkit-center;
+    margin-bottom: 10px;
+  }
+
+  .t.fn-discountstore-mainheade img {
+    width: 100%;
+    margin-left: 0;
+  }
+  .fn-discountstore-main_list_content .product-form__submit {
+    width: 154px;
+  }
+  ul.fn-discountstore-main_ul {
+    margin: 0 auto;
+    padding: 10px;
+  }
+  .fn-discountstore-product_title {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .fn-color-attr {
+    height: 24px;
+    margin-top: 5px;
+    margin-bottom: 6px;
+  }
+  .fn-color-attr ul li {
+    width: 24px;
+    height: 24px;
+  }
+  .fn-color-attr ul li img {
+    width: 24px;
+    height: 24px;
+  }
+  .fn-discountstore-body span.price-item--sale.price-item--last,
+  .fn-discountstore-body span.price-item.price-item--regular {
+    font-size: 15px;
+    line-height: 20px;
+  }
+
+  .fn-compareat_price .fn-compare-at_price {
+    margin-left: 8px;
+    line-height: 17px;
+  }
+  .fn-discountstore-main_list_content {
+    /*     left: 48%; */
+  }
+  img.fn-discountstore-mobileimg {
+    width: 100%;
+  }
+  .extra.fn-christmasFunction {
+    bottom: 102%;
+    left: 3.3%;
+    /* top: 0; */
+  }
+  .fn-christmas-progressbarone {
+    max-width: 120px;
+  }
+}
+@media screen and (min-width: 379px) and (max-width: 480px) {
+  .fn-ChristmasActivities-Video {
+    width: 380px;
+    height: 265px;
+  }
+  .fn-christmasactivities-combo_mobilemain_backdrop img,
+  .fn-christmasactivities-combo_mobilemain_backdrop img,
+  .fn-christmasactivities-bests_mobilemain_backdrop img,
+  .fn-christmasactivities-world_mobilemain_backdrop img,
+  .fn-christmasactivities-mobile_content img,
+  img.fn-christmasactivities-backdrop_mobile {
+    width: 100%;
+  }
+  .fn-christmasactivities-mobile_heade {
+    text-align: -webkit-center;
+  }
+  .fn-christmasactivities-mobile__list_content {
+    left: 9%;
+  }
+  .fn-christmasactivities-bestsmain_main {
+    right: 14%;
+  }
+  .fn-christmasactivities-combomain_main {
+    left: 14%;
+  }
+  .extra.fn-christmasFunction {
+    bottom: 102%;
+    left: 12.3%;
+  }
+  .fn-BlackFriday-mask .mask-close {
+    margin-right: -5px;
+    margin-top: -35px;
+    float: right;
+  }
+  .fn-christmasactivities-mobile_heade {
+    top: 30px;
+  }
+}
+@media screen and (max-width: 375px) {
+  .fn-mobilemain_backdrop_a {
+    margin: 0 auto;
+  }
+  .fn-ChristmasActivities-Video {
+    width: 350px;
+    height: 245px;
+  }
+  .fn-BlackFriday-mask .mask-close {
+    margin-right: -5px;
+    margin-top: -35px;
+    float: right;
+  }
+  .fn-christmasactivities-mobile_heade {
+    position: relative;
+    top: 30px;
+    left: 10px;
+  }
+  .extra.fn-christmasFunction {
+    left: 5.3%;
+  }
+}

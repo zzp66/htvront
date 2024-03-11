@@ -1,0 +1,106 @@
+<div class="fn-valentinesday-ideas">
+{% if section.settings.head_image != blank %}
+    {% assign image = section.settings.head_image | img_url: '749x' %}
+       <img class="fn-valentinesday-discounts_img" src="{{ image }}" alt="">
+{% endif %}
+{% if section.settings.head_mobile_image != blank %}
+    {% assign image = section.settings.head_mobile_image | img_url: '328x' %}
+       <img class="fn-valentinesday-discounts_mobile_img" src="{{ image }}" alt="">
+{% endif %}
+<ul class="fn-ideas-ul">
+  {% for block in section.blocks %}
+      <li class="fn-ideas-list">
+        {% if block.settings.list_bac != blank %}
+        {% assign image = block.settings.list_bac | img_url: '447x' %}
+           <img class="fn-ideas-list_bac" src="{{ image }}" alt="">
+        {% endif %}
+        <div class="fn-ideas-list_content">
+            <div class="fn-list_content-title t"> {{ block.settings.ideas_title }} </div>
+            <div class="fn-list_content-text"> {{ block.settings.ideas_text }} </div>
+              {% if block.settings.more_link != blank %}
+                  <a href="{{ block.settings.more_link }}">
+                  <div class="fn-list_content-more">  View More </div>
+                   </a>
+             {% endif %}
+              <div class="fn-content-more_icon">
+                  {% if block.settings.more_icon != blank %}
+                  {% assign image = block.settings.more_icon | img_url: '110x' %}
+                     <img class="fn-ideas-more_icon" src="{{ image }}" alt="">
+                  {% endif %}
+              </div>
+        </div>
+      </li>
+  {% endfor %}
+</ul>
+</div>
+{% schema %}
+  {
+    "name": "ideas",
+    "max_blocks": 3,
+    "settings": [
+         {
+			"type": "image_picker",
+			"id": "head_image",
+			"label": {
+				"en": "image"
+			}
+		},
+         {
+			"type": "image_picker",
+			"id": "head_mobile_image",
+			"label": {
+				"en": "mobile image"
+			}
+		}
+    ],
+    "blocks": [
+      {
+        "type": "ideas",
+        "name": {
+          "en": "ideas"
+        },
+        "settings": [
+            {
+    			"type": "image_picker",
+    			"id": "list_bac",
+    			"label": {
+    				"en": "background image"
+    			}
+    		},
+            {
+              "type":"url",
+              "id":"more_link",
+              "label":{
+              "en":"link",
+              "zh-CN":"链接"
+              }
+            },
+            {
+                "type":"text",
+                "id":"ideas_title",
+                "label":"title"
+            },
+            {
+              "type": "text",
+              "id": "ideas_text",
+              "label": "text"
+            },
+            {
+    			"type": "image_picker",
+    			"id": "more_icon",
+    			"label": {
+    				"en": "icon"
+    			}
+    		}
+          
+        ]
+      }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

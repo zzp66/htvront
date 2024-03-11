@@ -1,0 +1,332 @@
+{% style %}
+  #shopify-section-{{ section.id }} .cap-press-creativity{
+    background: url({{ section.settings.image_bg | img_url:'1920x' }}) no-repeat;
+    background-size: 100% 100%;
+  }
+      @media screen and (max-width: 768px){
+          #shopify-section-{{ section.id }} .cap-press-creativity{
+            background: #FFEDDD
+          }
+        }
+{% endstyle %}
+<style>
+  .cap-press-creativity{
+    padding:30px 0 40px;
+    letter-spacing: 0;
+  }
+  .cap-creativity-content{
+    width:1380px;
+    margin:0 auto
+  }
+  .cap-creativity-title{
+    position: relative;
+    text-align:center;
+  }
+  .cap-creativity-title img{
+    margin:0 auto
+  }
+  .cap-creativity-title>div{
+    position: absolute;
+    top:11px;
+    width:100%;
+    font-size: 36px;
+    font-weight: bold;
+    color: #802704;
+    line-height: 49px;
+  }
+  .cap-creativity-list{
+    display:flex;
+    margin-top: 20px;
+  }
+  .cap-creativity-item{
+    margin-right:20px;
+    padding:20px 25px 25px;
+    background: #FFFDEF;
+    border-radius: 8px 8px 8px 8px;
+    opacity: 1;
+    border: 2px solid #802704;
+  }
+  .cap-creativity-item img{
+    cursor: pointer;
+  }
+  .cap-creativity-item:last-child{
+    margin-right:0
+  }
+  .cap-creativity-text{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top:8px
+  }
+  .cap-creativity-item-title{
+    font-size: 18px;
+    font-weight: bold;
+    color: #802704;
+    line-height: 21px;
+  }
+   .fn-Creativity-mask {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      left: 0;
+      top: 0;
+      z-index: 999;
+      display: none;
+    }
+    .fn-Creativity-mask .fn-Storiesmask-main {
+      cursor: pointer;
+    }
+    .fn-Stories-Video {
+      width:100%;
+      height:653px;
+    }
+    .fn-Stories-Video iframe{
+      border-radius:10px
+    }
+    .fn-Creativity-mask>div{
+      margin: 0 auto;
+      transform: translate(-50%, -50%);
+      top: 50%; 
+      left: 50%;
+      position: absolute;
+      background-color: #fff;
+      border-radius: 16px;
+      padding: 3.9% 6.2%;
+      width: 74.85%;
+    }
+    .fn-Creativity-mask .mask-close {
+      position: absolute;
+      top: 21px;
+      right: 25px;
+    }
+  @media screen and (max-width: 1440px){
+      .cap-creativity-content{
+         width:71.8% 
+      }
+  }
+   @media screen and (max-width: 1180px){
+      .fn-Stories-Video {
+        height:400px;
+      }
+     .cap-creativity-content{
+         width:83.3% 
+      }
+     .cap-creativity-title>div{
+        font-size:24px;
+        line-height:38px;
+        top:18%
+      }
+    }
+    @media screen and (max-width: 820px){
+      .fn-Stories-Video {
+          height:300px;
+        }
+      .fn-Creativity-mask .mask-close {
+          top: 5px;
+          right: 5px;
+        }
+     .alert-video  .video-btn{
+        width:50px
+      }
+    }
+  @media screen and (max-width: 768px){
+    .cap-press-creativity{
+      padding:8px 0 20px
+    }
+    .cap-creativity-content{
+      width:93.6%
+    }
+    .cap-creativity-list{
+      display:block;
+      margin:0
+    }
+    .cap-creativity-item{
+      margin-right:0;
+      margin-top:10px;
+      padding:16px 12px
+    }
+    .cap-creativity-title>div{
+      top:24%
+    }
+    .cap-creativity-item-title{
+      font-size:14px;
+      width:calc(100% - 40px);
+      height:27px;
+      line-height:27px;
+      overflow: hidden;  
+      text-overflow: ellipsis; 
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+    }
+    .cap-creativity-btn{
+      width:27px
+    }
+  }
+    @media screen and (max-width: 750px){
+      .fn-Creativity-mask>div{
+        width:100%;
+        border-radius: 0;
+        padding: 5.1% 6.9%;
+      }
+      .fn-Creativity-mask-mobile>div{
+        width:93.6%;
+      }
+       .fn-Creativity-mask .mask-close {
+          top: 3px;
+          right: 4px;
+        }
+      .fn-Creativity-mask .mask-close img{
+        width:19px;
+        height:19px
+      }
+      .fn-Stories-Video {
+          height:230px;
+        }
+      .fn-Stories-Video iframe{
+        border-radius:0
+      }
+    }
+    @media screen and (max-width: 480px){
+    .cap-creativity-title>div{
+      font-size:16px;
+      line-height:19px;
+      top:24%
+    }
+      .cap-creativity-title img{
+        max-width:279px
+      }
+    
+  }
+</style>
+<div class="cap-press-creativity"  id="{{ section.settings.id }}">
+  <div class="cap-creativity-content">
+    <div class="cap-creativity-title">
+      <picture>
+          <source media="(max-width: 768px)" srcset="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Group_67_2x_3dd8efe8-4975-4c0c-89c3-6af102200423.png?v=1704267578">
+          <source media="(min-width: 769px)" srcset="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Group_53.png?v=1704182203">
+          <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Group_53.png?v=1704182203" />
+        </picture>
+      
+      <div>{{ section.settings.title }}</div>
+    </div>
+    <div class="cap-creativity-list">
+      {% for block in section.blocks %}
+        <div class="cap-creativity-item">
+          {% if block.settings.image != blank  %}
+            <picture>
+              <source media="(max-width: 768px)" srcset="{{ block.settings.image_mobile |img_url:'654x' }}">
+              <source media="(min-width: 769px)" srcset="{{ block.settings.image |img_url:'630x' }}">
+              <img src="{{ block.settings.image |img_url:'630x' }}" alt="{{ block.settings.title }}" style="margin:0 auto" onclick="creativityFunction('1','{{ block.settings.live_video }}')" />
+            </picture>
+            
+          {% endif %}
+          <div class="cap-creativity-text">
+            <div class="cap-creativity-item-title">
+              {{ block.settings.title }}
+            </div>
+            <div class="cap-creativity-btn">
+              <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Group_11.png?v=1704182208" onclick="creativityFunction('1','{{ block.settings.live_video }}')" />
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<div class="fn-Creativity-mask">
+  <div>
+    <div class="fn-Storiesmask-main">
+      <div class="mask-close" onclick="creativityFunction('2')">
+        <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/7_8ba31ff8-9cdf-403b-ac36-d36b25abab80.png?v=1683355188">
+      </div>
+      <div class="fn-Stories-Video">
+        <iframe
+          id="stories-Video-Iframe-creativity"
+          width="100%"
+          height="100%"
+          src=""
+          title="YouTube video player"
+          frameborder="no"
+          border="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function creativityFunction(e,link){
+    if(e == 1 ) {
+      $('#stories-Video-Iframe-creativity').eq(0).attr('src',link)
+      $('.fn-Creativity-mask').show();
+    }
+    if(e == 2 ) {
+      $('.fn-Creativity-mask').hide();
+      $('#stories-Video-Iframe-creativity').eq(0).attr('src','')
+    }
+  }
+</script>
+{% schema %}
+  {
+    "name": "Cap Press Creativity",
+    "settings": [
+       {
+        "type": "text",
+        "id": "id",
+        "label": "id(页面唯一性，全英文)"
+      },
+      {
+        "type": "image_picker",
+        "id":"image_bg",
+        "label":"image_bg"
+      },{
+        "type": "text",
+        "id":"title",
+        "label":"title"
+      }
+    ],
+    "blocks":[{
+      "type":"images",
+      "name":"images",
+      "settings":[
+        {
+          "type": "image_picker",
+          "id":"image",
+          "label":"image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "image mobile"
+      },
+        {
+          "type": "text",
+          "id":"title",
+          "label":"title"
+        },
+        {
+          "type": "url",
+          "id":"live_video",
+          "label": {
+              "en": "video site",
+              "zh-CN": "视频嵌入地址"
+          }
+        }
+      ]
+    }],
+    "presets":[
+        {
+            "name":"Cap Press Creativity"
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

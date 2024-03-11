@@ -1,0 +1,59 @@
+{%- comment -%}ivan{%- endcomment -%}
+<div class="collection-linklist">
+    <div class="swiper swiper-container swiper-linklist">
+        <div class="swiper-wrapper">
+            {% for link in linklists.header.links %}
+                {% for sub_link in link.links %}
+                    {% if sub_link.active or sub_link.child_active %}
+                        {% for sub_sub_link in sub_link.links %}
+                            <div class="swiper-slide {% if sub_sub_link.active %}swiper-slide-current{% endif %}" data-index="{{ forloop.index0 }}">
+                              <h2>
+                                <a href="{{ sub_sub_link.url }}" class="{% if sub_sub_link.active %}active{% endif %}" title="{{ sub_sub_link.title }}">
+                                    {{ sub_sub_link.title }}</a>
+                              </h2>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                {% endfor %}
+            {% endfor %}
+
+        </div>
+        <div class="swiper-button-next">{% include 'icon-caret' %}</div>
+        <div class="swiper-button-prev">{% include 'icon-caret' %}</div>
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+        var linklist = new Swiper('.swiper-linklist', {
+            slidesPerView: 4, 
+            initialSlide: localStorage.getItem('swiperActive')|| 0,
+            navigation: {
+                nextEl: ".swiper-linklist .swiper-button-next",
+                prevEl: ".swiper-linklist .swiper-button-prev"
+            },
+
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 10,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 10,
+                },
+                990: {
+                    slidesPerView: 4
+                }
+             
+            },
+            on:{
+               slideChangeTransitionEnd: function(){                
+                localStorage.setItem('swiperActive',this.activeIndex)
+              }
+            }
+        });
+    })
+</script>

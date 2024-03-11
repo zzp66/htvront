@@ -1,0 +1,152 @@
+<div class="fn-christmasactivities-world">
+      <div class="fn-christmasactivities-worldmain">
+        <div class="fn-christmasactivities-worldmain_backdrop">
+            {% if section.settings.Products_world != blank %}
+                <img src="{{  section.settings.Products_world | img_url: '1242x' }}" alt="">
+            {% endif %}
+        </div>
+      <div class="fn-christmasactivities-worldmain_main">
+             <div class="fn-christmasactivities-worldmain_img">
+            {% if section.settings.world_Products_link != blank %}
+             <a href="{{  section.settings.world_Products_link }}">
+            {% endif %}
+            {% if section.settings.world_imges != blank %}
+                <img class="Products_titleimges" src="{{  section.settings.world_imges | img_url: '657x' }}" alt="">
+            {% endif %}
+            {% if section.settings.world_Products_link != blank %}
+            </a>
+            {% endif %}
+            </div>
+            <div class="fn-christmasactivities-worldmain_content">
+            {% if section.settings.world_Products_link != blank %}
+             <a href="{{  section.settings.world_Products_link }}">
+            {% endif %}
+              {{ section.settings.world_content_a}}
+            {% if section.settings.world_Products_link != blank %}
+            </a>
+            {% endif %}
+              <div class="fn-christmasactivities-products">
+                   {% render 'fn-christmas-products',
+                    card_product: section.settings.world_product,
+                    sum_inventory: section.settings.sum_world
+                    %}
+              </div>
+            </div>
+      </div>
+    </div>
+</div>
+<div class="fn-christmasactivities-world_mobile">
+   <div class="fn-christmasactivities-world_mobilemain_backdrop">
+      {% if section.settings.mobile_world_backdrop != blank %}
+          <img class="fn-mobilemain_backdrop_a"  src="{{  section.settings.mobile_world_backdrop | img_url: '362x' }}" alt="">
+      {% endif %}
+      <div class="fn-christmasactivities-worldmain_main">
+        <div class="fn-christmasactivities-world_mobile_main_img">
+          {% if section.settings.world_Products_link != blank %}
+           <a href="{{  section.settings.world_Products_link }}">
+          {% endif %}
+              {% if section.settings.world_Products_img != blank %}
+                <img src="{{  section.settings.world_Products_img | img_url: '104x' }}" alt="">
+              {% endif %}
+          {% if section.settings.world_Products_link != blank %}
+          </a>
+          {% endif %}
+
+        </div>
+        <div class="fn-christmasactivities-mobile__title_world">
+          {% if section.settings.world_Products_link != blank %}
+           <a href="{{  section.settings.world_Products_link }}">
+          {% endif %}
+            {% if section.settings.world_explain_img != blank %}
+              <img src="{{  section.settings.world_explain_img | img_url: '154x' }}" alt="">
+            {% endif %}
+          {% if section.settings.world_Products_link != blank %}
+          </a>
+          {% endif %}
+             <div class="fn-christmasactivities-products">
+                 {% render 'fn-christmas-products',
+                  card_product: section.settings.world_product,
+                  sum_inventory: section.settings.sum_world
+                  %}
+            </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "christmas world",
+    "settings": [
+          {
+             "type":"image_picker",
+             "id":"Products_world",
+             "label":{
+             "en":"Products background image",
+             "zh-CN":"产品背景图片"
+           }
+         },
+        {
+             "type":"image_picker",
+             "id":"world_imges",
+             "label":{
+             "en":"Products image",
+             "zh-CN":"产品图片"
+           }
+         },
+         {
+           "type":"html",
+           "id":"world_content_a",
+           "label":{
+           "en":"Products content",
+           "zh-CN":"内容"
+         }
+       }, 
+       {
+          "type": "product",
+          "id": "world_product",
+          "label": "product"
+         },
+       {
+          "type": "text",
+          "id": "sum_world",
+          "label": "sum"
+       },
+        {
+             "type":"image_picker",
+             "id":"mobile_world_backdrop",
+             "label":{
+             "en":"backdrop image",
+             "zh-CN":"手机背景图片"
+           }
+         },
+         {
+             "type":"image_picker",
+             "id":"world_Products_img",
+             "label":{
+             "en":"Product image",
+             "zh-CN":"产品图片"
+           }
+         },
+         {
+             "type":"image_picker",
+             "id":"world_explain_img",
+             "label":{
+             "en":"explain image",
+             "zh-CN":"图片"
+           }
+         },
+              {
+            "type":"url",
+            "id":"world_Products_link",
+            "label":"product links"
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

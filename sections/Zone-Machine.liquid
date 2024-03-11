@@ -1,0 +1,652 @@
+<style>
+  .zone-machine{
+    width: 100%;
+    background: #FFF6D6;
+    box-shadow: 0px 6px 14px 0px rgba(95,4,4,0.25);
+    border-radius: 20px;
+    padding:23px 23px 20px;
+    margin-top:65px;
+  }
+  .machine-main{
+    display:flex;
+  }
+  .machine-left{
+    padding:13px;
+    background-color:#fff;
+    border-radius:8px;
+    min-width: 902px;
+  }
+  .machine-left .product-item{
+    background: linear-gradient(180deg, #FFF2C3 0%, rgba(255,242,195,0) 100%);
+    border-radius: 8px 8px 8px 8px;
+    position:relative; 
+    display: flex;
+    padding: 36px 18px 40px 10px;
+  }
+  .machine-left .product-image{
+    min-width:478px;
+  }
+  .zone-bg-image{
+    position: absolute;
+    right: -50px;
+    top: 34%;
+  }
+  .machine-left .product-layout{
+    margin-left:12px;
+    position:relative; 
+  }
+  .product-sale-title{
+    font-size: 20px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 23px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    letter-spacing: 0;
+  }
+  .product-rules li{
+    font-size: 16px;
+    font-weight: 400;
+    color: #333333;
+    line-height: 19px;
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+  }
+  .product-rules li:before{
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #333333;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 5px;
+  }
+  .product-rules{
+    margin-top: 15px;
+    min-height: 191px;
+  }
+  .machine-left .fn-color-attr ul li,
+  .machine-right .fn-color-attr ul li{
+    width: 40px;
+    height: 40px;
+  }
+  .machine-left .fn-color-attr ul li+li,
+  .machine-right .fn-color-attr ul li+li{
+    margin-left: 10px;
+  }
+  .machine-left .fn-color-attr ul li img,
+  .machine-right .fn-color-attr ul li img{
+    width: 40px;
+    height: 40px;
+  }
+  .coupon-price>span:nth-child(1){
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+    padding-right:5px;
+  }
+  .coupon-price>span:nth-child(2){
+    color: #FF6301;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .machine-right .coupon-price>span:nth-child(1){
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+    padding-right:5px;
+  }
+  .machine-left .code,.machine-right .code{
+    display: flex;
+    color: #333;
+    font-weight: bold;
+    align-items: baseline;
+  }
+  .machine-left .code>span:nth-child(1){
+    font-size:16px;
+  }
+  .machine-left .code>span:nth-child(2){
+    font-size:18px;
+    padding:0 3px 0 5px;
+  }
+  .machine-right .code>span:nth-child(1){
+    font-size:14px;
+  }
+  .machine-right .code>span:nth-child(2){
+    font-size:16px;
+    padding:0 3px 0 5px;
+  }
+  .machine-left .code>img,.machine-right .code>img{
+    height: 14px;
+    cursor: pointer;
+  }
+  .machine-left .block--price{
+    display:flex;
+    font-size: 16px;
+    align-items: baseline;
+    color:#333;
+    margin-bottom:10px
+  }
+  .machine-left .block--price>span:nth-child(1),.machine-right .block--price>span:nth-child(1){
+    padding-right:5px;
+  }
+  .machine-right .block--price{
+    display:flex;
+    font-size: 14px;
+    align-items: baseline;
+    color:#333;
+    margin-bottom:10px
+  }
+  .machine-left .price-item--sale.price-item--last,.machine-right .price-item--sale.price-item--last{
+    display:none;
+  }
+  .machine-left .fn-compareat_price .fn-compare-at_price{
+    text-decoration: auto;
+    font-size:16px;
+    color:#333;
+  }
+  .machine-left .price__regular .price-item--regular{
+    font-size:16px;
+  }
+  .machine-right .price__regular .price-item--regular{
+    font-size:14px;
+  }
+  .machine-right .fn-compareat_price .fn-compare-at_price{
+    font-size:14px;
+    text-decoration: auto;
+    color:#333;
+    padding-top: 2px;
+  }
+  .machine-left .button--full-width{
+    width: 347px;
+    height: 46px;
+    background: linear-gradient(91deg, #FE4E43 0%, #FF7B36 100%);
+    border-radius: 4px 4px 4px 4px;
+    padding: 0;
+    margin: 0;
+    min-width: auto;
+    --border-offset: none;
+    min-height: auto;
+    --border-opacity: none;
+  }
+  .machine-right .button--full-width{
+    height: 46px;
+    background: linear-gradient(91deg, #FE4E43 0%, #FF7B36 100%);
+    border-radius: 8px;
+    opacity: 1;
+    --border-offset: none;
+    padding: 0;
+    --border-opacity: none;
+  }
+  .machine-left .fn-color-attr{
+    margin-bottom:10px;
+    height:40px;
+  }
+  .machine-right .fn-color-attr{
+    margin-bottom:5px;
+    height:40px;
+  }
+  .title_style{
+    text-align:center;
+    color: #C63D39;
+  }
+  .zone-machine>p:nth-child(1){
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 38px;
+    margin-bottom: 10px;
+  }
+  .zone-machine>p:nth-child(2){
+    font-size: 16px;
+    margin-bottom: 20px;
+    line-height: 19px;
+  }
+  .machine-right {
+    display:flex;
+  }
+  .block-product-item{
+    margin-left:15px;
+    background-color:#fff;
+    border-radius: 8px;
+    padding:13px;
+    width: 47%;
+  }
+  .product-item .img-first,.block-product-item .img-first{
+    border-radius: 6px;
+  }
+  .block-sale-title{
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 21px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    margin-top:7px;
+  }
+   @media screen and (max-width: 1720px){
+     .machine-left{
+       min-width: auto;
+     }
+     .machine-left .product-image {
+      min-width: auto;
+     }
+     .zone-machine>p:nth-child(1){
+       font-size:28px;
+     }
+   }
+  @media screen and (max-width: 1440px){
+    .block-product-item{
+      width: 50%;
+    }
+    .block-product-item:nth-child(1){
+      margin-left:0;
+    }
+    .product-rules{
+      min-height: 145px;
+    }
+    .product-image .img-first{
+      margin:0 auto;
+    }
+    .machine-left .product-item{
+      padding:15px;
+    }
+    .machine-main {
+      flex-direction: column;
+    }
+    .machine-left{
+      margin-bottom: 15px;
+    }
+  }
+  @media screen and (max-width: 820px){
+    .zone-machine{
+      border-radius: 6px;
+      box-shadow: 0px 6px 6px 0px rgba(95,4,4,0.25);
+      padding: 14px 6px 15px;
+      margin-top:30px;
+    }
+    .zone-machine>p:nth-child(1){
+      font-size: 16px;
+      line-height: 22px;
+      margin-bottom: 5px;
+    }
+    .zone-machine>p:nth-child(2){
+      font-size: 14px;
+      line-height: 16px;
+      margin-bottom: 8px;
+    }
+    .machine-left .product-item{
+      flex-direction: column;
+      padding: 10px 5px;
+    }
+    .machine-left{
+      padding:7px;
+      margin-bottom:10px;
+    }
+    .product-sale-title{
+      font-size: 16px;
+      line-height: 19px;
+      margin-top: 10px;
+    }
+    .product-rules {
+      min-height: auto;
+      margin-top: 8px;
+    }
+    .product-rules li{
+      margin-bottom: 6px;
+      font-size: 14px;
+      line-height: 16px;
+    }
+    .product-rules li:before{
+      width: 6px;
+      height: 6px;
+    }
+    .machine-left .product-layout{
+      margin-left:0;
+    }
+    .coupon-price>span:nth-child(1),.machine-left .code>span:nth-child(1),.machine-left .block--price,.machine-left .fn-compareat_price .fn-compare-at_price{
+      font-size:14px;
+    }
+    .machine-left .code>span:nth-child(2){
+      font-size:16px;
+    }
+    .machine-left .block--price{
+      align-items: center;
+    }
+    .coupon-price>span:nth-child(2){
+      line-height:28px;
+    }
+    .zone-bg-image{
+      display:none;
+    }
+    .machine-left .button--full-width{
+      width: 100%;
+      height: 42px;
+      font-size: 14px;
+    }
+    .block-product-item{
+      margin-left:8px;
+    }
+    .machine-right{
+      justify-content: center;
+    }
+    .block-product-item{
+      width:48%;
+      padding: 5px 5px 10px;
+      border-radius: 4px;
+    }
+    .machine-right .fn-color-attr ul li img{
+      width:23px;
+      height:23px;
+    }
+    .machine-right .fn-color-attr ul li{
+      width:23px;
+      height:23px;
+    }
+    .machine-right .fn-color-attr{
+      height:23px;
+    }
+    .machine-right .fn-color-attr ul li+li{
+      margin-left:6px
+    }
+    .block-sale-title{
+      font-size: 14px;
+      line-height: 16px;
+    }
+    .machine-right .coupon-price>span:nth-child(2){
+      font-size:16px;
+      line-height: 19px;
+    }
+    .machine-right .code{
+      display: block;
+    }
+    .machine-right .code>img{
+      display: inline-block;
+    }
+    .machine-right .code>span:nth-child(2){
+      font-size:14px;
+    }
+    .machine-right .button--full-width{
+      height: 40px;
+      font-size: 14px;
+      min-height: 40px;
+    }
+  }
+</style>
+
+{% if section.settings.title != blank %}
+<div class="zone-machine" id="{{ section.settings.id }}">
+  <p class="title_style">{{ section.settings.title }}</p>
+  <p class="title_style">{{ section.settings.second_title }}</p>
+  <div class="machine-main">
+    <div class="machine-left">
+      <div class="product-item">
+        <img class="zone-bg-image" src="{{ section.settings.bg_image | img_url: '412x' }}">
+        {%- if section.settings.product.featured_media -%}
+          <a href="{{ section.settings.product.url }}" class="product-image">
+            <img
+              class="img-first"
+              src="{{ section.settings.product.featured_media | img_url: '478x' }}"
+              alt="{{ section.settings.product.featured_media.alt | escape }}"
+              {% unless lazy_load == false %}
+                loading="lazy"
+              {% endunless %}
+            >
+          </a>
+        {%- endif -%}
+        <div class="product-layout">
+          <div class="product-sale-title t">
+            <a href="{{ section.settings.product.url }}" class="t">{{ section.settings.product.title | escape }}</a>
+          </div>
+          <div class="product-rules">
+            {{ section.settings.product_rules }}
+          </div>
+          <div class="fn-color-attr">
+            {%- for option in section.settings.product.options_with_values -%}
+              {%- if option.name == 'Colors' or option.name == 'Color' -%}
+                <ul>
+                  {%- if option.name == 'Colors' -%}
+                    {% assign colorList = section.settings.product.options_by_name.Colors.values | slice: 0, 5 %}
+                  {%- else -%}
+                    {% assign colorList = section.settings.product.options_by_name.Color.values | slice: 0, 5 %}
+                  {%- endif -%}
+                  {%- for value in colorList -%}
+                    <li>
+                      <a href="{{ section.settings.product.url }}?variant={{ section.settings.product.variants[forloop.index0].id }}">
+                        {%- if section.settings.product.variants[forloop.index0].featured_image != blank -%}
+                          <img
+                            src="{{ section.settings.product.variants[forloop.index0].featured_image | img_url: '50x50' }}"
+                            alt="{{ value }}"
+                          >
+                        {%- endif -%}
+                      </a>
+                    </li>
+                  {% endfor %}
+                  {%- if option.name == 'Colors' -%}
+                    {% assign size = section.settings.product.options_by_name.Colors.values | size | minus: 5 %}
+                  {%- else -%}
+                    {% assign size = section.settings.product.options_by_name.Color.values | size | minus: 5 %}
+                  {%- endif -%}
+                  {%- if size > 0 -%}
+                    <li class="color-quantity">
+                      <a href="{{ section.settings.product.url }}">+{{ size }}</a>
+                    </li>
+                  {%- endif -%}
+                </ul>
+              {%- endif -%}
+            {% endfor %}
+          </div>
+          <div class="coupon-price">
+            {% if section.settings.coupon_price != blank %}
+              <span>Coupon Price:</span>
+              <span>{{ section.settings.coupon_price }}</span>
+            {% endif %}
+          </div>
+          <div class="price-code">
+            {% if section.settings.code != blank %}
+              <div class="code">
+                <span>Coupon Code:</span>
+                <span>{{ section.settings.code }}</span>
+                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/8_23556d6b-f24f-4b67-8f64-73196bf27b0a.png?v=1691375251" onclick="copyticket('{{ section.settings.code }}')" >
+              </div>
+            {% endif %}
+          </div>
+          <div class="block--price">
+            <span>Regular Price:</span>
+            {% render 'sffers-price', product: section.settings.product, price_class: '' %}
+          </div>
+           <div class="heatPress-addcart-sale">
+            {% render 'easter-addCart', product: section.settings.product %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="machine-right">
+      {% for block in section.blocks %}
+        <div class="block-product-item">
+        {%- if block.settings.product.featured_media -%}
+          <a href="{{ block.settings.product.url }}" class="product-image">
+            <img
+              class="img-first"
+              src="{{ block.settings.product.featured_media | img_url: '285x' }}"
+              alt="{{ block.settings.product.featured_media.alt | escape }}"
+              {% unless lazy_load == false %}
+                loading="lazy"
+              {% endunless %}
+            >
+          </a>
+        {%- endif -%}
+        <div class="block-layout">
+          <div class="block-sale-title t">
+            <a href="{{ block.settings.product.url }}" class="t">{{ block.settings.product.title | escape }}</a>
+          </div>
+          <div class="fn-color-attr">
+            {%- for option in block.settings.product.options_with_values -%}
+              {%- if option.name == 'Colors' or option.name == 'Color' -%}
+                <ul>
+                  {%- if option.name == 'Colors' -%}
+                    {% assign colorList = block.settings.product.options_by_name.Colors.values | slice: 0, 5 %}
+                  {%- else -%}
+                    {% assign colorList = block.settings.product.options_by_name.Color.values | slice: 0, 5 %}
+                  {%- endif -%}
+                  {%- for value in colorList -%}
+                    <li>
+                      <a href="{{ block.settings.product.url }}?variant={{ block.settings.product.variants[forloop.index0].id }}">
+                        {%- if block.settings.product.variants[forloop.index0].featured_image != blank -%}
+                          <img
+                            src="{{ block.settings.product.variants[forloop.index0].featured_image | img_url: '50x50' }}"
+                            alt="{{ value }}"
+                          >
+                        {%- endif -%}
+                      </a>
+                    </li>
+                  {% endfor %}
+                  {%- if option.name == 'Colors' -%}
+                    {% assign size = block.settings.product.options_by_name.Colors.values | size | minus: 5 %}
+                  {%- else -%}
+                    {% assign size = block.settings.product.options_by_name.Color.values | size | minus: 5 %}
+                  {%- endif -%}
+                  {%- if size > 0 -%}
+                    <li class="color-quantity">
+                      <a href="{{ block.settings.product.url }}">+{{ size }}</a>
+                    </li>
+                  {%- endif -%}
+                </ul>
+              {%- endif -%}
+            {% endfor %}
+          </div>
+          <div class="coupon-price">
+            {% if block.settings.coupon_price != blank %}
+              <span>Coupon Price:</span>
+              <span>{{ block.settings.coupon_price }}</span>
+            {% endif %}
+          </div>
+          <div class="price-code">
+            {% if block.settings.code != blank %}
+              <div class="code">
+                <span>Coupon Code:</span>
+                <span>{{ block.settings.code }}</span>
+                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/8_23556d6b-f24f-4b67-8f64-73196bf27b0a.png?v=1691375251" onclick="copyticket('{{ block.settings.code }}')" >
+              </div>
+            {% endif %}
+          </div>
+          <div class="block--price">
+            <span>Regular Price:</span>
+            {% render 'sffers-price', product: block.settings.product, price_class: '' %}
+          </div>
+           <div class="heatPress-addcart-sale">
+            {% render 'easter-addCart', product: block.settings.product %}
+          </div>
+        </div>
+      </div>  
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endif %}
+<script>
+  function copyticket(code){
+    let url = code;
+    let copyInput = document.createElement('input');
+    	document.body.appendChild(copyInput);
+    	copyInput.setAttribute('value', url);
+    	copyInput.select();
+    	document.execCommand("Copy");
+    	copyInput.remove();
+        alertMsg()
+  }
+   function alertMsg(){
+      var alertFram = document.createElement("DIV");
+      alertFram.id = "alertFram";
+      alertFram.style.position = "fixed";
+      alertFram.style.width = "100%";
+      alertFram.style.textAlign = "center";
+      alertFram.style.bottom = "40px";
+      alertFram.style.zIndex = "10001";
+      strHtml = " <span style=\"font-family: 微软雅黑;display:inline-block;background:#333;color:#fff;padding:0 20px;line-height:36px;border-radius:6px; \">Copied successfully</span>";
+      alertFram.innerHTML = strHtml;
+      document.body.appendChild(alertFram);
+      setTimeout((function(){
+        alertFram.style.display="none";
+      }),2000);
+    }
+</script>
+{% schema %}
+  {
+    "name": "Zone-Machine",
+    "settings": [
+      {
+        "type": "text",
+        "id": "id",
+        "label": "id(页面唯一性，全英文)"
+      },
+      {
+        "type":"text",
+        "id":"title",
+        "label":"title"
+      },{
+        "type":"text",
+        "id":"second_title",
+        "label":"second title"
+      },{
+        "type": "product",
+        "id": "product",
+        "label": "product item"
+      },{
+        "type":"html",
+        "id":"product_rules",
+        "label":"product rules"
+      },{
+        "type":"text",
+        "id":"coupon_price",
+        "label":"coupon price"
+      },{
+        "type":"text",
+        "id":"code",
+        "label":"code"
+      },{
+        "type":"image_picker",
+        "id":"bg_image",
+        "label":"background image"
+      }
+    ],
+    "max_blocks":2,
+    "blocks":[{
+      "type": "bundle",
+      "name":  "product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "product item"
+        },{
+          "type":"text",
+          "id":"coupon_price",
+          "label":"coupon price"
+        },{
+          "type":"text",
+          "id":"code",
+          "label":"code"
+        }
+      ]
+    }], 
+    "presets":[
+        {
+            "name":"Zone Machine"
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

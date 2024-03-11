@@ -1,0 +1,67 @@
+<div class="fn-channel-sellingnetwork">
+   <div class="fn-sellingnetwork-title">{{ section.settings.sellingnetwork_title }} </div>
+   <div class="fn-sellingnetwork-text">{{ section.settings.sellingnetwork_text }} </div>
+  {% if section.settings.sellingnetwork_img != blank %}
+  		<img src="{{ section.settings.sellingnetwork_img | img_url: '1525x' }}" alt="" loading="lazy">
+  {% endif %}
+</div>
+<div class="fn-channel-localdistribution">
+  {% if section.settings.localdistribution_img != blank %}
+  		<img src="{{ section.settings.localdistribution_img | img_url: '1600x' }}" alt="" loading="lazy">
+  {% endif %}
+  <div class="fn-localdistribution-main">{{ section.settings.localdistribution_main }}</div>
+</div>
+{% schema %}
+  {
+    "name": "selling network",
+    "settings": [
+
+        {
+          "type": "text",
+          "id": "sellingnetwork_title",
+          "label": {
+          "en": "selling network title",
+          "zh-CN": "标题"
+          }
+        },
+        {
+          "type": "text",
+          "id": "sellingnetwork_text",
+          "label": {
+          "en": "selling network text",
+          "zh-CN": "说明"
+          }
+        },
+        {
+          "type": "image_picker",
+          "id": "sellingnetwork_img",
+          "label": {
+          "en": "course Image",
+          "zh-CN": "图片"
+          }
+        },
+        {
+          "type": "image_picker",
+          "id": "localdistribution_img",
+          "label": {
+          "en": "course Image",
+          "zh-CN": "图片"
+          }
+        },
+        {
+          "type": "html",
+          "id": "localdistribution_main",
+          "label": {
+          "en": "local distribution",
+          "zh-CN": "主要分布"
+          }
+        }
+     ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

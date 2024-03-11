@@ -1,0 +1,1319 @@
+/* .fn-lowprice-title.fn-Discountproduct-title {
+    font-weight: bold;
+} */
+.fn-makingmain-time_copy,
+.fn-BlackFridaymask-head,
+.fn-Eventproducts-progressbar,
+.fn-bodyright-Socialmedia,
+.fn-ClarenceHui-main,
+.fn-Eventproducts-left,
+.fn-Eventproducts-right,
+.fn-BlackFriday-banner {
+    position: relative;
+}
+.fn-Discountproduct-links {
+    width: 160px;
+    height: 40px;
+    background: #E83928;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    margin: 60px auto 0 auto;
+}
+ul.fn-lowprice-ul {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+/* li.fn-lowprice-list {
+    background: #1A1A1A;
+    box-shadow: 0px 4px 14px 0px rgb(0 0 0 / 10%);
+    border-radius: 16px;
+} */
+.fn-lowprice-productsbutton .fn-Eventproducts-progressbarone {
+    width: 453px;
+    background: #FFFFFF;
+}
+.fn-lowprice-productsbutton .fn-Eventproducts-progressbartwo {
+    max-width: 453px;
+    position: absolute;
+    background: #4057CB;
+    top: 0;
+}
+.fn-lowprice-productsbutton .product-form__submit {
+    min-height: calc(3.8rem + var(--buttons-border-width) * 2);
+    margin-top: 20px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+.fn-lowprice-productsbutton .fn-Eventproducts-productssold {
+    color: #fff;
+    font-size: 12px;
+    line-height: 20px;
+    margin-bottom: 6px;
+}
+.fn-makingmain-time {
+    position: absolute;
+    left: 50%;
+    bottom: 20%;
+    transform: translate(-50%, 0);
+}
+.fn-lowprice-originalcost:before {
+    content: "";
+    width: 100%;
+    height: 1px;
+    display: inline-block;
+    background: #999990;
+    top: 2px;
+    position: relative;
+}
+.fn-lowprice-producttitle {
+    font-size: 16px;
+    color: #fff;
+    line-height: 22px;
+    letter-spacing: -0.5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+.fn-lowprice-productmain {
+    padding: 20px 19.5px 38px;
+    background: #1A1A1A;
+    box-shadow: 0 4px 14px #0000001a;
+    border-radius: 0 0 16px 16px;
+    max-width: 492px;
+}
+.fn-lowprice-subtitle.fn-makingmain-times_text.t.fn-makingmain-times_code {
+    color: #e83928;
+}
+  div#fn-makingmain-times_code {
+    color: #e83928;
+}
+.fn-lowprice-productprice {
+    font-size: 16px;
+    color: #848484;
+    line-height: 26px;
+    margin-top: 14px;
+}
+span.fn-lowprice-discountprice.t {
+    color: #ff1f1f;
+}
+span.fn-lowprice-originalcost {
+    font-size: 14px;
+    color: #999990;
+    margin-left: 8px;
+    display: inline-block;
+    line-height: 1px;
+}
+ul.fn-BlackFriday-bannerul {
+    display: flex;
+    align-items: center;
+}
+.fn-BlackFriday-bannerlist + .fn-BlackFriday-bannerlist {
+  margin-left: 140px;
+}
+.fn-Discount-reminder {
+    width: 213px;
+    height: 44px;
+    background: #F0F9EA;
+    border-radius: 4px;
+    border: 1px solid #93DDB3;
+    color: #137c4d;
+    font-size: 14px;
+    text-align: center;
+    line-height: 44px;
+    margin: 0 auto 28px;
+    display: none;
+}
+img.fn-Discount-remindericon,
+img.fn-makingmain-times_icon {
+    display: inline-block;
+}
+.fn-makingmain-times_code {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.fn-makingmain-time_copy {
+    text-align: -webkit-center;
+    margin-bottom: 16px;
+}
+.fn-BlackFriday-anchor {
+    position: fixed;
+    top: 50%;
+    right: -15px;
+    z-index: 99;
+}
+.fn-Eventproducts-examine {
+    font-size: 12px;
+    /* font-family: OpenSans; */
+    color: #E83928;
+    line-height: 17px;
+    margin-top: 8px;
+}
+button#campaign_conceal {
+    width: 230px;
+    height: 40px;
+    background: #6d6d6d;
+    border-radius: 8px;
+    border: navajowhite;
+    font-size: 14px;
+    color: #fff;
+    line-height: 40px;
+    opacity: 0.6;
+    cursor: not-allowed;
+    display: none;
+}
+.fn-Eventproducts-examine {
+    display: none;
+  
+}
+
+.fn-bodyright-list {
+    letter-spacing: -0.5px;
+}
+.fn-BlackFriday-cellphonedrawimg,
+.fn-BlackFriday-cellphoneimg {
+  display: none;
+}
+.fn-Specials-Video {
+    width: 1050px;
+    height: 590px;
+}
+.fn-BlackFriday-mask #fn-BlackFridaymask-video {
+    max-width: 1050px;
+}
+.fn-BlackFriday-mask iframe {
+    border-radius: 16px;
+}
+.fn-BlackFriday-bannervideo,
+.fn-BlackFriday-bannertag {
+    position: absolute;
+    left: 50%;
+    cursor: pointer;
+    color: #fff;
+    transform: translate(-50%);
+}
+.fn-BlackFriday-bannertag {
+    bottom: 26px;
+}
+.fn-BlackFriday-bannervideo {
+    bottom: 78px;
+}
+.fn-BlackFriday-mask {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    left: 0;
+    top: 0;
+    z-index: 999;
+    display: none;
+}
+
+.fn-BlackFriday-mask .fn-BlackFridaymask-main {
+    margin: 0 auto;
+    transform: translateY(-50%);
+    top: 50%;
+    position: relative;
+    background-color: #fff;
+    border-radius: 16px;
+    cursor: pointer;
+}
+.fn-BlackFriday-mask #fn-BlackFridaymask-explain,
+.fn-BlackFriday-mask #fn-BlackFridaymask-rule {
+    max-width: 512px;
+    border: 5px solid #fbd59f;
+    box-shadow: 0 4px 14px #fbd59f33;
+    padding: 34px 42px 62px;
+}
+.fn-BlackFriday-mask .fn-rulemask-close,
+.fn-BlackFriday-mask .mask-close {
+    text-align: center;
+    float: right;
+}
+.fn-BlackFriday-mask .mask-close {
+    margin-right: -45px;
+    margin-top: -45px;
+}
+.fn-BlackFriday-mask .fn-rulemask-close {
+    margin-right: -25px;
+    margin-top: -22px;
+}
+.fn-BlackFriday-main {
+    background-size: cover;
+    background-image: url(https://cdn.shopify.com/s/files/1/0356/5997/2741/files/16_cf6b8d79-60e6-419a-a7c9-f359d85f2f7a.png?v=1668136447);
+    background-repeat: no-repeat;
+    padding-top: 58px;
+}
+.fn-BlackFriday-content {
+    padding: 0 159px 100px 160px;
+}
+.fn-Event-products {
+    justify-content: space-between;
+    display: flex;
+}
+.fn-Event-products {
+/*     margin: 58px 0 0 0; */
+}
+.fn-Eventproducts-products {
+    position: absolute;
+    left: 50%;
+    top: 48.3%;
+    transform: translate(-50%,-50%);
+}
+.fn-Eventproducts-left .fn-Eventproducts-products {
+    width: 430px;
+}
+ul.fn-Discount-product_ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+ul.fn-Discount-product_ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+li.fn-Discount-product_list {
+    width: 23.8%;
+    margin-top: 30px;
+    border-radius:16px;
+    border: 1px solid #E83928;
+}
+.fn-Discount-product {
+    margin-top: 100px;
+}
+.fn-Discountproduct-title {
+    font-size: 36px;
+    color: #e83928;
+    line-height: 49px;
+    text-align: center;
+    margin-bottom: 10px;
+  background: linear-gradient(180deg, #F0F1E0 0%, #FFD79A 60%, #DDDEBD 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+.fn-makingmain-times_text {
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    color: #FBC171;
+}
+.fn-makingmain-time .fn-makingmain-times_text+.fn-makingmain-times_text {
+    color: #f4d9a5;
+    margin-top: 16px;
+}
+.fn-makingmain-timebody {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+}
+.fn-time-format {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(360deg, #FF534E 0%, #FFA174 100%);
+    border-radius: 8px;
+    border: 1px solid #FF0404;
+    line-height: 70px;
+    text-align: center;
+}
+.format_span {
+    font-size: 32px;
+    color: #FFFFFF;
+}
+.fn-time-format_text {
+    font-size: 18px;
+    text-align: center;
+    color: #fff;
+    letter-spacing: -0.5px;
+}
+.fn-little {
+    font-size: 35px;
+    color: #ff7961;
+    margin: 0 18px;
+}
+.fn-product-head {
+    padding: 20px 14px 22px 14px;
+}
+.fn-product-layout {
+    margin-top: 0;
+}
+.fn-color-attr ul .color-quantity,
+.fn-product-title .t {
+    color: #fff;
+}
+img.img-first {
+    border-radius: 16px;
+}
+.fn-product-price span {
+    font-size: 18px;
+}
+.fn-compareat_price .fn-compare-at_price {
+    font-size: 14px;
+}
+.fn-color-attr {
+    height: 30px;
+    margin-top: 24px;
+    margin-bottom: 22px;
+}
+.fn-color-attr ul li {
+    width: 30px;
+    height: 30px;
+}
+.product-form__submit {
+    padding: 0;
+    min-height: calc(4.2rem + var(--buttons-border-width) * 2);
+    margin-top: 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    background: #E83928;
+}
+/* .product-form__buttons {
+    width: 100%;
+    padding-right: 16px;
+} */
+.button:not([disabled]):hover::after {
+    --border-offset: 0;
+      box-shadow: 0;
+    }
+.fn-Clarence-Hui {
+    margin-top: 100px;
+}
+.fn-ClarenceHui-title.t {
+    font-size: 36px;
+    color: #E83928;
+    line-height: 49px;
+    text-align: center;
+    margin-bottom: 30px;
+    background: linear-gradient(180deg, #F0F1E0 0%, #FFD79A 60%, #DDDEBD 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.fn-ClarenceHui-body {
+    position: absolute;
+    left: 75px;
+    top: 75px;
+    display: flex;
+    align-items: center;
+}
+.fn-bodyright-title.t {
+    font-size: 24px;
+    color: #FFFFFF;
+    line-height: 33px;
+}
+.fn-ClarenceHui-bodyright {
+    margin-left: 80px;
+}
+.fn-bodyright-list {
+    font-size: 14px;
+    color: #848484;
+    line-height: 20px;
+}
+.fn-bodyright-content {
+    display: flex;
+    margin-top: 30px;
+}
+.fn-bodyright-list + .fn-bodyright-list {
+  margin-top: 73px;
+}
+img.fn-bodyright-imges {
+    margin-right: 15px;
+}
+/* span.fn-bodyright-span {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+span.fn-bodyright-span:before {
+    content: "";
+    width: 9px;
+    height: 9px;
+    display: inline-block;
+    top: 0;
+    position: relative;
+    border: 1px solid #fff;
+    border-radius: 50%;
+} */
+.fn-bodyright-listnav {
+    display: flex;
+}
+.fn-bodyright-listnav {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 30px;
+}
+.fn-bodyright-listnav a + a {
+  margin-left: 24px;
+}
+a.fn-mailto-link {
+    display: inline-block;
+    text-decoration: underline;
+}
+.fn-Eventproducts-productstitle.t {
+    font-size: 24px;
+    color: #DDDEBF;
+    line-height: 32px;
+    background: linear-gradient(180deg, #F0F1E0 0%, #FFD79A 60%, #DDDEBD 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+img.fn-Eventproducts-productsimg {
+    margin: 30px 0 14px 0;
+}
+.fn-Eventproducts-productstext.t {
+    font-size: 18px;
+    color: #EAEAEA;
+    line-height: 34px;
+}
+li.fn-Eventproducts-productslist {
+    font-size: 14px;
+    color: #848484;
+    letter-spacing: -0.5px;
+    line-height: 20px;
+}
+.fn-Eventproducts-productslist:before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    border-radius: 50%;
+    background: #848484;
+    vertical-align: middle;
+    margin-right: 6px;
+    margin-bottom: 3px;
+}
+.fn-Eventproducts-productsprice {
+    font-size: 22px;
+    color: #e83928;
+    line-height: 30px;
+    margin: 17px 0 16px 0;
+}
+.fn-Eventproducts-productsbutton .product-form__submit {
+    padding: 0;
+    min-height: calc(3.8rem + var(--buttons-border-width) * 2);
+  margin-top: 0;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #E83928;
+}
+.fn-Eventproducts-left .fn-Eventproducts-productsbutton .card-wrapper {
+    width: 230px;
+}
+.fn-Eventproducts-left .fn-Eventproducts-productsbutton {
+    display: flex;
+    align-items: center;
+}
+.fn-Eventproducts-productssold {
+    color: #848484;
+}
+.fn-Eventproducts-left .fn-Eventproducts-productssold {
+    margin-left: 14px;
+    font-size: 14px;
+}
+.fn-Eventproducts-right .fn-Eventproducts-productssold {
+    font-size: 12px;
+    line-height: 26px;
+    margin: 8px 0 2px 0;
+}
+.fn-Eventproducts-Purchase {
+    display: flex;
+    width: 687px;
+    justify-content: space-between;
+}
+.fn-Eventproducts-Purchaseleft,
+.fn-Eventproducts-Purchaseright {
+    width: 46.29%;
+}
+.fn-Eventproducts-Purchaserighttext {
+    font-size: 14px;
+    line-height: 22px;
+    color: #fff;
+    margin-bottom: 6px;
+}
+.fn-Eventproducts-Purchaseimg {
+      margin: 0 0 20px;
+}
+.fn-Eventproducts-Purchaserightul {
+    display: flex;
+    align-items: baseline;
+}
+.fn-Eventproducts-Purchaserightlist {
+    font-size: 14px;
+    color: #848484;
+    line-height: 26px;
+}
+
+.fn-Eventproducts-Purchaserightprice.t {
+    color: #ff1f1f;
+    font-size: 20px;
+    line-height: 26px;
+    margin-left: 10px;
+}
+.fn-Eventproducts-right .product-form__buttons {
+    margin-top: 12px;
+}
+.fn-Eventproducts-progressbartwo,
+.fn-Eventproducts-progressbarone {
+    height: 6px;
+    border-radius: 3px;
+}
+.fn-Eventproducts-progressbarone {
+    width: 318px;
+    background: #FFFFFF;
+}
+.fn-Eventproducts-progressbartwo {
+    max-width: 318px;
+    position: absolute;
+    background: #4057CB;
+    top: 0;
+}
+img.fn-Eventproducts-productsicon {
+    display: inline-block;
+    cursor: pointer;
+}
+span.fn-Eventproducts-discountprice {
+    font-size: 12px;
+    color: #999990;
+    display: inline-block;
+}
+span.fn-Eventproducts-discountprice:before {
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: #999990;
+    display: block;
+    position: relative;
+    top: 13px;
+}
+.fn-rulemask-close .b {
+    fill: #d3855a;
+}
+.fn-BlackFridaymask-head {
+    text-align: -webkit-center;
+}
+
+.fn-BlackFridaymask-title {
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    transform: translate(-50%,-50%);
+    font-size: 22px;
+    color: #CE7849;
+    letter-spacing: -0.5px;
+    width: 231px;
+}
+#fn-BlackFridaymask-explain .fn-BlackFridaymask-title {
+    width: 235px;
+}
+ul.fn-BlackFridaymask-ruleul {
+    margin-top: 30px;
+}
+li.fn-BlackFridaymask-rulelist {
+    font-size: 14px;
+    color: #532316;
+    line-height: 22px;
+    letter-spacing: -0.5px;
+}
+li.fn-BlackFridaymask-rulelist + .fn-BlackFridaymask-rulelist{ 
+    margin-top: 8px;
+}
+.fn-format-activitytime {
+  display: none;
+}
+.fn-Discount-drawmain {
+    border-radius: 16px;
+    border: 2px solid #FEDAA0;
+}
+.fn-scroll-content {
+    overflow: hidden;
+    flex: 1;
+    height: 24px;
+    line-height: 24px;
+    position: relative;
+    margin: 18px 0;
+}
+.fn-scroll-content ul {
+    position: absolute;
+    white-space: nowrap;
+    padding-left: 100%;
+    animation: notice 100s 0s linear infinite both;
+    font-size: 14px;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: #fff;
+    display: flex;
+    line-height: 20px;
+}
+.fn-scroll-content ul li + li {
+    margin-left: 50px;
+} 
+input.fn-BlackFriday-drawinput {
+    width: 502px;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid #CCCCCC;
+    background-color: #1a1a1a;
+    padding: 0 10px;
+    color: #999;
+    font-size: 12px;
+}
+
+.fn-BlackFriday-drawbutton {
+    width: 104px;
+    height: 40px;
+    background: #E83928;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.fn-BlackFriday-drawfrom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 44px 0 40px;
+    position: relative;
+}
+.fn-BlackFriday-errormessage, .fn-BlackFriday-already {
+    font-size: 12px;
+    color: #e83928;
+    line-height: 16px;
+    position: absolute;
+    left: 40.6%;
+    top: 52px;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+.fn-BlackFriday-errormessage {
+    left: 42%;
+}
+.fn-drawexplain-title.t {
+    font-size: 14px;
+    color: #c6c6c6;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+.fn-BlackFriday-drawexplain {
+    padding: 0 204px;
+    display: flex;
+}
+.fn-BlackFriday-drawexplain {
+    padding: 0 204px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.fn-drawexplain-labe {
+    width: 49.3%;
+    margin-bottom: 20px;
+}
+li.fn-drawexplain-list {
+    list-style: initial;
+    font-size: 14px;
+    color: #848484;
+    line-height: 20px;
+    letter-spacing: -.5px;
+}
+.fn-drawexplain-list + .fn-drawexplain-list {
+  margin-top: 10px;
+}
+ul.fn-drawexplain-ul {
+    margin-left: 18px;
+}
+img.fn-drawexplain-icon {
+    display: inline-block;
+    /* height: 13px; */
+    margin-bottom: 3px;
+    cursor: pointer;
+}
+.fn-BlackFridaymask-ruleultips {
+    font-size: 14px;
+    color: #532316;
+    letter-spacing: -.5px;
+    line-height: 22px;
+    margin-top: 20px;
+}
+/* li.fn-drawexplain-list:before {
+           content: "";
+           width: 8px;
+           height: 8px;
+           display: inline-block;
+           border-radius: 50%;
+           background: #6F4CC1;
+           vertical-align: middle;
+           margin-right: 10px;
+} */
+div#fn-BlackFridaymask-awards {
+    background-color: rgba(27, 27, 27,0);
+    max-width: 500px;
+}
+img.fn-BlackFriday-prizeicon {
+    margin: 30px auto 0;
+}
+@keyframes notice {
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+.fn-Discount-draw {
+    margin-top: 100px;
+}
+@media screen and (max-width: 1440px) {
+  li.fn-lowprice-list {
+    width: 32.3%;
+}
+  .fn-lowprice-productsbutton .fn-Eventproducts-progressbarone {
+    width: 413px;
+}
+  .fn-lowprice-productsbutton .fn-Eventproducts-progressbartwo {
+    max-width: 413px;
+}
+  .fn-time-format {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+}
+  .format_span {
+    font-size: 20px;
+}
+  .fn-BlackFriday-bannervideo {
+    bottom: 50px;
+}
+  .fn-BlackFriday-bannerlist+.fn-BlackFriday-bannerlist {
+    margin-left: 50px;
+}
+  .fn-BlackFriday-bannertag {
+    bottom: 15px;
+}
+  .fn-BlackFriday-content {
+    padding: 0;
+  }
+  .fn-BlackFriday-main {
+    padding: 58px 20px 100px 20px;
+}
+  .fn-Eventproducts-left {
+    width: 34.5%;
+}
+.fn-Eventproducts-right {
+    width: 55.2%;
+/*     padding-bottom: 2px; */
+}
+  img.fn-Eventproducts-productsimg {
+    margin: 20px 0 10px;
+}
+  .fn-Eventproducts-productstext.t {
+    font-size: 14px;
+    line-height: 30px;
+}
+  li.fn-Eventproducts-productslist {
+    font-size: 12px;
+    line-height: 18px;
+}
+/*   .fn-Eventproducts-left .fn-Eventproducts-products {
+    width: 100%;
+} */
+  .fn-Event-products {
+    justify-content: space-evenly;
+}
+  .fn-Eventproducts-productstitle.t {
+    font-size: 20px;
+    line-height: 28px;
+}
+  .fn-Eventproducts-productslist:before {
+    width: 6px;
+    height: 6px;
+    margin-right: 6px;
+    margin-bottom: 2px;
+}
+  .fn-Eventproducts-productsprice {
+    font-size: 18px;
+    line-height: 26px;
+    margin: 10px 0 10px;
+}
+  .fn-Eventproducts-Purchaseimg {
+    margin: 0 0 5px;
+}
+  .fn-Clarence-Hui,
+  .fn-Discount-product {
+    margin-top: 80px;
+}
+  .fn-ClarenceHui-title.t,
+  .fn-Discountproduct-title {
+    font-size: 30px;
+    line-height: 43px;
+}
+  .fn-makingmain-time .fn-makingmain-times_text+.fn-makingmain-times_text {
+    margin-top: 10px;
+}
+  .format_span {
+    font-size: 30px;
+}
+.fn-little {
+    font-size: 20px;
+    margin: 0 5px;
+}
+  .fn-time-format_text {
+    font-size: 14px;
+}
+  .fn-ClarenceHui-body {
+    left: 25px;
+    top: 35px;
+}
+  .fn-bodyright-title.t {
+    font-size: 20px;
+    line-height: 30px;
+}
+}
+@media screen and (max-width: 1024px) {
+  li.fn-Discount-product_list {
+    width: 32%;
+}
+  .fn-ClarenceHui-bodyright {
+    margin-left: 30px;
+}
+.fn-bodyright-list {
+    font-size: 12px;
+    line-height: 18px;
+}
+  .fn-bodyright-content {
+    display: flex;
+    margin-top: 15px;
+}
+.fn-ClarenceHui-body {
+    left: 15px;
+    top: 15px;
+}
+  .fn-ClarenceHui-main {
+    height: 400px;
+}
+  img.fn-ClarenceHui-img {
+    height: 100%;
+}
+.fn-time-format {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    margin: auto;
+}
+  .format_span {
+    font-size: 16px;
+}
+  .fn-time-format_text {
+    font-size: 12px;
+}
+.fn-lowprice-productsbutton .fn-Eventproducts-progressbarone {
+    width: 278px;
+}
+  .fn-lowprice-productsbutton .fn-Eventproducts-progressbartwo {
+    max-width: 278px;
+}
+}
+@media screen and (max-width: 750px) {
+  .fn-Discountproduct-links {
+    width: 160px;
+    height: 35px;
+    font-size: 12px;
+    line-height: 35px;
+    margin: 35px auto 0;
+}
+  .fn-lowprice-productsbutton .fn-Eventproducts-progressbartwo {
+    max-width: 182px;
+}
+  .fn-lowprice-productsbutton .fn-Eventproducts-progressbarone {
+    width: 182px;
+}
+  .fn-lowprice-productsbutton .fn-Eventproducts-productssold {
+    line-height: 18px;
+    margin-bottom: 6px;
+}
+  .fn-lowprice-productsbutton .product-form__submit {
+    min-height: calc(3.4rem + var(--buttons-border-width) * 2);
+    margin-top: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+  span.fn-lowprice-originalcost {
+    font-size: 12px;
+    margin-left: 0;
+}
+  .fn-lowprice-productprice {
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 10px;
+}
+  .fn-lowprice-productmain {
+    padding: 10px 10px 25px;
+}
+  .fn-lowprice-producttitle {
+    font-size: 12px;
+    line-height: 18px;
+}
+  li.fn-lowprice-list {
+    width: 49%;
+}
+  .fn-makingmain-time {
+    position: absolute;
+    left: 50%;
+    bottom: 14%;
+    transform: translate(-50%);
+}
+  .fn-time-format {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin: auto;
+}
+  .format_span {
+    font-size: 20px;
+}
+    .fn-BlackFriday-bannervideo {
+    bottom: 120px;
+    left: 70%;
+}
+  .fn-BlackFriday-bannerlist+.fn-BlackFriday-bannerlist {
+    margin-left: 0;
+}
+  .fn-BlackFriday-bannerlist img {
+    width: 122px;
+  }
+.fn-BlackFriday-bannertag {
+    bottom: 4px;
+    width: 318px;
+}
+ul.fn-BlackFriday-bannerul {
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+  li.fn-BlackFriday-bannerlist {
+    margin-bottom: 7px;
+}
+  .fn-BlackFriday-bannervideo img {
+    width: 80px;
+  }
+  button#campaign_conceal {
+    width: 120px;
+    height: 36px;
+    line-height: 36px;
+}
+.fn-BlackFriday-cellphonedrawimg,
+.fn-BlackFriday-cellphoneimg {
+    display: block;
+    width: 100%;
+}
+  .fn-BlackFriday-drawimg,
+  .fn-BlackFriday-bannerimg {
+    display: none;
+  }
+.fn-Event-products {
+    flex-wrap: wrap;
+}
+  .fn-Eventproducts-right,
+  .fn-Eventproducts-left {
+    width: 100%;
+}
+  .fn-Eventproducts-left {
+    height: 450px;
+}
+  .fn-Eventproducts-Purchase {
+    width: 350px;
+}
+/*   .fn-Eventproducts-progressbarone,
+  .fn-Eventproducts-progressbartwo {
+    max-width: 154px;
+} */
+.fn-Eventproducts-right {
+    height: 457px;
+    margin-top: 20px;
+}
+img.fn-BlackFriday-headimg {
+    height: 100%;
+    width: 100%;
+}
+  .fn-Eventproducts-productstitle.t {
+    font-size: 14px;
+    line-height: 32px;
+}
+.fn-Eventproducts-left .fn-Eventproducts-products {
+    width: 300px;
+}
+.fn-Eventproducts-productstext.t {
+    font-size: 12px;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+  li.fn-Eventproducts-productslist {
+    font-size: 12px;
+    line-height: 16px;
+}
+  .fn-Eventproducts-productsprice {
+    font-size: 16px;
+    line-height: 22px;
+    margin: 14px 0 16px 0;
+}
+  .fn-Eventproducts-left img.fn-Eventproducts-productsimg {
+    margin: 12px auto;
+    /* width: 300px; */
+}
+  .fn-Eventproducts-productslist + .fn-Eventproducts-productslist {
+     margin-top: 6px;
+  }
+  .fn-Eventproducts-left .fn-Eventproducts-productsbutton .card-wrapper {
+    width: 120px;
+}
+.fn-Eventproducts-productsbutton .product-form__submit {
+    min-height: calc(3.4rem + var(--buttons-border-width) * 2);
+    font-size: 12px;
+}
+  .fn-Eventproducts-left .fn-Eventproducts-productssold {
+    margin-left: 12px;
+    font-size: 12px;
+}
+  .fn-BlackFriday-main {
+    padding: 25px 13px 100px;
+}
+.fn-Eventproducts-Purchaserighttext {
+    font-size: 12px;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+  .fn-Eventproducts-Purchase {
+        justify-content: center;
+}
+  .fn-Eventproducts-Purchaserightul {
+    flex-wrap: wrap;
+}
+  .fn-Eventproducts-Purchaserightlist {
+    font-size: 12px;
+    line-height: 24px;
+}
+  .fn-Eventproducts-Purchaserightprice.t {
+    font-size: 16px;
+    line-height: 26px;
+    margin-left: 0px;
+}
+  .fn-Eventproducts-right .product-form__buttons {
+    margin-top: 11px;
+}
+ .fn-Eventproducts-right .card-wrapper {
+    width: 154px;
+}
+  .fn-ClarenceHui-title.t, .fn-Discountproduct-title {
+    font-size: 16px;
+    line-height: 22px;
+}
+  .fn-Clarence-Hui, .fn-Discount-product {
+    margin-top: 40px;
+}
+  .fn-makingmain-times_text {
+    font-size: 14px;
+    line-height: 20px;
+}
+  .fn-makingmain-time .fn-makingmain-times_text+.fn-makingmain-times_text {
+    margin-top: 5px;
+}
+  .fn-makingmain-timebody {
+    margin-top: 15px;
+}
+  .fn-little {
+    font-size: 30px;
+    margin: 0px 15px;
+}
+  .fn-time-format_text {
+    font-size: 12px;
+}
+  li.fn-Discount-product_list {
+    width: 49.3%;
+}
+  .fn-product-title .t {
+    height: 36px;
+    font-size: 12px;
+}
+  .fn-product-head {
+    padding: 15px 5px 20px;
+}
+  .fn-product-price span {
+    font-size: 16px;
+}
+  .fn-compareat_price .fn-compare-at_price {
+    font-size: 12px;
+}
+.fn-color-attr {
+    height: 18px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+  .product-form__submit {
+    min-height: calc(3.4rem + var(--buttons-border-width) * 2);
+    font-size: 12px;
+}
+  .fn-color-attr ul li {
+    width: 18px;
+    height: 18px;
+}
+  li.fn-Discount-product_list {
+    margin-top: 20px;
+}
+  .fn-ClarenceHui-title.t {
+    margin-bottom: 20px;
+}
+  .fn-ClarenceHui-bodyleft {
+    display: none;
+}
+  .fn-bodyright-title.t {
+    font-size: 12px;
+    line-height: 17px;
+}
+  .fn-ClarenceHui-bodyright {
+    margin-left: 0px;
+}
+  img.fn-bodyright-imges {
+    height: 226px;
+}
+  .fn-bodyright-list+.fn-bodyright-list {
+    margin-top: 39px;
+}
+  .fn-bodyright-content {
+    margin-top: 22px;
+}
+.fn-bodyright-list {
+    max-width: 264px;
+    letter-spacing: -0.5px;
+}
+.fn-bodyright-list:nth-child(2) { 
+    margin-top: 30px;
+}
+  .fn-ClarenceHui-main {
+    height: 360px;
+}
+  img.fn-bodyright-imges {
+    height: 260px;
+}
+  .fn-bodyright-listnav {
+    top: 45px;
+}
+  .fn-bodyright-listnav img {
+    height: 18px;
+  }
+  .fn-Specials-Video {
+    width: calc(100%);
+    height: 300px;
+}
+.fn-BlackFriday-mask #fn-BlackFridaymask-video {
+    max-width: calc(100% - 20px);
+}
+.fn-BlackFriday-mask .mask-close {
+    margin-right: 0px;
+    margin-top: -45px;
+}
+  .fn-BlackFriday-mask #fn-BlackFridaymask-rule {
+    max-width: calc(100% - 20px);
+}
+  .fn-BlackFridaymask-title {
+    font-size: 14px;
+}
+  ul.fn-BlackFridaymask-ruleul {
+    margin-top: 20px;
+}
+  li.fn-BlackFridaymask-rulelist {
+    font-size: 12px;
+    line-height: 20px;
+}
+.fn-scroll-content {
+    height: 20px;
+    line-height: 20px;
+    margin: 8px 0;
+}
+  .fn-scroll-content ul {
+    font-size: 12px;
+}
+  .fn-BlackFriday-drawfrom {
+    margin: 20px 0;
+}
+  input.fn-BlackFriday-drawinput {
+    width: 220px;
+    height: 32px;
+    padding: 0 5px;
+}
+  .fn-BlackFriday-drawbutton {
+    width: 76px;
+    height: 32px;
+    line-height: 32px;
+}
+.fn-BlackFriday-drawexplain {
+    padding: 0 20px 30px;
+    margin-top: 30px;
+}
+  .fn-drawexplain-labe {
+    width: 100%;
+    margin-bottom: 12px;
+}
+  li.fn-drawexplain-list {
+    font-size: 12px;
+    line-height: 19px;
+    letter-spacing: -.5px;
+}
+  .fn-drawexplain-title.t {
+    font-size: 12px;
+    line-height: 16px;
+    margin-bottom: 8px;
+}
+  .fn-BlackFriday-errormessage, .fn-BlackFriday-already {
+    left: 55.6%;
+    top: 48px;
+    width: 100%;
+    letter-spacing: -0.5px;
+}
+  div#fn-BlackFridaymask-explain {
+    max-width: 350px;
+    padding: 34px 24px 34px;
+}
+  .fn-BlackFridaymask-ruleultips {
+    margin-top: 6px;
+}
+  div#fn-BlackFridaymask-awards {
+    max-width: calc(100% - 30px);
+}
+  .fn-Discount-draw {
+    margin-top: 40px;
+}
+  img.fn-BlackFriday-anchorimg {
+    width: 125px;
+}
+  div#fn-makingmain-times_code {
+    font-size: 12px;
+    line-height: 18px;
+}
+}
+@media screen (min-width: 410px) and (max-width: 480px) {
+    .fn-lowprice-productsbutton .fn-Eventproducts-progressbartwo {
+    max-width: 181px;
+}
+  .fn-lowprice-productsbutton .fn-Eventproducts-progressbarone {
+    width: 181px;
+}
+}
+@media screen and (max-width: 375px) {
+    .fn-BlackFriday-bannervideo {
+    bottom: 110px;
+}
+      .fn-lowprice-productsbutton .fn-Eventproducts-progressbartwo {
+    max-width: 150px;
+}
+  .fn-lowprice-productsbutton .fn-Eventproducts-progressbarone {
+    width: 150px;
+}
+
+}

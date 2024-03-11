@@ -1,0 +1,53 @@
+<ul class="activities-Bundle-ul">
+  {% for block in blocks %}
+    <li class="activities-Bundle-list">
+      <div class="activities-Bundle-product">
+        {% render 'mother-Bundle-product',
+          card_product: block.settings.Bundle_product,
+          Bundle_html_text: block.settings.Bundle_html_text,
+          show_secondary_image: block.settings.Bundle_secondary_image,
+          bundle_left_img: block.settings.Bundle_left_img,
+          bundle_left_img_mobile: block.settings.Bundle_left_img_mobile
+        %}
+      </div>
+      <div class="activities-Bundle-left_img">
+        <div class="download_svg">
+          <p>Application（*Go and download FREE SVG.)</p>
+          <img
+            onclick="downLoadSvg('{{ section.id }}{{ forloop.index }}')"
+            src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/download_f2cad784-94be-47ac-ada5-10421ee9e793.png?v=1682304418"
+          >
+        </div>
+        {% if block.settings.Bundle_right_img != blank %}
+          {% assign image = block.settings.Bundle_right_img | img_url: '655x' %}
+          <img class="show-in-pc" src="{{ image }}" alt="">
+        {% endif %}
+        {% if block.settings.Bundle_right_img_mobile != blank %}
+          {% assign image = block.settings.Bundle_right_img_mobile | img_url: '330x' %}
+          <img class="show-in-mobile" src="{{ image }}" alt="">
+        {% endif %}
+        <div id="svg{{ section.id }}{{ forloop.index }}" data-title="SVG" style="display: none;">
+          {{ block.settings.svg }}
+        </div>
+      </div>
+    </li>
+  {% endfor %}
+</ul>
+<script>
+      // 下载svg
+  function downLoadSvg(id){
+      // var email = '{{ customer.email }}';
+      // if (email) {
+          let content = $('#svg' + id).html();
+          let blob = new Blob([content], {type: 'image/svg+xml'});
+          fileName = $('#svg' + id).attr('data-title') + '.svg';
+          const link = document.createElement('a');
+          link.href = window.URL.createObjectURL(blob);
+          link.download = fileName;
+          link.click();
+          window.URL.revokeObjectURL(link.href);
+      // } else {
+      //     $('.svg-pop').show();
+      // }
+  }
+</script>

@@ -1,0 +1,254 @@
+<style>
+  #shopify-section-{{ section.id }} .thousand-product-vinyl {
+    padding: 50px 0 30px;
+    background: {{ section.settings.background_color }};
+  }
+  #shopify-section-{{ section.id }} .thousand-product-vinyl-in {
+    margin-bottom: 30px;
+    padding: 30px 20px;
+    background: #fff;
+  }
+  #shopify-section-{{ section.id }} .thousand-product-vinyl-in:last-child {
+    margin-bottom: 0;
+  }
+  #shopify-section-{{ section.id }} .thousand-product-vinyl-content {
+    display: flex;
+  }
+  #shopify-section-{{ section.id }} .row-reverse{
+    flex-direction: row-reverse;
+  }
+  #shopify-section-{{ section.id }} .vinyl-title{
+    margin-bottom: 20px;
+    font-size: 36px;
+    font-size: {{ section.settings.title_fontsize }}px;
+  }
+  #shopify-section-{{ section.id }} .thousand-product-img {
+    flex: 2;
+    display: flex;
+    padding-bottom: 70px;
+  }
+  #shopify-section-{{ section.id }} .row-reverse .thousand-product-img{
+    flex-direction: row-reverse;
+  }
+  #shopify-section-{{ section.id }} .thousand-product-items{
+    flex: 1;
+  }
+  #shopify-section-{{ section.id }} .thousand-product-video{
+    flex: 3;
+  }
+  #shopify-section-{{ section.id }} .thousand-product-items:last-child{
+    margin: 0 20px 0 10px;
+  }
+  #shopify-section-{{ section.id }} .row-reverse .thousand-product-items:last-child{
+    margin: 0 10px 0 20px;
+  }
+  #shopify-section-{{ section.id }} .thousand-product-items .fn-product-title{
+    width: 100%;
+    margin: 11px 0 13px;
+  }
+  #shopify-section-{{ section.id }} .thousand-product-items .fn-product-title .t{
+    color:{{section.settings.product_title_color}}
+  }
+  #shopify-section-{{ section.id }} .thousand-product-items .fn-product-price{
+    width: 100%;
+    margin-bottom: 11px;
+  }
+  #shopify-section-{{ section.id }} .thousand-product-items .fn-compareat_price {
+    flex-direction: row;
+  }
+  #shopify-section-{{ section.id }} .thousand-product-items .fn-product-price span{
+    float: none;
+    margin-right: 5px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 18px;
+    color:{{ section.settings.price_color }};
+  }
+  #shopify-section-{{ section.id }} .thousand-product-items .fn-compare-at_price {
+    font-size: 14px;
+    font-weight: normal;
+  }
+  #shopify-section-{{ section.id }} .thousand-product-items .button--full-width{
+    color:{{ section.settings.add_color }};
+    background: {{ section.settings.add_color_bg }};
+    border:1px solid {{ section.settings.add_color_border }};
+    --border-opacity: none;
+    --border-offset: none;
+  }
+  #shopify-section-{{ section.id }} .thousand-product-video .vedio-content {
+    width: 100%;
+    height: 100%;
+  }
+  #shopify-section-{{ section.id }} .thousand-product-video .thousand-vedio-item {
+    width: 100%;
+    height: 100%;
+  }
+  @media screen and (max-width: 768px){
+    #shopify-section-{{ section.id }} .thousand-product-vinyl {
+      padding: 20px 12px;
+    }
+    #shopify-section-{{ section.id }} .thousand-product-vinyl-in {
+      margin-bottom: 20px;
+      padding: 10px 6px;
+    }
+    #shopify-section-{{ section.id }} .thousand-product-vinyl-content {
+      flex-direction: column-reverse;
+    }
+    #shopify-section-{{ section.id }} .thousand-product-img {
+      padding-bottom: 0;
+    }
+    #shopify-section-{{ section.id }} .thousand-product-items:last-child{
+      margin-right: 0;
+    }
+    #shopify-section-{{ section.id }} .row-reverse .thousand-product-items:last-child{
+      margin-left: 0;
+    }
+    #shopify-section-{{ section.id }} .vinyl-title{
+      font-size: 16px;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    #shopify-section-{{ section.id }} .thousand-product-video .thousand-vedio-item {
+      height: 200px;
+    }
+    #shopify-section-{{ section.id }} .thousand-product-items .button--full-width{
+      min-height: 24px;
+      line-height: 24px;
+      font-size: 14px;
+      border-radius: 2px;
+    }
+    #shopify-section-{{ section.id }} .fn-product-title .t{
+      height: 56px;
+      -webkit-line-clamp: 3;
+    }
+  }
+</style>
+<div class="thousand-product-vinyl">
+  {% for block in section.blocks %}
+    <div id="{{ block.settings.id }}" class="fn-page-width thousand-product-vinyl-in">
+      <h3 class="vinyl-title">{{ block.settings.title }}</h3>
+      <div class="thousand-product-vinyl-content {% if block.settings.row_reverse %} row-reverse {% endif %}">
+        <div class="thousand-product-img">
+          <div class="thousand-product-items">
+            {% render 'product-Model-custom',
+              card_product: block.settings.product1,
+              progress: false,
+              show_secondary_image: section.settings.show_secondary_off,
+              buttonSeat: 'fileSteam',
+              buttonText: 'Add To Cart',
+              pirce: 'normal'
+            %}
+          </div>
+          <div class="thousand-product-items">
+            {% render 'product-Model-custom',
+              card_product: block.settings.product2,
+              progress: false,
+              show_secondary_image: section.settings.show_secondary_off,
+              buttonSeat: 'fileSteam',
+              buttonText: 'Add To Cart',
+              pirce: 'normal'
+            %}
+          </div>
+        </div>
+        <div class="thousand-product-video">
+          <div class="vedio-content">
+            <div id="playerid_Auto_{{ forloop.index }}" class="thousand-vedio-item"></div>
+            <div class="video_id" style="display:none">{{ block.settings.video_id }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<script type="text/javascript" src="http://www.youtube.com/player_api" async></script>
+<script>
+  function onYouTubeIframeAPIReady() {
+    $('.thousand-vedio-item').each(function(index, element) {
+      var id = $(this).attr('id')
+      var vedio_id = $(this).siblings('.video_id').html()
+      new YT.Player(id, {
+         videoId: vedio_id
+      });
+    })
+   }
+</script>
+{% schema %}
+{
+  "name": "Thousand product vinyl",
+  "settings": [{
+        "type": "color",
+        "id": "background_color",
+        "label": "background_color"
+      },{
+        "type": "number",
+        "id": "title_fontsize",
+        "label": "title_fontsize"
+      },{
+        "type":"color",
+        "id":"price_color",
+        "label":"price_color"
+      },{
+        "type":"color",
+        "id":"add_color",
+        "label":"add_color"
+      },{
+        "type":"color",
+        "id":"add_color_bg",
+        "label":"add_color_bg"
+      },{
+        "type":"color",
+        "id":"add_color_border",
+        "label":"add_color_border"
+      },{
+        "type":"color",
+        "id":"product_title_color",
+        "label":"product_title_color"
+      },{
+        "type": "checkbox",
+        "id": "show_secondary_off",
+        "default": false,
+        "label": "show_secondary_off_iamge"
+      }
+  ],
+  "blocks":[{
+    "type": "img",
+    "name": "img",
+    "settings": [{
+        "type": "text",
+        "id": "title",
+        "label": "title"
+      },{
+        "type": "text",
+        "id": "id",
+        "label": "id(当前页面唯一性，不要特殊字符)"
+      },{
+        "type": "product",
+        "id": "product1",
+        "label": "product1"
+      },{
+        "type": "product",
+        "id": "product2",
+        "label": "product2"
+      },{
+        "type": "text",
+        "id": "video_id",
+        "label": "video id"
+      },{
+        "type": "checkbox",
+        "id": "row_reverse",
+        "default": false,
+        "label": "reverse"
+      }]
+  }],
+  "presets": [{
+    "name": "Thousand product vinyl video"
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

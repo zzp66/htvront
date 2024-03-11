@@ -1,0 +1,265 @@
+{%- style -%}
+#shopify-section-{{ section.id }} .campaign-other-promotion {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    margin-top: {{ section.settings.margin_top }}px;
+    margin-bottom: {{ section.settings.margin_bottom }}px;
+    background-color: {{ section.settings.bg_color }};
+}
+{%- endstyle -%}
+<style>
+    .campaign-other-promotion .t {
+        font-size: 48px;
+        line-height: 54px;
+        margin-top: 100px;
+        text-align: center;
+    }
+    .campaign-other-promotion .more a {
+        display: inline-block;
+        padding: 15px 49px;
+        font-size: 20px;
+        line-height: 1;
+        background: #FF7606;
+        border-radius: 6px;
+        border: none;
+        width: auto;
+        height: auto;
+        color: #fff;
+    }
+    .campaign-other-promotion .fn-flex {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-top: 70px;
+    }
+    .campaign-other-promotion .fn-flex .item {
+        max-width: 24%;
+        width: 385px;
+        height: 400px;
+        border-radius: 16px;
+        border: 1px solid #CCCCCC;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        align-content: center;
+    }
+    .campaign-other-promotion .fn-flex .item div {
+        width: 100%;
+        text-align: center;
+    }
+    .campaign-other-promotion .fn-flex .item .extra-t {
+        font-size: 24px;
+    }
+    .campaign-other-promotion .fn-flex .more {
+        display: none;
+        margin-top: 20px;
+    }
+    .campaign-other-promotion .fn-flex .more a {
+        padding: 12px 82px;
+        background: #fff;
+        border-radius: 4px;
+        color: #FC7809;
+        font-size: 20px;
+    }
+    .campaign-other-promotion .item:hover {
+        background: #FC7809;
+        color: #fff;
+    }
+    .campaign-other-promotion .item:hover .more {
+        display: block;
+    }
+    .phone {
+        display: none;
+    }
+    @media (max-width: 749px){
+        .campaign-other-promotion .more a {
+            padding: 14px 32px;
+        }
+        .pc {
+            display: none;
+        }
+        .phone {
+            display: block;
+        }
+        .campaign-other-promotion .t {
+            font-size: 36px;
+            line-height: 40px;
+            margin-top: 60px;
+        }
+        .campaign-other-promotion .fn-flex {
+            margin-top: 60px;
+        }
+        .campaign-other-promotion .fn-flex .item {
+            max-width: 48%;
+            height: 280px;
+            margin-top: 20px;
+        }
+    }
+    @media (max-width: 480px){
+        .campaign-other-promotion .t {
+            font-size: 18px;
+            line-height: 22px;
+            margin-top: 50px;
+        }
+        .campaign-other-promotion .more a {
+            font-size: 14px;
+            padding: 8px 30px;
+        }
+        .campaign-other-promotion {
+            padding: 50px 0;
+        }
+        .campaign-other-promotion .fn-flex .item {
+            height: 144px;
+            margin-top: 10px;
+        }
+        .campaign-other-promotion .fn-flex .item .extra-t {
+            font-size: 14px;
+        }
+        .campaign-other-promotion .fn-flex {
+            margin-top: 30px;
+        }
+        .campaign-other-promotion .fn-flex .more {
+            margin-top: 10px;
+        }
+        .campaign-other-promotion .fn-flex .more a {
+            padding: 8px 50px;
+            font-size: 14px;
+        }
+    }
+</style>
+<div class="campaign-other-promotion" {{ section.id }}>
+    <div class="{{ section.settings.layout }}">
+        {%- if section.settings.title != blank -%}
+        <div class="t">{{ section.settings.title }}</div>
+        {%- endif -%}
+        <div class="fn-flex">
+            {% for block in section.blocks %}
+            <div class="item">
+                {%- if block.settings.sub_title != blank -%}
+                <div class="extra-t">{{ block.settings.sub_title }}</div>
+                {%- endif -%}
+                {%- if block.settings.block_link != blank -%}
+                <div class="more extra-t"><a href="{{ block.settings.block_link }}">GO</a></div>
+                {%- endif -%}
+            </div>
+            {%- endfor -%}
+        </div>
+    </div>
+</div>
+{% schema %}
+{
+    "name":"Campaign Other Promotion",
+    "max_blocks": 4,
+    "settings":[
+        {
+            "type":"text",
+            "id":"title",
+            "default":"Other Promotion",
+            "label":"标题"
+        },
+        {
+            "type":"color",
+            "id":"bg_color",
+            "label":"背景颜色"
+        },
+        {
+            "type":"range",
+            "id":"padding_top",
+            "min":0,
+            "max": 200,
+            "step": 2,
+            "unit":"px",
+            "label":"t:sections.all.padding.padding_top",
+            "default": 140
+        },
+        {
+            "type":"range",
+            "id":"padding_bottom",
+            "min":0,
+            "max": 200,
+            "step": 2,
+            "unit":"px",
+            "label":"t:sections.all.padding.padding_bottom",
+            "default": 0
+        },
+        {
+            "type":"range",
+            "id":"margin_top",
+            "min":0,
+            "max": 100,
+            "step": 2,
+            "unit":"px",
+            "label":"Top margin",
+            "default": 0
+        },
+        {
+            "type":"range",
+            "id":"margin_bottom",
+            "min":0,
+            "max":100,
+            "step": 2,
+            "unit":"px",
+            "label":"Bottom margin",
+            "default": 0
+        },
+        {
+            "type":"select",
+            "id":"layout",
+            "options":[
+                {
+                    "value":"fn-page-width-l",
+                    "label":"全屏"
+                },
+                {
+                    "value":"fn-page-width",
+                    "label":"内容区域显示1600"
+                },
+                {
+                    "value":"fn-page-width-s",
+                    "label":"内容区域显示1200"
+                }
+            ],
+            "default":"fn-page-width",
+            "label":"内容显示宽度"
+        }
+    ],
+    "blocks":[
+        {
+            "type":"text",
+            "name":"text",
+            "settings":[
+                {
+                    "type":"text",
+                    "id":"sub_title",
+                    "default": "BUY2 GET 1 FREE",
+                    "label":"Title"
+                },
+                {
+                    "type":"url",
+                    "id":"block_link",
+                    "label":"链接"
+                }
+            ]
+        }
+    ],
+    "presets":[
+        {
+            "name":"Campaign Other Promotion",
+            "blocks":[
+                {
+                    "type":"text"
+                },
+                {
+                    "type":"text"
+                },
+                {
+                    "type":"text"
+                },
+                {
+                    "type":"text"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

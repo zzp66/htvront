@@ -1,0 +1,167 @@
+<style>
+   #shopify-section-{{ section.id }} .cup-six-points{
+     background:{{section.settings.bg_color}};
+     padding:30px 0 40px;
+    letter-spacing: 0;
+  }
+  .siwper-points{
+    width:1600px;
+    margin:0 auto
+  }
+  .cup-six-points .text{
+    display:none;
+  }
+  .cup-six-points>p{
+    font-size: 36px;
+    font-weight: bold;
+    color: #723600;
+    line-height: 49px;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+  @media screen and (max-width: 1720px){
+     .siwper-points {
+       width: 83.3%;
+     }
+    .cup-six-points>p{
+      font-size: 28px;
+    }
+  }
+   @media screen and (max-width: 820px){
+     .siwper-points {
+       width: 93.6%;
+       padding-bottom:30px;
+     }
+     .cup-six-points>p {
+      font-size: 16px;
+      line-height:22px;
+       padding-bottom:10px;
+    }
+     #shopify-section-{{ section.id }}  .cup-six-points{
+       padding:15px 0 30px;
+    }
+    .cup-six-points .swiper-pagination{
+      bottom:0;
+    }
+      .cup-six-points .swiper-pagination-bullet{
+        background: #FFC69E;    
+        opacity: 1;
+     }
+     .cup-six-points .swiper-pagination-bullet-active{
+       width: 29px;
+        height: 8px;
+        background: #EA8E4C;
+        border-radius: 4px;
+     }
+      .cup-six-points .swiper-wrapper img{
+        margin:0 auto;
+      }
+   }
+   @media screen and (max-width: 450px){
+     .cup-six-points>p{
+        width: 80%;
+        text-align: center;
+        margin: 0 auto;
+     }
+   }
+</style>
+<div class="cup-six-points" id="{{ section.settings.craft_id }}">
+    <p>{{ section.settings.title }}</p>
+    <div class="swiper-container siwper-points"  id="swiper-container_{{ section.id }}">
+      <div class="swiper-wrapper">
+         {% for block in section.blocks %}
+            <div class="swiper-slide">
+               <picture>
+                <source media="(max-width: 750px)" srcset="{{ block.settings.image_mobile | img_url:'338x' }}">
+                <source media="(min-width: 751px)" srcset="{{block.settings.image | img_url:'521x' }}">
+                <img src="{{ block.settings.image | img_url: '521x' }}">
+              </picture>
+               <div class="text">
+                 {{ block.settings.text }}
+               </div>
+            </div>
+         {% endfor %}
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+</div> 
+<script>
+    $(function(){
+     var mySwiper = new Swiper('#swiper-container_{{ section.id }}',{
+      slidesPerView: 3, 
+      spaceBetween:20,
+      slidesPerColumn: 2,
+      slidesPerColumnFill : 'row',
+      pagination: {
+        el: null
+      },
+      breakpoints:{
+        820:{
+          spaceBetween:10,
+          slidesPerView: 2, 
+          slidesPerColumn: 1,
+          pagination: {
+            el: '.swiper-pagination',
+          },
+        },
+        450:{
+          spaceBetween:0,
+          slidesPerView: 1, 
+          slidesPerColumn: 1,
+          pagination: {
+            el: '.swiper-pagination',
+          },
+        }
+      }
+    })
+   })
+</script>
+{% schema %}
+  {
+    "name": "Cup-Six-Points",
+    "settings": [{
+        "type":"text",
+        "id":"craft_id",
+        "label":"id(页面唯一性，全英文)"
+      },{
+        "type":"color",
+        "id":"bg_color",
+        "label":"background color"
+      },{
+        "type":"text",
+        "id":"title",
+        "label":"title"
+      }
+     ],
+     "blocks":[{
+      "name":"image",
+      "type":"image",
+       "settings":[
+        {
+          "type":"image_picker",
+          "id":"image",
+          "label":"image"
+        },{
+          "type":"image_picker",
+          "id":"image_mobile",
+          "label":"image mobile"
+        },{
+          "type":"html",
+          "id":"text",
+          "label":"text"
+        }
+       ]
+     }],
+    "presets": [
+      {
+        "name": "Cup-Six-Points"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

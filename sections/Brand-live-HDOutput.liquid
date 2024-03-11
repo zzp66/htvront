@@ -1,0 +1,106 @@
+<div class="fn-live-HDOutput">
+  <div class="fn-HDOutput-video">
+<iframe src="https://www.facebook.com/plugins/video.php?height=520&width=790&href=https%3A%2F%2Fwww.facebook.com%2Fhtvront%2Fvideos%2F806238313715261%2F&show_text=false&width=790&t=0" width="100%" height="100%" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe> </div>
+  <div class="fn-HDOutput-summary">
+    <div class="fn-HDOutput-title">{{ section.settings.HDOutput_title }}</div>
+    <div class="fn-HDOutput-content1">{{ section.settings.HDOutput_text1 }}</div>
+    <div class="fn-HDOutput-content2">{{ section.settings.HDOutput_text2 }}</div>
+    <div style="max-height: 32px;display: flex;">
+      <div class="fn-HDOutput-icon"><img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Dingtalk_20220815135859.png?v=1662175267" alt=""></div>
+      <div class="fn-HDOutput-icon"><img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Dingtalk_20220815135948.png?v=1662175268" alt=""></div>
+      <div class="fn-HDOutput-give">{{ section.settings.HDOutput_give }}</div>
+    </div>
+    <div class="fn-HDOutput-Comments">Comments: {{ section.settings.Comments_number }}</div>
+    <div class="fn-HDOutput-plays">{{ section.settings.plays_number }} plays</div>
+    <div class="fn-HDOutput-button">
+        <a href="{{ section.settings.HDOutput_Link }}">
+            {{ section.settings.HDOutput_button }}
+        </a>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "HD Output",
+    "settings": [
+       {
+            "type": "text",
+            "id": "HDOutput_video",
+            "label": {
+                "en": "HD Output viedeo",
+                "zh-CN": "视频嵌入地址"
+            }
+        },
+        {
+            "type": "text",
+            "id": "HDOutput_title",
+            "label": {
+                "en": "HD Output title",
+                "zh-CN": "标题"
+            }
+        },
+        {
+            "type": "text",
+            "id": "HDOutput_text1",
+            "label": {
+                "en": "text",
+                "zh-CN": "段落文本"
+            }
+        },
+        {
+            "type": "text",
+            "id": "HDOutput_text2",
+            "label": {
+                "en": "text",
+                "zh-CN": "段落文本"
+            }
+        },
+        {
+            "type":"url",
+            "id":"HDOutput_Link",
+            "label":{
+            "en":"View More links",
+            "zh-CN":"链接"
+            }
+        },
+        {
+            "type": "text",
+            "id": "HDOutput_button",
+            "label": {
+                "en": "View More button",
+                "zh-CN": "按钮"
+            }
+        },
+        {
+            "type": "text",
+            "id": "HDOutput_give",
+            "label": {
+                "en": "give number",
+                "zh-CN": "点赞（喜欢）数值"
+            }
+        },
+        {
+            "type": "text",
+            "id": "Comments_number",
+            "label": {
+                "en": "Comments number",
+                "zh-CN": "评论数值"
+            }
+        },
+        {
+            "type": "text",
+            "id": "plays_number",
+            "label": {
+                "en": "plays number",
+                "zh-CN": "plays数值"
+            }
+        }
+     ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

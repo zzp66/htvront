@@ -1,0 +1,142 @@
+<div class="fn-all-events">
+    <ul class="fn-events-list">
+      {% for block in section.blocks %}
+          <li>
+            <div class="fn-events-tab">
+                {% if block.settings.events_img != blank %}
+                        <img src="{{ block.settings.events_img | img_url: '790x' }}" alt="">
+                {% endif %}
+                <div class="fn-events-state state-{{ block.settings.color_events }}">{{ block.settings.events_state }}</div>
+            </div>
+            <div class="fn-events-container">
+                <p class="fn-events-title">{{ block.settings.events_title }}</p>
+                <div class="fn-events-guild">
+                  <div class="fn-events-note">
+                    <div class="note_icon">
+                        <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/location.png?v=1662013547" alt="">
+                    </div>
+                    <div class="fn-location-text">{{ block.settings.location_text }}</div>
+                  </div>
+                  <div class="fn-events-note">
+                    <div class="note_icon">
+                        <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/calendar.png?v=1662013547" alt="">
+                    </div>
+                    <div class="fn-calendar-text">{{ block.settings.calendar_text }}</div>
+                  </div>
+                </div>
+                 <a class="fn-more-link" href="{{ block.settings.more_link }}">
+                    <span class="more_text">
+                      {{ block.settings.More_text }}
+                    </span>
+                    <div>
+                        {% if block.settings.More_icon != blank %}
+                            <img src="{{ block.settings.More_icon | img_url: '14x' }}" alt="">
+                        {% endif %}
+                    </div>
+                </a>
+            </div>
+          </li>
+      {% endfor %}
+    </ul>
+</div>
+{% schema %}
+{
+	"name": "Upcoming Events",
+	"settings": [],
+	"blocks": [{
+		"type": "events",
+		"name": {
+			"en": "All Events",
+			"zh-CN": "全项目"
+		},
+		"settings": [
+            {
+              "type": "image_picker",
+              "id": "events_img",
+              "label": {
+                  "en": "Image",
+                  "zh-CN": "图片"
+              }
+			},
+			{
+				"type": "text",
+				"id": "events_state",
+				"label": {
+					"en": "events state",
+					"zh-CN": "状态"
+				}
+			},
+			{
+				"type": "text",
+				"id": "events_title",
+				"label": {
+					"en": "events title",
+					"zh-CN": "标题"
+				}
+			},
+          	{
+				"type": "text",
+				"id": "location_text",
+				"label": {
+					"en": "location text",
+					"zh-CN": "文本"
+				}
+			},
+          	{
+				"type": "text",
+				"id": "calendar_text",
+				"label": {
+					"en": "calendar text",
+					"zh-CN": "文本"
+				}
+			},
+            {
+				"type": "text",
+				"id": "More_text",
+				"label": {
+					"en": "More text",
+					"zh-CN": "文本"
+				}
+			},
+            {
+              "type": "image_picker",
+              "id": "More_icon",
+              "label": {
+                  "en": "More icon",
+                  "zh-CN": "图标"
+              }
+			},
+            {
+              "type": "url",
+              "id": "more_link",
+              "label": {
+                "en": "more link",
+                "zh-CN": "链接"
+              }
+            },
+            {
+              "type": "select",
+              "id": "color_events",
+              "options": [
+                {
+                  "value": "orange",
+                  "label": "orange"
+                },
+                {
+                  "value": "blue",
+                  "label": "blue"
+                }
+              ],
+              "default": "blue",
+              "label": "State the color"
+            }
+		]
+	}]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,184 @@
+{{ 'Fan-sale.css' | asset_url | stylesheet_tag }}
+<div class="Fan-sale">
+  <!-- {% section 'fan-sale-banner' %} -->
+  <div>
+    <div class="Fan-sale-body">
+      <ul class="fan-tabs">
+        <li class="fan-tab fan-tab-active" id="fansSale">
+          <div class="fan-tab-title">Hot Sale</div>
+        </li>
+        <!--
+          <li class="fan-tab">
+            <div class="fan-tab-title">Pre-sale Event</div>
+          </li>
+        -->
+        <li class="fan-tab" id="fansMore">
+          <div class="fan-tab-title">Buy More</div>
+        </li>
+
+        <li class="fan-tab" id="fansOffline">
+          <div class="fan-tab-title">Offline Event</div>
+        </li>
+        <li class="fan-tab" id="fansGift">
+          <div class="fan-tab-title">Free Gift</div>
+        </li>
+      </ul>
+      <div>
+        <div class="fan-sale fan-tab-content" for="fansSale">
+          {% section 'fan-hot-sale' %}
+        </div>
+        <!-- <div class="fan-Presale fan-tab-content"> -->
+
+        <!-- </div> -->
+        <div class="fan-more fan-tab-content" for="fansMore">
+          {% section 'fan-more' %}
+        </div>
+
+        <div class="fan-online fan-tab-content" for="fansOffline">
+          {% section 'fan-offline-event' %}
+        </div>
+        <div class="fan-gift fan-tab-content" for="fansGift">
+          {% section 'fan-free-git' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 分享表单 -->
+<div class="fan-indexForm">
+  {% section 'fan-index-form' %}
+</div>
+<!-- 线下活动提交 -->
+<div class="fan-offlineSign">
+  {% section 'fan-offline-sign' %}
+</div>
+<!-- 礼物获取 -->
+{% section 'fan-prediction-gift' %}
+<script>
+  $(function(){
+        $('.fan-tab-content').eq(0).show()
+        var url_day = window.location.toString();//进这个页面的url
+        if(url_day.indexOf("fans-carnival-2023-limited-offer") !== -1) {
+            $('html, body').animate({
+              scrollTop: $('#fan-sale-timer')[0].offsetTop - 65 //65为设置的偏移值
+            });
+        }
+        if(url_day.indexOf("fans-carnival-2023-bundle-deal") !== -1) {
+            $('html, body').animate({
+              scrollTop: $('#fan-sale-bundles')[0].offsetTop //65为设置的偏移值
+            });
+        }
+        if(url_day.indexOf("fans-carnival-2023-50-off") !== -1) {
+            $('html, body').animate({
+              scrollTop: $('#fan-sale-off')[0].offsetTop//65为设置的偏移值
+            });
+        }
+        if(url_day.indexOf("fans-carnival-2023-annual-fans-giveback") !== -1) {
+            $('html, body').animate({
+              scrollTop: $('#fan-sale-card')[0].offsetTop //65为设置的偏移值
+            });
+        }
+        $('.fan-tab').click(function () {
+            let index = $(this).index()
+            let nowTab = $(this).context.id
+            $('.fan-tab-content').eq(index).show().siblings().hide()
+            if (index !== 0) {
+                $('.fan-tab').eq(index).prev().addClass('fan-tab-prev').siblings().removeClass('fan-tab-prev')
+            } else {
+                $('.fan-tab').eq(index).siblings().removeClass('fan-tab-prev')
+            }
+            $('.fan-tab').eq(index).addClass('fan-tab-active').siblings().removeClass('fan-tab-active')
+            if(nowTab === "fansMore"){
+              //宣传渠道logo轮播
+              var moreSwiper = new Swiper('#more-swiper-container', {
+                  slidesPerView: 5,
+                  spaceBetween: 20,
+                  autoplay:true,
+                  breakpoints: {
+                      768: {
+                          slidesPerView: 3.5,
+                          spaceBetween: 10,
+                      }
+                  },
+                  navigation: {
+                      nextEl: '#more-swiper-button-next',
+                      prevEl: '#more-swiper-button-prev',
+                  },
+              })
+            }else if(nowTab === "fansOffline"){
+               //线下活动轮播
+              var onlineSwiper = new Swiper('#online-swiper', {
+                 autoplay:true,
+                  navigation: {
+                      nextEl: '#online-swiper-button-next',
+                      prevEl: '#online-swiper-button-prev',
+                  },
+              })
+            }else if(nowTab === "fansGift"){ //免费礼物申请表单重置
+              giftFormSet()//表单报错样式重置
+              $('.fan-gift-form-uploads-order .fan-gift-form-upload-text').show()
+              $('.fan-gift-form-uploads-order .fan-gift-form-upload-name').hide()
+               $('.fan-gift-form-uploads-shopping .fan-gift-form-upload-text').show()
+               $('.fan-gift-form-uploads-shopping .fan-gift-form-upload-name').hide()
+              $('.fan-gift-form-error').hide()
+              $('.fan-form-success').hide()
+              $('#giftForm')[0].reset()
+            }
+
+        })
+    $('.fan-sale-arrowTop').click(function(){
+      $('html, body').animate({
+          scrollTop: 0
+        });
+    })
+    // 分享弹窗关闭按钮
+    $('.fan-enroll-form-close').click(function(){
+      indexFormSet()//表单报错样式重置
+      $('.fan-indexForm .fan-enroll-form-upload-text').show()
+      $('.fan-indexForm .fan-enroll-form-upload-name').hide()
+      $('body').css({
+        "overflow":"auto"
+      });
+      $('#indexForm')[0].reset()
+      $('.fan-indexForm').hide()
+    })
+    // 线下活动报名关闭按钮
+    $('.fan-offline-close').click(function(){
+      offlineFormSet()//表单报错样式重置
+      $('body').css({
+        "overflow":"auto"
+      });
+      $('#offlineForm')[0].reset()
+      $('.fan-offlineSign').hide()
+
+    })
+    // 分享弹窗打开按钮
+    $('.fan-sale-share-more').click(function(){
+      $('.fan-indexForm').show()
+      $('body').css({
+        "overflow":"hidden"
+      })
+    })
+
+
+    var url_day = window.location.toString();//进这个页面的url
+    if(url_day.indexOf("HotSale") !== -1) {
+
+    }
+    if(url_day.indexOf("Pre-saleEvent") !== -1) {
+
+    }
+
+  })
+  // $(window).scroll(function(){
+  //   var srollPos = $(window).scrollTop();
+  //   var htmlTop = $('.Fan-sale-body').offset().top
+  //   if(srollPos > htmlTop - 200){
+  //     console.log(srollPos)
+  //     console.log(htmlTop)
+  //     $('.fan-sale-share').show()
+  //   }else{
+  //     $('.fan-sale-share').hide()
+  //   }
+  // })
+</script>

@@ -1,0 +1,201 @@
+<style>
+  .offline-loading-overlay__spinner{
+    width: 1.8rem;
+    display: inline-block;
+  }
+  .offline-loading-overlay__spinner{
+    display:none
+  }
+  .offline-loading-overlay__spinner .spinner{
+    vertical-align:middle
+  }
+</style>
+<div>
+  <!--
+    <img
+      class="fan-offline-img-pc"
+      src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/img_v2_690.png?v=1678844227"
+    >
+    <img
+      class="fan-offline-img-moblie"
+      src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/img_v2_aff79b81-65cb-4210-85e5-5cb8d3662a1g_MIDDLE_5f547fb2-e475-432f-a4a1-0a82b4c8f326.png?v=1679024896"
+    >
+  -->
+  <div class="fan-offline-content">
+    <div class="fan-offline-introduction">
+      <div class="fan-offline-title">Event Registration</div>
+    </div>
+    <div class="fan-offline-form">
+      <form id="offlineForm">
+        <div class="fan-offline-form-item">
+          <div class="fan-offline-form-name">
+            <label class="fan-offline-form-label">Name</label>
+            <input class="fan-offline-form-input" type="text" id="offlineName" name="name">
+            <span class="fan-offline-form-rule">*Please fill in Name</span>
+          </div>
+          <div class="fan-offline-form-email">
+            <label class="fan-offline-form-label">Email</label>
+            <input class="fan-offline-form-input" type="text" id="offlineEmail" name="email">
+            <span class="fan-offline-form-rule">*Please fill in Email</span>
+          </div>
+        </div>
+        <div class="fan-offline-form-item">
+          <div class="fan-offline-form-phone">
+            <label class="fan-offline-form-label">Phone</label>
+            <input class="fan-offline-form-input" type="text" id="offlinePhone" name="phone">
+            <span class="fan-offline-form-rule">*Please fill in Phone</span>
+          </div>
+        </div>
+        <div class="fan-offline-form-item">
+          <div class="fan-offline-form-address">
+            <label class="fan-offline-form-label">Address</label>
+            <input class="fan-offline-form-input" type="text" id="offlineAddress" name="address">
+            <span class="fan-offline-form-rule">*Please fill in Address</span>
+          </div>
+        </div>
+        <div class="fan-offline-form-submit">
+          <p class="fan-offline-form-button">Submit</p>
+          <div class="offline-loading-overlay__spinner">
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              role="presentation"
+              class="spinner"
+              viewBox="0 0 66 66"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+            </svg>
+          </div>
+        </div>
+        <span class="fan-form-error">*Failed to submit. Please check your network or submit it again.</span>
+        <span class="fan-form-success">You have successfully submitted!</span>
+      </form>
+    </div>
+  </div>
+  <img
+    class="fan-offline-close"
+    src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/ff5587b3fa653dff6fc130c810c9cedd.png?v=1678344980"
+  >
+</div>
+<script>
+    
+  let isButtonOffline = true
+ $('.fan-offline-form-submit').click(function(){
+     if(!isButton) return
+     $('.fan-form-success').hide()
+     let name = $('#offlineName').val()
+     let email = $('#offlineEmail').val()
+     let phone = $('#offlinePhone').val()
+     let address = $('#offlineAddress').val()
+     if(name =='' || email=='' || phone=='' || address==''){
+       if(name == ''){
+         $('.fan-offline-form-name .fan-offline-form-input').addClass('border-color-red')
+         $('.fan-offline-form-name .fan-offline-form-rule').text('*Please enter your Name').show()
+       }else{
+         $('.fan-offline-form-name .fan-offline-form-input').removeClass('border-color-red')
+         $('.fan-offline-form-name .fan-offline-form-rule').hide()
+       }
+       if(email == ''){
+         $('.fan-offline-form-email .fan-offline-form-input').addClass('border-color-red')
+         $('.fan-offline-form-email .fan-offline-form-rule').text('*Please enter your Email').show()
+       }else{
+         $('.fan-offline-form-email .fan-offline-form-input').removeClass('border-color-red')
+         $('.fan-offline-form-email .fan-offline-form-rule').hide()
+       }
+       if(phone == ''){
+         $('.fan-offline-form-phone .fan-offline-form-input').addClass('border-color-red')
+         $('.fan-offline-form-phone .fan-offline-form-rule').text('*Please enter your Phone').show()
+       }else{
+         $('.fan-offline-form-phone .fan-offline-form-input').removeClass('border-color-red')
+         $('.fan-offline-form-phone .fan-offline-form-rule').hide()
+       }
+       if(address==''){
+         $('.fan-offline-form-address .fan-offline-form-input').addClass('border-color-red')
+         $('.fan-offline-form-address .fan-offline-form-rule').text('*Please enter your Address').show()
+       }else{
+         $('.fan-offline-form-address .fan-offline-form-input').removeClass('border-color-red')
+         $('.fan-offline-form-address .fan-offline-form-rule').hide()
+       }
+     }else{
+       offlineFormSet()
+       var reg=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+       if(!reg.test(email)){
+             $('.fan-offline-form-email .fan-offline-form-input').addClass('border-color-red')
+            $('.fan-offline-form-email .fan-offline-form-rule').text('*Please enter the correct email address').show()
+        }else{
+          $('.fan-offline-form-email .fan-offline-form-input').removeClass('border-color-red')
+          $('.fan-offline-form-email .fan-offline-form-rule').hide()
+          let formData = new FormData();
+          formData.append('name',name);
+          formData.append('email',email);
+          formData.append('phone',phone);
+          formData.append('address',address);
+          formData.append('site','US')
+         isButtonOffline = false
+         $('.offline-loading-overlay__spinner').show()
+         $('.fan-offline-form-button').hide()
+         $.ajax({
+                     url: 'https://qn.htvront.com:9000/prod-biz-api/htvront/fansFeast/offline',
+                     type:'GET',
+                     jsonp :'callback',
+                     data: {name:name,email:email,phone:phone,address:address,site:'US'},
+                     dataType:'json',
+                     success(result){
+                           isButtonOffline = true
+                           $('.offline-loading-overlay__spinner').hide()
+                           $('.fan-offline-form-button').show()
+                           $('.fan-form-success').show()
+                           $('.fan-offlineSign').hide()
+                           $('#offlineForm')[0].reset()
+                          //  $('.fan-form-error').hide()
+                          //  $('body').css({
+                          //   "overflow":"auto"
+                          // });
+                       },
+                       error(result){
+                         isButtonOffline = true
+                         $('.offline-loading-overlay__spinner').hide()
+                         $('.fan-offline-form-button').show()
+                         let res = result.responseText.split('(').join('')
+                         let reses = res.split(')').join('')
+                         if(JSON.parse(reses).status == 200){
+                             $('#offlineForm')[0].reset()
+                             $('.fan-form-error').hide()
+                             $('.fan-form-success').show()
+                           //   $('.fan-offlineSign').hide()
+                           // $('body').css({
+                           //    "overflow":"auto"
+                           //  });
+                         }else{
+                           $('.fan-form-error').show()
+                         }
+                       }
+              })
+        }
+     }
+  })
+  function offlineFormSet(){
+    $('.fan-offline-form-name .fan-offline-form-input').removeClass('border-color-red')
+       $('.fan-offline-form-name .fan-offline-form-rule').hide()
+       $('.fan-offline-form-email .fan-offline-form-input').removeClass('border-color-red')
+       $('.fan-offline-form-email .fan-offline-form-rule').hide()
+       $('.fan-offline-form-phone .fan-offline-form-input').removeClass('border-color-red')
+       $('.fan-offline-form-phone .fan-offline-form-rule').hide()
+       $('.fan-offline-form-address .fan-offline-form-input').removeClass('border-color-red')
+       $('.fan-offline-form-address .fan-offline-form-rule').hide()
+  }
+
+</script>
+{% schema %}
+{
+  "name": "fan-offline-sign",
+  "settings": []
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

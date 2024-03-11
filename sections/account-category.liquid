@@ -1,0 +1,58 @@
+      <div class="fn-helpCenter-mun">
+        <div class="t fn-helpCenter-click">
+          {{ section.settings.main_title }}
+        </div>
+        <ul class="fn-child-menu">
+          {% for block in section.blocks %}
+          {% if block.settings.helpCenter_Link != blank %}
+          <a href="{{ block.settings.helpCenter_Link }}">
+            {% endif %}
+            <li class="fn-account-title profile">{{ block.settings.title }}</li>
+            {% if block.settings.helpCenter_Link != blank %}
+          </a>
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+{% schema %}
+{
+    "name":"Cart & Payment",
+    "settings":[
+        {
+            "type":"text",
+            "id":"main_title",
+            "label":{
+                "en":"Title",
+                "zh-CN":"标题"
+            }
+        }
+    ],
+    "blocks":[
+        {
+            "type":"collection",
+            "name":"Collection",
+            "settings":[
+                {
+                    "type":"text",
+                    "id":"title",
+                    "label":"分类标题"
+                },
+                {
+            "type":"url",
+            "id":"helpCenter_Link",
+            "label":{
+                "en":"Image links",
+                "zh-CN":"链接"
+               }
+             }
+            ]
+        }
+    ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

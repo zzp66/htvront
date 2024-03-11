@@ -1,0 +1,303 @@
+<style>
+  .cup-product{
+    padding:50px 0 60px;
+    background: #DFCBB9;
+  }
+  .cup-product-title{
+    font-size: 36px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 49px;
+    text-align: center;
+    width: 1554px;
+    margin: 0 auto 30px;
+    position:relative;
+  }
+  .cup-product-title>i{
+    font-size: 16px;
+    font-weight: bold;
+    color: #884A16;
+    line-height: 22px;
+    cursor:pointer;
+    position:absolute;
+    font-style:normal;
+    right:0;
+    bottom: 21%;
+  }
+  .cup-product-content{
+    width:1554px;
+    margin:0 auto;
+    display:flex;
+    justify-content: space-between;
+  }
+  .cup-product-content .product-model-items{
+    width:32.17%;
+    background: #FFFFFF;
+    box-shadow: 0px 5px 6px 0px rgba(81,31,0,0.33);
+    border-radius: 8px;
+    padding:14px 15px 20px 17px
+  }
+  .cup-product .fn-product-title .t{
+    font-size:16px
+  }
+  .cup-product .fn-compareat_price{
+    text-align: right;
+  }
+  .cup-product .fn-product-price span{
+    color: #884A16;
+  }
+  .cup-product .fn-compareat_price .fn-compare-at_price{
+    font-weight: normal;
+  }
+  .cup-product .fn-color-attr{
+    height: 48px;
+    margin-bottom: 11px;
+  }
+  .cup-product .fn-color-attr ul li{
+    width:48px;
+    height:48px
+  }
+  .cup-product .fn-color-attr ul li img{
+    width:42px;
+    height:42px
+  }
+  .cup-product .fn-color-attr ul .color-quantity{
+    line-height:48px
+  }
+  .cup-product .button--full-width{
+    background: #884A16;
+    box-shadow: 0px 5px 6px 0px rgba(81,31,0,0.33);
+    border-radius: 4px;
+    height:64px;
+    --border-opacity: none;
+    --border-offset: none;
+  }
+  .cup-product .fn-product-price{
+    width:auto
+  }
+  .show-mobile{
+    display:none;
+  }
+  .buy-more{
+    font-size: 16px;
+    font-weight: bold;
+    color: #884A16;
+    line-height: 19px;
+    position: relative;
+  }
+  .buy-more>i{
+    font-style:normal;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    white-space:nowrap;
+  }
+   .swiper-scrollbar{
+        position:absolute;
+        width: calc(100% - 40px);
+        height: 5px;
+        margin: 0 auto;
+        background: #D8D8D8;
+        bottom: 10px;
+      }
+   @media screen and (max-width: 1720px){
+    .cup-product-content{
+      width:83.33%
+    }
+    .cup-product-title{
+      width:83.33%
+    }
+  }
+   @media screen and (max-width: 1180px){
+      .cup-product .cup-product-title{
+        font-size:32px
+      }
+     .cup-product .cup-product-title>i{
+       font-size:14px;
+       bottom: 19%;
+     }
+     .fn-product-price{
+       width: 28%;
+     }
+     .cup-product .fn-product-price span{
+       font-size:20px
+     }
+     .cup-product .fn-compareat_price .fn-compare-at_price{
+       font-size:14px
+     }
+     .cup-product .fn-color-attr ul li img{
+       width:32px;
+       height:32px
+     }
+     .cup-product .fn-color-attr ul li{
+       width:38px;
+       height:38px
+     }
+     .cup-product .fn-color-attr{
+       height:38px
+     }
+     .cup-product .button--full-width{
+       height:48px;
+       min-height:48px
+     }
+    }
+  @media screen and (max-width: 750px){
+    .show-pc{
+      display:none;
+    }
+    .show-mobile{
+      display:block;
+    }
+    .cup-product{
+      padding:20px 0 30px
+    }
+    .cup-product .cup-product-title{
+        font-size:16px;
+        margin-bottom:10px;
+        line-height:22px
+    }
+    .cup-product-content{
+      width:93.6%;
+      flex-wrap: wrap;
+    }
+    .cup-product-title{
+      width:93.6%;
+    }
+   .cup-product-content .product-model-items{
+      width:49%;
+      margin-bottom:7px;
+      padding: 5px 5px 12px 6px
+    }
+    .cup-product .fn-product-layout{
+      margin-top:5px
+    }
+   .cup-product .fn-product-title .t{
+     font-size:14px
+   }
+   .cup-product .fn-product-price{
+      width: 100%;
+      margin-top: 4px;
+    }
+    .cup-product .fn-compareat_price{
+      flex-direction: initial;
+      align-items: baseline;
+    }
+     .cup-product .fn-product-price span{
+       font-size:14px;
+       margin-right: 4px;
+     }
+     .cup-product .fn-compareat_price .fn-compare-at_price{
+       font-size:12px
+     }
+     .cup-product .fn-color-attr{
+       height:17px;
+       margin: 4px 0 6px 0;
+     }
+     .cup-product .fn-color-attr ul li img{
+       width:14px;
+       height:14px
+     }
+     .cup-product .fn-color-attr ul li{
+       width:17px;
+       height:17px
+     }
+
+     .cup-product .button--full-width{
+       height:40px;
+       min-height:40px;
+       box-shadow: 0px 2px 4px 0px rgba(81,31,0,0.33);
+       padding: 0;
+     }
+    }
+  @media screen and (max-width: 450px){
+    .buy-more{
+      font-size: 14px;
+    }
+  }
+</style>
+<div class="cup-product">
+  <div class="cup-product-title">
+    {{ section.settings.title }}
+    <i class="show-pc" onclick="jumpToUrl('{{ section.settings.link }}')">Buy More >></i>
+  </div>
+  <div class="cup-product-content">
+    {% for block in section.blocks %}
+      <div class="product-model-items">
+        {% render 'product-Model',
+          card_product: block.settings.product,
+          progress: false,
+          colorSize: true,
+          buttonSeat: 'fileSteam',
+          buttonText: 'ADD TO CART',
+          title: 'flex',
+          pirce: 'intitle'
+        %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+<script>
+   addModel();
+    window.onresize = function () {  //监听屏幕的改变
+      setTimeout(function () {
+        addModel(); 
+      }, 10)
+    };
+    function addModel(){
+     var windowWidth = $(window).width()
+     var _div = '<div class="product-model-items show-mobile buy-more"><i onclick="jumpToUrl({{ section.settings.link }})">Buy More >></i></div>'
+     if(windowWidth <= 750){
+       if(!$(".cup-product-content:has(.buy-more)").length){
+         $('.cup-product-content').append(_div)
+       }
+     }
+   }
+  function jumpToUrl(url){
+    if(url){
+      window.open(url)
+    }
+  }
+</script>
+{% schema %}
+{
+  "name": "Cup-Product",
+  "settings": [
+    {
+      "type":"text",
+      "id":"title",
+      "label":"title"
+    },
+    {
+      "type":"url",
+      "id":"link",
+      "label":"buy more url"
+    }
+  ],
+  "blocks":[
+    {
+      "type":"brand",
+       "name":{
+        "en":"product",
+        "zh-CN":"product"
+        },
+       "settings":[
+         {
+            "type":"product",
+            "id":"product",
+            "label":"product"
+          }
+       ]
+    }
+  ],
+  "presets":[{
+    "name":"Cup-Product"
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

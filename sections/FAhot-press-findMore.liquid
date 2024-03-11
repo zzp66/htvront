@@ -1,0 +1,65 @@
+<div class="fn-header-findMore">
+      <div class="fn-findMore-main">
+        <h3 class="t findMore-title">    
+            {{section.settings.findMore_title}}
+        </h3>
+        <div class="findMore-list">
+            {% if section.settings.image_findMore != blank %}
+                {% assign image = section.settings.image_findMore| img_url: '1600x' %}
+                <img class="fn-computer-findMoreimgge" src="{{ image }}" alt="">
+            {% endif %}
+            {% if section.settings.image_mobile != blank %}
+                {% assign image = section.settings.image_mobile| img_url: '790x' %}
+                <img class="fn-mobile-findMoreimgge" src="{{ image }}" alt="">
+            {% endif %}
+            <div class="findMore-button">
+            {{section.settings.More_desc}}
+            </div>
+        </div>
+      </div>
+</div>
+  {% schema %}
+  {
+      "name": "Find More",
+      "settings": [
+          {
+              "type": "text",
+              "id": "findMore_title",
+              "label": {
+                  "en": "title",
+                  "zh-CN": "标题"
+              }
+          },
+        {
+			"type": "image_picker",
+			"id": "image_findMore",
+			"label": {
+				"en": "Image",
+				"zh-CN": "图片"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "image_mobile",
+			"label": {
+				"en": "Image",
+				"zh-CN": "图片"
+			}
+		},
+          {
+            "type": "html",
+            "id": "More_desc",
+            "label": {
+              "en": "Find More",
+              "zh-CN": "更多"
+            }
+          }
+      ]
+  }
+  {% endschema %}
+  
+  {% stylesheet %}
+  {% endstylesheet %}
+  
+  {% javascript %}
+  {% endjavascript %}

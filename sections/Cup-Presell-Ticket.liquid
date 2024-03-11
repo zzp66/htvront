@@ -1,0 +1,374 @@
+<style>
+  .cup-presell-ticket{
+    background-image:url('{{ section.settings.background_image | img_url:'1920x' }}');
+    background-size: 100% 100%;
+    background-position: center;
+    text-align:center;
+    color: #723600;
+    background-color:#FFFAE7;
+    padding: 30px 0 40px 0;
+  }
+  .cup-tickets {
+    display: flex;
+    justify-content: center;
+  }
+  .cup-hot-title{
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 49px;
+  }
+  .cup-presell-desc{
+    font-size: 24px;
+    line-height: 33px;
+    padding: 12px 0 30px 0;
+  }
+  .cup-ticket-item {
+    margin-right: 23px;
+    position: relative;
+    color: #884A17;
+  }
+  .cup-ticket-main {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0 29px;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .cup-ticket-money {
+    width: 104px;
+    text-align: center;
+  }
+  .cup-ticket-currency {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 27px;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .cup-ticket-currency span {
+    font-size: 20px;
+    color: #884A17;
+  }
+  .cup-ticket-desc {
+    font-size: 16px;
+    line-height: 22px;
+  }
+  .cup-ticket-message {
+    width: calc(100% - 150px);
+    text-align:left;
+  }
+  .cup-ticket-message>div {
+    display: flex;
+    margin-bottom: 17px;
+    align-items: center;
+  }
+  .cup-hot-label {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+  }
+  .cup-hot-value {
+    font-size: 16px;
+    line-height: 22px;
+  }
+  .cup-copy-btn {
+    width: 65px;
+    height: 30px;
+    background: linear-gradient(180deg,#fff3e1 0%,#ffc176 77%,#fff5e9 100%);
+    box-shadow: 0 1px 2px #754206, inset 0 1px 3px #ffffff80;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 30px;
+    text-align: center;
+    margin-left: 8px;
+    cursor: pointer;
+    color: #884A17;
+  }
+  .cup-presell-tips{
+    padding:30px 0 16px 0;
+    font-size: 24px;
+    line-height: 33px;
+  }
+  .cup-presell-review{
+    width: 294px;
+    height: 60px;
+    background: linear-gradient(156deg, #FFCD66 0%, #ECA62F 100%);
+    border-radius: 4px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #FFFFFF !important;
+    line-height: 60px;
+    text-align: center;
+    margin: 0 auto;
+  }
+   @media screen and (max-width: 1720px){
+     .cup-copy-ticket{
+       width:83.3%;
+       margin:0 auto;
+     }
+     .cup-hot-title{
+       font-size:28px;
+     }
+     .cup-presell-desc {
+      font-size: 20px;
+      line-height: 28px;
+      padding: 0 0 15px 0;
+    }
+     .cup-presell-tips {
+      padding: 15px 0 ;
+      font-size: 20px;
+      line-height: 28px;
+    }
+   }
+   @media screen and (max-width: 1440px){
+     .cup-ticket-main {
+        padding: 0 20px;
+      }
+     .cup-ticket-item{
+       margin-right:10px;
+     }
+     .cup-ticket-money {
+      width: 80px;
+    }
+     .cup-ticket-currency {
+      margin-bottom: 0;
+      font-size: 26px;
+     }
+     .cup-ticket-desc, .cup-hot-label, .cup-hot-value {
+      font-size: 12px;
+      line-height: 18px;
+    }
+     .cup-ticket-message {
+      width: calc(100% - 110px);
+    }
+     .cup-ticket-message>div {
+      margin-bottom: 0;
+    }
+   }
+  @media screen and (max-width: 1280px){
+    .cup-ticket-message>div {
+      margin-bottom: 8px;
+    }
+  }
+   @media screen and (max-width: 1024px){
+    .cup-ticket-main{
+      padding: 0 10px;
+    }
+   }
+  @media screen and (max-width: 820px){
+    .cup-presell-ticket{
+      padding:15px 0 20px 0;
+    }
+    .cup-hot-title{
+      font-size:16px;
+      line-height:22px;
+    }
+    .cup-presell-desc{
+      font-size:14px;
+      line-height:19px;
+    }
+    .cup-tickets {
+      flex-direction: column;
+    }
+    .cup-ticket-message {
+      width: 62%;
+    }
+    .cup-ticket-item>img{
+      width:100%;
+    }
+   .cup-hot-label, .cup-hot-value {
+      font-size: 16px;
+      line-height: 22px;
+    }
+    .cup-ticket-item {
+      margin-right: 0;
+      margin-bottom: 9px;
+      padding: 0 4px;
+    }
+    .cup-ticket-money {
+      width: 28%;
+    }
+    .cup-presell-tips{
+      padding:10px 0;
+      font-size:14px;
+      line-height:19px;
+    }
+    .cup-presell-review{
+      width: 162px;
+      height: 40px;
+      line-height:40px;
+      font-size: 14px;
+    }
+  }
+  @media screen and (max-width: 750px){
+    .cup-ticket-message>div:nth-child(1) {
+      display: block;
+      margin-bottom: 5px;
+    }
+  }
+  @media screen and (max-width: 450px){
+    .cup-hot-label, .cup-hot-value {
+        font-size: 14px;
+    }
+  }
+</style>
+<div class="cup-presell-ticket">
+  <div class="cup-copy-ticket">
+    <div class="cup-hot-title">
+      {{ section.settings.title }}
+    </div>
+    <div class="cup-presell-desc">
+      {{ section.settings.desc }}
+    </div>
+    <div class="cup-tickets">
+      {% for block in section.blocks %}
+        <div class="cup-ticket-item">
+          <img src="{{ section.settings.ticket_image | img_url: '490x' }}">
+          <div class="cup-ticket-main">
+            <div class="cup-ticket-money">
+              <div class="cup-ticket-currency">
+                <span>{{ block.settings.currency }}</span>{{ block.settings.money }}
+              </div>
+              <div class="cup-ticket-desc">
+                {{ block.settings.desc }}
+              </div>
+            </div>
+            <div class="cup-ticket-message">
+              <div>
+                <div class="cup-hot-label">Code Validity:&nbsp;</div>
+                <div class="cup-hot-value">
+                  {{ block.settings.code_validity }}
+                </div>
+              </div>
+              <div>
+                <div class="cup-hot-label">Quantity:&nbsp;</div>
+                <div class="cup-hot-value">
+                  {{ block.settings.quantity }}
+                </div>
+              </div>
+              <div>
+                <div class="cup-hot-label">Code:&nbsp;</div>
+                <div class="cup-hot-value">
+                  {{ block.settings.code }}
+                </div>
+                <div class="cup-copy-btn" onclick="copyticket('{{ block.settings.code }}')">copy</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="cup-presell-tips">
+      {{ section.settings.tips }}
+    </div>
+    {% if section.settings.review_link != blank %}
+      <a href="{{ section.settings.review_link }}#wc_review_section" class="cup-presell-review">
+         {{ section.settings.review_text }}
+      </a>
+    {% endif %}
+  </div>
+</div>
+<script>
+  function copyticket(code){
+    let url = code;
+    let copyInput = document.createElement('input');
+    	document.body.appendChild(copyInput);
+    	copyInput.setAttribute('value', url);
+    	copyInput.select();
+    	document.execCommand("Copy");
+    	copyInput.remove();
+        alertMsg()
+  }
+   function alertMsg(){
+      var alertFram = document.createElement("DIV");
+      alertFram.id = "alertFram";
+      alertFram.style.position = "fixed";
+      alertFram.style.width = "100%";
+      alertFram.style.textAlign = "center";
+      alertFram.style.bottom = "40px";
+      alertFram.style.zIndex = "10001";
+      strHtml = " <span style=\"font-family: 微软雅黑;display:inline-block;background:#333;color:#fff;padding:0 20px;line-height:36px;border-radius:6px; \">Copied successfully</span>";
+      alertFram.innerHTML = strHtml;
+      document.body.appendChild(alertFram);
+      setTimeout((function(){
+        alertFram.style.display="none";
+      }),2000);
+    }
+</script>
+{% schema %}
+{
+  "name": "Cup-Presell-Ticket",
+  "settings": [{
+    "type":"image_picker",
+    "id":"background_image",
+    "label":"background image"
+  },{
+    "type":"image_picker",
+    "id":"ticket_image",
+    "label":"ticket image"
+  },{
+    "type": "text",
+    "id": "title",
+    "label": "title"
+  },{
+    "type": "html",
+    "id": "desc",
+    "label": "desc"
+  },{
+    "type": "text",
+    "id": "tips",
+    "label": "tips"
+  },{
+    "type": "text",
+    "id": "review_text",
+    "label": "review text"
+  },{
+    "type":"url",
+    "id":"review_link",
+    "label":"review link"
+  }],
+  "blocks":[{
+    "type":"ticket",
+    "name": "ticket",
+    "settings": [{
+          "type": "text",
+          "id": "currency",
+          "label": "currency"
+        },{
+          "type": "text",
+          "id": "money",
+          "label": "money"
+        },{
+          "type": "text",
+          "id": "desc",
+          "label": "desc"
+        },{
+          "type": "text",
+          "id": "code_validity",
+          "label": "Code Validity"
+        },{
+          "type": "text",
+          "id": "quantity",
+          "label": "quantity"
+        },{
+          "type": "text",
+          "id": "code",
+          "label": "code"
+        }
+    ]
+  }],
+  "presets":[{
+    "name":"Cup-Presell-Ticket"
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

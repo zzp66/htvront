@@ -1,0 +1,32 @@
+<div class="video_div" id="video_start">
+  <video class="homeVideo_t" id="homeVideo"  muted width="100%" loop="loop" controls="controls"  poster="">
+        <source src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Auto_press_0406_3.mp4?v=1649655337" />
+        <source src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Auto_press_0406_3.mp4?v=1649655337" />
+  </video>
+</div>
+<div class="content" id="video_over"></div>
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": []
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+<script>
+   $(window).scroll(function(){
+        var distance = $(window).scrollTop();
+        var x = document.getElementById("homeVideo"); 
+          var TargetHeight_1 = $('#video_start').offset().top - 150;
+          var TargetHeight_2 = $('#video_over').offset().top;
+          if (distance > TargetHeight_1 && distance < TargetHeight_2) {
+            $('#video_start').children('video').trigger('play');
+           } else {
+            $('#video_start').children('video').trigger('pause');
+           }
+   });
+</script>

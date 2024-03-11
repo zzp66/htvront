@@ -1,0 +1,31 @@
+<div class="fn-page-width influencer-coperaton-img">
+  {% assign image = section.settings.img | img_url: '1600x' %}
+  <img src="{{ image }}" alt="" class="show-in-pc">
+  {% assign image = section.settings.imgMobile | img_url: '440x' %}
+  <img src="{{ image }}" alt="" class="show-in-mobile">
+</div>
+
+{% schema %}
+{
+  "name": "Coperation Img",
+  "tag": "section",
+  "settings": [{
+    "type": "image_picker",
+    "id": "img",
+    "label": "img"
+  },{
+    "type": "image_picker",
+    "id": "imgMobile",
+    "label": "img mobile"
+  }],
+  "presets": [{
+    "name": "Influencer Coperation Img"
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

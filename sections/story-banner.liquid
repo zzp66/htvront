@@ -1,0 +1,223 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} .story-banner-title{
+      background:{{section.settings.title_bg_color}};
+      text-align:center;
+      padding-bottom:{{section.settings.padding_bottom}}px;
+      padding-top:{{section.settings.padding_top}}px
+   }
+  #shopify-section-{{ section.id }} .story-banner-text{
+      font-size:{{section.settings.title_size}}px;
+      color:{{section.settings.title_color}};
+      font-weight:600;
+      line-height: 50px;
+      margin-bottom: 11px;
+   }
+  #shopify-section-{{ section.id }} .story-banner-desc{
+      font-size:{{section.settings.title_desc_size}}px;
+      color:{{section.settings.title_desc_color}};
+      letter-spacing: 0;
+      line-height: 28px;
+   }
+  @media screen and (max-width: 1180px){
+    #shopify-section-{{ section.id }} .story-banner-text{
+      font-size:26px
+    }
+    #shopify-section-{{ section.id }} .story-banner-desc{
+      font-size:16px
+    }
+  }
+  @media screen and (max-width: 750px){
+    #shopify-section-{{ section.id }} .story-banner-title{
+      padding:16px 38px 20px 39px
+    }
+    #shopify-section-{{ section.id }} .story-banner-text{
+      font-size:16px;
+      line-height: 22px;
+      margin-bottom: 5px;
+    }
+    #shopify-section-{{ section.id }} .story-banner-desc{
+      font-size:14px;
+      line-height: 19px;
+    }
+    #shopify-section-{{ section.id }} .show-in-mobile{
+      dispaly:block
+    }
+    #shopify-section-{{ section.id }} .show-in-pc{
+      dispaly:none
+    }
+  }
+{%- endstyle -%}
+<style>
+  div:empty {
+    display: block;
+  }
+  .story-banner .swiper-slide {
+    width: 100%;
+  }
+  .story-banner .swiper-slide img {
+    width:100%
+  }
+  .show-in-mobile{
+    dispaly:none
+  }
+  .story-banner .swiper-title{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width:100%;
+    text-align:center;
+    font-size: 60px;
+    font-weight: bold;
+    color: #FFFFFF;
+    line-height: 82px;
+    text-shadow: 0px 7px 3px rgba(0,0,0,0.6);
+    letter-spacing:0
+  }
+  @media screen and (max-width: 1440px){
+   .story-banner .swiper-title{
+      font-size: 48px;
+    }
+  }
+   @media screen and (max-width: 1020px){
+    .story-banner .swiper-title{
+      font-size: 36px;
+    }
+  }
+  @media screen and (max-width: 750px){
+    .story-banner .swiper-title{
+      font-size: 24px;
+      line-height: 33px;
+      top: 40%;
+    }
+  }
+</style>
+<div class="story-banner">
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        {% assign image = block.settings.image | img_url: '1920x' %}
+        <a href="{{ block.settings.link }}" class="swiper-slide">
+          {% if block.settings.image != blank %}
+            <img class="show-in-pc" src="{{ image }}" alt="{{ image.alt }}">
+          {% endif %}
+          {% if block.settings.image_mobile != blank %}
+            <img class="show-in-mobile" src="{{ block.settings.image_mobile | img_url:'375x' }}" alt="{{ image.alt }}">
+          {% endif %}
+          <div class="swiper-title">{{ block.settings.title }}</div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="story-banner-title">
+    <div class="story-banner-text">{{ section.settings.title }}</div>
+    <div class="story-banner-desc">{{ section.settings.desc }}</div>
+  </div>
+</div>
+
+<script>
+  $(function(){
+    var bannerSwiper = new Swiper('.story-banner .swiper-container', {
+      autoplay:false,
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name":"Story Banner",
+  "max_blocks":1,
+  "settings":[{
+           "type":"color",
+            "id":"title_bg_color",
+            "label":"标题背景颜色"
+        },{
+            "type":"text",
+            "id":"title",
+            "label":"标题"
+        },{
+           "type":"color",
+            "id":"title_color",
+            "label":"标题颜色"
+        },{
+           "type":"number",
+            "id":"title_size",
+            "label":"标题大小"
+        },
+        {
+            "type":"text",
+            "id":"desc",
+            "label":"描述"
+        },{
+           "type":"color",
+            "id":"title_desc_color",
+            "label":"描述颜色"
+        },{
+           "type":"number",
+            "id":"title_desc_size",
+            "label":"描述标题大小"
+        },
+        {
+            "type":"range",
+            "id":"padding_top",
+            "min":0,
+            "max": 100,
+            "step":1,
+            "unit":"px",
+            "label":"padding_top",
+            "default": 19
+        },{
+            "type":"range",
+            "id":"padding_bottom",
+            "min":0,
+            "max": 100,
+            "step":1,
+            "unit":"px",
+            "label":"padding_bottom",
+            "default": 32
+        }],
+  "blocks":[
+    {
+    "type":"brand",
+    "name":{
+      "en":"image swiper",
+      "zh-CN":"image swiper"
+    },
+    "settings":[
+      {
+      "type":"image_picker",
+      "id":"image",
+      "label":{
+        "en":"Image",
+        "zh-CN":"图片"
+        }
+      },{
+      "type":"image_picker",
+      "id":"image_mobile",
+      "label":{
+        "en":"Image Mobile",
+        "zh-CN":"手机端图片"
+        }
+      },{
+            "type":"text",
+            "id":"title",
+            "label":"标题"
+        },{
+            "type":"text",
+            "id":"link",
+            "label":"link"
+        }
+    ]
+    }
+  ],
+  "presets":[
+    {
+    "name":"Story Banner",
+    "blocks":[
+        {
+        "type":"brand"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

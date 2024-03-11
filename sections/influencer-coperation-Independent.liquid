@@ -1,0 +1,39 @@
+<div class="fn-page-width influencer-coperation-independent">
+  <a class="influencer-href" href="{{ section.settings.link }}">{{ section.settings.btnText }}</a>
+  <p>{{ section.settings.text1 }}</p>
+  <p>{{ section.settings.text2 }}</p>
+</div>
+
+{% schema %}
+{
+  "name": "Coperation Independent",
+  "settings": [
+    {
+      "type": "url",
+      "id": "link",
+      "label": "link"
+    },{
+      "type": "text",
+      "id": "btnText",
+      "label": "button text"
+    },{
+      "type": "text",
+      "id": "text1",
+      "label": "text1"
+    },{
+      "type": "text",
+      "id": "text2",
+      "label": "text2"
+    }
+  ],
+  "presets": [{
+    "name": "Influencer Coperation Independent"
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,32 @@
+{{ 'brand-activity.css' | asset_url | stylesheet_tag }}
+<div class="fn-brand-activity">
+ {% section 'activity-banner' %}
+  <div class="fn-activity-nav">
+    <ul class="fn-activity-lsit">
+      <li class="activity-nav-list activity_active" id="Pre-nav-list">All Events</li>
+      <li class="activity-nav-list">Upcoming Events</li>
+      <li class="activity-nav-list">Previous Events</li>
+    </ul>
+ </div>
+  <div class="fn-activity-main" id="ctivity-main">
+      <div class="activity-content-list nav-all-events">
+          {% section 'activity-all-events' %}
+      </div>
+      <div class="activity-content-list nav-upcoming-vents">
+       {% section 'activity-upcoming-events' %}
+      </div>
+      <div class="activity-content-list nav-previous-events">
+         {% section 'activity-previous-events' %}
+      </div>
+  </div>
+</div>
+<script>
+  $('.activity-nav-list').click(function () {
+      $('html, body').animate({
+        scrollTop: $('#ctivity-main').offset().top - 200 //65为设置的偏移值
+      });
+     var Pre_index =  $(this).index();
+      $(this).addClass('activity_active').siblings().removeClass('activity_active');
+      $('.activity-content-list').eq(Pre_index).show().siblings().hide();
+});
+</script>

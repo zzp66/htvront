@@ -1,0 +1,139 @@
+<div class="fn-live-featurewall">
+    <div class="fn-featurewall-title">
+      {{ section.settings.featurewall_title }}
+  </div>
+  <div class="fn-featurewall-text">{{ section.settings.featurewall_text }}</div>
+    <ul class="fn-featurewall-columns">
+      {% for block in section.blocks %}
+          <li class="fn-featurewall-list">
+            <div class="FeaturedWork_img">
+                  {% if block.settings.customer_img != blank %}
+                          <img src="{{ block.settings.customer_img | img_url: '520x' }}" alt="" >
+                  {% endif %}
+                  <div class="fn-featurewall-masking">
+                    <div class="fn-featurewall-off">
+                      <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/5c1c18adb65c7850c0e95c123d529df6_516cb7b7-5ef6-409b-b8f1-7d09a71d3af3.png?v=1662189329" alt="">
+                    </div>
+                  </div>
+                  <div class="fn-video-mask">
+                    <div class="fn-mask">
+                      <div>
+                        <div class="mask-close">
+                          {% render 'press-close' %}
+                        </div>
+                          <div class="pressVideo">
+                              {{ block.settings.customer_video }}
+                          </div>
+                    </div>
+                    </div>
+                  </div>
+            </div>
+              <div class="fn-customer-title">{{ block.settings.customer_title }}</div>
+              <div style="max-height: 24px;display: flex;align-items: center;">
+                <div class="fn-customer-icon"><img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Dingtalk_20220815135859.png?v=1662175267" alt=""></div>
+                <div class="fn-customer-icon"><img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Dingtalk_20220815135948.png?v=1662175268" alt=""></div>
+                <div class="fn-customer-give">{{ block.settings.customer_give }}</div>
+                <div class="fn-customer-Comments">| {{ block.settings.customer_Comments }} comments</div>
+                <div class="fn-customer-plays">| {{ block.settings.customer_plays }} plays</div>
+              </div>
+          </li>
+      {% endfor %}
+  </ul>
+<div class="fn-featurewall-shops">
+  <a href="{{ section.settings.shop_Link }}">View More</a>
+</div>
+</div>
+{% schema %}
+  {
+    "name": "Featured Work",
+    "settings": [
+        {
+            "type": "text",
+            "id": "featurewall_title",
+            "label": {
+                "en": "featurewall title",
+                "zh-CN": "标题"
+            }
+        },
+         {
+            "type": "text",
+            "id": "featurewall_text",
+            "label": {
+                "en": "featurewall text",
+                "zh-CN": "文本"
+            }
+        },
+          {
+            "type":"url",
+            "id":"shop_Link",
+            "label":{
+            "en":"shop links",
+            "zh-CN":"链接"
+            }
+        }
+     ],
+	"blocks": [{
+		"type": "column",
+		"name": {
+			"en": "Past columns",
+			"zh-CN": "往期栏目"
+		},
+		"settings": [
+			{
+				"type": "image_picker",
+				"id": "customer_img",
+				"label": {
+					"en": "Image",
+					"zh-CN": "图片"
+				}
+			},
+            {
+              "type": "text",
+              "id": "customer_video",
+              "label": {
+                  "en": "customer video",
+                  "zh-CN": "栏目视频"
+              }
+           },
+           {
+              "type": "text",
+              "id": "customer_title",
+              "label": {
+                  "en": "customer title",
+                  "zh-CN": "栏目标题"
+              }
+          },
+           {
+              "type": "text",
+              "id": "customer_give",
+              "label": {
+                  "en": "customer give",
+                  "zh-CN": "栏目点赞"
+              }
+          },
+           {
+              "type": "text",
+              "id": "customer_Comments",
+              "label": {
+                  "en": "customer Comments",
+                  "zh-CN": "评论数值"
+              }
+          },
+           {
+              "type": "text",
+              "id": "customer_plays",
+              "label": {
+                  "en": "customer plays",
+                  "zh-CN": "plays数值"
+              }
+          }
+		]
+	}]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

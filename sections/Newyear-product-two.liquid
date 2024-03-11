@@ -1,0 +1,122 @@
+<div class="fn-Newyear-shirt_two">
+  {% if section.settings.Newyear_two_img != blank %}
+    {% assign image = section.settings.Newyear_two_img | img_url: '1920x' %}
+    <img class="Newyear_two_imgpc" src="{{ image }}" alt="">
+  {% endif %}
+
+<div class="fn-Newyear-swiper_two fn-Newyear-swiper_two_pc">
+    <div class="fn-button-two_save">
+        <div class="swiper-button-next_two"></div>
+        <div class="swiper-button-prev_two"></div>
+    </div>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+            <div class="swiper-slide swiper-slide_list">
+              {% render 'fn-shirt-product',
+                  card_product: block.settings.product_two,
+                  show_secondary_image: section.settings.show_secondary_image
+              %}
+            </div>
+        {%- endfor -%}
+      </div>
+    </div>
+</div>
+<div class="fn-Newyear-swiper_two fn-Newyear-swiper_two_mobile">
+  <ul class="swiper-wrapper_ul">
+    <li class="swiper-slide_list">
+        {% if section.settings.Newyear_two_imgmobile != blank %}
+          {% assign image = section.settings.Newyear_two_imgmobile | img_url: '768x' %}
+          <img class="Newyear_two_imgmobile" src="{{ image }}" alt="">
+        {% endif %}
+    </li>
+    {% for block in section.blocks %}
+        <li class="swiper-slide_list">
+            {% render 'fn-shirt-product',
+                card_product: block.settings.product_two,
+                show_secondary_image: section.settings.show_secondary_image
+            %}
+        </li>
+    {%- endfor -%}
+  </ul>
+</div>
+</div>
+  <script>
+    var Swiper_save_b = new Swiper('.fn-Newyear-shirt_two .swiper-container', {
+      slidesPerView : 3,
+      slidesPerGroup : 3,
+      spaceBetween : 30,
+      navigation: {
+        nextEl: '.swiper-button-next_two',
+        prevEl: '.swiper-button-prev_two',
+      },
+      breakpoints:{
+        768:{
+            slidesPerView: 2,
+            slidesPerGroup: 2,
+            spaceBetween : 15,
+        },
+        1024:{
+            slidesPerView : 2,
+            slidesPerGroup : 2,
+            spaceBetween : 15,
+        },
+         1200:{
+            slidesPerView : 2,
+            slidesPerGroup : 2,
+        },
+        1440:{
+            spaceBetween : 20,
+        }
+    }
+    })
+    </script>
+{% schema %}
+  {
+    "name": "product two",
+    "max_blocks": 5,
+    "settings": [
+        {
+			"type": "image_picker",
+			"id": "Newyear_two_img",
+			"label": {
+				"en": "Image",
+				"zh-CN": "图片"
+			}
+		},        
+        {
+			"type": "image_picker",
+			"id": "Newyear_two_imgmobile",
+			"label": {
+				"en": "mobile Image",
+				"zh-CN": "手机图片"
+			}
+		},
+        {
+          "type": "checkbox",
+          "id": "show_secondary_image",
+          "label": "checkbox"
+        }
+    ],
+    "blocks": [{
+      "type": "save",
+      "name": {
+          "en": "save product",
+          "zh-CN": "产品"
+      },
+      "settings": [
+        {
+          "type": "product",
+          "id": "product_two",
+          "label": "productlabel"
+        }
+      ]
+	}]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,303 @@
+<style>
+  .cup-presell-coupon{
+    background-image:url('{{ section.settings.background_image | img_url:'1920x' }}');
+    background-size: 100% 100%;
+    background-position: center;
+    padding-top:30px;
+    overflow: hidden;
+  }
+  .cup-presell-coupon-content{
+    position: relative;
+  }
+  .cup-presell-coupon .coupon-title-text{
+    font-size: 36px;
+    font-weight: bold;
+    color: #723600;
+    line-height: 49px;
+    text-align:center;
+    padding-bottom:17px;
+  }
+  .cup-presell-coupon .coupon-content-desc{
+    position: absolute;
+    left:44%;
+    top:118px;
+  }
+  .cup-presell-coupon ul.Bundle-product_explain {
+    margin-top: 20px;
+    margin-bottom: 4%;
+    width:100%;
+  }
+  .cup-presell-coupon li.Bundle-product_explain_list {
+    font-size: 18px;
+    color: #723600;;
+    line-height: 25px;
+  }
+  .cup-presell-coupon .coupon-content-code{
+    display:flex;
+    flex-direction: column;
+  }
+ .cup-presell-coupon .coupon-code{
+    font-size: 22px;
+    font-weight: bold;
+    color: #723600;
+    line-height: 30px;
+    padding-bottom:19px;
+  }
+  .cup-presell-coupon .coupon-copy-code{
+    background: linear-gradient(180deg, #FFAE1E 0%, #E68D00 100%);
+    border-radius: 4px;
+    font-size: 18px;
+    height: 50px;
+    width:180px;
+    line-height: 50px;
+    cursor: pointer;
+    text-align: center;
+    color: #FFFFFF;
+    font-weight:600;
+  }
+  .cup-presell-coupon-content>picture img,.cup-presell-coupon-title img{
+    margin:0 auto
+  }
+  .coupon-right-img{
+    position: absolute;
+    right: 5.5%;
+    top: 9%;
+  }
+  @media screen and (max-width: 1720px){
+    .cup-presell-coupon-content{
+      width:83.3%;
+      margin: 0 auto;
+    }
+    .coupon-right-img{
+      right: -6%;
+      width: 150px;
+    }
+    .cup-presell-coupon .coupon-title-text{
+      font-size:28px;
+    }
+  }
+  @media screen and (max-width: 1440px){
+    .cup-presell-coupon-title,.cup-presell-coupon-content{
+      width:74.68%;
+      margin: 0 auto;
+    }
+
+    .cup-presell-coupon .coupon-content-desc{
+      width:42%;
+      top:8%
+    }
+    .cup-presell-coupon .coupon-title-text{
+      font-size:30px
+    }
+    
+    .coupon-right-img{
+      width: 100px;
+    }
+  }
+  @media screen and (max-width: 1330px){
+    .cup-presell-coupon .coupon-content-desc{
+      top:4%
+    }
+    .coupon-content-item{
+      width:50%
+    }
+  }
+  @media screen and (max-width: 1080px){
+    .cup-presell-coupon .coupon-title-text{
+      font-size:28px
+    }
+    .cup-presell-coupon li.Bundle-product_explain_list,.cup-presell-coupon .coupon-code,.cup-presell-coupon .coupon-copy-code{
+      font-size:14px
+    }
+    .cup-presell-coupon .coupon-copy-code{
+      height:36px;
+      line-height:36px
+    }
+    .cup-presell-coupon ul.Bundle-product_explain{
+      margin-bottom:10px
+    }
+    .cup-presell-coupon-content{
+      width:83.3%
+    }
+    .coupon-right-img{
+      width:70px;
+    }
+  }
+  @media screen and (max-width: 820px){
+    .cup-presell-coupon .coupon-content-desc{
+      width: 55%;
+    }
+    .cup-presell-coupon .coupon-code{
+      padding-bottom:0;
+    }
+    .cup-presell-coupon{
+      padding-top:0;
+      background:#FFF6D2;
+      padding-bottom:25px;
+    }
+    .cup-presell-coupon .coupon-title-text {
+      font-size: 16px;
+      line-height: 22px;
+      padding-bottom: 10px;
+    }
+    .cup-presell-coupon ul.Bundle-product_explain{
+      margin-bottom:0;
+      margin-top: 10px;
+    }
+  }
+  @media screen and (max-width: 750px){
+    .cup-presell-coupon .coupon-content-desc{
+      width: 38%;
+      top: 26%;
+      text-align: center;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .cup-presell-coupon .coupon-title-text{
+      font-size:16px
+    }
+    .cup-presell-coupon ul.Bundle-product_explain{
+      margin:0;
+    }
+    .cup-presell-coupon .coupon-content-code{
+      justify-content: center;
+      align-items: center;
+    }
+    .coupon-right-img{
+      display:none;
+    }
+    .cup-presell-coupon li.Bundle-product_explain_list{
+      line-height:20px;
+    }
+    .cup-presell-coupon .coupon-copy-code {
+      line-height: 40px;
+      width: 158px;
+      height: 40px;
+    }
+    .cup-presell-coupon .coupon-code {
+      padding: 5px 0;
+    }
+  }
+  
+  @media screen and (max-width: 450px){
+    .cup-presell-coupon .coupon-content-desc{
+      width:55%;
+    }
+  }
+   @media screen and (max-width: 400px){
+    .cup-presell-coupon .coupon-content-desc{
+      width:63%;
+      top: 28%;
+    }
+  }
+   @media screen and (max-width: 375px){
+    .cup-presell-coupon .coupon-content-desc{
+      width:74%;
+    }
+  }
+</style>
+<div class="cup-presell-coupon" id="{{ section.settings.id }}">
+    <div class="cup-presell-coupon-title">
+      <div class="coupon-title-text">
+        {{ section.settings.title }}
+      </div>
+    </div>
+  <div class="cup-presell-coupon-content">
+    <picture>
+      <source media="(max-width: 750px)" srcset="{{ section.settings.coupon_image_mobile | img_url:'750x' }}" />
+      <source media="(min-width: 751px)" srcset="{{ section.settings.coupon_image | img_url:'1400x' }}" />
+      <img src="{{ section.settings.coupon_image | img_url:'1400x' }}" />
+    </picture>
+    {% if section.settings.coupon_right_image != blank %}
+      <img src="{{ section.settings.coupon_right_image | img_url:'212x' }}" class="coupon-right-img" />
+    {% endif %}
+    <div class="coupon-content-desc">
+      <div>{{ section.settings.ul_text }}</div>
+      <div class="coupon-content-code">
+        <div class="coupon-code">Code：{{ section.settings.code }}</div>
+        <div class="coupon-copy-code">Copy the code</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(function(){
+    $('.coupon-copy-code').click(function(){
+      let url = "{{section.settings.code}}";
+      let copyInput = document.createElement('input');
+    	document.body.appendChild(copyInput);
+    	copyInput.setAttribute('value', url);
+    	copyInput.select();
+    	document.execCommand("Copy");
+    	copyInput.remove();
+        alertMsg()
+    })
+    function alertMsg(){
+      var alertFram = document.createElement("DIV");
+      alertFram.id = "alertFram";
+      alertFram.style.position = "fixed";
+      alertFram.style.width = "100%";
+      alertFram.style.textAlign = "center";
+      alertFram.style.bottom = "40px";
+      alertFram.style.zIndex = "10001";
+      strHtml = " <span style=\"font-family: 微软雅黑;display:inline-block;background:#333;color:#fff;padding:0 20px;line-height:36px;border-radius:6px; \">Copied successfully</span>";
+      alertFram.innerHTML = strHtml;
+      document.body.appendChild(alertFram);
+      setTimeout((function(){
+        alertFram.style.display="none";
+      }),2000);
+    }
+  })
+</script>
+{% schema %}
+  {
+    "name": "Cup-Presell-Coupon",
+    "settings": [
+      {
+        "type": "text",
+        "id": "id",
+        "label": "id(页面唯一性，全英文)"
+      },
+      {
+        "type":"image_picker",
+        "id":"background_image",
+        "label":"background image"
+      },{
+         "type":"text",
+          "id":"title",
+          "label":"title"
+      },{
+        "type":"image_picker",
+        "id":"coupon_image",
+        "label":"coupon image"
+      },{
+        "type":"image_picker",
+        "id":"coupon_image_mobile",
+        "label":"coupon image mobile"
+      },{
+        "type":"image_picker",
+        "id":"coupon_right_image",
+        "label":"coupon right image"
+      },{
+        "type":"html",
+        "id":"ul_text",
+        "label":"text list"
+      },{
+        "type":"text",
+        "id":"code",
+        "label":"code"
+      }
+     ],
+    "presets": [
+        {
+          "name": "Cup-Presell-Coupon"
+        }
+      ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,47 @@
+
+<!-- <link href="https://cdn.bootcdn.net/ajax/libs/layer/3.5.1/theme/default/layer.min.css" rel="stylesheet">
+<link href="https://cdn.bootcdn.net/ajax/libs/layer/3.5.1/mobile/need/layer.min.css" rel="stylesheet">
+<script src="https://cdn.bootcdn.net/ajax/libs/layer/3.5.1/layer.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/layer/3.5.1/mobile/layer.min.js"></script> -->
+<script src="https://d12fs20f5em2mz.cloudfront.net/assets/js/layer/layer.js"></script>
+
+<div class="test">{{ form | payment_button }}</div>
+<div class="full-width">  
+    {{ page.content }}
+  
+</div>
+
+{% schema %}
+{
+  "name": "main-page-fullwidth",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}
+

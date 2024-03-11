@@ -1,0 +1,121 @@
+<style>
+  .cup-coupons {
+    background: #FFF6EB;
+    padding: 50px 0;
+    letter-spacing: 0;
+  }
+  .cup-coupons-content{
+    position: relative;
+    width: 1600px;
+    margin: 0 auto;
+  }
+  .cup-coupons>p{
+    font-size: 36px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 49px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .cup-coupons .cup-coupons-btn{
+    position: absolute;
+    top: 63%;
+    left: 56.5%;
+    width: 178px;
+    height: 50px;
+    background: #884A17;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFFFFF;
+    line-height: 50px;
+    text-align:center;
+  }
+  @media screen and (max-width: 1720px){
+    .cup-coupons-content{
+      width:83.33%
+    }
+  }
+  @media screen and (max-width: 1180px){
+    .cup-coupons .cup-coupons-btn{
+      height: 36px;
+      line-height: 36px;
+      font-size: 16px;
+    }
+    .cup-coupons>p{
+      font-size:32px;
+    }
+  }
+  @media screen and (max-width: 750px){
+    .cup-coupons-content{
+      width:93.6%
+    }
+    .cup-coupons{
+      padding-bottom:0;
+    }
+    .cup-coupons .cup-coupons-btn{
+      height: 40px;
+      line-height: 40px;
+      font-size: 14px;
+      border-radius: 20px;
+      width: 113px;
+      left: 7%;
+      top: 28%;
+    }
+    .cup-coupons>p{
+      font-size: 16px;
+      margin-bottom: 10px;
+      line-height: 22px;
+    }
+    .cup-coupons{
+      padding-top:20px;
+    }
+  }
+</style>
+<div class="cup-coupons">
+  <p>{{ section.settings.title }}</p>
+  <div class="cup-coupons-content">
+    <picture>
+      <source media="(max-width: 750px)" srcset="{{ section.settings.image_mobile | img_url:'702x' }}">
+      <source media="(min-width: 751px)" srcset="{{ section.settings.image | img_url:'1600x' }}">
+      <img src="{{ section.settings.image | img_url:'1600x' }}">
+    </picture>
+    <a class="cup-coupons-btn" href="{{ section.settings.link }}"> Join Now </a>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Cup-Coupons",
+  "settings": [
+    {
+      "type":"text",
+      "id":"title",
+      "label":"title"
+    },
+    {
+      "type":"image_picker",
+      "id":"image",
+      "label":"image"
+    },
+    {
+      "type":"image_picker",
+      "id":"image_mobile",
+      "label":"image mobile"
+    },
+    {
+      "type":"text",
+      "id":"link",
+      "label":"link"
+    }
+  ],
+  "presets":[{
+    "name":"Cup-Coupons"
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

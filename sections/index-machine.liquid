@@ -1,0 +1,642 @@
+<style>
+    .fn-unitType {
+        text-align: center;
+        padding: 0 160px;
+    }
+    .fn-unitType-brand {
+        display: flex;
+        width: 100%;
+        margin-top: 70px;
+    }
+    .fn-unitType-from {
+        width: 50%;
+    }
+    .fn-unitType-img {
+        width: 50%;
+    }
+    .fn-unitType .extra-t {
+        margin-bottom: 60px;
+    }
+    .sale__item_text {
+        height: 30px;
+        font-size: 30px;
+        font-weight: bold;
+        color: #333333;
+        position: absolute;
+        left: 22%;
+        top: 120px;
+    }
+    .index-machine .select-click {
+        height: 80px;
+        cursor: pointer;
+        position: relative;
+        background-image: url(https://cdn.shopifycdn.net/s/files/1/0640/6802/6590/files/844_528305cc-4b6c-4e79-8b7d-2cd25b3504d7.png?v=1650003816);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        flex:1
+    }
+    .index-machine .select-click-picture {
+        background-image: url(https://cdn.shopifycdn.net/s/files/1/0640/6802/6590/files/844.png?v=1650003816);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+    .index-machine .down-svg {
+        position: absolute;
+        left: 90%;
+        top: 40%;
+        width: 30px;
+        height: 25px;
+        background-image: url(https://cdn.shopifycdn.net/s/files/1/0640/6802/6590/files/5c72b933c1db6e8be052d8844caef309.png?v=1650004051);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        z-index: 0;
+    }
+    .index-machine .select-click h5 {
+        border-radius: 0;
+        text-align: center;
+        margin-bottom: 0;
+        font-size: 30px;
+        font-weight: bold;
+        color: #FFFFFF;
+        line-height: 80px;
+        position: relative;
+        z-index: 1;
+    }
+    .index-machine .select-click li:hover{
+        background-color: #ff7506;
+        color: #fff;
+    }
+    .index-machine .select-click + .select-click{
+        margin-left: 30px;
+    }
+    .index-machine .machine-from ul{
+        box-shadow: 0 0 5px 1px #dddddd;
+        border-radius: 20px;
+        border-top: none;
+        margin-bottom: 0;
+        display: none;
+        position: absolute;
+        top: 90px;
+        width: 100%;
+        z-index: 4;
+        left: 0;
+        max-height: 360px;
+        overflow-y: auto;
+    }
+    .index-machine .machine-from ul>li {
+        background-color: #fff;
+        border-radius: 0;
+        font-size: 22px;
+        padding: 10px 0;
+        text-align: center;
+        color: #333;
+        margin-bottom: 0;
+    }
+    .index-machine .machine-body {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .index-machine .machine-fromImage {
+        width: 48%;
+        padding: 0 80px 20px 80px;
+        background-color: #f3f3f3;
+        border-radius: 20px 0 0 20px;
+      display:none
+    }
+    .index-machine .machine-from {
+        width: 100%;
+      display:flex
+    }
+    #fn-machine-productImage li {
+        display: none;
+        position: relative;
+    }
+    #fn-machine-productImage li img {
+        width: 100%;
+    }
+    .sale__item-location {
+        position: absolute;
+        left: 0;
+        top: -26px;
+    }
+    #fn-machine-productImage li:nth-child(1) {
+        display: block;
+    }
+    .fn-unitType-swiper .fn-page-width>.fn-unitType-item {
+        display: none;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .fn-unitType-swiper .fn-unitType-item>ul {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .fn-unitType-swiper .fn-page-width>.fn-unitType-item.active {
+        display: block;
+    }
+    .fn-unitType-swiper .fn-unitType-item>ul>li {
+        width: 24%;
+    }
+    .fn-unitType-swiper {
+        margin-top: 50px;
+    }
+    .fn-unitType-swiper .more {
+        margin-top: 50px;
+    }
+    @media screen and (min-width: 1250px) and (max-width: 1620px) {
+        .index-machine .select-click h5 {
+            line-height: 70px;
+        }
+        .index-machine .select-click {
+            height: 70px;
+        }
+        .sale__item_text {
+            position: absolute;
+            left: 23%;
+            top: 110px;
+        }
+        .sale__item-location {
+            position: absolute;
+            left: 0;
+            top: -18px;
+        }
+        .index-machine .machine-fromImage {
+            padding: 0 40px 20px 40px;
+        }
+    }
+    @media screen and (min-width: 991px) and (max-width: 1249px) {
+        .fn-unitType {
+            padding: 0 15px;
+        }
+        .index-machine .machine-from ul{
+            position: absolute;
+            top: 70px;
+            left: 0;
+        }
+        .fn-unitType .title {
+            font-size: 38px;
+            padding: 0;
+            margin: 80px 0 50px 0;
+        }
+        .index-machine .machine-from {
+            width: 100%;
+        }
+        .index-machine .machine-fromImage {
+            padding: 0 40px 20px 40px;
+            width: 100%;
+            border-radius: 15px;
+        }
+        .index-machine .select-click + .select-click {
+            margin-top: 0px;
+        }
+        .index-machine .select-click {
+            height: 65px;
+        }
+        .index-machine .select-click h5 {
+            line-height: 65px;
+            font-size: 26px;
+        }
+        .index-machine .down-svg {
+            position: absolute;
+            left: 90%;
+            top: 35%;
+            width: 20px;
+            height: 20px;
+        }
+        .sale__item-location {
+            position: absolute;
+            left: 0;
+            top: -20px;
+        }
+        .sale__item_text {
+            position: absolute;
+            left: 50%;
+            top: 100px;
+            transform: translate(-50%, 25%);
+            font-size: 18px;
+        }
+    }
+    @media screen and (min-width: 768px) and (max-width: 990px){
+        .index-machine .machine-from ul{
+            position: absolute;
+            top: 60px;
+            left: 0;
+        }
+        .index-machine .machine-body {
+            padding: 0 15px;
+        }
+        .fn-unitType {
+            padding: 0;
+        }
+        .fn-unitType .title {
+            font-size: 30px;
+            padding: 0;
+            margin: 60px 0 30px 0;
+        }
+        .index-machine .machine-from {
+            width: 100%;
+        }
+        .index-machine .machine-fromImage {
+            width: 48%;
+            padding: 0 40px 20px 40px;
+            border-radius: 20px;
+        }
+        .index-machine .select-click + .select-click {
+            margin-top: 0px;
+          margin-left:20px
+        }
+        .index-machine .select-click {
+            height: 50px;
+        }
+        .index-machine .select-click h5 {
+            line-height: 50px;
+            font-size: 22px;
+        }
+        .index-machine .down-svg {
+            position: absolute;
+            left: 90%;
+            top: 30%;
+            width: 20px;
+            height: 20px;
+        }
+        .sale__item-location {
+            position: absolute;
+            left: 0;
+            top: -20px;
+        }
+        .sale__item_text {
+            position: absolute;
+            left: 50%;
+            top: 72px;
+            font-size: 15px;
+            transform: translate(-50%, 20%);
+        }
+    }
+    @media (max-width: 768px){
+        .index-machine .machine-from ul{
+            position: absolute;
+            top: 60px;
+            left: 0;
+        }
+        .index-machine .machine-body {
+            padding: 0 15px;
+        }
+        .fn-unitType {
+            padding: 0;
+        }
+        .fn-unitType .title {
+            font-size: 30px;
+            padding: 0;
+            margin: 50px 0 20px 0;
+        }
+        .index-machine .machine-from {
+            width: 100%;
+          display:block
+        }
+        .index-machine .machine-fromImage {
+            width: 100%;
+            height: 200px;
+            margin-top: 50px;
+            padding: 0 40px 20px 40px;
+            border-radius: 20px;
+        }
+        .index-machine .select-click + .select-click {
+            margin-top: 20px;
+          margin-left:0
+        }
+        .sale__item-location {
+            position: absolute;
+            left: 0;
+            top: -20px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .sale__item_text {
+            position: absolute;
+            left: 0;
+            top: 130px;
+            margin: 0 auto;
+            width: 100%;
+            font-size: 26px;
+        }
+        .fn-unitType-swiper .fn-unitType-item>ul>li {
+            width: 49%;
+            margin-top: 20px;
+        }
+    }
+    @media (max-width: 480px){
+        .index-machine .machine-from ul{
+            position: absolute;
+            top: 60px;
+            left: 0;
+            max-height: 240px;
+        }
+        .index-machine .machine-body {
+            padding: 0 15px;
+        }
+        .fn-unitType {
+            padding: 0;
+        }
+        .fn-unitType .title {
+            font-size: 26px;
+            padding: 0;
+            margin: 30px 0 20px 0;
+        }
+        .index-machine .machine-from {
+            width: 100%;
+        }
+      .index-machine .machine-fromImage {
+        width: 100%;
+        height: 100px;
+        margin-top: 20px;
+        padding: 0 40px 0 40px;
+        border-radius: 20px;
+        background-color: #fff;
+      }
+        .index-machine .select-click + .select-click {
+            margin-top: 12px;
+        }
+        .index-machine .select-click {
+            height: 40px;
+        }
+        .index-machine .select-click h5 {
+            line-height: 40px;
+            font-size: 13px;
+        }
+      .index-machine .down-svg {
+        position: absolute;
+        left: 90%;
+        top: 50%;
+        width: 9px;
+        height: 8px;
+        transform: translateY(-50%);
+      }
+        .sale__item-location {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .sale__item_text {
+            position: absolute;
+            left: 50%;
+            top: 65px;
+            transform: translate(-50%, 30%);
+            font-size: 16px;
+        }
+        .index-machine .machine-from ul>li {
+            font-size: 16px;
+            padding: 5px 0;
+        }
+        .fn-unitType-swiper .swiper-container-horizontal>.swiper-scrollbar {
+            margin-top: 30px;
+        }
+        .fn-unitType .extra-t {
+            margin-bottom: 15px;
+        }
+        .fn-unitType-swiper {
+            margin-top: 0;
+        }
+    }
+</style>
+<div class="fn-unitType">
+    <div class="extra-t">{{ section.settings.title }}</div>
+    <div class="machine-body">
+        <div class="machine-from">
+            <div class="select-click">
+                <h5 class="brand_h5">Collection</h5>
+                <div class="down-svg"></div>
+                <ul>
+                    {% for block in section.blocks %}
+                    {% if block.type == "brand" %}
+                    <li class="option-click option-brand" data-id="{{ block.settings.brand_option_id }}" data-url="{{ block.settings.brand_option_link }}">{{ block.settings.brand_option }}</li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="select-click select-click-picture">
+                <h5 class="model_h5">Material</h5>
+                <div class="down-svg"></div>
+                <ul>
+                    {% for block in section.blocks %}
+                    {% if block.type == "model" %}
+                    <li class="option-click option-model" data-id="{{ block.settings.model_option_id }}"  data-url="{{ block.settings.gift_imageLink }}">{{ block.settings.model_option }}</li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="machine-fromImage">
+            <ul class="machine-productImage" id="fn-machine-productImage">
+                {% for block in section.blocks %}
+                {% if block.type == "model" %}
+                <li class="sale__item sale__item--{{section.id}}">
+                    {% if block.settings.gift_imageLink != blank %}
+                    <a href="javascript:;">
+                        {% endif %}
+                        <div class="sale__item-location">
+                            {% if block.settings.gift_image != blank %}
+                            <img src="{{block.settings.gift_image | img_url: '520x'}}" alt="">
+                            {% endif %}
+                        </div>
+                        <!-- <div class="sale__item_text"></div> -->
+                        {% if block.settings.gift_imageLink != blank %}
+                    </a>
+                    {% endif %}
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="fn-unitType-swiper">
+    <div class="fn-page-width">
+        {% for block in section.blocks %}
+        {% if block.type == "model" %}
+        <div class="fn-unitType-item">
+            <ul>
+                {%- for product in block.settings.collection.products limit: 4 -%}
+                <li class="item">
+                    {% render 'fn-card-product',
+                    card_product: product,
+                    show_secondary_image: section.settings.show_secondary_image
+                    %}
+                </li>
+                {%- endfor -%}
+            </ul>
+            <div class="more">
+                <a href="javascript:;" class="more-click">MORE</a>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<script>
+    $(function () {
+        $('.fn-unitType-swiper .fn-unitType-item').eq(0).addClass('active');
+        $('.index-machine .machine-header .fn-close').click(function () {
+            $('.index-machine .machine,.index-machine .select-click ul').hide();
+            $('.index-machine .option-click').show();
+        });
+        $('.index-machine .select-click h5').click(function () {
+            event.stopPropagation()
+            $(this).siblings('ul').toggle(300);
+            $(this).parent().siblings().children('ul').hide(300);
+        });
+        $('.index-machine .option-click').click(function () {
+            let optionText = $(this).text();
+            $(this).parent().siblings('h5').text(optionText);
+            $(this).parent('ul').hide(300);
+            $(this).parent().siblings().children('input').val(optionText);
+            $(this).parents().siblings().children().find('.option-click').show();
+        });
+       //二级联动
+        $('.index-machine .option-brand').click(function () {
+            let brandId = $(this).attr('data-id');
+            localStorage.setItem("fn-brand",brandId);
+            $(this).addClass('active').siblings().removeClass('active');
+            var brandUrl = $(this).attr('data-url');
+            $('.more-click').attr('href',brandUrl)
+            $(this).parents().siblings('.select-click-picture').children('.model_h5').text('Material');
+            $(this).parents().siblings('.select-click-picture').children('ul').children('li').removeClass('active')
+            $(this).parents().siblings().children().find('.option-click').each(function(){
+                let modelId = $(this).attr('data-id');
+                if(brandId.indexOf(modelId) === -1){
+                    $(this).hide();
+                }
+            });
+        });
+        $('.index-machine .option-model').click(function () {
+            let modelId = $(this).attr('data-id');
+            let modelText = $(this).text();
+            localStorage.setItem("fn-model",modelId);
+            $(this).addClass('active').siblings().removeClass('active')
+            var modelUrl = $(this).attr('data-url');
+            $('.more-click').attr('href',modelUrl)
+            var index =  $(this).index();
+            $('.sale__item_text').text(modelText);
+            $("#fn-machine-productImage > li").eq(index).show().siblings().hide();
+            $('.fn-unitType-swiper .fn-page-width>.fn-unitType-item').eq(index).addClass('active');
+            $('.fn-unitType-swiper .fn-page-width>.fn-unitType-item').eq(index).siblings().removeClass('active');
+        });
+    })
+    $(function(){
+        var index =  $('.select-click-picture>ul li').index();
+        let mode_lText = $('.index-machine .option-model').eq(index).text();
+        $('.sale__item_text').text(mode_lText);
+       var moreUrl = $('.option-brand').eq(0).attr('data-url')
+            $('.more-click').attr('href',moreUrl)
+    })
+    $(document).click(function(){
+        $(".index-machine .select-click>ul").hide()
+    })
+</script>
+
+{% schema %}
+{
+    "name":"Index Machine",
+    "class": "fn-index-section index-machine",
+    "settings":[
+        {
+            "type":"text",
+            "id":"title",
+            "label":{
+                "en":"Title",
+                "zh-CN":"标题"
+            }
+        },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": false,
+      "label": "t:sections.featured-collection.settings.show_secondary_image.label"
+    }
+    ],
+    "blocks":[
+        {
+            "type":"brand",
+            "name":{
+                "en":"Brand",
+                "zh-CN":"品牌"
+            },
+            "settings":[
+                {
+                    "type":"text",
+                    "id":"brand_option",
+                    "label":{
+                        "en":"Brand Opthion",
+                        "zh-CN":"品牌选项"
+                    }
+                },{
+                  "type":"text",
+                  "id":"brand_option_id",
+                  "label":"品牌ID（必填）"
+                },{
+                  "type":"url",
+                  "id":"brand_option_link",
+                  "label":"品牌链接（必填）"
+                }
+            ]
+        },
+        {
+            "type":"model",
+            "name":{
+                "en":"Model",
+                "zh-CN":"机型"
+            },
+            "settings":[{
+                  "type":"text",
+                  "id":"model_option_id",
+                  "label":"模块ID（必填，与相关品牌ID一致）"
+                },
+                {
+                    "type":"text",
+                    "id":"model_option",
+                    "label":{
+                        "en":"Model Opthion",
+                        "zh-CN":"机型选项"
+                    }
+                },
+                {
+                    "type":"image_picker",
+                    "id":"gift_image",
+                    "label":{
+                        "en":"Image",
+                        "zh-CN":"图片"
+                    }
+                },
+                {
+                    "type":"url",
+                    "id":"gift_imageLink",
+                    "label":{
+                        "en":"Image links",
+                        "zh-CN":"图片链接"
+                    }
+                },
+                {
+                    "type":"collection",
+                    "id":"collection",
+                    "label":"Collection"
+                }
+            ]
+        }
+    ],
+    "presets":[
+        {
+            "name":"Index Machine",
+            "blocks":[
+                {
+                    "type":"brand"
+                },
+                {
+                    "type":"model"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}
+    

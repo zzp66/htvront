@@ -1,0 +1,252 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} .htv-blog-map{
+    background:{{ section.settings.bgColor }};
+  }
+{%- endstyle -%}
+<style>
+  body{
+    letter-spacing: 0;
+    background: #fffcf6 !important;
+  }
+  .htv-blog-map{
+    padding:50px 0 35px 0;
+  }
+  .htv-blog-head{
+    margin-bottom:21px;
+    text-align:center
+  }
+  .htv-blog-title{
+    font-size: 36px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 49px;
+  }
+  .htv-blog-desc{
+    font-size: 16px;
+    color: #333333;
+    line-height:22px;
+    margin-top:10px;
+  }
+  .htv-map-contain{
+    position: relative;
+    margin:0 auto;
+    width:1225px
+  }
+  .htv-comment-item{
+    position:absolute;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 8px 0px rgba(113,37,0,0.3);
+    padding:19px 26px 20px 27px;
+    border-radius:10px;
+    width:475px;
+    display: flex;
+  }
+  .htv-comment-info img{
+    position: absolute;
+    bottom: -21px;
+    left: 65px;
+  }
+  .htv-map-contain .htv-comment-item:nth-child(2){
+    top:2.8%;
+    left:5.8%;
+    z-index:1
+  }
+  .htv-map-contain .htv-comment-item:nth-child(3){
+    top:19%;
+    left:31.1%
+  }
+  .htv-map-contain .htv-comment-item:nth-child(4){
+    top:52%;
+    left:5.8%
+  }
+  .htv-map-contain .htv-comment-item:nth-child(5){
+    top:5%;
+    left:71.7%
+  }
+  .htv-map-contain .htv-comment-item:nth-child(6){
+    top:50%;
+    left:51%
+  }
+  .htv-comment-avatar{
+    margin-right:17px
+  }
+  .htv-comment-name{
+    font-size: 20px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 27px;
+    margin-bottom: 6px;
+  }
+  .htv-comment-message{
+    font-size: 16px;
+    color: #333333;
+    line-height: 22px;
+  }
+  @media screen and (max-width: 1650px){
+    .htv-map-contain{
+      width:63.8%
+    }
+  }
+  @media screen and (max-width: 1440px){
+    .htv-comment-item{
+      padding:15px;
+      width: 425px;
+    }
+    .htv-comment-avatar{
+      margin-right: 10px;
+    }
+    .htv-comment-name{
+      font-size:18px;
+      margin-bottom:0
+    }
+    .htv-comment-message{
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+  @media screen and (max-width: 1180px){
+    .htv-map-contain{
+      width:80%
+    }
+    .htv-blog-title{
+       font-size: 24px;
+     }
+    .htv-blog-desc{
+      margin-top:4px
+    }
+    .htv-comment-item{
+       width: 325px;
+       padding:10px 10px 13px 11px
+     }
+    .htv-comment-name{
+      font-size:12px;
+      line-height:17px
+    }
+    .htv-comment-message{
+      font-size:10px;
+      line-height: 14px;
+      margin-top:2px
+    }
+  }
+  @media screen and (max-width: 1024px){
+    .htv-map-contain{
+      margin:0
+    }
+  }
+   @media screen and (max-width: 750px){
+     .htv-blog-map{
+        padding:20px 0 10px 0;
+      }
+     .htv-map-contain{
+       width:95.7%;
+       margin:0 auto;
+    }
+    .htv-blog-head{
+       margin-bottom:2px
+     }
+     .htv-blog-title{
+       font-size: 16px;
+       line-height:22px
+     }
+     .htv-blog-desc{
+       font-size: 14px;
+       line-height:19px;
+       width: 80%;
+       margin: 0 auto;
+     }
+     .htv-comment-item{
+       position: initial;
+       width:96.1%;
+       margin:0 auto 10px auto;
+       border-radius:4px
+     }
+     .htv-comment-info img{
+       display:none
+     }
+   }
+</style>
+<div class="htv-blog-map">
+  <div class="htv-blog-head">
+    <div class="htv-blog-title">
+      {{ section.settings.title }}
+    </div>
+    <div class="htv-blog-desc">
+      {{ section.settings.desc }}
+    </div>
+  </div>
+  <div class="htv-map-contain">
+    <picture>
+      <source media="(max-width: 750px)" srcset="{{ section.settings.map_mobile | img_url:'750x' }}">
+      <source media="(min-width: 751px)" srcset="{{ section.settings.map | img_url:'1225x' }}">
+      <img class="htv-map-image" src="{{ section.settings.map | img_url:'1225x' }}">
+    </picture>
+    {% for block in section.blocks %}
+      <div class="htv-comment-item">
+        <div class="htv-comment-avatar">
+          <img src="{{ block.settings.avatar | img_url:'59x' }}">
+        </div>
+        <div class="htv-comment-info">
+          <div class="htv-comment-name">
+            {{ block.settings.name }}
+          </div>
+          <div class="htv-comment-message">
+            {{ block.settings.message }}
+          </div>
+          <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230725-140750.png?v=1690265301">
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Htv Blog Map",
+  "settings": [{
+      "type":"color",
+      "id":"bgColor",
+      "label":"bgColor"
+    },{
+      "type":"text",
+      "id":"title",
+      "label":"title"
+  },{
+    "type":"text",
+      "id":"desc",
+      "label":"desc"
+  },{
+      "type":"image_picker",
+      "id":"map",
+      "label":"map"
+    },{
+      "type":"image_picker",
+      "id":"map_mobile",
+      "label":"map mobile"
+    }],
+  "blocks":[{
+    "type":"comment",
+    "name":"comment",
+    "settings":[{
+      "type":"image_picker",
+      "id":"avatar",
+      "label":"avatar"
+    },{
+      "type":"text",
+      "id":"name",
+      "label":"name"
+    },{
+      "type":"text",
+      "id":"message",
+      "label":"message"
+    }]
+  }],
+   "presets":[{
+      "name":"Htv Blog Map"
+    }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

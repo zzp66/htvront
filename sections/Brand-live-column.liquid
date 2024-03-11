@@ -1,0 +1,71 @@
+<div class="fn-live-column">
+    <div class="fn-column-title">{{ section.settings.Schedule_title }}</div>
+    <div class="fn-column-main">
+        {% if section.settings.column_img != blank %}
+        {% assign image = section.settings.column_img | img_url: '1600x' %}
+            <img src="{{ image }}" alt="">
+        {% endif %}
+        <ul class="fn-column-lsit">
+          {% for block in section.blocks %}
+              <li>
+                 <span>{{ block.settings.Schedule_H }}</span>
+                 <span>{{ block.settings.Schedule_text }}</span>
+              </li>
+          {% endfor %}
+        </ul>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "live column",
+    "settings": [
+        {
+			"type": "image_picker",
+			"id": "column_img",
+			"label": {
+				"en": "logo",
+				"zh-CN": "标志图片"
+			}
+		},
+        {
+            "type": "text",
+            "id": "Schedule_title",
+            "label": {
+                "en": "Schedule title",
+                "zh-CN": "标题"
+            }
+        }
+     ],
+	"blocks": [{
+		"type": "column",
+		"name": {
+			"en": "Live broadcast Schedule",
+			"zh-CN": "直播时间表"
+		},
+		"settings": [
+          {
+				"type": "text",
+				"id": "Schedule_H",
+				"label": {
+					"en": "Schedule list",
+					"zh-CN": "时间表"
+				}
+			},
+             {
+				"type": "text",
+				"id": "Schedule_text",
+				"label": {
+					"en": "Schedule list",
+					"zh-CN": "时间表"
+				}
+			}
+		]
+	}]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

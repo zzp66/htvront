@@ -1,0 +1,251 @@
+<style>
+  .cap-hot-press-machine{
+    background-color: {{ section.settings.bg_color }};
+    padding:30px 0 40px;
+  }
+  .caphotpress-machine-swiper {
+    margin: 0 208px;
+  }
+  .caphotpress-machine-swiper .swiper-slide {
+    border-radius: 8px 8px 8px 8px;
+    background: #FFF1E0;
+  }
+  .caphotpress-machine-swiper .swiper-slide > div {
+    padding: 13px 13px 18px;
+  }
+  .addtocart-url{
+    width: 100%;
+    height: 46px;
+    background: linear-gradient( 91deg, #FF9A30 0%, #FF8830 100%);
+    border-radius: 4px 4px 4px 4px;
+    text-align: center;
+    line-height: 46px;
+    font-size: 16px;
+    color: #fff !important;
+    font-weight: bold;
+  }
+  .product-machine-box{
+    display:flex;
+    justify-content: space-between;
+    margin-top: 13px;
+  }
+  .cap-hot-press-machine .cap-hot-press-title{
+    color: #71132E;
+    font-size: 18px;
+    width: 65%;
+    line-height: 19px;
+    font-weight:bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    height:40px;
+  }
+  .cap-hot-press-machine .fn-compareat_price span,.cap-hot-press-machine .price__regular .price-item--regular{
+    font-weight: 700;
+    color: #ff7606;
+    float: right;
+    font-size: 24px;
+    line-height: 1;
+  }
+  .cap-hot-press-machine .cap-hot-press-addtocart{
+    margin-top:10px;
+  }
+  .cap-hot-press-machine .swiper-wrapper{
+    justify-content: center;
+  }
+  @media screen and (max-width: 1600px) {
+    .caphotpress-machine-swiper {
+        margin: 0 10%;
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    .cap-hot-press-machine .cap-hot-press-title{
+      font-size:14px
+    }
+    .cap-hot-press-machine .fn-compareat_price span,.cap-hot-press-machine .price__regular .price-item--regular{
+      font-size:16px;
+    }
+    .addtocart-url{
+      height:40px;
+      line-height:40px;
+      font-size:14px;
+    }
+  }
+   @media screen and (max-width: 750px) {
+      .product-machine-box{
+        flex-wrap: wrap;
+        margin-top: 5px;
+      }   
+     .cap-hot-press-machine .cap-hot-press-title{
+       width:100%;
+     }
+     .cap-hot-press-machine .fn-compareat_price{
+        flex-direction: row;
+        align-items: baseline;
+     }
+     .cap-hot-press-machine .cap-hot-press-price{
+       margin-top:5px;
+     }
+   }
+   @media screen and (max-width: 480px) {
+    .caphotpress-machine-swiper .swiper-slide > div {
+      padding: 3px 3px 12px;
+    }
+    .caphotpress-machine-swiper {
+        margin: 0 auto;
+      width:95%;
+    }
+     
+  .cap-hot-press-machine .swiper-wrapper{
+    justify-content: start;
+  }
+   }
+</style>
+<div class="cap-hot-press-machine" id="{{ section.settings.id }}">
+    <div class="cap-module-title">
+        <div class="cap-module-host-title">{{ section.settings.title }}</div>
+        <div class="cap-module-desc-title">{{ section.settings.desc }}</div>
+    </div>
+    <div class="swiper-container caphotpress-machine-swiper">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide">
+              <div class="cap-hot-press-box-machine">
+                <div class="cap-hot-press-image-machine">
+                  <a href="{{ block.settings.product_url }}">
+                    <img src="{{ block.settings.product_image | img_url:'456x' }}">
+                  </a>
+                </div>
+                <div class="cap-hot-press-product">
+                  <div class="product-machine-box">
+                    <div class="cap-hot-press-title">
+                      <a href="{{ block.settings.product_url }}">
+                        {{ block.settings.product_item.title }}
+                      </a>
+                    </div>
+                    <div class="cap-hot-press-price">
+                        {% render 'sffers-price', product: block.settings.product_item, price_class: '' %}
+                    </div>
+                  </div>
+                  <div class="fn-color-attr">
+                    {%- for option in block.settings.product_item.options_with_values -%}
+                      {%- if option.name == 'Colors' or option.name == 'Color' -%}
+                        <ul>
+                          {%- if option.name == 'Colors' -%}
+                            {% assign colorList = block.settings.product_item.options_by_name.Colors.values | slice: 0, 2 %}
+                          {%- else -%}
+                            {% assign colorList = block.settings.product_item.options_by_name.Color.values | slice: 0, 2 %}
+                          {%- endif -%}
+                          {%- for value in colorList -%}
+                            <li>
+                              <a href="{{ block.settings.product_item.url }}?variant={{ block.settings.product_item.variants[forloop.index0].id }}">
+                                {%- if block.settings.product_item.variants[forloop.index0].featured_image != blank -%}
+                                  <img
+                                    src="{{ block.settings.product_item.variants[forloop.index0].featured_image | img_url: '50x50' }}"
+                                    alt="{{ value }}"
+                                  >
+                                {%- endif -%}
+                              </a>
+                            </li>
+                          {% endfor %}
+                          {%- if option.name == 'Colors' -%}
+                            {% assign size = block.settings.product_item.options_by_name.Colors.values | size | minus: 2 %}
+                          {%- else -%}
+                            {% assign size = block.settings.product_item.options_by_name.Color.values | size | minus: 2 %}
+                          {%- endif -%}
+                          {%- if size > 0 -%}
+                            <li class="color-quantity">
+                              <a href="{{ block.settings.product_item.url }}">+{{ size }}</a>
+                            </li>
+                          {%- endif -%}
+                        </ul>
+                      {%- endif -%}
+                    {% endfor %}
+                  </div>
+                  <div class="cap-hot-press-addtocart">
+                    <a href="{{ block.settings.product_url }}" class="addtocart-url">Add To Cart</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+    </div>
+    <div class="swiper-scrollbar" id="caphotpress-machine-swiper-scrollbar"></div>
+</div>
+<script>
+  let blockSize = {{ section.blocks.size }};
+  let slidesPerMin = blockSize === 3 ? 2.2 : 2;
+  let initial = blockSize === 3 ? 1 : 0;
+  let centered =  blockSize === 3 ? true : false;
+    var mySwiper_machine = new Swiper('.caphotpress-machine-swiper', {
+        slidesPerView: 3,
+        spaceBetween: 20,
+        scrollbar: {
+            el: '#caphotpress-machine-swiper-scrollbar',
+        },
+        breakpoints: {
+            750: {
+                slidesPerView: slidesPerMin,
+                spaceBetween: 7,
+                initialSlide: initial,
+                centeredSlides:centered
+            }
+        }
+    });
+</script>
+{% schema %}
+  {
+    "name": "Cap Hot Press Machine",
+    "settings": [
+      {
+        "type":"text",
+        "id":"id",
+        "label":"id(页面唯一性，全英文)"
+      },
+      {
+        "type":"color",
+        "id":"bg_color",
+        "label":"bg_color"
+      },
+      {
+        "type":"text",
+        "id":"title",
+        "label":"title"
+      },
+      {
+        "type":"text",
+        "id":"desc",
+        "label":"desc"
+      }
+    ],
+    "blocks":[
+        {
+          "name":"product",
+          "type":"product",
+          "settings":[
+              {
+                  "type":"product",
+                  "id":"product_item",
+                  "label":"product"
+              },{
+                "type":"url",
+                "id":"product_url",
+                "label":"product url"
+              },{
+                "type":"image_picker",
+                "id":"product_image",
+                "label":"product image"
+              }
+          ]
+        }
+    ],
+    "presets":[
+        {
+            "name":"Cap Hot Press Machine"
+        }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,787 @@
+{% style %}
+  #shopify-section-{{ section.id }} .cap-hot-press-draw{
+    background-color: {{ section.settings.image_bg }};
+  }
+{% endstyle %}
+<style>
+    .cap-hot-press-draw {
+        padding: 30px 0 40px;
+    }
+    .swiper-wrapper-draw .swiper-slide {
+        width: auto;
+        margin-left: 50px !important;
+    }
+    .draw-swiper-slide {
+        margin-left: 20px !important;
+    }
+    .show-in-820 {
+        display: none;
+    }
+    .show-in-821 {
+        display: block;
+    }
+    .dialog-ul, .dialog-ul-draw {
+        display: none;
+    }
+    .draw-body-mask {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        left: 0;
+        top: 0;
+        z-index: 999;
+        display: none;
+    }
+    .draw-dialog {
+        width: 820px;
+        height: 787px;
+        background-color: #FFF1E0;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        position: fixed;
+        z-index: 1000;
+        display: none;
+        padding: 36px 0 66px 0;
+        color: #6D3309;
+    }
+    .tips-dialog {
+        width: 820px;
+        height: 362px;
+        background-color: #FFF1E0;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        position: fixed;
+        z-index: 1000;
+        display: none;
+        padding: 36px 0 66px 0;
+        color: #6D3309;
+    }
+    .icon-draw-close {
+        position: absolute;
+        right: 25px;
+        top: 20px;
+        cursor: pointer;
+    }
+    .draw-container {
+        width: 100%;
+        height: 80px;
+        background: #FFCA8B;
+        border-radius: 8px 8px 0 0;
+        border-spacing: 5px;
+        margin: 0 auto;
+        color: #A45822;
+        line-height: 80px;
+        overflow: hidden;
+        font-size: 18px;
+        font-weight: bold;
+        border-bottom: none;
+    }
+    .draw-gifts {
+        display: flex;
+        justify-content: center;
+        padding: 20px 0;
+    }
+    .draw-gifts > div {
+        margin-right: 25px;
+    }
+    .draw-gifts > div:nth-last-child(1) {
+        margin-right: 0;
+    }
+    .draw-box {
+        width: 1074px;
+        margin: 0 auto;
+        padding-bottom: 35px;
+    }
+    .draw-input {
+        width: calc(100% - 267px);
+        height: 66px;
+        border-radius: 6px;
+        border: 2px solid #A45822;
+        background: none;
+        color: #A45822;
+        font-size: 18px;
+        padding-left: 28px;
+        margin-right: 20px;
+    }
+    .draw-from {
+        display: flex;
+    }
+    .draw-tips {
+        display: none;
+    }
+    .join-draw {
+        width: 247px;
+        height: 66px;
+        background: #A45822;
+        border-radius: 8px;
+        font-size: 18px;
+        text-align: center;
+        line-height: 66px;
+        font-weight: bold;
+        cursor: pointer;
+        color: #fff;
+    }
+    .draw-rules li {
+        font-size: 16px;
+        line-height: 28px;
+        position: relative;
+        color: #6D3309;
+        letter-spacing: 0;
+    }
+    .draw-rules .rules {
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 24px;
+        padding: 20px 0 10px 0;
+        color: #6D3309;
+    }
+    .draw-rules {
+        margin-bottom: 20px;
+    }
+    .draw-dialog .win-title p {
+        font-size: 30px;
+        text-align: center;
+        font-weight: 600;
+    }
+    .win-message {
+        font-size: 18px;
+        text-align: center;
+        padding: 10px 20px;
+    }
+    .win-message > span {
+        font-weight: bold;
+    }
+    .win-code {
+        text-align: center;
+        padding-bottom: 20px;
+      font-weight: bold;
+      font-size:16px;
+    }
+    .win-code > img {
+        display: inline-block;
+        cursor: pointer;
+    }
+    .productTips, .codeTips {
+        font-size: 18px;
+        line-height: 24px;
+        padding: 0 50px 0 90px;
+        margin-top: 20px;
+        display: none;
+    }
+    .prize-drawn, .no-qualification, .try-later, .no-draw {
+        display: none;
+    }
+    /* .productTips > p:nth-of-type(1) {
+        color: #FFB46F
+    } */
+    .draw-img-url {
+        margin: 0 auto;
+        padding: 0 20px;
+      max-width:312px;
+    }
+    .win-button, .turn_url, .bundle-close {
+        width: 234px;
+        height: 60px;
+        background: linear-gradient(270deg, #FF8A32 0%, #FF9A32 100%);;
+        border-radius: 10px;
+        text-align: center;
+        line-height: 60px;
+        font-size: 20px;
+        color: #fff !important;
+        font-weight: 600;
+        outline: none;
+        border: none;
+        margin: 0 auto;
+        display: none;
+        cursor: pointer;
+    }
+    .prize-drawn > div:nth-child(1) {
+        font-size: 30px;
+        line-height: 40px;
+        text-align: center;
+        font-weight: bold;
+    }
+    .prize-drawn > p:nth-child(2) {
+        font-size: 18px;
+        text-align: center;
+        margin-top: 20px;
+    }
+    .tips-dialog .win-button {
+        margin-top: 45px;
+    }
+    .no-qualification, .try-later, .no-draw {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 35px;
+        margin-top: 30px;
+    }
+    .prize-drawn {
+        margin-top: 20px;
+    }
+    .draw-dialog .win-button, .draw-dialog .turn_url, .draw-dialog .bundle-close {
+        margin-top: 30px;
+    }
+    .loading-svg {
+        width: 35px;
+        margin: 10px auto 0;
+    }
+    .bg-out-box {
+        width: 1448px;
+        margin: 0 auto;
+    }
+    .draw-bottom-box {
+        background: url({{ section.settings.bottom_bg_image | img_url: '1448x' }}) no-repeat;
+        background-size: 100% 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .cap-press-draw {
+        padding: 30px 0 35px;
+    }
+    .draw-rules > div > p {
+        font-size: 16px;
+        font-weight: 600;
+        color: #6D3309;
+        line-height: 28px;
+    }
+    .draw-rules > div > ul {
+        margin-bottom: 8px;
+    }
+  .tips-dialog,.draw-dialog{
+    border-radius: 10px;
+    letter-spacing: 0;
+  }
+    @media screen and (max-width: 1440px) {
+        .bg-out-box {
+            width: 85%;
+        }
+    }
+    @media screen and (max-width: 1280px) {
+        .draw-gifts {
+            padding: 20px 50px;
+        }
+        .draw-box {
+            width: calc(100% - 100px);
+        }
+    }
+    @media screen and (max-width: 1180px) {
+        .tips-dialog, .draw-dialog {
+            background: #FFF1E0;
+            border-radius: 10px;
+            width: 80%;
+            height: auto;
+        }
+    }
+    @media screen and (max-width: 768px) {
+        .cap-hot-press-draw {
+            padding: 10px 0 18px;
+        }
+        .cap-module-title {
+            width: 93.6%;
+            margin: 0 auto;
+            padding-top: 0
+        }
+        .bg-out-box {
+            width: 93.6%;
+        }
+        .draw-gifts {
+            flex-wrap: wrap;
+            padding: 15px;
+            justify-content: space-between;
+        }
+        .draw-bottom-box {
+            background: url({{ section.settings.bottom_bg_image_mobile | img_url: '702x' }}) no-repeat;
+            background-size: 100% 100%;
+        }
+        .draw-gifts > div {
+            margin-right: 0;
+            width: 49%;
+        }
+        .draw-gifts > div:nth-child(odd) {
+            margin-right: 5px;
+        }
+        .draw-gifts > div:nth-child(-n+2) {
+            margin-bottom: 5px;
+        }
+        .join-draw {
+            width: 97px;
+            height: 44px;
+            background: #A45822;
+            border-radius: 4px;
+            font-size: 14px;
+            line-height: 44px;
+        }
+        .draw-box {
+            width: calc(100% - 30px);
+            padding-bottom: 23px;
+        }
+        .draw-input {
+            margin-right: 8px;
+            height: 44px;
+            border-radius: 4px;
+            width: calc(100% - 105px);
+            padding-left: 10px;
+        }
+        .show-in-821 {
+            display: none;
+        }
+        .show-in-820 {
+            display: block;
+        }
+        .draw-rules-mobile {
+            display: flex;
+            padding-top: 10px;
+        }
+        .draw-rules-mobile .rules {
+            font-size: 14px;
+            color: #6D3309;
+            font-weight: bold;
+        }
+        .draw-rules-mobile .rules-dialog {
+            width: 25px;
+            height: 25px;
+            background: #A45822;
+            border-radius: 50%;
+            display: inline-block;
+            font-size: 14px;
+            color: #FDDFC0;
+            text-align: center;
+        }
+        .draw-rules-mobile .check-rules {
+            padding-left: 6px;
+        }
+        .dialog-ul-draw {
+            background: #FFF1E0;
+            border-radius: 20px;
+            width: 80%;
+            max-height: 90%;
+            overflow-y: auto;
+            display: none;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            position: fixed;
+            z-index: 1000;
+            letter-spacing: 0;
+        }
+        .dialog-ul-draw ul {
+            padding: 10px 13px 10px;
+            color: #A45822;
+        }
+        .dialog-ul-draw > p {
+            text-align: left;
+            padding-left: 10px;
+            padding-top: 5px;
+            color: #A45822;
+            font-weight: bold;
+        }
+        .dialog-ul-draw .rules {
+            text-align: center;
+            font-size: 16px;
+            padding-top: 20px;
+        }
+        .dialog-ul-draw > p:nth-last-child(1) {
+            padding-bottom: 20px;
+        }
+        .tips-dialog, .draw-dialog {
+            padding: 20px 0 40px;
+            overflow-y: auto;
+        }
+        .prize-drawn > div:nth-child(1) {
+            font-size: 22px;
+            line-height: 30px;
+        }
+        .prize-drawn > p:nth-child(2) {
+            margin-top: 10px;
+        }
+        .win-button, .turn_url, .bundle-close {
+            margin-top: 20px;
+            width: 180px;
+            height: 45px;
+            line-height: 45px;
+            font-size: 18px;
+        }
+        .no-qualification, .try-later, .no-draw {
+            font-size: 20px;
+            line-height: 28px;
+        }
+        .draw-dialog .win-title p {
+            font-size: 24px;
+        }
+        .win-message {
+            font-size: 16px;
+            padding: 0;
+            line-height: 18px;
+        }
+        .win-code {
+            padding-bottom: 10px;
+        }
+        .productTips, .codeTips {
+            font-size: 16px;
+            line-height: 22px;
+            padding: 0 30px;
+            margin-top: 12px;
+        }
+        .draw-dialog .win-button, .turn_url, .bundle-close {
+            margin-top: 20px;
+        }
+        .loading-svg {
+            width: 25px;
+            margin: 5px auto 0;
+        }
+        .draw-container {
+            height: 54px;
+            line-height: 50px;
+            font-size: 14px;
+            border-bottom: none;
+        }
+    }
+    @media screen and (max-width: 480px) {
+        .swiper-wrapper-draw .swiper-slide {
+            width: auto;
+            margin-left: 12px !important;
+        }
+        .draw-input {
+            font-size: 14px;
+        }
+        .icon-draw-close {
+            width: 18px;
+        }
+       .draw-img-url{
+          max-width: 186px;
+       }
+       .win-code{
+         font-size:14px;
+       }
+    }
+</style>
+<div class="cap-hot-press-draw" id="{{ section.settings.id }}">
+    <div class="cap-module-title">
+        <div class="cap-module-host-title">{{ section.settings.title }}</div>
+    </div>
+    <div class="bg-out-box">
+        <div class="draw-container">
+            <div class="draw-swiper">
+                <div class="swiper-wrapper swiper-wrapper-draw">
+                    {% for block in section.blocks %}
+                    {% if block.type == 'scroll_text' %}
+                    <div class="swiper-slide draw-swiper-slide">{{ block.settings.text }}</div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="draw-bottom-box">
+            <div class="draw-gifts">
+                {% for block in section.blocks %}
+                {% if block.type == 'gifts' %}
+                <div>
+                    <img src="{{ block.settings.gifts_image | img_url:'342x'  }}">
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="draw-box">
+                <div class="draw-from">
+                    <input class="draw-input" type="text" placeholder="Enter your order number">
+                    <div class="join-draw" id="join_draw">
+                        <span class="join-draw-text">Join</span>
+                    </div>
+                    <div class="join-draw" id="loading_draw" style="display:none">
+                        <div class="loading-svg">
+                            <svg
+                                    aria-hidden="true"
+                                    focusable="false"
+                                    role="presentation"
+                                    class="spinner"
+                                    viewBox="0 0 66 66"
+                                    xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="draw-tips" style="color:red">*Please enter the order number.</div>
+                <div class="draw-rules show-in-821">
+                    {% if section.settings.draw_rules != blank %}
+                    <p class="rules">Rules :</p>
+                    {% endif %}
+                    <div>
+                        {{ section.settings.draw_rules }}
+                    </div>
+                </div>
+                <div class="draw-rules-mobile show-in-820">
+                    {% if section.settings.draw_rules != blank %}
+                    <p class="rules">Rules :</p>
+                    {% endif %}
+                    <div class="check-rules">
+                        <span class="rules-dialog">?</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="draw-dialog" id="win-product">
+    <img
+            class="icon-draw-close close-btn"
+            src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/a016b412f93b877a827866a90379da25.png?v=1704260498"
+    >
+    <div class="win-title">
+        <p>Congratulations!</p>
+    </div>
+    <div class="win-message">You've just hit the jackpot - <span id="winAwardsEnglishName"></span> is yours now！</div>
+    <div class="win-code">
+        code:
+        <span id="winTicketCode"></span>
+        <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Group_1.png?v=1704182209" id="copy-click">
+    </div>
+    <div>
+        <img src="" class="draw-img-url">
+    </div>
+    <div class="productTips">
+        <p>- Please take a screenshot to save your winning information.</p>
+        <p>- Copy the prize code, then click "Redeem Now" to claim your prize, or add the corresponding product to your cart for redemption.</p>
+        <p>- Validity: 20th Feb, 2024 - 14 Mar, 2024</p>
+    </div>
+    <div class="codeTips">
+        <p>- Please take a screenshot of your winning information.</p>
+        <p>- Validity: 20th Feb, 2024 - 14 Mar, 2024</p>
+    </div>
+    <a class="turn_url" target="_blank" href="javascript:;">Redeem Now</a>
+    <a class="bundle-close close-btn">Got it</a>
+</div>
+<div class="tips-dialog" id="tips">
+    <img
+            class="icon-draw-close close-btn"
+            src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/a016b412f93b877a827866a90379da25.png?v=1704260498"
+    >
+    <div class="prize-drawn">
+        <div>
+            <p>Sorry !</p>
+            <p>This order has already joined the draw</p>
+        </div>
+        <p>One order, one chance</p>
+    </div>
+    <div class="no-qualification">
+        <p>Please use the order number,</p>
+        <p>including the Hat Heat Press (Machine or Bundle),</p>
+        <p>for the draw.</p>
+    </div>
+    <div class="try-later">
+        <p>Please do not draw consecutively.</p>
+        <p>Please try again later.</p>
+    </div>
+    <div class="no-draw">
+        <p>Thank you for your joining!</p>
+    </div>
+    <button class="win-button bundle-close close-btn">Got it</button>
+</div>
+<div class="draw-body-mask"></div>
+<div class="dialog-ul-draw">
+    <img
+            class="icon-draw-close close-btn-ul"
+            src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/a016b412f93b877a827866a90379da25.png?v=1704260498"
+    >
+    <p class="rules">Rules</p>
+    {{ section.settings.draw_rules }}
+</div>
+<script>
+    getDrawList();
+    function getDrawList() {
+        $.ajax({
+            url: "https://qn.htvront.com/hatPre/getDrawList",
+            method: "GET",
+            success: function (data) {
+                var arr = data.data
+                if (arr != null) {
+                    for (let i = 0; i < arr.length; i++) {
+                        var div = '<div class="swiper-slide draw-swiper-slide">' + arr[i].winEmail + ' won ' + arr[i].winAwardsEnglishName + '</div>'
+                        $('.swiper-wrapper-draw').append(div)
+                    }
+                }
+            },
+            error: function (xhr, status, error) {
+            }
+        });
+    }
+    $(function () {
+        $('.check-rules').click(function () {
+            $('.dialog-ul-draw').show()
+            $('.draw-body-mask').css('display', "block")
+            $('body').css({"overflow": "hidden"})
+        })
+        $('.close-btn-ul').click(function () {
+            $('.dialog-ul-draw').hide()
+            $('.draw-body-mask').css('display', "none")
+            $('body').css({"overflow": "auto"})
+        })
+        $('#join_draw').on('click', function () {
+            var inputVal = $('.draw-input').val()
+            if (inputVal.trim() == '') {
+                $('.draw-tips').show()
+                return false;
+            } else {
+                $('.draw-tips').hide()
+            }
+            var data = {market: "US_HTVRONT(shopify)", orderNo: inputVal}
+            var jsonData = JSON.stringify(data)
+            $('#join_draw').hide()
+            $('#loading_draw').show()
+            $.ajax({
+                url: "https://qn.htvront.com/hatPre/lottery",
+                method: "POST",
+                data: jsonData,
+                contentType: 'application/json',
+                success: function (res) {
+                    $('#join_draw').show()
+                    $('#loading_draw').hide()
+                    $('.draw-body-mask').css('display', "block")
+                    $('body').css({"overflow": "hidden"})
+                    if (res.code == 20003) {
+                        $('.tips-dialog,.prize-drawn').show();
+                        $('.win-button.bundle-close').show().css('cursor', 'pointer')
+                    } else if (res.code == 20002) {
+                        $('.tips-dialog,.no-qualification').show();
+                        $('.win-button.bundle-close').show().css('cursor', 'pointer')
+                    } else if (res.code == 20004) {
+                        $('.tips-dialog,.no-draw').show();
+                        $('.win-button.bundle-close').show().css('cursor', 'pointer')
+                    } else if (res.code == 200 && res.data) {
+                        var arr2 = [res.data]
+                        if (res.data.winAwardsNum == '200') {
+                            $('.tips-dialog,.no-draw').show();
+                            $('.win-button.bundle-close').show().css('cursor', 'pointer')
+                            return
+                        }
+                        for (let j = 0; j < arr2.length; j++) {
+                            $('.draw-dialog').css('display', "block");
+                            $('#winAwardsEnglishName').text(arr2[j].winAwardsEnglishName);
+                            $('#winTicketCode').text(arr2[j].winTicketCode)
+                            $('.draw-img-url').attr('src', arr2[j].awardsImgPath);
+                            if (arr2[j].turnUrl != null && arr2[j].turnUrl != '') {
+                                $('.productTips').show();
+                                $('.turn_url').attr('href', arr2[j].turnUrl).show().css('cursor', 'pointer');
+                            } else {
+                                $('.codeTips').show();
+                                $('.bundle-close').show().css('cursor', 'pointer')
+                            }
+                        }
+                    } else {
+                        $('.tips-dialog,.try-later').show();
+                        $('.win-button.bundle-close').show().css('cursor', 'pointer')
+                    }
+                },
+                error: function (xhr, status, error) {
+                    $('#join_draw').show()
+                    $('#loading_draw').hide()
+                    console.log(xhr, status, error)
+                }
+            })
+        })
+        $('.close-btn').on('click', function () {
+            $('.draw-dialog,.tips-dialog,.prize-drawn,.no-qualification,.try-later,.no-draw,.draw-body-mask,.productTips,.codeTips,.turn_url,.bundle-close').hide()
+            $('.draw-input').val('')
+            $('body').css({"overflow": "auto"})
+        })
+        $('#copy-click').on('click', function () {
+            let url = $('#winTicketCode').text();
+            let copyInput = document.createElement('input');
+            document.body.appendChild(copyInput);
+            copyInput.setAttribute('value', url);
+            copyInput.select();
+            document.execCommand("Copy");
+            copyInput.remove();
+            alertMsg()
+        })
+        function alertMsg() {
+            var alertFram = document.createElement("DIV");
+            alertFram.id = "alertFram";
+            alertFram.style.position = "fixed";
+            alertFram.style.width = "100%";
+            alertFram.style.textAlign = "center";
+            alertFram.style.bottom = "40px";
+            alertFram.style.zIndex = "10001";
+            strHtml = " <span style=\"font-family: 微软雅黑;display:inline-block;background:#333;color:#fff;padding:0 20px;line-height:36px;border-radius:6px; \">Copied successfully</span>";
+            alertFram.innerHTML = strHtml;
+            document.body.appendChild(alertFram);
+            setTimeout((function () {
+                alertFram.style.display = "none";
+            }), 2000);
+        }
+    })
+    window.onload = function () {
+        var drawSwiper = new Swiper('.draw-swiper', {
+            speed: 1500,
+            loop: true,
+            simulateTouch: false,
+            noSwiping: true,
+            allowTouchMove: false,
+            slidesPerView: 'auto',
+            autoplay: true,
+            observer: true,
+            observeParents: true,
+        })
+    }
+</script>
+{% schema %}
+{
+  "name": "Cap Hot Press Draw",
+  "settings": [
+    {
+      "type": "text",
+      "id": "id",
+      "label": "id(页面唯一性，全英文)"
+    },
+    {
+      "type": "color",
+      "id":"image_bg",
+      "label":"image_bg"
+    },
+    {
+      "type":"text",
+      "id":"title",
+      "label":"title"
+    },{
+      "type":"html",
+      "id":"draw_rules",
+      "label":"draw rules"
+    },{
+      "type":"image_picker",
+      "id":"bottom_bg_image",
+      "label":"bottom background"
+    },{
+      "type":"image_picker",
+      "id":"bottom_bg_image_mobile",
+      "label":"bottom background mobile"
+    }
+  ],
+  "blocks":[{
+    "type":"scroll_text",
+    "name": "Scroll text",
+    "settings": [{
+      "type":"text",
+      "id":"text",
+      "label":"text"
+    }]
+ },{
+    "type":"gifts",
+    "name": "gifts",
+    "settings": [{
+      "type":"image_picker",
+      "id":"gifts_image",
+      "label":"gifts image"
+    }]
+ }],
+  "presets":[
+      {
+        "name":"Cap Hot Press Draw"
+      }
+  ]
+}
+{% endschema %}

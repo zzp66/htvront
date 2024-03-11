@@ -1,0 +1,417 @@
+<style>
+  .mid-year-seckill{
+    position: relative;
+    letter-spacing: 0;
+    background: url('https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/12_2x_84ff71ce-39e2-4f0d-b4ee-8821a833d7ec.png?v=1687832855') no-repeat;
+    background-size: 100% 100%;
+    padding:77px 0 42px 0
+  }
+
+  .mid-year-seckill-title{
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+  .mid-year-seckill-content{
+    width: 1600px;
+    margin: 0 auto;    
+    border-radius: 19px;
+    padding:10px;
+    background: linear-gradient(180deg, #FFF5C3 0%, #FFD379 100%);  
+  }
+  .mid-year-seckill .swiper-wrapper_ul{
+    padding: 72px 10px 20px 10px;
+    box-shadow: inset 0px 8px 8px 0px rgba(165,96,25,0.3);
+    background: linear-gradient(180deg, #FFEB8C 0%, #FFB556 100%);
+    border-radius: 10px;
+  }
+ .mid-year-seckill .seckill-title-content{
+    position: absolute;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+  }
+  .mid-year-seckill .seckill-title-content>div{
+    font-weight: bold;
+    color: #914408;
+    line-height: 49px;
+    font-size: 36px;
+  }
+  .mid-year-seckill .seckill-title-content>p{
+    color: #914408;
+    line-height: 24px;
+    font-size: 18px;
+  }
+  .mid-year-seckill .swiper-slide{
+    background: linear-gradient(180deg, #FFF0BC 0%, #FFDA47 100%);
+    box-shadow: inset 0px 9px 8px 0px rgba(198,154,54,0.6);
+    border-radius: 8px;
+    padding: 20px 0;
+  }
+  .mid-year-seckill .card{
+    width: calc(100% - 61px);
+    margin: 0 auto;
+    background-color: white;
+    padding: 14px 15px 18px 16px;
+    border-radius: 8px;
+    box-shadow: 0px 5px 6px 0px rgba(128,52,5,0.3);
+  }
+  .seckill-layout{
+    display:flex;
+    margin-top: 13px;
+    height: 43px;
+  }
+  .seckill-sale-title{
+    width:65%;
+    height: 38px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 21px;
+    font-size:16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  .seckill-sale--price{
+    width:35%;
+    text-align:right
+  }
+  .seckill-sale--price .fn-compareat_price span,.seckill-sale--price .price__regular .price-item--regular{
+    font-size: 24px;
+    font-weight: bold;
+    color: #914408;
+    line-height: 21px;
+  }
+  .seckill-sale--price .fn-compareat_price .fn-compare-at_price{
+    font-size: 16px;
+    color: #656565;
+    line-height: 22px;
+  }
+  .mid-year-seckill .fn-color-attr{
+    margin:16px 0
+  }
+  .mid-year-seckill .fn-color-attr ul li img{
+    width:36px;
+    height:36px
+  }
+  .mid-year-seckill .button--full-width{
+    padding:0;
+    background: linear-gradient(148deg, #FFCD65 0%, #ECA62F 100%);
+/*     box-shadow: 0px 5px 10px 0px rgba(128,52,5,0.53); */
+    border-radius: 4px;
+    height: 62px;
+    --border-offset: none;
+    --border-opacity: none;
+  }
+  .seckill-addcart-sale{
+    margin-top:22px
+  }
+  .seckill-sale_button {
+    width: 100%;
+    height:62px;
+    background: #E4E4E4;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    line-height: 62px;
+    border: none;
+    display: none;
+    cursor: no-drop;
+    padding: 0;
+    margin-top:22px
+  }
+  @media screen and (max-width: 1660px){
+    .mid-year-seckill-content{
+      width:83.33%
+    }
+  }
+   @media screen and (max-width: 1440px){
+    .mid-year-seckill .seckill-title-content>div{
+      font-size:30px
+    }
+     .mid-year-seckill-title{
+       top:22px
+     }
+  }
+  @media screen and (max-width: 1330px){
+    .mid-year-seckill .seckill-title-content>div{
+      font-size:26px;      
+    }
+    .mid-year-seckill .seckill-title-content{
+      top:10%
+    }
+     .mid-year-seckill-title{
+       top:4%
+     }
+  }
+   @media screen and (max-width: 1024px){
+     .mid-year-seckill-title{
+       top:13px
+     }
+     .mid-year-seckill{
+       padding-top:50px
+     }
+     .mid-year-seckill .seckill-title-content{
+      top:17%
+    }
+     .mid-year-seckill .seckill-title-content>div{
+       font-size: 20px;
+       line-height: 26px;
+     }
+     .mid-year-seckill .seckill-title-content>p{
+       font-size:16px
+     }
+     .mid-year-seckill .button--full-width,.seckill-sale_button{
+       height:45px;
+       line-height:45px;
+       min-height: 45px;
+       font-size: 14px;
+     }
+     .seckill-sale--price .fn-compareat_price span,.seckill-sale--price .price__regular .price-item--regular{
+      font-size: 14px;
+      line-height: 21px;
+       margin-right:5px
+    }
+    .seckill-sale--price .fn-compareat_price .fn-compare-at_price{
+      font-size: 12px;
+      font-weight: 500;
+    }
+   }
+   @media screen and (max-width: 750px){
+     .mid-year-seckill .seckill-title-content>p{
+       font-size:14px
+     }
+     .mid-year-seckill .seckill-title-content>div{
+       font-size: 16px;
+       line-height: 22px;
+     }
+     .mid-year-seckill-content{
+       width:93.6%
+     }
+      .mid-year-seckill{
+       padding-top:44px;
+       background: #FEE692;
+        padding-bottom: 0;
+     }
+     .mid-year-seckill-title{
+       min-width:351px
+     }
+     .mid-year-seckill-content{
+       padding:5px;
+       border-radius:4px
+     }
+     .mid-year-seckill .swiper-wrapper_ul{
+       padding:41px 5px 12px 5px;
+       box-shadow:none;
+       border-radius:4px
+     }
+     .mid-year-seckill .card{
+        width: calc(100% - 24px);
+        padding:5px 5px 11px 5px
+     }
+     .mid-year-seckill .swiper-slide{
+       padding:5px 0
+     }
+     .seckill-sale-title{
+       font-size:14px;
+       width:100%;
+     }
+     .seckill-layout{
+       display:block;
+       height:auto
+     }
+     .seckill-sale--price{
+       width:100%;
+       text-align:left;
+       margin-top: 5px;
+     }
+     
+     .fn-compareat_price{
+       flex-direction: row;
+       align-items: baseline;
+     }
+     .mid-year-seckill .fn-color-attr{
+       margin:6px 0
+     }
+     .seckill-addcart-sale{
+        margin-top:7px
+      }
+     .mid-year-seckill .button--full-width,.seckill-sale_button{
+       height:30px;
+       line-height:30px;
+       min-height: 30px;
+       font-size: 14px;
+       margin-top:7px
+     }
+   }
+</style>
+{%- liquid
+  assign ratio = 1
+  if block.settings.product.featured_media and media_aspect_ratio == 'portrait'
+    assign ratio = 0.8
+  elsif block.settings.product.featured_media and media_aspect_ratio == 'adapt'
+    assign ratio = block.settings.product.featured_media.aspect_ratio
+  endif
+  if ratio == 0 or ratio == null
+    assign ratio = 1
+  endif
+  if limit != blank
+    assign limit = limit
+  else
+    assign limit = 5
+  endif
+-%}
+<div class="mid-year-seckill" id="{{ section.settings.id }}">
+  <div class="mid-year-seckill-title">
+    
+    <picture>
+            <source media="(max-width: 750px)" srcset="{{ section.settings.title_image_mobile | img_url:'750x' }}" />
+            <source media="(min-width: 751px)" srcset="{{ section.settings.title_image | img_url:'785x' }}" />
+            <img src="{{ section.settings.title_image | img_url:'785x' }}" />
+    </picture>
+    <div class="seckill-title-content">
+      <div>{{ section.settings.title }}</div>
+      <p>{{ section.settings.desc }}</p>
+    </div>
+  </div>
+  <div class="mid-year-seckill-content">
+      <div class="swiper-wrapper_ul">
+        <div class="swiper-container">
+          <ul class="swiper-wrapper">
+            {% for block in section.blocks %}
+              <li class="swiper-slide_list swiper-slide">
+                <div class="card">
+                  <div
+                    class="card__inner hover-to-cart_sale {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }}{% endif %}{% if block.settings.product.featured_media or settings.card_style == 'standard' %} ratio{% endif %}"
+                    style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
+                  >
+                    {%- if block.settings.product.featured_media -%}
+                      <a href="{{ block.settings.product.url }}">
+                        <div class="card__media">
+                          <div class="media media--transparent media--hover-effect">
+                            <img
+                              class="img-first"
+                              src="{{ block.settings.product.featured_media | img_url: '480x' }}"
+                              alt="{{ block.settings.product.featured_media.alt | escape }}"
+                              {% unless lazy_load == false %}
+                                loading="lazy"
+                              {% endunless %}
+                            >
+                          </div>
+                        </div>
+                      </a>
+                    {%- endif -%}
+                  </div>
+                  <div class="seckill-layout">
+                    <div class="seckill-sale-title t">
+                      <a href="{{ block.settings.product.url }}" class="t">{{ block.settings.product.title | escape }}</a>
+                    </div>
+                    <div
+                      class="seckill-sale--price"
+                    >
+                      {% render 'sffers-price', product: block.settings.product, price_class: '' %}
+                    </div>
+                  </div>
+                  <div class="seckill-addcart-sale">
+                    {% render 'easter-addCart', product: block.settings.product %}
+                  </div>
+                  <button class="seckill-sale_button t">ADD TO CART</button>
+                </div>
+              </li>
+            {%- endfor -%}
+          </ul>
+          <div class="swiper-scrollbar"></div>
+        </div>
+      </div>
+  </div>
+</div>
+<script>
+  $(function (){
+      var sale_arr = ['6830968897669', '6714275496069', '6830969028741'];
+      $(".product-form__submit").click(function(){
+        var button_id = $(this).attr('id').substring(9);
+         if(sale_arr.indexOf(button_id) != -1 ) {
+            $('.seckill-addcart-sale').hide();
+            $('.seckill-sale_button').show();
+            $('.seckill-sale_button').attr('disabled',true);
+         } else {
+            $('.seckill-addcart-sale').show();
+         }  
+      });
+    var mySwiper_a = new Swiper('.mid-year-seckill .swiper-container',{
+      scrollbar: {
+            el: '.swiper-scrollbar',
+        draggable: true,
+      },
+      slidesPerView: 3,
+          spaceBetween: 15,
+
+      breakpoints:{
+        768:{
+           slidesPerView:1.8,
+          spaceBetween:7,
+
+        }
+      }
+    });
+
+  })
+</script>
+{% schema %}
+  {
+    "name": "Mid Year Seckill",
+    "max_blocks": 3,
+    "settings": [{
+      "type":"image_picker",
+      "id":"title_image",
+      "label":"title image"
+    },{
+      "type":"image_picker",
+      "id":"title_image_mobile",
+      "label":"title image mobile"
+    },{
+      "type":"text",
+      "id":"title",
+      "label":"title"
+    },{
+      "type":"text",
+      "id":"desc",
+      "label":"desc"
+    },{
+          "type": "text",
+          "id": "id",
+          "label": "id(页面唯一性，全英文)"
+        }],
+    "blocks":[{
+    "type": "save",
+    "name": {
+        "en": "save product",
+        "zh-CN": "产品"
+    },
+    "settings": [
+      {
+        "type": "product",
+        "id": "product",
+        "label": "productlabel"
+      }
+    ]
+  }],
+    "presets": [
+        {
+          "name": "Mid Year Seckill"
+        }
+      ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

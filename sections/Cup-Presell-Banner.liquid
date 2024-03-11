@@ -1,0 +1,105 @@
+<style>
+  body{
+    letter-spacing: 0;
+  }
+  .cup-presell-banner>div{
+    position:relative;
+  }
+  .cup-presell-banner .shop-now{
+    position:absolute;    
+    width: 170px;
+    height: 58px;
+    background: #8C3C00;
+    border-radius: 9px;
+    font-size: 20px;
+    color: #FFFFFF;
+    font-weight: 600;
+    text-align: center;
+    line-height: 58px;
+    bottom: 14%;
+    left: 6%;
+  }
+   @media screen and (max-width: 1440px){
+     .cup-presell-banner .shop-now{
+       bottom: 10%;
+       width: 120px;
+       height: 40px;
+       line-height: 40px;
+       font-size: 18px;
+     }
+   }
+  @media screen and (max-width: 750px){
+    .cup-presell-banner .shop-now{
+      width: 106px;
+      height: 36px;
+      background: #8C3C00;
+      border-radius: 4px;
+      line-height: 36px;
+      font-size: 14px;
+      top: 45%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+</style>
+<div class="cup-presell-banner">
+  <div>
+    <picture>
+      <source media="(max-width: 750px)" srcset="{{ section.settings.image_mobile | img_url:'750x' }}">
+      <source media="(min-width: 751px)" srcset="{{ section.settings.image | img_url:'1920x' }}">
+      <img src="{{ section.settings.image | img_url:'1920x' }}">
+    </picture>
+    {% if section.settings.button_text != blank %}
+      <a href="{{ section.settings.button_url }}" class="shop-now" target="_blank">{{ section.settings.button_text }}</a>
+    {% endif %}
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Cup-Presell-Banner",
+    "settings": [ 
+      {
+        "type":"image_picker",
+        "id":"image",
+        "label":{
+            "en":"Image",
+            "zh-CN":"图片"
+        }
+      },
+      {
+        "type":"image_picker",
+        "id":"image_mobile",
+        "label":{
+            "en":"Image mobile",
+            "zh-CN":"手机端图片"
+        }
+      },
+      {
+        "type":"url",
+        "id":"button_url",
+        "label":{
+            "en":"Button Link",
+            "zh-CN":"按钮链接"
+        }
+      },
+      {
+        "type":"text",
+        "id":"button_text",
+        "label":{
+            "en":"button text",
+            "zh-CN":"按钮文字"
+        }
+      }],
+    "presets":[
+        {
+          "name":"Cup-Presell-Banner"
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

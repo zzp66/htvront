@@ -1,0 +1,71 @@
+{% comment %}
+    Renders a product card
+
+    Accepts:
+    - card_product: {Object} Product Liquid object (optional)
+    - show_secondary_image: {Boolean} Show the secondary image on hover. Default: false (optional)
+    - extend_height: {Boolean} Card height extends to available container space. Default: true (optional)
+    - lazy_load: {Boolean} Image should be lazy loaded. Default: true (optional)
+
+    Usage:
+    {% render 'fn-card-product' %}
+{% endcomment %}
+
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+{%- if card_product and card_product != empty -%}
+  {%- liquid
+    assign ratio = 1
+    if card_product.featured_media and media_aspect_ratio == 'portrait'
+      assign ratio = 0.8
+    elsif card_product.featured_media and media_aspect_ratio == 'adapt'
+      assign ratio = card_product.featured_media.aspect_ratio
+    endif
+    if ratio == 0 or ratio == nil
+      assign ratio = 1
+    endif
+    if limit != blank
+      assign limit = limit
+    else
+      assign limit = 5
+    endif
+  -%}
+<div class="card-wrapper">
+  <div class="card fn-Prackageblog-product">
+    <div class="fn-productLucky-head">
+          {% render 'productLucky-addcart', product: card_product%}
+    </div>
+ </div>
+</div>
+<div class="fn-Eventproducts-productssold">
+    {% for product_a in card_product.variants %}
+       Only <span class="fn-Eventproducts-inventoryright">{{ product_a.inventory_quantity  }}</span> left
+    {% endfor %}
+</div>
+  <div class="fn-Eventproducts-progressbar">
+    <div class="fn-Eventproducts-progressbarone"></div>
+    <div class="fn-Eventproducts-progressbartwo" id="fn-progressbarright"></div>
+  </div>
+{%- endif -%}
+<!--  <script>
+$(function (){
+  var clientWidth_bartwo = document.body.clientWidth;
+  var progressbartwo_tars = {{ cart_inventory }};
+  var fn_texts = $('.fn-Eventproducts-inventoryright').text();
+  var numerical = $(this).text();
+  if(clientWidth_bartwo < '768' || clientWidth_bartwo == '768') {
+        var bar_nums = progressbartwo_tars / 154;
+        var bar_items = bar_nums.toFixed(2);
+        var bars_items = fn_texts/bar_items;
+        $('#fn-progressbarright').css("width",bars_items);
+  } else {
+        var bar_nums = progressbartwo_tars / 318;
+        var bar_items = bar_nums.toFixed(2);
+        var bars_items = fn_texts/bar_items;
+        $('#fn-progressbarright').css("width",bars_items);
+  }
+
+
+
+  
+})
+</script>  -->

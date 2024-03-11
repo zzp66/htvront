@@ -1,0 +1,534 @@
+<style>
+    .valentinesday-machine{
+        background-image:url('{{ section.settings.background_image | img_url:'1920x' }}');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        {% if section.settings.background_color != blank %}
+            background:{{section.settings.background_color}};
+        {% endif %}
+        padding:12px 0 24px;
+    }
+    .title-desc{
+        position: relative;
+        z-index:2;
+    }
+    .title-desc img{
+        margin: 0 auto;
+    }
+    .title-desc>div{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width:100%;
+        text-align:center;
+    }
+    .title-desc .title{
+        margin:0;
+        font-size: 36px;
+        font-weight: bold;
+        color: #FFFFFF;
+        line-height: 42px;
+    }
+    .title-desc .desc{
+        font-size: 18px;
+        font-weight: 400;
+        color: #FFFFFF;
+        line-height: 28px;
+        padding-top: 5px;
+    }
+    .valentinesday-machine .machine{
+        width: 1600px;
+        background: #FBB7C2;
+        border-radius: 10px;
+        padding: 133px 30px 0;
+        margin: 0 auto;
+        margin-top: -90px;
+        overflow: hidden;
+    }
+    .machine-item{
+        display:flex;
+        margin-bottom: 20px;
+    }
+    .machine-item.right{
+        flex-direction: row-reverse;
+    }
+    .machine-box{
+        display: flex;
+        flex-direction: column;
+    }
+    .machine-image{
+        min-width:810px;
+        margin-right:20px;
+    }
+    .machine-box>div{
+        display:flex;
+        background: #FFF4F4;
+        border-radius: 6px;
+        padding: 10px 18px 10px 10px;
+    }
+    .machine-box .img-first{
+        max-width:268px;
+        margin-right: 18px;
+    }
+    .machine-box>div:nth-child(1){
+        margin-bottom:11px;
+    }
+    .machine-item.right .machine-image{
+        margin-right:0;
+        margin-left:20px;
+    }
+    .valentinesday-sale-title{
+        /* height: 48px; */
+        font-size: 18px;
+        font-weight: bold;
+        color: #71132E;
+        line-height: 28px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 2;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+    }
+    .machine-item.right .heat-press-layout{
+        text-align: left;
+    }
+    .machine-box .fn-compareat_price{
+        flex-direction: row;
+        align-items: baseline;
+        margin-top: 10px;
+    }
+    .machine-box .fn-compareat_price .price-item--sale{
+        font-size: 28px;
+        color: #FF708A;
+        font-weight: bold;
+        padding-right: 8px;
+    }
+    .machine-box .fn-compareat_price .fn-compare-at_price{
+        font-size: 18px;
+        color: #71132E;
+    }
+    .machine-box .heat-press-layout{
+        position:relative;
+        width:100%;
+    }
+    .machine-box .heatPress-addcart-sale{
+        position:absolute;
+        bottom:0;
+        width: 100%;
+    }
+    .machine-box .button--full-width{
+        border-radius: 4px;
+        height: 52px;
+        background: linear-gradient(270deg, #FF7D9A 0%, #FF8EA7 100%);
+        --border-offset: none;
+        --border-opacity: none;
+        font-size: 18px;
+       padding:0;
+    }
+    .machine-box .fn-color-attr ul li{
+        width: 40px;
+        height: 40px;
+    }
+    .machine-box .fn-color-attr ul li img{
+        width: 40px;
+        height: 40px;
+    }
+    .machine-box .fn-color-attr {
+        height: 40px;
+        margin-top: 10px;
+    }
+    @media screen and (max-width: 1660px){
+        .machine-image {
+            min-width: 50%;
+        }
+        .machine-box .img-first{
+            max-width: 205px;
+        }
+    }
+    @media screen and (max-width: 1520px){
+        .machine-box .img-first {
+            max-width: 192px;
+        }
+    }
+    @media screen and (max-width: 1440px){
+        .machine-image {
+            min-width: 53%;
+        }
+        .machine-box .button--full-width{
+            height:40px;
+            min-height:40px;
+        }
+        .machine-image{
+            margin-right: 10px;
+        }
+        .machine-item.right .machine-image{
+            margin-left: 10px;
+        }
+      .machine-box .fn-color-attr{
+        margin-top:0;
+      }
+    }
+    @media screen and (max-width: 1200px) and (min-width: 1025px){
+        .machine-item {
+            flex-wrap: wrap;
+        }
+        .machine-image {
+            width: 100%;
+            min-width: 1px;
+            margin: 0;
+            height: 450px;
+            overflow: hidden;
+        }
+        .machine-image img {
+            width: 100%;
+        }
+        .machine-box {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .machine-box>div:nth-child(1) {
+            margin-bottom: 0;
+        }
+        .machine-box>div {
+            margin-top: 20px;
+            width: 48%;
+        }
+        .machine-box .img-first {
+            max-width: 160px;
+        }
+    }
+    @media screen and (max-width: 1024px){
+        .machine-item,.machine-item.right,.machine-box>div{
+            flex-direction: column;
+        }
+        .machine-box{
+            flex-direction:row;
+        }
+        .machine-image{
+            margin-right:0;
+            margin-bottom:10px;
+        }
+        .machine-box>div:nth-child(1){
+            margin-bottom:0;
+            margin-right: 7px;
+        }
+        .machine-box>div{
+          flex:1;
+        }
+        .machine-box .img-first{
+            margin: 0 auto;
+            max-width: 100%;
+        }
+        .machine-box>div{
+            padding:5px 5px 8px;
+        }
+        .valentinesday-sale-title{
+            font-size: 14px;
+            margin-top:5px;
+            line-height: 20px;
+            height: 40px;
+        }
+        .machine-box .fn-compareat_price .price-item--sale{
+            font-size:16px;
+        }
+        .machine-box .fn-compareat_price .fn-compare-at_price {
+            font-size: 14px;
+        }
+        .machine-box .button--full-width{
+            font-size:14px;
+        }
+        .machine-item.right .machine-image{
+            margin-left:0;
+        }
+        .valentinesday-machine .machine{
+            padding: 133px 6px 0;
+        }
+        .machine-item{
+            margin-bottom:10px;
+        }
+        .machine-image>img{
+            margin:0 auto;
+        }
+    }
+    @media screen and (max-width: 820px){
+      .valentinesday-machine{
+        {% if section.settings.background_color_mobile != blank %}
+          background:{{section.settings.background_color_mobile}}
+        {% else %}
+          background:none;
+        {% endif %}
+      }
+        .title-desc .title{
+            font-size:26px;
+        }
+        .valentinesday-machine .machine{
+            margin-top: -96px;
+            padding:106px 6px 0;
+        }
+    }
+    @media screen and (max-width: 480px){
+        .title-desc img {
+            width: 296px;
+        }
+        .title-desc .title {
+            font-size: 16px;
+            line-height: 19px;
+        }
+        .title-desc .desc {
+            font-size: 14px;
+            line-height: 16px;
+        }
+        .valentinesday-machine .machine {
+            margin-top: -50px;
+            padding: 60px 6px 0;
+        }
+    }
+</style>
+<div class="valentinesday-machine " id="{{ section.settings.id }}">
+  <div class="title-desc">
+    <picture>
+      <source media="(max-width: 820px)" srcset="{{ section.settings.title_image_mobile | img_url:'592x' }}">
+      <source media="(min-width: 821px)" srcset="{{ section.settings.title_image | img_url:'816x' }}">
+      <img src="{{ section.settings.title_image | img_url:'816x' }}">
+    </picture>
+    <div>
+      <p class="title">{{ section.settings.title }}</p>
+      <p class="desc">{{ section.settings.desc }}</p>
+    </div>
+  </div>
+  <div class="machine valentinesday-width">
+    {% for block in section.blocks %}
+      <div class="machine-item {% if block.settings.image_position == 'right' %}right{% endif %} {% if block.settings.image_position == 'left' %}left{% endif %}">
+         <div class="machine-image">
+           <img src="{{ block.settings.image | img_url:'1200x' }}">
+         </div>
+         <div class="machine-box">
+            <div>
+              {%- if block.settings.product_item1.featured_media -%}
+              <a href="{{ block.settings.product_item1.url }}">
+                <img
+                  class="img-first"
+                  src="{{ block.settings.product_item1.featured_media | img_url: '420x' }}"
+                  alt="{{ block.settings.product_item1.featured_media.alt | escape }}"
+                  {% unless lazy_load == false %}
+                    loading="lazy"
+                  {% endunless %}
+                >
+              </a>
+            {%- endif -%}
+            <div class="heat-press-layout">
+              <div class="valentinesday-sale-title t">
+                <a href="{{ block.settings.product_item1.url }}" class="t">{{ block.settings.product_item1.title | escape }}</a>
+              </div>
+              <div class="heat-press--price">
+                {% render 'sffers-price', product: block.settings.product_item1, price_class: '' %}
+              </div>
+              <div class="price-code">
+                {% if block.settings.code != blank %}
+                  <div class="code">
+                    <span>Code: {{ block.settings.code }}</span>
+                    <span class="show-pc" onclick="copyticket({{ block.settings.code }})">copy</span>
+                    <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/8_23556d6b-f24f-4b67-8f64-73196bf27b0a.png?v=1691375251" onclick="copyticket({{ block.settings.code }})" class="show-mobile">
+                  </div>
+                {% endif %}
+              </div>
+              <div class="fn-color-attr">
+                {%- for option in block.settings.product_item1.options_with_values -%}
+                  {%- if option.name == 'Colors' or option.name == 'Color' -%}
+                    <ul>
+                      {%- if option.name == 'Colors' -%}
+                        {% assign colorList = block.settings.product_item1.options_by_name.Colors.values | slice: 0, 5 %}
+                      {%- else -%}
+                        {% assign colorList = block.settings.product_item1.options_by_name.Color.values | slice: 0, 5 %}
+                      {%- endif -%}
+                      {%- for value in colorList -%}
+                        <li>
+                          <a href="{{ block.settings.product_item1.url }}?variant={{ block.settings.product_item1.variants[forloop.index0].id }}">
+                            {%- if block.settings.product_item1.variants[forloop.index0].featured_image != blank -%}
+                              <img
+                                src="{{ block.settings.product_item1.variants[forloop.index0].featured_image | img_url: '50x50' }}"
+                                alt="{{ value }}"
+                              >
+                            {%- endif -%}
+                          </a>
+                        </li>
+                      {% endfor %}
+                      {%- if option.name == 'Colors' -%}
+                        {% assign size = block.settings.product_item1.options_by_name.Colors.values | size | minus: 5 %}
+                      {%- else -%}
+                        {% assign size = block.settings.product_item1.options_by_name.Color.values | size | minus: 5 %}
+                      {%- endif -%}
+                      {%- if size > 0 -%}
+                        <li class="color-quantity">
+                          <a href="{{ block.settings.product_item1.url }}">+{{ size }}</a>
+                        </li>
+                      {%- endif -%}
+                    </ul>
+                  {%- endif -%}
+                {% endfor %}
+              </div>
+               <div class="heatPress-addcart-sale">
+                {% render 'easter-addCart', product: block.settings.product_item1 %}
+              </div>
+            </div>
+         </div>
+          <div>
+              {%- if block.settings.product_item2.featured_media -%}
+              <a href="{{ block.settings.product_item2.url }}">
+                <img
+                  class="img-first"
+                  src="{{ block.settings.product_item2.featured_media | img_url: '420x' }}"
+                  alt="{{ block.settings.product_item2.featured_media.alt | escape }}"
+                  {% unless lazy_load == false %}
+                    loading="lazy"
+                  {% endunless %}
+                >
+              </a>
+            {%- endif -%}
+            <div class="heat-press-layout">
+              <div class="valentinesday-sale-title t">
+                <a href="{{ block.settings.product_item2.url }}" class="t">{{ block.settings.product_item2.title | escape }}</a>
+              </div>
+              <div class="heat-press--price">
+                {% render 'sffers-price', product: block.settings.product_item2, price_class: '' %}
+              </div>
+              <div class="price-code">
+                {% if block.settings.code != blank %}
+                  <div class="code">
+                    <span>Code: {{ block.settings.code }}</span>
+                    <span class="show-pc" onclick="copyticket({{ block.settings.code }})">copy</span>
+                    <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/8_23556d6b-f24f-4b67-8f64-73196bf27b0a.png?v=1691375251" onclick="copyticket({{ block.settings.code }})" class="show-mobile">
+                  </div>
+                {% endif %}
+              </div>
+              <div class="fn-color-attr">
+                {%- for option in block.settings.product_item2.options_with_values -%}
+                  {%- if option.name == 'Colors' or option.name == 'Color' -%}
+                    <ul>
+                      {%- if option.name == 'Colors' -%}
+                        {% assign colorList = block.settings.product_item2.options_by_name.Colors.values | slice: 0, 5 %}
+                      {%- else -%}
+                        {% assign colorList = block.settings.product_item2.options_by_name.Color.values | slice: 0, 5 %}
+                      {%- endif -%}
+                      {%- for value in colorList -%}
+                        <li>
+                          <a href="{{ block.settings.product_item2.url }}?variant={{ block.settings.product_item2.variants[forloop.index0].id }}">
+                            {%- if block.settings.product_item2.variants[forloop.index0].featured_image != blank -%}
+                              <img
+                                src="{{ block.settings.product_item2.variants[forloop.index0].featured_image | img_url: '50x50' }}"
+                                alt="{{ value }}"
+                              >
+                            {%- endif -%}
+                          </a>
+                        </li>
+                      {% endfor %}
+                      {%- if option.name == 'Colors' -%}
+                        {% assign size = block.settings.product_item2.options_by_name.Colors.values | size | minus: 5 %}
+                      {%- else -%}
+                        {% assign size = block.settings.product_item2.options_by_name.Color.values | size | minus: 5 %}
+                      {%- endif -%}
+                      {%- if size > 0 -%}
+                        <li class="color-quantity">
+                          <a href="{{ block.settings.product_item2.url }}">+{{ size }}</a>
+                        </li>
+                      {%- endif -%}
+                    </ul>
+                  {%- endif -%}
+                {% endfor %}
+              </div>
+               <div class="heatPress-addcart-sale">
+                {% render 'easter-addCart', product: block.settings.product_item2 %}
+              </div>
+            </div>
+           </div>
+         </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Valentinesday-Machine",
+    "settings": [
+      {
+        "type": "text",
+        "id": "id",
+        "label": "id(页面唯一性，全英文)"
+      },{
+        "type":"color",
+        "id":"background_color",
+        "label":"background color(PC)"
+      },{
+        "type":"color",
+        "id":"background_color_mobile",
+        "label":"background color(mobile)"
+      },{
+        "type":"image_picker",
+        "id":"background_image",
+        "label":"background image"
+      },{
+        "type":"image_picker",
+        "id":"title_image",
+        "label":"title image"
+      },{
+        "type":"image_picker",
+        "id":"title_image_mobile",
+        "label":"title image mobile"
+      },{
+        "type":"text",
+        "id":"title",
+        "label":"title"
+      },{
+        "type":"text",
+        "id":"desc",
+        "label":"desc"
+      }
+    ],
+    "blocks":[{
+      "name":"bundle",
+      "type":"bundle",
+      "settings":[ 
+          {
+             "type":"radio",
+             "id":"image_position",
+             "label":"图片位置 ",
+             "default": "left",
+             "options": [
+              {
+                "value": "left",
+                "label": "left"
+              },
+              {
+                "value": "right",
+                "label": "right"
+              }
+            ]
+          },
+          {
+            "type": "product",
+            "id": "product_item1",
+            "label": "product item1"
+          },{
+            "type": "product",
+            "id": "product_item2",
+            "label": "product item2"
+          },{
+            "type":"image_picker",
+            "id":"image",
+            "label":"Image（图片参考尺寸：810*588）"
+          }
+        ]
+      }
+    ],
+    "presets":[
+        {
+          "name":"Valentinesday-Machine"
+        }
+    ]
+  }
+{% endschema %}

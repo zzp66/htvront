@@ -1,0 +1,367 @@
+<style>
+  .gift-loading-overlay__spinner{
+    width: 1.8rem;
+    display: inline-block;
+  }
+  .gift-loading-overlay__spinner{
+    display:none
+  }
+  .gift-loading-overlay__spinner .spinner{
+    vertical-align:middle
+  }
+</style>
+<div class="fan-gift-content">
+  <div class="fan-gift-img">
+    {% if section.settings['fan-gift-image'] != blank %}
+      <img
+        class="fan-gift-img-pc"
+        src="{{ section.settings['fan-gift-image']| img_url:'851x' }}"
+      >
+    {% endif %}
+    {% if section.settings['fan-gift-image-moblie'] != blank %}
+      <img
+        class="fan-gift-img-mobile"
+        src="{{ section.settings['fan-gift-image-moblie']| img_url:'440x' }}"
+      >
+    {% endif %}
+  </div>
+  <div class="fan-gift-message">
+    <div class="fan-gift-title">{{ section.settings['fan-gift-title'] }}</div>
+    {{ section.settings['fan-gift-content'] }}
+  </div>
+</div>
+<div class="fan-gift-process">
+  {% for block in section.blocks %}
+    <div>
+      {% if block.settings.swiper_picker != blank %}
+        <img
+          class="fan-gift-process-icon"
+          src="{{ block.settings.swiper_picker| img_url:'151x' }}"
+        >
+      {% endif %}
+      <p class="fan-gift-process-text">{{ block.settings.desicrption }}</p>
+    </div>
+  {% endfor %}
+</div>
+<div class="fan-gift-form">
+  <div class="fan-gift-form-title">Submit Your Order Information</div>
+  <form id="giftForm">
+    <div class="fan-gift-form-item">
+      <div class="fan-gift-form-name">
+        <label class="fan-gift-form-label">Name</label>
+        <input class="fan-gift-form-input" type="text" id="giftName" name="name">
+        <span class="fan-gift-form-rule">*Please fill in Name</span>
+      </div>
+      <div class="fan-gift-form-email">
+        <label class="fan-gift-form-label">Email</label>
+        <input class="fan-gift-form-input" type="text" id="giftEmail" name="email">
+        <span class="fan-gift-form-rule">*Please fill in Email</span>
+      </div>
+    </div>
+    <div class="fan-gift-form-item">
+      <div class="fan-gift-form-phone">
+        <label class="fan-gift-form-label">Phone</label>
+        <input class="fan-gift-form-input" type="text" id="giftPhone" name="phone">
+        <span class="fan-gift-form-rule">*Please fill in Phone</span>
+      </div>
+      <div class="fan-gift-form-country">
+        <label class="fan-gift-form-label">Country</label>
+        <select class="fan-gift-form-input" id="giftCountry" name="country">
+          <!-- {{ all_country_option_tags }} -->
+          <option vlaue="United States">United States</option>
+          <option vlaue="Germany">Germany</option>
+          <option vlaue="Australia">Australia</option>
+        </select>
+        <span class="fan-gift-form-rule">*Please fill in Country</span>
+      </div>
+    </div>
+    <div class="fan-gift-form-item">
+      <div class="fan-gift-form-address">
+        <label class="fan-gift-form-label">Shipping address</label>
+        <input class="fan-gift-form-input" type="text" id="giftAddress" name="address">
+        <span class="fan-gift-form-rule">*Please fill in Address</span>
+      </div>
+    </div>
+    <div class="fan-gift-form-uploads fan-gift-form-uploads-order">
+      <label class="fan-gift-form-label">Screenshot of your order</label>
+      <div class="fan-gift-form-upload">
+        <p class="fan-gift-form-upload-text">+upload files</p>
+        <input class="fan-gift-form-upload-con" type="file" id="giftUploadOrder" name="upload">
+        <p class="fan-gift-form-upload-name"></p>
+      </div>
+      <div class="uploaderTips">
+        <span class="fan-gift-form-rule">*Please upload the screenshot of your historical order on Amazon.</span>
+        <span></span>
+        <p class="fan-gift-upload-tips">JPG PNG I Each file cannot exceed 5MB</p>
+      </div>
+    </div>
+    <div class="fan-gift-form-uploads fan-gift-form-uploads-shopping">
+      <label class="fan-gift-form-label">Screenshot of your shopping experience</label>
+      <div class="fan-gift-form-upload">
+        <p class="fan-gift-form-upload-text">+upload files</p>
+        <input class="fan-gift-form-upload-con" type="file" id="giftUploadShopping" name="upload">
+        <p class="fan-gift-form-upload-name"></p>
+      </div>
+      <div class="uploaderTips">
+        <span class="fan-gift-form-rule">*Please upload the screenshot of your Amazon shopping experience.</span>
+        <span></span>
+        <p class="fan-gift-upload-tips">JPG PNG I Each file cannot exceed 5MB</p>
+      </div>
+    </div>
+    <div class="fan-gift-form-submit">
+      <p class="fan-gift-form-button">Submit</p>
+      <div class="gift-loading-overlay__spinner">
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          role="presentation"
+          class="spinner"
+          viewBox="0 0 66 66"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+        </svg>
+      </div>
+    </div>
+    <span class="fan-gift-form-error">*Submission failed, please check your network or upload again</span>
+    <span class="fan-form-success">Submitted successfully! We will keep you informed after review.</span>
+  </form>
+</div>
+<script>
+  
+  $(function(){
+    $("#giftUploadOrder").change(function () {
+        var s = $('#giftUploadOrder').val();
+        var start = s.indexOf(".") + 1;
+        var name = s.substring(start, s.length).toLowerCase();
+        if (name != "jpg" && name != "png" && name != "gif" && name != "jpeg" && name != "bmp") {
+            $('.fan-gift-form-uploads-order .fan-gift-form-rule').text('*Supported: JPG and PNG. The image cannot exceed 5MB').show()
+            return;
+        }
+        if (this.files[0].size / 1024 / 1024 > 5) {
+            $('.fan-gift-form-uploads-order .fan-gift-form-rule').text('*Supported: JPG and PNG. The image cannot exceed 5MB').show()
+            return;
+        }
+        $('.fan-gift-form-uploads-order .fan-gift-form-rule').hide()
+        $('.fan-gift-form-uploads-order .fan-gift-form-upload-text').hide()
+        $('.fan-gift-form-uploads-order .fan-gift-form-upload-name').text(this.files[0].name).show()
+        $('.fan-gift-form-uploads-order .fan-gift-form-upload').removeClass('border-color-red')
+    })
+    $("#giftUploadShopping").change(function () {
+        var s = $('#giftUploadShopping').val();
+        var start = s.indexOf(".") + 1;
+        var name = s.substring(start, s.length).toLowerCase();
+        if (name != "jpg" && name != "png" && name != "gif" && name != "jpeg" && name != "bmp") {
+            $('.fan-gift-form-uploads-shopping .fan-gift-form-rule').text('*Supported: JPG and PNG. The image cannot exceed 5MB').show()
+            return;
+        }
+        if (this.files[0].size / 1024 / 1024 > 5) {
+            $('.fan-gift-form-uploads-shopping .fan-gift-form-rule').text('*Supported: JPG and PNG. The image cannot exceed 5MB').show()
+            return;
+        }
+        $('.fan-gift-form-uploads-shopping .fan-gift-form-rule').hide()
+        $('.fan-gift-form-uploads-shopping .fan-gift-form-upload-text').hide()
+        $('.fan-gift-form-uploads-shopping .fan-gift-form-upload-name').text(this.files[0].name).show()
+        $('.fan-gift-form-uploads-shopping .fan-gift-form-upload').removeClass('border-color-red')
+    })
+  })
+  let isButtongift = true
+  $('.fan-gift-form-submit').click(function(){
+    if(!isButtongift) return
+    var name = $('#giftName').val()
+    var email = $('#giftEmail').val()
+    var phone = $('#giftPhone').val()
+    var country = $('#giftCountry').val()
+    var address = $('#giftAddress').val()
+    if(name==''||email==''||phone==''||country==''||address==''||$('#giftUploadOrder').val()==''|| $('#giftUploadShopping').val()==''){
+      if(name==''){
+          $('.fan-gift-form-name .fan-gift-form-input').addClass('border-color-red')
+          $('.fan-gift-form-name .fan-gift-form-rule').text('*Please enter your Name').show()
+       }else{
+          $('.fan-gift-form-name .fan-gift-form-input').removeClass('border-color-red')
+          $('.fan-gift-form-name .fan-gift-form-rule').hide()
+       }
+       if(email==''){
+          $('.fan-gift-form-email .fan-gift-form-input').addClass('border-color-red')
+          $('.fan-gift-form-email .fan-gift-form-rule').text('*Please enter your Email').show()
+        }else{
+          $('.fan-gift-form-email .fan-gift-form-input').removeClass('border-color-red')
+          $('.fan-gift-form-email .fan-gift-form-rule').hide()
+        }
+      if(phone==''){
+          $('.fan-gift-form-phone .fan-gift-form-input').addClass('border-color-red')
+          $('.fan-gift-form-phone .fan-gift-form-rule').text('*Please enter your Phone').show()
+       }else{
+          $('.fan-gift-form-phone .fan-gift-form-input').removeClass('border-color-red')
+          $('.fan-gift-form-phone .fan-gift-form-rule').hide()
+       }
+       if(country==''){
+          $('.fan-gift-form-country .fan-gift-form-input').addClass('border-color-red')
+          $('.fan-gift-form-country .fan-gift-form-rule').text('*Please enter your Country').show()
+        }else{
+          $('.fan-gift-form-country .fan-gift-form-input').removeClass('border-color-red')
+          $('.fan-gift-form-country .fan-gift-form-rule').hide()
+        }
+      if(address==''){
+          $('.fan-gift-form-address .fan-gift-form-input').addClass('border-color-red')
+          $('.fan-gift-form-address .fan-gift-form-rule').text('*Please enter your Address').show()
+        }else{
+          $('.fan-gift-form-address .fan-gift-form-input').removeClass('border-color-red')
+          $('.fan-gift-form-address .fan-gift-form-rule').hide()
+        }
+      if($('#giftUploadOrder').val()==''){
+        $('.fan-gift-form-uploads-order .fan-gift-form-upload').addClass('border-color-red')
+        $('.fan-gift-form-uploads-order .fan-gift-form-rule').text('*Please upload the screenshot of your historical order on Amazon.').show()
+        $('.fan-gift-form-uploads-order .fan-gift-form-upload-text').addClass('font-color-red')
+      }else{
+        $('.fan-gift-form-uploads-order .fan-gift-form-upload').removeClass('border-color-red')
+        $('.fan-gift-form-uploads-order .fan-gift-form-rule').hide()
+        $('.fan-gift-form-uploads-order .fan-gift-form-upload-text').removeClass('font-color-red')
+      }
+      if($('#giftUploadShopping').val()==''){
+        $('.fan-gift-form-uploads-shopping .fan-gift-form-upload').addClass('border-color-red')
+        $('.fan-gift-form-uploads-shopping .fan-gift-form-rule').text('*Please upload the screenshot of your Amazon shopping experience.').show()
+        $('.fan-gift-form-uploads-shopping .fan-gift-form-upload-text').addClass('font-color-red')
+      }else{
+        $('.fan-gift-form-uploads-shopping .fan-gift-form-upload').removeClass('border-color-red')
+        $('.fan-gift-form-uploads-shopping .fan-gift-form-rule').hide()
+        $('.fan-gift-form-uploads-shopping .fan-gift-form-upload-text').removeClass('font-color-red')
+      }
+    }else{
+      giftFormSet()
+      var reg=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+      if(!reg.test(email)){
+          $('.fan-gift-form-email .fan-gift-form-input').addClass('border-color-red')
+          $('.fan-gift-form-email .fan-gift-form-rule').text('*Please enter the correct email address').show()
+      }else{
+          $('.fan-gift-form-email .fan-gift-form-input').removeClass('border-color-red')
+          $('.fan-gift-form-email .fan-gift-form-rule').hide()   
+          let filesOrder = $('#giftUploadOrder')[0].files[0]
+        // console.log(filesOrder)
+          let fileOrder = new Blob([filesOrder], {type: filesOrder.type})
+          let filesShopping = $('#giftUploadShopping')[0].files[0]
+          let fileShopping = new Blob([filesShopping], {type: filesShopping.type})
+          var formData = new FormData();
+               formData.append('order',fileOrder);
+               formData.append('file',fileShopping);
+               formData.append('name',name);
+               formData.append('email',email);
+               formData.append('phone',phone);
+               formData.append('country',country);
+               formData.append('shipping_address',address);
+               formData.append('site','US')
+            isButtongift = false
+            $('.gift-loading-overlay__spinner').show()
+            $('.fan-gift-form-button').hide()
+           $.ajax({
+                     url: 'https://qn.htvront.com:9000/prod-biz-api/htvront/fansFeast/orderInfoSubmit',
+                     type:'POST',
+                     data: formData,
+                     processData:false,
+                     dataType:'json',
+                     contentType: false,
+                     cache: false,
+                     success(result){
+                           $('.fan-form-success').show()
+                           $('.fan-gift-form-error').hide()
+                           isButtongift = true
+                          $('.gift-loading-overlay__spinner').hide()
+                          $('.fan-gift-form-button').show()
+                       },
+                       error(result){
+                         isButtongift = true
+                          $('.gift-loading-overlay__spinner').hide()
+                          $('.fan-gift-form-button').show()
+                         if(result.responseText){
+                           let res = result.responseText.split('(').join('')
+                           let reses = res.split(')').join('')
+                           if(JSON.parse(reses).status == 200){
+                             $('.fan-form-success').show()
+                             $('.fan-gift-form-error').hide()
+                           }else{
+                              $('.fan-gift-form-error').show()
+                           }
+                         }else{
+                           $('.fan-gift-form-error').show()
+                         }
+                         
+                       }
+              })
+       
+      }
+    }
+  })
+  function giftFormSet(){
+    $('.fan-gift-form-name .fan-gift-form-input').removeClass('border-color-red')
+      $('.fan-gift-form-name .fan-gift-form-rule').hide()
+      $('.fan-gift-form-email .fan-gift-form-input').removeClass('border-color-red')
+      $('.fan-gift-form-email .fan-gift-form-rule').hide()
+      $('.fan-gift-form-phone .fan-gift-form-input').removeClass('border-color-red')
+      $('.fan-gift-form-phone .fan-gift-form-rule').hide()
+      $('.fan-gift-form-country .fan-gift-form-input').removeClass('border-color-red')
+      $('.fan-gift-form-country .fan-gift-form-rule').hide()
+      $('.fan-gift-form-address .fan-gift-form-input').removeClass('border-color-red')
+      $('.fan-gift-form-address .fan-gift-form-rule').hide()
+      $('.fan-gift-form-uploads-order .fan-gift-form-upload').removeClass('border-color-red')
+      $('.fan-gift-form-uploads-order .fan-gift-form-rule').hide()
+      $('.fan-gift-form-uploads-order .fan-gift-form-upload-text').removeClass('font-color-red')
+      $('.fan-gift-form-uploads-shopping .fan-gift-form-upload').removeClass('border-color-red')
+      $('.fan-gift-form-uploads-shopping .fan-gift-form-rule').hide()
+      $('.fan-gift-form-uploads-shopping .fan-gift-form-upload-text').removeClass('font-color-red')
+  }
+
+</script>
+{% schema %}
+{
+  "name": "fan-free-git",
+  "max_blocks": 3,
+  "settings": [
+    {
+          "type": "text",
+          "id": "fan-gift-title",
+          "label": "大标题"
+        },
+    {
+          "type": "image_picker",
+          "id": "fan-gift-image",
+          "label": "图片"
+        },
+    {
+          "type": "image_picker",
+          "id": "fan-gift-image-moblie",
+          "label": "手机端图片"
+        },
+    {
+        "type":"html",
+        "id": "fan-gift-content",
+        "label": "描述html"
+    }
+  ],
+  "blocks":[{
+      "type": "procedure",
+      "name": {
+          "en": "procedure",
+          "zh-CN": "流程"
+      },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "swiper_picker",
+          "label": "图标"
+        },
+        {
+          "type": "text",
+          "id": "desicrption",
+          "label": "描述"
+        }
+      ]
+    }
+    ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

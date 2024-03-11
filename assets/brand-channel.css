@@ -1,0 +1,594 @@
+.t.fn-feedback-title {
+    font-size: 36px;
+    color: #333333;
+    text-align: center;
+    line-height: 36px;
+    margin-bottom: 57px;
+}
+.fn-channel-localdistribution,
+.fn-channel-course,
+.fn-channel-banner {
+    position: relative;
+}
+.fn-banner-main {
+    position: absolute;
+    left: 166px;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+.fn-course-mian {
+    position: absolute;
+    left: 174px;
+    top: 0;
+    width: 80%;
+}
+.fn-banner-title {
+    font-size: 60px;
+    line-height: 60px;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 25px;
+}
+.fn-banner-explain {
+    max-width: 611px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #333333;
+    line-height: 35px;
+}
+.fn-channel-localdistribution,
+.fn-channel-sellingnetwork,
+.fn-channel-main {
+    max-width: 1600px;
+    margin: 100px auto;
+}
+.fn-channel-sellingnetwork {
+    text-align: -webkit-center;
+}
+.fn-channellist-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 36px;
+    margin-bottom: 25px;
+}
+.fn-channellist-content {
+    max-width: 756px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #333;
+    line-height: 28px;
+}
+.fn-course-list li:before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  border-radius: 50%;
+  background: #fff;
+  vertical-align: super;
+}
+.fn-channel-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.fn-channel-list li:nth-child(even) {
+   flex-direction: row-reverse;
+}
+ul.fn-course-list:after {
+    position: absolute;
+    top: 29%;
+    left: 3px;
+    width: 1px;
+    height: calc(74%);
+    content: "";
+    border: 1px dashed #fff;
+}
+
+.fn-course-list li + li {
+    margin-top: 58px;
+}
+.fn-course-list li>span {
+    color: #fff;
+}
+.fn-course-list li>span:nth-child(1) {
+
+}
+.fn-course-list li>span:nth-child(2) {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 25px;
+    line-height: 24px;
+}
+.fn-course-list li>span:nth-child(3) {
+    font-size: 18px;
+    font-weight: 400;
+}
+.fn-history-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 36px;
+    text-align: center;
+    margin: 80px 0 52px 0;
+}
+.fn-sellingnetwork-text {
+    font-size: 18px;
+    font-weight: 400;
+    color: #333333;
+    line-height: 18px;
+    margin: 30px 0 55px 0;
+}
+.fn-partner-title,
+.fn-sellingnetwork-title,
+.fn-localdistribution-main>p:nth-child(1) {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333333; 
+    line-height: 36px;
+}
+.fn-localdistribution-main>p:nth-child(2) {
+    font-size: 18px;
+    font-weight: 400;
+    color: #333;
+    line-height: 30px;
+    margin-top: 20px;
+}
+.fn-partner-title {
+    text-align: center;
+}
+.fn-partner-text {
+    font-size: 18px;
+    font-weight: 400;
+    color: #333;
+    line-height: 18px;
+    text-align: center;
+    margin: 30px 0 45px 0;
+}
+.fn-channel-partner {
+    background-color: #ffeac5;
+    background-size: 100%;
+    padding: 80px 0 95px 0;
+}
+.fn-Contactway-left, .fn-Contactway-right, .fn-partner-Contactway {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.fn-partner-Contactway {
+    margin: 0 auto;
+    max-width: 950px;
+}
+.fn-Contactway-msg>p:nth-child(1) {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 18px;
+}
+.fn-Contactway-msg {
+    margin-left: 12px;
+}
+.fn-channel-swiper {
+    padding: 78px 160px 75px 160px;
+    background-color: rgba(246, 246, 246, 1);
+}
+.fn-channel-swiper .swiper-button-next{
+    background-size: 100% auto;
+    background-image:url("https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/95.png?v=1661827274");
+    display: block !important;
+}
+.fn-channel-swiper .swiper-button-prev{
+    background-size: 100% auto;
+    background-image:url("https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/95_1.png?v=1661827274");
+    display: block !important;
+}
+.fn-channel-swiper .prev-left,.fn-channel-swiper .next-right {
+    width: 57px;
+    height: 57px;
+}
+.swiper-button-next, .swiper-button-prev {
+    top: 37%;
+}
+.fn-channel-swiper .swiper-slide {
+    background-color: #fff;
+    border-radius: 20px;
+}
+.fn-slide-feedback {
+    padding: 20px;
+    height: 160px;
+}
+.fn-slide-feedback p {
+    font-size: 16px;
+    line-height: 24px;
+}
+.fn-Contactway-msg>p:nth-child(2) {
+    font-size: 16px;
+    margin-top: 5px;
+}
+ @media screen and (max-width: 1024px) {
+   .fn-course-mian {
+    left: 50px;
+}
+.fn-channel-list li {
+    flex-wrap: wrap;
+}
+   .fn-channel-list li .fn-channellist-introduce,
+      .fn-channel-list li>img {
+    width: 100%;
+}
+  }
+ @media screen and (min-width: 1024px) and (max-width: 1440px){
+  .fn-banner-main {
+      left: 80px;
+  }
+   .fn-banner-title {
+    font-size: 36px;
+    line-height: 36px;
+    margin-bottom: 20px;
+}
+   .fn-banner-explain {
+    max-width: 600px;
+    font-size: 16px;
+    line-height: 30px;
+}
+   .fn-channel-localdistribution, .fn-channel-sellingnetwork, .fn-channel-main {
+    margin: 80px auto;
+    padding: 0 20px;
+}
+   .fn-channellist-title {
+    font-size: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin: 20px 0;
+}
+   .fn-channellist-content {
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 24px;
+}
+   .fn-course-list li+li,
+   .fn-channel-list li + li {
+        margin: 20px 0 0 0;
+}
+   .fn-history-title {
+    font-size: 30px;
+    line-height: 30px;
+    margin: 30px 0 20px;
+}
+   .fn-course-list li>span:nth-child(2) {
+    font-size: 18px;
+    margin: 0 15px;
+    line-height: 18px;
+}
+   .fn-course-list li>span:nth-child(3) {
+    font-size: 16px;
+}
+      ul.fn-course-list:after {
+    top: 27%;
+}
+   .t.fn-feedback-title,.fn-partner-title, .fn-sellingnetwork-title, .fn-localdistribution-main>p:nth-child(1) {
+    font-size: 30px;
+    font-weight: 700;
+    color: #333;
+    line-height: 30px;
+}
+   .fn-sellingnetwork-text {
+    font-size: 16px;
+    line-height: 16px;
+    margin: 20px 0 30px;
+}
+   .fn-localdistribution-main>p:nth-child(2) {
+    font-size: 16px;
+    line-height: 24px;
+}
+   .fn-channel-swiper {
+    padding: 50px 20px;
+}
+   .fn-channel-partner {
+    padding: 50px 0;
+}
+   .fn-partner-text {
+    font-size: 16px;
+    line-height: 26px;
+    margin: 20px 0 35px;
+}
+.fn-course-mian {
+    top: 5%;
+}
+
+}
+ @media screen and (min-width: 1440px){
+   .fn-channel-list li>img {
+    width: 49.3%;
+}
+      .fn-channel-list li .fn-channellist-introduce {
+    width: 49.3%;
+}
+}
+ @media screen and (min-width: 768px) and (max-width: 1023px){
+   .fn-channel-swiper .prev-left, .fn-channel-swiper .next-right {
+    width: 50px;
+    height: 50px;
+}
+.fn-Contactway-msg>p:nth-child(2) {
+    font-size: 14px;
+}
+   .fn-Contactway-msg>p:nth-child(1) {
+    font-size: 16px;
+    line-height: 16px;
+}
+   .fn-partner-Contactway {
+    margin: 0 auto;
+    max-width: 710px;
+}
+   .fn-slide-feedback p {
+    font-size: 12px;
+    line-height: 20px;
+}
+   .fn-channel-list li {
+    flex-wrap: wrap;
+}
+   .fn-channel-list li .fn-channellist-introduce,
+      .fn-channel-list li>img {
+    width: 100%;
+}
+  .fn-banner-main {
+      left: 80px;
+  }
+   .fn-banner-title {
+    font-size: 36px;
+    line-height: 36px;
+    margin-bottom: 20px;
+}
+   .fn-banner-explain {
+    max-width: 600px;
+    font-size: 16px;
+    line-height: 30px;
+}
+   .fn-channel-localdistribution, .fn-channel-sellingnetwork, .fn-channel-main {
+    margin: 80px auto;
+    padding: 0 20px;
+}
+/*    .fn-channel-list li>img {
+    width: 100%;
+} */
+   .fn-channellist-title {
+    font-size: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin: 20px 0;
+}
+   .fn-channellist-content {
+    max-width: 100%;
+    font-size: 14px;
+    line-height: 22px;
+}
+   .fn-course-list li+li,
+   .fn-channel-list li + li {
+        margin: 20px 0 0 0;
+}
+   .fn-course-mian {
+    position: absolute;
+    left: 50px;
+    top: 0;
+}
+.fn-history-title {
+    font-size: 18px;
+    line-height: 18px;
+    margin: 15px 0;
+}
+   .fn-course-list li>span:nth-child(3) {
+    font-size: 16px;
+}
+      ul.fn-course-list:after {
+    top: 23%;
+     left: 1.5px;
+}
+   .fn-partner-title, .fn-sellingnetwork-title, .fn-localdistribution-main>p:nth-child(1) {
+    font-size: 30px;
+    font-weight: 700;
+    color: #333;
+    line-height: 30px;
+}
+   .fn-sellingnetwork-text {
+    font-size: 16px;
+    line-height: 16px;
+    margin: 20px 0 30px;
+}
+   .fn-localdistribution-main>p:nth-child(2) {
+    font-size: 14px;
+    line-height: 22px;
+}
+   .fn-channel-swiper {
+    padding: 50px 20px;
+}
+   .fn-channel-partner {
+    padding: 50px 0;
+}
+   .fn-partner-text {
+    font-size: 16px;
+    line-height: 26px;
+    margin: 20px 0 35px;
+}
+   .fn-course-list li:before {
+    width: 5px;
+    height: 5px;
+}
+   .fn-course-list li>span:nth-child(2) {
+    font-size: 14px;
+    margin: 0 5px;
+    line-height: 14px;
+}
+   .fn-course-list li>span:nth-child(3) {
+    font-size: 12px;
+}
+   .fn-course-list li+li, .fn-channel-list li+li {
+    margin: 15px 0 0;
+}
+}
+ @media screen and (min-width: 768px) {
+   .fn-channel-course .fn-course-mobile_img {
+     display: none;
+   }
+.fn-localdistribution-main {
+    position: absolute;
+    left: 70px;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+ }
+   
+ @media screen and (max-width: 767px) {
+   .fn-course-pc_img {
+     display: none;
+   }
+   .fn-channel-swiper .prev-left, .fn-channel-swiper .next-right {
+    width: 50px;
+    height: 50px;
+}
+.fn-Contactway-msg>p:nth-child(2) {
+    font-size: 14px;
+}
+   .fn-Contactway-msg>p:nth-child(1) {
+    font-size: 16px;
+    line-height: 16px;
+}
+   .fn-partner-Contactway {
+    margin: 0 auto;
+    max-width: 350px;
+    flex-wrap: wrap;
+}
+   .fn-slide-feedback p {
+    font-size: 12px;
+    line-height: 20px;
+}
+   .fn-channel-list li {
+    flex-wrap: wrap;
+}
+   .fn-channel-list li .fn-channellist-introduce,
+      .fn-channel-list li>img {
+    width: 100%;
+}
+  .fn-banner-main {
+      left: 20px;
+  }
+   .fn-banner-title {
+    font-size: 18px;
+    line-height: 18px;
+    margin-bottom: 10px;
+}
+   .fn-banner-explain {
+    max-width: 600px;
+    font-size: 12px;
+    line-height: 18px;
+}
+   .fn-channel-localdistribution, .fn-channel-sellingnetwork, .fn-channel-main {
+    margin: 30px auto;
+    padding: 0 10px;
+}
+/*    .fn-channel-list li>img {
+    width: 100%;
+} */
+.fn-channellist-title {
+    font-size: 18px;
+    line-height: 18px;
+    text-align: center;
+    margin: 15px 0;
+}
+   .fn-channellist-content {
+    max-width: 100%;
+    font-size: 12px;
+    line-height: 18px;
+}
+   .fn-course-list li+li,
+   .fn-channel-list li + li {
+        margin: 20px 0 0 0;
+}
+.fn-course-mian {
+    position: absolute;
+    left: 0px;
+    top: 0;
+    width: 100%;
+}
+.fn-history-title {
+    font-size: 18px;
+    line-height: 18px;
+    margin: 10px 0;
+}
+   .fn-course-list li>span:nth-child(3) {
+    font-size: 16px;
+}
+ul.fn-course-list:after {
+    top: 18%;
+    left: 4px;
+}
+     .t.fn-feedback-title {
+    margin: 0 0 20px 0;
+}
+  .t.fn-feedback-title,.fn-partner-title, .fn-sellingnetwork-title, .fn-localdistribution-main>p:nth-child(1) {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    line-height: 18px;
+}
+.fn-sellingnetwork-text {
+    font-size: 12px;
+    line-height: 12px;
+    margin: 15px 0 20px;
+}
+   .fn-localdistribution-main>p:nth-child(2) {
+    font-size: 12px;
+    line-height: 18px;
+         margin-top: 15px;
+}
+   .fn-channel-swiper {
+    padding: 50px 20px;
+}
+   .fn-channel-partner {
+    padding: 50px 0;
+}
+   .fn-partner-text {
+    font-size: 12px;
+    line-height: 20px;
+    margin: 20px 0 35px;
+}
+.fn-course-list li:before {
+    width: 5px;
+    height: 5px;
+    margin-top: 8px;
+}
+.fn-course-list li>span:nth-child(2) {
+    font-size: 12px;
+    margin: 0 5px;
+    line-height: 24px;
+    display: inline-block;
+}
+   .fn-course-list li>span:nth-child(3) {
+    font-size: 12px;
+     letter-spacing: -0.5px;
+    display: inline-block;
+     max-width: 333px
+}
+   .fn-course-list li+li, .fn-channel-list li+li {
+    margin: 15px 0 0;
+}
+   .fn-course-list li+li{
+    margin: 1px 0 0;
+}
+   .fn-course-list li {
+    display: flex;
+}
+   .fn-Contactway-right {
+    margin-top: 10px;
+}
+   .fn-localdistribution-main {
+    margin-top: 20px;
+}
+   ul.fn-course-list {
+    padding-left: 3px;
+}
+  .fn-Contactway-right img, .fn-Contactway-left img{
+     width: 65px;
+   }
+}

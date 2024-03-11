@@ -1,0 +1,62 @@
+<div class="fn-Center-questions classify">
+  <div class="fn-classify-title">Top Questions</div>
+<!--  {% assign blogsList = blogs['FAQ'].articles | slice: 0, 9 %} -->
+<!--   <div class="fn-questions-list">
+{% for article in blogsList %}
+  <div>
+    <span>{%- render 'Questions-img' -%}</span>
+    {{article.title}}
+  </div>
+  {% endfor %}
+  </div> -->
+  <ul class="fn-questions-list">
+    {% for block in section.blocks %}
+    <li>
+      {% if block.settings.questionslink != blank %}
+      <a href="{{ block.settings.questionslink }}">
+        {% endif %}
+        <div>
+          <span>{%- render 'Questions-img' -%}</span>
+          {{block.settings.questions_text}}
+        </div>
+        {% if block.settings.questionslink != blank %}
+      </a>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% schema %}
+  {
+    "name": "Center questions",
+    "settings": [
+    ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": {
+        "en": "Coupon questions",
+        "zh-CN": "Coupon questions"
+      },
+      "settings": [
+        {
+          "type": "text",
+          "id": "questions_text",
+          "label": {
+            "en": "questions text",
+            "zh-CN": "链接文本"
+          }
+        },
+        {
+          "type": "url",
+          "id": "questionslink",
+          "label": {
+            "en": "Product Link",
+            "zh-CN": "链接"
+          }
+        }
+      ]
+    }
+  ]
+  }
+{% endschema %}

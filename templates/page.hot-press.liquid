@@ -1,0 +1,188 @@
+<style>
+  div:empty {
+    display: block;
+  }
+  .fn-fast {
+    margin: 80px auto;
+    max-width: 1200px;
+  }
+.t.fn-fast-title {
+    text-align: center;
+    height: 40px;
+    font-size: 36px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 40px;
+    margin-bottom: 45px;
+}
+  .fn-hotpress-content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 60px;
+  }
+  .fn-content-resberryred,
+  .fn-content-mintgreen {
+    text-align: -webkit-center;
+  }
+  .t.fn-hotpress-title {
+    font-size: 16px;
+  }
+  .fn-hotpress-price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .discount-price {
+    height: 24px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #FF7606;
+    line-height: 24px;
+  }
+  .original-price {
+    height: 20px;
+    font-size: 16px;
+    color: #666666;
+    line-height: 20px;
+    margin-left: 6px;
+    position: relative;
+  }
+  .transverse-line {
+    width: 100%;
+    height: 1px;
+    background-color: #666;
+    position: absolute;
+    left: 0;
+    top: 50%;
+  }
+  .fn-fast-text {
+    text-align: center;
+    margin-top: 6px;
+    font-size: 14px;
+    color: #333;
+  }
+  .fn-content-slideshow {
+    margin-top: 60px;
+  }
+    .swiper-button-prev {
+    left: -38px;
+  }
+    .swiper-button-next {
+    right: -38px;
+  }
+  .swiper-button-next.swiper-button-black {
+    background-size: 24px;
+    background-image:url("https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/chevron_backward_18e76811-458b-4853-bb9d-4ee5d3c8d675.png?v=1654485815");
+  }
+  .swiper-button-prev.swiper-button-black{
+    background-size: 24px;
+    background-image:url("https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/chevron_backward.png?v=1654485815");
+  }
+  .swiper-slideshow {
+    position: relative;
+  }
+  .description-video {
+    margin-top: 100px;
+}
+  .description-video {
+    margin-top: 100px;
+    width: 100%;
+    height: 658px;
+}
+  @media (max-width: 1300px){ 
+        .swiper-button-prev {
+    left: 0px;
+  }
+    .swiper-button-next {
+    right: 0px;
+  }
+  }
+  @media (max-width: 768px){
+    .fn-fast {
+      margin: 35px auto;
+      max-width: 1200px;
+    }
+    .t.fn-fast-title {
+      height: 20px;
+      font-size: 20px;
+      line-height: 20px;
+      margin-bottom: 20px;
+    }
+    .fn-hotpress-content {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10px 35px 10px;
+}
+    .fn-content-mintgreen {
+     width: 48%; 
+    }
+        .fn-content-resberryred {
+     width: 48%; 
+    }
+    .t.fn-hotpress-title {
+    font-size: 12px;
+}
+    .discount-price {
+    height: 14px;
+    font-size: 14px;
+    line-height: 14px;
+}
+    .original-price {
+    height: 12px;
+    font-size: 12px;
+    line-height: 12px;
+}
+    .shopify-buy__btn {
+    padding-left: 0;
+    padding-right: 0;
+}
+    .fn-fast-text {
+    font-size: 12px;
+}
+    .fn-content-slideshow {
+    margin-top: 20px;
+}
+    .description-video {
+    margin-top: 35px;
+}
+  }
+  @media (max-width: 480px){
+    .description-video {
+      margin-top: 35px;
+      width: 100%;
+      height: 250px;
+    }
+  }
+</style>
+<div class="fn-hotpress">
+  <div class="fn-hotpress-width">
+    {% section 'hot-banner' %}
+  </div>
+  <div class="fn-fast">
+    <div class="t fn-fast-title">Unlock 40% OFF</div>
+    <div class="fn-hotpress-content">
+      <div class="fn-content-mintgreen">
+        {% section 'press-mintgreen' %}
+      </div>
+      <div class="fn-content-resberryred">
+        {% section 'press-resberryred' %}
+      </div>
+    </div>
+  </div>
+  <div class="fn-fast">
+    <img style="border-radius: 8px;" src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/shopify2000_760.jpg?v=1657526030" alt="">
+  </div>
+  <div class="fn-fast">
+    <div class="t fn-fast-title" style="margin-bottom: 14px;">Product Description</div>
+    <div class="fn-fast-text">
+      HTVRONT Easy Heat Press with a sensitive pressure display function and integrated design is convenient and straightforward to operate and reduce ironing errors.
+    </div>
+    <div class="fn-content-slideshow">
+      {% section 'press-describe' %}
+      <div class="description-video">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/FjM_fSvXZ5I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</div>

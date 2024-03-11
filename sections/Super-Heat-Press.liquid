@@ -1,0 +1,448 @@
+<style>
+  .super-heat-press{
+    text-align:center;
+    color: #723600;
+    padding-top: 50px;
+  }
+ .heat-press-width{
+    width:1600px;
+    margin:0 auto;
+    position: relative;
+  }
+  .machine-box{
+    margin: 0 31px 10px 32px;
+    background: linear-gradient(180deg, #FFF9E2 0%, #FFF0C1 100%);
+    border-radius: 10px;
+    padding: 16px 33px 15px 16px;
+    display: flex;
+  }
+  .machine-image{
+    min-width:578px;
+    margin-right: 18px;
+  }
+  .machine-box>div{
+    text-align:left;
+  }
+  .machine-title{
+    font-size: 28px;
+    font-weight: 600;
+    color: #723600;
+    line-height: 40px;
+    width: 80%;
+    padding-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    height: 86px;
+  }
+  .group-buy-rules>ul>li{
+    font-size: 20px;
+    line-height: 32px;
+  }
+  .group-buy-rules>ul>li:before{
+    content:'';
+    background-image:url('https://cdn.shopify.com/s/files/1/0356/5997/2741/files/4_2x_af7b34f9-0e99-46a0-ae4f-3ddb66119908.png?v=1693968507');
+    width: 9px;
+    display: inline-block;
+    height: 16px;
+    margin-right: 7px;
+  }
+  .machine-tips{
+    position: relative;
+  }
+  .machine-tips>div{
+    display: flex;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 1.5%;
+    align-items: center;
+  }
+  .machine-tips>div>span{
+    width: 68px;
+    height: 30px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #FFFFFF;
+    line-height: 30px;
+    font-style: italic;
+    text-align: center;
+  }
+  .machine-tips>div>p{
+    padding-left: 13px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFFFFF;
+  }
+  .machine-tips>div>p>b{
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFFFFF;
+    font-style: italic;
+  }
+  .machine-tips>div>p>span{
+    display: inline-block;
+    vertical-align: 2px;
+  }
+  .bottom-image{
+    margin-top:-52px;
+  }
+  .machine-price{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+  }
+  .get-coupon{
+    position: relative;
+    text-align: center;
+    margin-right: 10px;
+  }
+  .get-coupon>span{
+    position: absolute;
+    font-size: 16px;
+    font-weight: bold;
+    color: #DE6700;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+  }
+  .purchase-price,.group-price{
+    display:flex;
+    font-size: 18px;
+    font-weight: bold;
+    color: #723600;
+    line-height: 24px;
+  }
+  .purchase-price>span,.group-price>span{
+    color: #FF892D;
+  }
+  .purchase-price>span:nth-of-type(1),.group-price>span:nth-of-type(1){
+    font-size: 22px;
+  }
+  .purchase-price>span:nth-of-type(2),.group-price>span:nth-of-type(2){
+    font-size: 28px;
+    line-height: 20px;
+  }
+  .purchase-price>img{
+    width: 12px;
+    height: 19px;
+  }
+  .group-price>img{
+    width: 22px;
+    height: 19px;
+  }
+  .purchase-price{
+    margin-right: 15px;
+  }
+  .learn-more{
+    width: 272px;
+    height: 52px;
+    background: linear-gradient(180deg, #FFB56A 0%, #E7583F 100%);
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFFFFF !important;
+    line-height: 50px;
+    text-align: center;
+    margin: 10px 0 0 10px;
+  } 
+  @media screen and (max-width: 1720px){
+    .heat-press-width{
+      width:88%;
+    }
+   }
+  @media screen and (max-width: 1440px){
+    .machine-image{
+      min-width:50%;
+    }
+    .machine-title{
+      width:100%;
+      font-size: 24px;
+      line-height: 30px;
+      height: 60px;
+    }
+    .group-buy-rules>ul>li {
+      font-size: 16px;
+      line-height: 26px;
+    }
+    .machine-price{
+      flex-direction: column;
+      align-items: start;
+    }
+    .machine-tips {
+      margin-top: 20px;
+    }
+    .machine-price>div{
+      margin-bottom:5px;
+    }
+    .bottom-image {
+      margin-top: 0px;
+    }
+  }
+   @media screen and (max-width: 1024px){
+     .machine-price>div {
+       font-size: 16px;
+     }
+     .purchase-price>span:nth-of-type(2), .group-price>span:nth-of-type(2){
+       font-size:24px;
+     }
+    .machine-tips>div>p {
+      padding-left: 15px;
+      font-size: 16px;
+    }
+    .machine-tips>div>p>b {
+      font-size: 22px;
+    }
+   }
+  @media screen and (max-width: 820px){
+    .heat-press-width{
+      width:93.6%;
+    }
+    .heat-press-width .fn-bg-in{
+      padding:14px 8px 10px;
+    }
+    .super-heat-press{
+      padding-top:15px;
+    }
+    .machine-box{
+      margin:0;
+      padding:6px 6px 10px;
+      flex-direction: column;
+    }
+    .machine-image {
+      min-width: 100%;
+    }
+    .machine-image>img{
+      margin:0 auto;
+    }
+    .machine-title {
+      font-size: 14px;
+      line-height: 19px;
+      height: 40px;
+      margin-top: 10px;
+    }
+    .group-buy-rules>ul>li {
+      font-size: 14px;
+      line-height: 19px;
+    }
+    .group-buy-rules>ul>li:before{
+      vertical-align: sub;
+    }
+    .group-buy-rules{
+      padding-left:10px;
+    }
+    .get-coupon>span{
+      font-size:14px;
+    }
+    .machine-tips {
+      margin-top: 10px;
+    }
+    .machine-tips>div>p{
+      padding-bottom: 4px;
+      font-size: 14px;
+    }
+    .machine-tips>div>p>b {
+      font-size: 18px;
+    }
+    .machine-tips>div>span{
+      font-size: 18px;
+      line-height: 24px;
+    }
+    .purchase-price, .group-price {
+      font-size: 14px;
+    }
+    .purchase-price>span:nth-of-type(1), .group-price>span:nth-of-type(1) {
+      font-size: 14px;
+    }
+    .purchase-price>span:nth-of-type(2), .group-price>span:nth-of-type(2) {
+      font-size: 18px;
+    }
+    .purchase-price {
+      margin-left: 5px;
+    }
+    .machine-price>div {
+      font-size: 14px;
+    }
+    .learn-more{
+      margin-left: 0;
+      width: 180px;
+      height: 40px;
+      border-radius: 4px;
+      font-size: 14px;
+      line-height: 40px;
+    }
+  }
+</style>
+<div class="super-heat-press" id="{{ section.settings.id }}">
+  <div class="heat-press-width">
+     <div class="fn-bg-small-out">
+      <div class="fn-bg-small-in"></div>
+    </div>
+    <div class="fn-bg-out">
+      <div class="fn-bg-in">
+        <div class="share-title">
+          <picture>
+            <source media="(max-width: 820px)" srcset="{{ section.settings.title_background_mobile | img_url:'340x' }}">
+            <source media="(min-width: 821px)" srcset="{{ section.settings.title_background | img_url:'950x' }}">
+            <img src="{{ section.settings.title_background | img_url:'950x' }}">
+          </picture>
+          <div class="share-title-text">
+            <p>{{ section.settings.title }}</p>
+            <p>{{ section.settings.desc }}</p>
+          </div>
+        </div>
+        <div class="machine-box">
+          <div class="machine-image">
+            <img src="{{ section.settings.machine_img | img_url:'578x' }}">
+          </div>
+          <div>
+            <p class="machine-title">{{ section.settings.machine_title }}</p>
+            <div class="group-buy-rules">
+              {{ section.settings.group_buy_rules }}
+            </div>
+            <div class="machine-tips">
+              <picture>
+                <source media="(max-width: 820px)" srcset="{{ section.settings.machine_tips_bg_mobile | img_url:'328x' }}">
+                <source media="(min-width: 821px)" srcset="{{ section.settings.machine_tips_bg | img_url:'397x' }}">
+                <img src="{{ section.settings.machine_tips_bg | img_url:'397x' }}">
+              </picture>
+              <div>
+                <span>Hurry!</span>
+                {{ section.settings.machine_tips }}
+              </div>
+            </div>
+            <div class="bottom-image">
+              <picture>
+                <source media="(max-width: 820px)" srcset="{{ section.settings.machine_bottom_img_mobile | img_url:'694x' }}">
+                <source media="(min-width: 821px)" srcset="{{ section.settings.machine_bottom_img | img_url:'892x' }}">
+                <img src="{{ section.settings.machine_bottom_img | img_url:'892x' }}">
+              </picture>
+            </div>
+            <div class="machine-price">
+              <div class="get-coupon">
+                <img src="{{ section.settings.coupon_img | img_url:'168x' }}">
+                <span>{{ section.settings.coupon_text }}</span>
+              </div>
+              <div class="purchase-price">
+                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/16_2x_51c7b370-d3d7-4e5c-bf1d-80cbaca70b8f.png?v=1693984194"> 
+                 &nbsp;Individual Purchase Price:&nbsp;
+                <span>{{ section.settings.price_currency }}</span>&nbsp;
+                <span> {{ section.settings.price }}</span>
+              </div>
+              <div class="group-price">
+                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/17_2x_8e0ce975-e26a-4673-9839-a706636674bf.png?v=1693984193"> 
+                 &nbsp;Group Purchase Price:&nbsp;
+                <span>{{ section.settings.price_currency }}</span>&nbsp;
+                <span> {{ section.settings.group_price }}</span>
+              </div>
+            </div>
+            {% if section.settings.btn_link != blank %}
+              <a href="{{ section.settings.btn_link }}" class="learn-more">learn more</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Super-Heat-Press",
+    "settings": [
+      {
+        "type": "text",
+        "id": "id",
+        "label": "id(页面唯一性，全英文)"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "title"
+      },{
+        "type": "text",
+        "id": "desc",
+        "label": "desc"
+      },{
+        "type":"image_picker",
+        "id":"title_background",
+        "label":"title background"
+      },{
+        "type":"image_picker",
+        "id":"title_background_mobile",
+        "label":"title background mobile"
+      },{
+        "type":"image_picker",
+        "id":"machine_img",
+        "label":"machine image"
+      },{
+        "type":"text",
+        "id":"machine_title",
+        "label":"machine title"
+      },{
+        "type":"html",
+        "id":"group_buy_rules",
+        "label":"group buy rules"
+      },{
+        "type":"image_picker",
+        "id":"machine_tips_bg",
+        "label":"machine tips background image"
+      },{
+        "type":"image_picker",
+        "id":"machine_tips_bg_mobile",
+        "label":"machine tips mobile"
+      },{
+        "type":"html",
+        "id":"machine_tips",
+        "label":"machine tips"
+      },{
+        "type":"image_picker",
+        "id":"machine_bottom_img",
+        "label":"machine bottom image"
+      },{
+        "type":"image_picker",
+        "id":"machine_bottom_img_mobile",
+        "label":"machine bottom image mobile"
+      },
+      {
+        "type":"image_picker",
+        "id":"coupon_img",
+        "label":"coupon image"
+      },{
+        "type":"text",
+        "id":"coupon_text",
+        "label":"coupon text"
+      },{
+        "type":"text",
+        "id":"price_currency",
+        "label":"price currency"
+      },{
+        "type":"text",
+        "id":"price",
+        "label":"price"
+      },{
+        "type":"text",
+        "id":"group_price",
+        "label":"group price"
+      },{
+        "type":"url",
+        "id":"btn_link",
+        "label":"button url"
+      }
+    ],
+    "presets":[
+        {
+          "name":"Super-Heat-Press"
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

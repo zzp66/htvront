@@ -1,0 +1,266 @@
+<style>
+
+  .fn-register{
+    width: 100%;
+    height: 800px;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    z-index: 1;
+  }
+  .fn-register-content{
+    width: 70%;
+    height: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+  }
+  .fn-register-content-left{
+    width: 50%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    position: relative;
+  }
+  .fn-register-content-left-title{
+    height: 24px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFFFFF;
+    line-height: 24px;
+    margin-top: 80px;
+    margin-bottom: 60px;
+    text-align: center;
+  }
+  .fn-register-content-left-menus{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .fn-login-content-left-menus-item{
+    width: 50%;
+  }
+  .fn-login-content-left-menus-item-icon{
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+  }
+  .fn-login-content-left-menus-item-text{
+    font-size: 20px;
+    color: #FFFFFF;
+    line-height: 20px;
+    text-align: center;
+    margin: 10px auto 50px;
+    max-width: 185px;
+  }
+  .fn-register-content-right{
+    width: 50%;
+    height: 100%;
+    position: relative;
+  }
+  .fn-register-content-right-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 57%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .fn-register-content-right-form-label {
+    height: 22px;
+    font-size: 18px;
+    color: #333333;
+    line-height: 22px;
+    margin-bottom: 10px;
+  }
+  .fn-register-content-right-form-input {
+    width: 100%;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid #CCCCCC;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+    padding-left: 16px;
+  }
+  .fn-register-required{
+    color: #E22020;
+    font-size: 22px;
+  }
+  .fn-register-content-right-form-button {
+    width: 100%;
+    height: 40px;
+    background: #FF7606;
+    border-radius: 4px;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFFFFF;
+    cursor: pointer;
+  }
+  .fn-login-content-right-form-logo_button {
+    width: 100%;
+    height: 41px;
+    background: #E8E8E8;
+    border-radius: 2px;
+    border: none;
+    font-size: 16px;
+    color: #333333;
+    margin-top: 18px;
+    position: relative;
+    cursor: pointer;
+  }
+  .fn-login-content-right-form-logo_button-logo {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .fn-register-content-right-form-create_account:hover {
+    text-decoration-line: underline;
+  }
+a.fn-register-content-right-form-create_account {
+    color: #F91515;
+}
+    @media screen and (max-width: 1024px){
+        .fn-register-content {
+            width: 90%;
+        }
+    }
+    @media screen and (max-width: 750px){
+        .fn-register-content-left {
+            background-size: cover;
+        }
+        .fn-register-content-left,.fn-register-content-right {
+            width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+        .fn-register {
+            width: 100%;
+        }
+        .fn-register-content {
+            flex-wrap: wrap;
+            height: auto;
+            position: static;
+            transform: none;
+            margin: 0 auto;
+            background: none;
+            flex-direction: column-reverse;
+        }
+        .fn-register-content-left-title {
+            line-height: 1;
+            font-size: 20px;
+            padding: 20px 0;
+            margin: 0;
+        }
+        .fn-login-content-left-menus-item-text {
+            font-size: 14px;
+            line-height: 18px;
+            text-align: center;
+            margin: 10px auto 10px;
+            max-width: 100%;
+        }
+        .fn-login-content-left-menus-item {
+            width: 33.33333%;
+        }
+        .fn-register-content-left-menus {
+            width: 96%;
+        }
+        .fn-register-content-left-menus {
+            padding: 20px 0;
+        }
+        .fn-register-content-right-form {
+            position: static;
+            transform: none;
+            width: 100%;
+        }
+    }
+</style>
+{%- style -%}
+    .fn-register {
+        background-image: url({{ settings.login_register_bg | image_url }});
+    }
+    .fn-register-content-left{
+        background-image: url({{ settings.login_register_text_bg | image_url }});
+    }
+{%- endstyle -%}
+<div class="fn-register">
+    <div class="fn-register-content">
+        <div class="fn-register-content-left">
+            <div class="fn-register-content-left-title">{{ settings.login_register_content_title }}</div>
+            <div class="fn-register-content-left-menus">
+                {{ settings.login_register_content }}
+            </div>
+        </div>
+        <div class="fn-register-content-right">
+            {%- form 'create_customer', novalidate: 'novalidate' -%}
+            <div class="fn-register-content-right-form">
+              <a class="fn-register-content-right-form-create_account" href="{{ routes.account_login_url }}">
+                An existing account is used to log in
+              </a>
+                <div class="fn-register-content-right-form-label">First Name</div>
+                <input type="text"
+                       name="customer[first_name]"
+                       id="RegisterForm-FirstName"
+                       {% if form.first_name %}value="{{ form.first_name }}"{% endif %}
+                       autocomplete="given-name" class="fn-register-content-right-form-input"
+                >
+                <div class="fn-register-content-right-form-label">Last Name</div>
+                <input type="text"
+                       name="customer[last_name]"
+                       id="RegisterForm-LastName"
+                       {% if form.last_name %}value="{{ form.last_name }}"{% endif %}
+                       autocomplete="family-name" class="fn-register-content-right-form-input"
+                >
+                <div class="fn-register-content-right-form-label">Email<span class="fn-register-required">*</span></div>
+                <input type="email"
+                       name="customer[email]"
+                       id="RegisterForm-email"
+                       {% if form.email %} value="{{ form.email }}"{% endif %}
+                       spellcheck="false"
+                       autocapitalize="off"
+                       autocomplete="email"
+                       aria-required="true"
+                       {% if form.errors contains 'email' %}
+                aria-invalid="true"
+                aria-describedby="RegisterForm-email-error"
+                {% endif %}
+                class="fn-register-content-right-form-input"
+                >
+                <div class="fn-register-content-right-form-label">Password<span class="fn-register-required">*</span></div>
+                <input type="password"
+                       name="customer[password]"
+                       id="RegisterForm-password"
+                       aria-required="true"
+                       {% if form.errors contains 'password' %}
+                aria-invalid="true"
+                aria-describedby="RegisterForm-password-error"
+                {% endif %}
+                class="fn-register-content-right-form-input"
+                >
+                <button class="fn-register-content-right-form-button">Create Account</button>
+<!--               <button class="fn-login-content-right-form-logo_button">
+                <img class="fn-login-content-right-form-logo_button-logo" src="https://cdn.shopifycdn.net/s/files/1/0640/6802/6590/files/3.png?v=1649816366"/>
+                Sign in with Google
+              </button>
+              <button class="fn-login-content-right-form-logo_button">
+                <img class="fn-login-content-right-form-logo_button-logo" src="https://cdn.shopifycdn.net/s/files/1/0640/6802/6590/files/4.png?v=1649816366"/>
+                Sign in with Faceboo
+              </button> -->
+            </div>
+            {%- endform -%}
+        </div>
+    </div>
+</div>

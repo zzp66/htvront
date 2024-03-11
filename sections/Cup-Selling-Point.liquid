@@ -1,0 +1,159 @@
+<style>
+  .cup-selling-point{
+    background: #FFF6EB;
+    padding: 50px 0;
+    letter-spacing: 0;
+  }
+  .cup-selling-title{
+    font-size: 36px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 49px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .cup-selling-content{
+    width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .cup-selling-item{
+    margin-bottom:19px;
+    position:relative;
+  }
+  .cup-selling-item>div{
+    position:absolute;
+    bottom: 0;
+    text-align: center;
+    opacity: 0;
+  }
+  .cup-selling-item>div>h1{
+    font-size:24px;
+    padding-bottom: 5px;
+    letter-spacing: 0;
+  }
+  .cup-selling-item>div>p{
+    font-size:16px;
+  }
+  @media screen and (max-width: 1720px){
+    .cup-selling-content{
+      width:83.33%
+    }
+    .cup-selling-item{
+      width:49.5%
+    }
+  }
+   @media screen and (max-width: 1440px){
+    .cup-selling-content{
+      width:83.33%
+    }
+    .cup-selling-item{
+      width:49.2%
+    }
+  }
+  @media screen and (max-width: 1180px){
+    .cup-selling-title{
+      font-size:32px
+    }
+  }
+  @media screen and (max-width: 750px){
+    .cup-selling-title{
+      font-size:16px;
+      margin-bottom:10px;
+      line-height:22px
+    }
+    .cup-selling-point{
+      padding:20px 0
+    }
+    .cup-selling-content{
+      width:93.6%;
+    }
+    .cup-selling-item{
+      width:100%;
+      margin-bottom:9px
+    }
+  }
+</style>
+<div class="cup-selling-point">
+  <div class="cup-selling-title">
+    {{ section.settings.title }}
+  </div>
+  <div class="cup-selling-content">
+    {% for block in section.blocks %}
+      <div class="cup-selling-item">
+          <picture>
+            <source media="(max-width: 750px)" srcset="{{ block.settings.image_mobile | img_url:'750x' }}">
+            <source media="(min-width: 751px)" srcset="{{block.settings.image | img_url:'790x' }}">
+            <img src="{{ block.settings.image | img_url:'790x' }}" alt="{{ block.settings.image.alt }}">
+          </picture>
+          <div>
+            <h1>{{ block.settings.title }}</h1>
+            <p>{{ block.settings.text }}</p>
+          </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Cup-Selling-Point",
+  "max_blocks":4,
+  "settings": [
+    {
+      "type":"text",
+      "id":"title",
+      "label":"title"
+    }
+  ],
+  "blocks":[
+    {
+      "type":"brand",
+      "name":{
+        "en":"image",
+        "zh-CN":"image"
+        },
+      "settings":[
+         {
+          "type":"image_picker",
+          "id":"image",
+          "label":{
+            "en":"Image",
+            "zh-CN":"图片"
+           }
+         },
+        {
+          "type":"image_picker",
+          "id":"image_mobile",
+          "label":"image mobile"
+        },
+        {
+          "type":"text",
+          "id":"title",
+          "label":"title"
+        },
+        {
+          "type":"text",
+          "id":"text",
+          "label":"text"
+        }
+      ]
+    }
+  ],
+  "presets":[{
+    "name":"Cup-Selling-Point",
+    "blocks":[
+        {
+        "type":"brand"
+        }
+      ]
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

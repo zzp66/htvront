@@ -1,0 +1,599 @@
+<style>
+  #shopify-section-{{ section.id }} .halloween-bg{
+    background-image:url('{{ section.settings.background_image | img_url:'1920x' }}');
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+    padding:30px 0 45px;
+  }
+  .halloween-module{
+    width:1600px;
+    margin:0 auto;
+    background-image:url('{{ section.settings.module_bg | img_url:'1588x' }}');
+    border-radius: 10px;
+    text-align:center;
+    padding:50px 24px 50px 24px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  } 
+  .halloween-module>p:nth-child(1){
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 49px;
+  }
+  .halloween-module>p:nth-child(2){
+    font-size: 18px;
+    color: #2B112C;
+    line-height: 24px;
+    padding:10px 0 20px 0;
+  }
+  .halloween-imgBox{
+    display: flex;
+    justify-content: flex-start;
+  }
+  .module-product{
+    display: flex;
+    flex-wrap: wrap;
+    background: #fff;
+    z-index: 2;
+    margin-left: -10px;
+    border-radius: 8px;
+    padding: 17px 14px 17px 20px;
+  }
+  .module-product .halloweenProduct-model-items{
+    width: 50%;
+    padding: 0 20px 16px 0;
+  }
+  .module-product .halloweenProduct-model-items:nth-last-child(-n+2){
+    padding-bottom:0;
+  }
+   .module-product .halloweenProduct-model-items:nth-child(even){
+     padding-right:0;
+   }
+  .halloweenProduct-model-items .card{
+    display:flex;
+    flex-direction: row;
+  }
+  .halloweenProduct-model-items .ratio{
+    max-width: 206px;
+    width: 100%;
+    flex:none;
+  }
+  .halloweenProduct-model-items .fn-product-title{
+    width:100%;
+  }
+  .halloweenProduct-model-items .fn-product-title .t{
+    -webkit-line-clamp: 3;
+    height: 57px;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+  .halloweenProduct-model-items .fn-product-layout{
+    flex-direction: column;
+    margin-top:0;
+  }
+  .halloweenProduct-model-items .fn-product-head{
+    padding-left:15px;
+  }
+  .halloweenProduct-model-items .fn-compareat_price{
+    flex-direction: row;
+    align-items: baseline;
+  }
+  .halloweenProduct-model-items .fn-product-price{
+    width:100%;
+    text-align:left;
+  }
+  .halloweenProduct-model-items .fn-compareat_price .fn-compare-at_price{
+    padding-left:5px;
+    color: #333;
+    font-weight: 400;
+    font-size: 14px;
+  }
+  .halloweenProduct-model-items .fn-product-price span{
+    font-size: 18px;
+    color: #8B4112;
+    float:left;
+  }
+  .halloweenProduct-model-items .button--full-width{
+    background: #fff;
+    color: #8B4112;
+    border: 1px solid #8B4112;
+    border-radius: 6px;
+    height: 40px;
+    padding: 0;
+    font-size: 14px;
+    min-height: auto;
+    box-shadow: none;
+    letter-spacing: 0;
+    --border-offset: none;
+    --border-opacity: none;
+  }
+  .halloweenProduct-model-items .button--full-width:before,
+  .halloweenProduct-model-items .button--full-width:after{
+    box-shadow:none;
+  }
+  .halloweenProduct-model-items .fn-color-attr{
+    margin-top:6px;
+  }
+  .wrapper{
+    display:none
+  }
+  .halloween-imgBox .svg-box{
+    min-width:698px;
+    margin-right:0;
+  }
+  @media screen and (max-width:1720px){
+    .halloween-module{
+      width: 83.3%;
+      margin:0 auto;
+    }
+    .halloweenProduct-model-items .ratio{
+      max-width: 50%;
+      height: auto;
+    }
+    .module-product{
+      align-items: center;
+    }
+  }
+  @media screen and (max-width:1440px){
+    .halloween-imgBox .svg-box{
+      min-width:50%;
+    }
+    .halloweenProduct-model-items .media>*:not(.zoom):not(.deferred-media__poster-button),
+    .halloweenProduct-model-items .media model-viewer{
+      height:auto;
+    }
+    .halloweenProduct-model-items .fn-product-title .t{
+      -webkit-line-clamp: 2;
+      height: 40px;
+      margin-bottom: 5px;
+    }
+    .halloweenProduct-model-items .fn-color-attr{
+      height:28px;
+      margin-bottom: 8px;
+    }
+    .halloweenProduct-model-items .fn-color-attr li{
+      width: 28px;
+      height: 28px;
+      line-height:28px;
+    }
+    .halloweenProduct-model-items .button--full-width{
+      height:30px;
+      min-width:90%;
+      border-radius:4px;
+    }
+    .module-product .halloweenProduct-model-items{
+      padding:0 6px 10px 0;
+    }
+    .module-product .halloweenProduct-model-items:nth-child(even){
+      padding-right:5px;
+    }
+    .module-product{
+      padding: 0 10px 10px 15px;
+    }
+    .halloweenProduct-model-items .fn-product-head{
+      padding-left: 5px;
+    }
+  }
+  @media screen and (max-width:1024px){
+    .nowrapper{
+      display:none
+    }
+    .wrapper{
+      display:block
+    }
+     .halloween-imgBox{
+       flex-direction: column !important;
+     }
+    .halloween-imgBox .svg-box{
+      min-width:100%;
+      margin-bottom:20px;
+    }
+    .halloween-imgBox .svg-box>img{
+      margin:0 auto;
+    }
+    .module-product{
+      margin-left: 0;
+      flex-wrap: nowrap;
+     position:relative;
+    }
+    .module-product .halloweenProduct-model-items{
+      width: 275px;
+      margin-right: 11px;
+    }
+    .halloweenProduct-model-items .card{
+      flex-direction: column;
+    }
+    .halloweenProduct-model-items .ratio{
+      max-width: 100%;
+    }
+    .halloweenProduct-model-items .button--full-width{
+      height:40px;
+      width:100%
+    }
+    .module-product{
+      padding: 11px 12px 20px 13px;
+    }
+    .module-product .halloweenProduct-model-items:nth-last-child(-n+2){
+      padding-bottom:10px;
+    }
+    .halloweenProduct-model-items .fn-product-price{
+      height:20px;
+      margin-top:0;
+    }
+    .halloweenProduct-model-items .fn-product-title .t{
+      margin:10px 0;
+      -webkit-line-clamp: 3;
+      height: 57px;
+    }
+    .halloween-module{
+      padding: 25px 20px 35px 20px;
+    }
+    .halloween-module>p:nth-child(1){
+      font-size:30px;
+    }
+    .module-product .halloweenProduct-model-items:nth-last-child(1){
+      margin-right: 0;
+      padding-right: 0;
+    }
+    .halloween-module{
+      overflow:hidden;
+    }
+    .halloween-module .swiper-scrollbar{
+      width: calc(100% - 20px);
+      background: #d8d8d8;
+      position:absolute;
+      height: 2px;
+      margin: 0 auto;
+      bottom: 15px;
+    }
+    .halloweenProduct-model-items .fn-product-head{
+      padding-left:0;
+    }
+    .halloween-module{
+      width:93.6%;
+    }
+    .halloween-module{
+      background-image:url('{{ section.settings.module_bg_mobile | img_url:'710x' }}');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    } 
+  }
+  @media screen and (max-width:750px){
+    #shopify-section-{{ section.id }} .halloween-bg{
+      padding:10px 0;
+      background:none;
+      background-color:#542221
+    }
+    .halloween-module{
+      width: 93.6%;
+    }
+    .halloween-module>p:nth-child(1){
+      font-size:16px;
+      line-height:22px;
+    }
+    .halloween-module>p:nth-child(2){
+      font-size:14px;
+      line-height:19px;
+      padding-top: 5px;
+    }
+  } 
+  @media screen and (max-width:450px){
+    .halloween-module{
+      width:95%;
+    }
+    .halloween-module .swiper-scrollbar{
+        width:100%;
+        bottom:0;
+    }
+    .halloween-module{
+      padding:14px 4px;
+    }
+    .halloween-imgBox .big-img{
+      margin-bottom:7px;
+    }
+    .module-product{
+      padding: 5px 0 10px
+    }
+    .module-product .halloweenProduct-model-items{
+      width: 160px;
+      margin-right: 5px;
+      padding:0;
+    }
+    .module-product .halloweenProduct-model-items:nth-child(even){
+      padding:0;
+    }
+    .module-product .halloweenProduct-model-items:nth-last-child(-n+2){
+      padding:0;
+    }
+    .halloween-imgBox .wrapper{
+      padding: 0 5px 10px;
+      background-color: #fff;
+      border-radius:6px;
+    }
+    .module-product::-webkit-scrollbar {
+      background: #D8D8D8;
+      height: 2px;
+      border-radius: 1px;
+    }
+    .module-product::-webkit-scrollbar-thumb {
+      background-color: #CC3305;
+    }
+    .halloween-module>p:nth-child(2){
+      padding-bottom:8px;
+    }
+  }
+</style>
+<div class="halloween-bg" id="{{ section.settings.id }}">
+  <div class="halloween-module">
+    <p>{{ section.settings.title }}</p>
+    <p>{{ section.settings.second_title }}</p>
+    {% if section.settings.image_position == 'right' %}
+      {% assign flex_direction = 'flex-direction: row-reverse;' %}
+      {% assign margin_right = 'margin-left:0;margin-right:-10px' %}
+    {% endif %}
+    <div class="halloween-imgBox" style="{{ flex_direction }}">
+       <div class="svg-box">
+          <img src="{{ section.settings.box_image | img_url:'1920x' }}">
+          {% for block in section.blocks %}
+            {% if block.type == 'svg' %}
+              <div class="Thousand-svg-down" style="left:{{ block.settings.svg_left }}%;top:{{  block.settings.svg_top }}%">
+                <img
+                  class="Thousand-svg-icon"
+                  src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/5_2.png?v=1684117224"
+                >
+              {% if block.settings.svg_box == 'bottom' %}
+                {% assign top = 'auto' %}
+                {% assign bottom = '-10px' %}
+              {% else %}
+                {% assign top = '-236px' %}
+                {% assign bottom = 'auto' %}
+              {% endif %}
+              <div class="Thousand-svg-btn" style="top:{{top}};bottom:{{ bottom }}">
+                <div>
+                  <img src="{{ block.settings.svg_image | img_url:'130x' }}">
+                  <div class="Thousand-down svg-down-{{  block.settings.svg_id }}" onclick="downSvg('{{  block.settings.svg_id }}')" id="{{ block.settings.svg_id }}">
+                    Download SVG
+                    <div data-title="SVG" style="display: none;">
+                      {{ block.settings.svg }}
+                    </div>
+                  </div>
+                  <div class="Thousand-svg-close">
+                    <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/7_1_b09d3dbf-6d63-48b6-8dc4-062450fed661.png?v=1684117231">
+                  </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+      <div class="Thousand-svg-item">
+        {% for block in section.blocks %}
+          {% if block.type == 'svg' %}
+            <div class="Thousand-svg-image">
+              <img src="{{ block.settings.svg_image | img_url:'60x' }}">
+              <div
+                class="Thousand-down-icon svg-down-{{  block.settings.svg_id }}"
+                onclick="downSvg('{{  block.settings.svg_id }}')"
+                id="{{ block.settings.svg_id }}"
+              >
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/2_b3727fe5-44ff-473d-afdb-650ff503c3e5.png?v=1684206550"
+                >
+                <div data-title="SVG" style="display: none;">
+                  {{ block.settings.svg }}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+       </div>
+      </div>
+      <div class="module-product nowrapper" style="{{ margin_right }}">
+        {% for block in section.blocks %}
+          {% if block.type == 'bundle' %}
+            <div class="halloweenProduct-model-items">
+              {% render 'product-Model',
+                  card_product: block.settings.product_item,
+                  colorSize: true,
+                  buttonSeat: 'fileSteam',
+                  buttonText: 'Add To Cart',
+                  title: 'flex',
+                  pirce: 'intitle',
+                  limit:2
+                %}
+              </div>
+            {% endif %}
+          {% endfor %}
+       </div>
+       <div class="wrapper">
+        <div class="module-product">
+          <div class=" swiper-container"  id="swiper-container_{{ section.id }}">
+            <div class="swiper-wrapper">
+              {% for block in section.blocks %}
+                {% if block.type == 'bundle' %}
+                  <div class="halloweenProduct-model-items swiper-slide">
+                    {% render 'product-Model',
+                      card_product: block.settings.product_item,
+                      colorSize: true,
+                      buttonSeat: 'fileSteam',
+                      buttonText: 'Add To Cart',
+                      title: 'flex',
+                      pirce: 'intitle',
+                      limit:2
+                    %}
+                </div>
+              {% endif %}
+            {% endfor %}
+            </div>
+          </div>
+          <div class="swiper-scrollbar" id="stories-swiper-scrollbar_{{ section.id }}"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+<script>
+   var mySwiper = new Swiper('#swiper-container_{{ section.id }}',{
+     freeMode:true,
+     slidesPerView: 'auto', 
+    spaceBetween :20,
+     observer: true, 
+     observeParents: true ,
+    scrollbar: {
+      el: '#stories-swiper-scrollbar_{{ section.id }}',
+    },
+    breakpoints:{
+      1024:{
+        spaceBetween: 11,
+      },
+      750: {
+        spaceBetween: 5,
+      }
+    }
+  })
+  //显示svg下载图标
+  $('.Thousand-svg-icon').on('mouseenter', function(e){
+       $(this).siblings('.Thousand-svg-btn').show()
+  })
+  //关闭svg下载图标
+  $('.Thousand-svg-close').on('click',function(){
+    $(this).parent().parent().hide()
+  })
+  //下载SVG
+  function downSvg(id){
+   let content = $('.svg-down-'+id).eq(0).children(":last-child").html();
+    fetch(content).then(res=>res.blob()).then(blob=>{
+      const a = document.createElement('a');
+      const url = window.URL.createObjectURL(blob);
+      a.download = 'svg'
+      a.href = url
+      a.click()
+      window.URL.revokeObjectURL(url);
+      a.remove()
+      $.ajax({
+          type:'GET',
+          dataType:'json',
+          url: 'https://qn.htvront.com/htvront-thousands-page-entity/page',
+          data: {userEmail: '',pageName:'{{page_title}}',productId:id}
+      });
+    })
+  }
+</script>
+{% schema %}
+  {
+    "name": "Halloween Module",
+    "settings": [
+      {
+        "type": "text",
+        "id": "id",
+        "label": "id(页面唯一性，全英文)"
+      },
+      {
+        "type":"image_picker",
+        "id":"background_image",
+        "label":"background image"
+      },{
+        "type":"image_picker",
+        "id":"module_bg",
+        "label":"module background"
+      },{
+        "type":"image_picker",
+        "id":"module_bg_mobile",
+        "label":"module background mobile"
+      },
+      {
+         "type":"radio",
+         "id":"image_position",
+         "label":"图片位置 ",
+         "default": "left",
+         "options": [
+          {
+            "value": "left",
+            "label": "left"
+          },
+          {
+            "value": "right",
+            "label": "right"
+          }
+        ]
+      },
+      {
+        "type":"text",
+        "id":"title",
+        "label":"title"
+      },
+      {
+        "type":"text",
+        "id":"second_title",
+        "label":"second title"
+      },
+      {
+        "type":"image_picker",
+        "id":"box_image",
+        "label":"box image"
+      }
+    ],
+    "blocks":[{
+      "name":"bundle",
+      "type":"bundle",
+       "settings":[
+         {
+          "type": "product",
+          "id": "product_item",
+          "label": "product item"
+          }
+        ]
+      },{
+      "type": "svg",
+      "name": "svg",
+      "settings": [{
+          "type": "image_picker",
+          "id": "svg_image",
+          "label": "image"
+        },{
+          "type": "html",
+          "id": "svg",
+          "label": "SVG"
+    	},{
+            "type": "text",
+            "id": "svg_id",
+            "label": "SVG id (整个块唯一性,格式svg_)"
+    	},{
+          "type":"number",
+          "id":"svg_left",
+          "label":"按钮位置left(%)",
+          "default": 1
+        },{
+          "type":"number",
+          "id":"svg_top",
+          "label":"按钮位置top(%)",
+          "default": 1
+        },{
+          "type": "select",
+          "id": "svg_box",
+          "label": "弹出框位置",
+          "options": [
+            {
+              "value": "top",
+              "label": "居上"
+            },
+            {
+              "value": "bottom",
+              "label": "居下"
+            }
+          ],
+          "default": "top"
+    	}]
+    }],
+    "presets":[
+        {
+            "name":"Halloween Module"
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

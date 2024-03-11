@@ -1,0 +1,85 @@
+<style>
+div:empty{
+    display: block;
+}
+</style>
+<div class="fn-Machine">
+  <div class="t fn-my-account-title">My Machine <span class="cut">|</span> <span id="Machine_EDIT">EDIT</span></div>
+  <div class="fn-Machine-content">
+    <div class="fn-brandType">
+      <div class="fn-Machine-Brand BrandModels">
+        <div class="fn-BrandModels-title">Brand</div>
+        <div class="fn-BrandModels-content contentBrand">con</div>
+      </div>
+      <div class="fn-Machine-CricutMaker BrandModels">
+        <div class="fn-BrandModels-title">Model</div>
+        <div class="fn-BrandModels-content contentCricutMaker">con</div>
+      </div>
+    </div>
+    <div class="fn-recommend-product">
+      <div class="fn-recommend-title">Recommended products for your machine</div>
+      <div class="fn-recommend-row">
+        {% for block in section.blocks %}
+        <div class="fn-recommend-productParticulars">
+          {% render 'fn-card-product',
+                card_product: block.settings.product,
+                media_aspect_ratio: 'adapt',
+                show_secondary_image: block.settings.second_image,
+                extend_height: true
+          %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(function(){
+    var fn_brand  = localStorage.getItem("fn-brand");
+    var fn_model  = localStorage.getItem("fn-model");
+    if (!fn_brand || !fn_model) {
+      $('.fn-Machine-content, .cut').hide();
+    } else {
+      $('.fn-Machine-typeSelection').hide();
+      $('.contentBrand').text(fn_brand);
+      $('.contentCricutMaker').text(fn_model);
+    }
+    $('#Machine_EDIT').click(function () {
+      $(this).hide();
+      $('.cut').hide();
+      $('.fn-Machine-typeSelection').toggle();
+      $('.fn-Machine-content').toggle();
+    });
+  })
+    $(".fn-option-brand").bind('li propertychange', function(){
+    var text = $(this).val()
+          console.log(text);
+//     $(".contentCricutMaker").text(text)
+  })
+</script>
+{% schema %}
+   {
+    "name": "Machine product",
+    "settings": [
+    ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "productname",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "productlabel"
+        },
+        {
+          "type": "checkbox",
+          "id": "second_image",
+          "default": false,
+          "label": "second_imagelabel"
+        }
+      ]
+    }
+  ]
+  }
+{% endschema %}

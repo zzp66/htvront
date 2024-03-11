@@ -1,0 +1,59 @@
+
+<div class="fn-vote-rules">
+    <div class="fn-aboutus-banner">
+        {% if section.settings.rules_banner != blank %}
+            {% assign image = section.settings.rules_banner | img_url: '1195x' %}
+            <img class="fn-aboutus-bannerimg" src="{{ image }}" alt="">
+        {% endif %}
+        <div class="fn-vote--bannermain">
+            <div class="t fn-rules-bannertitle">{{  section.settings.rules_title }}</div>
+            <div class="fn-rules-bannertext">{{  section.settings.rules_text }}</div>
+        </div>
+    </div>
+    <div class="fn-rules-main">{{  section.settings.rules_main }}</div>
+</div>
+{% schema %}
+  {
+    "name": "vote rules",
+    "settings": [
+          {
+			"type": "image_picker",
+			"id": "rules_banner",
+			"label": {
+				"en": "rules banner",
+				"zh-CN": "图片"
+			}
+		},
+        {
+            "type": "text",
+            "id": "rules_title",
+            "label": {
+                "en": "rules banner title ",
+                "zh-CN": "文本标题"
+            }
+        },
+        {
+            "type": "text",
+            "id": "rules_text",
+            "label": {
+                "en": "rules banner text ",
+                "zh-CN": "文本"
+            }
+        },
+       {
+            "type": "html",
+            "id": "rules_main",
+            "label": {
+                "en": "rules main ",
+                "zh-CN": "文本"
+            }
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,44 @@
+{{ 'express-check.css' | asset_url | stylesheet_tag }}
+ {% section 'express-check-main' %}
+<script>
+   $(function(){
+     $('.fn-expresscheck-button').click(function () {
+         $('.fn-expresscheck-formalerror,.fn-expresscheck-notbelong').hide();
+        var order_name = $('.fn-Inputquantico_orderform').val();
+       $('#succeed_name').text(order_name);
+       if(order_name.indexOf("#") != -1) {
+            $.ajax({
+                 type:'GET',
+                 dataType:'jsonp',
+                  data: { order_name: order_name },
+                   url: 'https://qn.htvront.com:9000/prod-biz-api/htvront/lookOrder/getOrderInfo',
+                   jsonp :'callback', //指定一个查询参数名称来覆盖默认的 jsonp 回调参数名 callback
+                   jsonpCallback: 'handle', //设置回调函数名
+                   success(result){    
+                  if(result.status == 1) {
+                    $('.fn-expresscheck-succeeded').show();
+                    $('.fn-expresscheck-orderinquiry,.fn-expresscheck-heat_press').hide();
+                    $('.fn-expresscheck-timequantum').text(result.data.estimated_delivery_time);
+                  }
+                  if(result.status == 2) {
+                    $('.fn-expresscheck-notbelong').show();
+                  }
+    
+                },
+                error(result){
+                   console.log('getOrderInfo');
+                }
+          });
+       } else {
+         $('.fn-expresscheck-formalerror').show();
+       }
+     });
+     $('.fn-expresscheck-backtrack').click(function () {
+         $('.fn-expresscheck-succeeded').hide();
+         $('.fn-expresscheck-orderinquiry').show();
+     });
+ });
+     
+</script>
+
+   

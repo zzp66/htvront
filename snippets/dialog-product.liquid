@@ -1,0 +1,480 @@
+<style>
+    .event-dialog-each .grid__item  {
+        width: calc(25% - var(--grid-mobile-horizontal-spacing) * 3 / 4);
+    }
+    .fn-detail-swiper {
+        width: 100%;
+        max-width: 250px;
+        height:250px;
+    }
+    .dialogSwiper {
+        width:100%;
+        height:100%;
+        overflow: hidden;
+    }
+    .dialogSwiper img {
+        display: none;
+        border-radius: 10px;
+    }
+    .dialogSwiper img.show {
+        display: block;
+    }
+    .product__title {
+        margin-bottom: 0;
+        line-height: 24px;
+        font-size: 18px;
+        color:#333;
+    }
+    .fn-price {
+        margin-top: 10px;
+    }
+    .fn-price .fn-flex {
+        display: flex;
+        align-items: center;
+    }
+    .fn-flex .price__container {
+        margin-bottom: 0;
+    }
+    .fn-detail .price .price-item {
+        margin: 0;
+    }
+    .fn-price .fn-product-price {
+        font-size: 24px;
+        color: #FF7606;
+        line-height: 1;
+    }
+    .fn-price .fn-product-price_old {
+        font-size: 16px;
+        color: #333;
+        line-height: 1;
+        text-decoration: line-through;
+        margin-left: 0px;
+    }
+    .fn-price .fn-product-price_sava {
+        padding: 5px 9px;
+        background: #FF7606;
+        border-radius: 6px;
+        font-size: 12px;
+        color: #fff;
+        line-height: 1;
+        margin-left: 7px;
+    }
+    .fn-price .price-item {
+        margin: 0;
+    }
+    .fn-detail .quantity:after {
+        top: 1px;
+        right: 1px;
+        bottom: 1px;
+        left: 1px;
+        border: 0.1rem solid transparent;
+        border-radius: 5px;
+        box-shadow: 0 0 0 1px #333;
+    }
+    .fn-detail .quantity {
+        width: 145px;
+        min-height: 30px;
+        margin-left: 10px;
+    }
+    .fn-detail .quantity__input {
+        font-size: 18px;
+        padding: 0;
+        opacity: 1;
+        height: 26px;
+        margin-top: 2px;
+    }
+    .fn-detail .product-form__input {
+        margin: 20px 0;
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 100%;
+        font-size: 16px;
+    }
+    .fn-detail .form__label {
+        padding:0;
+        margin: 0;
+        font-size: 16px;
+    }
+    .fn-detail .fn-color-option label {
+        border: 3px solid #fff;
+        background: none;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        text-align: center;
+        margin: 0;
+        display: block;
+        margin: 0 auto;
+        line-height: 42px;
+        padding: 2px;
+    }
+    .fn-detail .fn-color-option label.select {
+        background: none;
+        border-color: #333333;
+        overflow: hidden;
+    }
+    .fn-detail .fn-color-option input[type=radio]+label img{
+        border-radius: 100%;
+        margin: 0 auto;
+        padding: 0;
+        width: 42px;
+        height: 42px;
+        cursor: pointer;
+    }
+    .fn-detail .fn-color-option input[type=radio]+label:before{
+        display: none;
+    }
+    .fn-detail .fn-color-option input[type=radio]+label:hover {
+        border-color: #000;
+    }
+    .fn-color-option .swiper-container {
+        padding: 20px 20px 0 20px;
+        margin: 0;
+        width: 500px;
+    }
+    .fn-color-option .swiper-container .swiper-wrapper {
+        position: relative;
+     }
+    .fn-detail .swiper-button-next,
+    .fn-detail .swiper-button-prev {
+        display: block;
+        width: 17px;
+        background-color: #fff;
+        background-size: 9px;
+        margin-top: -15px;
+    }
+    .fn-detail .swiper-button-prev {
+        left: 0;
+    }
+    .fn-detail .swiper-button-next {
+        right: 0;
+    }
+    .product-form__input input[type=radio] {
+        clip: rect(0,0,0,0);
+        overflow: hidden;
+        position: absolute;
+        height: 1px;
+        width: 1px;
+    }
+    .fn-detail  .alt {
+        display: none;
+        position: absolute;
+        top: -25px;
+        left: 10%;
+        z-index: 9999;
+        width: 200px;
+        color: #333;
+        font-size: 14px;
+    }
+    .fn-detail  .alt.show {
+        display: block;
+    }
+    .fn-detail .swiper-button-next, .fn-detail .swiper-button-prev {
+        display: block;
+        width: 17px;
+        background-color: #fff;
+        background-size: 9px;
+        margin-top: -15px;
+    }
+    .fn-buy-buttons {
+        max-width: 240px;
+    }
+    .download-svg {
+        display: flex;
+        width: 100%;
+    }
+    .download-svg-name {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+        width: 250px;
+        line-height: 36px;
+        font-size: 22px;
+        color: #333;
+        font-weight: bold;
+    }
+    .download-svg-img {
+        display: flex;
+        align-items: center;       
+        justify-content: center;
+        margin-bottom: 10px;
+        width: 174px;
+        height: 174px;
+        background: #EDEDED;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .download-svg-img img{
+       max-width: 100%;
+       max-height: 100%;
+    }
+    .download-svg-btn {
+        width: 100%;
+        height: 30px;   
+        line-height: 30px;
+        font-weight: bold;
+        text-align: center;
+        color: #fff;
+        border-radius: 10px;
+        background: #FF7606;
+        cursor: pointer;
+    }
+
+    .download-svg-code {
+      display:none;
+    }
+
+    .fn-buy-buttons button {
+       font-weight: bold; 
+    }
+
+    @media (max-width:850px) {
+      .event-dialog-head {
+        margin-bottom: 5px;
+      }
+      .event-dialog-title {
+         font-size: 18px;
+      }
+      .fn-detail-swiper {
+         width: 136px; 
+         height: 136px; 
+      }
+      .product__title {
+        font-size: 14px;
+        line-height: 18px;
+      }
+      .download-svg {
+        margin-top: 60px;
+        flex-wrap: wrap; 
+      }
+      .download-svg-long {
+        margin-top: 175px;
+      } 
+      .fn-color-option .swiper-container {
+        width: 100%;
+      }
+      .fn-buy-buttons .product-form__buttons button {
+        width: 188px;
+        height: 36px;
+      }
+      .download-svg-name {
+        width: 100%;
+        font-size: 16px;
+      }
+      .download-svg-img {
+        width: 136px;
+        height: 136px;
+      }   
+      .fn-detail .quantity {
+        width: 100px;
+      }
+      .fn-price .fn-flex {
+        display: block;
+      }
+      .fn-detail .product-form__input {
+        margin: 10px 0;
+      }
+      .fn-detail .product-form__input.product-form__quantity {
+        margin: 5px 0 0 0;
+      }
+      .fn-product-price_sava {
+        margin: 8px 0 0 0;
+      }
+      .product-phone-style {
+        position: absolute;
+        left: 0;
+        top:150px;
+        width: 100%;
+      }
+      .fn-detail .fn-price {
+        margin-top: 8px;
+      }
+      .fn-detail .fn-price .fn-product-price {
+        font-size: 20px;
+      }
+      .fn-detail .fn-price .fn-product-price_old {
+        font-size: 14px;
+      }
+      .fn-detail .fn-price .fn-product-price_sava {
+        margin: 5px 0 0 0;
+      }
+    }
+</style>
+{%- if dialog_product and dialog_product != empty -%}
+{%- assign product = dialog_product.settings.product  -%}
+{%- endif -%}
+<div class="product grid grid--1-col grid--2-col-tablet">
+    <div class="fn-detail-swiper">
+        <div class="swiper-container dialogSwiper dialogSwiper">
+            <div class="swiper-wrapper">
+                <img class="product__slide-image show lazyload image--fade-in"
+                     src="{{ product.featured_media | img_url: '520x520' }}"
+                     alt="{{ product.featured_media.alt }}" />
+            </div>
+        </div>
+    </div>
+    <div class="product__info-wrapper grid__item fn-detail">
+        {%- if product.title != block -%}
+        <h1 class="product__title"> {{ product.title | escape }}</h1>
+        {%- endif -%}
+        {%- if product.price != block -%}
+        <div class="no-js-hidden fn-price"  id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+            {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}
+        </div>
+        {%- endif -%}
+        <div class="product-form__input product-form__quantity{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}" {{ block.shopify_attributes }}>
+            <span class="t" for="Quantity-{{ section.id }}">Quantity: </span>
+            <quantity-input class="quantity">
+                <button class="quantity__button no-js-hidden" name="minus" type="button">
+                    <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
+                    {% render 'icon-minus' %}
+                </button>
+                <input class="quantity__input"
+                       type="number"
+                       name="quantity"
+                       id="Quantity-{{ section.id }}"
+                       min="1"
+                       value="1"
+                       form="{{ product_form_id }}"
+                >
+                <button class="quantity__button no-js-hidden" name="plus" type="button">
+                    <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title | escape }}</span>
+                    {% render 'icon-plus' %}
+                </button>
+            </quantity-input>
+        </div>
+        <div class="product-phone-style">
+        {%- if product.variants[forloop.index0].size != 0 -%}
+        <variant-radios class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
+            {%- for option in product.options_with_values -%}
+            {%- if option.name == 'Colors' or option.name == 'Color' -%}
+            <div class="js product-form__input fn-color-option" id="option_{{ product.id }}">
+                <legend class="form__label t">{{ option.name }}</legend>
+                <div class="swiper-container colorSwiper colorSwiper_{{ product.id }}" data-id="colorSwiper_{{ product.id }}">
+                    <div class="swiper-wrapper">
+                        {%- for value in option.values -%}
+                        <div  id="{{ variant.id }}" class="swiper-slide" data-variant="{{ product.variants[forloop.index0] }}">
+                            <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                                   name="{{ option.name }}"
+                                   value="{{ value | escape }}"
+                            >
+                            {% if forloop.index0 == 0 %}
+                            <label class="select" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                                {%- if product.variants[forloop.index0].featured_image != blank -%}
+                                <img src="{{ product.variants[forloop.index0].featured_image | img_url: '520x520' }}" alt="{{ value }}">
+                                {%- endif -%}
+                            </label>
+                            {%- else -%}
+                            <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                                {%- if product.variants[forloop.index0].featured_image != blank -%}
+                                <img src="{{ product.variants[forloop.index0].featured_image | img_url: '520x520' }}" alt="{{ value }}">
+                                {%- endif -%}
+                            </label>
+                            {% endif %}
+
+
+                            <span class="alt t">
+{%- if product.variants[forloop.index0].featured_image != blank -%}
+{{ value }}
+{%- endif -%}
+</span>
+                        </div>
+                        {%- endfor -%}
+                    </div>
+                    <div class="swiper-button-prev swiper-button-black"></div>
+                    <div class="swiper-button-next swiper-button-black"></div>
+                </div>
+            </div>
+            {%- endif -%}
+            {%- endfor -%}
+            <script type="application/json">
+                {{ product.variants | json }}
+            </script>
+        </variant-radios>
+        {%- endif -%}
+        <div class="fn-buy-buttons">
+            <product-form class="product-form">
+                <div class="product-form__error-message-wrapper" role="alert" hidden>
+                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-error" viewBox="0 0 13 13">
+                        <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+                        <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+                        <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+                        <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+                    </svg>
+                    <span class="product-form__error-message"></span>
+                </div>
+
+                {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+                <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" disabled>
+                <div class="product-form__buttons">
+                    <button
+                            type="submit"
+                            name="add"
+                            id="updates_{{ product.id }}"
+                            onclick="_tfa.push({notify: 'event', name: 'add_to_cart', id: 1465313})"
+                            class="product-form__submit button button--full-width {% if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}"
+                            {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+                    >
+<span>
+{%- if product.selected_or_first_available_variant.available -%}
+{{ 'products.product.add_to_cart' | t | upcase}}
+{%- else -%}
+{{ 'products.product.sold_out' | t | upcase }}
+{%- endif -%}
+</span>
+                        <div class="loading-overlay__spinner hidden">
+                            <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                                <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                            </svg>
+                        </div>
+                    </button>
+                    {%- if block.settings.show_dynamic_checkout -%}
+                    {{ form | payment_button }}
+                    {%- endif -%}
+                </div>
+                {%- endform -%}
+            </product-form>
+
+            {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
+
+            {%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities | where: 'pick_up_enabled', true -%}
+
+            <pickup-availability class="product__pickup-availabilities no-js-hidden"
+                                 {% if product.selected_or_first_available_variant.available and pick_up_availabilities.size > 0 %} available{% endif %}
+                data-root-url="{{ routes.root_url }}"
+                data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+                data-has-only-default-variant="{{ product.has_only_default_variant }}"
+                >
+                <template>
+                    <pickup-availability-preview class="pickup-availability-preview">
+                        {% render 'icon-unavailable' %}
+                        <div class="pickup-availability-info">
+                            <p class="caption-large">{{ 'products.product.pickup_availability.unavailable' | t }}</p>
+                            <button class="pickup-availability-button link link--text underlined-link">{{ 'products.product.pickup_availability.refresh' | t }}</button>
+                        </div>
+                    </pickup-availability-preview>
+                </template>
+            </pickup-availability>
+          </div>
+        </div>
+    </div>
+</div>
+{%- for option in product.options_with_values -%}
+   {%- if option.name == 'Colors' or option.name == 'Color' -%}  
+        <div class="download-svg-long"></div>
+   {%- endif -%}
+{%- endfor -%}
+<div class="download-svg">
+    {%- if dialog_product.settings.svgName != block -%}
+    <div class="download-svg-name">SVG DOWNLOAD 【MemberOnly】</div>
+    <div class="download-svg-info">
+        <div class="download-svg-img"><img src="{{ dialog_product.settings.svgShowImage | img_url: '200x200' }}"/></div>
+        <div class="download-svg-code">{{ dialog_product.settings.svgImage }}</div>
+        <div class="download-svg-btn" data-name="{{ dialog_product.settings.svgName }}">Download</div>
+    </div>
+    {%- endif -%}
+</div>
+<script>
+
+</script>

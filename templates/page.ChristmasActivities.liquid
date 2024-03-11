@@ -1,0 +1,72 @@
+{{ 'ChristmasActivities.css' | asset_url | stylesheet_tag }}
+<div class="fn-christmasactivities">
+    <img class="fn-christmasactivities-backdrop" src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20221208-163021.png?v=1670488255" alt="">
+<!--     <img class="fn-christmasactivities-backdrop_mobile" src="https://cdn.shopify.com/s/files/1/0568/8043/1157/files/35_f781086d-0602-4761-86c5-7c563c6f9ec6.png?v=1670460833" alt=""> -->
+    <div class="fn-christmasactivities-body">
+        <div class="fn-christmasactivities-header">
+            <div class="fn-christmasactivities-header_title t">The Newest Gifts for Festival</div>
+            <div class="fn-christmasactivities-header_text">Craft Lovers, Check Out Something Special</div>
+            <div class="fn-christmasactivities-header_button" onclick="christmasFunction('1')">Watch Video</div>
+        </div>
+        {% section 'christmasactivities-attempt' %}
+        {% section 'christmasactivities-world' %}
+        {% section 'christmasactivities-bests' %}
+        {% section 'christmasactivities-combo' %}
+        {% section 'christmasactivities-extra' %}
+    </div>
+</div>
+  <div class="fn-BlackFriday-mask">
+    <div class="fn-BlackFridaymask-main">
+        <div class="mask-close" onclick="christmasFunction('2')">
+           {% render 'black-close' %}
+        </div>
+        <div class="fn-ChristmasActivities-Video">
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/dDqiMCt9TNU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+  </div>
+  <script>
+     function christmasFunction(e){
+      console.log(e);
+       if(e == 1 ) {
+          $('.fn-BlackFriday-mask').show();
+       }
+       if(e == 2 ) {
+          $('.fn-BlackFriday-mask').hide();
+       }
+       if(e == 3 ) {
+            $('html, body').animate({
+              scrollTop: $('#shopify-section-christmasactivities-attempt').offset().top - 50 //65为设置的偏移值
+            });
+       }
+       if(e == 4 ) {
+            $('html, body').animate({
+              scrollTop: $('#shopify-section-christmasactivities-world').offset().top - 50 //65为设置的偏移值
+            });
+       }
+       if(e == 5 ) {
+            $('html, body').animate({
+              scrollTop: $('#shopify-section-christmasactivities-bests').offset().top - 50 //65为设置的偏移值
+            });
+       }
+       if(e == 6 ) {
+            $('html, body').animate({
+              scrollTop: $('#shopify-section-christmasactivities-combo').offset().top - 50 //65为设置的偏移值
+            });
+       }
+       if(e == 7 ) {
+            $('html, body').animate({
+              scrollTop: $('#shopify-section-christmasactivities-extra').offset().top - 50 //65为设置的偏移值
+            });
+       }
+  }
+     $(function(){
+     var url_brand = window.location.toString();//进这个页面的url
+      if(url_brand.indexOf("christmas-activities-2022") !== -1) {
+          $('html, body').animate({
+            scrollTop: $('#discountstore-body').offset().top - 50 //65为设置的偏移值
+          });
+      }
+   
+ })
+  </script>

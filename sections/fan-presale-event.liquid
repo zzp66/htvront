@@ -1,0 +1,65 @@
+<div>
+  <div class="fan-presale-title">{{ section.settings['fan-presale-title'] }}</div>
+  <div class="fan-presale-list">
+    {% for block in section.blocks %}
+      <div class="fan-presale-item">
+        <a href="{{ block.settings.product.url }}"></a>
+        <div class="fan-presale-img">
+          <img
+            src="{{ block.settings.product.featured_media | img_url: '744x' }}"
+            alt="{{ block.settings.product.featured_media.alt | escape }}"
+          >
+        </div>
+        <div class="fan-presale-product">
+          <div class="fan-presale-content">
+            <div class="fan-presale-product-title">{{ block.settings.product.title | escape }}</div>
+            <div class="fan-presale-product-money">
+              {% render 'sffers-price', product: block.settings.product, price_class: '' %}
+            </div>
+          </div>
+          <div class="fan-presale-button"><a href="{{ block.settings.linkUrl }}" target="blank">View More</a></div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "fan-presale-event",
+  "max_blocks": 2,
+  "settings": [
+    {
+  	"type": "text",
+  	"id": "fan-presale-title",
+  	"label": {
+  		"en": "title",
+  		"zh-CN": "标题"
+        }
+    }
+  ],
+   "blocks": [{
+      "type": "save",
+      "name": {
+          "en": "save product",
+          "zh-CN": "产品"
+      },
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "productlabel"
+        },{
+          "type": "text",
+          "id": "linkUrl",
+          "label": "跳转链接"
+        }
+      ]
+    }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

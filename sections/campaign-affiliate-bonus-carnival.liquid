@@ -1,0 +1,265 @@
+{%- style -%}
+#shopify-section-{{ section.id }} .campaign-carnival {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    margin-top: {{ section.settings.margin_top }}px;
+    margin-bottom: {{ section.settings.margin_bottom }}px;
+    background-color: {{ section.settings.bg_color }};
+}
+#shopify-section-{{ section.id }} .campaign-carnival .campaign-text {
+    background-color: {{ section.settings.text_bg_color }};
+}
+{%- endstyle -%}
+<style>
+    .campaign-carnival .fn-relative{
+        position: relative;
+    }
+    .campaign-carnival .campaign-img {
+        box-shadow: 0 4px 14px 0 rgba(11, 31, 153, 0.06);
+        border-radius: 20px;
+    }
+    .campaign-carnival .campaign-text {
+        opacity: 0.94;
+        position: absolute;
+        top: 0;
+        width: 660px;
+        height: 100%;
+/*         text-align: center; */
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        align-content: center;
+        color: #fff;
+    }
+    .campaign-carnival .campaign-text div{
+        width: 100%;
+    }
+    .campaign-carnival .campaign-text.fn-text-left {
+        left: 0;
+        border-radius: 15px 0 0 15px;
+    }
+    .campaign-carnival .campaign-text.fn-text-right {
+        right: 0;
+        border-radius: 0 15px 15px 0;
+    }
+    .campaign-carnival .campaign-text .t {
+        font-size: 24px;
+        line-height: 30px;
+    }
+    .campaign-carnival .campaign-text .time {
+        margin-top: 20px;
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .campaign-carnival .more {
+        margin-top: 20px;
+    }
+    .campaign-carnival .more a {
+        display: inline-block;
+        padding: 15px 49px;
+        font-size: 20px;
+        line-height: 1;
+        background: #FF7606;
+        border-radius: 6px;
+        border: none;
+        width: auto;
+        height: auto;
+        color: #fff;
+    }
+   @media (min-width: 750px){
+     .campaign-details {
+           padding: 0 18%;
+     }
+    }
+    @media (max-width: 749px){
+        .campaign-carnival .campaign-text .t {
+            font-size: 36px;
+            line-height: 40px;
+        }
+        .campaign-carnival .campaign-text .time {
+            margin-top: 12px;
+        }
+        .campaign-carnival .more a {
+            padding: 13px 69px;
+        }
+        .campaign-carnival .campaign-text {
+            opacity: 1;
+            position: static;
+            width: 100%;
+            padding: 30px 15px;
+        }
+        .campaign-carnival .campaign-text.fn-text-right,
+        .campaign-carnival .campaign-text.fn-text-left {
+            border-radius: 0;
+        }
+    }
+    @media (max-width: 480px){
+#shopify-section-template--14236092760197__16529480563e0d23d9 .campaign-carnival {
+    padding-top: 38px;
+}
+        .campaign-carnival .campaign-text .t {
+            font-size: 18px;
+            line-height: 22px;
+        }
+        .campaign-carnival .campaign-text .time {
+            margin-top: 6px;
+            font-size: 14px;
+            line-height: 18px;
+        }
+        .campaign-carnival {
+            padding: 50px 0;
+        }
+        .campaign-carnival .more a {
+            font-size: 12px;
+        }
+    }
+</style>
+<div class="campaign-carnival">
+    <div class="{{ section.settings.layout }} fn-relative">
+        {%- if section.settings.image != blank -%}
+        <div class="campaign-img">
+            <img src="{{ section.settings.image | img_url: '1600x' }}" alt="{{ section.settings.image.alt }}">
+        </div>
+        {%- endif -%}
+        <div class="{{ section.settings.text_layout }} campaign-text">
+          <div class="campaign-details">
+            {%- if section.settings.title != blank -%}
+            <div class="t">{{ section.settings.title }}</div>
+            {%- endif -%}
+            {%- if section.settings.time != blank -%}
+            <div class="time">{{ section.settings.time }}</div>
+            {%- endif -%}
+            {%- if section.settings.link != blank -%}
+            <div class="more extra-t"><a href="{{ section.settings.link }}">{{ section.settings.label }}</a></div>
+            {%- endif -%}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name":"Campaign Carnival",
+    "settings":[
+        {
+            "type":"text",
+            "id":"title",
+            "default":"Affiliate Bonus Carnival",
+            "label":"标题"
+        },
+        {
+            "type":"html",
+            "id":"time",
+            "default":"<p>Became Goaffpro affiliate of HTVRONT UK Store from</p><p>May 9th — May 31th 2022</p>",
+            "label":"时间"
+        },
+        {
+            "type":"color",
+            "id":"bg_color",
+            "label":"背景颜色"
+        },
+        {
+            "type":"color",
+            "id":"text_bg_color",
+            "label":"文字背景颜色"
+        },
+        {
+            "type":"image_picker",
+            "id":"image",
+            "label":"图片"
+        },
+        {
+            "type":"text",
+            "id":"label",
+            "default":"SHOP NOW",
+            "label":"链接文字"
+        },
+        {
+            "type":"url",
+            "id":"link",
+            "label":"链接"
+        },
+        {
+            "type":"range",
+            "id":"padding_top",
+            "min":0,
+            "max": 200,
+            "step": 2,
+            "unit":"px",
+            "label":"t:sections.all.padding.padding_top",
+            "default": 80
+        },
+        {
+            "type":"range",
+            "id":"padding_bottom",
+            "min":0,
+            "max": 200,
+            "step":4,
+            "unit":"px",
+            "label":"t:sections.all.padding.padding_bottom",
+            "default": 80
+        },
+        {
+            "type":"range",
+            "id":"margin_top",
+            "min":0,
+            "max": 100,
+            "step": 2,
+            "unit":"px",
+            "label":"Top margin",
+            "default": 0
+        },
+        {
+            "type":"range",
+            "id":"margin_bottom",
+            "min":0,
+            "max":100,
+            "step": 2,
+            "unit":"px",
+            "label":"Bottom margin",
+            "default": 0
+        },
+        {
+            "type":"select",
+            "id":"text_layout",
+            "options":[
+                {
+                    "value":"fn-text-left",
+                    "label":"文字显示在图片左侧"
+                },
+                {
+                    "value":"fn-text-right",
+                    "label":"文字显示在图片右侧"
+                }
+            ],
+            "default":"fn-text-right",
+            "label":"文字显示区域"
+        },
+        {
+            "type":"select",
+            "id":"layout",
+            "options":[
+                {
+                    "value":"fn-page-width-l",
+                    "label":"全屏"
+                },
+                {
+                    "value":"fn-page-width",
+                    "label":"内容区域显示1600"
+                },
+                {
+                    "value":"fn-page-width-s",
+                    "label":"内容区域显示1200"
+                }
+            ],
+            "default":"fn-page-width",
+            "label":"内容显示宽度"
+        }
+    ],
+    "presets":[
+        {
+            "name":"Campaign Carnival"
+        }
+    ]
+}
+{% endschema %}

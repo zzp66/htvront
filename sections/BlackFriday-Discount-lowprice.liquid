@@ -1,0 +1,141 @@
+<div class="fn-BlackFriday-lowprice">
+  <div class="fn-lowprice-title fn-Discountproduct-title t">{{  section.settings.lowprice_title }}</div>
+  <div class="fn-lowprice-titleicon fn-makingmain-time_copy">
+    {% if section.settings.lowprice_icon != blank %}
+        {% assign image = section.settings.lowprice_icon | img_url: '326x' %}
+           <img class="fn-BlackFriday-lowpriceicon" src="{{ image }}" alt="">
+    {% endif %}
+    <div class="fn-lowprice-subtitle fn-makingmain-times_text t fn-makingmain-times_code">{{  section.settings.lowprice_subtitle }}</div>
+  </div>
+  <ul class="fn-lowprice-ul">
+      {% for block in section.blocks %}
+      <li class="fn-lowprice-list">
+        {% if block.settings.lowprice_productimg != blank %}
+          {% assign image = block.settings.lowprice_productimg | img_url: '542x' %}
+            {% if block.settings.lowprice_productlink != blank %}
+                <a href="{{ block.settings.lowprice_productlink }}">
+            {% endif %}
+               <img class="fn-lowprice-productimg" src="{{ image }}" alt="">
+            {% if block.settings.lowprice_productlink != blank %}
+              </a>
+            {% endif %}
+        {% endif %}
+        <div class="fn-lowprice-productmain">
+            <div class="fn-lowprice-producttitle t">
+              {% if block.settings.lowprice_productlink != blank %}
+                  <a href="{{ block.settings.lowprice_productlink }}">
+              {% endif %}
+                    {{ block.settings.lowprice_producttitle }}
+              {% if block.settings.lowprice_productlink != blank %}
+                  </a>
+              {% endif %}
+            </div>
+            <div class="fn-lowprice-productprice">
+               Black Friday price: <span class="fn-lowprice-discountprice t">{{ block.settings.lowprice_discountprice }}</span><span class="fn-lowprice-originalcost">{{ block.settings.lowprice_originalcost }}</span>
+            </div>
+             <div class="fn-lowprice-productsbutton">
+                     {% render 'fn-lowprice-products',
+                      schedule: block.settings.schedule_a,
+                      schedule_sum: block.settings.schedule_sum,
+                      remaining_number: block.settings.remaining_number,
+                      card_product: block.settings.lowprice_product,
+                      %}
+            </div>
+        </div>
+      </li>
+      {% endfor %}
+  </ul>
+</div>
+{% schema %}
+  {
+    "name": "Lowest Price Ever",
+    "max_blocks": 6,
+    "settings": [
+        {
+			"type": "image_picker",
+			"id": "lowprice_icon",
+			"label": {
+				"en": "low price icon"
+			}
+		},
+        {
+            "type":"text",
+            "id":"lowprice_title",
+            "label":"low price title"
+        },
+        {
+            "type":"text",
+            "id":"lowprice_subtitle",
+            "label":"low price subtitle"
+        }
+    ],
+    "blocks": [
+      {
+        "type": "Lowprice",
+        "name": {
+          "en": "Low price product",
+          "zh-CN": "低价产品"
+        },
+        "settings": [
+            {
+    			"type": "image_picker",
+    			"id": "lowprice_productimg",
+    			"label": {
+    				"en": "low price product"
+    			}
+    		},
+            {
+              "type":"url",
+              "id":"lowprice_productlink",
+              "label":{
+              "en":"link",
+              "zh-CN":"链接"
+              }
+            },
+            {
+                "type":"text",
+                "id":"lowprice_producttitle",
+                "label":"low price product title"
+            },
+            {
+                "type":"text",
+                "id":"lowprice_discountprice",
+                "label":"discount price"
+            },
+            {
+                "type":"text",
+                "id":"lowprice_originalcost",
+                "label":"original cost"
+            },
+            {
+              "type": "product",
+              "id": "lowprice_product",
+              "label": "product"
+            },
+            {
+              "type": "text",
+              "id": "remaining_number",
+              "label": "the remaining number"
+            },
+            {
+              "type": "text",
+              "id": "schedule_a",
+              "label": "schedule"
+            },
+            {
+              "type": "text",
+              "id": "schedule_sum",
+              "label": "schedule sum"
+            }
+          
+        ]
+      }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

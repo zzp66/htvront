@@ -1,0 +1,273 @@
+{% style %}
+   #shopify-section-{{ section.id }} .thousand-time{
+     background: {{ section.settings.bg_color }};
+    {% if section.settings.bg_image != blank   %}
+      background-image: url("{{section.settings.bg_image | img_url:'1920x' }}");
+      background-repeat: no-repeat;
+      background-size: contain;
+    {% endif %} 
+  }
+   @media screen and (max-width: 768px){
+     #shopify-section-{{ section.id }} .thousand-time{
+       background:{{section.settings.bg_color_app}}
+     }
+   }
+{% endstyle %}
+<style>
+  .time-desc{
+    color:{{section.settings.desc_text_color}};
+    font-size:{{section.settings.desc_font_size}}px; 
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 26px;
+    font-weight:bold;
+  }
+  .thousand-time{
+    padding: 40px 0;
+  }
+  .thousand-time .time-width{
+    position: relative;
+    letter-spacing: 0;
+  }
+  .thousand-time .time-bg{
+    margin:0 auto;
+  }
+  .date-box{
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 85px;
+  }
+  .date-box>div{
+    width: 100px;
+    height: 100px;
+    background: {{section.settings.time_box_bg_color}};
+    box-shadow: inset 0px 4px 7px 0px rgba(167,94,41,0.5);
+    border-radius: 4px;
+    border: 3px solid {{section.settings.time_box_border_color}};
+    margin-right: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .date-box>div:nth-last-child(1){
+    margin-right:0;
+  }
+  .date-box>div>span:nth-child(1){
+    font-weight: 600;
+    font-size: 45px;
+    color: {{section.settings.time_text_color}};
+    line-height: 52px;
+  }
+  .date-box>div>span:nth-child(2){
+    font-size: 22px;
+    color: {{section.settings.time_text_color}};
+    line-height: 30px;
+  }
+  @media screen and (max-width: 820px){
+    .time-desc{
+      font-size: 16px;
+      top: 8px;
+    }
+    .date-box>div{
+      width: 57px;
+      height: 57px;
+      box-shadow: inset 0px 3px 4px 0px rgba(167,94,41,0.5);
+      border-width:2px;
+      margin-right:10px;
+    }
+    .date-box>div>span:nth-child(1){
+      font-size: 22px;
+      line-height: 26px;
+    }
+    .date-box>div>span:nth-child(2){
+      font-size: 12px;
+      line-height: 16px;
+    }
+    .date-box{
+      top:37px;
+    }
+    .thousand-time{
+      padding:18px 0;
+    }
+  }
+</style>
+<div class="thousand-time">
+  <div class="time-width">
+     <picture>
+        <source media="(max-width: 820px)" srcset="{{ section.settings.time_bg_mobile | img_url:'339x' }}" />
+        <source media="(min-width: 821px)" srcset="{{ section.settings.time_bg | img_url:'803x' }}">
+        <img src="{{ section.settings.time_bg | img_url:'803x' }}" class="time-bg"/>
+      </picture>
+    <div class="time-desc">
+      {{ section.settings.desc }}
+    </div>
+    <div class="date-box">
+      <div>
+         <span id="day">00</span>
+         <span>Days</span>
+      </div>
+      <div>
+        <span id="hour">00</span>
+        <span>Hours</span>
+      </div>
+      <div>
+        <span id="minute">00</span>
+        <span>Mins</span>
+      </div>
+      <div>
+        <span id="second">00</span>
+        <span>Secs</span>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    var day = $('#day')[0];
+    var hour = $("#hour")[0];
+    var minute = $("#minute")[0];
+    var second = $("#second")[0];
+    var time_hour = `{{ section.settings.time_hour }}`
+    var time_date = `{{ section.settings.time_date }}`
+    var inputTime = new Date(""+ time_date.replace(/-/g, "/"));
+    //倒计时 根据小时
+    !(function () {
+        var oldtime; //传入的时间
+        if (localStorage.getItem('countdown')) {
+            oldtime = localStorage.getItem('countdown')
+        } else {
+            oldtime = new Date();
+            oldtime = oldtime.setHours(oldtime.getHours() + Number(time_hour)); //根据传入小时来计算
+            localStorage.setItem('countdown', oldtime)
+        }
+        //时间换算 根据小时
+       if(time_hour > 0){
+         function timer (oldtime) {
+          var newtime = new Date();
+          var time = (oldtime - newtime) / 1000;
+          var d = parseInt(time / 60 / 60 / 24)
+          var h = parseInt(time / 60 / 60 % 24);
+          var m = parseInt(time / 60 % 60);
+          var s = parseInt(time % 60);
+          return d + "," + h + "," + m + "," + s + ",";
+        }
+        var myVar = setInterval(function () {
+            var arr = timer(oldtime).split(",");
+            day.innerHTML = arr[0] < 10 ? "0" + arr[0] : arr[0];
+            hour.innerHTML = arr[1] < 10 ? "0" + arr[1] : arr[1];
+            minute.innerHTML = arr[2] < 10 ? "0" + arr[2] : arr[2];
+            second.innerHTML = arr[3] < 10 ? "0" + arr[3] : arr[3];
+            if(Number(arr[0]) <= 0 && Number(arr[1]) <= 0 && Number(arr[2]) <= 0 && Number(arr[3]) <= 0){
+              day.innerHTML = '00';
+              hour.innerHTML = '00';
+              minute.innerHTML = '00';
+              second.innerHTML = '00'
+              clearInterval(myVar)
+            }
+        }, 1000)
+       }else{
+          countDown();
+          //定时器 每隔一秒变化一次
+          var timer_s = setInterval(countDown, 1000);
+          function countDown() {
+            //获取当前时间的时间戳（单位毫秒）
+            var nowTime = +new Date();
+            //把剩余时间毫秒数转化为秒
+            var times = (inputTime - nowTime) / 1000;
+            if (times > 0) {
+               var d = Math.floor(times /60 / 60 / 24 );
+            //计算小时数 转化为整数
+            //如果小时数小于 10，要变成 0 + 数字的形式 赋值给盒子
+            day.innerHTML = d < 10 ? "0" + d : d;
+            var h = Math.floor(times /60 / 60 % 24 );
+            //计算小时数 转化为整数
+            //如果小时数小于 10，要变成 0 + 数字的形式 赋值给盒子
+            hour.innerHTML = h < 10 ? "0" + h : h;
+            //计算分钟数 转化为整数
+            var m = parseInt(times / 60 % 60);
+            //如果分钟数小于 10，要变成 0 + 数字的形式 赋值给盒子
+            minute.innerHTML = m < 10 ? "0" + m : m;
+            //计算描述 转化为整数
+            var s = parseInt(times % 60);
+            // //如果秒钟数小于 10，要变成 0 + 数字的形式 赋值给盒子
+            second.innerHTML = s < 10 ? "0" + s : s;
+            } else {
+              clearInterval(timer_s);
+            }
+         }
+       }
+    })()
+</script>
+{% schema %}
+  {
+    "name": "Thousand-Time",
+    "settings": [
+      {
+        "type":"image_picker",
+        "id":"bg_image",
+        "label":"background image(模块背景图)"
+      },
+      {
+        "type":"color",
+        "id":"bg_color",
+        "label":"background color(模块背景底色)"
+      },
+      {
+        "type":"color",
+        "id":"bg_color_app",
+        "label":"background color app(移动端纯色,必填）"
+      },
+      {
+        "type":"color",
+        "id":"desc_text_color",
+        "label":"desc text color"
+      },
+      {
+        "type":"color",
+        "id":"time_box_bg_color",
+        "label":"时间背景颜色"
+      },
+      {
+        "type":"color",
+        "id":"time_box_border_color",
+        "label":"时间边框颜色"
+      },{
+        "type":"number",
+        "id":"desc_font_size",
+        "label":"desc font size"
+      },
+      {
+        "type":"number",
+        "id":"time_hour",
+        "label":"time hour倒计时小时"
+      },{
+        "type":"text",
+        "id":"time_date",
+        "label":"time date(例子:2024-3-10 14:35:00)二选一"
+      },{
+        "type":"image_picker",
+        "id":"time_bg",
+        "label":"time background image"
+      },{
+        "type":"image_picker",
+        "id":"time_bg_mobile",
+        "label":"time background image mobile"
+      },{
+      "type":"text",
+      "id":"desc",
+      "label":"desc"
+      },{
+        "type":"color",
+        "id":"time_text_color",
+        "label":"time text color"
+      }],
+     "presets": [
+        {
+          "name": "Thousand-Time"
+        }
+      ]
+  }
+{% endschema %}

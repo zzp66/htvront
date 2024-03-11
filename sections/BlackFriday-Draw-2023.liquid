@@ -1,0 +1,270 @@
+<style>
+    .swiper-wrapper-draw .swiper-slide {
+        width: auto;
+        margin-left: 50px !important;
+    }
+  .draw-swiper-slide{
+    margin-left:20px !important;
+  }
+</style>
+<div class="black-friday-draw common-width" id="{{ section.settings.id }}">
+   <div class="black-module-title">
+    <p>{{ section.settings.title }}</p>
+  </div>
+  <div class="draw-container">
+      <div class="draw-swiper">
+          <div class="swiper-wrapper swiper-wrapper-draw">
+            {% for block in section.blocks %}
+              {% if block.type == 'scroll_text' %}
+                <div class="swiper-slide draw-swiper-slide">{{ block.settings.text }}</div>
+              {% endif %}
+            {% endfor %}
+          </div>
+      </div>
+    </div>
+  <div class="draw-gifts">
+    {% for block in section.blocks %}
+      {% if block.type == 'gifts' %}
+        <img src="{{ block.settings.gifts_image | img_url:'335x'  }}">
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div class="draw-box">
+    <div class="draw-from">
+      <input class="draw-input" type="text" placeholder="Enter your order number">
+      <div class="join-draw" id="join_draw">
+        <span class="join-draw-text">Join Draw</span>
+      </div>
+      <div class="join-draw" id="loading_draw" style="display:none">
+        <div class="loading-svg">
+           <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="draw-tips" style="color:red">*Please enter the order number.</div>
+    <div class="draw-rules">
+      {{ section.settings.draw_rules }}
+    </div>
+  </div>
+</div>
+<div class="draw-dialog" id="win-product">
+   <img
+      class="icon-draw-close close-btn"
+      src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/1_1127fe7a-ad88-4e6e-b202-62ef346a37b3.png?v=1698990834"
+    >
+  <div class="win-title">
+     <p>Congratulations</p>
+  </div>
+  <div class="win-message">
+    You've just hit the jackpot - <span id="winAwardsEnglishName"></span> is yours now！
+  </div>
+  <div class="win-code">
+     code:
+    <span id="winTicketCode"></span>
+    <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Group_18.png?v=1698810268" id="copy-click">
+  </div>
+  <div>
+     <img src="" class="draw-img-url">
+  </div>
+  <div class="productTips">
+    <p>- Please take a screenshot to save your winning information.</p>
+    <p>- Copy the prize code, then click "Redeem Now" to claim your prize, or add the corresponding product to your cart for redemption.</p>
+  </div>
+  <div class="codeTips">
+    <p>- Please take a screenshot of your winning information or contact customer service to get the code.</p>
+    <p>- Coupons are available from Nov. 29, 2023 - Dec. 28, 2023.</p>
+  </div>
+  <a class="turn_url" target="_blank" href="javascript:;">Redeem Now</a>
+  <a class="bundle-close close-btn">Got it</a>
+</div>
+<div class="tips-dialog" id="tips">
+   <img
+      class="icon-draw-close close-btn"
+      src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/1_1127fe7a-ad88-4e6e-b202-62ef346a37b3.png?v=1698990834"
+    >
+  <div class="prize-drawn">
+    <div>
+        <p>Sorry !</p>
+        <p>This order has already joined the draw</p>
+    </div>
+    <p>One order, one chance</p>
+  </div>
+  <div class="no-qualification">
+    <p>Please use the order number,</p>
+    <p> which contains Black Friday Warm-up campaign items, </p>
+    <p>for the draw</p>
+  </div>
+  <div class="try-later">
+    <p>Please do not draw consecutively.</p>
+    <p>Please try again later.</p>
+  </div>
+  <div class="no-draw">
+    <p>There are no raffle prizes available at the site.</p>
+  </div>
+  <button class="win-button bundle-close close-btn">Got it</button>
+</div>
+<div class="draw-body-mask"></div>
+
+<script>
+   getDrawList();
+   function getDrawList(){
+    $.ajax({
+      url: "https://qn.htvront.com/black-friday/getDrawList",
+      method: "GET",
+      success: function (data) {
+         var arr = data.data
+         for (let i = 0; i < arr.length; i++) {
+            var div = '<div class="swiper-slide draw-swiper-slide">' + arr[i].winEmail + ' won a ' + arr[i].winAwardsEnglishName + '</div>'
+             $('.swiper-wrapper-draw').append(div)
+        }
+      },
+      error: function (xhr, status, error) {
+      }
+    });
+  }
+  $(function(){
+      var mySwiper_d = new Swiper('.draw-swiper', {
+        speed: 1500,
+        loop: true,
+        simulateTouch: false,
+        noSwiping: true,
+        allowTouchMove: false,
+        slidesPerView: 'auto',
+        autoplay: true
+    })
+    $('#join_draw').on('click',function(){
+      var inputVal = $('.draw-input').val()
+      if(inputVal.trim() == ''){
+        $('.draw-tips').show()
+        return false;
+      }else{
+        $('.draw-tips').hide()
+      }
+      var data = {market: "US_HTVRONT(shopify)",orderNo: inputVal}
+      var jsonData = JSON.stringify(data)
+      $('#join_draw').hide()
+      $('#loading_draw').show()
+      $.ajax({
+        url: "https://qn.htvront.com/black-friday/lottery",
+        method: "POST",
+        data: jsonData,
+        contentType: 'application/json',
+        success: function(res) {
+          $('#join_draw').show()
+          $('#loading_draw').hide()
+          $('.draw-body-mask').css('display',"block")
+          $('body').css({"overflow":"hidden"})
+          if(res.code == 20003){
+             $('.tips-dialog,.prize-drawn').show();
+             $('.win-button.bundle-close').show().css('cursor','pointer')
+          }else if(res.code == 20002){
+             $('.tips-dialog,.no-qualification').show();
+             $('.win-button.bundle-close').show().css('cursor','pointer')
+          }else if(res.code == 20004){
+             $('.tips-dialog,.no-draw').show();
+             $('.win-button.bundle-close').show().css('cursor','pointer')
+          }else if(res.code == 200 && res.data){
+             var arr2 = [res.data]
+             for (let j = 0; j < arr2.length; j++) {
+              $('.draw-dialog').css('display',"block");
+              $('#winAwardsEnglishName').text(arr2[j].winAwardsEnglishName);
+              $('#winTicketCode').text(arr2[j].winTicketCode)
+              $('.draw-img-url').attr('src',arr2[j].awardsImgPath);
+              if(arr2[j].turnUrl != null && arr2[j].turnUrl != ''){
+                $('.productTips').show();
+                $('.turn_url').attr('href',arr2[j].turnUrl).show().css('cursor','pointer');
+              }else{
+                $('.codeTips').show();
+                $('.bundle-close').show().css('cursor','pointer')
+              }
+            }
+          }else{
+             $('.tips-dialog,.try-later').show();
+             $('.win-button.bundle-close').show().css('cursor','pointer')
+          }
+        },
+        error:function(xhr,status,error){
+          $('#join_draw').show()
+          $('#loading_draw').hide()
+          console.log(xhr,status,error)
+        }
+      })
+     })
+     $('.close-btn').on('click',function(){
+       $('.draw-dialog,.tips-dialog,.prize-drawn,.no-qualification,.try-later,.no-draw,.draw-body-mask,.productTips,.codeTips,.turn_url,.bundle-close').hide()
+       $('.draw-input').val('')
+       $('body').css({"overflow":"auto"})
+     })
+    $('#copy-click').on('click',function(){
+      let url = $('#winTicketCode').text();
+      let copyInput = document.createElement('input');
+      document.body.appendChild(copyInput);
+      copyInput.setAttribute('value', url);
+      copyInput.select();
+      document.execCommand("Copy");
+      copyInput.remove();
+      alertMsg()
+    })
+     function alertMsg(){
+      var alertFram = document.createElement("DIV");
+      alertFram.id = "alertFram";
+      alertFram.style.position = "fixed";
+      alertFram.style.width = "100%";
+      alertFram.style.textAlign = "center";
+      alertFram.style.bottom = "40px";
+      alertFram.style.zIndex = "10001";
+      strHtml = " <span style=\"font-family: 微软雅黑;display:inline-block;background:#333;color:#fff;padding:0 20px;line-height:36px;border-radius:6px; \">Copied successfully</span>";
+      alertFram.innerHTML = strHtml;
+      document.body.appendChild(alertFram);
+      setTimeout((function(){
+        alertFram.style.display="none";
+      }),2000);
+    }
+  })
+</script>
+{% schema %}
+  {
+    "name": "Black Friday Draw",
+    "settings": [
+      {
+        "type":"text",
+        "id":"id",
+        "label":"id(页面唯一性，全英文)"
+      },
+      {
+        "type":"text",
+        "id":"title",
+        "label":"title"
+      },{
+        "type":"html",
+        "id":"draw_rules",
+        "label":"draw rules"
+      }
+    ],
+    "blocks":[{
+      "type":"scroll_text",
+      "name": "Scroll text",
+      "settings": [{
+        "type":"text",
+        "id":"text",
+        "label":"text"
+      }]
+   },{
+      "type":"gifts",
+      "name": "gifts",
+      "settings": [{
+        "type":"image_picker",
+        "id":"gifts_image",
+        "label":"gifts image"
+      }]
+   }]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

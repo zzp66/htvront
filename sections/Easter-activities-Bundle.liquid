@@ -1,0 +1,113 @@
+<div class="t activities-Bundle-title"> {{ section.settings.Bundle_title }} </div>
+<div class="activities-Bundle-text"> {{ section.settings.Bundle_text }} </div>
+<ul class="activities-Bundle-ul">
+    {% for block in section.blocks %}
+      <li class="activities-Bundle-list">
+        <div class="activities-Bundle-left_img">
+           {% if block.settings.Bundle_left_img != blank %}
+           {% assign image = block.settings.Bundle_left_img | img_url: '655x' %}
+            <img src="{{ image }}" alt="">
+           {% endif %}
+            <div id="svg{{ forloop.index0 }}" data-title="SVG" style="display: none;">{{ block.settings.svg }}</div>
+           <div class="download_svg" onclick="downLoadSvg({{ forloop.index0 }})"> Download Free Svg</div>
+        </div>
+        <div class="activities-Bundle-product">
+            {% render 'activities-Bundle-product',
+              card_product: block.settings.Bundle_product,
+              Bundle_html_text: block.settings.Bundle_html_text
+            %}
+        </div>
+      </li>
+   {% endfor %}
+  </ul>
+<script>
+ $(function(){
+   var url_day = window.location.toString();//进这个页面的url
+    if(url_day.indexOf("spring-sale-bundle") !== -1) {
+        $('html, body').animate({
+          scrollTop: $('#shopify-section-Easter-activities-Bundle').offset().top - 120 //65为设置的偏移值
+        });
+    }
+       if(url_day.indexOf("spring-sale-30off") !== -1) {
+        $('html, body').animate({
+          scrollTop: $('#shopify-section-Easter-activities-collection').offset().top - 50 //65为设置的偏移值
+        });
+    }
+ 
+})
+        // 下载svg
+    function downLoadSvg(id){
+        // var email = '{{ customer.email }}';
+        // if (email) {
+            let content = $('#svg' + id).html();
+            let blob = new Blob([content], {type: 'image/svg+xml'});
+            fileName = $('#svg' + id).attr('data-title') + '.svg';
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = fileName;
+            link.click();
+            window.URL.revokeObjectURL(link.href);
+        // } else {
+        //     $('.svg-pop').show();
+        // }
+    }
+    </script>
+{% schema %}
+  {
+    "name": "Bundle",
+    "max_blocks": 3,
+    "settings": [
+         {
+            "type":"text",
+            "id":"Bundle_title",
+            "label":"title"
+        },
+         {
+            "type":"text",
+            "id":"Bundle_text",
+            "label":"text"
+        }
+    ],
+     "blocks": [
+      {
+        "type": "bundle",
+        "name": {
+          "en": "bundle"
+        },
+        "settings": [
+            {
+    			"type": "image_picker",
+    			"id": "Bundle_left_img",
+    			"label": {
+    				"en": "left image"
+    			}
+    		},
+            {
+    			"type": "html",
+    			"id": "svg",
+    			"label": {
+    				"en": "SVG"
+    			}
+    		},
+           {
+              "type": "product",
+              "id": "Bundle_product",
+              "label": "Bundle product"
+            },
+           {
+              "type": "html",
+              "id": "Bundle_html_text",
+              "label": "html text"
+            }
+          
+        ]
+      }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

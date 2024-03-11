@@ -1,0 +1,146 @@
+<ul class="fn-christmasactivities-main_ul">
+      <li class="fn-christmasactivities-main_list">
+        <div class="fn-christmasactivities-main_list_backdrop">
+            {% if section.settings.Products_backdrop_a != blank %}
+                <img src="{{  section.settings.Products_backdrop_a | img_url: '1508x' }}" alt="">
+            {% endif %}
+        </div>
+      <div class="fn-christmasactivities-main_list_main">
+             <div class="fn-christmasactivities-main_list_img">
+            {% if section.settings.Products_imges != blank %}
+                <img src="{{  section.settings.Products_imges | img_url: '657x' }}" alt="">
+            {% endif %}
+            </div>
+            <div class="fn-christmasactivities-main_list_content">
+              {{ section.settings.Products_content_a}}
+              <div class="fn-christmasactivities-products">
+                   {% render 'fn-christmas-products',
+                    card_product: section.settings.christmas_product,
+                    sum_inventory: section.settings.sum_inventory
+                    %}
+              </div>
+            </div>
+      </div>
+    </li>
+  {% for block in section.blocks %}
+    <li class="fn-christmasactivities-main_list">
+        <div class="fn-christmasactivities-main_list_backdrop">
+            {% if block.settings.Products_backdrop != blank %}
+                <img src="{{  block.settings.Products_backdrop | img_url: '1242x' }}" alt="">
+            {% endif %}
+        </div>
+      <div class="fn-christmasactivities-main_list_main">
+            <div class="fn-christmasactivities-main_list_img">
+            {% if block.settings.Products_media != blank %}
+                <img src="{{  block.settings.Products_media | img_url: '657x' }}" alt="">
+            {% endif %}
+            </div>
+            <div class="fn-christmasactivities-main_list_content">
+              {{ block.settings.Products_content}}
+              <div class="fn-christmasactivities-products">
+                   {% render 'fn-christmas-products',
+                    card_product: block.settings.christmas_product_a,
+                    sum_inventory: block.settings.sum_inventory_a
+                    %}
+              </div>
+            </div>
+      </div>
+
+      
+    </li>
+   {%- endfor -%}
+</ul>
+{% schema %}
+  {
+    "name": "christmas product",
+    "settings": [
+          {
+             "type":"image_picker",
+             "id":"Products_backdrop_a",
+             "label":{
+             "en":"Products background image",
+             "zh-CN":"产品背景图片"
+           }
+         },
+        {
+             "type":"image_picker",
+             "id":"Products_imges",
+             "label":{
+             "en":"Products image",
+             "zh-CN":"产品图片"
+           }
+         },
+         {
+           "type":"html",
+           "id":"Products_content_a",
+           "label":{
+           "en":"Products content",
+           "zh-CN":"内容"
+         }
+       }, 
+       {
+          "type": "product",
+          "id": "christmas_product",
+          "label": "product"
+         },
+       {
+          "type": "text",
+          "id": "sum_inventory",
+          "label": "sum"
+         }
+    ],
+    "blocks": [
+     {
+       "type": "product",
+       "name": {
+         "en": "Christmas Event Products",
+         "zh-CN": "圣诞活动产品"
+       },
+       "settings": [
+
+              {
+                 "type":"image_picker",
+                 "id":"Products_backdrop",
+                 "label":{
+                 "en":"Products background image",
+                 "zh-CN":"产品背景图片"
+               }
+             },
+                  
+              {
+                 "type":"image_picker",
+                 "id":"Products_media",
+                 "label":{
+                 "en":"Products image",
+                 "zh-CN":"产品图片"
+               }
+              },
+             {
+               "type":"html",
+               "id":"Products_content",
+               "label":{
+               "en":"Products content",
+               "zh-CN":"内容"
+             }
+           },
+          {
+            "type": "product",
+            "id": "christmas_product_a",
+            "label": "product"
+          },
+          {
+            "type": "text",
+            "id": "sum_inventory_a",
+            "label": "sum"
+         }
+       ]
+     }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,1646 @@
+<style>
+  .fn-account {
+    margin: 40px 0 100px 0;
+  }
+  .fn-account-mun {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333333;
+    cursor: context-menu;
+    line-height: 1;
+    margin-bottom: 30px;
+  }
+  .fn-account .fn-page-width {
+    display: flex;
+  }
+  .fn-account-nav {
+    padding-right: 40px;
+    width: 26%;
+    border-right: 1px solid #D8D8D8;
+  }
+  .fn-child-menu {
+    cursor: pointer;
+/*     display: none; */
+  }
+  .fn-child-menu li:nth-child(1){
+    margin-top: 20px;
+  }
+
+  .fn-account-clickicon {
+    margin-left: 25%;
+    width: 15px;
+    display: inline-block;
+  }
+  .fn-child-menu li {
+    font-size: 20px;
+    margin-top: 16px;
+    color: rgba(51, 51, 51, 0.8);
+  }
+  .fn-account-content {
+    margin-left: 20px;
+    width: 74%;
+  }
+  .fn-my-account-title {
+    margin-bottom: 40px;
+    height: 28px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 28px;
+  }
+  .active {
+    color: #FF7606 !important;
+  }
+  .secondary-title .fn-account-item {
+    display: none;
+  }
+  .primary-title .title-content {
+    display: none;
+  }
+  .fn-my-account-preferential {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+        display: none;
+  }
+  .fn-my-account-place {
+    display: flex;
+    flex-wrap: wrap;
+}
+ .fn-my-account-place .fn-preferential-integral {
+    width: 40%;
+}
+  .fn-my-account-preferential .fn-preferential-integral {
+    width:23%;
+  }
+  .fn--integral-number {
+    text-align: center;
+    height: 28px;
+    font-size: 28px;
+    color: #333333;
+    line-height: 28px;
+  }
+  .fn--integral-text {
+    height: 22px;
+    font-size: 22px;
+    color: rgba(51, 51, 51, 0.8);
+    line-height: 22px;
+    text-align: center;
+    margin: 15px 0 20px 0;
+  }
+  .fn--integral-button {
+    width: 270px;
+    height: 54px;
+    background: #FF7606;
+    border-radius: 6px;
+    font-size: 24px;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 54px;
+    cursor: pointer;
+  }
+  .fn-edit-information {
+    font-size: 22px;
+    color: #333333;
+    line-height: 22px;
+/*     margin-top: 40px; */
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .fn-edit-information span{
+    display: inline-block;
+    color: #1675ff;
+  }
+  .fn-personal-details {
+    margin-top: 10px;
+    height: 18px;
+    font-size: 18px;
+    color: rgba(51, 51, 51, 0.8);
+    line-height: 18px;
+  }
+  .fn-marketing {
+    height: 18px;
+    font-size: 18px;
+    color: #333333;
+    line-height: 18px;
+    margin-top: 10px;
+  }
+  .fn-marketing-address.phone {
+    margin-top: 10px;
+  }
+  .fn-marketing-address {
+    height: 24px;
+    font-size: 18px;
+    color: #333333;
+    line-height: 24px;
+  }
+  .fn-marketing-address {
+    margin-top: 5px;
+    height: 24px;
+    font-size: 18px;
+    color: #333333;
+    line-height: 24px;
+  }
+  .fn-Center-search {
+    text-align: -webkit-center;
+    height: 270px;
+    background: #FFE7D4;
+    border-radius: 16px;
+    padding-top: 80px;
+  }
+  .fn-search-title {
+    height: 28px;
+    font-size: 28px;
+    color: #FFFFFF;
+    line-height: 28px;
+    margin-bottom: 30px;
+  }
+  input.fn-Center-input {
+    border: 0;
+    width: 75%;
+  }
+  .fn-searchInpu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    width: 425px;
+    height: 50px;
+    padding: 0 12px;
+    border-radius: 8px;
+  }
+  .fn-search-button {
+    width: 92px;
+    font-size: 18px;
+    color: #FFFFFF;
+    height: 34px;
+    background: #FF7606;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .fn-classify-title {
+    height: 24px;
+    font-size: 24px;
+    color: rgba(51, 51, 51, 0.9);
+    line-height: 24px;
+    margin-bottom: 36px;
+    font-weight: 600;
+  }
+  .fn-questions-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .fn-questions-list a {
+    display: inline-block;
+  }
+  .fn-questions-list div {
+    width: 32%;
+    font-size: 18px;
+    color: #333333;
+    line-height: 24px;
+    margin-bottom: 26px;
+  }
+  img.center-img {
+    display: inline-block;
+  }
+  .fn-Center-questions.classify {
+    margin-top: 70px;
+  }
+  .fn-Center-HTVRONT {
+    margin: 44px 0 70px 0;
+  }
+  .fn-htvront-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .fn-classify-img {
+    width: 40px;
+    height: 40px;
+    margin-right: 18px;
+  }
+  .fn-classify-img img{
+    width: 100%;
+  }
+
+  .fn-list-image {
+    display: flex;
+    font-size: 20px;
+    color: #333333;
+    padding-top: 5px;
+    font-weight: 600;
+  }
+  .fn-list-on .box + .box {
+    height: 18px;
+    font-size: 18px;
+    color: #333333;
+    line-height: 18px;
+    margin-bottom: 20px;
+    padding-left: 60px;
+  }
+  .fn-Center-ContactUs {
+    margin-top: 70px;
+  }
+  .fn-contactUs-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .fn-contactUs-list li:nth-child(2) {
+    margin-left: 140px;
+  }
+  .fn-list-title {
+    height: 20px;
+    font-size: 20px;
+    color: #333333;
+    line-height: 20px;
+  }
+  .fn-contactUs-list li div + div {
+    height: 18px;
+    font-size: 18px;
+    color: rgba(51, 51, 51, 0.8);
+    line-height: 18px;
+    margin-top: 14px;
+  }
+  .buttonIist {
+    background: #FF7606;
+    border-radius: 4px;
+  }
+  .fn-button-Email.buttonIist {
+    width: 135px;
+    height: 42px;
+    font-size: 18px;
+    color: #FFFFFF;
+    line-height: 42px;
+    text-align: center;
+  }
+  .fn-button-Consult.buttonIist {
+    width: 182px;
+    height: 42px;
+    font-size: 18px;
+    color: #FFFFFF;
+    line-height: 42px;
+    text-align: center;
+    margin-top: 45px;
+  }
+  .fn-my-account-email {
+    height: 24px;
+    font-size: 24px;
+    color: #333333;
+    line-height: 24px;
+  }
+  .fn-my-account-emailImg {
+    height: 20px;
+    font-size: 20px;
+    color: #333333;
+    line-height: 20px;
+    margin: 25px 0 15px 0;
+  }
+  .fn-my-account-text {
+    font-size: 18px;
+    color: rgba(51, 51, 51, 0.8);
+  }
+  .fn-my-account-button {
+    width: 135px;
+    height: 42px;
+    background: #FF7606;
+    border-radius: 4px;
+    font-size: 18px;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 42px;
+    margin-top: 32px;
+  }
+
+  .fn-profile-textEdit {
+    height: 24px;
+    font-size: 24px;
+    color: #333333;
+    line-height: 24px;
+  }
+  .fn-profile-EditeXplain {
+    height: 20px;
+    font-size: 20px;
+    color: #666666;
+    line-height: 20px;
+    margin: 14px 0 22px 0;
+  }
+  .fn-profile .customer:not(.account):not(.order) {
+    max-width: 100%;
+    margin: 0;
+  }
+  .fn-profile .customer form {
+    margin: 0;
+  }
+  .fn-profile-message {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .fn-profile-AddressLastName {
+    width: 49%;
+  }
+  .fn-profile-AddressFirstName_ {
+    width: 49%;
+  }
+  label.fn-profile-labelName {
+    display: block;
+    height: 20px;
+    font-size: 20px;
+    color: rgba(51, 51, 51, 0.8);
+    line-height: 20px;
+  }
+  .fn-profile-input {
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
+    border-radius: 4px;
+    border: 1px solid #CCCCCC;
+    color: #333333;
+    padding: 0 12px;
+    margin: 16px 0 20px 0;
+  }
+  span.fn-profile-must {
+    color: #ff3a3a;
+  }
+  .fn-profile-checkbox {
+    margin: 10px 0 20px 0;
+  }
+  .fn-select {
+    padding: 0 12px;
+    width: 100%;
+    height: 50px;
+    position: relative;
+    margin: 16px 0 40px 0;
+    border-radius: 4px;
+    border: 1px solid #CCCCCC;
+    -webkit-appearance: none;
+    font-size: 18px;
+    color: #333333;
+  }
+  .fn-select-choice {
+    width: 100%;
+    height: 50px;
+    border-radius: 4px;
+    border: 1px solid #CCCCCC;
+    padding: 0 12px;
+    appearance: none;
+    font-size: 18px;
+    color: #333333;
+  }
+  button.fn-select-button {
+    height: 50px;
+    background: #FF7606;
+    border-radius: 6px;
+    border: 0;
+    font-size: 22px;
+    color: #FFFFFF;
+    padding: 14px 32px;
+    line-height: 22px;
+  }
+  .Update_password + .Update_password {
+    margin: 20px 0;
+  }
+  .fn-profile-all + .fn-profile-all {
+    display: none;
+  }
+  .fn-profile-AddressLastselect {
+    position: relative;
+  }
+  .icon {
+    width: 12px;
+    position: absolute;
+    top: 48%;
+    left: 96%;
+  }
+  .fn-book-addButton {
+    width: 250px;
+    height: 50px;
+    background: #FF7606;
+    border-radius: 4px;
+    font-size: 22px;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 50px;
+    margin-top: 40px;
+    cursor: pointer;
+  }
+  .fn-book-menuadd,
+  .fn-book-menu {
+    display: none;
+  }
+  .fn-address_title {
+    height: 22px;
+    font-size: 22px;
+    color: #333333;
+    line-height: 22px;
+    margin-bottom: 40px;
+  }
+  .fn-edit-information a{
+    display: inline-block;
+    color: #1675ff;
+  }
+  .fn-book-message {
+    display: flex;
+    justify-content: space-between;
+  }
+  .fn-book-Country,
+  .fn-book-AddressLastName {
+    width: 53%;
+  }
+  .fn-book-Province,
+  .fn-book-ZIP,
+  .fn-book-AddressFirstName_ {
+    width: 45%;
+  }
+  .fn-book-city {
+    width: 53%;
+    z-index: 1;
+  }
+  .fn-book-inputMenu {
+    width: 100%;
+    height: 50px;
+    border-radius: 4px;
+    padding: 0 12px;
+    border: 1px solid #CCCCCC;
+    padding: 0 12px;
+  }
+  .fn-book-select {
+    height: 50px;
+    position: relative;
+    margin-top: 8px;
+  }
+  .fn-book-icon {
+    width: 12px;
+    position: absolute;
+    top: 50%;
+    left: 93%;
+  }
+  button.fn-Address-button.buttonLeft {
+    background: #CCCCCC;
+  }
+  button.fn-Address-button.buttonRight {
+    background: #FF7606;
+    margin-left: 20px;
+  }
+  button.fn-Address-button {
+    width: 115px;
+    height: 50px;
+    border-radius: 6px;
+    border: none;
+    font-size: 22px;
+    color: #FFFFFF;
+  }
+  .fn-all + .fn-all{
+    margin-top: 15px;
+  }
+  .fn-book-inputMenu {
+    margin-top: 8px;
+  }
+  .fn-brandType {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+  }
+  .BrandModels {
+    width: 385px;
+    height: 305px;
+    border-radius: 8px;
+    border: 1px solid #CCCCCC;
+    text-align: center;
+    position: relative;
+  }
+  .fn-Machine-CricutMaker {
+    margin-left: 20px;
+  }
+  .fn-BrandModels-title {
+    height: 28px;
+    font-size: 24px;
+    color: #333333;
+    line-height: 28px;
+    margin-top: 30px;
+  }
+  .fn-my-account-title #Machine_EDIT {
+    color: #1675FF;
+    cursor: pointer;
+  }
+  .fn-BrandModels-content {
+    height: 20px;
+    font-size: 20px;
+    color: rgba(51, 51, 51, 0.8);
+    line-height: 20px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .fn-recommend-title {
+    height: 24px;
+    font-size: 30px;
+    color: #333333;
+    line-height: 24px;
+    margin-bottom: 40px;
+    font-weight: bold;
+  }
+  .fn-recommend-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .fn-recommend-productParticulars {
+    width: 32%;
+  }
+  .fn-Machine .media {
+    position: static;
+  }
+  .fn-Machine .card__information {
+    display: flex;
+    align-items: center;
+    padding: 20px 0 0 0;
+  }
+  .fn-Machine .card__heading {
+    width: 50%;
+  }
+  .fn-Machine .card-information {
+    width: 50%;
+  }
+  .fn-Machine .card__information_a {
+    display: block;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+  }
+  .fn-Machine .price.price--on-sale {
+    margin-top: 0;
+    font-weight: bold;
+    color: #FF7606;
+    float: right;
+    font-size: 36px;
+  }
+  .fn-Machine .card-information>*:not(.visually-hidden:first-child)+*:not(.rating) {
+    margin-top: 0;
+    font-weight: bold;
+    color: #FF7606;
+    float: right;
+    font-size: 30px;
+  }
+  .fn-Machine .sale-attribute {
+    margin: 8px 0 0 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .fn-Machine .sale-product-color {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .fn-Machine ul.sale-product-color.sale-Color_number {
+    margin: 10px 0 0 0;
+  }
+  .fn-Machine .sale-color div {
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+    border-radius: 50%;
+  }
+  .fn-Machine .sale-product-color .sale-color + .sale-color{
+    margin-left: 5px;
+  }
+  .fn-Machine .sale-product-color .sale-color{
+    padding: 2px;
+    border-radius: 100%;
+    border: 1px solid #fff;
+  }
+  .fn-Machine .sale-product-color .sale-color:hover {
+    border: 1px solid #333;
+  }
+  .fn-Machine .sale-product-color .sale-size {
+    border: 1px solid rgba(27, 27, 42, 0.2);
+    width: 30px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .fn-Machine .sale-size:hover{
+    border: 1px solid rgba(27, 27, 42);
+  }
+  .fn-Machine .motion-reduce-buttons {
+    padding: 3px 17px;
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    transform: translate(-50%);
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    width: 60%;
+    text-align: center;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .fn-Machine .card__inner:after {
+    z-index: 1;
+  }
+  .fn-Machine .hover-to-cart:hover .motion-reduce-buttons{
+    opacity: 1;
+    z-index: 999;
+    transition-duration: 1s;
+  }
+  .hover-to-cart:hover .media.media--hover-effect>img:first-child {
+    opacity: 0;
+  }
+  .media.media--hover-effect>img:last-child{
+    opacity: 0;
+  }
+  .hover-to-cart:hover .media.media--hover-effect>img:last-child {
+    opacity: 1;
+  }
+  .fn-typeSelection-title {
+    height: 28px;
+    font-size: 24px;
+    color: #333333;
+    line-height: 28px;
+  }
+  .fn-typeSelection-button {
+    width: 135px;
+    height: 50px;
+    background: #FF7606;
+    border-radius: 6px;
+    font-size: 22px;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 50px;
+    margin-top: 30px;
+    cursor: pointer;
+  }
+  .fn-down-svg {
+    position: absolute;
+    left: 90%;
+    top: 40%;
+  }
+  .fn-select-click h5 {
+    border-radius: 0;
+    color: #333;
+    margin-bottom: 0;
+    font-size: 20px;
+    padding: 12px;
+  }
+  .fn-option-click:hover{
+    background-color: #ff7506;
+  }
+  .fn-select-click {
+    cursor: pointer;
+    position: relative;
+    width: 655px;
+    margin-top: 20px;
+    height: 54px;
+    line-height: 54px;
+    border-radius: 4px;
+    border: 1px solid #CCCCCC;
+  }
+
+  .fn-machine-from ul{
+    box-shadow: 0px 0px 5px 1px #dddddd;
+    border-radius: 20px;
+    border-top: none;
+    margin-bottom: 0;
+    display: none;
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    z-index: 2;
+    left: 0;
+    max-height: 180px;
+    overflow-y: auto;
+  }
+  .fn-machine-from ul>li {
+    background-color: #fff;
+    border-radius: 0;
+    font-size: 22px;
+    padding: 10px 0;
+    text-align: center;
+    color: #333;
+    margin-bottom: 0;
+  }
+  ul.fn-fn-MemberPoints-discount {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  ul.fn-fn-MemberPoints-discount li {
+    margin-bottom: 20px;
+    width: 32%;
+    box-shadow: 0px 4px 14px 0px rgb(0 0 0 / 8%);
+    border-radius: 8px;
+    border: 1px solid #CCCCCC;
+    padding: 45px 75px 35px 75px;
+  }
+  ul.fn-fn-MemberPoints-discount li div:nth-child(1){
+    height: 28px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 28px;
+  }
+  ul.fn-fn-MemberPoints-discount li div:nth-child(2) {
+    height: 20px;
+    font-size: 20px;
+    color: #333333;
+    line-height: 20px;
+    margin: 12px 0px;
+  }
+  ul.fn-fn-MemberPoints-discount li div:nth-child(3) {
+    height: 22px;
+    font-size: 22px;
+    color: #333333;
+    line-height: 22px;
+  }
+  ul.fn-fn-MemberPoints-discount li div:nth-child(4) {
+    height: 18px;
+    font-size: 18px;
+    color: rgba(51, 51, 51, 0.8);
+    line-height: 18px;
+    margin: 12px 0 6px 0;
+  }
+  ul.fn-fn-MemberPoints-discount li div:nth-child(5) {
+    height: 18px;
+    font-size: 18px;
+    color: rgba(51, 51, 51, 0.8);
+    line-height: 18px;
+    margin-bottom: 28px;
+  }
+  .fn-fn-MemberPoints-button {
+    display: flex;
+    width: 198px;
+    height: 50px;
+    background: #FF7606;
+    border-radius: 6px;
+    font-size: 20px;
+    color: #FFFFFF;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+  }
+  .fn-fn-MemberPoints-button img {
+    margin-left: 12px;
+    cursor: pointer;
+  }
+  .primary-title .title-content:first-child {
+    display: block;
+  }
+  @media screen and (min-width: 1250px) and (max-width: 1620px) {
+    .fn-account-clickicon {
+      margin-left: 10%;
+    }
+    .fn-account-nav {
+      padding-right: 0;
+    }
+    .fn--integral-button {
+      width: 100%;
+    }
+    ul.fn-fn-MemberPoints-discount li {
+      padding: 35px 20px;
+    }
+  }
+  @media screen and (min-width: 992px) and (max-width: 1249px) {
+    .fn-account-clickicon {
+      margin-left: 0%;
+    }
+    .fn-account .fn-page-width {
+      flex-wrap: wrap;
+    }
+    .fn-account {
+      margin: 40px 10px 100px 10px;
+    }
+    .fn-account-nav {
+      padding-right: 0;
+      width: 20%;
+    }
+    .fn--integral-button {
+      width: 100%;
+    }
+    ul.fn-fn-MemberPoints-discount li {
+      padding: 35px 20px;
+    }
+    button.fn-select-button {
+      height: 40px;
+      font-size: 16px;
+      line-height: 15px;
+    }
+    .fn-my-account-button,
+    button.fn-Address-button {
+      height: 40px;
+      font-size: 16px;
+    }
+    .fn-button-Email.buttonIist {
+      height: 40px;
+      font-size: 16px;
+      line-height: 40px;
+    }
+    .fn-select,
+    label.fn-profile-labelName,
+    .fn-list-image,
+    .fn-typeSelection-title,
+    .fn-profile-input,
+    .fn-profile-textEdit,
+    .fn-profile-EditeXplain,
+    .fn-marketing-address,
+    .fn-account-mun,
+    .fn-my-account-email,
+    .fn-recommend-title,
+    .fn-list-title,
+    .fn-classify-title,
+    .fn-BrandModels-title,
+    .fn-BrandModels-content,
+    .fn-my-account-title {
+      font-size: 16px;
+    }
+    .fn-classify-title {
+      margin-bottom: 20px;
+    }
+    .fn-list-image {
+      padding-top: 0;
+    }
+    .fn-list-on .box + .box {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    .fn-contactUs-list li div + div {
+      font-size: 16px;
+      margin-top: 15px;
+    }
+    .fn-Center-HTVRONT {
+      margin: 50px 0;
+    }
+    .fn-Center-ContactUs {
+      margin-top: 50px;
+    }
+    .fn-questions-list div {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    .fn-my-account-text,
+    .fn-my-account-emailImg {
+      font-size: 16px;
+      height: 18px;
+      margin: 15px 0 0 0;
+    }
+    ul.fn-fn-MemberPoints-discount li div {
+      font-size: 16px !important;
+    }
+    .fn-fn-MemberPoints-button {
+      height: 40px;
+    }
+    .icon {
+      width: 12px;
+      position: absolute;
+      top: 48%;
+      left: 96%;
+    }
+    ul.fn-child-menu li {
+      font-size: 16px;
+    }
+    .fn-my-account-title {
+      margin-bottom: 25px;
+      font-size: 16px;
+    }
+    .fn--integral-number {
+      font-size: 20px;
+    }
+    .fn--integral-text {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    .fn--integral-button {
+      height: 40px;
+      line-height: 40px;
+      font-size: 18px;
+    }
+    .fn-edit-information {
+      font-size: 16px;
+      margin-top: 20px;
+    }
+    .fn-Center-questions.classify {
+      margin-top: 50px;
+    }
+    .fn-brandType {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 50px;
+    }
+    .BrandModels {
+      width: 49%;
+    }
+    .fn-recommend-productParticulars {
+      width: 48%;
+    }
+    .fn-Machine-CricutMaker {
+      margin-left: 0;
+    }
+  }
+  @media screen and (min-width: 768px) and (max-width: 991px){
+    .fn-account-clickicon {
+      margin-left: 0%;
+    }
+    .fn-left-nav {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .fn-account .fn-page-width {
+      flex-wrap: wrap;
+    }
+    .fn-account {
+      margin: 40px 10px 100px 10px;
+    }
+    .fn-account-nav {
+      padding-right: 0;
+      width: 100%;
+      border-right: 0;
+      border-bottom: 1px solid #d8d8d8;
+      display: flex;
+      justify-content: space-between;
+    }
+    .fn--integral-button {
+      width: 100%;
+    }
+    ul.fn-fn-MemberPoints-discount li {
+      width: 49%;
+    }
+    button.fn-select-button {
+      height: 40px;
+      font-size: 16px;
+      line-height: 15px;
+    }
+    .fn-my-account-button,
+    button.fn-Address-button {
+      height: 40px;
+      font-size: 16px;
+    }
+    .fn-button-Email.buttonIist {
+      height: 40px;
+      font-size: 16px;
+      line-height: 40px;
+    }
+    .fn-select,
+    label.fn-profile-labelName,
+    .fn-list-image,
+    .fn-typeSelection-title,
+    .fn-profile-input,
+    .fn-profile-textEdit,
+    .fn-profile-EditeXplain,
+    .fn-marketing-address,
+    .fn-account-mun,
+    .fn-my-account-email,
+    .fn-recommend-title,
+    .fn-list-title,
+    .fn-classify-title,
+    .fn-BrandModels-title,
+    .fn-BrandModels-content,
+    .fn-my-account-title {
+      font-size: 16px;
+    }
+    .fn-classify-title {
+      margin-bottom: 20px;
+    }
+    .fn-list-image {
+      padding-top: 0;
+    }
+    .fn-list-on .box + .box {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    .fn-contactUs-list li div + div {
+      font-size: 16px;
+      margin-top: 15px;
+    }
+    .fn-Center-HTVRONT {
+      margin: 50px 0;
+    }
+    .fn-Center-ContactUs {
+      margin-top: 50px;
+    }
+    .fn-questions-list div {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    .fn-my-account-text,
+    .fn-my-account-emailImg {
+      font-size: 16px;
+      height: 18px;
+      margin: 15px 0 0 0;
+    }
+    ul.fn-fn-MemberPoints-discount li div {
+      font-size: 16px !important;
+    }
+    .fn-fn-MemberPoints-button {
+      height: 40px;
+    }
+    .icon {
+      width: 12px;
+      position: absolute;
+      top: 48%;
+      left: 96%;
+    }
+    ul.fn-child-menu li {
+      font-size: 16px;
+    }
+    .fn-my-account-title {
+      margin-bottom: 25px;
+      font-size: 16px;
+    }
+    .fn--integral-number {
+      font-size: 20px;
+    }
+    .fn--integral-text {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    .fn--integral-button {
+      height: 40px;
+      line-height: 40px;
+      font-size: 18px;
+    }
+    .fn-edit-information {
+      font-size: 16px;
+      margin-top: 20px;
+    }
+    .fn-Center-questions.classify {
+      margin-top: 50px;
+    }
+    .fn-brandType {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 50px;
+    }
+    .BrandModels {
+      width: 49%;
+    }
+    .fn-recommend-productParticulars {
+      width: 48%;
+    }
+    .fn-Machine-CricutMaker {
+      margin-left: 0;
+    }
+    .call {
+      display: none;
+    }
+    .fn-account-content {
+      margin-top: 20px;
+      margin-left: 0;
+      width: 100%;
+    }
+
+  }
+  @media screen and (min-width: 480px) and (max-width: 767px){
+    .fn-account-clickicon {
+      margin-left: 0%;
+    }
+    .fn-book-city {
+      width: 100%;
+      z-index: 1;
+    }
+    .fn-book-Province, .fn-book-ZIP, .fn-book-AddressFirstName_ {
+      width: 100%;
+    }
+    .fn-book-Country, .fn-book-AddressLastName {
+      width: 100%;
+    }
+    .fn-book-message {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .fn-left-nav {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .fn-account .fn-page-width {
+      flex-wrap: wrap;
+    }
+    .fn-account {
+      margin: 40px 10px 100px 10px;
+    }
+    .fn-account-nav {
+      padding-right: 0;
+      width: 100%;
+      border-right: 0;
+      border-bottom: 1px solid #d8d8d8;
+      display: flex;
+      justify-content: space-between;
+    }
+    .fn--integral-button {
+      width: 100%;
+    }
+    ul.fn-fn-MemberPoints-discount li {
+      width: 49%;
+      padding: 20px 0;
+    }
+    button.fn-select-button {
+      height: 40px;
+      font-size: 16px;
+      line-height: 15px;
+    }
+    .fn-my-account-button,
+    button.fn-Address-button {
+      height: 40px;
+      font-size: 16px;
+    }
+    .fn-button-Email.buttonIist {
+      height: 40px;
+      font-size: 16px;
+      line-height: 40px;
+    }
+    .fn-select,
+    label.fn-profile-labelName,
+    .fn-list-image,
+    .fn-profile-input,
+    .fn-profile-textEdit,
+    .fn-typeSelection-title,
+    .fn-profile-EditeXplain,
+    .fn-marketing-address,
+    .fn-account-mun,
+    .fn-my-account-email,
+    .fn-recommend-title,
+    .fn-list-title,
+    .fn-classify-title,
+    .fn-BrandModels-title,
+    .fn-BrandModels-content,
+    .fn-my-account-title {
+      font-size: 16px;
+    }
+    .fn-classify-title {
+      margin-bottom: 20px;
+    }
+    .fn-list-image {
+      padding-top: 0;
+    }
+    .fn-list-on .box + .box {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    .fn-contactUs-list li div + div {
+      font-size: 16px;
+      margin-top: 15px;
+    }
+    .fn-contactUs-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .fn-contactUs-list li {
+      margin-bottom: 20px;
+    }
+    .fn-contactUs-list li:nth-child(2) {
+      margin-left: 0;
+    }
+    .fn-Center-HTVRONT {
+      margin: 50px 0;
+    }
+    .fn-Center-ContactUs {
+      margin-top: 50px;
+    }
+    .fn-questions-list div {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    .fn-my-account-text,
+    .fn-my-account-emailImg {
+      font-size: 16px;
+      height: 18px;
+      margin: 15px 0 0 0;
+    }
+    ul.fn-fn-MemberPoints-discount li div {
+      font-size: 16px !important;
+    }
+    .fn-fn-MemberPoints-button {
+      height: 40px;
+      width: 80%;
+    }
+    .icon {
+      width: 12px;
+      position: absolute;
+      top: 48%;
+      left: 93%;
+    }
+    ul.fn-child-menu li {
+      font-size: 16px;
+    }
+    .fn-my-account-title {
+      margin-bottom: 25px;
+      font-size: 16px;
+    }
+    .fn--integral-number {
+      font-size: 20px;
+    }
+    .fn--integral-text {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    .fn--integral-button {
+      height: 40px;
+      line-height: 40px;
+      font-size: 18px;
+    }
+    .fn-edit-information {
+      font-size: 16px;
+      margin-top: 20px;
+    }
+    .fn-Center-questions.classify {
+      margin-top: 50px;
+    }
+    .fn-brandType {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 50px;
+    }
+    .BrandModels {
+      width: 49%;
+    }
+    .fn-recommend-productParticulars {
+      width: 48%;
+    }
+    .fn-Machine-CricutMaker {
+      margin-left: 0;
+    }
+    .call {
+      display: none;
+    }
+    .fn-account-content {
+      margin-top: 20px;
+      margin-left: 0;
+      width: 100%;
+    }
+    .fn-my-account-preferential .fn-preferential-integral {
+      width: 45%;
+    }
+    .fn-my-account-place .fn-preferential-integral {
+      width: 50%;
+    }
+    .BrandModels {
+      height: 250px;
+    }
+    .fn-Machine .card__information_a {
+      font-size: 16px;
+    }
+    .fn-Machine .card-information>*:not(.visually-hidden:first-child)+*:not(.rating) {
+      font-size: 18px;
+    }
+    .fn-searchInpu {
+      width: 80%;
+    }
+    .fn-my-account-email {
+      margin-bottom: 25px;
+    }
+    .fn-select-click h5 {
+      font-size: 16px;
+    }
+    .fn-select-click {
+      cursor: pointer;
+      position: relative;
+      width: 100%;
+      margin-top: 20px;
+      height: 40px;
+      line-height: 40px;
+      border-radius: 4px;
+      border: 1px solid #CCCCCC;
+    }
+    .fn-typeSelection-button {
+      height: 40px;
+      font-size: 16px;
+      line-height: 40px;
+    }
+  }
+  @media screen and (max-width: 480px){
+    .fn-account-clickicon {
+      margin-left: 0%;
+    }
+    .fn-book-city {
+      width: 100%;
+      z-index: 1;
+    }
+    .fn-book-Country, .fn-book-AddressLastName {
+      width: 100%;
+    }
+    .fn-book-message {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .fn-book-Province, .fn-book-ZIP, .fn-book-AddressFirstName_ {
+      width: 100%;
+    }
+    .fn-left-nav {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .fn-account .fn-page-width {
+      flex-wrap: wrap;
+      padding: 0;
+    }
+    .fn-account {
+      margin: 40px 10px 100px 10px;
+    }
+    .fn-account-nav {
+      padding-right: 0;
+      width: 100%;
+      border-right: 0;
+      border-bottom: 1px solid #d8d8d8;
+      display: flex;
+      justify-content: space-between;
+    }
+    .fn--integral-button {
+      width: 100%;
+      height: 30px;
+      line-height: 30px;
+      font-size: 14px;
+    }
+    ul.fn-fn-MemberPoints-discount li {
+      width: 49%;
+      padding: 20px 0;
+    }
+    button.fn-select-button {
+      height: 40px;
+      font-size: 14px;
+      line-height: 15px;
+    }
+    .fn-my-account-button,
+    button.fn-Address-button {
+      height: 40px;
+      font-size: 14px;
+    }
+    .fn-button-Email.buttonIist {
+      height: 40px;
+      font-size: 14px;
+      line-height: 40px;
+    }
+    .fn-select,
+    label.fn-profile-labelName,
+    .fn-list-image,
+    .fn-profile-input,
+    .fn-profile-textEdit,
+    .fn-typeSelection-title,
+    .fn-profile-EditeXplain,
+    .fn-marketing-address,
+    .fn-account-mun,
+    .fn-my-account-email,
+    .fn-recommend-title,
+    .fn-list-title,
+    .fn-classify-title,
+    .fn-BrandModels-title,
+    .fn-BrandModels-content,
+    .fn-my-account-title {
+      font-size: 14px;
+    }
+    .fn-classify-title {
+      margin-bottom: 20px;
+    }
+    .fn-list-image {
+      padding-top: 0;
+    }
+    .fn-list-on .box + .box {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+    .fn-contactUs-list li div + div {
+      font-size: 14px;
+      margin-top: 15px;
+    }
+    .fn-contactUs-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .fn-contactUs-list li {
+      margin-bottom: 20px;
+    }
+    .fn-contactUs-list li:nth-child(2) {
+      margin-left: 0;
+    }
+    .fn-Center-HTVRONT {
+      margin: 50px 0;
+    }
+    .fn-Center-ContactUs {
+      margin-top: 50px;
+    }
+    .fn-questions-list div {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+    .fn-my-account-text,
+    .fn-my-account-emailImg {
+      font-size: 14px;
+      height: 18px;
+      margin: 15px 0 0 0;
+    }
+    ul.fn-fn-MemberPoints-discount li div {
+      font-size: 16px !important;
+    }
+    .fn-fn-MemberPoints-button {
+      height: 40px;
+      width: 80%;
+    }
+    .icon {
+      width: 12px;
+      position: absolute;
+      top: 48%;
+      left: 91%;
+    }
+    ul.fn-child-menu li {
+      font-size: 14px;
+    }
+    .fn-my-account-title {
+      margin-bottom: 25px;
+      font-size: 14px;
+    }
+    .fn--integral-number {
+      font-size: 20px;
+    }
+    .fn--integral-text {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .fn-edit-information {
+      font-size: 14px;
+      margin-top: 20px;
+    }
+    .fn-Center-questions.classify {
+      margin-top: 50px;
+    }
+    .fn-brandType {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 50px;
+    }
+    .BrandModels {
+      width: 49%;
+    }
+    .fn-recommend-productParticulars {
+      width: 48%;
+    }
+    .fn-Machine-CricutMaker {
+      margin-left: 0;
+    }
+    .call {
+      display: none;
+    }
+    .fn-account-content {
+      margin-top: 20px;
+      margin-left: 0;
+      width: 100%;
+    }
+    .fn-my-account-preferential .fn-preferential-integral {
+      width: 45%;
+    }
+     .fn-my-account-place .fn-preferential-integral {
+    width: 50%;
+}
+    .BrandModels {
+      height: 250px;
+    }
+    .fn-Machine .card__information_a {
+      font-size: 14px;
+    }
+    .fn-Machine .card-information>*:not(.visually-hidden:first-child)+*:not(.rating) {
+      font-size: 18px;
+    }
+    .fn-searchInpu {
+      width: 80%;
+    }
+    .fn-my-account-email {
+      margin-bottom: 25px;
+    }
+    .fn-personal-details {
+      font-size: 14px;
+    }
+    .fn-select-click {
+      cursor: pointer;
+      position: relative;
+      width: 100%;
+      margin-top: 20px;
+      height: 40px;
+      line-height: 40px;
+      border-radius: 4px;
+      border: 1px solid #CCCCCC;
+    }
+    .fn-select-click h5 {
+      font-size: 14px;
+    }
+    .fn-typeSelection-button {
+      height: 40px;
+      font-size: 16px;
+      line-height: 40px;
+    }
+    .fn-typeSelection-title {
+      line-height: 20px;
+    }
+  }
+</style>
+<div class="fn-account">
+    <div class="fn-page-width">
+        <div class="fn-account-nav">
+            <div class="t fn-my-account-title call">hi, {{customer.default_address.name }}</div>
+            <div class="fn-left-nav">
+                <div class="fn-account-mun fn-toggle">
+                    <div class="fn-account-click active">
+                      Manage My Account
+                      <div class="fn-account-clickicon"><img src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/xiala.png?v=1651902265" alt=""></div>
+                  </div>
+                    <ul class="fn-child-menu">
+                        <li class="fn-account-title profile">My Profile</li>
+                        <li class="fn-account-title address">Address Book</li>
+<!--                         <li class="fn-account-title machine">My Machine</li> -->
+                        <li class="fn-account-title orders">My Orders</li>
+<!--                         <li class="fn-account-title coupon">My Coupon Code</li> -->
+                    </ul>
+                </div>
+                <div class="fn-account-mun">
+                    <div class="fn-account-click">Suggestion</div>
+                </div>
+            </div>
+        </div>
+        <div class="fn-account-content">
+            <div class="primary-title">
+                <div class="title-content">
+                    {% section 'account-manage' %}
+                </div>
+                <div class="title-content">
+                    {% section 'account-Suggestion' %}
+                </div>
+            </div>
+            <div class="secondary-title">
+                <div class="fn-account-item profile-item">
+                    {% section 'account-profile' %}
+                </div>
+                <div class="fn-account-item address-item">
+                    {% section 'account-book' %}
+                </div>
+                <div class="fn-account-item orders-item">
+                    {% section 'account-Orders' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function (){
+        $('.fn-left-nav .fn-account-click').click(function (){
+            var i = $(this).parent().index();
+            var item = $('.title-content');
+            item.eq(i).show();
+            item.eq(i).siblings().hide();
+            $(this).addClass('active');
+            $(this).parent().siblings().children().removeClass('active');
+            $('.fn-account-title').removeClass('active');
+            $('.fn-account-item').hide();
+        });
+        $('.fn-toggle .fn-account-click').click(function (){
+            $(this).siblings(".fn-child-menu").slideToggle(300);
+        });
+        $('.fn-account-title').click(function (){
+            var i = $(this).index();
+            var item = $('.fn-account-item');
+            item.eq(i).show();
+            item.eq(i).siblings().hide();
+            $(this).addClass('active');
+            $(this).siblings().removeClass('active');
+            $('.title-content').hide();
+            $('.fn-account-click').removeClass('active');
+        });
+        $('.account-btn').click(function(){
+            var attr = $(this).attr('data-btn');
+            $(".title-content").hide()
+            $(".fn-child-menu").show();
+            $('.fn-account-click').removeClass('active');
+            $('.' + attr).addClass('active').siblings().removeClass('active');
+            $('.' + attr + "-item").show().siblings().hide();
+        });
+      // console.log(sessionStorage.getItem('Vote'));
+      // return;
+      if(sessionStorage.getItem('Vote') !== null && sessionStorage.getItem('Vote') !== '') {
+        let vote_login = sessionStorage.getItem('Vote');
+        sessionStorage.removeItem("Vote");
+       // console.log('vote_login',sessionStorage.getItem("Vote"));
+        window.location.href= vote_login;
+      }
+    });
+</script>

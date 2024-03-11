@@ -1,0 +1,275 @@
+<div class="influencer-modal">
+  <div class="influencer-modal-bg"></div>
+  <div class="influencer-modal-body">
+    <div class="influencer-modal-header">
+      <h3 class="influencer-title">Free-To-Choose Appication Form</h3>
+      <a href="javascript:void(0)" class="influencer-model-close">
+        <svg
+          class="influencer-close-svg"
+          viewBox="0 0 14 14"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M0.3 13.7C0.5 13.9 0.7 14 1 14C1.3 14 1.5 13.9 1.7 13.7L7 8.4L12.3 13.7C12.5 13.9 12.8 14 13 14C13.2 14 13.5 13.9 13.7 13.7C14.1 13.3 14.1 12.7 13.7 12.3L8.4 7L13.7 1.7C14.1 1.3 14.1 0.7 13.7 0.3C13.3 -0.1 12.7 -0.1 12.3 0.3L7 5.6L1.7 0.3C1.3 -0.1 0.7 -0.1 0.3 0.3C-0.1 0.7 -0.1 1.3 0.3 1.7L5.6 7L0.3 12.3C-0.1 12.7 -0.1 13.3 0.3 13.7Z"></path>
+        </svg>
+      </a>
+    </div>
+    <div class="influencer-modal-content">
+      <p class="influencer-modal-info">Please fill in this form to help us know you better for further cooperation.</p>
+      <form id="coperationForm">
+        <div class="influencer-item">
+          <div class="influencer-question">*01 Your ID and channel</div>
+          <div class="influencer-answer">
+            <div class="influencer-answer-item influencer-answer-linput">
+              <label>ID:<input type="text" name="accountId" class="line-input"></label>
+            </div>
+            <div class="influencer-answer-item influencer-answer-linput">
+              <label>Link:<input type="text" name="link" class="line-input"></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="influencer-item">
+          <div class="influencer-question">*02 The Number of your followers</div>
+          <div class="influencer-answer">
+            <div class="influencer-answer-item influencer-answer-fn">
+              <label><input type="radio" name="followersNumber" value="50k-100k" checked>50k-100k</label>
+              <label><input type="radio" name="followersNumber" value="101k-200k">101k-200k</label>
+              <label><input type="radio" name="followersNumber" value="201-500k">201-500k</label>
+              <label><input type="radio" name="followersNumber" value="500k+">500k+</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="influencer-item">
+          <div class="influencer-question">*03 What was the average video views in the last month?</div>
+          <div class="influencer-answer">
+            <div class="influencer-answer-item">
+              <input type="text" name="videoView">
+            </div>
+          </div>
+        </div>
+
+        <div class="influencer-item">
+          <div class="influencer-question">*04 Regional distribution of your followers</div>
+          <div class="influencer-info">Note: Please describe which regions your followers mainly come from.</div>
+          <div class="influencer-answer">
+            <div class="influencer-answer-item">
+              <textarea name="followersRegional"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="influencer-item">
+          <div class="influencer-question">*05 Personal information</div>
+          <div class="influencer-answer">
+            <div class="influencer-answer-item influencer-answer-linput">
+              <label>First Name:<input type="text" name="firstName" class="line-input"></label>
+            </div>
+            <div class="influencer-answer-item influencer-answer-linput">
+              <label>Last Name:<input type="text" name="lastName" class="line-input"></label>
+            </div>
+            <div class="influencer-answer-item influencer-answer-linput">
+              <label>Email:<input type="text" name="email" class="line-input"></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="influencer-item">
+          <div class="influencer-question">*06 Your Country and State</div>
+          <div class="influencer-answer">
+            <div class="influencer-answer-item">
+              <select name="district">
+                <option vlaue="United States">United States</option>
+                <option vlaue="Australia">Australia</option>
+                <option vlaue="New Zealand">New Zealand</option>
+                <option vlaue="United Kingdom">United Kingdom</option>
+                <option vlaue="Canada">Canada</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="influencer-item">
+          <div class="influencer-question">*07 What HTVRONT products do you prefer?</div>
+          <div class="influencer-answer">
+            <div class="influencer-answer-item influencer-answer-products">
+              <label><input type="checkbox" name="products" value="Adhesive Vinyl">Adhesive Vinyl</label>
+              <label><input type="checkbox" name="products" value="Printable Vinyl">Printable Vinyl</label>
+              <label>
+                <input type="checkbox" name="products" value="Heat Transfer Vinyl (HTV)">Heat Transfer Vinyl (HTV)
+              </label>
+              <label><input type="checkbox" name="products" value="Cardboard">Cardboard</label>
+              <label><input type="checkbox" name="products" value="Sublimation Paper">Sublimation Paper</label>
+              <label><input type="checkbox" name="products" value="Other">Other</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="influencer-item">
+          <div class="influencer-question">*08 Do you have on-line crafting shop?</div>
+          <div class="influencer-answer">
+            <div class="influencer-answer-item influencer-answer-hasShop">
+              <label><input type="radio" name="hasShop" value="1" checked>Yes, I do.</label>
+              <label><input type="radio" name="hasShop" value="0">No, I don't.</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="influencer-item">
+          <div class="influencer-question">*09 Your on-line carafting shop link:</div>
+          <div class="influencer-answer">
+            <div class="influencer-answer-item">
+              <input type="text" name="shopLink">
+            </div>
+          </div>
+        </div>
+
+        <div class="influencer-info influencer-agreement-info">
+          <input type="checkbox" id="argeementCheckbox">
+          <label for="argeementCheckbox">
+            I have read and agree to the
+            <a href="{{ section.settings.answerAgreeemntLink }}" target="_blank">"Answer Agreement"</a>
+            and
+            <a href="{{ section.settings.privacyLink }}" target="_blank">"Questionnaire Privacy Policy"</a>
+          </label>
+        </div>
+
+        <div class="influencer-btns">
+          <input type="button" class="influencer-apply-btn" value="Apply" id="submitBtn">
+          <input type="button" class="influencer-apply-btn influencer-success-btn" value="Successfully Applied">
+        </div>
+
+        <div class="influencer-info influencer-ts-info"></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function(){
+    const validText = 'Please fill in the required information.';
+    const agreementText = 'Please agree the policy.';
+    const successText = "We will contact you via email if you're selected within 7 working days."
+
+    const $coperationForm = $('#coperationForm')
+    const $argeementCheckbox = $('#coperationForm #argeementCheckbox');
+    const $accountId = $('#coperationForm [name="accountId"]');
+    const $link = $('#coperationForm [name="link"]');
+    const $followersNumber = $('#coperationForm [name="followersNumber"]');
+    const $videoView = $('#coperationForm [name="videoView"]');
+    const $followersRegional = $('#coperationForm [name="followersRegional"]');
+    const $firstName = $('#coperationForm [name="firstName"]');
+    const $lastName = $('#coperationForm [name="lastName"]');
+    const $email = $('#coperationForm [name="email"]');
+    const $district = $('#coperationForm [name="district"]');
+    const $hasShop = $('#coperationForm [name="hasShop"]');
+    const $shopLink = $('#coperationForm [name="shopLink"]');
+    const $shopItem = $shopLink.parents('.influencer-item');
+    const $tsInfo = $('#coperationForm .influencer-ts-info');
+
+    //toggle shopLinkItem
+    $hasShop.on('change', function() {
+      if ($(this).val() == '1') {
+        $shopItem.show()
+      } else {
+        $shopItem.hide()
+      }
+    })
+
+    // submit form
+    $(document).on('click', '#submitBtn', function() {
+      const $products = $('#coperationForm [name="products"]:checked');
+      if (!$argeementCheckbox.is(':checked')) {
+        $tsInfo.text(agreementText).addClass('error')
+        return
+      } else {
+        $tsInfo.text('').removeClass('error')
+      }
+
+      // verify form
+      let num = 0;
+      const formArr = [];
+      formArr.push($accountId, $link, $followersNumber, $videoView, $followersRegional, $firstName, $lastName, $email, $district, $products, $hasShop);
+      if ($('#coperationForm [name="hasShop"]:checked').val() == '1') {
+        formArr.push($shopLink)
+      }
+      for (let index = 0; index < formArr.length; index++) {
+          const item = formArr[index];
+          const val = item.val();
+          if (!val) {
+            // console.log(item);
+            item.addClass('error')
+            num++
+          } else {
+            item.removeClass('error')
+          }
+      }
+      if (num) {
+        $tsInfo.text(validText).addClass('error')
+        return;
+      } else {
+        $tsInfo.text('').removeClass('error')
+      }
+
+      // submit form
+      const serializeData = $coperationForm.serializeArray();
+      const queryData = {}
+      for (const item of serializeData) {
+        if (queryData.hasOwnProperty(item.name)) {
+          queryData[item.name] = queryData[item.name] + ',' + item.value
+        } else {
+          queryData[item.name] = item.value
+        }
+      }
+      // console.log(serializeData, queryData)
+      // return;
+      $.ajax({
+        type:'GET',
+        url: 'https://qn.htvront.com/redSelectActivity/questionnaire',
+        data: queryData,
+        // data: 'accountId=1&link=1&followersNumber=50k-100k&videoView=2&followersRegional=3&firstName=4&lastName=5&email=6&district=United+States&products=Other&hasShop=1&shopLink=1',
+        success(res) {
+          $('#submitBtn').hide();
+          $('.influencer-success-btn').show();
+          $tsInfo.text(successText);
+        },
+        error(err) {
+          $tsInfo.text('Something get wrong')
+          console.log('err', err)
+        }
+      });
+    })
+
+    // close apply form modal
+    $(document).on('click', '.influencer-model-close', function() {
+      $('.influencer-modal').hide();
+    })
+  })
+</script>
+
+{% schema %}
+{
+  "name": "Coperation Form",
+  "settings": [
+    {
+      "type": "url",
+      "id": "answerAgreeemntLink",
+      "label": "Answer Agreement link"
+    },
+    {
+      "type": "url",
+      "id": "privacyLink",
+      "label": "Questionnaire Privacy Policy link"
+    }
+  ],
+  "presets": [{
+    "name": "Influencer Coperation Form"
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

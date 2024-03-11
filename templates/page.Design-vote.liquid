@@ -1,0 +1,336 @@
+{{ 'Design-vote.css' | asset_url | stylesheet_tag }}
+<div class="fn-design-vote">
+ {% section 'Design-vote-banner' %}
+ <div class="fn-designvote-main">
+     {% section 'Design-vote-sidbar' %}
+     <div class="fn-designvote-content">
+       <div class="fn-designvote-lsit fn-designvote-pattern">
+           {% section 'Design-vote-pattern' %}
+       </div>
+       <div class="fn-designvote-lsit">
+           {% section 'Design-votes-aboutus' %}
+       </div>
+      <div class="fn-designvote-lsit">
+           {% section 'Design-vote-rules' %}
+       </div>
+       <div class="fn-designvote-lsit">
+           {% section 'Design-vote-FAQ' %}
+       </div>
+        <div class="fn-designvote-lsit">
+           {% section 'Design-vote-myvote' %}
+       </div>
+        <div class="fn-designvote-lsit">
+           {% section 'Design-vote-message' %}
+       </div>
+     </div>
+ </div>
+</div>
+<div class="fn-design-voteemail">
+    <div class="fn-voteemail-main">
+       {% section 'Design-vote-email' %}
+    </div>
+</div>
+<script>
+   $(function(){
+     var clientWidth = document.body.clientWidth;
+        var bar_index;
+        $('.fn-sidebar-list').click(function () {
+              bar_index = $(this).index();
+              $('.fn-designvote-lsit').eq(bar_index).show().siblings().hide();
+              $(this).addClass('sidebar_active').siblings().removeClass('sidebar_active');
+              $(this).children('.fn-sidebar-column').addClass('sidebar_active').parent().siblings().children('.fn-sidebar-column').removeClass('sidebar_active');
+              if(bar_index >=  1) {
+                $('.fn-sidebar-subnav>li').removeClass('sidebar_active');
+              }
+              if(bar_index ===  0) {
+                $('.fn-sidebar-subnav>li').removeClass('sidebar_active');
+                $('.fn-sidebar-subnav>.fn-sidebar-on').addClass('sidebar_active');
+                $('.fn-pattern-lsit').eq(bar_index).show().siblings().hide();
+              }
+              if(clientWidth < '768' || clientWidth == '768') {
+                    $('.fn-sidebar').hide(100);
+              }
+          
+      });
+     
+      $('.fn-sidebar-subnav>li').click(function () {
+               event.stopPropagation();
+              let a = 0;
+              var li_index = $(this).index();
+             $('.fn-designvote-lsit').eq(a).show().siblings().hide();
+             $('.fn-sidebar-column').removeClass('sidebar_active');
+             $(this).parent().siblings('.fn-sidebar-column').addClass('sidebar_active');
+             $('.fn-pattern-lsit').eq(li_index).show().siblings().hide();
+             $(this).addClass('sidebar_active').siblings().removeClass('sidebar_active');
+                      if(clientWidth < '768' || clientWidth == '768') {
+                    $('.fn-sidebar').hide(100);
+              }
+        
+      });
+      $('summary').click(function () {
+         $(this).children('.icon-caret').toggleClass('faq_active');
+      });
+      $('.fn-FAQsummary-button').click(function () {
+        $('.fn-design-voteemail').show();
+      });
+      $('#timert_FAQimg').click(function () {
+        $('.fn-design-voteemail').hide();
+      });
+      $('.contentlike_link').click(function () {
+          sessionStorage.setItem('Vote','https://www.htvront.com/pages/design-to-vote')
+      });
+     // 个人信息id // 查询的数据
+     var results_id,Progress_arr,vote_status,Cancel_id,vote_list = [];
+
+     
+        // 点赞
+     var userEmail='{{ customer.email }}';
+     $('.fn-Progress-Pattern').click(function () {
+       if(userEmail !== '') {
+              let crowd_id = $(this).attr('id').slice(5);
+              let msg_is = $(this).siblings('.fn-prompt-message').attr('id');
+              // let Progress_title = $(this).parents().siblings().children('.fn-Progress-title').text();
+              // $('.fn-Progress-productname').text(Progress_title);
+              $.ajax({
+                   type:'GET',
+                   dataType:'jsonp',
+                   data: { user_email: userEmail,crowd_id: crowd_id },
+                   url: 'https://qn.htvront.com:9000/prod-biz-api/htvront/crowdUser/voteUser',
+                   jsonp :'callback', //指定一个查询参数名称来覆盖默认的 jsonp 回调参数名 callback
+                   jsonpCallback: 'handle', //设置回调函数名
+                   success(result){
+                     if(result.status == 1) {
+                       if (results_list.length <= 0) {
+                          results_list.push(crowd_id);
+                           UserInfo();
+                       }else {
+                          results_list.push(crowd_id);
+                          ProgressItems();
+                       }
+                      $('.fn-Progress-body,.fn-Progress-contentlike').show();
+                       $('.fn-Progress-cancellike').hide();
+                       $('.fn-Progress-mask').removeClass('like_active');
+                       $('#'+ msg_is).hide();
+                     } else {
+                       $('#'+ msg_is).show();
+                     }
+                  },
+                  error(result){
+                     console.log('Progress_arr');
+                  }
+            });
+       } else {
+         $('.fn-Progress-body,.fn-Progress-login').show();
+         $('.fn-Progress-contentlike,.fn-Progress-cancellike').hide();
+       }
+     });
+    $('.fn-Progress-close,.Dont_cancel,.discount_button').click(function () {
+         $('.fn-Progress-body').hide();
+     });
+     // 取消点赞
+     var cancel_id;
+     $('.fn-Progress-praise.pro_btn').click(function () {
+         cancel_id = $(this).attr('id').slice(7);
+         $('.fn-Progress-body,.fn-Progress-cancellike').show();
+         $('.fn-Progress-contentlike').hide();
+         $('.fn-Progress-mask').addClass('like_active');
+         // let Progress_title = $(this).parent().siblings('.fn-Progress-title').text();
+         // $('.fn-Progress-productname').text(Progress_title);
+     });
+     $('.fn-Progress-praise.vote_btn').click(function () {
+          cancel_id = $(this).attr('id').slice(6);
+         $('.fn-Progress-body,.fn-Progress-cancellike').show();
+         $('.fn-Progress-contentlike').hide();
+         $('.fn-Progress-mask').addClass('like_active');
+         let Progress_title = $(this).parent().siblings('.fn-Progress-title').text();
+         $('.fn-Progress-productname').text(Progress_title);
+     });
+     function result_vote(){
+            $('.fn-mychoice-vote').removeClass('vote_show vote_show_ringht').hide();
+                  $('.fn-mychoice-vote').each(function(index,el){
+                          var  vote_id = $(el).attr('id').slice(4);
+                      if($.inArray(vote_id, results_list) !== -1) {
+                        $('#vot_'+ vote_id).addClass('vote_show').show();
+                      }
+                  });
+                 $('.fn-mychoice-vote.vote_show').each(function(index,el){
+                     if((index+1)%3 == 0) {
+                       $(this).addClass('vote_show_ringht');
+                     }
+                  })
+       
+         }
+      $('.Cancel_Vote').click(function () {
+              $.ajax({
+                   type:'GET',
+                   dataType:'jsonp',
+                   data: { user_email: userEmail,crowd_id: cancel_id },
+                   url: 'https://qn.htvront.com:9000/prod-biz-api/htvront/crowdUser/cancelVote',
+                   jsonp :'callback', //指定一个查询参数名称来覆盖默认的 jsonp 回调参数名 callback
+                   jsonpCallback: 'handle', //设置回调函数名
+                   success(result){
+                    Cancel_id = result.status
+                     if(result.status == 1) {
+                       // UserInfo();
+                         results_list.splice($.inArray(cancel_id, results_list),1);            
+                       ProgressItems(); 
+                       $('.fn-Progress-body').hide();
+                      result_vote();
+                     }
+                  },
+                  error(result){
+                     console.log('Progress_arr');
+                  }
+        });
+     });
+     // 用户信息查询（我的点赞）
+     UserInfo();
+    var results_list;
+    function UserInfo(){
+        results_list = [];
+        $.ajax({
+             type:'GET',
+             dataType:'jsonp',
+              data: { user_email: userEmail },
+               url: 'https://qn.htvront.com:9000/prod-biz-api/htvront/crowdUser/getUserInfo',
+               jsonp :'callback', //指定一个查询参数名称来覆盖默认的 jsonp 回调参数名 callback
+               jsonpCallback: 'handle', //设置回调函数名
+               success(result){    
+                  ProgressItems();
+                  vote_status = result.status;
+                 if(result.status == 1 ) {
+                       var userList_arr = result.data.userList[0]; 
+                       let userList_id = JSON.parse(userList_arr.activity_id);              
+                        results_list = userList_id.id;                  
+                 }
+            },
+            error(result){
+               console.log('UserInfo');
+            }
+      });
+     };
+     var target_values = $('.fn-targetvalue_text').text();
+     $('.fn-rogressbarnumber-value').text(target_values);
+     
+         // 查询数据接口
+    function ProgressItems(){
+        $.ajax({
+             type:'GET',
+             dataType:'jsonp',
+             url: 'https://qn.htvront.com:9000/prod-biz-api/htvront/crowdActivity/getCrowdDate',
+             jsonp :'callback', //指定一个查询参数名称来覆盖默认的 jsonp 回调参数名 callback
+             jsonpCallback: 'handle', //设置回调函数名
+             success(result){
+                Progress_arr = result.data.queryList;
+                  $(".fn-Progress-rogressbar").each(function(){
+                    var id = $(this).attr('id').slice(4);
+                    Progress_arr.map(item => {
+                        if (id == item.basics_id ) {
+                          if(clientWidth >= 1024 && clientWidth < 1440 ) {
+                              var targetvalues_s = target_values / 420;
+                              var a_val = targetvalues_s.toFixed(2);
+                              var num = item.vote_amount /a_val; 
+                              $(this).children('.container').children('.content_target').css("width",num);
+                              $(this).children('.container').children('.exceed_expectation').css("width",num);
+                              $(this).parent().siblings('.fn-rogressbar-number').children().children('.fn-rogressbar_overstep').text(item.vote_amount);
+                          } else {
+                              var targetvalues_a = target_values / 325;
+                              var num_val = targetvalues_a.toFixed(2);
+                              var num = item.vote_amount /num_val; 
+                              $(this).children('.container').children('.content_target').css("width",num);
+                              $(this).children('.container').children('.exceed_expectation').css("width",num);
+                              $(this).parent().siblings('.fn-rogressbar-number').children().children('.fn-rogressbar_overstep').text(item.vote_amount);
+                          }
+                        }
+                    });
+                  });
+                    if(vote_status == 1) {
+                      Progress_arr.map(item => {
+                            let like_id = 'like_' + item.basics_id;
+                            let cancel_id = 'cancel_' + item.basics_id;
+                            if($.inArray(item.basics_id, results_list) === -1) {               
+                              $('#'+ like_id).show();                       
+                              $('#'+ cancel_id).hide();
+                            } else {
+                              $('#'+ like_id).hide();                       
+                              $('#'+ cancel_id).show();
+                            }
+                      });
+                    } else {                   
+                        Progress_arr.map(item => {
+                             let like_id = 'like_' + item.basics_id;
+                             $('#'+ like_id).show();
+                             let cancel_id = 'cancel_' + item.basics_id;
+                             $('#'+ cancel_id).hide()
+
+                      });
+                    };
+                    
+                    $('.fn-Pattern-state').each(function(index,el){
+                         var  state_id = $(el).attr('id').slice(6);
+                         Progress_arr.map(item => {
+                           // if (item.crowd_state == 'previous') {
+                             // $('.fn-Pattern-review').show();
+                                if( state_id == item.basics_id && item.crowd_state == 'previous') {
+                                    $('#state_'+ state_id).text(item.state).show();
+                                    // $('#state_'+ state_id).show();
+                                  if (item.state == 'Online') {
+                                      $('#state_'+ state_id).siblings('.fn-online-addcart').show();
+                                  }
+                                  if (item.state == 'Ready to online') {
+                                      $('#state_'+ state_id).addClass('Ready_active');
+                                  }
+                                  if (item.state == 'Abandoned') {
+                                      $('#state_'+ state_id).addClass('Abandoned_active');
+                                  }
+                            }
+                          // }
+
+                      });
+                    });
+                     $('.fn-mychoice-state').each(function(index,el){
+                         var  ocl_id = $(el).attr('id').slice(4);
+                         Progress_arr.map(item => {
+                              // if (item.crowd_state == '') {
+                                    // $('.fn-mychoice-state').show();
+                                  if( ocl_id == item.basics_id && item.crowd_state == '') {
+                                      $('#ocl_'+ ocl_id).text(item.state).show();
+                                    if (item.state == 'Online') {
+                                      $('#ocl_'+ ocl_id).siblings('.fn-online-addcart').show();
+                                  }
+                                  if (item.state == 'Ready to online') {
+                                      $('#ocl_'+ ocl_id).addClass('Ready_active');
+                                  }
+                                  if (item.state == 'Abandoned') {
+                                      $('#ocl_'+ ocl_id).addClass('Abandoned_active');
+                                  }
+                                  if (item.state == 'Crowdfunding') {
+                                        $('#ocl_'+ ocl_id).addClass('Crowdfunding');
+                                       $('#votea_'+ ocl_id).show();
+                                       $('#myvote_'+ ocl_id).show();
+                                  }
+                              }
+                          // }
+                      });
+                    });
+
+            },
+            error(result){
+               console.log('Progress_arr');
+            }
+      });
+     };
+        $('.fn-sidebar-vote').click(function () {
+          result_vote();
+        });
+
+      $('.fn-navigationbar_imges').click(function () {
+        $('.fn-sidebar').animate({width:'toggle'},200);
+      });
+     
+ });
+     
+</script>
+ <script>
+
+ </script>

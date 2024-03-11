@@ -1,0 +1,63 @@
+{%- paginate customer.addresses by 5 -%}
+<div class="fn-profile" data-customer-addresses>
+  <div class="t fn-my-account-title">My Profile</div>
+  <div class="fn-profile-textEdit">
+    Edit Account Information
+  </div>
+  <div class="fn-profile-EditeXplain">Take a look at(and edit) cersonal information like you email address and password.</div>
+  <div class=" fn-profile-breadth" data-customer-addresses>
+    {%- for address in customer.addresses -%}
+    <div class="fn-profile-all" data-address>
+      {%- form 'customer_address', address -%}
+      <div class="fn-profile-message">
+        <div class="fn-profile-AddressFirstName_">
+          <div>
+            <label class="fn-profile-labelName" for="AddressFirstName_{{ form.id }}">{{ 'customer.addresses.first_name' | t }}<span class="fn-profile-must">*</span></label>
+          </div>
+          <input class="fn-profile-input" type="text" id="AddressFirstName_{{ form.id }}" name="address[first_name]" value="{{ form.first_name }}" autocomplete="given-name" placeholder="{{ 'customer.addresses.first_name' | t }}">
+        </div>
+        <div class="fn-profile-AddressLastName">
+          <div>
+            <label class="fn-profile-labelName" for="AddressLastName_{{ form.id }}">{{ 'customer.addresses.last_name' | t }}<span class="fn-profile-must">*</span></label>
+          </div>
+          <input class="fn-profile-input" type="text" id="AddressLastName_{{ form.id }}" name="address[last_name]" value="{{ form.last_name }}" autocomplete="family-name" placeholder="{{ 'customer.addresses.last_name' | t }}">
+        </div>
+      </div>
+      <div >
+        <div>
+          <label class="fn-profile-labelName" for="AddressEmail_{{ form.id }}">Email Address</label>
+        </div>
+        <input class="fn-profile-input" type="text" id="AddressEmail_{{ form.id }}" name="address[Email]" value="{{ customer.email }}" autocomplete="organization" placeholder="Email Address">
+      </div>
+      <div class="fn-profile-AddressLastselect">
+        <label class="fn-profile-labelName" for="AddressCountry_{{ form.id }}">
+          Country<span class="fn-profile-must">*</span>
+        </label>
+        <select class="fn-select" id="AddressCountry_{{form.id}}" name="address[country]" data-default="{{form.country}}">{{ all_country_option_tags }}</select>
+        <div class="icon"><img src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/2c71d0a7f899ef4e370c409186645292.png?v=1651630547" alt=""></div>
+      </div>
+      <div>
+         <button type="submit" class="fn-select-button">Save</button>
+      </div>
+      {%- endform -%}
+    </div>
+    {%- endfor -%}
+  </div>
+</div>
+  {%- endpaginate -%}
+<script>
+
+  $(function (){
+    var checkbox1 = $("#address_default_address_7450358513821");
+    $('#Update_password').hide();
+    checkbox1.change(function () {
+      $('#Update_password').fadeToggle();});
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": []
+  }
+{% endschema %}

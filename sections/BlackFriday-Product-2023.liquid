@@ -1,0 +1,288 @@
+<style>
+    .presell-product{
+      padding:30px 17px;
+      letter-spacing: 0;
+      background: #323232;
+      border-radius:20px;
+      margin-bottom:50px;
+    }
+    .presell-product-title{
+      text-align:center;
+      font-weight:bold;
+      margin-bottom:24px;
+      line-height:49px;
+      font-size: 36px;
+      color: #723600;
+    }
+    .presell-product-content{
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      margin:0 auto;
+      margin-top:20px;
+    }
+    .presell-product-items{
+      width: 24%;
+      background: #000;
+      border-radius: 8px;
+      padding: 11px 12px 15px 13px;
+      margin-bottom: 20px;
+      margin-right: 1.3%;
+    }
+    .presell-product-items:nth-child(4n) {
+      margin-right: 0;
+    }
+    .presell-product-items .fn-product-title .t {
+      font-size: 16px;
+      line-height: 22px;
+      height: 42px;
+      color: #fff;
+    }
+    .presell-product-items .fn-color-attr {
+      height: 32px;
+      margin-top: 15px;
+    }
+    .presell-product-items .fn-color-attr ul li {
+      width: 30px;
+      height: 30px;
+      border: 0px;
+    }
+    .presell-product-items .fn-color-attr ul li + li {
+      margin-left: 10px;
+      color: #fff;
+    }
+    .presell-product-items .fn-color-attr ul li:hover {
+      border: 1px solid #ff3737;
+    }
+    .presell-product-items .button--full-width {
+      height: 46px;
+      background: linear-gradient(91deg, #D38813 0%, #FBE05F 100%);
+      border-radius: 4px;
+      min-height: 46px;
+      margin-top: 15px;
+      --border-opacity: none;
+      --border-offset: none;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .presell-product-items .fn-product-price {
+      width: auto;
+    }
+    .presell-product-items .fn-product-price span {
+      font-size: 24px;
+      line-height: 24px;
+      text-align: right;
+      color: #ECA62F;
+    }
+    .presell-product-items .fn-compareat_price .fn-compare-at_price {
+      font-size: 16px;
+      font-weight: 400;
+      text-align: right;
+      color: #fff;
+    }
+   .presell-product .title_desc{
+     line-height: 33px;
+     font-weight:400;
+      padding-top: 12px;
+      font-size: 24px;
+   }
+  .show-in-820{
+    display:none;
+  }
+   @media screen and (max-width: 1720px){
+     .presell-product-title{
+       font-size:28px;
+     }
+     .presell-product .title_desc{
+       font-size:20px;
+     }
+   }
+    @media screen and (max-width: 1024px){
+      .presell-product-items .fn-product-layout {
+        display: block;
+      }
+      .presell-product-items .fn-product-title {
+        width: 100%;
+      }
+      .presell-product-items .fn-compareat_price {
+        flex-direction: initial;
+        align-items: baseline;
+      }
+      .presell-product-items .fn-product-price {
+        text-align: left;
+      }
+      .presell-product-items .fn-product-price span {
+        float: initial;
+      }
+      .presell-product-items .fn-product-title .t,.presell-product-items .fn-product-price span{
+        font-size:14px
+      }
+      .presell-product-items .fn-compareat_price .fn-compare-at_price{
+        font-size:12px
+      }
+      .presell-product-items .fn-color-attr {
+        height: 22px;
+        margin-top:4px
+      }
+      .presell-product-items .fn-color-attr ul li {
+        width: 20px;
+        height: 20px;
+      }
+      .presell-product-items .fn-color-attr ul li img {
+        width: 20px;
+        height: 20px;
+      }
+      .presell-product-items .button--full-width{
+        min-height: calc(3.0rem + var(--buttons-border-width) * 2);
+        height: calc(3.0rem + var(--buttons-border-width) * 2);
+        margin-top:6px
+      }
+      .presell-product-items .fn-color-attr ul .color-quantity{
+        line-height:20px
+      }
+    }
+    @media screen and (max-width: 820px){
+     .presell-product{
+       margin-bottom:30px;
+     }
+      .presell-product{
+        padding:20px 7px 0;
+      }
+      .show-in-820{
+        display:block;
+      }
+      .show-in-821{
+        display:none;
+      }
+      .blackfriday-product-swiper .swiper-wrapper{
+        flex-wrap: wrap;
+      }
+      .presell-product-items{
+        padding:0;
+      }
+      .product-items-box{
+          padding: 5px 5px 11px;
+      }  
+      .presell-product-items:nth-child(4n) {
+        margin-right:6px !important;
+      }
+    }
+    @media screen and (max-width: 768px){
+      .presell-product-content{
+        border-radius:2px;
+        margin-top:0;
+      }
+      .presell-product-title{
+        margin-bottom:10px;
+        line-height:19px
+      }
+      .presell-product-items {
+        margin-bottom:10px;
+        margin-top:0 !important;
+      }
+      .presell-product-items .button--full-width{
+        font-size:14px
+      }
+    }
+</style>
+<div class="presell-product common-width"  id="{{ section.settings.id }}">
+  <div class="black-module-title">
+    <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Union.png?v=1698741824">
+    <p>{{ section.settings.title }}</p>
+    <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Union_1.png?v=1698741824">
+  </div>
+  <div class="presell-product-content show-in-821">
+    {% for item in section.settings.product_collection.products %}
+        <div class="presell-product-items">
+          {% render 'product-Model-custom',
+            card_product: item,
+            progress: false,
+            show_secondary_image: section.settings.show_secondary_off,
+            colorSize: true,
+            buttonSeat: 'fileSteam',
+            buttonText: 'ADD TO CART',
+            title: 'flex',
+            pirce: 'intitle'
+          %}
+        </div>
+    {% endfor %}
+  </div>
+  <div class="presell-product-content show-in-820">
+    <div class="swiper-container blackfriday-product-swiper">
+      <div class="swiper-wrapper">
+        {% for item in section.settings.product_collection.products %}
+            <div class="presell-product-items swiper-slide">
+              <div class="product-items-box">
+                  {% render 'product-Model-custom',
+                    card_product: item,
+                    progress: false,
+                    show_secondary_image: section.settings.show_secondary_off,
+                    colorSize: true,
+                    buttonSeat: 'fileSteam',
+                    buttonText: 'ADD TO CART',
+                    title: 'flex',
+                    pirce: 'intitle'
+                  %}
+              </div>
+            </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="swiper-scrollbar" id="blackfriday-product-swiper-scrollbar"></div>
+  </div>
+</div>
+<script>
+    var mySwiper_e = new Swiper('.blackfriday-product-swiper',{
+      slidesPerView: 4, 
+      spaceBetween:10,
+      slidesPerColumn: 3,
+      slidesPerColumnFill : 'row',
+      scrollbar: {
+        el: '#blackfriday-product-swiper-scrollbar',
+      },
+     breakpoints:{
+        768:{
+           slidesPerView:3.2,
+           spaceBetween:6,
+        },
+        450:{
+           slidesPerView:2.2,
+           spaceBetween:6,
+        }
+      }
+    });
+</script>
+{% schema %}
+{
+  "name": "Black-Friday-Product",
+  "settings": [
+   {
+      "type":"text",
+      "id":"id",
+      "label":"id(页面唯一性，全英文)"
+    },
+   {
+      "type": "text",
+      "id": "title",
+      "label": "title"
+    },{
+      "type": "collection",
+      "id": "product_collection",
+      "label": "collection"
+    },{
+      "type": "checkbox",
+      "id": "show_secondary_off",
+      "default": false,
+      "label": "show_secondary_off_iamge"
+    }],
+  "presets": [{
+    "name": "Black-Friday-Product"
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

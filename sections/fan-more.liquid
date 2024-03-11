@@ -1,0 +1,258 @@
+<div class="more-platform">
+  <div>
+    {% for block in section.blocks %}
+      {% if block.type == 'leftAll' -%}
+        {% if block.settings.show_picker != blank %}
+          <img
+            onclick="point('{{ block.settings.linkText }}','{{ block.settings.linkUrl }}')"
+            class="more-platform-img-pc more-platform-img"
+            src="{{ block.settings.show_picker| img_url:'500x' }}"
+          >
+        {% endif %}
+        {% if block.settings.show_picker_moblie != blank %}
+          <img
+            onclick="point('{{ block.settings.linkText }}','{{ block.settings.linkUrl }}')"
+            class="more-platform-img-mobile more-platform-img"
+            src="{{ block.settings.show_picker_moblie| img_url:'165x' }}"
+          >
+        {% endif %}
+      {% endif -%}
+    {% endfor -%}
+  </div>
+  <div>
+    {% for block in section.blocks %}
+      {% if block.type == 'middle' -%}
+        {% if block.settings.show_picker != blank %}
+          <img
+            onclick="point('{{ block.settings.linkText }}','{{ block.settings.linkUrl }}')"
+            class="more-platform-img-pc more-platform-img"
+            src="{{ block.settings.show_picker| img_url:'500x' }}"
+          >
+        {% endif %}
+        {% if block.settings.show_picker_moblie != blank %}
+          <img
+            onclick="point('{{ block.settings.linkText }}','{{ block.settings.linkUrl }}')"
+            class="more-platform-img-mobile more-platform-img"
+            src="{{ block.settings.show_picker_moblie| img_url:'304x' }}"
+          >
+        {% endif %}
+      {% endif -%}
+    {% endfor -%}
+  </div>
+  <div>
+    {% for block in section.blocks %}
+      {% if block.type == 'right' -%}
+        {% if block.settings.show_picker != blank %}
+          <img
+            onclick="point('{{ block.settings.linkText }}','{{ block.settings.linkUrl }}')"
+            class="more-platform-img-pc more-platform-img"
+            src="{{ block.settings.show_picker| img_url:'500x' }}"
+          >
+        {% endif %}
+        {% if block.settings.show_picker_moblie != blank %}
+          <img
+            onclick="point('{{ block.settings.linkText }}','{{ block.settings.linkUrl }}')"
+            class="more-platform-img-mobile more-platform-img"
+            src="{{ block.settings.show_picker_moblie| img_url:'165x' }}"
+          >
+        {% endif %}
+      {% endif -%}
+    {% endfor -%}
+  </div>
+</div>
+<div class="more-swiper-logo">
+  <div class="swiper-container" id="more-swiper-container">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        {% if block.type == 'save' -%}
+          {% if block.settings.swiper_picker != blank %}
+            <div class="swiper-slide more-platform-img-pc">
+              <img
+                class="more-platform-img"
+                src="{{ block.settings.swiper_picker| img_url:'304x' }}"
+              >
+            </div>
+          {% endif %}
+          {% if block.settings.swiper_picker_mobile != blank %}
+            <div class="swiper-slide more-platform-img-mobile">
+              <img
+                class="more-platform-img"
+                src="{{ block.settings.swiper_picker_mobile| img_url:'90x' }}"
+              >
+            </div>
+          {% endif %}
+        {% endif -%}
+      {% endfor -%}
+    </div>
+  </div>
+  <div class="swiper-button-prev" id="more-swiper-button-prev"></div>
+  <div class="swiper-button-next" id="more-swiper-button-next"></div>
+</div>
+<div class="more-channel">
+  <div>
+    {% for block in section.blocks %}
+      {% if block.type == 'link' -%}
+        {% if block.settings.show_picker != blank %}
+          <img
+            onclick="point('{{ block.settings.linkText }}','{{ block.settings.linkUrl }}')"
+            class="more-channel-Eshow more-platform-img-pc"
+            src="{{ block.settings.show_picker| img_url:'500x' }}"
+          >
+        {% endif %}
+        {% if block.settings.show_picker_moblie != blank %}
+          <img
+            onclick="point('{{ block.settings.linkText }}','{{ block.settings.linkUrl }}')"
+            class="more-channel-Eshow more-platform-img-mobile"
+            src="{{ block.settings.show_picker_moblie| img_url:'165x' }}"
+          >
+        {% endif %}
+      {% endif -%}
+    {% endfor -%}
+  </div>
+</div>
+<script>
+  function point(name,link){
+      $.ajax({
+         type:'GET',
+         dataType:'jsonp',
+         jsonp :'callback', //指定一个查询参数名称来覆盖默认的 jsonp 回调参数名 callback
+         url: 'https://qn.htvront.com:9000/prod-biz-api/htvront/fansFeast/websiteClicks',
+         data: {name: name,site:"US"},
+         success(result){
+             window.open(link);
+         },
+         error(result){
+              window.open(link);
+         }
+      });
+  }
+</script>
+{% schema %}
+{
+  "name": "fan-more",
+  "settings": [],
+  "blocks": [{
+      "type": "save",
+      "name": {
+          "en": "swiper_image",
+          "zh-CN": "轮播图"
+      },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "swiper_picker",
+          "label": "image_picker"
+        },{
+          "type": "image_picker",
+          "id": "swiper_picker_mobile",
+          "label": "image_picker_moblie"
+        }
+      ]
+    },
+    {
+      "type": "link",
+      "name": {
+          "en": "show product",
+          "zh-CN": "展示站点"
+      },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "show_picker",
+          "label": "image_picker"
+        },{
+          "type": "text",
+          "id": "linkUrl",
+          "label": "跳转链接"
+        },{
+          "type": "text",
+          "id": "linkText",
+          "label": "站点名称"
+        },{
+          "type": "image_picker",
+          "id": "show_picker_moblie",
+          "label": "image_picker_moblie"
+        }
+      ]
+    },{
+      "type":"leftAll",
+       "name":{
+         "zh-CN": "展示区域左侧"
+       },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "show_picker",
+          "label": "图片"
+        },{
+          "type": "text",
+          "id": "linkUrl",
+          "label": "跳转链接"
+        },{
+          "type": "text",
+          "id": "linkText",
+          "label": "站点名称"
+        },{
+          "type": "image_picker",
+          "id": "show_picker_moblie",
+          "label": "手机端图片"
+        }
+      ]
+    },{
+      "type":"middle",
+       "name":{
+         "zh-CN": "展示区域中间"
+       },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "show_picker",
+          "label": "图片"
+        },{
+          "type": "text",
+          "id": "linkUrl",
+          "label": "跳转链接"
+        },{
+          "type": "text",
+          "id": "linkText",
+          "label": "站点名称"
+        },{
+          "type": "image_picker",
+          "id": "show_picker_moblie",
+          "label": "手机端图片"
+        }
+      ]
+    },{
+      "type":"right",
+       "name":{
+         "zh-CN": "展示区域右侧"
+       },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "show_picker",
+          "label": "图片"
+        },{
+          "type": "text",
+          "id": "linkUrl",
+          "label": "跳转链接"
+        },{
+          "type": "text",
+          "id": "linkText",
+          "label": "站点名称"
+        },{
+          "type": "image_picker",
+          "id": "show_picker_moblie",
+          "label": "手机端图片"
+        }
+      ]
+    }
+    ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

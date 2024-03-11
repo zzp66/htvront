@@ -1,0 +1,208 @@
+<div class="mother-item mother-best-deal">
+  <div class="mother-deal-contain">
+    <div class="mother-deal-timer">
+      <div class="deal-timer-title">
+        {% if section.settings.best_deal_title_image != blank  %}
+           <img class="show-in-pc" src="{{ section.settings.best_deal_title_image | img_url:'414x' }}" />
+        {% endif %}
+        {% if section.settings.best_deal_title_mobile != blank  %}
+           <img class="show-in-mobile" src="{{ section.settings.best_deal_title_mobile | img_url:'305x' }}" />
+        {% endif %}
+        <p>{{ section.settings.best_deal_title }}</p>
+      </div>
+      <div class="deal-timer-countdown">
+        <div class="countdown">
+          <img class="show-in-pc"
+            src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/39_5ec04cb7-1acd-44ea-bfd0-134a4d178f7d.png?v=1682306387"
+          >
+          <img class="show-in-mobile" src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/26_ac7f38c0-f10c-4727-85dd-dc21e57a1cf7.png?v=1682383091" />
+          <div class="timer-count">
+            <div>
+              <div class="format_span_time">
+                <span id="days" class="days format_span t">00</span>
+              </div>
+              <span class="timer-text">DAYS</span>
+            </div>
+            
+            <div>
+              <p class="dot"></p>
+              <p class="dot"></p>
+            </div>
+            <div>
+              <div class="format_span_time">
+                <span id='hour' class="hour format_span t">00</span>
+              </div>
+              <span class="timer-text">HOURS</span>
+            </div>
+            <div>
+              <p class="dot"></p>
+              <p class="dot"></p>
+            </div>
+            <div>
+              <div class="format_span_time">
+                <span id='minute' class="minute format_span t">00</span>
+              </div>
+              <span class="timer-text">MINUTES</span>
+            </div>
+            <div>
+              <p class="dot"></p>
+              <p class="dot"></p>
+            </div>
+            <div>
+              <div class="format_span_time">
+                <span id='second' class="second format_span t">00</span>
+               </div>
+              <span class="timer-text">SECONDS</span>
+            </div>
+            
+          </div>
+        </div>
+        <div id="countdown_time">{{ section.settings.countdown_time }}</div>
+      </div>
+      <div class="deal-timer-desc">
+        {{ section.settings.countdown_text }}
+      </div>
+    </div>
+    <div class="mother-deal-product">
+      <div class="deal-product-image">
+        {% if section.settings.best_deal_product_image != blank %}
+          <img class="show-in-pc" src="{{ section.settings.best_deal_product_image | img_url:'900x' }}" />
+        {% endif %}
+        {% if section.settings.best_deal_product_mobile != blank %}
+          <img class="show-in-mobile" src="{{ section.settings.best_deal_product_mobile | img_url:'330x' }}" />
+        {% endif %}        
+      </div>
+      <div class="deal-product-head">
+        <div class="fn-product-title">
+              <a href="{{ section.settings.best_product.url }}" class="t">{{ section.settings.best_product.title | escape }}</a>
+        </div>
+        <div class="fn-color-attr">
+            {%- for option in section.settings.best_product.options_with_values -%}
+              {%- if option.name == 'Colors' or option.name == 'Color' -%}
+                <ul>
+                  {%- if option.name == 'Colors' -%}
+                    {% assign colorList = section.settings.best_product.options_by_name.Colors.values | slice: 0, 10 %}
+                  {%- else -%}
+                    {% assign colorList = section.settings.best_product.options_by_name.Color.values | slice: 0, 10 %}
+                  {%- endif -%}
+                  {%- for value in colorList -%}
+                    <li>
+                      <a href="{{ section.settings.best_product.url }}?variant={{ section.settings.best_product.variants[forloop.index0].id }}">
+                        {%- if section.settings.best_product.variants[forloop.index0].featured_image != blank -%}
+                          <img
+                            src="{{ section.settings.best_product.variants[forloop.index0].featured_image | img_url: '50x50' }}"
+                            alt="{{ value }}"
+                          >
+                        {%- endif -%}
+                      </a>
+                    </li>
+                  {% endfor %}
+                  {%- if option.name == 'Colors' -%}
+                    {% assign size = section.settings.best_product.options_by_name.Colors.values | size | minus: 10 %}
+                  {%- else -%}
+                    {% assign size = section.settings.best_product.options_by_name.Color.values | size | minus: 10 %}
+                  {%- endif -%}
+                  {%- if size > 0 -%}
+                    <li class="color-quantity">
+                      <a href="{{ section.settings.best_product.url }}">+{{ size }}</a>
+                    </li>
+                  {%- endif -%}
+                </ul>
+              {%- endif -%}
+            {% endfor %}
+          </div>
+        <div class="fn-product-price">
+            {% render 'sffers-price', product: section.settings.best_product, price_class: '' %}
+        </div>
+        <div class="fn-color-attrs">
+          {% render 'addCart-Model', product: section.settings.best_product, buttonText: 'Add To Cart' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  // var p_times = '2023-3-10 14:35:00';
+  var p_times = $('#countdown_time').text();
+  //获取元素
+  var days  = $("#days")[0];
+  var hour = $("#hour")[0];
+  var minute = $("#minute")[0];
+  var second = $("#second")[0];
+  //获取截止时间的时间戳（单位毫秒）
+  var inputTime = new Date(""+ p_times.replace(/-/g, "/"));
+  //我们先调用countDown函数，可以避免在打开界面后停一秒后才开始倒计时
+  countDown();
+  //定时器 每隔一秒变化一次
+  var timer_s = setInterval(countDown, 1000);
+  function countDown() {
+      //获取当前时间的时间戳（单位毫秒）
+      var nowTime = +new Date();
+      //把剩余时间毫秒数转化为秒
+      var times = (inputTime - nowTime) / 1000;
+      if (times > 0) {
+         var d = Math.floor(times /60 / 60 / 24 );
+      //计算小时数 转化为整数
+      //如果小时数小于 10，要变成 0 + 数字的形式 赋值给盒子
+      days.innerHTML = d < 10 ? "0" + d : d;
+      var h = Math.floor(times /60 / 60 % 24 );
+      //计算小时数 转化为整数
+      //如果小时数小于 10，要变成 0 + 数字的形式 赋值给盒子
+      hour.innerHTML = h < 10 ? "0" + h : h;
+      //计算分钟数 转化为整数
+      var m = parseInt(times / 60 % 60);
+      //如果分钟数小于 10，要变成 0 + 数字的形式 赋值给盒子
+      minute.innerHTML = m < 10 ? "0" + m : m;
+      //计算描述 转化为整数
+      var s = parseInt(times % 60);
+      // //如果秒钟数小于 10，要变成 0 + 数字的形式 赋值给盒子
+      second.innerHTML = s < 10 ? "0" + s : s;
+      } else {
+        clearInterval(timer_s);
+      }
+  }
+</script>
+{% schema %}
+  {
+    "name": "mother-best-deal",
+    "settings": [{
+            "type":"image_picker",
+            "id":"best_deal_title_image",
+            "label":"title_image"
+        },{
+            "type":"image_picker",
+            "id":"best_deal_title_mobile",
+            "label":"title_image_mobile"
+        },{
+            "type":"text",
+            "id":"best_deal_title",
+            "label":"title"
+        },{
+            "type":"text",
+            "id":"countdown_time",
+            "label":"time"
+        },{
+            "type":"text",
+            "id":"countdown_text",
+            "label":"text"
+        },{
+            "type":"image_picker",
+            "id":"best_deal_product_image",
+            "label":"product_image"
+        },{
+            "type":"image_picker",
+            "id":"best_deal_product_mobile",
+            "label":"product_image_mobile"
+        },{
+          "type": "product",
+          "id": "best_product",
+          "label": "best_product"
+        }]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

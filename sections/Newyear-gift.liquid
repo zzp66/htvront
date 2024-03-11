@@ -1,0 +1,40 @@
+<div class="fn-Newyear-make_img">
+  {% if section.settings.Newyear_make != blank %}
+    {% assign image = section.settings.Newyear_make | img_url: '1920x' %}
+    <img class="Newyear_make_pc" src="{{ image }}" alt="">
+  {% endif %}
+  {% if section.settings.Newyear_make_mobile != blank %}
+    {% assign image = section.settings.Newyear_make_mobile | img_url: '768x' %}
+    <img class="Newyear_make_mobile" src="{{ image }}" alt="">
+  {% endif %}
+</div>
+{% schema %}
+  {
+    "name": "Gift",
+    "settings": [
+        {
+			"type": "image_picker",
+			"id": "Newyear_make",
+			"label": {
+				"en": "Image",
+				"zh-CN": "图片"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "Newyear_make_mobile",
+			"label": {
+				"en": "mobile Image",
+				"zh-CN": "手机图片"
+			}
+		}
+    ]
+  }
+  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

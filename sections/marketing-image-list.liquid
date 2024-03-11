@@ -1,0 +1,102 @@
+<style>
+    .fn-marketing-image {
+        margin-top: 80px;
+    }
+    .fn-marketing-image .fn-flex {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .fn-marketing-image .item {
+        width: calc(50% - 15px);
+        overflow: hidden;
+    }
+    .fn-marketing-image .item img {
+        transition: all 0.3s;
+    }
+    .fn-marketing-image .item:hover img {
+        transform: scale(1.1);
+    }
+    @media screen and (max-width: 750px) {
+        .fn-marketing-image {
+            margin-top: 0;
+        }
+        .fn-marketing-image .item {
+            margin-top: 10px;
+        }
+.fn-marketing-image .item {
+        width: calc(50% - 5px);
+    }
+    }
+</style>
+<div class="fn-marketing-image">
+    <div class="fn-page-width ">
+        <div class="fn-flex">
+            {% for block in section.blocks %}
+            <div class="item">
+                {%- if block.settings.link != blank -%}
+                <a href="{{ block.settings.link }}">
+                    {%- endif -%}
+                    {%- if block.settings.image != blank -%}
+                    <img src="{{ block.settings.image | img_url: '785x' }}" alt="{{ block.settings.image.alt }}">
+                    {%- endif -%}
+                    {%- if block.settings.link != blank -%}
+                </a>
+                {%- endif -%}
+            </div>
+            {%- endfor -%}
+        </div>
+    </div>
+</div>
+<script>
+   $(function(){
+        $('.item').click(function () {
+            $('.marketing-product-nav li').removeClass('active');
+              var bar_index;
+              bar_index = $(this).index();
+           $('.marketing-product-nav li').eq(bar_index).addClass('active');
+           $('.marketing-product-list').eq(bar_index).addClass('active');
+           $('.marketing-product-list').eq(bar_index).siblings().removeClass('active');
+
+          $(window).scrollTop($('#fn-marketing-product').offset().top - 100)
+      })
+   });
+</script>
+{% schema %}
+{
+    "name":"Marketing Image List",
+    "max_blocks": 2,
+    "settings":[],
+    "blocks":[
+        {
+            "type":"image",
+            "name":"Image",
+            "settings":[
+                {
+                    "type":"image_picker",
+                    "id":"image",
+                    "label":"Image"
+                },
+                {
+                    "type":"url",
+                    "id":"link",
+                    "label":"链接"
+                }
+            ]
+        }
+    ],
+    "presets":[
+        {
+            "name":"Marketing Image List",
+            "blocks":[
+                {
+                    "type":"image"
+                },
+                {
+                    "type":"image"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

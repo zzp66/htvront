@@ -1,0 +1,51 @@
+<div>
+  <div class="fn-Posts-text">{{ section.settings.sale_headline}}</div>
+  <ul class="hot-sale-product">
+    {% for block in section.blocks %}
+    {%- if block.type == 'product' -%}
+    <li class="sale__item">
+      {% render 'fn-Posts-product',
+      card_product: block.settings.product,
+      show_secondary_image: true,
+      limit: 4,
+      lazy_load: lazy_load
+      %}
+    </li>
+    {%- endif -%}
+    {%- endfor -%}
+  </ul>
+</div>
+{% schema %}
+  {
+    "name": "Beginner Prackage",
+    "settings": [
+        {
+            "type":"text",
+            "id":"sale_headline",
+            "label":{
+                "en":"headline",
+                "zh-CN":"标题"
+            }
+        }
+],
+     "blocks":[
+    {
+      "type": "product",
+      "name": "Selected For You",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "productlabel"
+        }
+      ]
+    }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

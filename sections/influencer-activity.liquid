@@ -1,0 +1,203 @@
+<style>
+  #shopify-section-{{ section.id }} .influencer-banner {
+    background: url({{ section.settings.banner | img_url: '1920x' }}) no-repeat center;
+    background-size: cover;
+  }
+  #shopify-section-{{ section.id }} .influencer-main {
+    background: {{ section.settings.mainBackground }};
+  }
+</style>
+<div class="influencer-home">
+  <section class="influencer-banner">
+    <h3>{{ section.settings.title }}</h3>
+    <p>{{ section.settings.text }}</p>
+  </section>
+
+  <section class="influencer-main">
+    <section class="fn-page-width influencer-section-2">
+      {% assign image = section.settings.businessImg | img_url: '1600x' %}
+      <img src="{{ image }}" alt="" class="show-in-pc">
+      {% assign image = section.settings.businessImgMobile | img_url: '440x' %}
+      <img src="{{ image }}" alt="" class="show-in-mobile">
+    </section>
+
+    <section class="fn-page-width influencer-section-3">
+      <ul>
+        {% for block in section.blocks %}
+          {% if block.type == 'advantage' %}
+            <li>
+              {% assign image = block.settings.img | img_url: '535x' %}
+              <img src="{{ image }}" alt="">
+              <p>{{ block.settings.text }}</p>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+      <p class="influencer-t">{{ section.settings.advantageText }}</p>
+    </section>
+
+    <section class="fn-page-width influencer-section-4">
+      {% assign image = section.settings.vsImg | img_url: '1600x' %}
+      <img src="{{ image }}" alt="" class="show-in-pc">
+      {% assign image = section.settings.vsImgMobile | img_url: '440x' %}
+      <img src="{{ image }}" alt="" class="show-in-mobile">
+    </section>
+
+    <section class="fn-page-width influencer-section-5">
+      <h3>{{ section.settings.cooperationText }}</h3>
+      <ul>
+        {% for block in section.blocks %}
+          {% if block.type == 'cooperation' %}
+            <li>
+              {% assign image = block.settings.img | img_url: '707x' %}
+              <img src="{{ image }}" alt="">
+              <h6>{{ block.settings.title }}</h6>
+              <p class="influencer-text">{{ block.settings.text }}</p>
+              <p class="influencer-s-text">{{ block.settings.sText }}</p>
+              <a class="influencer-href" href="{{ block.settings.link }}">Learn More</a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </section>
+  </section>
+
+  <section class="influencer-power">
+    <h3>{{ section.settings.powerText }}</h3>
+    <ul class="fn-page-width">
+      {% for block in section.blocks %}
+        {% if block.type == 'power' %}
+          <li>
+            <p class="influencer-data">
+              {{ block.settings.num -}}
+              <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/influencer8.svg">
+            </p>
+            <p class="influencer-text">{{ block.settings.text }}</p>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Influencer Activity",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner",
+      "label": "banner img"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "banner title"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "banner text"
+    },
+    {
+      "type": "image_picker",
+      "id": "businessImg",
+      "label": "business img"
+    },
+    {
+      "type": "image_picker",
+      "id": "businessImgMobile",
+      "label": "business img mobile"
+    },
+    {
+      "type": "color",
+      "id": "mainBackground",
+      "label": "main background"
+    },
+    {
+      "type": "text",
+      "id": "advantageText",
+      "label": "advantage text"
+    },
+    {
+      "type": "image_picker",
+      "id": "vsImg",
+      "label": "VS img"
+    },
+    {
+      "type": "image_picker",
+      "id": "vsImgMobile",
+      "label": "VS img mobile"
+    },
+    {
+      "type": "text",
+      "id": "cooperationText",
+      "label": "cooperation text"
+    },
+    {
+      "type": "text",
+      "id": "powerText",
+      "label": "power text"
+    }
+  ],
+  "blocks":[
+    {
+      "type": "advantage",
+      "name": "advantage",
+      "settings": [{
+          "type": "image_picker",
+          "id": "img",
+          "label": "img"
+        },{
+          "type": "text",
+          "id": "text",
+          "label": "text"
+        }]
+    },
+    {
+      "type": "cooperation",
+      "name": "cooperation",
+      "settings": [{
+          "type": "image_picker",
+          "id": "img",
+          "label": "img"
+        },{
+          "type": "text",
+          "id": "title",
+          "label": "title"
+        },{
+          "type": "text",
+          "id": "text",
+          "label": "text"
+        },{
+          "type": "text",
+          "id": "sText",
+          "label": "small text"
+        },{
+          "type": "url",
+          "id": "link",
+          "label": "link"
+        }]
+    },
+    {
+      "type": "power",
+      "name": "power",
+      "settings": [{
+          "type": "text",
+          "id": "num",
+          "label": "num"
+        },{
+          "type": "text",
+          "id": "text",
+          "label": "text"
+        }]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

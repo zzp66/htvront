@@ -1,0 +1,254 @@
+{%- style -%}
+   #shopify-section-{{ section.id }} .Thousand-step{
+    background: {{ section.settings.bg_color }};
+    padding:37px 0 50px 0
+  }
+  #shopify-section-{{ section.id }} .Thousand-step-title{
+    font-size:{{ section.settings.title_size }}px;
+    color:{{ section.settings.title_color }};
+  }
+  @media screen and (max-width: 1024px){
+     #shopify-section-{{ section.id }} .Thousand-step-title{
+        font-size:30px
+      }
+  }
+  @media screen and (max-width: 768px){
+    #shopify-section-{{ section.id }} .Thousand-step{
+      background: {{ section.settings.bg_color }};
+      padding:20px 0 50px 0
+    }
+      #shopify-section-{{ section.id }} .Thousand-step-title{
+        font-size:16px
+      }
+   }
+{%- endstyle -%}
+<style>
+  .Thousand-step-title{
+    font-weight: bold;
+    line-height: 49px;
+    text-align:center;
+    margin-bottom:35px
+  }
+  .Thousand-contain{
+    display: flex;
+    width: 85%;
+    margin: 0 auto;
+    justify-content: center;
+  }
+  .Thousand-step-item{
+    position: relative;
+    text-align:center;
+    font-size: 24px;
+    font-weight: 600;
+    color: #333333;
+    line-height: 33px;
+    padding: 26px;
+    margin-left: -3px;
+    margin-right: -3px;
+  }
+  .Thousand-step-item p{
+     position: absolute;
+     text-align: center;
+     width: 100%;
+     left: 0;
+     bottom: 0px
+  }
+   .Thousand-step-item:nth-child(2n){
+      margin-top: 30px;
+      margin-bottom: 0;
+   }
+
+  .Thousand-step-circle{
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    border: 5px solid #FFE3CC;
+    border-radius: 50% 50% 0 0/100% 100% 0 0;
+    border-bottom: none;
+    left: 0;
+    top:0
+  }
+  .Thousand-step-item:nth-child(2n) p{
+    top:-30px;
+    bottom:auto
+  }
+  .Thousand-step-item:nth-child(2n) .Thousand-step-circle{
+    bottom: 0;
+    top: auto;
+    transform: rotate(180deg);
+  }
+  .Thousand-step-item::before{
+    content: "";
+    display: block;
+    width:30px;
+    height:30px;
+    background-color: #FFB77C;
+    position: absolute;
+    left: -12px;
+    top:50%;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    z-index:1
+  }
+  .Thousand-step-item:last-child::after{
+    content: "";
+    display: block;
+    width:30px;
+    height:30px;
+    background-color: #FFB77C;
+    position: absolute;
+    right: -12px;
+    top:50%;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    z-index:1
+  }
+  .Thousand-step .show-in-mobile{
+    display:none
+  }
+  @media screen and (max-width: 768px){
+    .Thousand-step-item p{
+      font-size:14px;
+      line-height: 19px;
+    }
+    .Thousand-contain{
+      flex-wrap: wrap;
+    }
+    .Thousand-step-item{
+      width: 50%;
+    }
+    .Thousand-step-item::before{
+      top:-5px;
+      left:50%;
+      transform: translateX(-50%);
+    }
+    .Thousand-step-item:nth-child(3)::before,.Thousand-step-item:nth-child(4)::before{
+      top:auto;
+      bottom:-5px
+    }
+    .Thousand-step-item:nth-child(2n){
+      margin-top:0
+    }
+    .Thousand-step-item::before{
+      width:10px;
+      height:10px
+    }
+    .Thousand-step-item:last-child::after{
+      width: 0;
+      height: 0;
+    }
+    .Thousand-step-item{
+      margin-left:0;
+      margin-right:0;
+      padding:14px
+    }
+    .Thousand-step-circle{
+      border: 2px solid #FFE3CC;
+    }
+    .Thousand-step-item:nth-child(2){
+      margin-bottom:-2px
+    }
+    .Thousand-step-item:nth-child(1),.Thousand-step-item:nth-child(3){
+      margin-right:-15px
+    }
+     .Thousand-step-item:nth-child(1) p, .Thousand-step-item:nth-child(2) p{
+       top: -27px;
+       bottom: auto;
+     }
+    .Thousand-step-item:nth-child(3) p, .Thousand-step-item:nth-child(4) p{
+       top: auto;
+       bottom: -27px;
+    }
+    .Thousand-step-item:nth-child(1) .Thousand-step-circle{
+            width: 50%;
+            border-radius: 0;
+            height: 0;
+            right: 0;
+            left: auto;
+            border: 1px solid #FFE3CC;
+    }
+    .Thousand-step-item:nth-child(2) .Thousand-step-circle{
+          height: 100%;
+          border-radius: 50% 0 0 50%;
+          border-right:0
+    }
+    .Thousand-step-item:nth-child(3) .Thousand-step-circle{
+          height: 100%;
+          border-radius: 50% 0 0 50%;
+          border-right:0
+    }
+    .Thousand-step-item:nth-child(4) .Thousand-step-circle{
+            width: 50%;
+            border-radius: 0;
+            height: 0;
+            right: auto;
+            left: 0;
+            bottom: 0;
+            border: 1px solid #FFE3CC;
+    }
+    .Thousand-step-item img{
+      width:100%
+    }
+  }
+</style>
+<div class="Thousand-step">
+  <div class="Thousand-step-title">{{ section.settings.title }}</div>
+  <div class="Thousand-contain">
+    {% for block in section.blocks %}
+      <div class="Thousand-step-item">
+        {% if block.settings.image != blank %}
+          <img src="{{ block.settings.image | img_url:'351x' }}">
+        {% endif %}
+        <p>{{ block.settings.image_text }}</p>
+        <div class="Thousand-step-circle"></div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Thousand steps",
+  "max_blocks":4,
+  "settings": [{
+            "type":"color",
+            "id":"bg_color",
+            "label":"背景颜色"
+        },{
+          "type": "text",
+          "id": "title",
+          "label": "title"
+        },{
+           "type":"color",
+            "id":"title_color",
+            "label":"标题颜色"
+        },{
+           "type":"number",
+            "id":"title_size",
+            "label":"标题大小"
+        }],
+  "blocks":[{
+    "type": "image",
+    "name": "image",
+    "settings": [{
+          "type": "image_picker",
+          "id": "image",
+          "label": "image_picker"
+        },{
+          "type": "text",
+          "id": "image_text",
+          "label": "text"
+        }
+    ]
+  }],
+  "presets": [
+  {
+    "name": "Thousand steps"
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,274 @@
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+/*   .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  } */
+
+  @media screen and (min-width: 750px) {
+/*     .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    } */
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} fn-mask-menu fn-wholesale-Information">
+  <div class="contact page-width page-width--narrow section-{{ section.id }}-padding">
+<!--     <div class="fn-close">{% render 'contact-close' %}</div> -->
+    <h2 class="title-wrapper--no-top-margin {{ section.settings.heading_size }} fn-mask-menutitle fn-information-title t">Wholesale Contact Information</h2>
+    {%- form 'contact', id: 'ContactForm', class: 'isolate' -%}
+      <div class="fn-contact__field">
+        <div class="fn-field">
+          <div>
+            <label class="fn-ContactForm-label">
+              <span class="fn-profile-must">*</span>Name
+            </label>
+          </div>
+          <input required class="fn_field__width" autocomplete="name" type="text" id="ContactForm-name" name="contact[{{ 'templates.contact.form.name' | t }}]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" >
+      </div>
+      <div class="fn-field-overall">
+          <div class="fn-field--with-error">
+              <div>
+                <label class="fn-ContactForm-label">
+                  <span class="fn-profile-must">*</span>Email
+                </label>
+              </div>
+              <input
+                autocomplete="email"
+                type="email"
+                id="ContactForm-email"
+                class="fn_field__input"
+                name="contact[email]"
+                spellcheck="false"
+                autocapitalize="off"
+                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                aria-required="true"
+                {% if form.errors contains 'email' %}
+                  aria-invalid="true"
+                  aria-describedby="ContactForm-email-error"
+                {% endif %}
+              >
+<!--               {%- if form.errors contains 'email' -%}
+                <small class="contact__field-error" id="ContactForm-email-error">
+                  <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+                  <span class="form__message">{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</span>
+                </small>
+              {%- endif -%} -->
+          </div>
+          <div class="fn-field--with-error">
+              <div>
+                <label class="fn-ContactForm-label">
+                  Phone
+                </label>
+              </div>
+              <input type="tel" id="ContactForm-phone" class="fn_field__input" autocomplete="tel" name="contact[{{ 'templates.contact.form.phone' | t }}]" pattern="[0-9\-]*" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+          </div>
+      </div>
+      <div class="fn-field-overall">
+          <div class=" fn-field--with-error">
+              <div>
+                <label class="fn-ContactForm-label">
+                  <span class="fn-profile-must">*</span>Company name
+                </label>
+              </div>
+              <input type="text" id="ContactForm-Subject" class="fn_field__input" name="contact[CompanyName]">
+          </div>
+          <div class="fn-profile-AddressLastselect fn-field--with-error">
+              <div>
+                <label class="fn-ContactForm-label" for="AddressCountry_{{ form.id }}">
+                  <span class="fn-profile-must">*</span>Country
+                </label>
+              </div>
+            <select class="fn-select-country fn_field__input" id="AddressCountry_{{form.id}}" name="contact[country]" data-default="{{form.country}}">{{ all_country_option_tags }}</select>
+<!--             <div class="icon"><img src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/2c71d0a7f899ef4e370c409186645292.png?v=1651630547" alt=""></div> -->
+          </div>
+      </div>
+      
+      <div class="fn-field">
+          <div>
+            <label class="fn-ContactForm-label">
+              Company address
+            </label>
+          </div>
+          <input type="text" id="ContactForm-Companyaddress" class="fn_field__width" name="contact[CompanyAddress]">
+      </div>
+
+      <div class="fn-field">
+          <div>
+            <label class="fn-ContactForm-label">
+              Company profile
+            </label>
+          </div>
+        <textarea
+          rows="10"
+          id="ContactForm-body"
+          class="text-area field__message"
+          name="contact[CompanyProfile]"
+          placeholder="Number of Employee/Company Website/Agent Brand"
+        >
+          {{- form.body -}}
+        </textarea>
+      </div>
+      <div class="fn-field">
+        <div>
+            <label class="fn-ContactForm-label">
+              <span class="fn-profile-must">*</span>Purchasing Details
+            </label>
+        </div>
+        <textarea
+          rows="10"
+          id="ContactForm-Details"
+          class="text-area field__message"
+          name="contact[PurchasingDetails]"
+          placeholder="Machines/Materials/Quantity"
+        >
+          {{- form.body -}}
+        </textarea>
+      </div>
+      <div class="contact__button">
+        <button type="button" class="fn-field-button" id="jqueryBtn">
+          SUBMIT
+        </button>
+      </div>
+      {%- if form.posted_successfully? -%}
+        <div class="fn-mask-message form-status form-status-list form__message" tabindex="-1" autofocus>{% render 'icon-success' %} {{ 'templates.contact.form.post_success' | t }}</div>
+      {%- endif -%}
+    {%- endform -%}
+  </div>
+</div>
+</div>
+<script>
+  var flag = true;
+  $("#jqueryBtn").click(function(){
+      $("#ContactForm-name").next().remove();
+     if($("#ContactForm-name").val()==''){
+             $("#ContactForm-name").after(`<div class="fn-prompt-message" id="fn-message-name">* Please enter your name</div>`);
+            flag = false;
+      }
+      $("#ContactForm-email").next().remove();
+      if($("#ContactForm-email").val()==''){
+         $("#ContactForm-email").after(`<div class="fn-prompt-message" id="fn-message-name">* Please enter your email</div>`);
+          flag = false;
+      } else {
+        var email_val = $("#ContactForm-email").val();
+        var reg = /^[a-zA-Z0-9]+([-_.][A-Za-zd]+)*@([a-zA-Z0-9]+[-.])+[A-Za-zd]{2,5}$/;
+        if(reg.test(email_val) == false) {
+           $("#ContactForm-email").after(`<div class="fn-prompt-message" id="fn-message-name">* Please enter the correct email account</div>`);
+             flag = false;
+        }
+      }
+      $("#ContactForm-Subject").next().remove();
+      if($("#ContactForm-Subject").val()==''){
+         $("#ContactForm-Subject").after(`<div class="fn-prompt-message" id="fn-message-name">* Please enter your Company name</div>`);
+         flag = false;
+      }
+      $(".fn-select-country").next().remove();
+      if($(".fn-select-country").val()==''){
+         $(".fn-select-country").after(`<div class="fn-prompt-message" id="fn-message-name">* Please enter your country</div>`);
+         flag = false;
+      }
+      $("#ContactForm-Details").next().remove();
+      if($("#ContactForm-Details").val()==''){
+         $("#ContactForm-Details").after(`<div class="fn-prompt-message" id="fn-message-name">* Please enter your Purchasing Details</div>`);
+         flag = false;
+      }
+      if(!flag) {
+         return;
+      }
+	  $("#ContactForm").submit();
+  })
+</script>
+{% schema %}
+{
+  "name": "t:sections.contact-form.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Contact form",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.all.colors.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.all.colors.accent_2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.all.colors.background_1.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.all.colors.background_2.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.all.colors.inverse.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.all.colors.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.contact-form.presets.name"
+    }
+  ]
+}
+{% endschema %}

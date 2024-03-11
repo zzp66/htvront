@@ -1,0 +1,161 @@
+<div class="fn-press-particular">
+  <div class="fn-particular-content">
+    <div class="fn-particular-main">
+      <h3 class="t particular_title fn-computer-particulartitle">    
+          {{section.settings.particular_title}}
+      </h3>
+      <h3 class="t particular_title fn-mobile-particulartitle">    
+          Main Features
+      </h3>
+    </div>
+      <div class="swiper-paginations"></div>
+      <div class="swiper-container">
+          <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+              <div class="swiper-slide">
+                  <div class="fn-slide-img fn-computer-swiperimgge">
+                    <div class="fn-imge-left">
+                    {% if block.settings.img_left != blank %}
+                      <img src="{{ block.settings.img_left | img_url: '685x' }}" alt="" >
+                    {% endif %}
+                      <div class="fn-msg">
+                          <div class="left-title t">
+                            {{ block.settings.explain_title }}
+                          </div>
+                          <div class="left-text">
+                            {{ block.settings.explain_text }}
+                          </div>
+                      </div>
+                    </div>
+                    <div class="fn_imge_right">
+                    {% if block.settings.img_right != blank %}
+                            <img src="{{ block.settings.img_right | img_url: '685x' }}" alt="" >
+                    {% endif %}
+                    </div>
+                  </div>
+                  <div class="fn-slide-img fn-mobile-swiperimage">
+                    <div class="fn-imge-left">
+                    {% if block.settings.mobile_swiperimage != blank %}
+                            <img src="{{ block.settings.mobile_swiperimage | img_url: '286x' }}" alt="" >
+                    {% endif %}
+                      <div class="fn-msg">
+                          <div class="left-title t">
+                            {{ block.settings.explain_title }}
+                          </div>
+                          <div class="left-text">
+                            {{ block.settings.explain_text }}
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            {% endfor %}
+          </div>
+      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+  </div>
+</div>
+<script>
+var mySwiper = new Swiper('.swiper-container', {
+    slidesPerView :1,
+    autoplay: true,
+    navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  pagination: {
+    el: '.swiper-paginations',
+  clickable :true,
+    type: 'custom',
+    renderCustom:function(swiper,current,total){
+      var paginationHtml = '';
+      var text = ['Creativity Unleashed','No Pressure Tests','Faster Uniform Heating','Safety Design']
+      for(var i=1;i<=total;i++){
+        if(i==current){
+          paginationHtml+=`<div class='pagination pagination_active'>
+                            <span class='pagination_text'>${text[i-1]}</span>
+                          </div>`
+        }else{
+          paginationHtml+=`<div class='pagination'>
+                            <span class='pagination_text'>${text[i-1]}</span>
+                          </div>`
+        }
+      };
+      return paginationHtml
+  }
+}
+})
+  $('.swiper-paginations').on('click','.pagination',function(){ 
+  var index = $(this).index(); 
+  mySwiper.slideTo(index, 1000, false);
+})
+</script>
+{% schema %}
+{
+	"name": "particular",
+	"settings": [{
+		"type": "text",
+		"id": "particular_title",
+		"label": {
+			"en": "title",
+			"zh-CN": "标题"
+		}
+	}],
+	"blocks": [{
+		"type": "particular",
+		"name": {
+			"en": "Characteristics that",
+			"zh-CN": "特点说明"
+		},
+		"settings": [
+			{
+				"type": "image_picker",
+				"id": "img_left",
+				"label": {
+					"en": "Image left",
+					"zh-CN": "图片(左)"
+				}
+			},
+   			{
+				"type": "image_picker",
+				"id": "img_right",
+				"label": {
+					"en": "Image right",
+					"zh-CN": "图片(右)"
+				}
+			},
+          {
+				"type": "text",
+				"id": "explain_title",
+				"label": {
+					"en": "explain title",
+					"zh-CN": "标题"
+				}
+			},
+             {
+				"type": "text",
+				"id": "explain_text",
+				"label": {
+					"en": "explain",
+					"zh-CN": "说明"
+				}
+			},
+   			{
+				"type": "image_picker",
+				"id": "mobile_swiperimage",
+				"label": {
+					"en": "mobile Image",
+					"zh-CN": "图片"
+				}
+			}
+		]
+	}]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,77 @@
+<div class="mother-item mother-sale-off">
+  <div class="mother-title">
+    <div>
+      {% if section.settings.sale_off_image != blank  %}
+         <img class="show-in-pc" src="{{ section.settings.sale_off_image | img_url:'772x' }}" />
+      {% endif %}
+      {% if section.settings.sale_off_mobile != blank  %}
+         <img class="show-in-mobile" src="{{ section.settings.sale_off_mobile | img_url:'772x' }}" />
+      {% endif %}
+    </div>
+    <div class="mother-title-text">{{ section.settings.sale_off_desc }}</div>
+  </div>
+  <div class="mother-sale-off-contain">
+    {% for block in section.blocks %}
+      {% for item in block.settings.off_product.products %}
+        {% if forloop.index <= 8 %}
+            <div class="mother-sale-off-product">
+              {% render 'product-Model',
+                card_product: item,
+                progress: false,
+                show_secondary_image: section.settings.show_secondary_off,
+                colorSize: true,
+                buttonSeat:'fileSteam',
+                buttonText:'Add To Cart',
+                title: 'flex',             
+                pirce: 'intitle'
+              %}
+            </div>
+          {% endif %}
+          {% endfor %}
+      {% endfor -%}
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "mother-sale-off",
+    "max_blocks": 1,
+    "settings": [
+      {
+            "type":"image_picker",
+            "id":"sale_off_image",
+            "label":"大标题"
+        },{
+            "type":"image_picker",
+            "id":"sale_off_mobile",
+            "label":"大标题_mobile"
+        },{
+            "type":"text",
+            "id":"sale_off_desc",
+            "label":"小标题"
+        },{
+          "type": "checkbox",
+          "id": "show_secondary_off",
+          "default": false,
+          "label": "show_secondary_off_iamge"
+        }
+    ],
+    "blocks":[{
+      "type": "indexOff",
+      "name": {
+          "en": "UP TO 30% OFF",
+          "zh-CN": "UP TO 30% OFF"
+      },
+      "settings": [{
+          "type": "collection",
+          "id": "off_product",
+          "label": "UP TO 50% OFF"
+        }]
+    }]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,31 @@
+<div class="fn-Progress-MyVote">
+        {%- for product in section.settings.document_collections.products limit: 12 -%}
+              {% render 'fn-Vote-product',
+                  card_product: product,
+                  limit: 4,
+                  lazy_load: lazy_load
+              %}
+        {%- endfor -%}
+</div>
+<script>
+     </script>
+{% schema %}
+  {
+    "name": "vote myvote",
+    "settings": [
+        {
+            "type":"collection",
+            "id":"document_collections",
+            "label":"Collection"
+        }
+    ],
+   "blocks": [
+   ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

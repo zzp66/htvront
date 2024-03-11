@@ -1,0 +1,57 @@
+<div class="fn-Newyear-banner">
+  {% if section.settings.Newyear_img != blank %}
+    {% assign image = section.settings.Newyear_img | img_url: '1920x' %}
+    <img class="fn-Newyear-banner_pc" src="{{ image }}" alt="">
+  {% endif %}
+  {% if section.settings.Newyear_img_mobile != blank %}
+    {% assign image = section.settings.Newyear_img_mobile | img_url: '768x' %}
+    <img class="fn-Newyear-banner_mobile" src="{{ image }}" alt="">
+  {% endif %}
+  <div class="fn-head-content"> 
+    <div class="fn-head-title t">{{ section.settings.Newyear_title }}</div>
+    <div class="fn-head-gift">{{ section.settings.Newyear_text }} </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "New year banner",
+    "settings": [
+        {
+			"type": "text",
+			"id": "Newyear_title",
+			"label": {
+				"en": "title"
+			}
+		},
+        {
+			"type": "text",
+			"id": "Newyear_text",
+			"label": {
+				"en": "text"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "Newyear_img",
+			"label": {
+				"en": "Image",
+				"zh-CN": "图片"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "Newyear_img_mobile",
+			"label": {
+				"en": "mobile Image",
+				"zh-CN": "手机图片"
+			}
+		}
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,37 @@
+<div class="fn-Easter-background">
+  {% if section.settings.Easter_background != blank %}
+      {% assign image = section.settings.Easter_background | img_url: '1920x' %}
+      <img class="fn-Easter_background" src="{{ image }}" alt="">
+  {% endif %}
+  {% if section.settings.Easter_background_mobile != blank %}
+      {% assign image = section.settings.Easter_background_mobile | img_url: '375x' %}
+      <img class="fn-Easter_background_mobile" src="{{ image }}" alt="">
+  {% endif %}
+</div>
+{% schema %}
+  {
+    "name": "Easter background",
+    "settings": [
+        {
+			"type": "image_picker",
+			"id": "Easter_background",
+			"label": {
+				"en": "background"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "Easter_background_mobile",
+			"label": {
+				"en": "mobile background"
+			}
+		}
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

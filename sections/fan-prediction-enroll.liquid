@@ -1,0 +1,273 @@
+{% if request.page_type == 'article' or request.page_type == 'blog' %}
+  {% capture permalinkURL %}{{ shop.url }}{{ article.url }}{% endcapture %}
+  {% capture shareTitle %}{{ article.title | url_param_escape }}{% endcapture %}
+{% elsif request.page_type == 'product' %}
+  {% capture permalinkURL %}{{ shop.url }}{{ product.url }}{% endcapture %}
+  {% capture shareTitle %}{{ product.title | url_param_escape }}{% endcapture %}
+{% elsif request.page_type == 'page' %}
+  {% capture permalinkURL %}{{ shop.url }}{{ page.url }}{% endcapture %}
+  {% capture shareTitle %}{{ page.title | url_param_escape }}{% endcapture %}
+{% elsif request.page_type == 'collection' %}
+  {% capture permalinkURL %}{{ shop.url }}{{ collection.url }}{% endcapture %}
+  {% capture shareTitle %}{{ page.title | url_param_escape }}{% endcapture %}
+{% elsif request.page_type == 'index' %}
+  {% capture permalinkURL %}{{ shop.url }}{% endcapture %}
+  {% capture shareTitle %}{{ page.title | url_param_escape }}{% endcapture %}
+{% elsif request.page_type == 'password' %}
+  {% capture permalinkURL %}{{ shop.url }}{% endcapture %}
+  {% capture shareTitle %}{% unless shop.metafields.global.description_tag == blank %}{{ shop.metafields.global.description_tag | url_param_escape }}{% else %}{{ shop.name | url_param_escape }}{% endunless %}{% endcapture %}
+{% endif %}
+<div class="Fan-Prediction-Enroll">
+  <div class="fan-enroll-introduction">
+    <div class="fan-enroll-title">{{ section.settings['fan-enroll-title'] }}</div>
+    <div>
+      <p class="fan-enroll-text">Details:</p>
+      <ul class="fan-enroll-step">
+        <li>
+          <img
+            class="fan-enroll-step-icon"
+            src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/5_5.png?v=1678179394"
+          >
+          <div class="fan-enroll-share-content">
+            <p class="fan-enroll-text">Step 1:Share the Fans Carnival link to the following social media, @HTVRONT.</p>
+            <a
+              target="_blank"
+              href="//www.facebook.com/sharer/sharer.php?u={{ permalinkURL }}&t='The 2nd HTVRONT Fans Carnival'"
+              class="share-facebook"
+              title="{{ 'The 2nd HTVRONT Fans Carnival@HTVRONT' }}"
+            >
+              <img
+                class="fan-enroll-share-icon"
+                src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/img_v2_330b376d-885a-42ab-a7b8-44a7491d07ag.png?v=1678692759"
+                alt=""
+              >
+            </a>
+            <a
+              target="_blank"
+              href="https://www.instagram.com?u={{ permalinkURL }}&title=The 2nd HTVRONT Fans Carnival @HTVRONT"
+              title="{{ 'The 2nd HTVRONT Fans Carnival@HTVRONT' }}"
+              class="share-pinterest"
+              target="_blank"
+              aria-describedby="a11y-new-window-external-message"
+            >
+              <img
+                class="fan-enroll-share-icon"
+                src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/img_v2_13f37c31-b718-4166-b05b-70116a72324g_MIDDLE.png?v=1678692759"
+                alt=""
+              >
+            </a>
+            <a
+              target="_blank"
+              href="https://vt.tiktok.com/share"
+              title="{{ 'The 2nd HTVRONT Fans Carnival@HTVRONT' }}"
+              class="share-pinterest"
+              target="_blank"
+              aria-describedby="a11y-new-window-external-message"
+            >
+              <img
+                class="fan-enroll-share-icon"
+                src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/img_v2_fbde4bc5-2a03-4adc-9a53-7d9160f4e57g.png?v=1678692823"
+                alt=""
+              >
+            </a>
+          </div>
+        </li>
+        <li>
+          <img
+            class="fan-enroll-step-icon"
+            src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/5_5.png?v=1678179394"
+          >
+          <p class="fan-enroll-text">Step 2:Take a screenshot of your post and submit it below. We will send you the bonus after review.</p>
+        </li>
+        <li>
+          <img
+            class="fan-enroll-step-icon"
+            src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/5_5.png?v=1678179394"
+          >
+          <p class="fan-enroll-text">Step 3:Click "Add to cart," and you will get the bonus alongside your orders.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="fan-enroll-form">
+    <div class="fan-enroll-small-title">Submit Your Screenshots</div>
+    <form>
+      <div class="fan-enroll-form-item">
+        <div class="fan-enroll-form-name">
+          <label class="fan-enroll-form-label">Name</label>
+          <input class="fan-enroll-form-input" type="text" id="Name" name="name">
+          <span class="fan-enroll-form-rule">*Please enter your Name</span>
+        </div>
+        <div class="fan-enroll-form-email">
+          <label class="fan-enroll-form-label">Email</label>
+          <input class="fan-enroll-form-input" type="text" id="Email" name="email">
+          <span class="fan-enroll-form-rule">*Please enter your Email</span>
+        </div>
+      </div>
+
+      <div class="fan-enroll-form-upload">
+        <label class="fan-enroll-form-label">Upload shared screenshots</label>
+        <div class="fan-form-upload">
+          <p class="fan-enroll-form-upload-text">+upload files</p>
+          <input class="fan-enroll-form-upload-con" type="file" id="Upload" name="upload">
+          <p class="fan-enroll-form-upload-name"></p>
+        </div>
+        <span class="fan-enroll-form-rule">*Please upload your screenshots of link sharing post</span>
+        <p class="fan-enroll-upload-tips">JPG PNG I Each file cannot exceed 5MB</p>
+        
+      </div>
+      <div class="fan-enroll-form-submit">Submit</div>
+      <span class="fan-form-error">*Failed to submit. Please check your network or submit it again</span>
+    </form>
+  </div>
+</div>
+<script>
+  
+  $(function (){
+    $("#Upload").change(function () {
+    var s = $('#Upload').val();
+    var start = s.indexOf(".") + 1;
+    var name = s.substring(start, s.length).toLowerCase();
+    if (name != "jpg" && name != "png" && name != "gif" && name != "jpeg" && name != "bmp") {
+        $('.fan-enroll-form-upload .fan-enroll-form-rule').text('*Supported: JPG and PNG. The image cannot exceed 5MB').show()
+        return;
+    }
+    if (this.files[0].size / 1024 / 1024 > 5) {
+        $('.fan-enroll-form-upload .fan-enroll-form-rule').text('*Supported: JPG and PNG. The image cannot exceed 5MB').show()
+        return;
+    }
+    $('.fan-enroll-form-upload .fan-enroll-form-rule').hide()
+    $('.fan-form-upload').removeClass('border-color-red')
+    $('.fan-enroll-form-upload-text').hide()
+    $('.fan-enroll-form-upload-name').text(this.files[0].name).show()
+})
+
+  $('.fan-enroll-form-submit').click(function(){
+  var name = $('#Name').val()
+  var email = $('#Email').val()
+    if(name=='' || email=='' || $('#Upload').val()==''){
+       if(name==''){
+          $('.fan-enroll-form-name .fan-enroll-form-input').addClass('border-color-red')
+          $('.fan-enroll-form-name .fan-enroll-form-rule').text('*Please enter your Name').show()
+        }else{
+           $('.fan-enroll-form-name .fan-enroll-form-input').removeClass('border-color-red')
+           $('.fan-enroll-form-name .fan-enroll-form-rule').hide()
+        }
+        if(email==''){
+          $('.fan-enroll-form-email .fan-enroll-form-input').addClass('border-color-red')
+          $('.fan-enroll-form-email .fan-enroll-form-rule').text('*Please enter your Email').show()
+        }else{
+          var reg=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+          if(!reg.test(email)){
+              $('.fan-enroll-form-email .fan-enroll-form-input').addClass('border-color-red')
+              $('.fan-enroll-form-email .fan-enroll-form-rule').text('*Please enter the correct email address').show()
+          }else{
+              $('.fan-enroll-form-email .fan-enroll-form-input').removeClass('border-color-red')
+              $('.fan-enroll-form-email .fan-enroll-form-rule').hide()
+          }
+          
+        }
+        if($('#Upload').val()==''){
+          $('.fan-form-upload').addClass('border-color-red')
+          $('.fan-enroll-form-upload .fan-enroll-form-rule').text('*Please upload your screenshots of link sharing post').show()
+          $('.fan-enroll-form-upload .fan-enroll-form-upload-text').addClass('font-color-red')
+        }else{
+          $('.fan-form-upload').removeClass('border-color-red')
+          $('.fan-enroll-form-upload .fan-enroll-form-rule').hide()
+          $('.fan-enroll-form-upload .fan-enroll-form-upload-text').removeClass('font-color-red')
+        }
+    }else{
+      $('.fan-enroll-form-name .fan-enroll-form-input').removeClass('border-color-red')
+      $('.fan-enroll-form-email .fan-enroll-form-input').removeClass('border-color-red')
+      $('.fan-form-upload').removeClass('border-color-red')
+      $('.fan-enroll-form-name .fan-enroll-form-rule').hide()
+      $('.fan-enroll-form-email .fan-enroll-form-rule').hide()
+      $('.fan-enroll-form-upload .fan-enroll-form-rule').hide()
+      var reg=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+      if(!reg.test(email)){
+          $('.fan-enroll-form-email .fan-enroll-form-input').addClass('border-color-red')
+          $('.fan-enroll-form-email .fan-enroll-form-rule').text('*Please enter the correct email address').show()
+      }else{
+        $('.fan-enroll-form-email .fan-enroll-form-input').removeClass('border-color-red')
+        $('.fan-enroll-form-email .fan-enroll-form-rule').hide()
+        var files = $('#Upload')[0].files[0]
+        let file = new Blob([files], {type: files.type})
+        var formData = new FormData();
+         formData.append('file',files);
+        formData.append('name',name);
+        formData.append('email',email);
+         $.ajax({
+               url: 'https://qn.htvront.com:9000/prod-biz-api/htvront/fansFeast/upload',
+               type:'POST',
+               data: formData,
+               processData:false,
+               dataType:'json',
+               contentType: false,
+               cache: false,
+               success(result){
+                      $('.Fan-Prediction-Gift').show();
+                       $('.fan-form-error').hide()
+                 },
+                 error(result){
+                   let res = result.responseText.split('(').join('')
+                    let reses = res.split(')').join('')
+                   if(JSON.parse(reses).status == 200){
+                       $('.Fan-Prediction-Gift').show();
+                       $('.fan-form-error').hide()
+                   }else{
+                     console.log(result)
+                     $('.fan-form-error').show()
+                   }
+                     
+                      
+                 }
+        })
+      }
+      
+      
+    }
+  })
+
+  })
+
+
+</script>
+{% schema %}
+{
+  "name": "fan-prediction-enroll",
+  "settings": [
+    {
+    	"type": "text",
+    	"id": "fan-enroll-title",
+    	"label": {
+    		"en": "title",
+    		"zh-CN": "标题"
+          }
+    }
+   ],
+    "blocks": [{
+      "type": "link",
+      "name": {
+          "en": "link_url",
+          "zh-CN": "分享链接"
+      },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "linkIcon",
+          "label": "linkIcon"
+        },{
+          "type": "text",
+          "id": "linkUrl",
+          "label": "linkUrl"
+        }
+      ]
+    }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

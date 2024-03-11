@@ -1,0 +1,70 @@
+<style>
+  .back-to-top{
+    position: fixed;
+    right: 15px;
+    bottom: 95px;
+    cursor: pointer;
+    z-index: 333;
+    display:none;
+  }
+</style>
+<div class="back-to-top">
+  {% assign imgUrl = section.settings.img_url %}
+  {% assign imgUrlMobile = section.settings.img_url_mobile %}
+  <picture>
+      <source media="(max-width: 750px)" srcset="{{ section.settings.image_mobile | img_url:imgUrlMobile }}">
+      <source media="(min-width: 751px)" srcset="{{ section.settings.image | img_url:imgUrl }}">
+      <img src="{{ section.settings.image | img_url:imgUrl }}"/> 
+    </picture>
+</div>
+<script>
+  $('.back-to-top').click(function(){
+    $('html, body').animate({
+        scrollTop: 0
+      });
+  })
+  var height = $(window).height()
+  $(window).scroll(function(event){
+    var top = $(document).scrollTop();
+    if(top >= height){
+      $('.back-to-top').css('display','block')
+    }else{
+      $('.back-to-top').css('display','none')
+    }
+  });
+</script>
+{% schema %}
+  {
+    "name": "Back-to-top",
+    "settings": [
+      {
+        "type":"image_picker",
+        "id":"image",
+        "label":"image"
+      },{
+        "type":"image_picker",
+        "id":"image_mobile",
+        "label":"image mobile"
+      },{
+        "type":"text",
+        "id":"img_url",
+        "label":"image url"
+      },{
+        "type":"text",
+        "id":"img_url_mobile",
+        "label":"image url mobile"
+      }
+    ],
+    "presets":[
+      {
+        "name":"Back-to-top"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

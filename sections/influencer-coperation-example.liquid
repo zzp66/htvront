@@ -1,0 +1,59 @@
+<div class="fn-page-width influencer-coperation-example">
+  <h3>{{ section.settings.title }}</h3>
+  <ul>
+    {% for block in section.blocks %}
+      <li>
+        {% assign image = block.settings.img | img_url: '363x' %}
+        <img src="{{ image }}">
+        <p class="influencer-text">{{ block.settings.text1 }}</p>
+        <p class="influencer-text">{{ block.settings.text2 }}</p>
+        <p class="influencer-text">{{ block.settings.text3 }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% schema %}
+{
+  "name": "Coperation Example",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "title"
+    }
+  ],
+  "blocks":[
+    {
+      "type": "example",
+      "name": "example",
+      "settings": [{
+          "type": "image_picker",
+          "id": "img",
+          "label": "img"
+        },{
+          "type": "text",
+          "id": "text1",
+          "label": "text1"
+        },{
+          "type": "text",
+          "id": "text2",
+          "label": "text2"
+        },{
+          "type": "text",
+          "id": "text3",
+          "label": "text3"
+        }]
+    }
+  ],
+  "presets": [{
+    "name": "Influencer Coperation Example"
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

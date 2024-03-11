@@ -1,0 +1,137 @@
+<style>
+  .cup-presell-comparison{
+    {% if section.settings.background_image != blank   %}
+      background-image:url('{{ section.settings.background_image | img_url:'1920x' }}');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    {% endif %}
+    overflow: hidden;
+    background-color:{{ section.settings.bg_color }};
+  }
+  .comparison-img{
+    margin:0 auto;
+  }
+  .cup-presell-comparison>p{
+    font-size: {{ section.settings.title_fontsize }}px;
+    font-weight: bold;
+    color: {{ section.settings.title_color }};
+    line-height: 49px;
+    text-align: center;
+    padding-top:30px;
+  }
+  @media screen and (max-width: 1720px){
+    .cup-presell-comparison>p{
+      font-size:28px;
+    }
+  }
+  @media screen and (max-width: 1440px){
+    .comparison-img {
+      width: 80%;
+    }
+  }
+   @media screen and (max-width: 820px){
+    .cup-presell-comparison>p{
+      font-size:16px;
+      padding-top:15px;
+      line-height: 22px;
+      padding-bottom:10px;
+    }
+   }
+  @media screen and (max-width: 750px){
+   .cup-presell-comparison{
+      background:{{section.settings.bg_color}}
+    }
+    .cup-presell-comparison>.scroll{
+      overflow-x: scroll;
+      width: 93.3%;
+      margin: 0 auto;
+      margin-bottom:20px;
+    }
+    .cup-presell-comparison>.scroll>div{
+      width:694px;
+      margin: 0 auto;
+    }
+    .scroll::-webkit-scrollbar {
+        width: 100%;
+        height: 7px;
+    }
+    .scroll::-webkit-scrollbar-thumb {
+        background-color: #FFAA4C;
+      border-radius: 4px;
+    }
+    .scroll::-webkit-scrollbar-track {
+        background: #FFF6E4;
+      border-radius: 4px;
+    }
+    .comparison-img{
+      width:100%;
+    }
+  }
+</style>
+<div class="cup-presell-comparison" id="{{ section.settings.id }}">
+  <p>{{ section.settings.title }}</p>
+  <div class="scroll">
+    <div>
+      <picture>
+        <source media="(max-width: 750px)" srcset="{{ section.settings.image_mobile | img_url:'694x' }}" />
+        <source media="(min-width: 751px)" srcset="{{ section.settings.image | img_url:'1204x' }}" />
+        <img src="{{ section.settings.image | img_url: '1204x' }}" class="comparison-img"/>
+      </picture>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Group-Buying-Comparison",
+    "settings": [  
+      {
+        "type": "text",
+        "id": "id",
+        "label": "id(页面唯一性，全英文)"
+      },
+      {
+        "type":"color",
+        "id":"bg_color",
+        "label":"background color"
+      },
+     {
+       "type":"image_picker",
+       "id":"background_image",
+       "label":"background image"
+     },{
+       "type":"image_picker",
+       "id":"background_image_mobile",
+       "label":"background image mobile"
+     },{
+      "type":"text",
+      "id":"title",
+      "label":"title"
+     },{
+       "type":"color",
+       "id":"title_color",
+       "label":"title color"
+     },{
+       "type":"number",
+       "id":"title_fontsize",
+       "label":"title fontsize"
+     },
+     {
+       "type":"image_picker",
+       "id":"image",
+       "label":"image"
+     },{
+       "type":"image_picker",
+       "id":"image_mobile",
+       "label":"image mobile"
+     }],
+    "presets":[{
+      "name":"Group-Buying-Comparison"
+    }]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

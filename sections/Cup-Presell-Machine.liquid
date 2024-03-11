@@ -1,0 +1,675 @@
+<style>
+  .member-stories-player{
+    position: absolute;
+    left: 48%;
+    cursor: pointer;
+    top: 45%;
+  }
+  .craft-video-mask {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0;
+    top: 0;
+    z-index: 999;
+    display: none;
+  }
+  .craft-video-mask .carft-bags-main {
+    cursor: pointer;
+  }
+  .craft-bags-Video {
+    width:100%;
+    height:653px;
+  }
+  .craft-bags-Video iframe{
+    border-radius:10px
+  }
+  .craft-video-mask>div{
+    margin: 0 auto;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 3.9% 6.2%;
+    width: 74.85%;
+  }
+  .craft-video-mask .mask-close {
+    position: absolute;
+    top: 21px;
+    right: 25px;
+  }
+  .video-img{
+    position: relative;
+  }
+  .image_link{
+    padding-right:24px;
+  }
+  .presell-image-box{
+    background-color:#fff;
+    padding:10px 29px 7px 14px;
+    text-align: center;
+  }
+  .bags-video{
+    overflow:hidden;
+    padding:20px 0 40px 0;
+    display:flex;
+  }
+  .presell-image-box i{
+    font-size: 24px;
+    font-weight: 600;
+    color: #723600;
+    line-height: 33px;
+    display:block;
+    font-style: normal;
+  }
+  .craft-bags{
+    width:100%;
+    overflow:hidden;
+    background-image:url('{{ section.settings.background_image | img_url:'1920x' }}');
+    background-size: 100% 100%;
+    background-position: center;
+  }
+  .craft-width{
+    width:1560px;
+    margin: 0 auto;
+  }
+  .bag-product-title{
+    padding:30px 0 20px 0;
+  }
+  .bag-title-text{
+    font-size: 36px;
+    font-weight: bold;
+    color: #723600;
+    text-align: center;
+  }
+  .bags-image{    
+    min-width:409px;
+  }
+  .bags-text{
+    padding-left:20px;
+  }
+  .bags-image>img{
+    width:409px;
+  }
+  .bags-topimg{
+    display:flex
+  }
+  .bags-imgbox h3{
+    font-size: 22px;
+    font-weight: bold;
+    color: #723600;
+    padding: 11px 0;
+    line-height: 30px;
+    height: 78px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  .bags-imgbox{
+    width:770px;
+    height:444px;
+    border-radius: 4px;
+    margin-left:20px;
+    display:flex;
+    background-color: #fff;
+    padding: 18px 20px;
+  }
+  .bags-imgbox:nth-child(1){
+    margin-left:0;
+  }
+  .ul-text{
+    min-height: 15rem;
+    padding-left:20px;
+  }
+  .ul-text .ul_text_li{
+    font-size: 16px;
+    color: #723600;
+    line-height: 22px;
+    list-style-type: disc;
+    padding-bottom: 13px;
+  }
+  .bags_price .price__sale .fn-compareat_price,.price__regular .price-item--regular{
+    font-size: 22px;
+    font-weight: bold;
+    color: #ECA62F;
+    line-height: 30px;
+    flex-direction: inherit;
+  }
+  .bags_price{
+    font-size: 22px;
+    font-weight: bold;
+    color: #ECA62F;
+    line-height: 30px;
+    overflow: hidden;
+    display: inline-block;
+  }
+  .bags-addcart{
+    display: inline-block;
+    width:100%;
+  }
+  .bags_price .price{
+    float: left;
+    margin-left: 10px;
+  }
+  .bags_price .fn-compareat_price .fn-compare-at_price{
+    padding: 2px 0 0 10px;
+    color: #723600;
+    font-weight: 400;
+    font-size: 14px;
+  }
+  .bags_price b{
+    float:left;
+  }
+  .bags_old_price{
+    font-size: 14px;
+    color: #723600;
+    line-height: 19px;
+    font-style:normal;
+    font-weight:400;
+  }
+  .bags-addcart .button--full-width{
+    width:100%;
+    height: 49px;
+    background: linear-gradient(156deg, #FFCD66 0%, #ECA62F 100%);
+    border-radius: 4px;
+    --border-opacity: none;
+  }
+   @media screen and (max-width: 1720px){
+     .craft-width {
+        width:83.3%
+     }
+     .bags-imgbox{
+        width: 49%;
+        height: auto;
+     }
+     .bags-image {
+        min-width: 52%;
+     }
+     .video-img {
+        width: 45%;
+     }
+     .image_link{
+        padding-right: 20px;
+     }
+     .presell-image-box{
+       width:54%;
+     }
+     .presell-image-box i{
+       margin-top:20px;
+     }
+     .bag-title-text{
+        font-size: 28px;
+     }
+   }
+  
+ @media (max-width: 1660px)  {
+   .craft-bags{
+     height:100%;
+   }
+   .craft-width{
+     width:83.33%;
+   }
+   .bags-imgbox{
+      width: 100%;
+      height: 100%;
+     overflow:hidden;
+   }
+   .bags-image{
+     width: 40%;
+     margin-right:2%;
+   }
+   .bags-text{
+      width: 56%;
+      float: left;
+   }
+   .presell-image-box i{
+     font-size:20px;
+   }
+   .bags-imgbox h3{
+     padding:0;
+     font-size: 20px;
+      height: 62px;
+   }
+   .ul-text {
+      min-height: 10rem;
+      padding:10px 14px 0 20px;
+    }
+   .bags_price{
+     margin-left:1%;
+     font-size:20px;
+   }
+   .bags-addcart .button--full-width{
+     width: 100%;
+     height: 40px;
+     min-height:0;
+   }
+   .bags_price .price__sale .fn-compareat_price,.price__regular .price-item--regular{
+     font-size:20px;
+   }
+   .bags_price .fn-compareat_price .fn-compare-at_price{
+     font-size:14px;
+   }
+   .bags-addcart{
+     display:block;
+     margin-left: 0;
+   }
+   .bags-video{
+    justify-content: space-around;
+   }
+ }
+  @media screen and (max-width: 1180px){
+    .craft-bags-Video {
+      height:400px;
+    }
+     .bags-text {
+      padding-left: 10px;
+    }
+  }
+  @media (max-width: 1024px) {
+    .craft-bags{
+      padding:0;
+      background-size: 100% 100%;
+    }
+     .bag-title-text{
+       line-height:80px;
+     }
+     .bags-imgbox{
+       padding: 1.4rem;
+     }
+    .video-img{
+       width:44%;
+     }
+    .presell-image-box {
+        width: 56%;
+        text-align: center;
+      }
+    .presell-image-box i{
+      font-size:16px;
+      margin:0;
+    }
+    .bags-image{
+      width: 100%;
+      margin: 0
+    }
+    .bags-image img{
+      border-radius:5px;
+    }
+    .bags-text{
+      width:100%;
+      text-align: left;
+    }
+    .ul-text{
+      padding: 0;
+      min-height: 12rem;
+    }
+    .ul-text .ul_text_li{
+      font-size:14px;
+      margin-left: 18px;
+      line-height: 19px;
+      padding-bottom: 0;
+    }
+     .bags_price .price__sale .fn-compareat_price,.price__regular .price-item--regular{
+       font-size:16px;
+     }
+     .bags_price{
+       font-size:16px;
+       margin:0;
+       display:flex;
+     }
+    .bags_price b{
+      margin-right:5px;
+    }
+    .bags_price .price{
+      margin:0;
+    }
+    .bags_price .fn-compareat_price .fn-compare-at_price{
+      padding: 2px 0 0 5px;
+    }
+    .bags-addcart{
+      display:block;
+    }
+    .bags-addcart .button--full-width{
+      font-size: 14px;
+      padding: 0;
+      height: 36px;
+      line-height: 36px;
+      min-height: 36px;
+    }
+    .presell-image-box img{
+      margin-top:0;
+    }
+    .presell-image-box i:after{
+      content:none
+    }
+    .presell-image-box i:before{
+      content:none
+    }
+    .bag-product-title{
+      padding:0;
+    }
+  }
+  @media screen and (max-width: 820px){
+    .craft-bags-Video {
+        height:300px;
+      }
+     .craft-video-mask .mask-close {
+        top: 5px;
+        right: 5px;
+      }
+    .member-stories-player{
+      width:14px;
+      height:18px
+    }
+    .craft-video-mask>div{
+      width:100%;
+      border-radius: 0;
+      padding: 5.1% 6.9%;
+    }
+    .craft-video-mask-mobile>div{
+      width:93.6%;
+    }
+     .craft-video-mask .mask-close {
+        top: 3px;
+        right: 4px;
+      }
+    .craft-video-mask .mask-close img{
+      width:19px;
+      height:19px
+    }
+    .craft-bags-Video iframe{
+      border-radius:0
+    }
+    .craft-bags{
+      background: #FFF6D2;
+      padding: 16px 0 25px 0;
+    }
+    .craft-width{
+      width:93.6%;
+      padding-top:0;
+    }
+    .bag-title-text{
+      font-size: 16px;
+      line-height: 22px;
+      padding-bottom: 10px;
+    }
+    .bags-imgbox{
+      padding: 10px 5px;
+      margin-left:5px;
+    }
+    .bags-imgbox h3{
+      font-size:14px;
+      padding:0 0 5px;
+      height: 43px;
+      line-height: 20px;
+    }
+    .video-img{
+      width:100%;
+      margin-bottom:10px;
+    }
+    .presell-image-box{
+      width:100%;
+      box-shadow: 0px 2px 2px 0px rgba(135,80,0,0.5);
+      padding: 7px 0 10px 5px;
+    }
+    .bags_price .fn-compareat_price .fn-compare-at_price{
+      padding: 2px 0 0 3px;
+      font-size:12px;
+      display:inline;
+    }
+    .bags-video{
+      display:block;
+      padding: 0;
+      padding-top: 10px;
+    }
+    .image_link>img{
+      margin:0 auto;
+    }
+    .presell-image-box i{
+      font-weight:bold;
+    }
+    .image_link{
+      padding-right:0;
+    }
+  }
+  @media screen and (max-width: 750px){
+    .bags-imgbox{
+      flex-direction: column;
+      padding: 12px 4px 10px 4px;
+    }
+    .bags-imgbox h3 {
+      font-size: 14px;
+      padding: 5px 0;
+      height: 65px;
+      line-height: 19px;
+      -webkit-line-clamp: 3;
+    }
+    .ul-text{
+      min-height:14rem;
+    }
+    .bags-text{
+      padding-left:0;
+    }
+    .bags_price{
+      padding-bottom:5px;
+    }
+    .craft-bags-Video {
+        height:230px;
+      }
+    .presell-image-box img{
+      margin:0 auto;
+    }
+    .creativity-image img{
+      margin: 0 auto;
+    }
+  }
+   @media screen and (max-width: 400px){
+    /* .craft-bags .bags_price{
+      font-size:14px;
+    } */
+     .craft-bags .bags_price b{
+       margin-right:0;
+     }
+     /* .craft-bags .bags_price .price__sale .fn-compareat_price, .price__regular .price-item--regular{
+        font-size:14px;
+     } */
+   }
+</style>
+<div class="craft-bags"  id="{{ section.settings.craft_id }}">
+  <div class="craft-width">
+  <div class="bag-product-title">
+    <div class="bag-title-text">
+      {{ section.settings.title }}
+    </div>
+  </div>  
+  <div class="bags-list">
+    <div class="bags-topimg">
+      {% for block in section.blocks %}
+         <div class="bags-imgbox">
+          <div class="bags-image">
+             <a href="{{ block.settings.product_item.url }}">
+              {% if block.settings.Bags_img != blank %}
+                <img src="{{ block.settings.Bags_img | img_url: '409x' }}" alt="">
+              {% endif %}
+             </a>
+          </div>
+        <div class="bags-text">
+           <a href="{{  block.settings.product_item.url }}">
+              <h3>{{ block.settings.bags_title }}</h3>
+           </a>
+        <div class="ul-text">{{ block.settings.ul_text }}</div>
+        <div class="bags_price">
+          <b>Only</b>
+            {% render 'sffers-price', product:  block.settings.product_item, price_class: '' %}
+         </div>
+          <div class="bags-addcart">
+            {% render 'addCart-Model' ,product: block.settings.product_item, buttonText: 'ADD TO CART' %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+      <div class="bags-video">
+        <div class="video-img">
+          <a href="{{ section.settings.article_link }}" class="image_link">
+              <img class="show-in-pc" src="{{ section.settings.image | img_url: '602x' }}">
+          </a>
+          {% if section.settings.vedio_link != blank %}
+            <img
+              onclick="christmasFunction('1','{{ section.settings.vedio_link }}')"
+              class="member-stories-player"
+              src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/img_v2_5b966ce4-5530-43c2-88f3-eab1a512b51g.png?v=1687849500"
+            >
+          {% endif %}
+        </div>
+        <div class="presell-image-box">
+            <i>{{ section.settings.sales_catchword }}</i>
+            {% if section.settings.sales_img_mobile %}
+               <picture>
+                <source media="(max-width: 750px)" srcset="{{ section.settings.sales_img_mobile | img_url:'355x' }}" />
+                <source media="(min-width: 751px)" srcset="{{ section.settings.sales_img | img_url: '891x' }}" />
+                <img src="{{ section.settings.sales_img | img_url: '891x'}}">
+              </picture>
+            {% else %}
+              <img src="{{ section.settings.sales_img | img_url: '891x'}}">
+            {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="craft-video-mask">
+  <div>
+    <div class="carft-bags-main">
+      <div class="mask-close" onclick="christmasFunction('2')">
+        <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/7_8ba31ff8-9cdf-403b-ac36-d36b25abab80.png?v=1683355188">
+      </div>
+      <div class="craft-bags-Video">
+        <iframe
+          id="stories-Video-Iframe"
+          width="100%"
+          height="100%"
+          src=""
+          title="YouTube video player"
+          frameborder="no"
+          border="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function christmasFunction(e,link){
+    if(e == 1 ) {
+      $('#stories-Video-Iframe').eq(0).attr('src',link)
+      $('.craft-video-mask').show();
+
+    }
+    if(e == 2 ) {
+      $('.craft-video-mask').hide();
+      $('#stories-Video-Iframe').eq(0).attr('src','')
+    }
+  }
+</script>
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+{% schema %}
+  {
+    "name": "Cup-Presell-Machine",
+    "settings": [
+      {
+        "type":"text",
+        "id":"craft_id",
+        "label":"id(页面唯一性，全英文)"
+      },
+      {
+        "type":"image_picker",
+        "id":"background_image",
+        "label":"background image"
+      },
+      {
+        "type":"text",
+        "id":"title",
+        "label":"标题"
+      },
+      {
+        "type":"text",
+        "id":"sales_catchword",
+        "label":{
+          "en":"sales catchword",
+          "zh-CN":"甩卖口号"
+        }
+      },{
+      "type":"image_picker",
+      "id":"image",
+      "label":{
+        "en":"Video Image",
+        "zh-CN":"视频图片"
+        }
+      },{
+      "type":"url",
+       "id":"vedio_link",
+       "label":{
+          "en":"vedio link",
+          "zh-CN":"视频链接"
+        }
+      },{
+        "type":"image_picker",
+        "id":"sales_img",
+        "label":"sales_img"
+      },{
+        "type":"image_picker",
+        "id":"sales_img_mobile",
+        "label":"sales img mobile（非必填）"
+      }
+    ],
+    "max_blocks":2,
+    "blocks":[{
+        "name":"bundle",
+        "type":"bundle",
+        "settings":[{
+            "type": "product",
+            "id": "product_item",
+            "label": "product item"
+          },
+          {
+             "type":"image_picker",
+             "id":"Bags_img",
+             "label":{
+                "en":"bags image",
+                "zh-CN":"图片"
+             }
+          },{
+            "type":"text",
+            "id":"bags_title",
+            "label":{
+              "en":"bags title",
+              "zh-CN":"文案标题"
+            }
+          },{
+            "type":"html",
+            "id":"ul_text",
+            "label":{
+              "en":"ul text ",
+              "zh-CN":"自定义html文案"
+            }
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Cup-Presell-Machine"
+      }
+    ]
+  }
+{% endschema %}

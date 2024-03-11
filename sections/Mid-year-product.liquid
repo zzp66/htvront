@@ -1,0 +1,303 @@
+<style>
+   .product-model-items{
+       width: 24%;
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 11px 12px 15px 13px;
+      margin-bottom: 20px;
+      margin-right: 1.3%;
+      float:left;
+    }
+    .product-model-items:nth-child(4n) {
+      margin-right: 0;
+    }
+    .product-model-items .fn-product-title .t {
+      font-size: 16px;
+      line-height: 22px;
+      height: 42px;
+    }
+    .product-model-items .fn-color-attr {
+      height: 32px;
+      margin-top: 15px;
+    }
+    .product-model-items .fn-color-attr ul li {
+      width: 30px;
+      height: 30px;
+      border: 0px;
+    }
+    .product-model-items .fn-color-attr ul li + li {
+      margin-left: 10px;
+    }
+    .product-model-items .fn-color-attr ul li:hover {
+      border: 1px solid #ff3737;
+    }
+    .product-model-items .button--full-width {
+      min-height: calc(4.9rem + var(--buttons-border-width) * 2);
+      height: calc(4.9rem + var(--buttons-border-width) * 2);
+      border-radius: 4px;
+      margin-top: 15px;
+      --border-opacity: none;
+      --border-offset: none;
+      padding-left: 0;
+      padding-right: 0;
+      background: #fff;
+      border-color: #FF7606 !important;
+      color: #FF7606;
+      border:1px solid;
+    }
+    .product-model-items .fn-product-price {
+      width: auto;
+    }
+    .product-model-items .fn-product-price span {
+      font-size: 24px;
+      line-height: 22px;
+      text-align: right;
+    }
+    .product-model-items .fn-compareat_price .fn-compare-at_price {
+      font-size: 16px;
+      font-weight: 400;
+      text-align: right;
+    }
+    .fn-discounts-progressbar {
+        position: relative;
+    }
+    .fn-discounts-progressbartwo,
+    .fn-discounts-progressbarone {
+        height: 10px;
+        border-radius: 5px;
+      }
+    .fn-discounts-progressbarone {
+        width: 100%;
+        background:rgba(255,118,6,0.2);;
+    }
+    .fn-discounts-progressbartwo {
+        max-width: 100%;
+        position: absolute;
+        background: linear-gradient(90deg, #FFCD65 0%, #ECA62F 100%);
+        top: 0;
+      }
+    .product{
+      width:100%;
+      background:url("https://cdn.shopify.com/s/files/1/0356/5997/2741/files/151.png?v=1687834360") no-repeat;
+      background-size:100% 100%;
+      letter-spacing: 0;
+    }
+    .product-width{
+      width:1600px;
+      margin: 0 auto;
+      padding-top: 105px;
+    }
+    .product-list{
+      padding:50px 20px;
+      background: linear-gradient(180deg, #F8BC55 0%, #FCDF8E 100%);
+      border-radius: 38px;
+      overflow: hidden;
+      border: 5px solid #FFEDA1;
+      position: relative;
+      top: -41px;
+    }
+    .product-title{
+      height: 96px;
+      background:url("https://cdn.shopify.com/s/files/1/0356/5997/2741/files/img_v2_e6d670a3-8597-4560-a8a6-7fd0abe4fa7g.png?v=1687832301") no-repeat 100%/cover;
+      background-size:100%;
+      position: relative;
+    }
+    .title-bg{     
+      background:url("https://cdn.shopify.com/s/files/1/0356/5997/2741/files/30_6f63e49b-fbd5-4ee6-9527-1e4a14b30027.png?v=1687673592") no-repeat 100%/cover;
+      height:131px;
+      position: absolute;
+      width: 447px;
+      left: 50%;
+      margin-left: -223px;
+      top: -55px;
+    }
+    .title-text{
+      font-size: 36px;
+      font-family: OpenSans-Bold, OpenSans;
+      font-weight: bold;
+      color: #914408;
+      line-height: 95px;
+      text-align: center;
+    }
+    .product-list .fn-discounts-productssold{
+      padding-top:10px;
+   }
+   .product-list .fn-discounts-progressbar{
+     padding-bottom:10px;
+   }
+   @media (max-width: 1660px) {
+     .product-list{
+       padding:3.5rem .8rem;
+     }
+     .title-text{
+       font-size:28px;
+     }
+     .product-width{
+       width:83.3%;
+     }
+   }
+   @media (max-width: 1024px){
+      .product-model-items .fn-product-price span{
+        font-size:16px;
+      }
+     .product-model-items .fn-compareat_price .fn-compare-at_price{
+       font-size:14px;
+     }
+     .product-title{
+       background-size: 100% 66%;
+     }
+   }
+    @media (max-width: 750px){
+      .product{
+        padding:7rem 0 0 ;
+        background: #FEE692;
+      }
+      .product-list{
+        padding: 10px 5px;
+        border-width: 3px;
+        border-radius: 10px;
+        top: -30px;
+      }
+      .product-model-items{
+        width:49%;
+        padding: 5px 5px 30px 5px;
+        margin-bottom: 10px;
+      }
+      .product-model-items:nth-child(2n){
+        margin-right:0
+      }
+      .title-bg{
+        height: 67px;
+        width: 212px;
+        margin-left: -100px;
+        top: -40px;
+        background-size: 100%;
+      }
+      .title-text{
+        font-size: 16px;
+        line-height: 50px;
+      }
+      .product-title{
+        height: 48px;
+      }
+      .fn-compareat_price{
+        flex-direction: inherit;
+        justify-content: left;
+      }
+      .product-model-items .fn-product-price{
+        width:100%;
+      }
+      .product-width{
+        width:93.6%;
+        padding-top: 0;
+      }
+      .product-model-items .button--full-width{
+        width: 99%;
+        height: 32px;
+        min-height: 0;
+        min-width: 0;
+        margin-top:5px;
+        font-size:14px;
+        line-height:14px;
+      }
+      .product-model-items .fn-product-price span{
+        color: #914408;
+        font-size:14px;
+      }
+     .product-model-items .fn-compareat_price .fn-compare-at_price{
+       font-size:12px;
+     }
+      .product-model-items .fn-product-title .t{
+        font-size:14px;
+      }
+      .product-model-items .fn-color-attr{
+        margin-top:5px;
+        height: 20px;
+      }
+      .fn-discounts-productssold{
+        font-size:12px;
+      }
+      .fn-discounts-progressbartwo, .fn-discounts-progressbarone{
+        height:5px;
+      }
+      .product-model-items .fn-color-attr ul li + li{
+        margin-left:5px;
+      }
+      .product-model-items .fn-color-attr ul li{
+        width:17px;
+        height:17px;
+      }
+      .product-list .fn-discounts-productssold{
+        padding-top:5px;
+      }
+      .product-list .fn-discounts-progressbar{
+        padding-bottom:0;
+      }
+    }
+</style>
+<div id="{{ section.settings.card_id }}" class="product">
+  <div class="product-width">
+    <div class="product-title">
+      <div class="title-bg">
+        <div class="title-text">
+          {{ section.settings.title }}
+        </div>
+      </div>
+    </div>  
+    <div class="product-list">
+      {% for block in section.blocks %}
+        <div class="product-model-items">
+          {% render 'product-Model',
+              card_product: block.settings.product_item,
+              progress: true,
+              colorSize: true,
+              buttonSeat: 'fileSteam',
+              buttonText: 'ADD TO CART',
+              title: 'flex',
+              pirce: 'intitle',
+              schedule_sum:block.settings.product_total
+            %}
+        </div>
+      {% endfor %}
+  </div>
+</div>
+{% javascript %}
+{% endjavascript %}
+{% schema %}
+   {
+    "name": "Mid Year Products",
+    "settings": [
+      {
+        "type":"text",
+        "id":"card_id",
+        "label":"id(页面唯一性，全英文)"
+      },{
+        "type": "text",
+        "id": "title",
+        "label": "title"
+      }
+    ],
+    "blocks":[{
+      "name":"bundle",
+      "type":"bundle",
+       "settings":[
+         {
+        "type": "product",
+        "id": "product_item",
+        "label": "product item"
+      },{
+        "type": "text",
+        "id": "product_total",
+        "label": "product total"
+      }
+       ]
+      }
+    
+    ],
+    "presets": [
+      {
+        "name": "Mid Year Products"
+      }
+    ]
+  }
+{% endschema %}

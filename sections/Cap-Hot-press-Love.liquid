@@ -1,0 +1,196 @@
+{% style %}
+  #shopify-section-{{ section.id }} .cap-hot-press-love{
+    background-color:{{ section.settings.bg_color }}
+  }
+{% endstyle %}
+<style>
+    .cap-hot-press-love {
+        padding: 30px 0 40px;
+        letter-spacing: 0;
+    }
+    .cap-hot-love-content {
+        width: 1196px;
+        margin: 44px auto 0;
+        display: flex;
+    }
+    .cap-hot-love-item {
+        position: relative;
+        margin-right: 20px;
+        background: #FFF1E0;
+        border-radius: 6px;
+        padding: 55px 13px 27px;
+        flex: 1
+    }
+    .cap-hot-love-item:last-child {
+        margin-right: 0
+    }
+    .cap-hot-love-avatar {
+        position: absolute;
+        left: 50%;
+        top: -24px;
+        transform: translateX(-50%);
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+    }
+    .cap-hot-love-usename {
+        font-size: 16px;
+        font-weight: bold;
+        color: #6D3309;
+        line-height: 19px;
+        text-align: center;
+        margin-bottom: 10px
+    }
+    .cap-hot-love-comment {
+        font-size: 14px;
+        font-weight: 400;
+        color: #6D3309;
+        line-height: 20px;
+    }
+    @media screen and (max-width: 1200px) {
+        .cap-hot-love-content {
+            width: 96%
+        }
+    }
+    @media screen and (max-width: 768px) {
+        .cap-hot-press-love {
+            padding: 10px 0 18px
+        }
+        .cap-hot-love-content {
+            margin: 22px auto 0;
+            width: 95%;
+            flex-wrap: wrap;
+        }
+        .cap-hot-love-item {
+            padding: 45px 13px 10px;
+            margin-right: 7px;
+            margin-bottom: 24px;
+            width: calc(50% - 4px);
+            flex: none;
+        }
+        .cap-hot-love-item:nth-child(2n) {
+            margin-right: 0
+        }
+        .cap-hot-love-item:nth-child(3), .cap-hot-love-item:nth-child(4) {
+            margin-bottom: 0
+        }
+        .cap-hot-love-avatar {
+            width: 52px;
+            height: 52px;
+            top: -14px
+        }
+        .cap-hot-love-usename {
+            margin-bottom: 2px
+        }
+      .cap-hot-press-love .open-arrow-text{
+        display: inline-block;
+        color: #FF8C30;
+      }
+    }
+</style>
+<div class="cap-hot-press-love" id="{{ section.settings.card_id }}">
+    <div class="cap-module-title">
+        <div class="cap-module-host-title">{{ section.settings.title }}</div>
+        <div class="cap-module-desc-title">{{ section.settings.title_desc }}</div>
+    </div>
+    <div class="cap-hot-love-content">
+        {% for block in section.blocks %}
+        <div class="cap-hot-love-item">
+            <img class="cap-hot-love-avatar" src="{{ block.settings.avatar | img_url:'72x' }}">
+            <div class="cap-hot-love-usename">
+                {{ block.settings.username }}
+            </div>
+            <div class="cap-hot-love-comment" data-index="{{ forloop.index0 }}">
+                {{ block.settings.comment }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<script>
+   refresh()
+   window.onresize = function () {  //监听屏幕的改变
+      setTimeout(function () {
+       refresh()
+      }, 10)
+    };
+  function refresh(){
+    var windowWidth; 
+    strArr = []
+    windowWidth = $(window).width()
+    if(windowWidth<=750){
+      $('.cap-hot-love-comment').each(function(index,item){
+       strArr.push($(item).text())
+        var str = $(this).text();
+        var subStr = str.substring(0,200);
+            $(this).html(subStr + (str.length > 200 ? '...' + 
+             '<div class="open-arrow-text">more+</div>'
+             : ''))
+      })
+      $('.cap-hot-love-comment').on('click','.open-arrow-text',function(){
+        console.log('123213123')
+         for(var i = 0;strArr.length>i;i++){
+           if(i == $(this).parent().attr('data-index')){
+              $(this).parent().html(strArr[i])
+           }
+         }
+      })
+    }
+  }
+
+</script>
+{% schema %}
+{
+    "name":"Cap Hot Press Love",
+    "settings":[
+        {
+            "type":"color",
+            "id":"bg_color",
+            "label":"background color"
+        },
+        {
+            "type":"text",
+            "id":"title",
+            "label":"title"
+        },
+        {
+            "type":"text",
+            "id":"title_desc",
+            "label":"title_desc"
+        },
+        {
+            "type":"text",
+            "id":"card_id",
+            "label":"id"
+        }
+    ],
+    "blocks":[
+        {
+            "type":"lovers",
+            "name":"lovers",
+            "settings":[
+                {
+                    "type":"image_picker",
+                    "id":"avatar",
+                    "label":"avatar"
+                },
+                {
+                    "type":"text",
+                    "id":"username",
+                    "label":"username"
+                },
+                {
+                    "type":"text",
+                    "id":"comment",
+                    "label":"comment"
+                }
+            ]
+        }
+    ],
+    "presets":[
+        {
+            "name":"Cap Hot Press Love"
+        }
+    ]
+}
+{% endschema %}

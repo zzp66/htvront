@@ -1,0 +1,201 @@
+
+<div class="fn-christmasactivities-main_ul">
+   <div class="fn-christmasactivities-main_list">
+        <div class="fn-christmasactivities-main_list_backdrop">
+            {% if section.settings.Products_backdrop_a != blank %}
+                <img src="{{  section.settings.Products_backdrop_a | img_url: '1508x' }}" alt="">
+            {% endif %}
+        </div>
+      <div class="fn-christmasactivities-main_list_main">
+             <div class="fn-christmasactivities-main_list_img">
+            {% if section.settings.best_Products_link != blank %}
+             <a href="{{  section.settings.best_Products_link }}">
+            {% endif %}
+            {% if section.settings.Products_imges != blank %}
+                <img class="Products_titleimges" src="{{  section.settings.Products_imges | img_url: '657x' }}" alt="">
+            {% endif %}
+            {% if section.settings.best_Products_link != blank %}
+              </a>
+            {% endif %}
+            </div>
+            <div class="fn-christmasactivities-main_list_content">
+              {% if section.settings.best_Products_link != blank %}
+               <a href="{{  section.settings.best_Products_link }}">
+              {% endif %}
+                  {{ section.settings.Products_content_a}}
+              {% if section.settings.best_Products_link != blank %}
+              </a>
+              {% endif %}
+              <div class="fn-christmasactivities-products">
+                   {% render 'fn-christmas-products',
+                    card_product: section.settings.christmas_product,
+                    sum_inventory: section.settings.sum_inventory
+                    %}
+              </div>
+            </div>
+      </div>
+    </div>
+    <div class="Beignners fn-christmasFunction" onclick="christmasFunction('3')">Beignners</div>
+    <div class="Learner fn-christmasFunction" onclick="christmasFunction('4')">Learner</div>
+    <div class="htvfever fn-christmasFunction" onclick="christmasFunction('5')">HTV Fever</div>
+    <div class="diymasters fn-christmasFunction" onclick="christmasFunction('6')">DIY Masters</div>
+    <div class="extra fn-christmasFunction" onclick="christmasFunction('7')">Extra 10%OFF</div>
+</div>
+<div class="fn-christmasactivities-main_mobile">
+  <div class="fn-christmasactivities-mobile_heade">
+      {% if section.settings.mobile_heade_img != blank %}
+          <img src="{{  section.settings.mobile_heade_img | img_url: '336x' }}" alt="">
+      {% endif %}
+  </div>
+   <div class="fn-christmasactivities-mobile_content">
+      {% if section.settings.mobile_heade_backdrop != blank %}
+          <img class="fn-mobilemain_backdrop_a"  src="{{  section.settings.mobile_heade_backdrop | img_url: '362x' }}" alt="">
+      {% endif %}
+      <div class="fn-christmasactivities-mobile__list_content">
+        <div class="fn-christmasactivities-mobile__list_best">
+          {% if section.settings.best_Products_link != blank %}
+           <a href="{{  section.settings.best_Products_link }}">
+          {% endif %}
+              {% if section.settings.best_Products_img != blank %}
+                <img src="{{  section.settings.best_Products_img | img_url: '184x' }}" alt="">
+              {% endif %}
+          {% if section.settings.best_Products_link != blank %}
+          </a>
+          {% endif %}
+
+        </div>
+        <div class="fn-christmasactivities-mobile__list_best">
+          {% if section.settings.best_Products_link != blank %}
+           <a href="{{  section.settings.best_Products_link }}">
+          {% endif %}
+            {% if section.settings.best_explain_img != blank %}
+              <img src="{{  section.settings.best_explain_img | img_url: '148x' }}" alt="">
+            {% endif %}
+          {% if section.settings.best_Products_link != blank %}
+          </a>
+          {% endif %}
+             <div class="fn-christmasactivities-products">
+                 {% render 'fn-christmas-products',
+                  card_product: section.settings.christmas_product,
+                  sum_inventory: section.settings.sum_inventory
+                  %}
+            </div>
+            <div class="fn-christmasactivities-mobile_heade_a"></div>
+        </div>
+      </div>
+    <div class="extra fn-christmasFunction" onclick="christmasFunction('7')">Extra 10%OFF</div>
+  </div>
+</div>
+ <script>
+  $(function (){
+  var christmas_bar = document.body.clientWidth;
+  // var christmas_tars = $('#fn-sum_{{ section.settings.christmas_product.id }}').text();
+  // var christmas_sum = $('#fn-inventory_{{ section.settings.christmas_product.id }}').text();
+  // if(christmas_bar > 1400) {
+  //       var christmas_a = christmas_tars/382; 
+  // }
+  // if(christmas_bar < 750) {
+  //       var christmas_a = christmas_tars / 154;
+  // }
+  $('.fn-christmas-productssold').each(function(index,element){
+    var christmas_sum = $(this).find('.fn-christmasproducts-inventory').text();
+    var christmas_tars = $(this).siblings('.fn-sum').text();
+      if(christmas_bar > 1400) {
+        var christmas_a = christmas_tars/382; 
+  }
+  if(christmas_bar < 750) {
+        var christmas_a = christmas_tars / 120;
+  }
+      var christmas_items = christmas_a.toFixed(2);
+      var bars_asd = christmas_sum/christmas_a;
+    $(this).siblings('.fn-christmas-progressbar').find('.fn-christmas-progressbarone').css("width",bars_asd);
+    // debugger;
+    //   $('#fn-christmas_{{ section.settings.christmas_product.id }}').
+  });
+
+})
+</script> 
+{% schema %}
+  {
+    "name": "christmas attempt",
+    "settings": [
+          {
+             "type":"image_picker",
+             "id":"Products_backdrop_a",
+             "label":{
+             "en":"Products background image",
+             "zh-CN":"产品背景图片"
+           }
+         },
+        {
+             "type":"image_picker",
+             "id":"Products_imges",
+             "label":{
+             "en":"Products image",
+             "zh-CN":"产品图片"
+           }
+         },
+         {
+           "type":"html",
+           "id":"Products_content_a",
+           "label":{
+           "en":"Products content",
+           "zh-CN":"内容"
+         }
+       }, 
+       {
+          "type": "product",
+          "id": "christmas_product",
+          "label": "product"
+         },
+       {
+          "type": "text",
+          "id": "sum_inventory",
+          "label": "sum"
+         },
+         {
+             "type":"image_picker",
+             "id":"mobile_heade_img",
+             "label":{
+             "en":"mobile image",
+             "zh-CN":"手机图片"
+           }
+         },
+         {
+             "type":"image_picker",
+             "id":"mobile_heade_backdrop",
+             "label":{
+             "en":"backdrop image",
+             "zh-CN":"手机背景图片"
+           }
+         },
+         {
+             "type":"image_picker",
+             "id":"best_Products_img",
+             "label":{
+             "en":"Product image",
+             "zh-CN":"产品图片"
+           }
+         },
+         {
+             "type":"image_picker",
+             "id":"best_explain_img",
+             "label":{
+             "en":"explain image",
+             "zh-CN":"图片"
+           }
+         },
+              {
+            "type":"url",
+            "id":"best_Products_link",
+            "label":"product links"
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

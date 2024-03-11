@@ -1,0 +1,253 @@
+ {% assign Address_value = customer.addresses_count %}
+
+<!-- <script src="{{ 'customer.js' | asset_url }}" defer></script> -->
+<div class="fn-book"  data-customer-addresses>
+    <div class="t fn-my-account-title">Address Book</div>
+    {% if Address_value <= 0 %}
+    <div class="fn-address_title">You currently have no address details saved. You can an address at any time.</div>
+    {% else %}
+    {% paginate customer.addresses by 5 %}
+    {% for address in customer.addresses %}
+  <div class="fn-edit-address">
+    <div class="fn-book-preferential">
+      <div class="fn-edit-information">Addresses {{forloop.index}} |
+        <span class="fn-book-editButton"
+              id="EditFormButton_{{ address.id }}"
+              aria-label="{{ 'customer.addresses.edit_address' | t }} {{ forloop.index }}"
+              aria-controls="EditAddress_{{ address.id }}"
+              data-address-id="{{ address.id }}"
+              type="button">
+          {{ 'customer.addresses.edit' | t }}
+        </span>
+      </div>
+      <div class="fn-marketing-address">{{address.name }}</div>
+      {%- if address.street != blank -%}
+      <div class="fn-marketing-address">{{ address.street }}</div>
+      {%- endif -%}
+      {%- if address.province != blank -%}
+      <div class="fn-marketing-address">{{ address.province }}. {{ address.zip }}</div>
+      {%- endif -%}
+      {%- if address.country != blank -%}
+      <div class="fn-marketing-address">{{ address.country }}</div>
+      {%- endif -%}
+      {%- if address.phone != blank -%}
+      <div class="fn-marketing-address phone">T: {{ address.phone }}</div>
+      {%- endif -%}
+    </div>
+    <div class="fn-book-addresses fn-book-menu">
+      <div id="EditAddress_{{ address.id }}">
+        {%- form 'customer_address', address -%}
+        <div class="fn-book-message fn-all">
+          <div class="fn-book-AddressFirstName_">
+            <div>
+              <label for="AddressFirstName_{{ form.id }}">{{ 'customer.addresses.first_name' | t }}<span class="fn-profile-must">*</span></label>
+            </div>
+            <input class="fn-book-inputMenu" type="text" id="AddressFirstName_{{ form.id }}" name="address[first_name]" value="{{ form.first_name }}" autocomplete="given-name" placeholder="{{ 'customer.addresses.first_name' | t }}">
+          </div>
+          <div class="fn-book-AddressLastName">
+            <div>
+              <label for="AddressLastName_{{ form.id }}">{{ 'customer.addresses.last_name' | t }}<span class="fn-profile-must">*</span></label>
+            </div>
+            <input class="fn-book-inputMenu" type="text" id="AddressLastName_{{ form.id }}" name="address[last_name]" value="{{ form.last_name }}" autocomplete="family-name" placeholder="{{ 'customer.addresses.last_name' | t }}">
+          </div>
+        </div>
+        <div class="fn-book-address fn-all">
+          <div>
+            <label for="AddressLastNameNew_{{ form.id }}">Street Address<span class="fn-profile-must">*</span></label>
+          </div>
+          <input class="fn-book-inputMenu" type="text" id="AddressAddress1New_{{ form.id }}" name="address[address1]" value="{{ form.address1 }}" autocomplete="address-line1" placeholder="{{ 'customer.addresses.address1' | t }}">
+        </div>
+        <div class="fn-book-Apartment fn-all">
+          <div>
+            <label for="AddressApartment_{{ form.id }}">Apartment, suite, unit, building, etc. (optional)<span class="fn-profile-must">*</span></label>
+          </div>
+          <input class="fn-book-inputMenu" type="text" id="AddressApartment_{{ form.id }}" name="address[address2]" value="{{ form.address2 }}" autocomplete="address-level2" placeholder="{{ 'customer.addresses.address2' | t }}">
+        </div>
+
+        <div class="fn-book-message fn-all">
+          <div class="fn-book-ZIP">
+            <div>
+              <label for="AddressZIP_{{ form.id }}">{{ 'customer.addresses.zip' | t }}<span class="fn-profile-must">*</span></label>
+            </div>
+            <input class="fn-book-inputMenu" type="text" id="AddressZIP_{{ form.id }}" name="address[zip]" value="{{ form.zip }}" autocomplete="address-level2" placeholder="ZIP/Postal Code">
+          </div>
+          <div class="fn-book-Country">
+            <label class="fn-book-labelName" for="AddressCountry_{{ form.id }}">
+              {{ 'customer.addresses.country' | t }} <span class="fn-profile-must">*</span>
+            </label>
+            <div class="fn-book-select">
+              <select
+                      id="AddressCountry_{{ form.id }}"
+                      name="address[country]"
+                      data-address-country-select
+                      data-default="{{form.country}}"
+                      data-form-id="{{ form.id }}"
+                      autocomplete="country"
+                      class="fn-select-choice"
+                      >
+                {{ all_country_option_tags }}
+              </select>
+              <div class="icon"><img src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/2c71d0a7f899ef4e370c409186645292.png?v=1651630547" alt=""></div>
+              <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
+                <use href="#icon-caret" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="fn-book-message fn-all">
+          <div class="fn-book-Province">
+            <div>
+              <label for="AddressProvince_{{ form.id }}">{{ 'customer.addresses.province' | t }}<span class="fn-profile-must">*</span></label>
+            </div>
+            <input class="fn-book-inputMenu" type="text" id="AddressProvince_{{ form.id }}" name="address[province]" value="{{ form.province }}" autocomplete="address-level2" placeholder="{{ 'customer.addresses.province' | t }}">
+          </div>
+          <div class="fn-book-city">
+            <div>
+              <label for="AddressCityNew_{{ form.id }}">{{ 'customer.addresses.city' | t }}<span class="fn-profile-must">*</span></label>
+            </div>
+            <input class="fn-book-inputMenu" type="text" id="AddressCityNew_{{ form.id }}" name="address[city]" value="{{ form.city }}" autocomplete="address-level2" placeholder="{{ 'customer.addresses.city' | t }}">
+          </div>
+        </div>
+        <div class="fn-book-Apartment fn-all">
+          <div>
+            <label for="AddressPhone_{{form.id}}">{{ 'customer.addresses.phone' | t }}<span class="fn-profile-must">*</span></label>
+          </div>
+          <input class="fn-book-inputMenu"  type="tel" id="AddressPhone_{{form.id}}"  name="address[phone]" value="{{form.phone}}" autocomplete="address-level2" placeholder="{{ 'customer.addresses.phone' | t }}">
+        </div>
+        <div class="fn-all">
+          <button class="fn-Address-button buttonLeft" type="reset">{{ 'customer.addresses.cancel' | t }}</button>
+          <button class="fn-Address-button buttonRight">Save</button>
+        </div>
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+    {% endfor %}
+    <div class="fn-book-menuadd">
+        {% form 'customer_address', customer.new_address %}
+        <div id="AddAddress">
+            <div class="fn-book-message fn-all">
+                <div class="fn-book-AddressFirstName_">
+                    <div>
+                        <label for="AddressFirstName">{{ 'customer.addresses.first_name' | t }}<span class="fn-profile-must">*</span></label>
+                    </div>
+                    <input class="fn-book-inputMenu" type="text" id="AddressFirstName" name="address[first_name]" value="{{ form.first_name }}" autocomplete="given-name" placeholder="{{ 'customer.addresses.first_name' | t }}">
+                </div>
+                <div class="fn-book-AddressLastName">
+                    <div>
+                        <label for="AddressLastName">{{ 'customer.addresses.last_name' | t }}<span class="fn-profile-must">*</span></label>
+                    </div>
+                    <input class="fn-book-inputMenu" type="text" id="AddressLastName" name="address[last_name]" value="{{ form.last_name }}" autocomplete="family-name" placeholder="{{ 'customer.addresses.last_name' | t }}">
+                </div>
+            </div>
+            <div class="fn-book-address fn-all">
+                <div>
+                    <label for="AddressLastNameNew">Street Address<span class="fn-profile-must">*</span></label>
+                </div>
+                <input class="fn-book-inputMenu" type="text" id="AddressAddress1New" name="address[address1]" value="{{ form.address1 }}" autocomplete="address-line1" placeholder="{{ 'customer.addresses.address1' | t }}">
+            </div>
+            <div class="fn-book-Apartment fn-all">
+                <div>
+                    <label for="AddressApartment">Apartment, suite, unit, building, etc. (optional)<span class="fn-profile-must">*</span></label>
+                </div>
+                <input class="fn-book-inputMenu" type="text" id="AddressApartment" name="address[address2]" value="{{ form.address2 }}" autocomplete="address-level2" placeholder="{{ 'customer.addresses.address2' | t }}">
+            </div>
+            <div class="fn-book-city">
+                <div>
+                    <label for="AddressCityNew">{{ 'customer.addresses.city' | t }}<span class="fn-profile-must">*</span></label>
+                </div>
+                <input class="fn-book-inputMenu" type="text" id="AddressCityNew" name="address[city]" value="{{ form.city }}" autocomplete="address-level2" placeholder="{{ 'customer.addresses.city' | t }}">
+            </div>
+            <div class="fn-book-message fn-all">
+                <div class="fn-book-ZIP">
+                    <div>
+                        <label for="AddressZIP">{{ 'customer.addresses.zip' | t }}<span class="fn-profile-must">*</span></label>
+                    </div>
+                    <input class="fn-book-inputMenu" type="text" id="AddressZIP" name="address[zip]" value="{{ form.zip }}" autocomplete="address-level2" placeholder="ZIP/Postal Code">
+                </div>
+                <div class="fn-book-Country">
+                    <label class="fn-book-labelName" for="AddressCountry">
+                        {{ 'customer.addresses.country' | t }} <span class="fn-profile-must">*</span>
+                    </label>
+                    <div class="fn-book-select">
+                        <select
+                                id="AddressCountry"
+                                name="address[country]"
+                                data-address-country-select
+                                data-default="{{form.country}}"
+                                autocomplete="country"
+                                class="fn-select-choice"
+                        >
+                            {{ all_country_option_tags }}
+                        </select>
+                        <div class="icon"><img src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/2c71d0a7f899ef4e370c409186645292.png?v=1651630547" alt=""></div>
+                        <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
+                            <use href="#icon-caret" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+          <div class="fn-book-message fn-all">
+            <div class="fn-book-Province">
+              <div>
+                <label for="AddressProvince">{{ 'customer.addresses.province' | t }}<span class="fn-profile-must">*</span></label>
+              </div>
+              <input class="fn-book-inputMenu" type="text" id="AddressProvince" name="address[province]" value="{{ form.province }}" autocomplete="address-level2" placeholder="{{ 'customer.addresses.province' | t }}">
+            </div>
+            <div class="fn-book-city">
+              <div>
+                <label for="AddressCityNew">{{ 'customer.addresses.city' | t }}<span class="fn-profile-must">*</span></label>
+              </div>
+              <input class="fn-book-inputMenu" type="text" id="AddressCityNew" name="address[city]" value="{{ form.city }}" autocomplete="address-level2" placeholder="{{ 'customer.addresses.city' | t }}">
+            </div>
+          </div>
+            <div class="fn-book-Apartment fn-all">
+                <div>
+                    <label for="AddressPhone">{{ 'customer.addresses.phone' | t }}<span class="fn-profile-must">*</span></label>
+                </div>
+                <input class="fn-book-inputMenu"  type="tel" id="AddressPhone"  name="address[phone]" value="{{form.phone}}" autocomplete="address-level2" placeholder="{{ 'customer.addresses.phone' | t }}">
+            </div>
+            <div class="fn-all">
+                <button class="fn-Address-button addButtonLeft" type="reset">{{ 'customer.addresses.cancel' | t }}</button>
+                <button type="submit" class="fn-Address-button buttonRight">Save</button>
+            </div>
+            {%- endform -%}
+        </div>
+    </div>
+    {%- endpaginate -%}
+    {% endif %}
+    {% if Address_value < 2 %}
+    <div class="fn-book-addButton">Add Address</div>
+    {% endif %}
+</div>
+<script>
+    $(function (){
+        $(".fn-book-addButton").click(function(){
+            $(".fn-book-menu,.fn-book-addButton,.fn-book-menu,.fn-book-preferential").hide();
+            $(".fn-book-menuadd").show();
+        });
+        $(".buttonLeft").click(function(){
+            $(".fn-book-preferential,.fn-book-addButton").show();
+            $(".fn-book-menuadd,.fn-book-menu").hide();
+        });
+        $(".addButtonLeft").click(function(){
+            $(".fn-book-preferential,.fn-book-addButton").show();
+            $(".fn-book-menuadd").hide();
+        });
+        $(".fn-book-editButton").click(function(){
+            $(this).parents(".fn-book-preferential").hide();
+            $(this).parents(".fn-book-preferential").siblings('.fn-book-addresses').show();
+            $(this).parents().siblings(".fn-edit-address").children('.fn-book-addresses').hide();
+            $(this).parents().siblings(".fn-edit-address").children('.fn-book-preferential').hide();
+        });
+        window.onload = () => {
+            typeof CustomerAddresses !== 'undefined' && new CustomerAddresses();
+        };
+    });
+</script>
+{% schema %}
+  {
+    "name": "Account Center",
+    "settings": []
+  }
+{% endschema %}

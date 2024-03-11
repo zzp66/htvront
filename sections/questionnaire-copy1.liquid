@@ -1,0 +1,822 @@
+<style>
+  .rate-container,.gradual {
+    display: flex;
+    justify-content: center;
+  }
+  .rate {
+    position: relative;
+    -webkit-appearance: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    width: 70px;
+    height: 16px;
+    background: #E6E6E6;
+    margin: 0;
+    margin-right: 5px;
+  }
+  .low-active{
+    background: #FFB132;
+  }
+  .high-active{
+    background: #FF6827;
+  }
+  .fn-questionnaire{
+    color: #333333;
+    width:800px;
+    background-color:#fff;
+    border-radius: 10px;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    position: fixed;
+    z-index: 1000;
+   }
+  .fn-questionnaire .title{
+    font-size: 22px;
+    font-weight: bold;
+    color: #EC7D32;
+    line-height: 26px;
+    margin: 0;
+    text-align: center;
+    padding: 20px 0 30px;
+  }
+  .fn-questionnaire .desc{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+  }
+  .rate-title{
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 21px;
+  }
+  .services-qusetion p{
+    font-size: 16px;
+    line-height: 19px;
+    padding: 8px 0;
+    position: relative;
+    padding-left: 15px;
+  }
+  .services-qusetion p:before{
+    content:'';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    background: #000;
+    top: 50%;
+    transform: translatey(-50%);
+  }
+  .rate-tips{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    line-height: 16px;
+    margin-top: 10px;
+  }
+  .fn-mask{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0;
+    top: 0;
+    z-index: 999;
+  }
+  .icon-close{
+    width: 26px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+  }
+  .rate-services,.rate-select{
+    margin-top:25px;
+  }
+  .rate-select{
+    display:none;
+  }
+  .rate-button{
+    width: 200px;
+    height: 56px;
+    background: linear-gradient(96deg, #FFA264 0%, #FF822E 100%);
+    border-radius: 10px;
+    margin: 0 auto;
+    line-height: 56px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+  }
+  .rate-footer{
+    margin: 20px 0 25px;
+  }
+  .rate-footer .error{
+    font-size: 16px;
+    font-weight: 400;
+    color: #FF0000;
+    line-height: 19px;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .rate-footer .error span{
+    display: inline-block;
+    border: 2px solid #ff0000;
+    border-radius: 50%;
+    padding: 0px 7px;
+    margin-right: 5px;
+    vertical-align: baseline;
+  }
+  .rate-footer .succeed{
+    font-size: 16px;
+    color: #FF7B01;
+    line-height: 19px;
+    text-align: center;
+    margin-top: 10px;
+    display:none;
+  }
+  .rate-footer .succeed span{ 
+    display: inline-block;
+    border-radius: 50%;
+    padding: 2px 5px;
+    margin-right: 5px;
+    vertical-align: baseline;
+    background-color: #ff7b01;
+    color: #fff;
+  }
+  .services-qusetion{
+    display: flex;
+    flex-direction: column;
+  }
+  .fn-questionnaire .scroll{
+    max-height: 660px;
+    overflow-y: auto;
+    padding:5px 28px;
+  }
+  .select-qusetion>div>p{
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 19px;
+    margin-bottom: 10px;
+  }
+  .select-qusetion>div{
+    margin-top:20px;
+    display:none;
+  }
+  .select-qusetion>div:nth-child(1){
+    margin-top:10px;
+  }
+  .select-qusetion>div input[type=text]{
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid #979797;
+    width: 100%;
+    outline: none;
+    padding: 0 15px;
+    font-size: 14px;
+    margin-top: 5px;
+    display:none;
+  }
+  .recommend{
+    margin-top:15px;
+  }
+  .recommend .rate-title{
+    margin-bottom:12px;
+  }
+  .checkbox-group>div>label{
+    font-size: 16px;
+    line-height: 19px;
+  }
+  .checkbox-group>div{
+    margin:3px 0;
+  }
+ .select-qusetion>div input[type=checkbox]{
+    width: 8px;
+    height: 8px;
+    position: relative;
+ }
+  .select-qusetion>div input[type='checkbox']:checked:before {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    content: '✔';
+    color: #FF6827;
+    top: -8px;
+    z-index: 2;
+  }
+  .select-qusetion>div  input[type='checkbox']:checked:after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+    border: 1px solid #333;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+  }
+  .gradual1{
+    background: linear-gradient(90deg, #FFFAF1 0%, #FFF5E2 100%);
+  }
+  .gradual2{
+    background: linear-gradient(270deg, #FFECC2 0%, #FFF6E3 100%);
+  }
+  .gradual3{
+    background: linear-gradient(270deg, #FFE4A7 0%, #FFECC2 100%);
+  }
+  .gradual4{
+    background: linear-gradient(270deg, #FFD169 0%, #FFE4A7 100%);
+  }
+  .gradual5{
+    background: linear-gradient(270deg, #FFC43F 0%, #FFD169 100%);
+  }
+  .gradual6{
+    background: linear-gradient(270deg, #FFB100 0%, #FFC43F 100%);
+  }
+  .gradual7{
+    background: linear-gradient(90deg, #FFB100 0%, #FB8F2B 100%);
+  }
+  .gradual8{
+    background: linear-gradient(270deg, #FF7120 0%, #FC902B 100%);
+  }
+  .gradual9{
+    background: linear-gradient(90deg, #FF7120 0%, #FF3D00 100%);
+  }
+  .gradual10{
+    background: linear-gradient(90deg, #FF3D00 0%, #D31900 100%);
+  }
+  @media screen and (max-width: 1660px){
+    .fn-questionnaire{
+      height:95%;
+    }
+    .fn-questionnaire .title{
+      padding: 20px 0;
+    }
+    .rate-services, .rate-select {
+      margin-top: 15px;
+    }
+    .rate-button{
+      width: 150px;
+      height: 45px;
+      line-height: 45px;
+    }
+    .rate-footer {
+      margin: 20px 0;
+    }
+    .fn-questionnaire .scroll{
+      height: calc(100% - 184px);
+    }
+  }
+   @media screen and (max-width: 820px){
+    .fn-questionnaire{
+      width:80%
+    }
+   }
+</style>
+<div class="fn-questionnaire">
+  <div class="title">
+    {{ section.settings.title }}
+  </div>
+  <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/icon-cup-close.png?v=1688954093" class="icon-close">
+  <div class="scroll">
+     <div class="desc">
+      {{ section.settings.desc }}
+    </div>
+    <div class="recommend">
+      <div class="rate-title">
+        Would you recommend HTVRONT to others?(1-10)
+      </div>
+      <div class="services-qusetion">
+        <div>
+          <div class="gradual">
+            <input type="radio" class="rate" name="rate1" value="1">
+            <input type="radio" class="rate" name="rate1" value="2">
+            <input type="radio" class="rate" name="rate1" value="3">
+            <input type="radio" class="rate" name="rate1" value="4">
+            <input type="radio" class="rate" name="rate1" value="5">
+            <input type="radio" class="rate" name="rate1" value="6">
+            <input type="radio" class="rate" name="rate1" value="7">
+            <input type="radio" class="rate" name="rate1" value="8">
+            <input type="radio" class="rate" name="rate1" value="9">
+            <input type="radio" class="rate" name="rate1" value="10">
+          </div>
+          <div class="rate-tips">
+            <span>Very Unwilling</span>
+            <span>Very Willing</span>
+          </div>
+        </div>  
+      </div>
+    </div>
+    <div class="rate-services">
+      <div class="rate-title">
+        Please rate the HTVRONT services. (1: very dissatisfied, 10: very satisfied)
+      </div>
+      <div class="services-qusetion" id="services-qusetion">
+        <div>
+           <p>Website interaction (e.g., shopping page, promotion, order, payment process)</p>
+          <div class="rate-container">
+            <input type="radio" class="rate" name="rate2" value="1">
+            <input type="radio" class="rate" name="rate2" value="2">
+            <input type="radio" class="rate" name="rate2" value="3">
+            <input type="radio" class="rate" name="rate2" value="4">
+            <input type="radio" class="rate" name="rate2" value="5">
+            <input type="radio" class="rate" name="rate2" value="6">
+            <input type="radio" class="rate" name="rate2" value="7">
+            <input type="radio" class="rate" name="rate2" value="8">
+            <input type="radio" class="rate" name="rate2" value="9">
+            <input type="radio" class="rate" name="rate2" value="10">
+          </div>
+          <div class="rate-tips">
+            <span>1</span>
+            <span>10</span>
+          </div>
+        </div>  
+        <div>
+           <p>Product (e.g., product quality, style)</p>
+          <div class="rate-container">
+            <input type="radio" class="rate" name="rate3" value="1">
+            <input type="radio" class="rate" name="rate3" value="2">
+            <input type="radio" class="rate" name="rate3" value="3">
+            <input type="radio" class="rate" name="rate3" value="4">
+            <input type="radio" class="rate" name="rate3" value="5">
+            <input type="radio" class="rate" name="rate3" value="6">
+            <input type="radio" class="rate" name="rate3" value="7">
+            <input type="radio" class="rate" name="rate3" value="8">
+            <input type="radio" class="rate" name="rate3" value="9">
+            <input type="radio" class="rate" name="rate3" value="10">
+          </div>
+          <div class="rate-tips">
+            <span>1</span>
+            <span>10</span>
+          </div>
+        </div>
+        <div>
+           <p>Logistics (e.g., shipping, delivery)</p>
+          <div class="rate-container">
+            <input type="radio" class="rate" name="rate4" value="1">
+            <input type="radio" class="rate" name="rate4" value="2">
+            <input type="radio" class="rate" name="rate4" value="3">
+            <input type="radio" class="rate" name="rate4" value="4">
+            <input type="radio" class="rate" name="rate4" value="5">
+            <input type="radio" class="rate" name="rate4" value="6">
+            <input type="radio" class="rate" name="rate4" value="7">
+            <input type="radio" class="rate" name="rate4" value="8">
+            <input type="radio" class="rate" name="rate4" value="9">
+            <input type="radio" class="rate" name="rate4" value="10">
+          </div>
+          <div class="rate-tips">
+            <span>1</span>
+            <span>10</span>
+          </div>
+        </div>
+        <div>
+           <p>Customer Service (e.g., response speed, professionalism)</p>
+          <div class="rate-container">
+            <input type="radio" class="rate" name="rate5" value="1">
+            <input type="radio" class="rate" name="rate5" value="2">
+            <input type="radio" class="rate" name="rate5" value="3">
+            <input type="radio" class="rate" name="rate5" value="4">
+            <input type="radio" class="rate" name="rate5" value="5">
+            <input type="radio" class="rate" name="rate5" value="6">
+            <input type="radio" class="rate" name="rate5" value="7">
+            <input type="radio" class="rate" name="rate5" value="8">
+            <input type="radio" class="rate" name="rate5" value="9">
+            <input type="radio" class="rate" name="rate5" value="10">
+          </div>
+          <div class="rate-tips">
+            <span>1</span>
+            <span>10</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 多选框部分 -->
+    <div class="rate-select">
+      <div class="rate-title">
+        Which section do you think HTVRONT needs to improve?(Multiple Choice)
+      </div>
+      <div class="select-qusetion">
+        <div class="rate2">
+          <p>[Website - Shopping Page]</p>
+          <div class="checkbox-group">
+            <div>
+              <input type="checkbox" name="checkbox1" id="checkbox1-A">
+              <label for="checkbox1-A">Poor visual design</label>
+            </div>
+            <div>
+              <input type="checkbox" name="checkbox1" id="checkbox1-B">
+              <label for="checkbox1-B">Slow page loading speed</label>
+            </div>
+            <div>
+              <input type="checkbox" name="checkbox1" id="checkbox1-C">
+              <label for="checkbox1-C">Complicated registration/login process</label>
+            </div>
+            <div>
+              <input type="checkbox" name="checkbox1" id="checkbox1-D">
+              <label for="checkbox1-D">Difficulty finding desired products</label>
+            </div>
+            <div>
+              <input type="checkbox" name="checkbox1" id="checkbox1-E">
+              <label for="checkbox1-E">Recommended products not meeting my needs</label>
+            </div>
+            <div>
+              <input type="checkbox" name="checkbox1" id="checkbox1-F">
+              <label for="checkbox1-F">Search results not meeting my needs</label>
+            </div>
+            <div class="others">
+              <input type="checkbox" name="checkbox1" id="checkbox1-others">
+              <label for="checkbox1-others">Others</label>
+            </div>
+          </div>
+          <input type="text" value="" class="others-text">
+        </div> 
+        <div class="rate2">
+          <p>[Website - Promotion]</p>
+           <div class="checkbox-group">
+             <div>
+                <input type="checkbox" name="checkbox2" id="checkbox2-A">
+                <label for="checkbox2-A">Hard-to-understand promotion rules</label>
+             </div>
+             <div>
+                <input type="checkbox" name="checkbox2" id="checkbox2-B">
+                <label for="checkbox2-B">Low promotion intensity</label>
+             </div>
+             <div>
+                <input type="checkbox" name="checkbox2" id="checkbox2-C">
+                <label for="checkbox2-C">Repeatedly receiving unwanted promotion information</label>
+             </div>
+             <div>
+                <input type="checkbox" name="checkbox2" id="checkbox2-D">
+                <label for="checkbox2-D">Difficulty in redeeming points</label>
+             </div>
+             <div class="others">
+                <input type="checkbox" name="checkbox2" id="checkbox2-others">
+                <label for="checkbox2-others">Others</label>
+             </div>
+           </div>
+           <input type="text" value="" class="others-text">
+        </div>
+        <div class="rate2">
+          <p>[Website - Order and Payment Process]</p>
+          <div class="checkbox-group">
+            <div>
+              <input type="checkbox" name="checkbox3" id="checkbox3-A">
+              <label for="checkbox3-A">Inconvenient shopping cart operation</label>
+            </div>
+            <div>
+              <input type="checkbox" name="checkbox3" id="checkbox3-B">
+              <label for="checkbox3-B">Difficulty in filling out order address</label>
+            </div>
+            <div>
+              <input type="checkbox" name="checkbox3" id="checkbox3-C">
+              <label for="checkbox3-C">Complex payment process</label>
+            </div>
+            <div>
+              <input type="checkbox" name="checkbox3" id="checkbox3-D">
+              <label for="checkbox3-D">Lack of payment methods</label>
+            </div>
+            <div>
+              <input type="checkbox" name="checkbox3" id="checkbox3-E">
+              <label for="checkbox3-E">Checkout page issues (e.g., payment failures)</label>
+            </div>
+            <div class="others">
+              <input type="checkbox" name="checkbox3" id="checkbox3-others">
+              <label for="checkbox3-others">Others</label>
+            </div>
+          </div>
+          <input type="text" value="" class="others-text">
+        </div>
+        <div class="rate3">
+          <p>[Product]</p>
+          <div class="checkbox-group">
+            <div>
+              <input type="checkbox" name="checkbox4" id="checkbox4-A">
+               <label for="checkbox4-A">Poor quality</label>
+            </div>
+            <div>
+              <input type="checkbox" name="checkbox4" id="checkbox4-B">
+               <label for="checkbox4-B">Unpleasant odor</label>
+            </div>
+            <div>
+              <input type="checkbox" name="checkbox4" id="checkbox4-C">
+               <label for="checkbox4-C">Limited variety of styles</label>
+            </div>
+            <div>
+              <input type="checkbox" name="checkbox4" id="checkbox4-D">
+               <label for="checkbox4-D">Physical products not matching descriptions (size, model, color, etc.)</label>
+            </div>
+            <div>
+              <input type="checkbox" name="checkbox4" id="checkbox4-E">
+               <label for="checkbox4-E">Low cost-effectiveness</label>
+            </div>
+            <div>
+              <input type="checkbox" name="checkbox4" id="checkbox4-F">
+               <label for="checkbox4-F">Complicated machine operation, difficult to use</label>
+            </div>
+            <div>
+              <input type="checkbox" name="checkbox4" id="checkbox4-G">
+               <label for="checkbox4-G">Poor machine functionality, difficult to operate</label>
+            </div>
+            <div class="others">
+              <input type="checkbox" name="checkbox4" id="checkbox4-others">
+               <label for="checkbox4-others">Others</label>
+              </div>
+          </div>
+          <input type="text" value="" class="others-text">
+        </div>
+        <div class="rate4">
+          <p>[Logistics]</p>
+          <div class="checkbox-group">
+            <div>
+              <input type="checkbox" name="checkbox5" id="checkbox5-A" >
+               <label for="checkbox5-A">Long wait for shipping</label>
+            </div>
+            <div>
+              <input type="checkbox" name="checkbox5" id="checkbox5-B" >
+               <label for="checkbox5-B">Long delivery times</label>
+            </div>
+            <div>
+              <input type="checkbox" name="checkbox5" id="checkbox5-C" >
+               <label for="checkbox5-C">Expensive shipping fees</label>
+            </div>
+            <div>
+              <input type="checkbox" name="checkbox5" id="checkbox5-D" >
+               <label for="checkbox5-D">Can not track and check the logistics information</label>
+            </div>
+            <div>
+              <input type="checkbox" name="checkbox5" id="checkbox5-E" >
+               <label for="checkbox5-E">Poor quality of product packaging</label>
+            </div>
+            <div>
+              <input type="checkbox" name="checkbox5" id="checkbox5-F" >
+               <label for="checkbox5-F">Limited logistics methods</label> 
+            </div>
+            <div class="others">
+               <input type="checkbox" name="checkbox5" id="checkbox5-others">
+               <label for="checkbox5-others">Others</label>
+            </div>
+          </div>
+          <input type="text" value="" class="others-text">
+        </div>
+        <div class="rate5">
+          <p>[Customer Service]</p>
+          <div class="checkbox-group">
+            <div>
+              <input type="checkbox" name="checkbox6" id="checkbox6-A">
+               <label for="checkbox6-A">Difficulty finding desired FAQs</label>
+            </div>
+            <div>
+              <input type="checkbox" name="checkbox6" id="checkbox6-B">
+               <label for="checkbox6-B">FAQs unable to resolve issues</label>
+            </div>
+            <div>
+              <input type="checkbox" name="checkbox6" id="checkbox6-C">
+               <label for="checkbox6-C">Unfriendly policies (e.g., return/exchange policies, product warranty period)</label>
+            </div>
+            <div>
+              <input type="checkbox" name="checkbox6" id="checkbox6-D">
+               <label for="checkbox6-D">Complicated process</label>
+            </div>
+            <div>
+              <input type="checkbox" name="checkbox6" id="checkbox6-E">
+               <label for="checkbox6-E">Slow response</label>
+            </div>
+            <div>
+              <input type="checkbox" name="checkbox6" id="checkbox6-F">
+               <label for="checkbox6-F">Poor attitude</label>
+            </div>
+            <div>
+              <input type="checkbox" name="checkbox6" id="checkbox6-G">
+               <label for="checkbox6-G">Low resolution efficiency</label>  
+            </div>
+            <div class="others">
+              <input type="checkbox" name="checkbox6" id="checkbox6-others">
+               <label for="checkbox6-others">Others</label>
+            </div>
+          </div>
+          <input type="text" value="" class="others-text">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rate-footer">
+    <div class="rate-button">
+      Submit
+    </div>
+    <div class="succeed"><span>✔</span>Thank you for your feedback! Survey submitted!</div>
+    <div class="error"><span>!</span>Please fill in the required information.</div>
+  </div>
+</div>
+<div class="fn-mask"></div>
+<script>
+  $(function () {
+    var windowWidth = $(window).width()  //获取当前屏幕分辨率
+	if(windowWidth <= 1024){ 
+       // 双色效果
+    function getCss (index, ev, parent) {
+        if (index <= 4) {
+            ev.addClass('low-active')
+            ev.prevAll().addClass('low-active')
+            ev.nextAll().removeClass('low-active').removeClass('high-active')
+        } else if (index > 4) {
+            ev.addClass('high-active')
+            ev.prevAll().addClass('high-active')
+            ev.nextAll().removeClass('high-active')
+            parent.children(".rate:nth-of-type(n+1):nth-of-type(-n+5)").addClass('low-active').removeClass('high-active')
+        }
+    }
+       $('.gradual').children('.rate').click(function () {
+          var clickTagGradual = $(this).index()
+          $(this).attr('checked', true).siblings().attr('checked', false)  //点击后给与选中
+           for(let i=0;i<=clickTagGradual;i++){
+              $('.gradual .rate').eq(i).addClass('gradual'+(i+1)) ;
+              var num = clickTagGradual+2
+              for(let j = num;j <= 10; j++ ){
+                classNameOut = 'gradual' + num
+                 if(num < j){
+                  classNameOut = 'gradual' + j
+                  $(this).children('.rate').nextAll().removeClass(classNameOut)
+                }else{
+                  $(this).children('.rate').nextAll().removeClass(classNameOut)
+                }
+              }
+          }
+      })
+      $(".rate-container").each(function () {
+         var that_p = $(this)
+         $(".rate-container").children('.rate').click(function () {
+            var that_c = $(this)
+            var clickTag = $(this).index()
+            that_c.attr('checked', true).siblings().attr('checked', false)  //点击后给与选中
+            var radioName = '.'+ that_c.attr('name');  //获取当前点击的属性名用于匹配对应的选择框盒子
+            if(that_c.val() <= 7 && $('.select-qusetion>div').hasClass(that_c.attr('name'))){
+              $(radioName).css('display','block')
+              $('.rate-select').css('display','block')
+              getCss(clickTag, that_c, that_p)
+            }else{
+               $(radioName).css('display','none')
+            }
+        })
+      })
+	}
+	else{  
+      // 渐变色效果
+     var flagGradual = false //是否点击
+     var clickTagGradual = 0; // 点击后的位置
+    $('.gradual').hover(function () {
+        $(this).children('.rate').hover(function () {
+          console.log('hover了')
+            // 鼠标经过样式跟着变
+            var index = $(this).index()
+            var className;
+            for(let i=0;i<=index;i++){
+              $('.gradual .rate').eq(i).addClass('gradual'+(i+1)) ;
+                var num = index+2
+                className = 'gradual' + num
+                for(let j = num;j <= 10; j++ ){
+                  if(num < j){
+                    className = 'gradual' + j
+                    $(this).nextAll().removeClass(className)
+                  }else{
+                    $(this).nextAll().removeClass(className)
+                  }
+                }
+            }
+        })
+    },function () {
+        $(this).children('.rate').click(function () {
+            flagGradual = true
+            clickTagGradual = $(this).index()
+            $(this).attr('checked', true).siblings().attr('checked', false)  //点击后给与选中
+          })
+          // 鼠标移出 如果没有点击，就移出所有样式 
+        var classNameOut;
+         if (!flagGradual) {
+              for (var i = 1; i <=10; i++) {
+                classNameOut = 'gradual' + i 
+                $(this).children('.rate').removeClass(classNameOut)
+              }
+          } else {
+             for(let i=0;i<=clickTagGradual;i++){
+                $('.gradual .rate').eq(i).addClass('gradual'+(i+1)) ;
+                var num = clickTagGradual+2
+                for(let j = num;j <= 10; j++ ){
+                  classNameOut = 'gradual' + num
+                   if(num < j){
+                    classNameOut = 'gradual' + j
+                    $(this).children('.rate').nextAll().removeClass(classNameOut)
+                  }else{
+                    $(this).children('.rate').nextAll().removeClass(classNameOut)
+                  }
+                }
+            }
+          }
+      })
+    // 双色效果
+    function getCss (index, ev, parent) {
+        if (index <= 4) {
+            ev.addClass('low-active')
+            ev.prevAll().addClass('low-active')
+            ev.nextAll().removeClass('low-active').removeClass('high-active')
+        } else if (index > 4) {
+            ev.addClass('high-active')
+            ev.prevAll().addClass('high-active')
+            ev.nextAll().removeClass('high-active')
+            parent.children(".rate:nth-of-type(n+1):nth-of-type(-n+5)").addClass('low-active').removeClass('high-active')
+        }
+    }
+    $(".rate-container").each(function () {
+          var flag = false //是否点击
+          var clickTag = 0; // 点击后的位置
+          var that_c; //用于传参的当前this的children
+          var num = $(this).index();
+          var that_p = $(this); // 父元素的this
+          that_p.hover(function () {
+              that_p.children('.rate').hover(function () {
+                  // 鼠标经过样式跟着变
+                  var index = $(this).index()
+                  getCss(index, $(this), that_p)
+              })
+          }, function () {
+              that_p.children('.rate').click(function () {
+                  that_c = $(this)
+                  flag = true
+                  clickTag = $(this).index()
+                  that_c.attr('checked', true).siblings().attr('checked', false)  //点击后给与选中
+                  var radioName = '.'+ that_c.attr('name');  //获取当前点击的属性名用于匹配对应的选择框盒子
+                  if(that_c.val() <= 7 && $('.select-qusetion>div').hasClass(that_c.attr('name'))){
+                    $(radioName).css('display','block')
+                    $('.rate-select').css('display','block')
+                  }else{
+                     $(radioName).css('display','none')
+                  }
+              })
+              // 鼠标移出 如果没有点击，就移出所有样式 
+              if (!flag) {
+                  that_p.children('.rate').removeClass('low-active').removeClass('high-active')
+              } else {
+                // 鼠标移出 有点击 就获取点击位置之前的样式
+                  getCss(clickTag, that_c, that_p)
+              }
+          })
+  
+      })
+	}
+    
+    // 无下拉框隐藏
+    $("#services-qusetion .rate").change(function(){
+      var arr = []
+      $('.select-qusetion>div').map(function(index,item){
+        arr.push($(item).attr('style'))
+      })
+      var flag = true;
+      arr.map(function(i){
+        if(i != 'display: none;' && i != undefined){
+          flag = false
+        }
+      })
+      if(flag == true){
+        $('.rate-select').css('display','none')
+      }
+    })
+    // 多选框加选中标记
+    $("input[type='checkbox']").click(function(){
+       if($(this).is(':checked')){
+         $(this).attr('checked',true)
+       }else{
+         $(this).attr('checked',false)
+       }
+     })
+    $('.others').click(function(){
+      if($(this).children("input[type='checkbox']").is(':checked')){
+        $(this).parent().next().show()
+       }else{
+        $(this).parent().next().hide()
+       }
+    })
+  })
+</script>
+{% schema %}
+  {
+    "name": "Questionnaire",
+    "settings": [
+      {
+        "type":"text",
+        "id":"title",
+        "label":"title"
+      },{
+        "type":"html",
+        "id":"desc",
+        "label":"desc"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,52 @@
+<div class="fn-beginners-guide">
+  <div class="fn-craft-head">
+    <div class="fn-content-title">Beginners Guide & Precautions</div>
+    <div class="fn-craft-button">
+      <a href="{{ section.settings.guide_link }}">VIEW MORE</a>
+    </div>
+  </div>
+  <div class="fn-craft-content fn-guide-content">
+    <ul>
+       {% assign blogsList = blogs['Beginners-Guide-Precautions'].articles | slice: 0, 3 %}
+      {% for article in blogsList %}
+      <li class="fn-article-list">
+        {% if article.image.src != blank %}
+        <a href="{{ article.url }}">
+            <div class="fn-article-imges">
+            <img src="{{ article.image.src | image_url: width: 520 }}" alt="">
+          </div>
+        </a>
+        {% endif %}
+        <div>{{ article.images }}</div>
+        <a href="{{ article.url }}">
+          <div class="fn-article-title">{{article.title}}</div>
+        </a>
+        <div class="fn-article-excerpt-text ">{{ article.excerpt | truncate: 138 | strip_html  }}</div>
+        <div  class="fn-article-time">{{ article.created_at | date: "%B %d, %Y" }}</div>
+      </li>
+        {% endfor %}
+    </ul>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "beginners guide",
+    "settings": [
+        {
+            "type":"url",
+            "id":"guide_link",
+            "label":{
+                "en":"beginners guide link",
+                "zh-CN":"链接"
+            }
+        }
+]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+

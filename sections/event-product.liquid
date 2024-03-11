@@ -1,0 +1,139 @@
+<style>
+    .event-backrgound {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-image: url("https://cdn.shopify.com/s/files/1/0356/5997/2741/files/bk.jpg?v=1658369506");
+      background-repeat: no-repeat;
+    }
+    .event-text {
+        padding: 100px 0 35px 0;
+        text-align: center;
+        font-weight: 900;
+        font-size: 36px;
+    }
+
+    .event-product {
+        padding-bottom: 40px;
+        overflow: hidden;
+    }
+
+    .event-product .swiper-slide {
+        box-shadow: 0 6px 10px 0 rgb(33 56 198 / 14%);
+        border-radius: 16px;
+        overflow: hidden;
+        background: #fff;
+    }
+
+    .fn-unitType-item {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .fn-unitType-item>.item{
+        width: calc(25% - 20px)
+    }
+
+    .event-product-each {
+        margin: 10px;
+        box-shadow: 0 6px 8px 0 rgb(0 0 0 / 20%);
+        border-radius: 16px;
+        overflow: hidden;
+        background: #fff;
+    }
+
+    .event-product .fn-product-head {
+        padding: 0 12px;
+    }
+
+    .event-product .fn-size-attr {
+        margin-bottom: 36px;
+        padding: 0 12px;
+    }
+
+    @media (max-width: 749px) {
+        .event-text {
+            padding: 10px 0;
+            font-size: 20px;
+        }
+
+        .event-product-each {
+            margin: 5px;
+            box-shadow: none;
+            border-radius: 8px;
+        }
+
+        .event-product {
+            padding-bottom: 0;
+        }
+
+        .fn-unitType-item>.item{
+            width: calc(50% - 10px)
+        }
+
+    }
+</style>
+<div class="event-backrgound">
+    <div class="event-text">
+        {%- if section.settings.title != blank -%}
+        <div class="t">{{ section.settings.title }}</div>
+        {%- endif -%}
+    </div>
+    <div class="fn-unitType-swiper">
+        <div class="fn-page-width event-product">
+            {% for block in section.blocks %}
+            <div class="fn-unitType-item">
+                {%- for product in block.settings.collection.products limit: section.settings.products_to_show -%}
+                <div class="event-product-each item">
+                    {% render 'fn-card-product',
+                    card_product: product,
+                    show_secondary_image: section.settings.show_secondary_image
+                    %}
+                </div>
+                {%- endfor -%}
+            </div>
+            {%- endfor -%}
+        </div>
+    </div>
+</div>
+{% schema %}
+{
+    "name":"Event Product",
+    "settings":[
+        {
+            "type":"text",
+            "id":"title",
+            "default":"汽车公路旅行活动促销产品",
+            "label":"标题"
+        },
+        {
+            "type":"range",
+            "id":"products_to_show",
+            "min":4,
+            "max":16,
+            "step":1,
+            "default":4,
+            "label":"t:sections.featured-collection.settings.products_to_show.label"
+        },
+        {
+            "type":"checkbox",
+            "id":"show_secondary_image",
+            "default":false,
+            "label":"t:sections.featured-collection.settings.show_secondary_image.label"
+        }
+    ],
+    "blocks":[
+        {
+            "type":"collection",
+            "name":"collection",
+            "settings":[
+                {
+                    "type":"collection",
+                    "id":"collection",
+                    "label":"Collection"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,96 @@
+<div class="fn-channel-main">
+  <ul class="fn-channel-list">
+    {% for block in section.blocks %}
+      <li>
+        {% if block.settings.channelmain_img != blank %}
+        <img src="{{ block.settings.channelmain_img | img_url: '800x' }}" alt="" loading="lazy">
+        {% endif %}
+        <div class="fn-channellist-introduce">
+            <diV class="fn-channellist-title">{{ block.settings.channelmain_title }}</diV>
+            <diV class="fn-channellist-content">{{ block.settings.channelmain_text }}</diV>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+<div class="fn-channel-course">
+  {% if section.settings.course_img != blank %}
+  <img  class="fn-course-pc_img" src="{{ section.settings.course_img | img_url: '1920x' }}" alt="" loading="lazy">
+  {% endif %}
+    {% if section.settings.mobile_img != blank %}
+  <img class="fn-course-mobile_img" src="{{ section.settings.mobile_img | img_url: '750x' }}" alt="" loading="lazy">
+  {% endif %}
+  <div class="fn-course-mian">
+  {{ section.settings.course_main }}
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "channe main",
+    "settings": [
+        {
+          "type": "image_picker",
+          "id": "course_img",
+          "label": {
+          "en": "course Image",
+          "zh-CN": "图片"
+          }
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_img",
+          "label": {
+          "en": "mobile course Image",
+          "zh-CN": "图片"
+          }
+        },
+        {
+          "type": "html",
+          "id": "course_main",
+          "label": {
+          "en": "course main",
+          "zh-CN": "主要历程"
+          }
+        }
+     ],
+	"blocks": [{
+		"type": "channelmain",
+		"name": {
+			"en": "channelmain",
+			"zh-CN": "主体说明"
+		},
+		"settings": [
+			{
+				"type": "image_picker",
+				"id": "channelmain_img",
+				"label": {
+					"en": "Image",
+					"zh-CN": "图片"
+				}
+			},
+             {
+				"type": "text",
+				"id": "channelmain_title",
+				"label": {
+					"en": "explain title",
+					"zh-CN": "标题"
+				}
+			},
+             {
+				"type": "text",
+				"id": "channelmain_text",
+				"label": {
+					"en": "explain",
+					"zh-CN": "说明"
+				}
+			}
+		]
+	}]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

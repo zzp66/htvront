@@ -1,0 +1,479 @@
+{{ 'photo-sphere-viewer.min.css' | asset_url | stylesheet_tag }}
+{{ 'markers.min.css' | asset_url | stylesheet_tag }}
+{{ 'section-event-banner.css' | asset_url | stylesheet_tag }}
+{{ 'three.min.js' | asset_url | script_tag }}
+{{ 'browser.min.js' | asset_url | script_tag }}
+{{ 'photo-sphere-viewer.min.js' | asset_url | script_tag }}
+{{ 'markers.min.js' | asset_url | script_tag }}
+{{ 'gyroscope.js' | asset_url | script_tag }}
+<div class="all-content">
+    <div class="swiper-container mySwiper2">
+        <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+            {% assign image = block.settings.image %}
+            <div class="swiper-slide swiper-no-swiping">
+                {% if block.settings.image != blank %}
+                {% if block.settings.type == '1' %}
+                <div class="photosphereImg" data-img="{{ image | img_url: '6000x' }}"></div>
+                {% else %}
+                <img src="{{ image | img_url: '6000x' }}" alt="" />
+                {% endif %}
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Swiper -->
+    <div class="swiper-container mySwiper">
+        <div class="swiper-wrapper thumbnail-wrapper">
+            {% for block in section.blocks  %}
+            {% assign image = block.settings.thumbnail %}
+            {% assign index  = forloop.index0 %}
+            {% if block.settings.thumbnail != blank %}
+            {% if index == 0 %}
+            <div class="swiper-slide selectImg">
+                <img src="{{ image | img_url: '320x' }}" alt="" />
+            </div>
+            {% else %}
+            <div class="swiper-slide">
+                <img src="{{ image | img_url: '320x' }}" alt="" />
+            </div>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="prompt-content"><img class="prompt-icon"  src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/3430_2x_0c16e462-d97d-48b5-8a63-023533fd9591.png?v=1658902045" /><span class="prompt-text">Scroll down & Check the special deal</span></div>
+    <div class="event-dialog-background"></div>
+    <div class="event-dialog-container">
+        <div class="event-dialog-head">
+            <div class="event-dialog-title">Road Trip Essentials</div>
+            <div class="event-dialog-close" onclick="dialogHide()">{% render 'close' %}</div>
+        </div>
+        {%- for product in section.blocks  -%}
+          {% if product.type == "image" %}
+            <div class="event-dialog-each event-dialog-each_{{ forloop.index0 }}">
+            {% render 'dialog-product',
+               dialog_product: product
+            %}
+           </div>
+          {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<!-- Initialize Swiper -->
+<script>
+    let modeShow = false;
+    let viewerList = [];
+    $(function () {
+        var swiper2 = new Swiper(".mySwiper2", {
+            observer: true,
+            observeParents: true,
+            effect: 'fade'
+        });
+        var swiper = new Swiper(".mySwiper", {
+            observer: true,
+            observeParents: true,
+            slidesPerView: 4,
+            slideToClickedSlide: true,
+            on:{
+                tap: function(sw,event){
+                    let index = $('.mySwiper .swiper-slide.selectImg').index();
+                    let clickedIndex = swiper.clickedIndex;
+                    if(clickedIndex == index) {
+                        return;
+                    }
+                    $('.mySwiper .swiper-slide').removeClass('selectImg');
+                    $('.mySwiper .swiper-slide').eq(clickedIndex).addClass('selectImg');
+                    swiper2.slideTo(clickedIndex, 1000, false);
+                    checkViewer(clickedIndex);
+                }
+            }
+        });
+        $('.photosphereImg').each(function (index, domEle) {
+            let option = {
+                loadingImg: 'https://photo-sphere-viewer.js.org/assets/photosphere-logo.gif',
+                defaultLat: 0,
+                defaultLong: 0,
+                defaultZoomLvl: 0,
+                fisheye: 0,
+                navbar: false,
+                autorotateSpeed:'0.3rpm'
+            }
+            option.panorama = $(this).attr('data-img');
+            option.container = $(this)[0];
+            if(index === 1){
+                option.defaultLat = -0.5;
+                option.defaultLong = 3;
+                option.plugins = [[PhotoSphereViewer.GyroscopePlugin],
+                    [PhotoSphereViewer.MarkersPlugin, {
+                        markers: [{
+                            id: 'mark-one',
+                            longitude: 3.05,
+                            latitude: -0.1,
+                            image: 'https://cdn.shopify.com/s/files/1/0356/5997/2741/files/5.gif?v=1657931354',
+                            width: 100,
+                            height: 150,
+                            className: 'mark-icon'
+                        },{
+                            id: 'mark-two',
+                            longitude: 2.9,
+                            latitude: -0.8,
+                            image: 'https://cdn.shopify.com/s/files/1/0356/5997/2741/files/5.gif?v=1657931354',
+                            width: 100,
+                            height: 150,
+                            className: 'mark-icon'
+                        },{
+                            id: 'mark-three',
+                            longitude: 3.9,
+                            latitude: -0.7,
+                            image: 'https://cdn.shopify.com/s/files/1/0356/5997/2741/files/5.gif?v=1657931354',
+                            width: 100,
+                            height: 150,
+                            className: 'mark-icon'
+                        }]
+                    }]
+                ]
+            } else if(index === 2){
+                option.defaultLat = -0.2;
+                option.defaultLong = -0.11;
+                option.plugins = [[PhotoSphereViewer.GyroscopePlugin],
+                    [PhotoSphereViewer.MarkersPlugin, {
+                        markers: [
+                               {
+                               id: 'mark-four',
+                               longitude: 5.77,
+                               latitude: -0.15,
+                               image: 'https://cdn.shopify.com/s/files/1/0356/5997/2741/files/5.gif?v=1657931354',
+                               width: 100,
+                               height: 150,
+                               className: 'mark-icon'
+                           },{
+                               id: 'mark-five',
+                               longitude: 5.9,
+                               latitude: -0.37,
+                               image: 'https://cdn.shopify.com/s/files/1/0356/5997/2741/files/5.gif?v=1657931354',
+                               width: 100,
+                               height: 150,
+                               className: 'mark-icon'
+                           },{
+                               id: 'mark-six',
+                               longitude: 0.15,
+                               latitude: -0.32,
+                               image: 'https://cdn.shopify.com/s/files/1/0356/5997/2741/files/5.gif?v=1657931354',
+                               width: 100,
+                               height: 150,
+                               className: 'mark-icon'
+                           }
+                        ]
+                    }]
+                ]
+            } else if(index === 0){
+                option.defaultLat = 0;
+                option.defaultLong = 3;
+                option.plugins = [[PhotoSphereViewer.GyroscopePlugin],
+                    [PhotoSphereViewer.MarkersPlugin, {
+                        markers: [
+                               {
+                               id: 'mark-seven',
+                               longitude: 2.66,
+                               latitude: -0.22,
+                               image: 'https://cdn.shopify.com/s/files/1/0356/5997/2741/files/5.gif?v=1657931354',
+                               width: 100,
+                               height: 150,
+                               className: 'mark-icon'
+                           },{
+                               id: 'mark-eight',
+                               longitude: 3.01,
+                               latitude: -0.1,
+                               image: 'https://cdn.shopify.com/s/files/1/0356/5997/2741/files/5.gif?v=1657931354',
+                               width: 100,
+                               height: 150,
+                               className: 'mark-icon'
+                           },{
+                               id: 'mark-nine',
+                               longitude: 3.83,
+                               latitude: -0.3,
+                               image: 'https://cdn.shopify.com/s/files/1/0356/5997/2741/files/5.gif?v=1657931354',
+                               width: 100,
+                               height: 150,
+                               className: 'mark-icon'
+                           }
+                        ]
+                    }]
+                ]
+            }
+            let viewer = new PhotoSphereViewer.Viewer(option);
+            viewerList.push(viewer);
+            viewer.on('click', (e, data) => {
+                console.log(`${data.rightclick?'right ':''}clicked at longitude: ${data.longitude} latitude: ${data.latitude}`);
+            });
+            const markersPlugin = viewer.getPlugin(PhotoSphereViewer.MarkersPlugin);
+            markersPlugin.on('over-marker', (e, marker) => {
+                const isAutorotate = viewer.isAutorotateEnabled();
+                if (isAutorotate) {
+                    viewer.toggleAutorotate();
+                }
+            });
+            markersPlugin.on('leave-marker', (e, marker) => {
+                const isAutorotate = viewer.isAutorotateEnabled();
+                if (!isAutorotate && !modeShow) {
+                    viewer.toggleAutorotate();
+                }
+            });
+            markersPlugin.on('select-marker', (e, marker) => {
+                let id = marker.id;
+                if(id === 'mark-one') {
+                    dialogShow(0);
+                }else if(id === 'mark-two') {
+                    dialogShow(1);
+                }else if(id === 'mark-three') {
+                    dialogShow(2);
+                }else if(id === 'mark-four') {
+                    dialogShow(3);
+                }else if(id === 'mark-five') {
+                    dialogShow(4);
+                }else if(id === 'mark-six') {
+                    dialogShow(5);
+                }else if(id === 'mark-seven') {
+                    dialogShow(6);
+                }else if(id === 'mark-eight') {
+                    dialogShow(7);
+                }else if(id === 'mark-nine') {
+                    dialogShow(8);
+                }
+            });
+            if(index === 0){
+                viewer.setOption('autorotateLat', -0.5);
+                viewer.on('ready', () => {intro(viewer) });
+            }
+        });
+
+        $('.colorSwiper').each(function(i,domElm) {
+            let id = '.' + $(this).attr('data-id');
+            let colorSwiper = new Swiper(id, {
+                observer: true,
+                observeParents: true,
+                slidesPerView : 8,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                slidesPerGroup: 8,
+                spaceBetween: 5,
+                on:{
+                    tap: function(sw,event){
+                        if(colorSwiper.clickedIndex || colorSwiper.clickedIndex === 0) {
+                            let dom = colorSwiper.clickedSlide;
+                            $('.event-dialog-each.show .dialogSwiper img').attr('src',$(dom).find('img').attr('src'));
+                            $('.event-dialog-each.show .swiper-slide label').removeClass('select');
+                            $('.event-dialog-each.show .swiper-slide label').eq(colorSwiper.clickedIndex).addClass('select');
+                        }
+                    }
+                },
+                breakpoints: {
+                 768: {
+                 slidesPerView: 5,
+                 slidesPerGroup: 5
+                }
+                }             
+            });
+        });
+
+        $('.colorSwiper .swiper-slide').hover(function() {
+            $(this).find('.alt ').addClass("show");
+		}, function() {
+			$(this).find('.alt ').removeClass("show");
+		});                  
+
+        $('.pop-hd img').click(function () {
+            $('.svg-pop').hide();
+        });
+
+
+        $('.download-svg-btn').each(function(i,domElm) {
+         $(this).click(function(){
+          let pic_name = $(this).attr("data-name");
+          let content= $(this).prev().html();
+          downLoadSvg(pic_name,content)
+         $.ajax({
+                     type:'GET',
+                     dataType:'jsonp',
+                     jsonp :'callback', //指定一个查询参数名称来覆盖默认的 jsonp 回调参数名 callback
+                     jsonpCallback: 'handle', //设置回调函数名
+                     url: 'https://qn.htvront.com:9000/prod-biz-api/htvront/activity/highwayEvent',
+                     data: {pic_name: pic_name},
+                     success(result){
+                        
+                     },
+                     error(result){
+                        console.log('error',result.status);
+                     }
+           });        
+         })
+       });
+    });
+
+    function intro(view) {
+// default far plane is too close to render fisheye=4
+// you can also skip this line and start with fisheye=2
+        view.renderer.camera.far *= 2;
+        new PhotoSphereViewer.Animation({
+            properties: {
+                lat: { start: -Math.PI / 2, end: 0 },
+                long: { start: Math.PI, end: 3 },
+                zoom: { start: 0, end: 0 },
+                fisheye: { start: 4, end: 0 },
+            },
+            duration: 2000,
+            easing: 'inOutQuad',
+            onTick: (properties) => {
+                view.setOption('fisheye', properties.fisheye);
+                view.rotate({ longitude: properties.long, latitude: properties.lat });
+                view.zoom(properties.zoom);
+            }
+        }).then(() => {
+            const isAutorotate = view.isAutorotateEnabled();
+            if (!isAutorotate) {
+                view.setOption('autorotateDelay', 2000);
+                view.toggleAutorotate();
+            }
+        });
+    }
+
+    function dialogShow(i) {
+        modeShow = true;
+        $('.event-dialog-background,.event-dialog-container').addClass('show');
+        $('.event-dialog-container').find('.event-dialog-each').eq(i).addClass('show');
+    }
+
+    function dialogHide() {
+        modeShow = false;
+        $('.event-dialog-background,.event-dialog-container,.event-dialog-each').removeClass('show');
+    }
+
+    function checkViewer(index) {
+        $.each(viewerList, function(i, value) {
+            if(i == index) {
+                const isAutorotate = viewerList[i].isAutorotateEnabled();
+                if (!isAutorotate) {
+                    viewerList[i].toggleAutorotate();
+                }        
+            } else {
+                const isAutorotate = viewerList[i].isAutorotateEnabled();
+                if (isAutorotate) {
+                    viewerList[i].toggleAutorotate();
+                }
+            }                    
+        });
+    }
+    
+    function downLoadSvg(name,content){
+       var email = '{{ customer.email }}';
+        if (email) {
+         let blob = new Blob([content], {type: 'image/svg+xml'});
+         fileName = name + '.svg';
+         const link = document.createElement('a');
+         link.href = window.URL.createObjectURL(blob);
+         link.download = fileName;
+         link.click();
+         window.URL.revokeObjectURL(link.href);
+      } else {
+         $('.svg-pop').show();
+      }
+    }
+
+</script>
+{% schema %}
+{
+    "name":"Event Banner",
+    "settings":[],
+    "blocks":[
+        {
+            "type":"image",
+            "name":{
+                "en":"svg",
+                "zh-CN":"svg"
+            },
+            "settings":[
+                {
+                    "type":"text",
+                    "id":"svgName",
+                    "label":{
+                        "en":"svgName",
+                        "zh-CN":"svg名称"
+                    }
+                },
+                {
+                    "type":"image_picker",
+                    "id":"svgShowImage",
+                    "label":{
+                        "en":"svgShowImage",
+                        "zh-CN":"svg显示图"
+                    }
+                },
+                {
+                    "type":"textarea",
+                    "id":"svgImage",
+                    "label":{
+                        "en":"svgCode",
+                        "zh-CN":"svg代码"
+                    }
+                },
+                {
+                    "type":"product",
+                    "id":"product",
+                    "label":{
+                        "en":"product",
+                        "zh-CN":"产品"
+                    }
+                }
+            ]
+        },
+        {
+            "type":"brand",
+            "name":{
+                "en":"image swiper",
+                "zh-CN":"image swiper"
+            },
+            "settings":[
+                {
+                    "type":"select",
+                    "id":"type",
+                    "label":{
+                        "en":"showType",
+                        "zh-CN":"展示类型"
+                    },
+                    "options":[
+                        {
+                            "value":"1",
+                            "label":"全景"
+                        },
+                        {
+                            "value":"2",
+                            "label":"静态"
+                        }
+                    ],
+                    "default":"1"
+                },
+                {
+                    "type":"image_picker",
+                    "id":"image",
+                    "label":{
+                        "en":"backgroundImage",
+                        "zh-CN":"背景图"
+                    }
+                },
+                {
+                    "type":"image_picker",
+                    "id":"thumbnail",
+                    "label":{
+                        "en":"Thumbnail",
+                        "zh-CN":"缩略图"
+                    }
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,332 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} .thousand-product{
+    background: {{ section.settings.bg_color }};
+  }
+  #shopify-section-{{ section.id }} .thousand-product-title{
+    font-size:{{ section.settings.title_size }}px;
+    color:{{ section.settings.title_color }};
+  }
+  #shopify-section-{{ section.id }} .thousand-product .fn-product-price span{
+    color:{{ section.settings.price_color }};
+  }
+  #shopify-section-{{ section.id }} .thousand-cups-product .button--full-width{
+    color:{{ section.settings.add_color }};
+    background: {{ section.settings.add_color_bg }};
+    border:1px solid {{ section.settings.add_color_border }}
+  }
+  #shopify-section-{{ section.id }} .thousand-cups-product .fn-product-title .t{
+    color:{{section.settings.product_title_color}}
+  }
+  @media screen and (max-width: 1024px){
+     #shopify-section-{{ section.id }} .thousand-product-title{
+        font-size:30px
+      }
+  }
+  @media screen and (max-width: 768px){
+      #shopify-section-{{ section.id }} .thousand-product-title{
+        font-size:16px
+      }
+    #shopify-section-{{ section.id }} .thousand-product-titles{
+        font-size:14px
+      }
+   }
+{%- endstyle -%}
+<style>
+   .thousand-product{
+     padding-top:50px;
+     padding-bottom:30px
+   }
+  .thousand-product-items{
+    width:83.33%;
+    margin:0 auto 30px auto;
+    padding:34px 18px 4px 17px;
+    border-radius: 10px;
+  }
+  .thousand-product-title{
+    line-height:49px;
+    text-align:center;
+    font-weight:bold;
+    margin-bottom:30px
+  }
+  .thousand-product-titles{
+    display:flex;
+    align-items:center;
+    justify-content:center
+  }
+  .thousand-product-title img{
+    margin-right:15px
+  }
+  .thousand-product-content {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  .thousand-cups-product {
+    width: 24%;
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 11px 12px 15px 13px;
+    margin-bottom: 20px;
+    margin-right: 1.3%;
+  }
+  .thousand-cups-product:nth-child(4n) {
+    margin-right: 0;
+  }
+  .thousand-cups-product .fn-product-title .t {
+    font-size: 16px;
+    line-height: 22px;
+    height: 42px;
+  }
+  .thousand-cups-product .fn-color-attr {
+    height: 32px;
+    margin-top: 15px;
+  }
+  .thousand-cups-product .fn-color-attr ul li {
+    width: 30px;
+    height: 30px;
+    border: 0px;
+  }
+  .thousand-cups-product .fn-color-attr ul li + li {
+    margin-left: 10px;
+  }
+  .thousand-cups-product .fn-color-attr ul li:hover {
+    border: 1px solid #ff3737;
+  }
+  .thousand-cups-product .button--full-width {
+    min-height: calc(4.9rem + var(--buttons-border-width) * 2);
+    height: calc(4.9rem + var(--buttons-border-width) * 2);
+    border-radius: 4px;
+    margin-top: 15px;
+    --border-opacity: none;
+    --border-offset: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .thousand-cups-product .fn-product-price {
+    width: auto;
+  }
+  .thousand-cups-product .fn-product-price span {
+    font-size: 24px;
+    line-height: 22px;
+    text-align: right;
+  }
+  .thousand-cups-product .fn-compareat_price .fn-compare-at_price {
+    font-size: 16px;
+    font-weight: 400;
+    text-align: right;
+  }
+  .thousand-product-items .show-in-mobile{
+    display:none
+  }
+  @media screen and (max-width: 1024px){
+    .thousand-product-items{
+      width:93.6%
+    }
+    .thousand-cups-product .fn-product-layout {
+      display: block;
+    }
+    .thousand-cups-product .fn-product-title {
+      width: 100%;
+    }
+    .thousand-cups-product .fn-compareat_price {
+      flex-direction: initial;
+      align-items: baseline;
+    }
+    .thousand-cups-product .fn-product-price {
+      text-align: left;
+    }
+    .thousand-cups-product .fn-product-price span {
+      float: initial;
+    }
+    .thousand-cups-product .fn-product-title .t,.thousand-cups-product .fn-product-price span{
+      font-size:14px
+    }
+    .thousand-cups-product .fn-compareat_price .fn-compare-at_price{
+      font-size:12px
+    }
+    .thousand-cups-product .fn-color-attr {
+      height: 22px;
+      margin-top:4px
+    }
+    .thousand-cups-product .fn-color-attr ul li {
+      width: 20px;
+      height: 20px;
+    }
+    .thousand-cups-product .fn-color-attr ul li img {
+      width: 20px;
+      height: 20px;
+    }
+    .thousand-cups-product .button--full-width{
+      min-height: calc(3.0rem + var(--buttons-border-width) * 2);
+      height: calc(3.0rem + var(--buttons-border-width) * 2);
+      margin-top:6px
+    }
+    .thousand-cups-product .fn-color-attr ul .color-quantity{
+      line-height:20px
+    }
+  }
+  @media screen and (max-width: 768px){
+    .thousand-product{
+      padding-top:20px
+    }
+    .thousand-product-items{
+      border-radius:2px
+    }
+    .thousand-product-title{
+      margin-bottom:10px;
+      line-height:22px
+    }
+    .thousand-product-titles{
+      line-height:19px
+    }
+    .thousand-product-items{
+      padding: 8px 6px 10px 6px;
+    }
+    .thousand-cups-product {
+      width: 49%;
+      padding: 5px 5px 11px;
+      margin-bottom:10px
+    }
+    .thousand-cups-product:nth-child(2n) {
+      margin-right: 0;
+    }
+    .thousand-cups-product .button--full-width{
+      font-size:14px
+    }
+     .thousand-product-items .show-in-mobile{
+      display:block
+    }
+     .thousand-product-items .show-in-pc{
+      display:none
+    }
+    .thousand-product-title img{
+      margin-right:4px
+    }
+  }
+</style>
+<div class="thousand-product">
+  <div class="thousand-product-title">
+    {{ section.settings.title }}
+  </div>
+  {% for block in section.blocks %}
+    <div class="thousand-product-items" style="background:{{  block.settings.bg_color }}">
+      <div class="thousand-product-titles thousand-product-title">
+        {% if block.settings.title_image != blank %}
+          <img class="show-in-pc" src="{{ block.settings.title_image | img_url:'42x' }}">
+        {% endif %}
+        {% if block.settings.title_image_mobile != blank %}
+          <img class="show-in-mobile" src="{{ block.settings.title_image_mobile | img_url:'18x' }}">
+        {% endif %}
+        <div>
+          {{ block.settings.title }}
+        </div>
+      </div>
+      <div class="thousand-product-content">
+        {% for item in block.settings.product_collection.products %}
+          {% if forloop.index <= 8 %}
+            <div class="thousand-cups-product">
+              {% render 'product-Model-custom',
+                card_product: item,
+                progress: false,
+                show_secondary_image: block.settings.show_secondary_off,
+                colorSize: true,
+                buttonSeat: 'fileSteam',
+                buttonText: 'ADD TO CART',
+                title: 'flex',
+                pirce: 'intitle'
+              %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% schema %}
+{
+  "name": "Thousand Product",
+  "settings": [{
+            "type":"color",
+            "id":"bg_color",
+            "label":"背景颜色"
+        },
+    {
+          "type": "text",
+          "id": "title",
+          "label": "title"
+        },{
+           "type":"color",
+            "id":"title_color",
+            "label":"标题颜色"
+        },{
+           "type":"number",
+            "id":"title_size",
+            "label":"标题大小"
+        },{
+          "type":"color",
+          "id":"price_color",
+          "label":"price_color"
+        },{
+          "type":"color",
+          "id":"add_color",
+          "label":"add_color"
+        },{
+          "type":"color",
+          "id":"add_color_bg",
+          "label":"add_color_bg"
+        },{
+          "type":"color",
+          "id":"add_color_border",
+          "label":"add_color_border"
+        },{
+          "type":"color",
+          "id":"product_title_color",
+          "label":"product_title_color"
+        }
+  ],
+  "blocks":[{
+      "type": "product",
+      "name": "product",
+      "settings":[
+        {
+          "type": "text",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "image_picker",
+          "id": "title_image",
+          "label": "title image"
+        },{
+          "type": "image_picker",
+          "id": "title_image_mobile",
+          "label": "title image mobile"
+        },{
+          "type": "collection",
+          "id": "product_collection",
+          "label": "collection"
+        },{
+            "type":"color",
+            "id":"bg_color",
+            "label":"背景颜色"
+        },{
+          "type": "checkbox",
+          "id": "show_secondary_off",
+          "default": false,
+          "label": "show_secondary_off_iamge"
+        }
+      ]
+  }],
+  "presets": [
+    {
+      "name": "Thousand Product"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

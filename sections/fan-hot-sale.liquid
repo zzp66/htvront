@@ -1,0 +1,295 @@
+<div class="fan-sale-index">
+  <div class="fan-sale-timer" id="fan-sale-timer">
+    <div class="fan-sale-timer-show">
+      <div class="fan-sale-timer-title">Limited Time Offer</div>
+      <div>
+        <img
+          class="countdown-img"
+          src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/14_d9149f06-1905-4852-aa29-57d0d71c32d5.png?v=1678863132"
+        >
+      </div>
+      <div class="fan-time-countdown">
+        {%
+          render 'fan-sale-countdown',
+          countdown_time:section.settings.countdown_time ,
+        %}
+        <p>{{  section.settings.countdown_tips }}</p>
+      </div>
+    </div>
+
+    <div class="fan-sale-timer-products">
+      {% for block in section.blocks %}
+        {% if block.type == 'indexShow' -%}
+          <div class="fan-sale-timer-product">
+            {% render 'product-Model',
+              card_product: block.settings.show_product,
+              progress: block.settings.show_progress_index,
+              schedule_sum: block.settings.total_product,
+              colorSize: block.settings.show_colorSizeShow_index,
+              buttonSeat:block.settings.indexPro_btnSeat,
+              buttonText:block.settings.indexPro_btn,            
+              title: 'block',              
+              pirce: 'normal'             
+            %}
+          </div>
+        {% endif -%}
+      {% endfor -%}
+    </div>
+  </div>
+  <div class="fan-sale-bundles" id="fan-sale-bundles">
+    <div class="fan-sale-bundle-title">
+      <img
+        class="fan-sale-bundle-title-pc"
+        src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/7_2.png?v=1678863132"
+      >
+      <img
+        class="fan-sale-bundle-title-mobile"
+        src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/7_6bed163a-5072-4edb-a17c-69466b708334.png?v=1679022812"
+      >
+    </div>
+    <div class="fan-sale-bundle-products">
+      {% for block in section.blocks %}
+        {% if block.type == 'indexBundle' -%}
+          <div class="fan-sale-bundle-product">
+            {% render 'product-Model',
+              card_product: block.settings.bundle_product,
+              progress: block.settings.show_progress_bundle,
+              show_secondary_image: section.settings.show_secondary_bundle,
+              colorSize: block.settings.show_colorSizeShow_bundle,
+              buttonSeat:block.settings.bundlePro_btnSeat,
+              buttonText:block.settings.bundlePro_btn,
+              title: 'block',
+              pirce: 'normal'
+            %}
+          </div>
+        {% endif -%}
+      {% endfor -%}
+    </div>
+  </div>
+  <div class="fan-sale-off" id="fan-sale-off">
+    <div class="fan-sale-off-title">
+      <img
+        class="fan-sale-off-title-pc"
+        src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/7_1.png?v=1678863132"
+      >
+      <img
+        class="fan-sale-off-title-mobile"
+        src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/12_1.png?v=1679022812"
+      >
+    </div>
+    <div class="fan-sale-off-products">
+      {% for block in section.blocks %}
+        {% if block.type == 'indexOff' -%}
+          {% for item in block.settings.off_product.products %}
+            <div class="fan-sale-off-product">
+              {% render 'product-Model',
+                card_product: item,
+                progress: block.settings.show_progress_collection,
+                schedule_sum: block.settings.total_product_collection,
+                show_secondary_image: section.settings.show_secondary_off,
+                colorSize: block.settings.show_colorSizeShow_collection,
+                buttonSeat:block.settings.collextionPro_btnSeat,
+                buttonText:block.settings.collectionPro_btn,
+                title: 'flex',             
+                pirce: 'intitle'
+              %}
+            </div>
+          {% endfor %}
+        {% endif -%}
+      {% endfor -%}
+    </div>
+  </div>
+  <div class="fan-sale-card" id="fan-sale-card">
+    <div class="fan-sale-card-text">
+      <div class="fan-sale-card-titlt">{{ section.settings.card_title }}</div>
+      <div class="fan-sale-card-description">
+        {{ section.settings.card_html }}
+      </div>
+    </div>
+    <div class="fan-sale-card-img">
+      {% if section.settings.card_image != blank %}
+        <img src="{{ section.settings.card_image|img_url:'800x' }}">
+      {% endif %}
+    </div>
+  </div>
+  {% render 'fan-sale-share' %}
+  <div class="fan-sale-arrowTop">
+    <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/9_1.png?v=1679888519">
+  </div>
+</div>
+{% schema %}
+{
+  "name": "fan-hot-sale",
+  "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_secondary_bundle",
+          "default": false,
+          "label": "bundlecheckbox"
+        },
+    {
+          "type": "checkbox",
+          "id": "show_secondary_off",
+          "default": false,
+          "label": "offcheckbox"
+        },
+    {
+            "type":"text",
+            "id":"countdown_time",
+            "label":"time"
+        },{
+            "type":"text",
+            "id":"countdown_tips",
+            "label":"timetips"
+        },{
+            "type":"text",
+            "id":"card_title",
+            "label":"卡片标题"
+        },{
+        "type":"image_picker",
+            "id":"card_image",
+            "label":"卡片图片"
+        },{
+        "type":"html",
+            "id":"card_html",
+            "label":"卡片内容"
+        }
+  ],
+  "blocks":[{
+      "type": "indexShow",
+      "name": {
+          "en": "product",
+          "zh-CN": "首页展示产品"
+      },
+      "settings": [
+        {
+          "type": "product",
+          "id": "show_product",
+          "label": "show_product"
+        },{
+          "type": "checkbox",
+          "id": "show_progress_index",
+          "default": false,
+          "label": "progressShow"
+        },{
+          "type": "text",
+          "id": "total_product",
+          "label": "total_product"
+        },{
+          "type": "text",
+          "id": "indexPro_btn",
+          "label": "product_button_Text",
+          "default":"Add To Cart"
+        },{
+          "type": "select",
+          "id": "indexPro_btnSeat",
+          "label": "buttonSeat",
+          "default":"fileSteam",
+          "options":[{
+            "label":"fileSteam",
+            "value":"fileSteam"
+          },{
+            "label":"inImage",
+            "value":"inImage"
+          }]
+        },{
+          "type": "checkbox",
+          "id": "show_colorSizeShow_index",
+          "default": false,
+          "label": "colorSizeShow"
+        }
+      ]
+    },{
+      "type": "indexBundle",
+      "name": {
+          "en": "product Bundle",
+          "zh-CN": "首页bundle"
+      },
+      "settings": [
+        {
+          "type": "product",
+          "id": "bundle_product",
+          "label": "bundle_product"
+        },{
+          "type": "checkbox",
+          "id": "show_progress_bundle",
+          "default": false,
+          "label": "progressShow"
+        },{
+          "type": "text",
+          "id": "bundlePro_btn",
+          "label": "product_button_Text",
+          "default":"Add To Cart"
+        },{
+          "type": "checkbox",
+          "id": "show_colorSizeShow_bundle",
+          "default": false,
+          "label": "colorSizeShow"
+        },{
+          "type": "select",
+          "id": "bundlePro_btnSeat",
+          "label": "buttonSeat",
+          "default":"fileSteam",
+          "options":[{
+            "label":"fileSteam",
+            "value":"fileSteam"
+          },{
+            "label":"inImage",
+            "value":"inImage"
+          }]
+        }
+      ]
+    },{
+      "type": "indexOff",
+      "name": {
+          "en": "UP TO 50% OFF",
+          "zh-CN": "UP TO 50% OFF"
+      },
+      "settings": [
+        {
+          "type": "collection",
+          "id": "off_product",
+          "label": "UP TO 50% OFF"
+        },{
+          "type": "checkbox",
+          "id": "show_progress_collection",
+          "default": false,
+          "label": "progressShow"
+        },{
+          "type": "text",
+          "id": "total_product_collection",
+          "label": "total_product"
+        },{
+          "type": "text",
+          "id": "collectionPro_btn",
+          "label": "product_button_Text",
+          "default":"ADD TO CART"
+        },{
+          "type": "checkbox",
+          "id": "show_colorSizeShow_collection",
+          "default": false,
+          "label": "colorSizeShow"
+        },{
+          "type": "select",
+          "id": "collextionPro_btnSeat",
+          "label": "buttonSeat",
+          "default":"fileSteam",
+          "options":[{
+            "label":"fileSteam",
+            "value":"fileSteam"
+          },{
+            "label":"inImage",
+            "value":"inImage"
+          }]
+        }
+      ]
+    }
+   ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

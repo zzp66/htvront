@@ -1,0 +1,804 @@
+.Fan-Prediction {
+  position: relative;
+}
+.Fan-Prediction-Body {
+  position: absolute;
+  width: 63.06%;
+  left: 50%;
+  top: 10.8%;
+  transform: translateX(-50%);
+}
+.Fan-Prediction_Background_Mobile,
+.Fan-Coupon_back_mobile,
+.Fan-Prediction_Background_pc,
+.Fan-Prediction_Background_pad {
+  display: none;
+}
+
+/* 倒数计时 */
+.fn-prediction-countdown {
+  display: flex;
+  max-width: 30%;
+  justify-content: space-between;
+  margin: 12.7% auto 23.5% auto;
+}
+.fn-time-format {
+  font-size: 50px;
+  line-height: 50px;
+  position: relative;
+}
+.format_span_time {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.fn-time-format:nth-child(1) {
+  margin-left: 1%;
+}
+.fn-time-format:nth-child(2) {
+  margin-left: 1.5%;
+}
+.Fan-Coupon-details {
+  position: relative;
+}
+.Fan-Coupon-content {
+  position: absolute;
+  left: 0;
+  top: 19.5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 8.6%;
+  padding-right: 4.8%;
+  width: 100%;
+}
+.Fan-Coupon-content_coupon div {
+  display: inline-block;
+}
+.Fan-Coupon-content_icon_title.t {
+  font-size: 24px;
+  color: #940000;
+  line-height: 33px;
+}
+.Fan-Coupon-content_icon_text.t {
+  font-size: 18px;
+  color: #940000;
+  line-height: 24px;
+  margin-top: 13px;
+}
+.Fan-Coupon-content_right {
+  width: 36.1%;
+}
+li.Fan-Coupon-content_right_list {
+  font-size: 14px;
+  font-weight: 400;
+  color: #600000;
+  line-height: 24px;
+  list-style-type: disc;
+  letter-spacing: -0.5px;
+}
+.Fan-Coupon-product {
+  background: linear-gradient(180deg, #ff471c 0%, #d22100 100%);
+  border-radius: 0px 0px 10px 10px;
+  padding: 2.21% 3% 2.5% 2.5%;
+}
+.Fan-Coupon-product {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.Fan-Coupon-product_left {
+  color: #fff;
+  font-size: 18px;
+  line-height: 24px;
+}
+.Fan-Coupon-product_left div:nth-child(2) {
+  font-size: 24px;
+  line-height: 33px;
+  margin-top: 10px;
+}
+.Fan-Coupon-product_right .button {
+  display: flex;
+  width: 100%;
+  min-width: calc(25.8rem + var(--buttons-border-width) * 2);
+  min-height: calc(3.8rem + var(--buttons-border-width) * 2);
+  background: linear-gradient(180deg, #ffedcb 0%, #ffd58e 100%);
+  border-radius: 4px;
+  border: none;
+  color: #333;
+  --shadow-opacity: none;
+  --border-offset: none;
+  --border-opacity: none;
+  font-size: 18px;
+}
+.fn-Coupon_button_a.t {
+  line-height: calc(3.8rem + var(--buttons-border-width) * 2);
+  text-align: center;
+  background: linear-gradient(180deg, #ffedcb 0%, #ffd58e 100%);
+  border-radius: 4px;
+  font-size: 18px;
+  min-width: calc(25.8rem + var(--buttons-border-width) * 2);
+  min-height: calc(3.8rem + var(--buttons-border-width) * 2);
+  display: none;
+  opacity: 0.5;
+  cursor: no-drop;
+}
+.Fan-Coupon-product_right .button {
+  display: none;
+}
+.Fan-Prediction-Vedio {
+  position: relative;
+  margin-bottom: 5%;
+  margin-top: 5%;
+}
+.vedio-content {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  padding: 1.2% 3.4% 3.4% 1.3%;
+  height: 100%;
+}
+.vedio-item {
+  height: 100%;
+  /*   background-color: chartreuse; */
+  border-radius: 1%;
+}
+.Fan-Prediction-Enroll {
+  background: #ffffff;
+  padding: 2.5% 3.4% 4.4% 1.8%;
+  letter-spacing: 0;
+}
+.fan-enroll-introduction {
+  padding-left: 6.5%;
+}
+.fan-enroll-title {
+  font-size: 30px;
+  font-family: OpenSans-Bold, OpenSans;
+  text-align: center;
+  font-weight: bold;
+  color: #333333;
+  line-height: 41px;
+  margin-bottom: 15px;
+}
+.fan-enroll-text {
+  font-size: 16px;
+  font-family: OpenSans;
+  color: #333333;
+  line-height: 22px;
+}
+.fan-enroll-step {
+  margin-top: 1.8%;
+}
+.fan-enroll-step li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.fan-enroll-step-icon {
+  margin-right: 9px;
+}
+.fan-enroll-share-content p,
+.fan-enroll-share-content a {
+  display: inline-block;
+}
+.fan-enroll-share-icon {
+  margin-left: 15px;
+}
+.fan-enroll-small-title {
+  font-size: 24px;
+  font-family: OpenSans-Bold, OpenSans;
+  font-weight: bold;
+  color: #333333;
+  line-height: 33px;
+  margin-top: 5.2%;
+  margin-bottom: 1.5%;
+  text-align: center;
+}
+.Fan-Coupon_back_pc {
+  width: 100%;
+}
+.fan-enroll-form-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 13px;
+}
+.fan-enroll-form-name,
+.fan-enroll-form-email {
+  width: 49%;
+}
+.fan-enroll-form-label {
+  display: block;
+  font-size: 16px;
+  font-family: OpenSans;
+  color: #333333;
+  line-height: 22px;
+  margin-bottom: 10px;
+}
+.fan-enroll-form-input {
+  width: 100%;
+  border: 1px solid #979797;
+  height: 50px;
+  font-size: 18px;
+  padding: 0 20px;
+}
+.fan-form-upload {
+  position: relative;
+  width: 100%;
+  height: 156px;
+  border: 1px solid #979797;
+}
+.fan-enroll-form-upload-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  font-family: OpenSans;
+  color: #f07430;
+  line-height: 22px;
+}
+.fan-enroll-form-upload-name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  font-family: OpenSans;
+  line-height: 22px;
+  display: none;
+}
+.fan-enroll-form-upload-con {
+  width: 100%;
+  height: 156px;
+  opacity: 0;
+}
+.fan-enroll-upload-tips {
+  float: right;
+  font-size: 14px;
+  font-family: OpenSans;
+  color: #333333;
+  line-height: 19px;
+  margin-top: 6px;
+}
+.font-color-red {
+  color: #ff0000;
+}
+.fan-enroll-form-rule,
+.fan-form-error {
+  font-size: 14px;
+  font-family: OpenSans;
+  color: #ff0000;
+  line-height: 19px;
+  display: none;
+  margin-top: 6px;
+}
+.fan-form-error {
+  text-align: center;
+}
+.border-color-red {
+  border-color: #ff0000;
+}
+.fan-enroll-form-submit {
+  height: 48px;
+  width: fit-content;
+  background: #f07430;
+  border-radius: 4px;
+  border-color: #f07430;
+  font-size: 16px;
+  font-family: OpenSans-Bold, OpenSans;
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 48px;
+  margin: 5.2% auto 0 auto;
+  text-align: center;
+  padding: 0 70px;
+  cursor: pointer;
+}
+.Fan-Prediction-Gift {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 4;
+  display: none;
+}
+.fan-prediction-gift-content {
+  width: 47.3%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.fan-gift-content {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  padding: 33px;
+  letter-spacing: 0;
+}
+.fan-gift-title {
+  font-size: 30px;
+  font-family: OpenSans-Bold, OpenSans;
+  font-weight: bold;
+  color: #333333;
+  line-height: 41px;
+}
+.fan-gift-second-title {
+  font-size: 18px;
+  font-family: OpenSans;
+  color: #333333;
+  line-height: 24px;
+  margin: 14px auto 0 auto;
+}
+.fan-gift-img img {
+  margin: 52px auto 0 auto;
+}
+.fan-gift-tips {
+  font-size: 14px;
+  font-family: OpenSans;
+  color: #333333;
+  line-height: 19px;
+}
+.fan-addcart-gift .button {
+  display: flex;
+  width: 260px;
+  background: #f07430;
+  border: none;
+  font-size: 16px;
+  min-height: calc(4.8rem + var(--buttons-border-width) * 2);
+  --border-offset: none;
+  --border-opacity: none;
+  margin: 53px auto 13px auto;
+  border-radius: 4px;
+}
+@media screen and (max-width: 1440px) {
+  .fan-gift-title {
+    font-size: 20px;
+    line-height: 31px;
+  }
+  .fan-gift-second-title {
+    font-size: 16px;
+    line-height: 22px;
+    margin: 14px auto 30px;
+  }
+  .fan-addcart-gift .button {
+    width: 260px;
+    font-size: 14px;
+    min-height: calc(3.8rem + var(--buttons-border-width) * 2);
+    margin: 30px auto 13px;
+  }
+  .fn-time-format {
+    font-size: 32px;
+    line-height: 32px;
+  }
+  /*   .fn-prediction-countdown {
+    margin: 42.3% auto 23%;
+  } */
+  .Fan-Coupon-content {
+    top: 10%;
+  }
+  .Fan-Coupon-content_icon_title.t {
+    font-size: 18px;
+    line-height: 29px;
+  }
+  .Fan-Coupon-content_icon_text.t {
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 10px;
+  }
+  li.Fan-Coupon-content_right_list {
+    font-size: 14px;
+    line-height: 22px;
+  }
+  .Fan-Coupon-product_left {
+    color: #fff;
+    font-size: 16px;
+    line-height: 22px;
+  }
+  .Fan-Coupon-product_left div:nth-child(2) {
+    font-size: 20px;
+    line-height: 29px;
+    margin-top: 5px;
+  }
+  .Fan-Coupon-product_right .button,
+  .fn-Coupon_button_a.t {
+    font-size: 16px;
+  }
+  .fan-enroll-text {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .fan-enroll-small-title {
+    margin-top: 2%;
+    margin-bottom: 1%;
+  }
+  .fan-enroll-form-label {
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 8px;
+  }
+  .fan-enroll-form-input {
+    height: 40px;
+    font-size: 14px;
+    padding: 0 15px;
+  }
+  .fan-enroll-form-upload-con,
+  .fan-form-upload {
+    height: 100px;
+  }
+  .fan-enroll-form-submit {
+    height: 40px;
+    font-size: 14px;
+    line-height: 40px;
+  }
+}
+@media screen and (width: 1180px) {
+  .Fan-Prediction {
+    background: #fbefd6;
+    min-height: 2500px;
+  }
+  .Fan-Prediction-Body {
+    width: calc(100% - 30px);
+  }
+  .Fan-Coupon-content_icon {
+    width: 80px;
+  }
+  .Fan-Coupon-content_right {
+    width: 40%;
+  }
+  .fn-prediction-countdown {
+    margin-top: 0;
+  }
+  .fn-time-format {
+    font-size: 16px;
+    line-height: 16px;
+  }
+  .fn-prediction-countdown {
+    max-width: 18%;
+    margin-bottom: 18.5%;
+  }
+  .Fan-Prediction-Body {
+    top: 12.4%;
+  }
+  .fan-gift-img img {
+    margin: 15px auto;
+    width: 80%;
+  }
+}
+@media screen and (width: 1024px) {
+  .Fan-Prediction {
+    background: #fbefd6;
+    min-height: 2500px;
+  }
+  .Fan-Prediction-Body {
+    width: calc(100% - 30px);
+  }
+  .Fan-Coupon-content_icon {
+    width: 80px;
+  }
+  .Fan-Coupon-content_right {
+    width: 40%;
+  }
+  .fn-prediction-countdown {
+    margin-top: 0;
+  }
+  .fn-time-format {
+    font-size: 16px;
+    line-height: 16px;
+  }
+  .fn-prediction-countdown {
+    max-width: 18%;
+  }
+  .fan-gift-img img {
+    margin: 15px auto;
+    width: 80%;
+  }
+}
+@media screen and (width: 820px) {
+  .Fan-Prediction {
+    background: #fbefd6;
+    min-height: 2000px;
+  }
+  .Fan-Prediction-Body {
+    width: calc(100% - 30px);
+  }
+  .Fan-Coupon-content_icon {
+    width: 80px;
+  }
+  .Fan-Coupon-content_right {
+    width: 40%;
+  }
+  .fn-prediction-countdown {
+    margin-top: 0;
+  }
+  .fn-time-format {
+    font-size: 16px;
+    line-height: 16px;
+  }
+  .fn-prediction-countdown {
+    max-width: 18%;
+  }
+  .fan-gift-img img {
+    margin: 15px auto;
+    width: 80%;
+  }
+}
+@media screen and (width: 768px) {
+  .Fan-Prediction {
+    background: #fbefd6;
+    min-height: 1880px;
+  }
+  .Fan-Prediction-Body {
+    width: calc(100% - 30px);
+  }
+  .Fan-Coupon-content_icon {
+    width: 80px;
+  }
+  .Fan-Coupon-content_right {
+    width: 60%;
+  }
+  .fn-prediction-countdown {
+    margin-top: 0;
+  }
+  .fan-gift-img img {
+    margin: 15px auto;
+    width: 80%;
+  }
+  .fn-time-format {
+    font-size: 16px;
+    line-height: 16px;
+  }
+  .fn-prediction-countdown {
+    max-width: 18%;
+  }
+}
+@media screen and (max-width: 750px) {
+  .Fan-Prediction_Background_Mobile {
+    display: block;
+    width: 100%;
+  }
+  .Fan-Prediction_Background,
+  .Fan-Prediction_Background_pad {
+    display: none;
+  }
+  .Fan-Prediction-Body {
+    top: 12.5%;
+  }
+  .fan-gift-second-title {
+    font-size: 14px;
+    line-height: 18px;
+    margin: 10px auto 20px;
+  }
+  .fan-prediction-gift-content {
+    width: calc(100% - 30px);
+  }
+  .fan-gift-content {
+    padding: 2%;
+  }
+  .fn-time-format {
+    font-size: 24px;
+    line-height: 24px;
+  }
+  .fn-prediction-countdown {
+    margin: 0 auto 52%;
+    max-width: 40%;
+  }
+  .Fan-Coupon_back_mobile {
+    display: block;
+    width: 100%;
+  }
+  .Fan-Coupon_back_pc {
+    display: none;
+  }
+  .Fan-Prediction-Body {
+    width: calc(100% - 30px);
+  }
+  .fn-time-format:nth-child(4),
+  .fn-time-format:nth-child(3) {
+    margin-left: 5%;
+  }
+  .fn-time-format:nth-child(2) {
+    margin-left: 7%;
+  }
+  .Fan-Coupon-content_icon_title.t {
+    font-size: 16px;
+    line-height: 23px;
+  }
+  .Fan-Coupon-content_icon_text.t {
+    font-size: 14px;
+    line-height: 18px;
+    margin-top: 5px;
+    width: 70.5%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .Fan-Coupon-content_right {
+    width: 90%;
+    margin: 40% auto 0 auto;
+  }
+  li.Fan-Coupon-content_right_list {
+    font-size: 14px;
+    line-height: 22px;
+    /*     text-align: center; */
+  }
+  .Fan-Coupon-content {
+    top: 13%;
+    display: block;
+  }
+  .Fan-Coupon-product_left {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .Fan-Coupon-product_left div:nth-child(2) {
+    font-size: 14px;
+    line-height: 24px;
+    margin-top: 0;
+  }
+  .Fan-Coupon-product_right .button,
+  .fn-Coupon_button_a.t {
+    font-size: 12px;
+    min-width: calc(18.8rem + var(--buttons-border-width) * 2);
+    min-height: calc(2.8rem + var(--buttons-border-width) * 2);
+  }
+  .fn-Coupon_button_a.t {
+    line-height: calc(2.8rem + var(--buttons-border-width) * 2);
+  }
+  .fan-enroll-text {
+    /*     font-size: 12px; */
+    line-height: 22px;
+  }
+  .fan-enroll-step-icon {
+    width: 15px;
+  }
+  .fan-enroll-small-title {
+    margin-top: 2%;
+    margin-bottom: 1%;
+    font-size: 14px;
+    line-height: 22px;
+  }
+  .fan-enroll-form-label {
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 5px;
+  }
+  .fan-enroll-form-input {
+    height: 35px;
+    font-size: 12px;
+    padding: 0px 10px;
+  }
+  .fan-enroll-form-item {
+    margin-bottom: 10px;
+  }
+  .fan-enroll-upload-tips {
+    font-size: 12px;
+    line-height: 17px;
+  }
+  .fan-enroll-form-submit {
+    height: 30px;
+    font-size: 12px;
+    line-height: 30px;
+  }
+  .fan-enroll-form-upload-text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .Fan-Coupon-content_coupon {
+    text-align: center;
+  }
+  .Fan-Coupon-product {
+    display: block;
+    background: none;
+    position: absolute;
+    bottom: 5%;
+    width: 100%;
+    padding: 2.21% 5% 2.5% 4.5%;
+  }
+  .Fan-Coupon-product_left {
+    margin-bottom: 16px;
+  }
+  .Fan-Coupon-product_left div:nth-child(2) {
+    font-size: 18px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .fan-gift-second-title {
+    font-size: 12px;
+    line-height: 18px;
+    margin: 5px auto 15px;
+  }
+  .fan-gift-tips {
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .fn-time-format {
+    font-size: 16px;
+    line-height: 16px;
+  }
+  .fan-addcart-gift .button {
+    width: 200px;
+    font-size: 14px;
+    min-height: calc(3.8rem + var(--buttons-border-width) * 2);
+    margin: 30px auto 13px;
+  }
+  .fan-gift-title {
+    font-size: 16px;
+    line-height: 25px;
+  }
+  .fan-gift-img img {
+    margin: 15px auto;
+    width: 100%;
+  }
+  .fan-enroll-form-rule,
+  .fan-form-error {
+    font-size: 12px;
+    line-height: 17px;
+    margin-top: 0;
+  }
+  .Fan-Coupon-product {
+    bottom: 3%;
+  }
+  .Fan-Coupon-product_left div:nth-child(2) {
+    font-size: 12px;
+    line-height: 22px;
+    margin-top: 4px;
+  }
+  .Fan-Coupon-product_right .button,
+  .fn-Coupon_button_a.t {
+    min-width: calc(11.8rem + var(--buttons-border-width) * 2);
+  }
+  .Fan-Coupon-content_coupon img {
+    width: 140px;
+  }
+  .Fan-Coupon-content_right {
+    margin-top: 25%;
+  }
+  .Fan-Coupon-product_right .button {
+    padding: 0;
+  }
+  .fan-enroll-introduction {
+    padding-left: 4%;
+  }
+  .fan-enroll-step li {
+    align-items: flex-start;
+  }
+  .fan-enroll-step-icon {
+    margin-top: 4px;
+  }
+  .fan-enroll-form-item {
+    flex-wrap: wrap;
+  }
+  .fan-enroll-form-name,
+  .fan-enroll-form-email {
+    width: 100%;
+  }
+  .fan-enroll-form-name {
+    margin-bottom: 10px;
+  }
+  .fan-enroll-form-submit {
+    width: 100%;
+    margin-top: 5%;
+  }
+  .fan-enroll-title {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .fan-enroll-upload-tips {
+    float: initial;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .fan-addcart-gift .button {
+    width: 200px;
+    font-size: 12px;
+    min-height: calc(2.8rem + var(--buttons-border-width) * 2);
+    margin: 20px auto 10px;
+  }
+  .Fan-Prediction-Body {
+    width: calc(100% - 20px);
+  }
+}

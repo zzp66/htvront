@@ -1,0 +1,157 @@
+<link rel="stylesheet" href="{{ 'section-main-page.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'section-main-page.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+
+{%- style -%}
+h1.fn-breadcrumb-title.t {
+    font-size: 24px;
+    text-align: center;
+    line-height: 24px;
+}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+nav.fn-helpCenter-text {
+    display: flex;
+    font-size: 22px;
+}
+a.home_text {
+    color: #666;
+}
+a.home_Policy {
+    color: #333;
+    font-family: OpenSans;
+}
+.sc-brSvTw.iyWbaU.pf-5_ {
+    display: none;
+}
+.sc-hOGkXu {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
+}
+h2.fn-Head.sc-hOGkXu.eBgidd.pf-11_ {
+    margin-top: 40px;
+}
+p.sc-eGPXGI.dCeUID.pf-14_ {
+    font-size: 14px;
+    color: #333333;
+}
+.sc-ezbkAF a {
+    text-decoration: underline;
+    color: #226CFF !important;
+}
+.more_questions {
+    display: flex;
+    font-size: 18px;
+}
+a.More_link {
+    font-weight: bold;
+    color: #FE3838;
+    text-decoration: underline;
+}
+span.Note_item {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333333;
+}
+.sc-ezbkAF img {
+    border: none !important;
+}
+  @media screen and (min-width: 750px) {
+h1.fn-breadcrumb-title.t {
+    margin-bottom: 50px;
+}
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+p.sc-eGPXGI.dCeUID.pf-14_ {
+font-size: 14px;
+}
+.sc-ezbkAF img {
+margin: 12px 0 0 0;
+}
+.sc-hOGkXu {
+    margin-top: 80px;
+    margin-bottom: 4px;
+    font-weight: bold;
+    color: #333333;
+}
+p.sc-eGPXGI.dCeUID.pf-44_ {
+    margin-top: 15px;
+}
+span.sc-gUQvok.zBuIu.pf-49_ {
+    display: block;
+    margin-top: 12px;
+}
+.more_questions {
+    margin-top: 25px;
+    margin-bottom: 160px;
+}
+  }
+{%- endstyle -%}
+
+<div class="page-width page-width--narrow section-{{ section.id }}-padding fn-page-width">
+  <div class="fn-breadcrumb">
+    <ul>
+      <li style="color: rgba(51, 51, 51, 0.8);"><a href="/">Home</a></li>
+      <li> > </li>
+      <li> {{ page.title }}</li>
+    </ul>
+  </div>
+  <h1 class="fn-breadcrumb-title t">
+    {{ page.title }}
+  </h1>
+  <div class="rte">
+    {{ page.content }}
+  </div>
+<!-- <div class="more_questions"><div class="t">For more questions,</div><a class="More_link" href="/blogs/faq/tagged/b-shipping">check here</a></div> -->
+</div>
+<script>
+   $(function (){
+     var time_url = window.location.href;
+     if(time_url.indexOf("adjustments-to-shipping-and-customer-service") !== -1) {
+       $('.more_questions').hide();
+     }
+     if(time_url.indexOf("sales-tax") !== -1) {
+       $('.more_questions').hide();
+     }
+  })
+</script>
+{% schema %}
+{
+  "name": "t:sections.main-page.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

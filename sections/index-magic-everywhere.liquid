@@ -1,0 +1,245 @@
+<style>
+    .fn-magic-everywhere {
+        margin: 100px 0;
+    }
+    .instructions-title {
+        text-align: center;
+        margin-bottom: 40px;
+        height: 48px;
+        font-size: 36px;
+        color: #333333;
+        line-height: 1;
+        font-weight: bold;
+    }
+    .instructions-content {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+    }
+    .instructions-content-image {
+        width: 25%;
+        position: relative;
+    }
+    .instructions-content-image img {
+        width: 100%;
+    }
+    .hot-sale-link {
+        height: 50px;
+        border: 2px solid #333333;
+        border-radius: 10px;
+        text-align: center;
+        width: 30%;
+        margin: 0 auto;
+        font-size: 24px;
+        color: #333333;
+    }
+    .instructions-content-hide {
+        /*     display: none; */
+        opacity: 0;
+        text-align: -webkit-center;
+        position: absolute;
+        left: 0;
+        top: 0%;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 118, 6, .7);
+    }
+    .camera-icon {
+        width: 52px;
+        height: 52px;
+        margin-bottom: 40px;
+        background-image: url(https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/5c1c18adb65c7850c0e95c123d529df6.png?v=1650276776);
+        background-size: 100% 100%;
+    }
+    .coating-button {
+        font-size: 30px;
+        color: #FFFFFF;
+        border: 2px solid #FFFFFF;
+        border-radius: 10px;
+        width: 65%;
+    }
+    .coating {
+        margin-top: 33%;
+    }
+    .instructions-content-image:hover .instructions-content-hide{
+        opacity: 1;
+        z-index: 999;
+        transition-duration: 1s;
+    }
+    @media screen and (min-width: 1251px) and (max-width: 1620px) {
+        .coating-button {
+            font-size: 22px;
+        }
+        .instructions-title {
+            font-size: 38px;
+        }
+        .fn-magic-everywhere {
+            margin: 80px 0;
+        }
+        .coating {
+            margin-top: 20%;
+        }
+    }
+    @media screen and (min-width: 991px) and (max-width: 1250px) {
+        .instructions-title {
+            font-size: 38px;
+        }
+        .fn-magic-everywhere {
+            margin: 80px 0;
+        }
+        .coating {
+            margin-top: 20%;
+        }
+        .coating-button {
+            font-size: 18px;
+        }
+    }
+    @media screen and (min-width: 768px) and (max-width: 991px){
+        .instructions-title {
+            font-size: 30px;
+        }
+        .fn-magic-everywhere {
+            margin: 60px 0;
+        }
+        .instructions-content-image {
+            width: 50%;
+        }
+    }
+    @media screen and (min-width: 480px) and (max-width: 768px){
+        .instructions-title {
+            font-size: 30px;
+        }
+        .fn-magic-everywhere {
+            margin: 50px 0;
+        }
+        .instructions-content-image {
+            width: 50%;
+        }
+        .coating {
+            margin-top: 25%;
+        }
+    }
+    @media screen and (min-width: 320px) and (max-width: 480px){
+        .instructions-title {
+            font-size: 30px;
+        }
+        .fn-magic-everywhere {
+            margin: 50px 0;
+        }
+        .instructions-content-image {
+            width: 50%;
+        }
+        .coating-button {
+            font-size: 16px;
+            width: 80%;
+        }
+        .camera-icon {
+            width: 30px;
+            height: 30px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .coating {
+            margin-top: 20%;
+        }
+    }
+</style>
+<div class="fn-magic-everywhere">
+    {% if section.settings.Magic_title != blank %}
+    <div class="extra-t">{{ section.settings.Magic_title }}</div>
+    {% endif %}
+    <ul class="instructions-content">
+        {% for block in section.blocks %}
+        {% assign image = block.settings.Magic__leftImage | img_url: '480x' %}
+        <li class="instructions-content-image">
+            <a href="{{ section.settings.Magic_imageLink }}">
+                <img src="{{ image }}">
+                <div class="instructions-content-hide">
+                    <div class="coating">
+                        <div class="camera-icon"></div>
+                        <div class="coating-button t">SHOP THE LOOK</div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="more"><a href="{{ section.settings.Magic_link }}">MORE</a></div>
+</div>
+<script>
+var mySwiper = new Swiper('.swiper-container', {
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  slidesPerView: 3,
+  spaceBetween: 20,
+  breakpoints:{
+    750:{
+      slidesPerView: 2,
+      spaceBetween: 15
+    }
+  }
+})
+</script>
+{% schema %}
+{
+    "name":"Index Magic Everywhere",
+    "class": "fn-index-section",
+    "settings":[
+        {
+            "type":"text",
+            "id":"Magic_title",
+            "label":{
+                "en":"Title",
+                "zh-CN":"标题"
+            }
+        },
+        {
+            "type":"url",
+            "id":"Magic_link",
+            "label":{
+                "en":"Magic Link",
+                "zh-CN":"使用指南"
+            }
+        }
+    ],
+    "blocks":[
+        {
+            "type":"brand",
+            "name":{
+                "en":"Brand",
+                "zh-CN":"品牌"
+            },
+            "settings":[
+                {
+                    "type":"image_picker",
+                    "id":"Magic__leftImage",
+                    "label":{
+                        "en":"hot image",
+                        "zh-CN":"图片"
+                    }
+                },
+                {
+                    "type":"url",
+                    "id":"Magic_imageLink",
+                    "label":{
+                        "en":"Image links",
+                        "zh-CN":"图片链接"
+                    }
+                }
+            ]
+        }
+    ],
+    "presets":[
+        {
+            "name":"Index Magic Everywhere",
+            "blocks":[
+                {
+                    "type":"brand"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

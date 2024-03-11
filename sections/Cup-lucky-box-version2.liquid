@@ -1,0 +1,660 @@
+<style>
+  .cup-lucky-model{
+    background-image:url('{{ section.settings.background_image | img_url:'1920x' }}');
+    background-size: 100% 100%;
+    background-position: center;
+    padding:16px 0 85px 0;
+  }
+  .cup-lucky-box{
+    width: 1600px;
+    background: #FFFFFF;
+    box-shadow: 0px 6px 14px 0px rgba(72,34,3,0.3);
+    border-radius: 10px;
+    margin:0 auto;
+    padding:28px 40px 27px 40px;
+    overflow:hidden;
+  }
+  .cup-lucky-box>picture{
+    float:left;
+  }
+  .cup-lucky-text{
+    float:left;
+    padding: 83px 0 0 60px;
+  }
+  .cup-lucky-text>h1{
+    font-size: 36px;
+    letter-spacing: 0;
+  }
+  .cup-lucky-text>p{
+    font-size: 16px;
+    width:603px;
+    line-height: 22px;
+    padding: 20px 0 30px 0;
+  }
+  .cup-lucky-text>a{
+    cursor: pointer;
+    font-size: 18px;
+    width:200px;
+    height:58px;
+    text-align:center;
+    line-height:58px;
+    background: linear-gradient(180deg, #BD8133 0%, #884A17 100%);
+    border-radius: 6px;
+    color: #fff;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    font-weight: bold;
+  }
+  .cup-hot-mask{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0;
+    top: 0;
+    z-index: 999;
+    display: none;
+  }
+  .cup-hot-dialog{
+    width:1000px;
+    background-color:#fff;
+    border-radius: 8px;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    position: fixed;
+    z-index: 1000;
+    padding:0 76px;
+    display:none;
+    max-height: 88%;
+    overflow-y: auto;
+  }
+  .cup-hot-dialog>.icon-cup-close{
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    cursor: pointer;
+  }
+  .cup-hot-dialog .title{
+    height:85px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+    margin: 0;
+    text-align: center;
+    line-height: 85px;
+  }
+  .question_form>div{
+    margin-bottom:22px;
+    position: relative;
+  }
+  .question_form>div:nth-last-child(1){
+    margin-bottom:0;
+  }
+  .question_form>div>div{
+    margin-bottom:10px;
+  }
+  .question_form>div>div:nth-last-child(1){
+    margin-bottom:0;
+  }
+  .question_form>div>:nth-child(1){
+    color: #CD0000;
+    padding-right: 6px;
+    position: absolute;
+  }
+  .question_form>div>:nth-child(2){
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0 0 8px 13px;
+  }
+ .question_form>div input[type=text]{
+     height: 50px;
+    border-radius: 4px;
+    border: 1px solid #979797;
+    width: 100%;
+    outline: none;
+    padding: 0 15px;
+    font-size: 14px;
+ }
+  .question_form>div>input::-webkit-input-placeholder { 
+	color: #979797; 
+    font-size: 14px;
+  } 
+  .question_form .input-half{
+    display:flex;
+  }
+  .input-half>input[type=text]:nth-child(1){
+    margin-right:12px;
+ }
+  .question_form>div label{
+    vertical-align: middle;
+  }
+  .question_form>div>div>label{
+    cursor: pointer;
+  }
+  .question_form .question5{
+    display:none;
+  }
+  .question_form input[type="radio"] {
+    position: relative;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #333;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    margin-top:3px;
+  }
+  .question_form input[type="radio"]:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    display: block;
+    width: 8px;
+    height: 8px;
+    background: #333;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition: all ease-in-out 100ms;
+    -moz-transition: all ease-in-out 100ms;
+    transition: all ease-in-out 100ms;
+  }
+  .question_form input[type="radio"]:checked {
+    border-color: #333;
+  }
+  .question_form input[type="radio"]:checked:after {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    transform: scale(1);
+  }
+  .cup-hot-footer{
+    margin:24px 0 65px;
+    overflow: hidden;
+  }
+  .cup-hot-footer>button{
+    width: 200px;
+    height: 50px;
+    background: #884A17;
+    border-radius: 6px;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    display: block;
+    cursor:pointer;
+    margin: 0 auto 10px;
+    position: relative;
+  }
+  .form-others-text{
+    display:none;
+    margin-top:8px;
+  }
+  .error-msg{
+    font-size: 12px;
+    color: #CD0000;
+    text-align: center;
+    display:none;
+  }
+  /*   按钮动画 */
+  .loaderContantBox {
+    color: white;
+    font-size: 16px;
+    overflow: hidden;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    transform: translateZ(0);
+    animation: loadBox 1.7s infinite ease, round 1.7s infinite ease;
+    position: absolute;
+    right: 19%;
+    top:30%;
+    display:none;
+  }
+
+  @keyframes loadBox {
+    0% {
+      box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em,
+        0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+    5%,
+    95% {
+      box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em,
+        0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+    10%,
+    59% {
+      box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em,
+        -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em,
+        -0.297em -0.775em 0 -0.477em;
+    }
+    20% {
+      box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em,
+        -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em,
+        -0.749em -0.34em 0 -0.477em;
+    }
+    38% {
+      box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em,
+        -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em,
+        -0.82em -0.09em 0 -0.477em;
+    }
+    100% {
+      box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em,
+        0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+  }
+  @keyframes round {
+    0% {
+      transform: rotate(0deg); /* 开始旋转 div 元素 */
+    }
+    100% {
+      transform: rotate(360deg); /* 结束旋转 div 元素 */
+    }
+  }
+  @media screen and (max-width:1720px){
+    .cup-lucky-box{
+      width: 83.3%;
+    }
+    .cup-lucky-box>picture{
+      width: 50%;
+    }
+    .cup-lucky-text{
+      padding: 2rem 0 0 5rem;
+      width: 50%;
+    }
+    .cup-lucky-text>p{
+      width:90%;
+    }
+  }
+   @media screen and (max-width:1280px){
+     .cup-lucky-text>h1{
+       font-size:28px;
+     }
+     .cup-lucky-text>p{
+       padding: 1rem 0 2rem 0;
+     }
+     .cup-lucky-text>a{
+       font-size: 16px; 
+      width: 160px;
+      height: 48px;
+      line-height: 48px;
+     }
+   }
+  
+   @media screen and (max-width:1180px){
+      .cup-lucky-box{
+        width: 93.6%;
+        box-shadow: 0px 5px 10px 0px rgba(72,34,3,0.3);
+      }
+     .cup-lucky-text{
+        padding: 0 0 0 2rem;
+     }
+     .cup-lucky-text>h1{
+        font-size:20px;
+     }
+     .cup-lucky-text>p{
+        width: 100%;
+        font-size: 14px;
+        padding-bottom: 1rem;
+     }
+     .cup-hot-dialog{
+       width:85%;
+       padding: 0 30px;
+     }
+   }
+   @media screen and (max-width:750px){
+      .cup-lucky-model{
+        background-image:url('{{ section.settings.background_image_mobile | img_url:'750x' }}');
+        background-size: 100% 100%;
+        background-position: center;
+        padding: 15px 0 47px 0;
+      }
+     .cup-lucky-box{
+       display: flex;
+       flex-direction: column;
+       padding: 13px 10px 0;
+     }
+     .cup-lucky-box>picture{
+        width: 100%;
+     }
+     .cup-lucky-box>picture>img{
+        margin:0 auto;
+     }
+     .cup-lucky-text{
+       width:100%;    
+       padding: 12px 0 20px 0;
+     }
+     .cup-lucky-text>h1{
+       font-size:16px;
+     }
+     .cup-lucky-text>p{
+        padding: 4px 0 12px 0;
+     }
+     .cup-lucky-text>a{
+         width: 120px;
+        height: 40px;
+        padding: 0;
+        text-align: center;
+        line-height: 40px;
+     }
+   }
+  @media screen and (max-width:450px){
+    .question_form .input-half{
+      flex-direction: column;
+    }
+    .input-half>input[type=text]:nth-child(1){
+      margin: 0 0 10px 0;
+    }
+    .cup-hot-dialog>.icon-cup-close{
+      width:20px;
+    }
+    .cup-hot-dialog{
+      padding: 0 15px;
+    }
+    .question_form>div>:nth-child(2){
+      font-size:14px;
+    }
+    .question_form>div>div{
+      margin-bottom:5px;
+    }
+    .question_form>div{
+      margin-bottom:15px;
+    }
+    .cup-hot-footer>button{
+        width: 150px;
+        height: 40px;
+    }
+    .cup-hot-dialog .title{
+      height:65px;
+      font-size:20px;
+    }
+    .loaderContantBox{
+      font-size: 14px;
+      width: 15px;
+      height: 15px;
+      right: 11%
+    }
+  }
+</style>
+<div class="cup-lucky-model">
+  <div class="cup-lucky-box">
+     <picture>
+        <source media="(max-width: 750px)" srcset="{{ section.settings.lucky_boxImg_mobile | img_url:'331X' }}">
+        <source media="(min-width: 751px)" srcset="{{section.settings.lucky_boxImg | img_url:'742X' }}">
+        <img src="{{ section.settings.lucky_boxImg | img_url: '742X' }}" alt="{{ section.settings.lucky_boxImg.alt }}">
+      </picture>
+     <div class="cup-lucky-text">
+       <h1>
+         {{ section.settings.title }}
+       </h1>
+       <p>
+         {{ section.settings.paragraph }}
+       </p>
+       {% if section.settings.button_text %}
+         <a class="go-now">
+           {{ section.settings.button_text }}
+         </a>
+       {% endif %}
+     </div>
+  </div>
+</div>
+  <div class="cup-hot-dialog">
+    <img class="icon-cup-close" src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/icon-cup-close.png?v=1688954093">
+    <div class="title">
+      {{ section.settings.dialog_title }}
+    </div>
+    <div class="hot-form">
+      <form name="question_form" class="question_form">
+        <div>
+          <i>*</i>
+          <label>1.Email:</label>
+          <input type="text" name="question1" placeholder="Leave your email for further details">
+        </div>
+        <div>
+          <i>*</i>
+          <label>2.Your Name</label>
+          <div class="input-half">
+            <input type="text" name="question2-1" placeholder="First Name">
+            <input type="text" name="question2-2" placeholder="Last Name">
+          </div>
+        </div>
+        <div>
+          <i>*</i>
+          <label>3.What do you like most about the HTVRONT Auto Tumbler Heat Press?</label>
+          <div>
+            <input type="radio" name="question3" value="Competitive Price" id="question3-A">
+            <label for="question3-A">Competitive Price</label>
+          </div>
+          <div>
+            <input type="radio" name="question3" value="Automatic Heat Pressing" id="question3-B">
+            <label for="question3-B">Automatic Heat Pressing</label>
+          </div>
+          <div>
+            <input type="radio" name="question3" value="Suits Various Tumblers & Mugs" id="question3-C">
+            <label for="question3-C">Suits Various Tumblers & Mugs</label>
+          </div>
+          <div>
+            <input type="radio" name="question3" value="Adjustable Heat Settings" id="question3-D">
+            <label for="question3-D">Adjustable Heat Settings</label>
+          </div>
+          <div>
+            <input type="radio" name="question3" value="Modern Design" id="question3-E">
+            <label for="question3-E">Modern Design</label>
+          </div>
+          <div>
+            <input type="radio" name="question3" value="Light-weight & Portable" id="question3-F">
+            <label for="question3-F">Light-weight & Portable</label>
+          </div>
+        </div>
+        <div>
+          <i>*</i>
+          <label>4.Do you already have a Tumbler Heat Press?</label>
+          <div>
+            <input type="radio" name="question4" value="Yes,I do" id="question4-A">
+            <label for="question4-A">Yes,I do.</label>
+          </div>
+          <div>
+            <input type="radio" name="question4" value="No,I don't" id="question4-B">
+            <label for="question4-B">No,I don't.</label>
+          </div>
+        </div>
+        <div class="question5">
+          <i>*</i>
+          <label>5.How often do you use the Tumbler Heat Press?</label>
+          <div>
+            <input type="radio" name="question5" value="Every Week" id="question5-A">
+            <label for="question5-A">Every Week</label>
+          </div>
+          <div>
+            <input type="radio" name="question5" value="Every Half A Month" id="question5-B">
+            <label for="question5-B">Every Half A Month</label>
+          </div>
+          <div>
+            <input type="radio" name="question5" value="Every Month" id="question5-C">
+            <label for="question5-C">Every Month</label>
+          </div>
+          <div>
+            <input type="radio" name="question5" value="Others" id="question5-D">
+            <label for="question5-D">Others</label>
+            <input class="form-others-text" type="text">
+          </div>
+        </div>
+      </form>
+      <div class="cup-hot-footer">
+        <button type="button" class="cup-hot-submit">Submit<i class="loaderContantBox"></i></button>
+        <p class="error-msg">Please fill in all the blanks before submitting.</p>
+      </div>
+    </div>
+  </div>
+  <div class="cup-hot-mask"></div>
+<script>
+  $(function(){
+    $(":radio[name='question4']").click(function() {
+      if($(this).val()=='Yes,I do'){
+        $('.question5').show()
+      }else{
+        $('.question5').hide()
+        $('.form-others-text').val('').hide()
+        $('input[name="question5"]:checked').attr('checked',false)
+      }
+    });
+    $(":radio[name='question5']").click(function() {
+      if($(this).val()=='Others'){
+        $('.form-others-text').show()
+      }else{
+        $('.form-others-text').val('').hide()
+      }
+    });
+    $('.go-now').on('click',function(){
+       $('.cup-hot-dialog,.cup-hot-mask').show()
+       $('body').css({"overflow":"hidden"})
+     })
+    $('.cup-hot-dialog .icon-cup-close').on('click',function(){
+      $('input[type="text"]').val('');
+      $('input[type="radio"]:checked').attr('checked',false);
+      $('.cup-hot-submit').removeAttr('style').attr('disabled', false).html('Submit<i class="loaderContantBox"></i>');
+      $('.question5,.form-others-text,.error-msg').removeAttr('style');
+      $('.cup-hot-dialog,.cup-hot-mask').hide()
+      $('body').css({"overflow":"auto"})
+     })
+    $('.cup-hot-submit').click(function(){
+      var q1 = $('input[name="question1"]').val();
+      var q2_1 = $('input[name="question2-1"]').val();
+      var q2_2 = $('input[name="question2-2"]').val();
+      var q3 = $('input[name="question3"]:checked').val();
+      var q4 = $('input[name="question4"]:checked').val();
+      var q5 = $('input[name="question5"]:checked').val()
+      var q5_others = $('.form-others-text').val()
+      let arr = [q1,q2_1,q2_2,q3,q4]
+      if($('.question5').css("display")=="block"){
+        var q5 = $('input[name="question5"]:checked').val();
+        if (q5 == 'D'){
+          var otherText = $('.form-others-text').val()
+          if(!otherText){
+            $('.error-msg').show()
+            return false;
+          }
+        }
+        arr.push(q5)
+      }else {
+        if(arr.length > 5){
+          arr.pop()
+        }
+      }
+      let index = 0;
+      for (var i = 1;i < arr.length; i++) {
+        if(arr[i] == "" || arr[i] == undefined){
+            $('.error-msg').text('Please fill in all the blanks before submitting.').show()
+            return false;
+        }
+        index = i;
+      }
+      var reg=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+      if(!reg.test(q1)){
+         $('.error-msg').text('Please enter the correct email address.').show()
+          return false;
+      }
+      $('.error-msg').text('Please fill in all the blanks before submitting.').hide()
+      $(this).css({'background':'rgba(136,74,23,0.5)','cursor':'not-allowed'}).attr('disabled', true)
+      $('.loaderContantBox').show()
+      let data = {
+        email:q1,
+        userName:q2_1+' '+q2_2,
+        likeHeatPress:q3,
+        haveHeatPress:q4,
+      }
+      if(index > 4){
+        data.useHeatPressTime = q5
+        if(q5 =='Others'){
+          data.others = q5_others
+        }
+      }
+      $.ajax({
+        type: 'get',
+        dataType: 'json',
+        url: 'https://qn.htvront.com/cupHotPress/questionnaire',
+        data:data,
+        success(res) {
+           $('.cup-hot-submit').html('Submit Successfully<i class="loaderContantBox"></i>')
+           $('.error-msg').text('Please fill in all the blanks before submitting.').hide()
+           $('.loaderContantBox').hide()
+         },
+         error(res){
+           $('.cup-hot-submit').css({'background':'#884A17','cursor':'pointer'}).attr('disabled', false)
+           $('.loaderContantBox').hide()
+           $('.error-msg').text('*Submission failed, please check your network or submit again').show();
+         }
+      })
+    })
+  })
+</script>
+{% schema %}
+  {
+    "name": "Cup Lucky Box Version2",
+    "settings": [
+       {
+       "type":"image_picker",
+       "id":"background_image",
+       "label":"background image"
+      },{
+       "type":"image_picker",
+       "id":"background_image_mobile",
+       "label":"background image mobile"
+      },
+      {
+        "type":"image_picker",
+        "id":"lucky_boxImg",
+        "label":"lucky box image"
+      },
+      {
+        "type":"image_picker",
+        "id":"lucky_boxImg_mobile",
+        "label":"lucky box image mobile"
+      },
+      {
+        "type":"text",
+        "id":"title",
+        "label":"title"
+      },{
+        "type":"text",
+        "id":"paragraph",
+        "label":"paragraph"
+      },{
+        "type":"text",
+        "id":"button_text",
+        "label":"button text"
+      },{
+          "type":"text",
+          "id":"dialog_title",
+          "label":{
+            "en":"Dialog Title",
+            "zh-CN":"弹窗标题"
+          }
+      }
+    ],
+    "presets":[{
+      "name":"Cup Lucky Box Version2"
+    }]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

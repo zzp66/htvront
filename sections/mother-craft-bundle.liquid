@@ -1,0 +1,98 @@
+<div class="mother-item mother-craft-bundle">
+  <div class="mother-title">
+    <div>
+      {% if section.settings.craft_bundle_image != blank  %}
+         <img class="show-in-pc" src="{{ section.settings.craft_bundle_image | img_url:'772x' }}" />
+      {% endif %}
+      {% if section.settings.craft_bundle_mobile != blank  %}
+         <img class="show-in-mobile" src="{{ section.settings.craft_bundle_mobile | img_url:'772x' }}" />
+      {% endif %}
+    </div>
+    <div class="mother-title-text">{{ section.settings.craft_bundle_desc }}</div>
+  </div>
+  <div class="mother-product-bundle">
+    {% render 'mother-product-bundle' blocks:section.blocks %}
+  </div>  
+</div>
+{% schema %}
+  {
+    "name": "mother-craft-bundle",
+     "max_blocks": 3,
+    "settings": [
+      {
+            "type":"image_picker",
+            "id":"craft_bundle_image",
+            "label":"大标题"
+        },{
+            "type":"image_picker",
+            "id":"craft_bundle_mobile",
+            "label":"大标题_mobile"
+        },{
+            "type":"text",
+            "id":"craft_bundle_desc",
+            "label":"小标题"
+        }
+    ],
+    "blocks":[{
+        "type": "bundle",
+        "name": {
+          "en": "bundle"
+        },
+        "settings": [{
+    			"type": "image_picker",
+    			"id": "Bundle_left_img",
+    			"label": {
+    				"en": "left image"
+    			}
+    		}, {
+    			"type": "image_picker",
+    			"id": "Bundle_left_img_mobile",
+    			"label": {
+    				"en": "left image mobile"
+    			}
+    		},
+            {
+    			"type": "image_picker",
+    			"id": "Bundle_right_img",
+    			"label": {
+    				"en": "right image"
+    			}
+    		}, {
+    			"type": "image_picker",
+    			"id": "Bundle_right_img_mobile",
+    			"label": {
+    				"en": "right image mobile"
+    			}
+    		},
+            {
+    			"type": "html",
+    			"id": "svg",
+    			"label": {
+    				"en": "SVG"
+    			}
+    		},
+           {
+              "type": "product",
+              "id": "Bundle_product",
+              "label": "Bundle product"
+            },
+           {
+              "type": "html",
+              "id": "Bundle_html_text",
+              "label": "html text"
+            },{
+              "type": "checkbox",
+              "id": "Bundle_secondary_image",
+              "label": "show_secondary_image"
+            }
+          
+        ]
+      }]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,94 @@
+<div class="fn-channel-swiper">
+  <div class="t fn-feedback-title">{{ section.settings.feedback_title }}</div>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide">
+                    {% if block.settings.customer_img != blank %}
+                            <img src="{{ block.settings.customer_img | img_url: '520x' }}" alt="" loading="lazy">
+                    {% endif %}
+                <div class="fn-slide-feedback">
+                  <p>{{ block.settings.feedback_main }}</p>
+<!--                   <p>{{ block.settings.customer_name }}</p> -->
+                </div>
+            </div>
+          {% endfor %}
+    </div>
+    <div class="swiper-button-prev prev-left"></div>
+    <div class="swiper-button-next next-right"></div>
+  </div>
+</div>
+<script>
+    $(function(){
+        var channel_swiper = new Swiper('.swiper-container', {
+            breakpoints:{
+                480:{
+                    slidesPerView: 1,
+                    slidesPerGroup: 1,
+                },
+                1200:{
+                    slidesPerView: 2,
+                    spaceBetween: 20
+                }
+            },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+          slidesPerView: 3,//首页展示几个
+          slidesPerGroup: 3,
+          spaceBetween: 20,//间隔宽度
+          pagination: {        
+            clickable: true
+          },
+         observer:true,//修改swiper自己或子元素时，自动初始化swiper
+         observeParents:true//修改swiper的父元素时，自动初始化swiper
+        });
+    });
+</script>
+{% schema %}
+  {
+    "name": "channel swiper",
+    "settings": [
+          {
+              "type": "text",
+              "id": "feedback_title",
+              "label": {
+              "en": "title",
+              "zh-CN": "标题"
+              }
+		  }
+    ],
+	"blocks": [{
+		"type": "customerfeedback",
+		"name": {
+			"en": "swiper img",
+			"zh-CN": "轮播"
+		},
+		"settings": [
+			{
+				"type": "image_picker",
+				"id": "customer_img",
+				"label": {
+					"en": "Image",
+					"zh-CN": "图片"
+				}
+			},
+          {
+              "type": "richtext",
+              "id": "feedback_main",
+              "label": {
+              "en": "customer feedback",
+              "zh-CN": "顾客反馈"
+              }
+			}
+		]
+	}]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

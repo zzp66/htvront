@@ -1,0 +1,76 @@
+<div class="fn-page-width influencer-coperation-introduce">
+  <h3>{{ section.settings.title }}</h3>
+  <ul>
+    {% for block in section.blocks %}
+      <li>
+        {% assign image = block.settings.img | img_url: '223x' %}
+        <img src="{{ image }}">
+        <p class="influencer-data">{{ block.settings.title }}</p>
+        <p class="influencer-text">{{ block.settings.text }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+  {% if section.settings.selfFlag %}
+    <a class="influencer-href" href="javascript:void(0)" id="selfApply">Apply</a>
+    <p class="influencer-ts">{{ section.settings.selfInfo }}</p>
+  {% else %}
+    <a class="influencer-href" href="{{ section.settings.link }}" target="_blank">Apply</a>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Coperation Introduce",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "checkbox",
+      "id": "selfFlag",
+      "label": "self selection flag"
+    },
+    {
+      "type": "text",
+      "id": "selfInfo",
+      "label": "self selection info"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "best seller link"
+    }
+  ],
+  "blocks":[
+    {
+      "type": "introduce",
+      "name": "introduce",
+      "settings": [{
+          "type": "image_picker",
+          "id": "img",
+          "label": "img"
+        },{
+          "type": "text",
+          "id": "title",
+          "label": "title"
+        },{
+          "type": "text",
+          "id": "text",
+          "label": "text"
+        }]
+    }
+  ],
+  "presets": [{
+    "name": "Influencer Coperation Introduce"
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

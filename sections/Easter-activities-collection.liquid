@@ -1,0 +1,42 @@
+<div class="Easter-activities-collection">
+     <div class="t activities-collection_title">{{ section.settings.activities_producttitle }}</div>
+      <ul class="activities-collection-ul">
+        {%- for product in section.settings.activities_collection.products limit: 8 -%}
+          <li class="activities-collection-list">
+            {% render 'collection-discounts-offers',
+                card_product: product,
+                show_secondary_image: section.settings.show_secondary_image
+            %}
+          </li>
+        {%- endfor -%}
+      </ul>
+</div>
+{% schema %}
+  {
+    "name": "collection",
+    "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_secondary_image",
+          "default": false,
+          "label": "checkbox"
+        },
+        {
+            "type":"text",
+            "id":"activities_producttitle",
+            "label":"product title"
+        },
+        {
+            "type":"collection",
+            "id":"activities_collection",
+            "label":"Collection"
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,158 @@
+<style>
+  .fans-have-fun-swiper{
+    padding:60px 0 40px;
+  }
+  .fans-have-fun-swiper .common-title{
+    margin-bottom:35px;
+  }
+  .swiper-desc{
+    padding: 0 98px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+    color: #7E3C00;
+    line-height: 21px;
+    margin-top: 20px;
+  }
+  
+.swiper-container {
+    margin-top: 20px;
+    width: 100%;
+    height: 615px;;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+  .swiper-button-prev,.swiper-button-next{
+    background:none;
+    width: 60px;
+    height: 60px;
+  }
+.fans-have-fun-swiper .swiper-pagination .swiper-pagination-bullet{
+  width: 12px;
+  height: 6px;
+  background: #EEEEEE;
+  border-radius: 100px 100px 100px 100px;
+  margin-right:10px;
+  opacity: 1;
+}
+.fans-have-fun-swiper .swiper-pagination .swiper-pagination-bullet-active{
+  width: 29px;
+  height: 6px;
+  background: #F9A30D;
+  border-radius: 100px 100px 100px 100px;
+}
+.fans-have-fun-swiper .swiper-pagination .swiper-pagination-bullet:nth-last-child(1){
+  margin-right:0;
+}
+.swiper-container .swiper-wrapper .swiper-slide{ width: 1127px; border-radius: 20px;}
+.swiper-container .swiper-wrapper .swiper-slide img{width: 100%; height: 615px; border-radius: 20px;}
+.swiper-container .swiper-wrapper .swiper-slide-prev{  height: 615px;}
+.swiper-container .swiper-wrapper .swiper-slide-prev img{ height: 615px;}
+.swiper-container .swiper-wrapper .swiper-slide-next{ height: 615px;}
+.swiper-container .swiper-wrapper .swiper-slide-next img{ height: 615px;}
+.swiper-container .swiper-wrapper .swiper-slide-active{ width: 1127px;}
+
+.swiper-pagination{
+    bottom: -30px!important;
+}
+.swiper-pagination .swiper-pagination-bullet{width: 12px; height: 12px; background: #ff1e1e;}
+.swiper-pagination .swiper-pagination-bullet-active{width: 21px; height: 12px; background: #e75230; border-radius: 6px;}
+.swiper-pagination{
+    position: static;
+}
+  
+@media screen and (max-width:1660px){
+  .swiper-container .swiper-wrapper .swiper-slide{
+    width: 1020px;
+  }
+}
+@media screen and (max-width:1440px){
+  .swiper-container .swiper-wrapper .swiper-slide{
+    width: 920px;
+  }
+  .swiper-container,
+  .swiper-container .swiper-wrapper .swiper-slide-next img,
+  .swiper-container .swiper-wrapper .swiper-slide-prev img,
+  .swiper-container .swiper-wrapper .swiper-slide img,
+  .swiper-container .swiper-wrapper .swiper-slide-next,
+  .swiper-container .swiper-wrapper .swiper-slide-prev{
+    height: 560px !important;
+  }
+</style>
+<div class="fans-have-fun-swiper have-fun-style">
+  <div class="common-title">
+    <div class="line-style">
+      <span class="line-first"></span>
+      <span class="line-second"></span>
+      <span class="line-third"></span>
+    </div>
+    <p>{{ section.settings.title }}</p>
+    <div class="line-style">
+      <span class="line-third"></span>
+      <span class="line-second"></span>
+      <span class="line-first"></span>
+    </div>
+  </div>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        <div class="swiper-slide">
+          <img src="{{ block.settings.image | img_url:"1157x" }}">
+        </div>
+      {% endfor %}
+    </div>
+    <div class="swiper-button-prev"><img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Group_31.png?v=1709799634"></div>
+    <div class="swiper-button-next"><img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Group_31_1.png?v=1709799634"></div>
+  </div>
+  <div class="swiper-pagination"></div>
+  <div class="swiper-desc">
+    {{ section.settings.desc }}
+  </div>
+</div>
+<script>
+  $(document).ready(function(){
+   var mySwiper = new Swiper('.swiper-container', {
+      direction: 'horizontal',
+      loop: true,
+      autoplay: 5000,
+      slidesPerView: "auto",
+      centeredSlides:true,
+      spaceBetween: 20,
+      // 如果需要分页器
+      pagination: {
+        el: '.swiper-pagination',
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    })
+  })
+</script>
+{% schema %}
+  {
+    "name": "Fans-have-fun-swiper",
+    "settings": [
+      {
+        "type":"text",
+        "id":"title",
+        "label":"title"
+      },{
+        "type":"text",
+        "id":"desc",
+        "label":"desc"
+      }
+    ],
+    "blocks":[{
+      "type":"block",
+      "name": "block",
+      "settings": [
+       {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        }
+      ]
+    }]
+  }
+{% endschema %}

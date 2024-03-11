@@ -1,0 +1,199 @@
+{% comment %}
+Renders a product card
+
+Accepts:
+- card_product: {Object} Product Liquid object (optional)
+- show_secondary_image: {Boolean} Show the secondary image on hover. Default: false (optional)
+- extend_height: {Boolean} Card height extends to available container space. Default: true (optional)
+- lazy_load: {Boolean} Image should be lazy loaded. Default: true (optional)
+
+Usage:
+{% render 'fn-card-product' %}
+{% endcomment %}
+
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+<style>
+    .fn-color-attr ul li input{
+        width: 100%;
+        position: absolute;
+        height: 100%;
+        opacity: 0;
+    }
+    .fn-color-attr ul li.swiper-slide-active{
+        box-shadow: rgb(0 0 0) 0px 0px 0px 1px;
+    }
+</style>
+{%- if card_product and card_product != empty -%}
+{%- liquid
+assign ratio = 1
+if card_product.featured_media and media_aspect_ratio == 'portrait'
+assign ratio = 0.8
+elsif card_product.featured_media and media_aspect_ratio == 'adapt'
+assign ratio = card_product.featured_media.aspect_ratio
+endif
+if ratio == 0 or ratio == nil
+assign ratio = 1
+endif
+if limit != blank
+assign limit = limit
+else
+assign limit = size
+endif
+-%}
+{%- assign product_form_id = 'product-form-' | append:  card_product.id -%}
+<div class="card-wrapper">
+    <div class="card activities-Bundle-product_card">
+        <div class="card__inner hover-to-cart {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }}{% endif %}{% if card_product.featured_media or settings.card_style == 'standard' %} ratio{% endif %}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
+            <a href="{{ card_product.url }}">
+                    {%- for option in card_product.options_with_values -%}
+                    {%- if option.name == 'Colors' or option.name == 'Color' -%}
+                    <ul>
+                        {%- if option.name == 'Colors' -%}
+                        {% assign colorList = card_product.options_by_name['Colors'].values%}
+                        {%- else -%}
+                        {% assign colorList = card_product.options_by_name['Color'].values%}
+                        {%- endif -%}
+                        {%- for value in colorList -%}
+                        <li class="Bundle-product-Colors_image Colors_image_{{ card_product.id }}">
+                            {%- if card_product.variants[forloop.index0].featured_image != blank -%}
+                            <img src="{{ card_product.variants[forloop.index0].featured_image | img_url: '478x478' }}" alt="{{ value }}">
+                            {%- endif -%}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {%- endif -%}
+                    {% endfor %}
+            </a>
+        </div>
+        <div class="fn-product-head">
+                <div class="fn-product-title">
+                    <a href="{{ card_product.url }}" class="t">{{ card_product.title | escape }}</a>
+                </div>
+                <div>{{ Bundle_html_text }}</div>
+                <ul class="fn-Bundle-price">
+                  {%- for variants_price in card_product.variants -%}
+                      <li class="fn-Bundle-price_list price_list_{{ card_product.id }}">
+                          <span class="original_price t">{{  variants_price.price | money }}</span>
+                          <span class="discounted_price">{{  variants_price.compare_at_price | money }}</span>
+                    </li>
+                  {% endfor %}
+                </ul>
+            <product-form class="product-form  product-form-{{ card_product.id }}">
+				<div class="product-form__error-message-wrapper" role="alert" hidden>
+					<svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-error" viewBox="0 0 13 13">
+						<circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+						<circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+						<path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+						<path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+					</svg>
+					<span class="product-form__error-message"></span>
+				</div>
+                {%- form 'product', card_product -%}
+                <!-- variants_aa.price -->
+                
+                <input type="hidden" name="id" value="{{ card_product.selected_or_first_available_variant.id }}" disabled>  
+                {%- if card_product.options_by_name['Color'] != blank or card_product.options_by_name['Colors'] != blank -%}
+                {% assign colorList = card_product.options_by_name['Colors'].values | size %}
+                {% assign colorsList = card_product.options_by_name['Color'].values | size %}
+                <div class="swiper-container gallery-thumbs fn-color-attr{% if colorList > 8 or colorsList > 8  %} arrow-margin {% endif %}" data-size="{{ card_product.options_by_name['Color'].values | size }}">
+                	{%- for option in card_product.options_with_values -%}
+                	{%- if option.name == 'Colors' or option.name == 'Color' -%}
+                	<ul class="swiper-wrapper">
+                		{%- if option.name == 'Colors' -%}
+                		{% assign colorList = card_product.options_by_name['Colors'].values%}
+                		{%- else -%}
+                		{% assign colorList = card_product.options_by_name['Color'].values%}
+                		{%- endif -%}
+                		{%- for value in colorList -%}
+                		<li class="swiper-slide {% if forloop.first %}swiper-slide-active {% endif %}" data-id="{{ card_product.variants[forloop.index0].id }}" id="slide_{{ card_product.id }}">
+                			{%- if card_product.variants[forloop.index0].featured_image != blank -%}
+                			<input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                				   name="{{ option.name }}"
+                				   value="{{ value | escape }}"
+                			>
+                			<img src="{{ card_product.variants[forloop.index0].featured_image | image_url }}" alt="{{ value }}">
+                
+                			{%- endif -%}
+                		</li>
+                		{% endfor %}
+                	</ul>
+                	{%- endif -%}
+                	{% endfor %}
+                </div>
+                {%- endif -%}
+                <div class="fn-addcart_bundle">
+                	<div class="product-form__buttons">
+                		<button
+                				type="submit"
+                				name="add"
+                				id="campaign_{{ card_product.id }}"
+                				onclick="_tfa.push({notify: 'event', name: 'add_to_cart', id: 1465313})"
+                				class="product-form__submit button button--full-width {% if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}"
+                				{% if card_product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+                		>
+                		<span class="t">
+                		  {%- if card_product.selected_or_first_available_variant.available -%}
+                			{{ 'products.product.add_to_cart' | t }}
+                		  {%- else -%}
+                			{{ 'products.product.sold_out' | t }}
+                		  {%- endif -%}
+                		</span>
+                			<div class="loading-overlay__spinner hidden">
+                				<svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                					<circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                				</svg>
+                			</div>
+                		</button>
+                	</div>
+                </div>
+                	{%- endform -%}
+            </product-form>
+        </div>
+	</div>
+</div>
+{%- endif -%}
+<script>
+  $(function(){
+     $(".gallery-thumbs .swiper-slide ").click(function(){
+            var bundle_index = $(this).index();
+            var slide_id = $(this).attr("id").substring(6);
+      $('.Colors_image_'+ slide_id).eq(bundle_index).show().siblings().hide();
+      $('.price_list_'+ slide_id).eq(bundle_index).show().siblings().hide();
+            $(this).addClass("swiper-slide-active");
+            $(this).siblings().removeClass("swiper-slide-active");
+            let id = $(this).attr("data-id");
+            if (id) {
+              $(this).parent().parent().siblings("input[name='id']")[0].value = id;
+            }
+        });
+        var moreSwiper = new Swiper('.swiper-container', {
+                  slidesPerView:4,
+                  spaceBetween: 15,
+                  // autoplay:true,
+                  breakpoints: {
+                      1470: {
+                          slidesPerView: 3.5
+                      },
+                      980:{
+                        slidesPerView: 3
+                      },
+                      840:{
+                        slidesPerView: 2.5
+                      },
+                      768:{
+                        slidesPerView: 10
+                      },
+                      580:{
+                        slidesPerView: 8
+                      },
+                      460:{
+                        slidesPerView: 5
+                      }
+                  },
+                  // navigation: {
+                  //     nextEl: '#more-swiper-button-next',
+                  //     prevEl: '#more-swiper-button-prev',
+                  // },
+              })
+  })
+</script>

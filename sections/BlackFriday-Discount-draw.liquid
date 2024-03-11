@@ -1,0 +1,79 @@
+<div class="fn-Discount-draw">
+  <div class="fn-ClarenceHui-title t">{{ section.settings.draw_title }}</div>
+  <div class="fn-Discount-drawmain">
+    <div class="fn-scroll-content" id="fn-scroll-content">
+    </div>
+      {% if section.settings.draw_img != blank %}
+            {% assign image = section.settings.draw_img | img_url: '1600x' %}
+            <img class="fn-BlackFriday-drawimg" src="{{ image }}" alt="">
+        {% endif %}
+        {% if section.settings.cellphonedraw_img != blank %}
+            {% assign image = section.settings.cellphonedraw_img | img_url: '700x' %}
+            <img class="fn-BlackFriday-cellphonedrawimg" src="{{ image }}" alt="">
+        {% endif %}
+        <div class="fn-BlackFriday-drawfrom">
+            <input class="fn-BlackFriday-drawinput" type="text" placeholder="Enter your order number or raffle code">
+            <div class="fn-BlackFriday-drawbutton" id="fn-BlackFriday-drawbutton">GO</div>
+            <div class="fn-BlackFriday-already">*The order number or lottery code has been drawn!</div>
+            <div class="fn-BlackFriday-errormessage">*Please enter the correct order number or lucky draw code.</div>
+        </div>
+    <div class="fn-BlackFriday-drawexplain">
+      <div class="fn-drawexplain-labe">
+          <div class="fn-drawexplain-title t">Rules：</div>
+          <ul class="fn-drawexplain-ul">
+              <li class="fn-drawexplain-list">Every order ≥$69 in November can have a chance of Lucky Draw. You can win a gift at 100%.</li>
+              <li class="fn-drawexplain-list">Gifts: Auto heat press / Easy Press / Lucky Bag / $15 coupon / Vinyls / Tools </li>
+              <li class="fn-drawexplain-list">Activity Time: Nov. 18th- 30th, 2022 EST</li>
+          </ul>
+      </div>
+      <div class="fn-drawexplain-labe">
+          <div class="fn-drawexplain-title t">Gift Shippment <img onclick="blackFunction('3')" class="fn-drawexplain-icon" src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/f67d2fcd07b4351eaec6ae350ccdea40_737c992f-110c-4802-a600-3c56c211cf1e.png?v=1668494978" alt=""></div>
+          <ul class="fn-drawexplain-ul">
+              <li class="fn-drawexplain-list">The physical gifts will ship with your order. If your drawing time is out of 24hrs,the gifts will ship with your next order.</li>
+              <li class="fn-drawexplain-list">The $15 coupon will send to your email <=48hrs (except weekends).</li>
+          </ul>
+      </div>
+      <div class="fn-drawexplain-labe">
+          <div class="fn-drawexplain-title t">Lottery Statement：</div>
+          <ul class="fn-drawexplain-ul">
+              <li class="fn-drawexplain-list">HTVRONT reserves the right to the final interpretation of this activity.</li>
+          </ul>
+      </div>
+    </div>
+  </div>
+</div>    
+{% schema %}
+  {
+    "name": "draw a lottery or raffle",
+    "settings": [
+        {
+			"type": "text",
+			"id": "draw_title",
+			"label": {
+				"en": "title"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "draw_img",
+			"label": {
+				"en": "draw background"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "cellphonedraw_img",
+			"label": {
+				"en": "cellphone background"
+			}
+		}
+      
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

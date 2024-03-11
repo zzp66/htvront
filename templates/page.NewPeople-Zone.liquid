@@ -1,0 +1,75 @@
+<style>
+  body{
+    letter-spacing:0;
+    background:linear-gradient(90deg, #F75358 0%, #FF9E4E 100%) !important;
+  }
+  .new-people-zone{
+    background-image:url('https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Slice_1.png?v=1697417851');
+    background-size: 100% 100%;
+    background-position: center;
+    padding:140px 0 60px 0;
+  }
+  .new-people-zone>p:nth-child(1){
+    text-align:center;
+    height: 49px;
+    font-size: 36px;
+    font-weight: bold;
+    color: #FFF2B0;
+    line-height: 42px;
+  }
+  .new-people-zone>p:nth-child(2){
+    height: 33px;
+    font-size: 24px;
+    font-weight: 400;
+    color: #FFF2B0;
+    line-height: 28px;
+    text-align:center;
+    margin-top:10px;
+  }
+  .zone-main{
+    width:1600px;
+    margin:0 auto;
+  }
+  @media screen and (max-width: 1720px){
+     .zone-main{
+       width:83.3%
+     }
+  }
+  @media screen and (max-width: 1024px){
+    .zone-main{
+      width:93.6%;
+    }
+  }
+  @media screen and (max-width: 820px){
+    .new-people-zone{
+      background-image:url('https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Slice_2_2x_902834db-e44a-40fb-8a51-423a75da8711.png?v=1697529174');
+      background-size: 100% 100%;
+      background-position: center;
+      padding:0;
+      padding-top: 10%;
+      padding-bottom: 40px;
+    }
+    .new-people-zone>p:nth-child(1){
+      font-size: 20px;
+      line-height: 23px;
+      height: 27px;
+    }
+    .new-people-zone>p:nth-child(2){
+      font-size: 16px;
+      line-height: 19px;
+      height: 22px;
+      margin-top: 0px;
+    }
+  }
+</style>
+<div class="new-people-zone">
+  <p>WELCOME GIFTS FOR NEW FRIENDS</p>
+  <p>Only available for new customers</p>
+  {% section 'Zone-Time' %}
+  <div class="zone-main">
+    {% section 'Zone-Machine' %}
+    {% section 'Zone-Product' %}
+    {% section 'Zone-Flash-Sale' %}
+    {% section 'Zone-Free-Gift' %}
+  </div>
+</div>

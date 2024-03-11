@@ -1,0 +1,249 @@
+<style>
+    .Fan-Prediction-Gift {
+      width: 100%;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 4;
+      display: none;
+    }
+  .Fan-Prediction-Gift .fan-prediction-gift-content {
+    width: 47.3%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .Fan-Prediction-Gift .fan-gift-content {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    padding: 33px;
+    letter-spacing: 0;
+  }
+  .Fan-Prediction-Gift .fan-gift-title {
+    font-size: 30px;
+    font-family: OpenSans-Bold, OpenSans;
+    font-weight: bold;
+    color: #333333;
+    line-height: 41px;
+  }
+  .Fan-Prediction-Gift .fan-gift-second-title {
+    font-size: 18px;
+    font-family: OpenSans;
+    color: #333333;
+    line-height: 24px;
+    margin: 14px auto 0 auto;
+  }
+  .Fan-Prediction-Gift .fan-gift-img img {
+    margin: 52px auto 0 auto;
+  }
+  .Fan-Prediction-Gift .fan-gift-tips {
+    font-size: 14px;
+    font-family: OpenSans;
+    color: #333333;
+    line-height: 19px;
+  }
+  .Fan-Prediction-Gift .fan-addcart-gift .button {
+    display: flex;
+    width: 260px;
+    background: #f07430;
+    border: none;
+    font-size: 16px;
+    min-height: calc(4.8rem + var(--buttons-border-width) * 2);
+    --border-offset: none;
+    --border-opacity: none;
+    margin: 53px auto 13px auto;
+    border-radius: 4px;
+  }
+    .Fan-Prediction-Gift .fan-gift-close{
+      position:absolute;
+      top:34px;
+      right:43px;
+      cursor: pointer;
+    }
+    .Fan-Prediction-Gift .fan-addcart-gift-disabled{
+      display:none;
+      width: 260px;
+      background: #cb977b;
+      border: none;
+      font-size: 16px;
+      min-height: calc(4.8rem + var(--buttons-border-width) * 2);
+      --border-offset: none;
+      --border-opacity: none;
+      margin: 53px auto 13px;
+      border-radius: 4px;
+      line-height: calc(4.8rem + var(--buttons-border-width) * 2);
+      cursor: pointer;
+      color: white;
+    }
+    .Fan-Prediction-Gift .fan-gift-img {
+        width:100%;
+      }
+    .Fan-Prediction-Gift .fan-gift-img img{
+      margin:52px auto 0
+    }
+    .Fan-Prediction-Gift .fan-prediction-gift-moblie{
+      display:none
+    }
+    @media screen and (max-width: 1440px) {
+     .Fan-Prediction-Gift .fan-gift-title{
+        font-size: 20px;
+        line-height: 31px;
+      }
+  /*     .Fan-Prediction-Gift .fan-prediction-gift-content{
+        width:60%
+      } */
+       .Fan-Prediction-Gift .fan-gift-img img {
+        margin: 0 auto;
+        width: 60%;
+      }
+    }
+    @media screen and (max-width: 1180px) {
+      .Fan-Prediction-Gift .fan-prediction-gift-pc {
+        display: none;
+      }
+      .Fan-Prediction-Gift .fan-prediction-gift-moblie {
+        display: block;
+        width: 100%
+      }
+      .Fan-Prediction-Gift .fan-gift-content {
+        padding: 36px 27px 0 27px;
+    }
+      .Fan-Prediction-Gift .fan-gift-img img {
+        margin: 15px auto;
+        width: 80%;
+      }
+      .Fan-Prediction-Gift .fan-gift-close{
+        top: 3%;
+        right: 3%;
+      }
+    }
+    @media screen and (max-width: 750px){
+    .Fan-Prediction_Background_Mobile {
+      display: block;
+      width: 100%;
+    }
+    .Fan-Prediction_Background,
+    .Fan-Prediction_Background_pad {
+      display: none;
+    }
+    .Fan-Prediction-Body {
+      top: 12.5%;
+    }
+    .Fan-Prediction-Gift .fan-prediction-gift-content {
+      width: calc(100% - 30px);
+    }
+    }
+    @media screen and (max-width: 480px) {
+       .Fan-Prediction-Gift .fan-addcart-gift-disabled {
+          width: 200px;
+          font-size: 12px;
+          height: 40px;
+          line-height:40px;
+          min-height:40px;
+          margin: 20px auto 13px;
+        }
+      .Fan-Prediction-Gift .fan-addcart-gift .button{
+        width: 200px;
+          font-size: 12px;
+          height: 40px;
+          line-height:40px;
+          min-height:40px;
+        margin: 20px auto 13px;
+      }
+       .Fan-Prediction-Gift .fan-gift-close {
+          top: 5%;
+          right: 5%;
+          width: 13px;
+          height: 13px;
+        }
+      .Fan-Prediction-Gift .fan-gift-img img {
+        margin: 15px auto;
+      }
+    }
+</style>
+<div class="Fan-Prediction-Gift">
+  <div class="fan-prediction-gift-content">
+    <img
+      class="fan-prediction-gift-pc"
+      src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/img_v2_aff79b81-65cb-4210-85e5-5cb8d3662a1g_MIDDLE.png?v=1678323074"
+    >
+    <img
+      class="fan-prediction-gift-moblie"
+      src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/img_v2_aff79b81-65cb-4210-85e5-5cb8d3662a1g_MIDDLE_img_v2_788205e4-9c5c-4021-91b1-2ce8b59bff4g_MIDDLE_833cfd1f-0655-4e3f-a86f-c88228f85cef.png?v=1679452734"
+    >
+    <div class="fan-gift-content">
+      <div class="fan-gift-title">You have submitted it successfully!</div>
+      <!--
+        <div class="fan-gift-second-title">
+          {{ section.settings['fan-gift-text'] }}
+        </div>
+      -->
+      <div class="fan-gift-img">
+        <img src="{{ section.settings.fan-gift-image| img_url: '440x' }}">
+      </div>
+      <div class="fan-addcart-gift">
+        {% render 'collection-addcart', product: section.settings['fan-gift-product'] %}
+      </div>
+      <div class="fan-addcart-gift-disabled">Add To Cart</div>
+      <div class="fan-gift-tips">
+        {{ section.settings['fan-gift-tips'] }}
+      </div>
+    </div>
+    <img
+      class="fan-gift-close"
+      src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/ff5587b3fa653dff6fc130c810c9cedd.png?v=1678344980"
+    >
+  </div>
+</div>
+<script>
+  $(function (){
+    $(".Fan-Prediction-Gift .product-form__submit").click(function(){
+       $('.fan-addcart-gift').hide();
+       $('.fan-addcart-gift-disabled').show();
+       setTimeout(function (){location.reload() },1000)
+    })
+    $(".Fan-Prediction-Gift .fan-gift-close").click(function(){
+      location.reload();
+    })
+  })
+</script>
+{% schema %}
+{
+  "name": "Fan gift",
+  "settings": [
+    {
+        "type": "image_picker",
+        "id": "fan-gift-image",
+        "label": "giftimg"
+      },
+  {
+  	"type": "product",
+  	"id": "fan-gift-product",
+  	"label": {
+  		"en": "product",
+  		"zh-CN": "礼物"
+        }
+  },{
+    "type": "text",
+        "id": "fan-gift-text",
+        "label": "gifttext"
+  },
+    {
+    "type": "text",
+        "id": "fan-gift-tips",
+        "label": "gifttips"
+  }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

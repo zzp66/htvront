@@ -1,0 +1,303 @@
+<style>
+    .fn-card__content .card__information {
+        display: flex;
+        /*     align-items: center; */
+        margin: 20px 0 9px 0;
+    }
+    .fn-card__content .price--on-sale .price__sale {
+        display: block;
+    }
+    .card-information>*:not(.visually-hidden:first-child)+*:not(.rating) {
+        margin-top: 0;
+        font-weight: bold;
+        color: #FF7606;
+        float: right;
+        line-height: 24px;
+        font-size: 24px;
+    }
+
+    .card__heading {
+        width: 65%;
+        line-height: 19px;
+    }
+    .card-information {
+        width: 35%;
+    }
+    .card__information_a {
+        display: block;
+        width: 100%;
+        font-size: 14px;
+        height: 38px;
+        color: #333333;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        display:-webkit-box;
+        -webkit-box-orient:vertical;
+        -webkit-line-clamp:2;
+    }
+    .sale-product-color {
+        display: flex;
+    }
+    .sale-attribute {
+        margin: 8px 0 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .sale-product-color .sale-color + .sale-color{
+        margin-left: 5px;
+    }
+    .sale-product-color .sale-color .sale-color{
+        padding: 2px;
+        border-radius: 100%;
+        border: 1px solid #fff;
+    }
+    .sale-product-color .sale-color div {
+        width: 30px;
+        height: 30px;
+        padding: 2px;
+        border-radius: 50%;
+    }
+    .fn-unitType-swiper .sale-product-color .sale-color img{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        max-width: inherit;
+        font-size: 0;
+        line-height: 1;
+        display: inline-block;
+        margin-top: 2px;
+    }
+    .sale-color:hover {
+        border: 1px solid #000;
+    }
+    .sale-color {
+        width: 34px;
+        height: 34px;
+        border: 1px solid #fff;
+        font-size: 0;
+        display: inline-block;
+        text-align: center;
+        border-radius: 50%;
+    }
+    .sale-product-color .sale-size {
+        border: 1px solid rgba(27, 27, 42, 0.2);
+        width: 30px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        margin-left: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .sale-size:hover{
+        border: 1px solid rgba(27, 27, 42);
+    }
+    .sale-quantity {
+        line-height: 36px;
+        display: inline-block;
+        vertical-align: text-bottom;
+        margin-left: 15px;
+    }
+    .hot-sale .sale-quantity {
+        line-height: 30px;
+    }
+    .media {
+        position: static;
+    }
+    .fn-unitType-swiper {
+        margin: 50px 0 100px 0;
+    }
+    .fn-unitType-swiper .swiper-slide {
+        width: 100%;
+    }
+    .fn-unitType-swiper .swiper-slide img {
+        width:100%;
+    }
+    .fn-unitType-swiper .swiper-button-next{
+        background-size: 100% auto;
+        background-image:url("https://cdn.shopifycdn.net/s/files/1/0640/6802/6590/files/2x_dbe3a68f-3594-452d-a78b-5d4108fda59e.png?v=1649842320");
+    }
+    .fn-unitType-swiper .swiper-button-prev{
+        background-size: 100% auto;
+        background-image:url("https://cdn.shopifycdn.net/s/files/1/0640/6802/6590/files/2x_86a1f828-55b7-46a6-a8c1-9da915622f8a.png?v=1649842320");
+    }
+    .unitTypeButton-left {
+        left: 5%;
+    }
+    .unitTypeButton-right {
+        right: 5%;
+    }
+    .fn-unitType-swiper .swiper-container-horizontal>.swiper-scrollbar {
+        left: 5%;
+        width: 90%;
+        position: relative;
+        margin-top: 50px;
+    }
+    .unitTypeButton-left, .unitTypeButton-right {
+        position: absolute;
+        top: 35%;
+    }
+    .fn-unitType-swiper .swiper-scrollbar-drag {
+        background: #333;
+    }
+    .fn-unitType-swiper .swiper-scrollbar {
+        background: #c8c8c8;
+    }
+    .ratio {
+        border-radius: 10px;
+    }
+    .motion-reduce-buttons {
+        padding: 3px 17px;
+        position: absolute;
+        left: 50%;
+        top: 80%;
+        transform: translate(-50%);
+        font-size: 24px;
+        font-weight: bold;
+        color: #333333;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 12px;
+        width: 70%;
+        text-align: center;
+        opacity: 0;
+        cursor: pointer;
+    }
+    .card__inner:after {
+        z-index: 1;
+    }
+    .hover-to-cart:hover .motion-reduce-buttons{
+        opacity: 1;
+        z-index: 999;
+        transition-duration: 1s;
+    }
+    @media (max-width: 749px){
+        .sale-color {
+            width: 2.2rem;
+            height: 2.2rem;
+        }
+        .fn-unitType-swiper .sale-product-color .sale-color img {
+            width: 2rem;
+            height: 2rem;
+            margin-top: 1px;
+        }
+        .sale-product-color .sale-color + .sale-color {
+            margin-left: 2px;
+        }
+        .sale-quantity span {
+            display: none;
+        }
+        .sale-quantity {
+            line-height: 24px;
+            margin-left: 5px;
+        }
+        .fn-unitType-swiper {
+            margin: 50px 0;
+        }
+        .fn-card__content .card__information {
+            flex-wrap: wrap;
+        }
+        .card-information,.fn-card__content .card__heading {
+            width: 100%;
+        }
+        .fn-card__content .card__information {
+            flex-wrap: wrap;
+        }
+        .fn-card__content .card__heading,.fn-card__content .card-information {
+            width: 100%;
+        }
+        .card-information>*:not(.visually-hidden:first-child)+*:not(.rating) {
+            float: none;
+            line-height: 16px;
+            font-size: 16px;
+            margin-top: 9px;
+        }
+    }
+</style>
+<div class="fn-unitType-swiper">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+            <div class="swiper-slide item">
+                {% render 'product-style',
+                card_product: block.settings.product,
+                media_aspect_ratio: 'adapt',
+                show_secondary_image: block.settings.second_image,
+                extend_height: true
+                %}
+            </div>
+            {% endfor %}
+        </div>
+        <div class="swiper-button-prev unitTypeButton-left"></div>
+        <div class="swiper-button-next unitTypeButton-right"></div>
+        <div class="swiper-scrollbar"></div>
+    </div>
+</div>
+
+<script>
+    $(function(){
+        var recommendSwiper = new Swiper('.fn-unitType-swiper .swiper-container', {
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            scrollbar: {
+                el: '.swiper-scrollbar',
+                draggable: true,
+            },
+            loop : true,
+            slidesPerView: 4,
+            spaceBetween: 20,
+            slidesOffsetBefore: 200,
+            breakpoints:{
+                480:{
+                    slidesOffsetBefore: 100,
+                    slidesPerView: 2,
+                    spaceBetween: 10
+                },
+                1200:{
+                    slidesPerView: 3,
+                    spaceBetween: 20
+                }
+            }
+        });
+
+    });
+</script>
+
+{% schema %}
+   {
+    "name": "Index Recommend",
+    "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": false,
+      "label": "t:sections.featured-collection.settings.show_secondary_image.label"
+    }
+    ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ],
+    "presets":[
+        {
+            "name":"Index Recommend",
+            "blocks":[
+                {
+                    "type":"product"
+                }
+            ]
+        }
+    ]
+  }
+{% endschema %}

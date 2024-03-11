@@ -1,0 +1,34 @@
+<div class="fn-Center">
+<!--   <div class="t fn-my-account-title">Help Center</div> -->
+  <div class="fn-Center-content">
+    <div class="fn-Center-search">
+      <div class="fn-search-title">How can we help?</div>
+      <div class="fn-searchInpu">
+        <input class="fn-Center-input" type="text"  value="" placeholder="you question">
+        <div type="button" class="fn-search-button">search</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(function(){
+    $('.fn-search-button').click(function () {
+      var search_value  =$('.fn-Center-input').val();
+      var url_protocol = window.location.protocol; /* 获取协议 */
+	  var url = window.location.host;
+      if(!search_value) {
+       return 
+      }
+      window.location.href= url_protocol + '//' + url + '/search?q=' + search_value + '&search_blog=true';
+    });
+  })
+</script>
+{% schema %}
+  {
+    "name": "Center",
+    "settings": [
+    ],
+  "blocks": [
+  ]
+  }
+{% endschema %}

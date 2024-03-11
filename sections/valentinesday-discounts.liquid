@@ -1,0 +1,138 @@
+<div class="fn-valentinesday-discounts">
+{% if section.settings.discounts_img != blank %}
+    {% assign image = section.settings.discounts_img | img_url: '830x' %}
+       <img class="fn-valentinesday-discounts_img" src="{{ image }}" alt="">
+{% endif %}
+{% if section.settings.discounts_mobile_img != blank %}
+    {% assign image = section.settings.discounts_mobile_img | img_url: '328x' %}
+       <img class="fn-valentinesday-mobile_img" src="{{ image }}" alt="">
+{% endif %}
+<div class="fn-discounts-main">
+    {% if section.settings.discounts_bac != blank %}
+      {% assign image = section.settings.discounts_bac | img_url: '1705x' %}
+         <img class="fn-valentinesday-discounts_bac" src="{{ image }}" alt="">
+    {% endif %}
+    {% if section.settings.discounts_mobile_bac != blank %}
+      {% assign image = section.settings.discounts_mobile_bac | img_url: '375x' %}
+         <img class="fn-valentinesday-discounts_discounts_mobile_bac" src="{{ image }}" alt="">
+    {% endif %}
+    <ul class="fn-discounts-ul">
+      {% for block in section.blocks %}
+      <li class="fn-discounts-list">
+        {% if block.settings.discounts_productimg != blank %}
+          {% assign image = block.settings.discounts_productimg | img_url: '426x' %}
+            {% if block.settings.discounts_productlink != blank %}
+                <a href="{{ block.settings.discounts_productlink }}">
+            {% endif %}
+               <img class="fn-discounts-productimg" src="{{ image }}" alt="">
+            {% if block.settings.discounts_productlink != blank %}
+              </a>
+            {% endif %}
+        {% endif %}
+        <div class="fn-discounts-productmain">
+            <div class="fn-discounts-producttitle t">
+              {% if block.settings.discounts_productlink != blank %}
+                  <a href="{{ block.settings.discounts_productlink }}">
+              {% endif %}
+                    {{ block.settings.discounts_producttitle }}
+              {% if block.settings.discounts_productlink != blank %}
+                  </a>
+              {% endif %}
+            </div>
+             <div class="fn-discounts-productsbutton">
+                     {% render 'fn-discounts-products',
+                      schedule_sum: block.settings.schedule_sum,
+                      card_product: block.settings.discounts_product,
+                      %}
+            </div>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+</div>
+
+</div>
+{% schema %}
+  {
+    "name": "discounts",
+    "max_blocks": 3,
+    "settings": [
+        {
+			"type": "image_picker",
+			"id": "discounts_img",
+			"label": {
+				"en": "title image"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "discounts_mobile_img",
+			"label": {
+				"en": "mobile image"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "discounts_bac",
+			"label": {
+				"en": "background image"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "discounts_mobile_bac",
+			"label": {
+				"en": "mobile image"
+			}
+		}
+    ],
+    "blocks": [
+      {
+        "type": "discounts",
+        "name": {
+          "en": "Bigger discounts",
+          "zh-CN": "折扣"
+        },
+        "settings": [
+            {
+    			"type": "image_picker",
+    			"id": "discounts_productimg",
+    			"label": {
+    				"en": "low price product"
+    			}
+    		},
+            {
+              "type":"url",
+              "id":"discounts_productlink",
+              "label":{
+              "en":"link",
+              "zh-CN":"链接"
+              }
+            },
+            {
+                "type":"text",
+                "id":"discounts_producttitle",
+                "label":"low price product title"
+            },
+            {
+              "type": "product",
+              "id": "discounts_product",
+              "label": "product"
+            },
+            {
+              "type": "text",
+              "id": "schedule_sum",
+              "label": "schedule sum"
+            }
+          
+        ]
+      }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

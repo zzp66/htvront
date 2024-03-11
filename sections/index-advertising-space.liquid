@@ -1,0 +1,115 @@
+{%- style -%}
+    #shopify-section-{{ section.id }} .fn-advertising-space {
+        background-color: {{ section.settings.bg_color }};
+    }
+    #shopify-section-{{ section.id }} .fn-advertising-space a {
+        color: {{ section.settings.font_color }};
+    }
+{%- endstyle -%}
+<style>
+    .fn-advertising-space {
+        padding: 5px;
+        display: none;
+    }
+    .fn-advertising-space .swiper-slide {
+        width: 100%;
+        text-align: center;
+    }
+    @media screen and (max-width: 768px){
+        .fn-advertising-space {
+            display: block;
+        }
+    }
+</style>
+<div class="fn-advertising-space">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+            <div class="swiper-slide">
+                {% if block.settings.link != blank %}
+                <a href="{{ block.settings.link }}">
+                    {% endif %}
+                    {% if block.settings.desc != blank %}
+                    {{ block.settings.desc }}
+                    {% endif %}
+                    {% if block.settings.link != blank %}
+                </a>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        var bannerSwiper = new Swiper('.fn-advertising-space .swiper-container', {
+            autoHeight: true,
+            height: 26,
+            speed: 500,
+            loop: true,
+            observer: true,
+            observeParents: true,
+            autoplay: {
+                delay: 1500,
+                stopOnLastSlide: false,
+                disableOnInteraction: true,
+            },
+            direction: 'vertical'
+        });
+    });
+</script>
+
+{% schema %}
+{
+    "name":"Index Advertising Space",
+    "settings":[
+        {
+            "type":"color",
+            "id":"bg_color",
+            "label":"背景颜色",
+            "default":"#333333"
+        },
+        {
+            "type":"color",
+            "id":"font_color",
+            "label":"字体颜色",
+            "default":"#ffffff"
+        }
+    ],
+    "blocks":[
+        {
+            "type":"ad",
+            "name":"advertising",
+            "settings":[
+                {
+                    "type":"text",
+                    "id":"desc",
+                    "label":"描述",
+                    "default": "📢Black Friday Best Price Deal"
+                },
+                {
+                    "type":"url",
+                    "id":"link",
+                    "label":"链接"
+                }
+            ]
+        }
+    ],
+    "presets":[
+        {
+            "name":"Index Advertising Space",
+            "blocks":[
+                {
+                    "type":"ad"
+                },
+                {
+                    "type":"ad"
+                },
+                {
+                    "type":"ad"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,148 @@
+<style>
+  .cup-crafters{
+    background-image:url('{{ section.settings.background_image | img_url:'1920x' }}');
+    background-size: 100% 100%;
+    background-position: center;
+    padding-bottom:24px;
+  }
+  .cup-crafters-header{
+    width:640px;
+    text-align:center
+  }
+  .cup-crafters-title{
+    font-size: 36px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 49px;
+    margin-bottom:16px
+  }
+  .cup-crafters-desc{
+    font-size: 18px;
+    color: #333333;
+    line-height: 24px;
+  }
+  .cup-crafters-box{
+    width: 1600px;
+    margin: 0 auto;
+    background: #ffffff;
+    box-shadow:0 6px 14px #4822034d;
+    padding: 34px 30px;
+    display:flex;
+    align-items: center;
+    border-radius: 0 0 10px 10px;
+    position:relative;
+  }
+  .empty-box-crafter{
+    position:absolute;
+    width: 100%;
+    height: 12px;
+    top: -12px;
+    left: 0;
+    background-color: #fff;
+  }
+   @media screen and (max-width:1720px){
+     .cup-crafters-box{
+       width: 83.3%;
+     }
+   }
+   @media screen and (max-width: 1180px){
+      .cup-crafters-box{
+        width: 93.6%;
+        box-shadow: 0px 5px 10px 0px rgba(72,34,3,0.3);
+      }
+      .cup-crafters-title{
+        font-size:28px;
+        line-height: 36px;
+        margin-bottom:7px
+      }
+     .cup-crafters-desc{
+       font-size:16px
+     }
+    }
+  @media screen and (max-width: 750px){
+    .cup-crafters{
+      background-image:url('{{ section.settings.background_image_mobile | img_url:'750x' }}');
+      background-size: 100% 100%;
+      background-position: center;
+      padding-bottom: 5px;
+    }
+    .cup-crafters-box{
+      flex-direction: column;
+      padding: 0 10px 25px;
+    }
+    .cup-crafters-header{
+      width:100%;
+      margin-bottom:4px
+    }
+    .cup-crafters-title{
+        font-size:16px;
+        line-height: 22px;
+      }
+     .cup-crafters-desc{
+       font-size:14px;
+       line-height: 19px;
+     }
+  }
+</style>
+
+<div class="cup-crafters">
+  <div class="cup-crafters-box">
+    <!-- 遮盖阴影 -->
+    <span class="empty-box-crafter"></span>
+    <!-- 遮盖阴影 -->
+    <div class="cup-crafters-header">
+      <p class="cup-crafters-title">{{ section.settings.title }}</p>
+      <p class="cup-crafters-desc">{{ section.settings.desc }}</p>
+    </div>
+    <div>
+      <picture>
+        <source media="(max-width: 750px)" srcset="{{ section.settings.image_mobile | img_url:'710x' }}">
+        <source media="(min-width: 751px)" srcset="{{ section.settings.image | img_url:'1104x' }}">
+        <img src="{{ section.settings.image | img_url:'1104x' }}">
+      </picture>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Cup-Crafters-Version2",
+  "settings": [
+    {
+     "type":"image_picker",
+     "id":"background_image",
+     "label":"background image"
+    },{
+     "type":"image_picker",
+     "id":"background_image_mobile",
+     "label":"background image mobile"
+    },
+    {
+    "type":"text",
+    "id":"title",
+    "label":"title"
+    },
+    {
+    "type":"text",
+    "id":"desc",
+    "label":"desc"
+    },{
+    "type":"image_picker",
+    "id":"image",
+    "label":"image"
+    },{
+    "type":"image_picker",
+    "id":"image_mobile",
+    "label":"image mobile"
+    }
+  ],
+  "presets":[{
+    "name":"Cup-Crafters-Version2"
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,64 @@
+<div class="fn-my-account">
+  <div class="t fn-my-account-title">Manage My Account</div>
+  <div class="fn-my-account-preferential">
+      <div class="fn-preferential-integral">
+          <div class="fn--integral-number">500</div>
+          <div class="fn--integral-text">member point</div>
+          <div class="fn--integral-button account-btn" data-btn="points">check</div>
+      </div>
+      <div class="fn-preferential-integral">
+          <div class="fn--integral-number">6</div>
+          <div class="fn--integral-text">coupon code</div>
+          <div class="fn--integral-button account-btn" data-btn="coupon">check</div>
+      </div>
+      <div class="fn-preferential-integral">
+          <div class="fn--integral-number">3</div>
+          <div class="fn--integral-text">number of order</div>
+          <div class="fn--integral-button account-btn" data-btn="orders">check</div>
+      </div>
+  </div>
+  <div class="fn-my-account-place">
+      <div class="fn-preferential-integral">
+          <div class="fn-edit-information account-btn" data-btn="profile">Personal Profile | <span>EDIT<span></div>
+          <div class="fn-personal-details">{{customer.default_address.name }}</div>
+          <div class="fn-personal-details">{{customer.email}}</div>
+      </div>
+      <div class="fn-preferential-integral">
+         {% assign Address_value = customer.addresses_count %}
+        {% if Address_value <= 0 %}
+           <div class="fn-edit-information account-btn" data-btn="modify">Address Book | <span>Add<span></div>
+           <div class="fn-marketing-address">Save your shipping address here</div>
+          {% else %}
+          <div class="fn-edit-information account-btn" data-btn="address">Address Book | <span>EDIT<span></div>
+          <div class="fn-marketing-address">{{customer.default_address.name }}</div>
+            {%- if customer.default_address.street != blank -%}
+            <div class="fn-marketing-address">
+              {{ customer.default_address.street }}
+            </div>
+            {%- endif -%}
+            {%- if customer.default_address.province != blank -%}
+            <div class="fn-marketing-address">{{ customer.default_address.province }}.{{ customer.default_address.zip }} </div>
+            {%- endif -%}
+            {%- if customer.default_address.country != blank -%}
+            <div class="fn-marketing-address">{{ customer.default_address.country }} </div>
+            {%- endif -%}
+            {%- if customer.default_address.phone != blank -%}
+            <div class="fn-marketing-address phone">T: {{ customer.default_address.phone }}</div>
+            {%- endif -%}
+          {% endif %}
+      </div>
+  </div>    
+</div>
+{% schema %}
+{
+  "name": "Manage My Account",
+  "settings": [
+  {
+    "type": "text",
+    "id": "title",
+    "default": "Manage My Account",
+    "label": "Title"
+  }
+  ]
+}
+{% endschema %}

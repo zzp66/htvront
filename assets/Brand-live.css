@@ -1,0 +1,741 @@
+.fn-live-banner {
+    position: relative;
+}
+.fn-live-state {
+    position: absolute;
+    left: 30%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.fn-underway-title {
+    font-size: 60px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 61px;
+}
+
+.fn-streaming-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #333;
+    line-height: 36px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.fn-live-video {
+    padding: 80px 150px 77px 150px;
+    background: rgba(255, 249, 232, 0.5);
+}
+p.fn-sidebar-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 18px;
+}
+.fn-sidebar-subtitle {
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+    line-height: 30px;
+    margin-bottom: 5px;
+}
+.fn-sidebar-text {
+    font-size: 14px;
+    font-weight: 400;
+    color: #333333;
+    line-height: 30px;
+}
+p.fn-sidebar-time {
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    line-height: 14px;
+    margin-top: 8px;
+}
+.fn-streaming-mian {
+    display: flex;
+    justify-content: space-between;
+}
+.fn-streaming-video {
+    width: 75%;
+    height: 600px;
+}
+.fn-streaming-content {
+    width: 23.5%;
+}
+.fn-streaming-logo {
+    display: flex;
+    align-items: center;
+}
+.fn-streaming-sidebar {
+    margin-left: 18px;
+}
+.fn-streaming-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.fn-column-lsit li:before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    border-radius: 50%;
+    background: #000;
+    margin-right: 8px;
+    vertical-align: super;
+}
+div#shopify-section-Brand-live-column {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 83px 0;
+}
+.fn-column-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 36px;
+    margin-bottom: 43px;
+    text-align: center;
+}
+.fn-column-main {
+    position: relative;
+}
+ul.fn-column-lsit {
+    position: absolute;
+    left: 5.5%;
+    top: 20%;
+}
+ul.fn-column-lsit li {
+    margin-bottom: 57px;
+}
+ul.fn-column-lsit li span:nth-child(1) {
+    font-size: 30px;
+    line-height: 30px;
+    font-weight: bold;
+    color: #333333;
+}
+ul.fn-column-lsit li span:nth-child(2) {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin-left: 47px;
+}
+ul.fn-column-lsit li {
+    line-height: 1px;
+}
+.fn-HDOutput-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #333;
+    line-height: 36px;
+    margin-bottom: 35px;
+}
+.fn-HDOutput-content2,
+.fn-HDOutput-content1 {
+    font-size: 16px;
+    font-weight: 400;
+    color: #333333;
+    line-height: 30px;
+}
+.fn-live-HDOutput {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 77px 160px 71px;
+    background-color: #f0f0f0;
+}
+.fn-HDOutput-video {
+    width: 50%;
+    height: 520px;
+}
+.fn-HDOutput-summary {
+    width: 48.8%;
+}
+.fn-HDOutput-content1 {
+    margin-bottom: 39px;
+}
+.fn-HDOutput-content2 {
+    margin-bottom: 47px;
+}
+.fn-HDOutput-button {
+    width: 385px;
+    height: 50px;
+    background: #FF7606;
+    border-radius: 10px;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 20px;
+}
+.fn-HDOutput-icon {
+    display: inline-block;
+}
+.fn-HDOutput-plays,
+.fn-HDOutput-Comments {
+    font-size: 16px;
+    font-weight: 400;
+    color: #333333;
+    line-height: 16px;
+    margin-top: 10px;
+}
+.fn-HDOutput-give {
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+    line-height: 30px;
+    margin-left: 10px;
+}
+.fn-live-featurewall {
+    margin: 0 auto;
+    max-width: 1600px;
+}
+.fn-live-featurewall {
+    margin: 0 auto;
+    max-width: 1600px;
+    padding: 100px 0;
+}
+.fn-featurewall-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #333;
+    line-height: 36px;
+    text-align: center;
+    margin-bottom: 13px;
+}
+.fn-featurewall-text {
+    font-size: 18px;
+    font-weight: 400;
+    color: #333;
+    line-height: 30px;
+    max-width: 717px;
+    text-align: center;
+    margin: 0 auto;
+    letter-spacing: -.5px;
+    margin-bottom: 30px;
+}
+ul.fn-featurewall-columns {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+ul.fn-featurewall-columns li {
+    width: 32.5%;
+    margin-bottom: 57px;
+}
+.fn-customer-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    line-height: 30px;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+.fn-customer-icon img{
+  width: 24px;
+}
+.fn-HDOutput-icon + .fn-HDOutput-icon {
+  margin-left: 8px;
+}
+.fn-HDOutput-icon + .fn-HDOutput-icon,
+.fn-customer-icon + .fn-customer-icon {
+  margin-left: 5px;
+}
+.fn-customer-give {
+    margin-left: 18px;
+}
+.FeaturedWork_img {
+    position: relative;
+}
+.fn-featurewall-masking {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    background-color: #33333380;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+.fn-featurewall-shops a {
+    width: 520px;
+    height: 50px;
+    border: 1px solid #333333;
+    border-radius: 6px;
+    text-align: center;
+    line-height: 50px;
+    font-weight: 700;
+    font-size: 16px;
+    margin: auto;
+}
+.fn-featurewall-off {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    cursor: pointer;
+}
+.FeaturedWork_img:hover .fn-featurewall-masking {
+  opacity: 1;
+  transition: opacity .4s ease-out;
+}
+.fn-video-mask {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    left: 0;
+    top: 0;
+    z-index: 99;
+    display: none;
+}
+.fn-mask {
+    max-width: 1050px;
+    margin: 0 auto;
+    transform: translateY(-50%);
+    top: 50%;
+    position: relative;
+}
+.mask-close {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    line-height: 55px;
+    text-align: center;
+    float: right;
+    margin-right: -50px;
+    margin-top: -50px;
+}
+.pressVideo {
+  width: 1050px;
+  height: 590px;
+}
+.fn-customer-plays,
+.fn-customer-give,
+.fn-customer-Comments {
+    font-size: 16px;
+}
+  @media screen and (max-width: 1024px){
+.fn-streaming-video {
+    width: 100%;
+    height: 524px;
+}
+    .fn-streaming-content {
+    width: 100%;
+}
+    .fn-streaming-mian,
+    .fn-live-HDOutput {
+    flex-wrap: wrap;
+}
+    .fn-HDOutput-video {
+    width: 100%;
+    height: 650px;
+}
+    .fn-HDOutput-summary {
+    width: 100%;
+}
+      .fn-HDOutput-title {
+    margin-top: 30px;
+}
+.pressVideo {
+    width: 900px;
+    height: 515px;
+    margin: 0 auto;
+}
+    .mask-close {
+    width: 35px;
+    height: 35px;
+    line-height: 40px;
+    float: right;
+    margin-right: 25px;
+    margin-top: -35px;
+}
+}
+  @media screen and (min-width: 1200px) and (max-width: 1440px){
+.fn-streaming-video {
+    height: 527px;
+}
+        .fn-HDOutput-video {
+    height: 460px;
+}
+}
+@media screen and (min-width: 1024px) and (max-width: 1440px){
+  .pressVideo>iframe,
+.fn-HDOutput-video>iframe,
+.fn-streaming-video>iframe {
+    border-radius: 0px;
+}
+.fn-underway-title {
+    font-size: 36px;
+    line-height: 36px;
+}
+    .fn-live-video {
+    padding: 80px 20px;
+}
+    .fn-streaming-title {
+    font-size: 30px;
+    line-height: 30px;
+    margin-bottom: 30px;
+}
+    p.fn-sidebar-title {
+    font-size: 14px;
+    line-height: 14px;
+}
+.fn-streaming-logo img{
+    width: 50px;
+}
+    .fn-streaming-sidebar {
+    margin-left: 15px;
+}
+    .fn-sidebar-subtitle {
+    font-size: 14px;
+    line-height: 26px;
+}
+    .fn-sidebar-text {
+    font-size: 12px;
+    line-height: 24px;
+}
+  div#shopify-section-Brand-live-column {
+    padding: 80px 20px;
+}
+  .fn-column-title {
+    font-size: 30px;
+    line-height: 30px;
+    margin-bottom: 35px;
+}
+  ul.fn-column-lsit li span:nth-child(1) {
+    font-size: 18px;
+    line-height: 18px;
+}
+  ul.fn-column-lsit li span:nth-child(2) {
+    font-size: 16px;
+    margin-left: 20px;
+}
+  .fn-column-lsit li:before {
+    width: 5px;
+    height: 5px;
+    vertical-align: middle;
+}
+  .fn-live-HDOutput {
+    padding: 77px 20px;
+}
+  .fn-HDOutput-title {
+    font-size: 30px;
+    line-height: 30px;
+    margin-bottom: 30px;
+}
+  .fn-HDOutput-content2, .fn-HDOutput-content1 {
+    font-size: 14px;
+    line-height: 24px;
+}
+  .fn-HDOutput-give, .fn-HDOutput-plays, .fn-HDOutput-Comments {
+    font-size: 14px;
+}
+  .fn-HDOutput-button {
+    width: 325px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+}
+  .fn-live-featurewall {
+    padding: 80px 0;
+}
+  .fn-featurewall-text {
+    font-size: 16px;
+    line-height: 26px;
+    margin: 0 auto 20px;
+}
+  .fn-featurewall-title {
+    font-size: 30px;
+    line-height: 30px;
+}
+  ul.fn-featurewall-columns {
+    padding: 0 20px;
+}
+  .fn-customer-title {
+    font-size: 16px;
+    line-height: 22px;
+    margin: 20px 0;
+}
+  .fn-customer-plays, .fn-customer-give, .fn-customer-Comments {
+    font-size: 13px;
+}
+}
+ @media screen and (min-width: 769px) and (max-width: 1023px){
+  .pressVideo>iframe,
+.fn-HDOutput-video>iframe,
+.fn-streaming-video>iframe {
+    border-radius: 0px;
+}
+.fn-underway-title {
+    font-size: 36px;
+    line-height: 36px;
+}
+   div#shopify-section-Brand-live-column,
+    .fn-live-HDOutput,
+    .fn-live-video {
+    padding: 50px 10px;
+}
+    .fn-streaming-title {
+    font-size: 30px;
+    line-height: 30px;
+    margin-bottom: 30px;
+}
+    p.fn-sidebar-title {
+    font-size: 14px;
+    line-height: 14px;
+}
+.fn-streaming-logo img{
+    width: 50px;
+}
+    .fn-streaming-sidebar {
+    margin-left: 15px;
+}
+    .fn-sidebar-subtitle {
+    font-size: 14px;
+    line-height: 26px;
+}
+    .fn-sidebar-text {
+    font-size: 12px;
+    line-height: 24px;
+}
+  .fn-column-title {
+    font-size: 30px;
+    line-height: 30px;
+    margin-bottom: 35px;
+}
+  ul.fn-column-lsit li span:nth-child(1) {
+    font-size: 18px;
+    line-height: 18px;
+}
+  ul.fn-column-lsit li span:nth-child(2) {
+    font-size: 16px;
+    margin-left: 20px;
+}
+  .fn-column-lsit li:before {
+    width: 5px;
+    height: 5px;
+    vertical-align: middle;
+}
+  .fn-HDOutput-title {
+    font-size: 30px;
+    line-height: 30px;
+    margin-bottom: 30px;
+}
+  .fn-HDOutput-content2, .fn-HDOutput-content1 {
+    font-size: 14px;
+    line-height: 24px;
+}
+  .fn-HDOutput-give, .fn-HDOutput-plays, .fn-HDOutput-Comments {
+    font-size: 14px;
+}
+  .fn-HDOutput-button {
+    width: 325px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+}
+  .fn-live-featurewall {
+    padding: 80px 0;
+}
+  .fn-featurewall-text {
+    font-size: 16px;
+    line-height: 26px;
+    margin: 0 auto 20px;
+}
+  .fn-featurewall-title {
+    font-size: 30px;
+    line-height: 30px;
+}
+  ul.fn-featurewall-columns {
+    padding: 0 10px;
+}
+  .fn-customer-title {
+    font-size: 16px;
+    line-height: 22px;
+    margin: 20px 0;
+}
+  .fn-customer-plays, .fn-customer-give, .fn-customer-Comments {
+    font-size: 13px;
+}
+   ul.fn-column-lsit li {
+    margin-bottom: 35px;
+}
+   ul.fn-featurewall-columns li {
+    width: 49%;
+}
+}
+  @media screen and (max-width: 768px){
+  .pressVideo>iframe,
+.fn-HDOutput-video>iframe,
+.fn-streaming-video>iframe {
+    border-radius: 0px;
+}
+.fn-underway-title {
+    font-size: 14px;
+    line-height: 14px;
+}
+   div#shopify-section-Brand-live-column,
+    .fn-live-HDOutput,
+    .fn-live-video {
+    padding: 50px 10px;
+}
+    .fn-HDOutput-title,
+    .fn-column-title,
+    .fn-streaming-title {
+    font-size: 18px;
+    line-height: 18px;
+    margin-bottom: 25px;
+}
+    p.fn-sidebar-title {
+    font-size: 14px;
+    line-height: 14px;
+}
+.fn-streaming-logo img{
+    width: 50px;
+}
+    .fn-streaming-sidebar {
+    margin-left: 15px;
+}
+    .fn-sidebar-subtitle {
+    font-size: 14px;
+    line-height: 26px;
+}
+    .fn-sidebar-text {
+    font-size: 12px;
+    line-height: 24px;
+}
+  ul.fn-column-lsit li span:nth-child(1) {
+    font-size: 14px;
+    line-height: 14px;
+}
+  ul.fn-column-lsit li span:nth-child(2) {
+    font-size: 12px;
+    margin-left: 15px;
+}
+  .fn-column-lsit li:before {
+    width: 5px;
+    height: 5px;
+    vertical-align: middle;
+}
+  .fn-HDOutput-title {
+    font-size: 30px;
+    line-height: 30px;
+    margin-bottom: 30px;
+}
+  .fn-HDOutput-content2, .fn-HDOutput-content1 {
+    font-size: 12px;
+    line-height: 20px;
+}
+  .fn-HDOutput-give, .fn-HDOutput-plays, .fn-HDOutput-Comments {
+    font-size: 12px;
+}
+  .fn-HDOutput-button {
+    width: 325px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 12px;
+}
+  .fn-live-featurewall {
+    padding: 50px 0;
+}
+  .fn-featurewall-text {
+    font-size: 12px;
+    line-height: 20px;
+    margin: 0 auto 20px;
+}
+  .fn-featurewall-title {
+    font-size: 18px;
+    line-height: 18px;
+}
+  ul.fn-featurewall-columns {
+    padding: 0 5px;
+}
+  .fn-customer-title {
+    font-size: 12px;
+    line-height: 16px;
+    margin: 15px 0;
+}
+.fn-customer-plays, .fn-customer-give, .fn-customer-Comments {
+    font-size: 12px;
+}
+   ul.fn-column-lsit li {
+    margin-bottom: 25px;
+}
+   ul.fn-featurewall-columns li {
+    width: 100%;
+     margin-bottom: 35px;
+}
+    .fn-featurewall-shops a {
+    max-width: 320px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 12px;
+}
+.fn-customer-give {
+    margin-left: 5px;
+}
+    .fn-customer-icon img {
+    width: 14px;
+}
+    .fn-HDOutput-icon+.fn-HDOutput-icon, .fn-customer-icon+.fn-customer-icon {
+    margin-left: 3px;
+}
+}
+  @media screen and (max-width: 480px){
+    .fn-streaming-video {
+    width: 100%;
+    height: 250px;
+}
+    .fn-HDOutput-video {
+    width: 100%;
+    height: 325px;
+}
+    .fn-HDOutput-content1 {
+    margin-bottom: 20px;
+}
+    .fn-HDOutput-content2 {
+    margin-bottom: 30px;
+}
+    .pressVideo {
+    width: 435px;
+    height: 260px;
+}
+}
+  @media screen and (max-width: 375px){
+        .pressVideo {
+    width: 320px;
+    height: 200px;
+}
+    .mask-close {
+    width: 30px;
+    height: 30px;
+    line-height: 35px;
+    float: right;
+    margin-right: 8px;
+}
+    .fn-streaming-video {
+    width: 100%;
+    height: 200px;
+}
+    .fn-HDOutput-video {
+    width: 100%;
+    height: 250px;
+}
+    .fn-HDOutput-content1 {
+    margin-bottom: 20px;
+}
+    .fn-HDOutput-content2 {
+    margin-bottom: 30px;
+}
+    ul.fn-column-lsit li span:nth-child(1) {
+    font-size: 12px;
+    line-height: 12px;
+}
+    ul.fn-column-lsit li {
+    margin-bottom: 15px;
+}
+}

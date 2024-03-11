@@ -1,0 +1,264 @@
+<style>
+  .mid-year-coupon{
+    letter-spacing: 0;
+    background: url('https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/14_2x_2ef08cad-14a0-4549-9bda-3f0fafe38c21.png?v=1687832855') no-repeat;
+    background-size: 100% 100%;
+    padding:23px 0 20px
+  }
+  .mid-year-coupon-title,.mid-year-coupon-content{
+    position: relative;
+  }
+  .mid-year-coupon-title>img,.mid-year-coupon-content>img{
+    margin:0 auto
+  }
+  .mid-year-coupon .coupon-title-text{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 36px;
+      font-weight: bold;
+      color: #914408;
+      line-height: 49px;
+      width: max-content;
+  }
+  .mid-year-coupon .coupon-content-desc{
+    position: absolute;
+    left: 50%;
+    top:83px;
+    transform: translateX(-50%);    
+  }
+  .mid-year-coupon ul.Bundle-product_explain {
+    margin-top: 20px;
+    margin-bottom: 4%;
+    margin-left: 4%;
+  }
+  .mid-year-coupon li.Bundle-product_explain_list {
+    font-size: 18px;
+    color: #914408;;
+    line-height: 22px;
+    list-style-type: disc;
+  }
+  .mid-year-coupon .Bundle-product_explain_list + .Bundle-product_explain_list {
+    margin-top: 2%;
+  }
+  .mid-year-coupon .coupon-content-code{
+    display:flex
+  }
+ .mid-year-coupon .coupon-code{
+    font-size: 26px;
+    font-weight: bold;
+    color: #914408;
+    line-height: 42px;
+  }
+  .mid-year-coupon .coupon-copy-code{
+    background: linear-gradient(180deg, #FFAE1E 0%, #E68D00 100%);
+    border-radius: 4px;
+    color:#FFEFB3;
+    font-size: 18px;
+    height: 42px;
+    line-height: 42px;
+    padding: 0 22px;
+    margin-left: 14px;
+    cursor: pointer;
+  }
+    .mid-year-coupon-content>picture img,.mid-year-coupon-title img{
+      margin:0 auto
+    }
+  @media screen and (max-width: 1440px){
+    .mid-year-coupon-title,.mid-year-coupon-content{
+      width:74.68%;
+      margin: 0 auto;
+    }
+
+    .mid-year-coupon .coupon-content-desc{
+      width:42%;
+      top:8%
+    }
+    .mid-year-coupon .coupon-title-text{
+      font-size:30px
+    }
+  }
+  @media screen and (max-width: 1330px){
+    .mid-year-coupon .coupon-content-desc{
+      top:4%
+    }
+    .coupon-content-item{
+      width:50%
+    }
+  }
+  @media screen and (max-width: 1080px){
+    .mid-year-coupon .coupon-title-text{
+      font-size:28px
+    }
+    .mid-year-coupon li.Bundle-product_explain_list,.mid-year-coupon .coupon-code,.mid-year-coupon .coupon-copy-code{
+      font-size:14px
+    }
+    .mid-year-coupon .coupon-copy-code{
+      height:36px;
+      line-height:36px
+    }
+    .mid-year-coupon ul.Bundle-product_explain{
+      margin-bottom:10px
+    }
+    .mid-year-coupon-content{
+      width:83.3%
+    }
+  }
+  @media screen and (max-width: 860px){
+    .mid-year-coupon-content{
+      width:100%
+    }
+  }
+  @media screen and (max-width: 750px){
+    .mid-year-coupon{
+      background: #FEE692;
+      padding-top: 0;
+      padding-bottom:0
+    }
+    .mid-year-coupon-content{
+      width:83.2%;
+      margin:0 auto
+    }
+    .coupon-content-item{
+      width: 70%;
+      margin: 0 auto;
+    }
+    .coupon-content-item img,.mid-year-coupon-title img{
+      margin:0 auto
+    }
+    .mid-year-coupon .coupon-content-desc{
+      width:90%;
+      top: 10%;
+    }
+    .mid-year-coupon .coupon-title-text{
+      font-size:16px
+    }
+    .mid-year-coupon ul.Bundle-product_explain{
+      margin-top:26%;
+      margin-left:8%
+    }
+    .mid-year-coupon .coupon-content-code{
+      justify-content: center;
+    }
+  }
+</style>
+<div class="mid-year-coupon" id="{{ section.settings.id }}">
+    <div class="mid-year-coupon-title">
+      <picture>
+            <source media="(max-width: 750px)" srcset="{{ section.settings.title_image_mobile | img_url:'242x' }}" />
+            <source media="(min-width: 751px)" srcset="{{ section.settings.title_image | img_url:'706x' }}" />
+            <img src="{{ section.settings.title_image | img_url:'706x' }}" />
+      </picture>
+      <div class="coupon-title-text">
+        {{ section.settings.title }}
+      </div>
+    </div>
+  <div class="mid-year-coupon-content">
+    <picture>
+            <source media="(max-width: 750px)" srcset="{{ section.settings.coupon_image_mobile | img_url:'750x' }}" />
+            <source media="(min-width: 751px)" srcset="{{ section.settings.coupon_image | img_url:'4134x' }}" />
+            <img src="{{ section.settings.coupon_image | img_url:'4134x' }}" />
+    </picture>
+    <div class="coupon-content-desc">
+      <div class="coupon-content-item">
+        <picture>
+              <source media="(max-width: 750px)" srcset="{{ section.settings.coupon_mobile | img_url:'355x' }}" />
+              <source media="(min-width: 751px)" srcset="{{ section.settings.coupon | img_url:'355x' }}" />
+              <img src="{{ section.settings.coupon | img_url:'355x' }}" />
+      </picture>
+      </div>
+      <div>{{ section.settings.ul_text }}</div>
+      <div class="coupon-content-code">
+        <div class="coupon-code">code：{{ section.settings.code }}</div>
+        <div class="coupon-copy-code">copy the code</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(function(){
+    $('.coupon-copy-code').click(function(){
+      let url = "{{section.settings.code}}";
+      let copyInput = document.createElement('input');
+    	document.body.appendChild(copyInput);
+    	copyInput.setAttribute('value', url);
+    	copyInput.select();
+    	document.execCommand("Copy");
+    	copyInput.remove();
+        alertMsg()
+    })
+    function alertMsg(){
+      var alertFram = document.createElement("DIV");
+      alertFram.id = "alertFram";
+      alertFram.style.position = "fixed";
+      alertFram.style.width = "100%";
+      alertFram.style.textAlign = "center";
+      alertFram.style.bottom = "40px";
+      alertFram.style.zIndex = "10001";
+      strHtml = " <span style=\"font-family: 微软雅黑;display:inline-block;background:#333;color:#fff;padding:0 20px;line-height:36px;border-radius:6px; \">Copied successfully</span>";
+      alertFram.innerHTML = strHtml;
+      document.body.appendChild(alertFram);
+      setTimeout((function(){
+        alertFram.style.display="none";
+      }),2000);
+    }
+  })
+</script>
+{% schema %}
+  {
+    "name": "Mid Year Coupon",
+    "settings": [{
+      "type":"image_picker",
+      "id":"title_image",
+      "label":"title image"
+    },{
+      "type":"image_picker",
+      "id":"title_image_mobile",
+      "label":"title image mobile"
+    },{
+       "type":"text",
+        "id":"title",
+        "label":"title"
+    },{
+      "type":"image_picker",
+      "id":"coupon_image",
+      "label":"coupon image"
+    },{
+      "type":"image_picker",
+      "id":"coupon_image_mobile",
+      "label":"coupon image mobile"
+    },{
+       "type":"image_picker",
+        "id":"coupon",
+        "label":"coupon"
+    },{
+       "type":"image_picker",
+        "id":"coupon_mobile",
+        "label":"coupon mobile"
+    },{
+            "type":"html",
+            "id":"ul_text",
+            "label":"text list"
+        },{
+            "type":"text",
+            "id":"code",
+            "label":"code"
+        },{
+          "type": "text",
+          "id": "id",
+          "label": "id(页面唯一性，全英文)"
+        }],
+    "presets": [
+        {
+          "name": "Mid Year Coupon"
+        }
+      ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

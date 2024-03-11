@@ -1,0 +1,48 @@
+
+<div class="fn-vote-banner">
+    {% if section.settings.vote_banner != blank %}
+        {% assign image = section.settings.vote_banner | img_url: '1920x' %}
+        <img class="fn-sale-bannerimg" src="{{ image }}" alt="">
+    {% endif %}
+    <div class="fn-vote-main">
+        <div class="t fn-vote-bannertitle">{{  section.settings.banner_title }}</div>
+        <div class="fn-vote-bannertext">{{  section.settings.banner_text }}</div>
+    </div>
+</div>
+{% schema %}
+  {
+	"name": "vote banner",
+	"settings": [
+      {
+			"type": "image_picker",
+			"id": "vote_banner",
+			"label": {
+				"en": "vote banner",
+				"zh-CN": "图片"
+			}
+		},
+        {
+            "type": "text",
+            "id": "banner_title",
+            "label": {
+                "en": "banner title ",
+                "zh-CN": "文本标题"
+            }
+        },
+        {
+            "type": "text",
+            "id": "banner_text",
+            "label": {
+                "en": "banner text ",
+                "zh-CN": "文本"
+            }
+        }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

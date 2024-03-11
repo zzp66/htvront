@@ -1,0 +1,20 @@
+{% assign showNum = section.settings.colors_per_product %} 
+{% if showNum > 0 %}
+<div class="fn-color-attr">
+    {% assign imgLength = 0 %}
+        {% for variant in product.variants %}
+            {% assign img = variant.metafields.my_fields.image.value %}
+            {% if img %}
+                {% assign imgLength = imgLength | plus: 1 %}
+                {% if forloop.index0 < showNum %}                
+                    <span>
+                        <img src="{{img | image_url: width: 30 }}" alt="">
+                    </span>                   
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        {% if imgLength > showNum %}
+            <div>+{{ imgLength | minus: showNum }}more</div>
+        {% endif %}
+    </div>
+{% endif %}

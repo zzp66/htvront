@@ -1,0 +1,68 @@
+<div class="fn-HalloweenSpecials"  id="fn-HalloweenSpecials">
+        <div class="fn-making_head">
+          <div class="fn-making_headmain fn-HalloweenSpecials_headmain">
+             {% if section.settings.Specials_titleimg != blank %}
+                      {% assign image = section.settings.Specials_titleimg | img_url: '594x' %}
+                      <img class="fn-Specials-bannerimg" src="{{ image }}" alt="">
+              {% endif %}
+              <div class="fn-makingmain_headtitle t">{{ section.settings.Specials_title }}</div>
+          </div>
+      </div>
+      <div class="fn-HalloweenSpecials-one"> 
+        <ul class="fn-HalloweenSpecials-oneul">
+          {%- for product in section.settings.onelist_collection.products limit: 4 -%}
+                  <li class="fn-HalloweenSpecials-list">
+                    {% render 'fn-Hallowmas-product',
+                        card_product: product,
+                    %}
+                  </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+      <div class="fn-HalloweenSpecials-two"> 
+        <ul class="fn-HalloweenSpecials-oneul">
+          {%- for product in section.settings.twolist_collection.products limit: 8 -%}
+                  <li class="fn-HalloweenSpecials-recommend_list">
+                    {% render 'fn-Hallowmas-recommendproducts',
+                        card_product: product,
+                    %}
+                  </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+</div>
+{% schema %}
+  {
+    "name": "Halloween Specials",
+    "settings": [
+       {
+			"type": "image_picker",
+			"id": "Specials_titleimg",
+			"label": {
+				"en": "img"
+			}
+		},
+        {
+            "type":"text",
+            "id":"Specials_title",
+            "label":"Halloween Specials title"
+        },
+        {
+            "type":"collection",
+            "id":"onelist_collection",
+            "label":"first Collection"
+        },
+        {
+            "type":"collection",
+            "id":"twolist_collection",
+            "label":"the second Collection"
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

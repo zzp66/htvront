@@ -1,0 +1,101 @@
+<div class="fn-purchase">
+  <div class="fn-purchase-left">
+    {% if section.settings.image_purchase1 != blank %}
+        {% assign image = section.settings.image_purchase1 | img_url: '700x' %}
+       <a href="https://www.htvront.com/products/automatic-heat-press-machine-15-x-15-110v-2-colors">
+        <img src="{{ image }}" alt="">
+      </a>
+    {% endif %}
+    <div class="t fn-purchase-title">
+       <a href="https://www.htvront.com/products/automatic-heat-press-machine-15-x-15-110v-2-colors">【Limited Time Deal】Auto Heat Press Machine</a>
+    </div>
+    <div class="fn-purchase-price"><span class="fn-purchase-text">$251.99</span><span>295.99<span class="Discount_price"></span></span></div>
+    <div>
+        <div class="fn-purchase-hue">
+            <div class="fn-purchase-leftattribute purchase_active">Light Blue</div>
+            <div class="fn-purchase-leftattribute">White</div>
+        </div>
+        <div id="main-leftbutton">
+            <div class="fn-purchase-button leftbutton" id="fn-left-lightblue">
+<!--               <a href="https://www.htvront.com/products/automatic-heat-press-machine-15-x-15-110v-2-colors?variant=39865991823493">Buy Now</a> -->
+               {% render 'fn-purchase-lightblue'%} 
+             </div>
+            <div class="fn-purchase-button leftbutton" id="fn-left-White">
+               {% render 'fn-purchase-White'%} 
+<!--             <a href="https://www.htvront.com/products/automatic-heat-press-machine-15-x-15-110v-2-colors?variant=39865991790725">Buy Now</a> -->
+            </div>
+        </div>
+        <ul class="fn-purchase-list">
+          <li>Discounted price of $251.99</li>
+          <li class="fn-Delivery-Plan">Limited time deal:$44 off</li>
+<!--           <li class="fn-discounts_Plan">
+            <a href="https://www.htvront.com/blogs/news/statement-of-the-delivery-of-auto-heat-press">Statement of the Delivery of Auto Press</a>
+          </li>  -->
+        </ul>
+    </div>
+  </div>
+  <div class="fn-purchase-right">
+    {% if section.settings.image_purchase2 != blank %}
+        {% assign image = section.settings.image_purchase2 | img_url: '700x' %}
+       <a href="https://www.htvront.com/products/free-30-vinyl-auto-heat-press-machine-15-x-15-110v-2-colors?variant=40051224903813">
+        <img src="{{ image }}" alt="">
+       </a>
+    {% endif %}
+    <div class="t fn-purchase-title">
+       <a href="https://www.htvront.com/products/free-30-vinyl-auto-heat-press-machine-15-x-15-110v-2-colors?variant=40051224903813">Auto Heat Press&HTV Lucky Bag</a>
+       </div>
+      <div class="fn-purchase-price"><span class="fn-purchase-text">$269.99</span><span>$389.99<span class="Discount_price"></span></span></div>
+    <div>
+        <div class="fn-purchase-hue">
+            <div class="fn-purchase-rightattribute purchase_active">Light Blue</div>
+            <div class="fn-purchase-rightattribute">White</div>
+<!--             <div class="fn-purchase-rightattribute">White&Light Blue</div> -->
+        </div>
+        <div id="main-rightbutton">
+            <div class="fn-purchase-button rightbutton" id="fn-right-lightblue">
+               {% render 'fn-right-lightblue'%} 
+<!--                <a href="https://www.htvront.com/products/free-30-vinyl-auto-heat-press-machine-15-x-15-110v-2-colors?variant=40051224936581">Add To Cart</a> -->
+              
+             </div>
+            <div class="fn-purchase-button rightbutton" id="fn-right-White">
+               {% render 'fn-right-White'%} 
+<!--                <a href="https://www.htvront.com/products/free-30-vinyl-auto-heat-press-machine-15-x-15-110v-2-colors?variant=40051224903813">Add To Cart</a> -->
+              
+<!--             </div>
+            <div class="fn-purchase-button rightbutton" id="fn-right-multi">
+              {% comment %} {% render 'fn-right-multi'%} {% endcomment %}
+               <a href="https://www.htvront.com/products/automatic-heat-press-machine-15-x-15-110v-2pc?variant=39866041172101">Buy It Now</a> -->
+              
+            </div>
+        </div>
+        <ul class="fn-purchase-list">
+          <li>Great price of $269.99</li>
+          <li>$90 HTV Lucky Bag will be shipped with your order</li>
+           <li>The machine will be shipped in Blue color. If you need a White Auto heat press machine, please leave a note in the order</li> 
+        </ul>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "purchase",
+    "settings": [
+      {
+			"type": "image_picker",
+			"id": "image_purchase1",
+			"label": {
+				"en": "purchase Image",
+				"zh-CN": "图片"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "image_purchase2",
+			"label": {
+				"en": "purchase Image",
+				"zh-CN": "图片"
+			}
+		}
+    ]
+  }
+{% endschema %}

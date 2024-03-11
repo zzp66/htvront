@@ -1,0 +1,69 @@
+{% comment %}
+    Renders facets (filtering and sorting)
+
+    Accepts:
+    - results: {Object} Collection or Search object
+    - enable_filtering: {Boolean} Show filtering when true
+    - enable_sorting: {Boolean} Show sorting when true
+    - collapse_on_larger_devices: {Boolean} Collapse filtering/sorting into menu on larger devices when true
+
+    Usage:
+    {% render 'facets', results: collection, enable_filtering: true, enable_sorting: true, collapse_on_larger_devices: false %}
+{% endcomment %}
+
+
+<div class="facets-container">
+  {%- unless collapse_on_larger_devices -%}
+
+      {%- if enable_sorting -%}
+      
+            <h2 class="fn-Sort-By">Sort By</h2>
+         <details class="facet-filters">
+            <div class="select-group">
+              <ul class="select-sorting">
+                {%- assign sort_by = results.sort_by | default: results.default_sort_by -%}
+
+                 {%- for option in results.sort_options -%}
+                   {% if option.value == sort_by %}{%- assign default_value = option.name | escape -%}{% endif %}
+                    <li data-value="{{ option.value | escape }}" class="{% if option.value == sort_by %}active{% endif %}">{{ option.name | escape }}</li>
+                  {%- endfor -%}
+              </ul>
+             </div> 
+            <summary class="sorting-summary">                      
+           
+              <div class="input-group">
+                <span>{{default_value}}</span>              
+               {% render 'down' %}
+              </div>
+              </summary>    
+            
+          </details>
+          <div class="sidebar-toggle">
+            <a href="javascript:;">
+              Filter {% render 'icon-filter' %}
+            </a>
+          </div>
+  
+        <script>
+            $(function(){
+				$('.select-sorting').on('click','li',function(){
+                    let {value} = $(this).data();
+                    window.location.href = `${window.location.pathname}?sort_by=${value}`;
+                })
+                $('body').on('click',function(e){
+                    e.stopPropagation();
+                    $('.facet-filters').removeAttr('open')
+                })
+                 let index = $('.select-sorting li.active').index();
+                $('.select-sorting li').hover(function(){
+                    $(this).addClass('active').siblings().removeClass('active')
+                },function(){
+                    $('.select-sorting li').eq(index).addClass('active').siblings().removeClass('active');
+                })
+            })
+        </script>
+  
+  
+        {%- endif -%}
+    {%- endunless -%}
+</div>

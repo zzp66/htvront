@@ -1,0 +1,81 @@
+<div class="fn-spot-news">
+  <div class="fn-news-img">
+    {% if section.settings.news_img != blank %}
+      <a href="{{ section.settings.link }}">
+        <img src="{{ section.settings.news_img | img_url: '925x' }}" alt="">
+      </a>
+    {% endif %}
+  </div>
+  <div class="fn-news-content">
+    <div class="fn-content-title">{{ section.settings.news_title }}</div>
+    <ul>
+      {% assign blogsList = blogs.blog.articles | sort: 'created_at' | reverse | slice: 0, 3 %}
+      {% for article in blogsList %}
+        <li class="fn-content-list">
+          <a href="{{ article.url }}">
+            <div class="fn-article-headtitle">{{ article.title }}</div>
+          </a>
+          <div class="fn-article-excerpt">{{ article.excerpt | truncate: 123 | strip_html }}</div>
+          <div class="fn-article-time">{{ article.created_at | date: '%B %d, %Y' }}</div>
+        </li>
+      {% endfor %}
+    </ul>
+    <div class="fn-content-button"><a href="{{ section.settings.news_link }}">VIEW MORE</a></div>
+  </div>
+</div>
+<script>
+  $(function(){
+      //     $('.fn-content-list .fn-article-excerpt').each(function(){
+      //       if( $(this).text().length > 50) {      //如果字符长度超过10，后面的字符就变成...可自行调整长度和代替字符
+      //         $(this).text($(this).text().substr(0,120) + "...")  //截取从第一个字符开始，往后取10个字符，剩余的用...代替
+      //         rte_text.innerHTML = _text;
+      //         console.log($this, '456777777777777');  // 'js字符超出指定个数...'
+      //       }
+
+      // });
+  })
+</script>
+{% schema %}
+  {
+    "name": "What's New on Htvront",
+    "settings": [
+        {
+            "type":"image_picker",
+            "id":"news_img",
+            "label":{
+                "en":"Theme image",
+                "zh-CN":"主题图片"
+            }
+        },{
+            "type":"url",
+            "id":"link",
+            "label":{
+                "en":"link",
+                "zh-CN":"图片链接"
+            }
+        },
+        {
+            "type":"url",
+            "id":"news_link",
+            "label":{
+                "en":"spot news link",
+                "zh-CN":"链接"
+            }
+        },
+        {
+            "type": "text",
+            "id": "news_title",
+            "label": {
+                "en": "news title",
+                "zh-CN": "标题"
+            }
+        }
+]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

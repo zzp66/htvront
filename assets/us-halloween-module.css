@@ -1,0 +1,285 @@
+  #shopify-section-{{ section.id }} .halloween-bg{
+    background-image:url('{{ section.settings.background_image | img_url:'1920x' }}');
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+    padding:28px 0;
+  }
+  .halloween-module{
+    width:1600px;
+    margin:0 auto;
+    background: linear-gradient(180deg, #FFE187 0%, #FFB161 100%);
+    border-radius: 10px;
+    text-align:center;
+    padding:40px 24px 50px 24px;
+  } 
+  .halloween-module>p:nth-child(1){
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 49px;
+  }
+  .halloween-module>p:nth-child(2){
+    font-size: 18px;
+    color: #2B112C;
+    line-height: 24px;
+    padding:10px 0 20px 0;
+  }
+  .halloween-imgBox{
+    display: flex;
+    justify-content: flex-start;
+  }
+  .module-product{
+    display: flex;
+    flex-wrap: wrap;
+    background: #fff;
+    z-index: 2;
+    margin-left: -10px;
+    border-radius: 8px;
+    padding: 17px 14px 17px 20px;
+  }
+  .module-product .halloweenProduct-model-items{
+    width: 50%;
+    padding: 0 20px 16px 0;
+  }
+  .module-product .halloweenProduct-model-items:nth-last-child(-n+2){
+    padding-bottom:0;
+  }
+   .module-product .halloweenProduct-model-items:nth-child(even){
+     padding-right:0;
+   }
+  .halloweenProduct-model-items .card{
+    display:flex;
+    flex-direction: row;
+  }
+  .halloweenProduct-model-items .ratio{
+    max-width: 206px;
+    width: 100%;
+    flex:none;
+  }
+  .halloweenProduct-model-items .fn-product-title{
+    width:100%;
+  }
+  .halloweenProduct-model-items .fn-product-title .t{
+    -webkit-line-clamp: 3;
+    height: 57px;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+  .halloweenProduct-model-items .fn-product-layout{
+    flex-direction: column;
+    margin-top:0;
+  }
+  .halloweenProduct-model-items .fn-product-head{
+    padding-left:15px;
+  }
+  .halloweenProduct-model-items .fn-compareat_price{
+    flex-direction: row;
+    align-items: baseline;
+  }
+  .halloweenProduct-model-items .fn-product-price{
+    width:100%;
+    text-align:left;
+  }
+  .halloweenProduct-model-items .fn-compareat_price .fn-compare-at_price{
+    padding-left:5px;
+    color: #333;
+    font-weight: 400;
+    font-size: 14px;
+  }
+  .halloweenProduct-model-items .fn-product-price span{
+    font-size: 18px;
+    color: #FF7707;
+    float:left;
+  }
+  .halloweenProduct-model-items .button--full-width{
+    background: linear-gradient(180deg, #FFE187 0%, #FFB161 100%);
+    border-radius: 6px;
+    height: 40px;
+    padding: 0;
+    font-size: 14px;
+    min-height: auto;
+    box-shadow: none;
+    letter-spacing: 0;
+    --border-offset: none;
+    --border-opacity: none;
+  }
+  .halloweenProduct-model-items .button--full-width:before,
+  .halloweenProduct-model-items .button--full-width:after{
+    box-shadow:none;
+  }
+  .halloweenProduct-model-items .fn-color-attr{
+    margin-top:6px;
+  }
+  @media screen and (max-width:1720px){
+    .halloween-module{
+      width: 83.3%;
+      margin:0 auto;
+    }
+    .halloweenProduct-model-items .ratio{
+      max-width: 50%;
+      height: auto;
+    }
+    .module-product{
+      align-items: center;
+    }
+  }
+  @media screen and (max-width:1440px){
+    .halloween-imgBox>img{
+      max-width:50%;
+    }
+    .halloweenProduct-model-items .media>*:not(.zoom):not(.deferred-media__poster-button),
+    .halloweenProduct-model-items .media model-viewer{
+      height:auto;
+    }
+    .halloweenProduct-model-items .fn-product-title .t{
+      -webkit-line-clamp: 2;
+      height: 40px;
+      margin-bottom: 5px;
+    }
+    .halloweenProduct-model-items .fn-color-attr{
+      height:28px;
+      margin-bottom: 5px;
+    }
+    .halloweenProduct-model-items .fn-color-attr li{
+      width: 28px;
+      height: 28px;
+    }
+    .halloweenProduct-model-items .button--full-width{
+      height:30px;
+      min-width:90%;
+      border-radius:4px;
+    }
+    .module-product .halloweenProduct-model-items{
+      padding:0 6px 10px 0;
+    }
+    .module-product .halloweenProduct-model-items:nth-child(even){
+      padding-right:5px;
+    }
+    .module-product{
+      padding: 0 10px 10px 15px;
+    }
+    .halloweenProduct-model-items .fn-product-head{
+      padding-left: 5px;
+    }
+  }
+  @media screen and (max-width:1024px){
+     .halloween-imgBox{
+       flex-direction: column;
+     }
+    .halloween-imgBox>img{
+      max-width:100%;
+      margin-bottom:20px;
+    }
+    .module-product{
+      margin-left: 0;
+      flex-wrap: nowrap;
+      overflow-x: scroll;
+    }
+    .module-product .halloweenProduct-model-items{
+      min-width: 275px;
+      margin-right: 11px;
+    }
+    .halloweenProduct-model-items .card{
+      flex-direction: column;
+    }
+    .halloweenProduct-model-items .ratio{
+      max-width: 100%;
+    }
+    .halloweenProduct-model-items .button--full-width{
+      height:40px;
+      width:100%
+    }
+    .module-product{
+      padding: 11px 12px 20px 13px;
+    }
+    .module-product .halloweenProduct-model-items:nth-last-child(-n+2){
+      padding-bottom:10px;
+    }
+    .halloweenProduct-model-items .fn-product-price{
+      height:20px;
+    }
+    .halloweenProduct-model-items .fn-product-title .t{
+      margin:10px 0;
+    }
+    .halloween-module{
+      padding: 25px 20px 35px 20px;
+    }
+    .halloween-module>p:nth-child(1){
+      font-size:30px;
+    }
+    .module-product .halloweenProduct-model-items:nth-last-child(1){
+      margin-right: 0;
+      padding-right: 0;
+    }
+  }
+  @media screen and (max-width:750px){
+    #shopify-section-{{ section.id }} .halloween-bg{
+      background-image:url('{{ section.settings.background_image_mobile | img_url:'750x' }}');
+      padding:10px 0;
+      background-color:#EC700A
+    }
+    .halloween-module{
+      width: 93.6%;
+    }
+    .halloween-module>p:nth-child(1){
+      font-size:16px;
+      line-height:22px;
+    }
+    .halloween-module>p:nth-child(2){
+      font-size:14px;
+      line-height:19px;
+      padding-top: 5px;
+    }
+     * {
+     touch-action: none;
+    }
+    .swiper-scrollbar{
+        position:absolute;
+        width: calc(100% - 40px);
+        height: 5px;
+        margin: 0 auto;
+        background: #D8D8D8;
+        bottom: 10px;
+      }
+     .swiper-scrollbar-drag{
+         background: #333333
+      }
+  } 
+  @media screen and (max-width:450px){
+   
+    .halloween-module{
+      padding:14px 5px;
+    }
+    .halloween-imgBox>img{
+      margin-bottom:7px;
+    }
+    .module-product{
+      padding: 5px 0 10px
+    }
+    .module-product .halloweenProduct-model-items{
+      min-width: 160px;
+      margin-right: 5px;
+      padding:0;
+    }
+    .module-product .halloweenProduct-model-items:nth-child(even){
+      padding:0;
+    }
+    .module-product .halloweenProduct-model-items:nth-last-child(-n+2){
+      padding:0;
+    }
+    .halloween-imgBox .wrapper{
+      padding: 0 5px 10px;
+      background-color: #fff;
+      border-radius:6px;
+    }
+    .module-product::-webkit-scrollbar {
+      background: #D8D8D8;
+      height: 2px;
+      border-radius: 1px;
+    }
+    .module-product::-webkit-scrollbar-thumb {
+      background-color: #CC3305;
+    }
+    .halloween-module>p:nth-child(2){
+      padding-bottom:8px;
+    }
+  }

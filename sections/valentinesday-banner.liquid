@@ -1,0 +1,26 @@
+  <div class="fn-subscription-button">
+    {% if section.settings.subscription_icon != blank %}
+    {% assign image = section.settings.subscription_icon | img_url: '120x' %}
+       <img class="fn-valentinesday-subscription_icon" onclick="myFunction('0')" src="{{ image }}" alt="">
+{% endif %}
+  </div>
+{% schema %}
+  {
+    "name": "subscription",
+    "settings": [
+         {
+			"type": "image_picker",
+			"id": "subscription_icon",
+			"label": {
+				"en": "subscription icon"
+			}
+		}
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

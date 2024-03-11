@@ -1,0 +1,328 @@
+<div class="fn-pattern-content">
+    <div class="fn-pattern-lsit" id="fn-pattern-on">
+         <div class="fn-pattern-Progress">
+             <div class="fn-Progress-banner">
+                {% if section.settings.Progress_banner != blank %}
+                   {% assign image = section.settings.Progress_banner | img_url: '1195x' %}
+                   <img class="fn-Progress-bannerimg" src="{{ image }}" alt="">
+                {% endif %}
+                 <div class="fn-Progress-bannermain">
+                       <div class="fn-Progress-Collection">
+                         <div id="Progress_time">{{ section.settings.countdown_times}}</div>
+                             <div class="fn-Collection-time">
+                                 <div class="times_text t">{{ section.settings.countdown_title }}</div>
+                                 <div class="fn-times_nav_format">
+                               
+                                 <div class="fn-time-format"><span class="days format_span">00</span>
+                                   <p>
+                                   <span class="format_D">Days</span>
+                                   <img class="fn-Progress-bannerimg_times" src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/130.png?v=1667283422" alt="">
+                                 </p></div><div class="fn-little"> : </div>
+                                 <div class="fn-time-format"><span class="hour format_span">00</span><p>
+                                   <span class="format_D">Hours</span>
+                                   <img class="fn-Progress-bannerimg_times" src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Hours.png?v=1667283422" alt="">
+                                 </p></div><div class="fn-little"> : </div>
+                                 <div class="fn-time-format"><span class="minute format_span">00</span>
+                                   <p>
+                                    <span class="format_D">Hours</span>
+                                   <img class="fn-Progress-bannerimg_times" src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Minutes.png?v=1667283422" alt="">
+                                 </p></div><div class="fn-little"> : </div>
+                                 <div class="fn-time-format"><span class="second format_span">00</span>
+                                   <p>
+                                     <span class="format_D">Seconds</span>
+                                   <img class="fn-Progress-bannerimg_times" src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Seconds.png?v=1667283422" alt="">
+                                   </p></div> 
+                                   </div>
+                           </div>
+                           <div class="times_text t">{{ section.settings.countdown_text}}</div>
+                       </div>
+                 </div>
+            </div>
+            <div class="fn-Progress-main">
+              {% for block in section.blocks %}
+              {% if block.type == "Progress" %}
+                        {%- for product in block.settings.collection_Progress.products limit: 12 -%}
+                            <div class="fn-Progress-list">
+                              {% render 'fn-Progress-product',
+                                  card_product: product,
+                                  limit: 4,
+                                  lazy_load: lazy_load
+                              %}
+                            </div>
+                        {%- endfor -%}
+              {% endif %}
+            {% endfor %}
+            </div>
+           <div class="fn-targetvalue_text">{{ section.settings.targetvalue_text }}</div>
+         </div>
+         <!--      点赞弹窗 -->
+         <div class="fn-Progress-body">
+           {{  section.settings.popupwindow_like }}
+           {{  section.settings.cancel_like }}
+         </div>
+    </div>
+    <div class="fn-pattern-lsit">
+       <div class="fn-lookback-mains">
+              {% for block in section.blocks %}
+              {% if block.type == "lookback" %}
+                <div  class="fn-lookback-cluom">
+                       <div class="fn-lookback-head">
+                           <div class="fn-lookback-cut">
+                              <div class="swiper-button-lookbackprev"></div>
+                             <div class="swiper-button-lookbacknext"></div>
+                          </div>
+                             <div class="fn-lookback-title t">{{ block.settings.lookback_Pasttitle}}</div>
+                      </div>
+                  <div class="fn-lookback-main">
+                    <div class="swiper-container fn-swiper-pastcontainer swiper-no-swiping">
+                      <div class="swiper-wrapper fn-swiper-frame">
+                        {%- for product in block.settings.document_collection.products limit: 12 -%}
+                            <div class="swiper-slide fn-lookback-slidelist">
+                              {% render 'fn-Pattern-product',
+                                  card_product: product,
+                                  limit: 4,
+                                  lazy_load: lazy_load
+                              %}
+                            </div>
+                        {%- endfor -%}
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+ <!--    售卖 -->
+   <div class="fn-pattern-lsit">
+        <div class="fn-pattern-onsale">
+            <div class="fn-onsale-banner">
+                {% if section.settings.onsale_banner != blank %}
+                   {% assign image = section.settings.onsale_banner | img_url: '1195x' %}
+                   <img class="fn-aboutus-bannerimg" src="{{ image }}" alt="">
+                {% endif %}
+                 <div class="fn-onsale--bannermain">
+                     <div class="t fn-onsale-bannertitle">{{  section.settings.onsale_title }}</div>
+                     <div class="fn-onsale-bannertext">{{  section.settings.onsale_text }}</div>
+                 </div>
+            </div>
+            <div class="fn-onsale-main">
+                   {% for block in section.blocks %}
+                      {% if block.type == "OnSale" %}
+                        {%- for onSale_product in block.settings.collection_onSale.products limit: 12 -%}
+                        <div class="fn-onsale-list">
+                            {% render 'fn-onsale-product',
+                            card_product: onSale_product,
+                            limit: 4,
+                            lazy_load: lazy_load
+                            %}
+                        </div>
+                        {%- endfor -%}
+              {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+  </div>
+ <script>
+     var index_times = $('#Progress_time').text();
+     //获取元素
+  
+     var days  = document.querySelector(".days");
+     var hour = document.querySelector(".hour");
+     var minute = document.querySelector(".minute");
+     var second = document.querySelector(".second");
+     //获取截止时间的时间戳（单位毫秒）
+     var inputTime = +new Date(""+ index_times);
+     //我们先调用countDown函数，可以避免在打开界面后停一秒后才开始倒计时
+     countDown();
+     //定时器 每隔一秒变化一次
+     var timer_s = setInterval(countDown, 1000);
+     function countDown() {
+         //获取当前时间的时间戳（单位毫秒）
+         var nowTime = +new Date();
+         //把剩余时间毫秒数转化为秒
+         var times = (inputTime - nowTime) / 1000;
+         if (times > 0) {
+            var d = Math.floor(times /60 / 60 / 24 );
+         //计算小时数 转化为整数
+         //如果小时数小于 10，要变成 0 + 数字的形式 赋值给盒子
+         days.innerHTML = d < 10 ? "0" + d : d;
+         var h = Math.floor(times /60 / 60 % 24 );
+         //计算小时数 转化为整数
+         //如果小时数小于 10，要变成 0 + 数字的形式 赋值给盒子
+         hour.innerHTML = h < 10 ? "0" + h : h;
+         //计算分钟数 转化为整数
+         var m = parseInt(times / 60 % 60);
+         //如果分钟数小于 10，要变成 0 + 数字的形式 赋值给盒子
+         minute.innerHTML = m < 10 ? "0" + m : m;
+         //计算描述 转化为整数
+         var s = parseInt(times % 60);
+         // //如果秒钟数小于 10，要变成 0 + 数字的形式 赋值给盒子
+         second.innerHTML = s < 10 ? "0" + s : s;
+         } else {
+           clearInterval(timer_s); 
+         }
+     }
+ </script>
+  <script>
+     var mySwiper_past = new Swiper('.fn-lookback-main>.fn-swiper-pastcontainer', {
+        slidesPerView: 3,//首页展示几个
+        slidesPerGroup: 3,
+        observer: true,
+        observeParents: true,
+        navigation: {
+         nextEl: '.swiper-button-lookbacknext',
+         prevEl: '.swiper-button-lookbackprev',
+       },
+       spaceBetween: 20,
+       breakpoints:{
+                480:{
+                    slidesPerView: 1,
+                    slidesPerGroup: 1,
+                },
+                1250:{
+                    slidesPerView: 2,
+                    slidesPerGroup: 2
+                }
+            }
+     });
+ </script>
+ {% schema %}
+   {
+     "name": "vote pattern",
+     "settings": [
+         {
+             "type": "image_picker",
+             "id": "Progress_banner",
+             "label": {
+                 "en": "Progress banner",
+                 "zh-CN": "众筹中图片"
+             }
+         },
+                {
+             "type": "text",
+             "id": "countdown_title",
+             "label": {
+                 "en": "countdown title ",
+                 "zh-CN": "文本标题"
+             }
+         },
+         {
+             "type": "text",
+             "id": "countdown_times",
+             "label": {
+                 "en": "countdown",
+                 "zh-CN": "倒数计时"
+             }
+         },
+          {
+             "type": "text",
+             "id": "countdown_text",
+             "label": {
+                 "en": "banner text",
+                 "zh-CN": "banner文本"
+             }
+         },
+         {
+             "type": "image_picker",
+             "id": "onsale_banner",
+             "label": {
+                 "en": "on sale banner",
+                 "zh-CN": "图片"
+             }
+         },
+         {
+             "type": "text",
+             "id": "onsale_title",
+             "label": {
+                 "en": "on sale title ",
+                 "zh-CN": "文本标题"
+             }
+         },
+         {
+             "type": "text",
+             "id": "onsale_text",
+             "label": {
+                 "en": "on sale text ",
+                 "zh-CN": "文本"
+             }
+         },
+          {
+             "type": "html",
+             "id": "popupwindow_like",
+             "label": {
+                 "en": "like popup window",
+                 "zh-CN": "点赞弹窗"
+             }
+         },
+          {
+             "type": "text",
+             "id": "targetvalue_text",
+             "label": {
+                 "en": "The target value",
+                 "zh-CN": "目标数值"
+             }
+         }
+     ],
+   "blocks": [
+     {
+       "type": "Progress",
+       "name": {
+         "en": "Voting in Progress",
+         "zh-CN": "众筹中"
+       },
+       "settings": [
+          {
+            "type":"collection",
+            "id":"collection_Progress",
+            "label":"Collection"
+        }
+       ]
+     },
+      {
+       "type": "lookback",
+       "name": {
+         "en": "Past Issues Pattern",
+         "zh-CN": "往期回顾"
+       },
+       "settings": [
+        {
+            "type":"collection",
+            "id":"document_collection",
+            "label":"Collection"
+        },
+           {
+           "type":"text",
+           "id":"lookback_Pasttitle",
+           "label":{
+           "en":"Past the title",
+           "zh-CN":"标题"
+           }
+         }
+       ]
+     },
+     {
+       "type": "OnSale",
+       "name": {
+         "en": "On Sale",
+         "zh-CN": "售卖"
+       },
+       "settings": [
+        {
+            "type":"collection",
+            "id":"collection_onSale",
+            "label":"Collection"
+        }
+       ]
+     }
+   ]
+   }
+ {% endschema %}
+ 
+ {% stylesheet %}
+ {% endstylesheet %}
+ 
+ {% javascript %}
+ {% endjavascript %}

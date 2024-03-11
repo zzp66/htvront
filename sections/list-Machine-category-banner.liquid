@@ -1,0 +1,214 @@
+{{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+.fn-collection-banner {
+    padding: 30px 0px 0 0px;
+    margin: 0 auto;
+<!--     max-width: 1600px; -->
+}
+ .fn-collection-banner .collection-hero__title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333333;
+}
+.fn-rte {
+    font-size: 14px;
+    font-weight: 400;
+    color: #333333;
+    line-height: 20px;
+}
+.fn-container-iamge img {
+    width: 100%;
+}
+.collection-hero__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.fn-collection-hero__text-wrapper {
+    width: 60%;
+}
+.fn__image-container {
+    width: 40%;
+    padding: 0 20px 0 50px;
+}
+@media screen and (min-width: 1450px) {
+.fn-collection-banner .collection-hero__title {
+    margin-bottom: 0 !important;
+}
+}
+@media screen and (min-width: 1251px) and (max-width: 1620px) {
+.fn-collection-banner {
+    padding: 55px 20px 0 20px;
+}
+.fn-collection-banner .collection-hero__title {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+.fn-collection-banner .fn-rte {
+    font-size: 16px;
+}
+.fn-collection-banner .fn__image-container {
+    padding: 0px 20px 20px 20px;
+}
+}
+@media screen and (min-width: 992px) and (max-width: 1250px) {
+.fn-collection-banner .collection-hero__title {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+.fn-collection-banner {
+    padding: 50px 50px;
+}
+.fn-collection-banner .fn-rte {
+    font-size: 14px;
+    line-height: 20px;
+}
+.fn-collection-banner .fn__image-container {
+    padding: 0px 15px 20px 20px;
+}
+}
+@media screen and (min-width: 768px) and (max-width: 991px){
+.fn-collection-banner .collection-hero__title {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+.fn-collection-banner {
+    padding: 50px 50px;
+}
+.fn-collection-banner .fn-rte {
+    font-size: 14px;
+    line-height: 20px;
+}
+.fn-collection-hero__text-wrapper {
+    width: 100%;
+}
+.fn-collection-banner .fn__image-container {
+    width: 100%;
+    padding: 50px 70px 0 70px
+}
+}
+ @media screen and (max-width: 749px) {
+    .collection-hero--with-image .collection-hero__inner {
+      padding-bottom: calc({{ settings.media_shadow_vertical_offset | at_least: 0 }}px + 2rem);
+    }
+ }
+@media screen and (min-width: 480px) and (max-width: 767px){
+.fn-collection-banner .collection-hero__title {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+.fn-collection-banner {
+    padding: 20px 16px;
+}
+.fn-collection-banner .fn-rte {
+    font-size: 14px;
+    line-height: 20px;
+}
+.fn-collection-hero__text-wrapper {
+    width: 100%;
+}
+.fn-collection-banner .fn__image-container {
+    width: 100%;
+    padding: 20px 30px 0 30px;
+}
+}
+  @media screen and (min-width: 320px) and (max-width: 480px){
+.fn-collection-banner .collection-hero__title {
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+.fn-collection-banner {
+    padding: 20px 16px;
+}
+.fn-collection-banner .fn-rte {
+    font-size: 12px;
+    line-height: 20px;
+}
+.fn-collection-hero__text-wrapper {
+    width: 100%;
+}
+.fn-collection-banner .fn__image-container {
+    width: 100%;
+    padding: 20px 30px 0 30px;
+}
+}
+
+{%- endstyle -%}
+
+<div class="fn-collection-banner gradient fn-page-width">
+  <h1 class="collection-hero__title">
+        <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
+        {{- collection.title | escape -}}
+      </h1>
+  <div class="collection-hero__inner">
+    <div class="fn-collection-hero__text-wrapper">
+      {%- if section.settings.show_collection_description -%}
+        <div class="fn-rte">{{ collection.description }}</div>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.show_collection_image and collection.image -%}
+      <div class="fn__image-container">
+        <div class="fn-container-iamge">
+                <img src="{{ collection.image | img_url: '500x' }}">
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-collection-banner.name",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.main-collection-banner.settings.paragraph.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_description",
+      "default": true,
+      "label": "t:sections.main-collection-banner.settings.show_collection_description.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_image",
+      "default": false,
+      "label": "t:sections.main-collection-banner.settings.show_collection_image.label",
+      "info": "t:sections.main-collection-banner.settings.show_collection_image.info"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.all.colors.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.all.colors.accent_2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.all.colors.background_1.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.all.colors.background_2.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.all.colors.inverse.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.all.colors.label"
+    }
+  ]
+}
+{% endschema %}

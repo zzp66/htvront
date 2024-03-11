@@ -1,0 +1,185 @@
+<style>
+    li.fn-Delivery-Plan {
+    color: red !important;
+}
+  .fn-header-top-click {
+    display: flex;
+    align-items: center;
+}
+  .fn-announcement-bar {
+    background: #333333;
+  }
+  .fn-header-top{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    flex: 1;
+    flex-direction: row-reverse;
+    padding-right: 10px;
+  }
+  .fn-header-top-content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 40px;
+    color: #fff;
+    font-size: 14px;
+    position: relative;
+    cursor: pointer;
+  }
+  .fn-header-top-content span{
+    color: #fff;
+    font-size: 16px;
+  }
+  .fn-header-top-content img {
+    display: inline-block;
+    margin-right: 10px;
+  }
+.fn-header-top-content ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 14px 0px rgb(0 0 0 / 10%);
+    border-radius: 4px;
+    left: -15px;
+    width: 170px;
+    padding: 12px 0 16px 15px;
+}
+  .header-account ul {
+    left: auto;
+    width: 250px;
+    right: -100%;
+  }
+.fn-header-top-content ul li {
+    color: #333;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+}
+  .fn-header-top-content ul li + li {
+    margin-top: 18px;
+  }
+  .fn-header-top-content:hover ul {
+    display: block;
+  }
+  .fn-header-top-content ul li:hover {
+    font-family: var(--font-title-family);
+    font-style: var(--font-title-style);
+    font-weight: var(--font-title-weight);
+  }
+  .fn-header-top-content ul li a.active {
+    color: #ff7606;
+    font-family: var(--font-title-family);
+    font-style: var(--font-title-style);
+    font-weight: var(--font-title-weight);
+  }
+  @media screen and (max-width: 989px){
+    .fn-header-top {
+      justify-content: center;
+      align-items: center;
+    }
+    .fn-header-top-content {
+      display: none;
+    } 
+    .fn-header-top-content:last-child {
+      display: block;
+    }
+    .fn-header-top-content span{
+      font-size: 8px;
+    }
+  }
+</style>
+<div class="fn-page-width">
+    <div class="fn-header-top">
+        {%- if customer.email == blank -%}
+        <a href="/account/login" class="fn-header-top-content">
+            <img src="//cdn.shopify.com/s/files/1/0608/6590/4797/files/Bold_2px-person.png?v=1650261267"><span>Sign in</span>
+        </a>
+        {%- else -%}
+        <div class="fn-header-top-content header-account">
+            <div class="fn-header-top-click">
+              <img class="fn-header-top-content-icon" src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Bold_2px-person.png?v=1657006153"><span>Hi {{ customer.default_address.first_name }}</span>
+            </div>
+            <ul>
+                <li><a href="/account"><img src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/Bold_2px_person.png?v=1653443387">Manager My Account</a></li>
+<!--                 <li><a href="/blogs/blog/help-center"><img src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/Bold_2px_help_e70b7329-fd6b-4abe-a40e-214c5896ed3c.png?v=1653443387">Help Center</a></li> -->
+                <li><a href="/account/logout"><img src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/Bold_2px_logout.png?v=1653443387">Log Out</a></li>
+            </ul>
+        </div>
+        {%- endif -%}
+        {%- for block in section.blocks -%}
+        {%- if block.settings.nav_select == blank -%}
+        {%- if block.settings.text == 'My Machine' -%}
+        <div class="fn-header-top-content my-machine">
+            <div class="fn-header-top-click">
+                {%- if block.settings.icon != blank -%}
+                <img src="{{ block.settings.icon | image_url }}"/>
+                {%- endif -%}
+                <span>{{ block.settings.text }}</span>
+            </div>
+        </div>
+        {%- else -%}
+        <a href="{{ block.settings.link_url }}" class="fn-header-top-content">
+            {%- if block.settings.icon != blank -%}
+            <img src="{{ block.settings.icon | image_url }}"/>
+            {%- endif -%}
+            <span>{{ block.settings.text }}</span>
+        </a>
+        {%- endif -%}
+        {%- else -%}
+        <div class="fn-header-top-content">
+            <div class="fn-header-top-click">
+                {%- if block.settings.icon != blank -%}
+                <img src="{{ block.settings.icon | image_url }}"/>
+                {%- endif -%}
+                <span>{{ block.settings.text }}</span>
+            </div>
+            {{ block.settings.nav_select }}
+        </div>
+        {%- endif -%}
+        {%- endfor -%}
+    </div>
+</div>
+{% schema %}
+{
+  "name": "Header Top",
+  "max_blocks": 12,
+  "class": "fn-announcement-bar",
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "Header top menus",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "icon"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "link_url"
+        },
+        {
+          "type": "html",
+          "id": "nav_select",
+          "label": "Select"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "announcement"
+      }
+    ]
+  }
+}
+{% endschema %}

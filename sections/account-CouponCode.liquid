@@ -1,0 +1,89 @@
+
+<div class="fn-MemberPoints">
+  <div class="t fn-my-account-title">My Coupon Code</div>
+  <div>
+    <ul class="fn-fn-MemberPoints-discount">
+      {% for block in section.blocks %}
+      <li>
+        <div>{{ block.settings.Code_discount }}</div>
+        <div>{{ block.settings.Code_price }}</div>
+        <div>{{ block.settings.Code_time }}</div>
+        <div>{{ block.settings.Code_condition }}</div>
+        <div>{{ block.settings.Code_conditions }}</div>
+        <div type="text" id="content-{{block.id}}" class="fn-fn-MemberPoints-button">{{ block.settings.Code_button }} <img id="copyBtn" data-clipboard-target="#content-{{block.id}}" src="https://cdn.shopifycdn.net/s/files/1/0608/6590/4797/files/Bold_2px_copy.png?v=1651059828" alt=""></div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+<script>
+$(document).ready(function(){
+  var clipboard = new ClipboardJS('#copyBtn');
+});
+</script>
+{% schema %}
+  {
+    "name": "My Coupon Code",
+    "settings": [
+    ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": {
+        "en": "text",
+        "zh-CN": "文本"
+      },
+      "settings": [
+        {
+          "type": "text",
+          "id": "Code_discount",
+          "label": {
+            "en": "discount Title",
+            "zh-CN": "折扣标题"
+          }
+        },
+        {
+          "type": "text",
+          "id": "Code_price",
+          "label": {
+            "en": "discount price",
+            "zh-CN": "折扣价"
+          }
+        },
+        {
+          "type": "text",
+          "id": "Code_condition",
+          "label": {
+            "en": "condition",
+            "zh-CN": "条件"
+          }
+        },
+        {
+          "type": "text",
+          "id": "Code_conditions",
+          "label": {
+            "en": "condition",
+            "zh-CN": "条件"
+          }
+        },
+        {
+          "type": "text",
+          "id": "Code_time",
+          "label": {
+            "en": "time",
+            "zh-CN": "时间"
+          }
+        },
+        {
+          "type": "text",
+          "id": "Code_button",
+          "label": {
+            "en": "copy button",
+            "zh-CN": "复制按钮"
+          }
+        }
+      ]
+    }
+  ]
+  }
+{% endschema %}

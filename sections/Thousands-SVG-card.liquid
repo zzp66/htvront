@@ -1,0 +1,677 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} .Thousand-svg{
+    background: {{ section.settings.bg_color }};
+    padding-bottom:20px
+  }
+  #shopify-section-{{ section.id }} .Thousand-product-items .fn-product-price span{
+    color:{{ section.settings.price_color }};
+  }
+  #shopify-section-{{ section.id }} .Thousand-product-items .button--full-width{
+    color:{{ section.settings.add_color }};
+    background: {{ section.settings.add_color_bg }};
+    border:1px solid {{ section.settings.add_color_border }}
+  }
+  #shopify-section-{{ section.id }} .Thousand-down{
+    color:{{ section.settings.svg_color }};
+    background: {{ section.settings.svg_color_bg }};
+    border:1px solid {{ section.settings.svg_color_border }}
+  }
+  #shopify-section-{{ section.id }} .Thousand-product-items .fn-product-title .t{
+    color:{{section.settings.product_title_color}}
+  }
+  {% if section.settings.layout %}
+      #shopify-section-{{ section.id }} .Thousand-svg-content{
+        flex-direction: row-reverse;
+      }
+       #shopify-section-{{ section.id }} .Thousand-svg-card{
+        margin:0 0 0 20px
+      }
+      #shopify-section-{{ section.id }} .Thousand-card-image{
+        margin: 0 0 0 auto;
+      }
+      #shopify-section-{{ section.id }} .Thousand-product-extend{
+        right: -59px;
+        transform: translateY(-50%) rotate(180deg);
+        left:auto
+      }
+  {% endif %}
+    @media screen and (max-width: 1366px){
+      #shopify-section-{{ section.id }} .Thousand-product{
+            display:flex;
+            justify-content: center;
+      }
+      #shopify-section-{{ section.id }} .Thousand-svg-card{
+        margin:0 0 20px 0
+      }
+      #shopify-section-{{ section.id }} .Thousand-product-items{
+        margin-right:20px;
+        height: auto;
+      }
+      #shopify-section-{{ section.id }} .Thousand-product-items:nth-child(2n){
+        margin-right:0px
+      }
+    }
+  @media screen and (max-width:750px){
+    #shopify-section-{{ section.id }} .Thousand-svg{
+      background: {{ section.settings.bg_color }};
+      padding-bottom:10px
+    }
+  }
+{%- endstyle -%}
+<style>
+    .Thousand-svg-content{
+      width:83.3%;
+      background: #FFFFFF;
+      border-radius: 10px;
+      padding:20px;
+      margin:0 auto;
+      overflow: hidden;
+      display: flex;
+    }
+    .Thousand-svg-card,.Thousand-svg-btn{
+      position: relative;
+    }
+    .Thousand-svg-card{
+      margin-right:20px;
+      flex:1
+    }
+    .Thousand-svg-down,.Thousand-svg-close{
+      position: absolute;
+    }
+  /*   .Thousand-card-image{
+      width:calc(100% - 405px)
+    } */
+    .Thousand-svg-close{
+      border-radius:50%;
+      text-align:center;
+      background: #FFFFFF;
+      right: -10px;
+      top: -10px;
+      cursor: pointer;
+    }
+    .Thousand-svg-btn{
+      background: #FFFFFF;
+      box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.11);
+      border-radius: 4px;
+      padding: 6px 6px 10px;
+      left: 0;
+      top: -236px;
+      display:none
+    }
+    .Thousand-down{
+      box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.11);
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 36px;
+      text-align:center;
+      margin-top:10px;
+      cursor: pointer;
+      --border-opacity: none;
+      --border-offset: none;
+    }
+    .Thousand-svg-product{
+      background: #FFFFFF;
+      padding:0;
+      width:405px
+    }
+    .Thousand-product-items{
+      display:flex;
+      margin-bottom:20px
+    }
+    .Thousand-product-items:nth-child(2n){
+      margin-bottom:0;
+    }
+    .Thousand-product-items .img-first{
+      margin-right:13px
+    }
+    .Thousand-product-items .fn-product-title,.Thousand-product-items .fn-product-price{
+      width:100%
+    }
+    .Thousand-product-items .fn-product-title .t{
+      font-size: 14px;
+      font-weight: bold;
+      max-height: 57px;
+      height:auto;
+      -webkit-line-clamp: 3;
+      color: #333333;
+    }
+    .Thousand-product-items .fn-product-price{
+      margin:18px 0 11px 0
+    }
+    .Thousand-product-items .fn-product-price span{
+      float:initial;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .Thousand-product-items .fn-compareat_price{
+      flex-direction: initial;
+      align-items: baseline;
+
+    }
+    .Thousand-product-items .fn-compareat_price .fn-compare-at_price{
+      font-size: 14px;
+      font-weight: 400;
+      margin-left:5px
+    }
+    .Thousand-product-items .button--full-width{
+      border-radius: 6px;
+      height:40px;
+      line-height:40px;
+      font-size: 14px;
+      padding-left:0;
+      padding-right:0;
+       --border-opacity: none;
+      --border-offset: none;
+      width: calc(100% - 2px);
+      min-height:40px
+    }
+    .Thousand-product-extend{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: -59px;
+      cursor: pointer;
+    }
+    .Thousand-product-extend .arrow-left,.Thousand-product-extend .arrow-right{
+      margin:0 auto
+    }
+    .Thousand-product-extend .arrow-left,.Thousand-svg-item{
+      display:none
+    }
+  .Thousand-svg .show-in-mobile{
+    display:none
+  }
+  .Thousand-svg-icon{
+    animation:flicker 1s ease 0s infinite alternate
+  }
+  @keyframes flicker{
+    0% {transform:scale(0.8)}
+    100%{transform:scale(1.1)}
+  }
+  @media screen and (max-width: 1560px){
+    .Thousand-product{
+        width:100%
+      }
+    .Thousand-product-items{
+        margin-bottom: 1%;
+
+      }
+  }
+    @media screen and (max-width: 1440px){
+      .Thousand-svg-content{
+        width:84%
+      }
+      .Thousand-product-items{
+        margin-bottom: 1%;
+        height:160px
+      }
+      .Thousand-svg-product{
+        width:305px
+      }
+    }
+  @media screen and (max-width: 1366px){
+    .Thousand-svg-down,.Thousand-product-extend{
+      display:none
+    }
+
+    .Thousand-svg-item{
+      display:block
+    }
+     .Thousand-svg-content{
+      padding-bottom:32px;
+      display: block;
+       flex:1
+    }
+    .Thousand-card-image,.Thousand-svg-product{
+      width:100%;
+    }
+    .Thousand-svg-item{
+      position:absolute;
+      display: flex;
+      bottom: 10px;
+      right:0
+    }
+    .Thousand-svg-image{
+      position: relative;
+      margin-right:10px;
+      background: rgba(241,241,241,0.8);
+      border-radius: 4px;
+    }
+    .Thousand-down-icon{
+      position:absolute;
+      bottom: 3px;
+      right:3px;
+      background-color: #ffffff;
+      box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2);
+      border-radius: 2px;
+      padding: 3px 5px;
+    }
+     .Thousand-svg .swiper-scrollbar{
+       position:absolute;
+       width: calc(100% - 40px);
+       height: 5px;
+       margin: 0 auto;
+       background: #D8D8D8;
+       bottom: 10px;
+     }
+     .Thousand-svg .swiper-scrollbar-drag{
+        background: #333333
+     }
+    .Thousand-product-items{
+      display:block;
+      margin-bottom:0
+    }
+    .Thousand-product-items .img-first{
+      width:100%;
+      margin-right:0;
+      margin-bottom:10px
+    }
+    .Thousand-product-items .fn-product-price span{
+      line-height:21px
+    }
+    .Thousand-product-items .fn-product-price{
+      margin-top:10px
+    }
+    .Thousand-product-items .fn-product-title .t{
+      min-height: 38px;
+    }
+
+  }
+   @media screen and (max-width:750px){
+    .Thousand-product-items .fn-product-title .t{
+      height: 57px;
+    }
+     .Thousand-product-items .fn-product-price span{
+       line-height:22px
+     }
+     .Thousand-svg-content{
+       width:93.6%;
+       padding:9px 10px 32px 9px;
+       border-radius:0
+     }
+     .Thousand-svg-item{
+       bottom:4px
+     }
+     .Thousand-svg-image{
+       margin-right:4px;
+     }
+    .Thousand-svg .show-in-mobile{
+      display:block
+    }
+     .Thousand-svg .show-in-pc{
+        display: none;
+    }
+     .Thousand-product-items .button--full-width{
+       min-width: calc(100% - 2px);
+       min-height:40px
+     }
+   }
+</style>
+<div class="Thousand-svg" id="{{ section.settings.card_id }}">
+  <div class="Thousand-svg-content">
+    <div class="Thousand-svg-card">
+      {% if section.settings.show_image != blank %}
+        <img
+          class="Thousand-card-image show-in-pc"
+          src="{{ section.settings.show_image | img_url:'1135x' }}"
+          alt="{{section.settings.show_image.alt | escape }}"
+        >
+      {% endif %}
+      {% if section.settings.show_image_mobile != blank %}
+        <img
+          class="Thousand-card-image show-in-mobile"
+          src="{{ section.settings.show_image_mobile | img_url:'750x' }}"
+          alt="{{section.settings.show_image.alt | escape }}"
+        >
+      {% endif %}
+      {% for block in section.blocks %}
+        {% if block.type == 'svg' %}
+          <div class="Thousand-svg-down" style="left:{{ block.settings.svg_left }}%;top:{{  block.settings.svg_top }}%">
+            <img
+              class="Thousand-svg-icon"
+              src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/5_2.png?v=1684117224"
+            >
+            {% if block.settings.svg_box == 'bottom' %}
+              {% assign top = 'auto' %}
+              {% assign bottom = '-10px' %}
+            {% else %}
+              {% assign top = '-236px' %}
+              {% assign bottom = 'auto' %}
+            {% endif %}
+            <div class="Thousand-svg-btn" style="top:{{top}};bottom:{{ bottom }}">
+              <div>
+                <img src="{{ block.settings.svg_image | img_url:'130x' }}">
+                <div
+                  class="Thousand-down svg-down-{{  block.settings.svg_id }}"
+                  onclick="downSvg('{{  block.settings.svg_id }}')"
+                  id="{{ block.settings.svg_id }}"
+                >
+                  Download SVG
+                  <div data-title="SVG" style="display: none;">
+                    {{ block.settings.svg }}
+                  </div>
+                </div>
+
+                <div class="Thousand-svg-close">
+                  <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/7_1_b09d3dbf-6d63-48b6-8dc4-062450fed661.png?v=1684117231">
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+      <div class="Thousand-svg-item">
+        {% for block in section.blocks %}
+          {% if block.type == 'svg' %}
+            <div class="Thousand-svg-image">
+              <img src="{{ block.settings.svg_image | img_url:'60x' }}">
+              <div
+                class="Thousand-down-icon svg-down-{{  block.settings.svg_id }}"
+                onclick="downSvg('{{  block.settings.svg_id }}')"
+                id="{{ block.settings.svg_id }}"
+              >
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/2_b3727fe5-44ff-473d-afdb-650ff503c3e5.png?v=1684206550"
+                >
+                <div data-title="SVG" style="display: none;">
+                  {{ block.settings.svg }}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="Thousand-svg-product items_{{ section.id }}">
+      <div class="Thousand-product">
+        {% for block in section.blocks %}
+          {% if block.type == 'product' %}
+            <div class="Thousand-product-items">
+              <img
+                class="img-first"
+                src="{{ block.settings.product.featured_media | img_url: '206x' }}"
+                alt="{{ block.settings.product.featured_media.alt | escape }}"
+                loading="lazy"
+              >
+              <div>
+                <div class="fn-product-title">
+                  <a href="{{ block.settings.product.url }}" class="t">{{ block.settings.product.title | escape }}</a>
+                </div>
+                <div class="fn-product-price">
+                  {% render 'sffers-price', product: block.settings.product, price_class: '' %}
+                </div>
+                <product-form class="product-form">
+                  <div class="product-form__error-message-wrapper" role="alert" hidden>
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      role="presentation"
+                      class="icon icon-error"
+                      viewBox="0 0 13 13"
+                    >
+                      <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+                      <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+                      <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+                      <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+                    </svg>
+                    <span class="product-form__error-message"></span>
+                  </div>
+
+                  {%- form 'product',
+                    block.settings.product,
+                    id: product_form_id,
+                    class: 'form',
+                    novalidate: 'novalidate',
+                    data-type: 'add-to-cart-form'
+                  -%}
+                    <input
+                      type="hidden"
+                      name="id"
+                      value="{{ block.settings.product.selected_or_first_available_variant.id }}"
+                      disabled
+                    >
+                    <div class="product-form__buttons">
+                      {% unless block.settings.product.tags contains 'wc_combo_bundle_cta' %}
+                        <button
+                          type="submit"
+                          name="add"
+                          id="campaign_{{ block.settings.product.id }}"
+                          onclick="addCartbundle('{{ block.settings.product.selected_or_first_available_variant.id }}')"
+                          class="product-form__submit button button--full-width {% if block.settings.show_dynamic_checkout and block.settings.product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}"
+                          {% if block.settings.product.selected_or_first_available_variant.available == false %}
+                            disabled
+                          {% endif %}
+                        >
+                          <span class="t">
+                            {%- if block.settings.product.selected_or_first_available_variant.available -%}
+                              <!-- {{ 'products.product.add_to_cart' | t }} -->
+                              Add To Cart
+                            {%- else -%}
+                              {{ 'products.product.sold_out' | t }}
+                            {%- endif -%}
+                          </span>
+                          <div class="loading-overlay__spinner hidden">
+                            <svg
+                              aria-hidden="true"
+                              focusable="false"
+                              role="presentation"
+                              class="spinner"
+                              viewBox="0 0 66 66"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                            </svg>
+                          </div>
+                        </button>
+                      {% endunless %}
+
+                      {% if block.settings.product.tags contains 'wc_combo_bundle_cta' %}
+                        <a href="{{ block.settings.product.url }}">
+                          <div class="button button--full-width button--primary"><strong>Add To Cart</strong></div>
+                        </a>
+                      {% endif %}
+
+                      {%- if block.settings.show_dynamic_checkout -%}
+                        {{ form | payment_button }}
+                      {%- endif -%}
+                    </div>
+                  {%- endform -%}
+                </product-form>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  var userEmail='{{ customer.email }}';
+  var mySwiper = new Swiper('#swiper-container_{{ section.id }}',{
+    slidesPerView : 3,
+    spaceBetween :20,
+    scrollbar: {
+       el: '#stories-swiper-scrollbar_{{ section.id }}',
+    },
+    breakpoints:{
+      750: {
+              slidesPerView: 2.1,
+              spaceBetween: 6,
+          }
+    }
+  })
+  //加入购物车
+  function addCartbundle(id){
+            $.ajax({
+                      type:'GET',
+                      dataType:'jsonp',
+                      jsonp :'callback',
+                      url: 'https://qn.htvront.com/htvront-thousands-page-entity/page',
+                      data: {userEmail: userEmail,pageName:'{{page_title}}',productId:id}
+           });
+   }
+  //悬浮产品块显示隐藏
+    function showProduct(id){
+      if($('.items_'+id)[0].classList.contains('is-opened')){
+         $('.items_'+id)[0].classList.remove('is-opened')
+         $('.items_'+id)[0].classList.add('is-close')
+         $('.item_'+id).eq(0).children('.arrow-right').show()
+         $('.item_'+id).eq(0).children('.arrow-left').hide()
+      }else{
+         $('.items_'+id)[0].classList.add('is-opened')
+         $('.items_'+id)[0].classList.remove('is-close')
+         $('.item_'+id).eq(0).children('.arrow-right').hide()
+         $('.item_'+id).eq(0).children('.arrow-left').show()
+      }
+  }
+  //显示svg下载图标
+  $('.Thousand-svg-icon').on('mouseenter', function(e){
+       if(document.body.clientWidth <= 1366) return
+       $(this).siblings('.Thousand-svg-btn').show()
+  })
+  //关闭svg下载图标
+  $('.Thousand-svg-close').on('click',function(){
+    $(this).parent().parent().hide()
+  })
+  //下载SVG
+  function downSvg(id){
+   let content = $('.svg-down-'+id).eq(0).children(":last-child").html();
+    fetch(content).then(res=>res.blob()).then(blob=>{
+      const a = document.createElement('a');
+      const url = window.URL.createObjectURL(blob);
+      a.download = 'svg'
+      a.href = url
+      a.click()
+      window.URL.revokeObjectURL(url);
+      a.remove()
+      $.ajax({
+                  type:'GET',
+                  dataType:'jsonp',
+                  jsonp :'callback',
+                  url: 'https://qn.htvront.com/htvront-thousands-page-entity/page',
+                  data: {userEmail: userEmail,pageName:'{{page_title}}',productId:id}
+           });
+    })
+  }
+</script>
+{% schema %}
+{
+  "name": "Thousand SVG card",
+  "settings": [{
+            "type":"color",
+            "id":"bg_color",
+            "label":"背景颜色"
+        },{
+              "type": "checkbox",
+              "id": "layout",
+              "label": "image right"
+            },{
+          "type": "image_picker",
+          "id": "show_image",
+          "label": "image"
+        },{
+          "type": "image_picker",
+          "id": "show_image_mobile",
+          "label": "image_mobile"
+        },{
+           "type":"text",
+            "id":"card_id",
+            "label":"id(与banner对应一致)"
+        },{
+          "type":"color",
+          "id":"price_color",
+          "label":"price_color"
+        },{
+          "type":"color",
+          "id":"product_title_color",
+          "label":"product_title_color"
+        },{
+          "type":"color",
+          "id":"add_color",
+          "label":"add_color"
+        },{
+          "type":"color",
+          "id":"add_color_bg",
+          "label":"add_color_bg"
+        },{
+          "type":"color",
+          "id":"add_color_border",
+          "label":"add_color_border"
+        },{
+          "type":"color",
+          "id":"svg_color",
+          "label":"svg_color"
+        },{
+          "type":"color",
+          "id":"svg_color_bg",
+          "label":"svg_color_bg"
+        },{
+          "type":"color",
+          "id":"svg_color_border",
+          "label":"svg_color_border"
+        }],
+  "blocks":[{
+    "type": "product",
+    "name": "product",
+    "settings": [{
+          "type": "product",
+          "id": "product",
+          "label": "product"
+        }
+    ]
+  },{
+    "type": "svg",
+    "name": "svg",
+    "settings": [{
+          "type": "image_picker",
+          "id": "svg_image",
+          "label": "image"
+        },{
+    			"type": "html",
+    			"id": "svg",
+    			"label": "SVG"
+    	},{
+    			"type": "text",
+    			"id": "svg_id",
+    			"label": "SVG id (整个块唯一性,格式svg_)"
+    	},{
+            "type":"number",
+            "id":"svg_left",
+            "label":"按钮位置left(%)",
+            "default": 1
+        },{
+            "type":"number",
+            "id":"svg_top",
+            "label":"按钮位置top(%)",
+            "default": 1
+        },{
+    			"type": "select",
+    			"id": "svg_box",
+    			"label": "弹出框位置",
+                "options": [
+                  {
+                    "value": "top",
+                    "label": "居上"
+                  },
+                  {
+                    "value": "bottom",
+                    "label": "居下"
+                  }
+                ],
+                "default": "top"
+    	}]
+  }],
+  "presets": [
+  {
+    "name": "Thousand SVG card"
+  }
+]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

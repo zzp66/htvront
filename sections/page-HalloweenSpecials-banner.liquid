@@ -1,0 +1,141 @@
+<style>
+.fn-bannermain_bottom-right, .fn-bannermain_bottom-left {
+  position: relative;
+}
+  .fn-bannermain_bottom_a {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+  .fn-bannermain_bottom-left {
+    margin-right: 65px;
+}
+</style>
+<div class="fn-HalloweenSpecials-banner">
+    {% if section.settings.Specials_banner != blank %}
+        {% assign image = section.settings.Specials_banner | img_url: '1920x' %}
+        <img class="fn-Specials-bannerimg fn-Specials-bannerimg_pc" src="{{ image }}" alt="">
+    {% endif %}
+    {% if section.settings.bannerimg_mobile != blank %}
+        {% assign image = section.settings.bannerimg_mobile | img_url: '375x' %}
+        <img class="fn-Specials-bannerimg fn-Specials-bannerimg_mobile" src="{{ image }}" alt="">
+    {% endif %}
+  <a name="topAnchor"></a>
+    <div class="fn-Specials-bannermain">
+      <div class="fn-Specials-bannermain_top">
+        <div class="fn-Specials-bannermain_toptitle t">{{ section.settings.top_title }}</div>
+        <div class="fn-Specials-bannermain_text">{{ section.settings.top_text }}</div>
+        <div class="fn-Specials-bannermain_button" onclick="myFunction('0')">View video</div>
+      </div>
+    </div>
+    <div class="fn-Specials-bannermain_a">
+      <div class="fn-Specials-bannermain_bottom">
+        <div class="fn-bannermain_bottom-left">
+            {% if section.settings.bottomleft_img != blank %}
+                {% assign image = section.settings.bottomleft_img | img_url: '513x' %}
+                  <img class="fn-Specials-bannerimg" src="{{ image }}" alt="">
+            {% endif %}
+            <div class="fn-bannermain_bottom_a">
+                <div class="fn-Specials-bannermain_bottomtitle t">{{ section.settings.bottomleft_title }}</div>
+                <div class="fn-Specials-bannermain_bottomtext">{{ section.settings.bottomleft_text }}</div>
+                <div class="fn-Specials-bannermain_button" onclick="myFunction('1')">View video</div>
+            </div>
+        </div>
+        <div class="fn-bannermain_bottom-right">
+            {% if section.settings.bottomright_img != blank %}
+                {% assign image = section.settings.bottomright_img | img_url: '513x' %}
+                <img class="fn-Specials-bannerimg" src="{{ image }}" alt="">
+            {% endif %}
+            <div class="fn-bannermain_bottom_a">
+                <div class="fn-Specials-bannermain_bottomtitle t">{{ section.settings.bottomright_title }}</div>
+                <div class="fn-Specials-bannermain_bottomtext">{{ section.settings.bottomright_text }}</div>
+                <div class="fn-Specials-bannermain_button" onclick="myFunction('2')">View video</div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Halloween Specials banner",
+    "settings": [
+          {
+			"type": "image_picker",
+			"id": "Specials_banner",
+			"label": {
+				"en": "Halloween Specials banner"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "bannerimg_mobile",
+			"label": {
+				"en": "bannerimg mobile"
+			}
+		},
+        {
+			"type": "text",
+			"id": "top_title",
+			"label": {
+				"en": "title"
+			}
+		},
+        {
+			"type": "text",
+			"id": "top_text",
+			"label": {
+				"en": "text"
+			}
+		},
+        {
+			"type": "text",
+			"id": "bottomleft_title",
+			"label": {
+				"en": "title"
+			}
+		},
+        {
+			"type": "text",
+			"id": "bottomleft_text",
+			"label": {
+				"en": "text"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "bottomleft_img",
+			"label": {
+				"en": "The left background"
+			}
+		},
+        {
+			"type": "text",
+			"id": "bottomright_title",
+			"label": {
+				"en": "title"
+			}
+		},
+        {
+			"type": "text",
+			"id": "bottomright_text",
+			"label": {
+				"en": "text"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "bottomright_img",
+			"label": {
+				"en": "The right background"
+			}
+		}
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

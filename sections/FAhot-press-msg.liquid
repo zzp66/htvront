@@ -1,0 +1,91 @@
+<div class="fn-press-Information">
+  <div>
+      <h3 class="t particular_title">    
+          {{section.settings.Information_title}}
+      </h3>
+  </div>
+    <div class="fn-Product-data">
+      <div>
+            {% if section.settings.data_img != blank %}
+                <img src="{{ section.settings.data_img | img_url: '774x' }}" alt="">
+            {% endif %}
+      </div>
+      <div>
+            {% if section.settings.base_img != blank %}
+                <img src="{{ section.settings.base_img | img_url: '790x' }}" alt="">
+            {% endif %}
+      </div>
+  </div>
+  <div class="fn-Information-img">
+      {% if section.settings.Information_img != blank %}
+          <img class="fn-computer-Informationimgge" src="{{ section.settings.Information_img | img_url: '1920x' }}" alt="">
+      {% endif %}
+      {% if section.settings.Information_mobileimg != blank %}
+          <img class="fn-mobile-Informationimage" src="{{ section.settings.Information_mobileimg | img_url: '375x' }}" alt="">
+      {% endif %}
+    <div class="fn-transfer-title">
+          {{section.settings.transfer_title}}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+	"name": "Product Information",
+	"settings": [
+        {
+			"type": "text",
+			"id": "Information_title",
+			"label": {
+				"en": "title",
+				"zh-CN": "标题"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "data_img",
+			"label": {
+				"en": "Image",
+				"zh-CN": "图片"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "base_img",
+			"label": {
+				"en": "Image",
+				"zh-CN": "图片"
+			}
+		},
+		{
+			"type": "image_picker",
+			"id": "Information_img",
+			"label": {
+				"en": "Image",
+				"zh-CN": "图片"
+			}
+		},
+		{
+			"type": "image_picker",
+			"id": "Information_mobileimg",
+			"label": {
+				"en": "Image",
+				"zh-CN": "图片"
+			}
+		},
+		{
+			"type": "text",
+			"id": "transfer_title",
+			"label": {
+				"en": "official  title",
+				"zh-CN": "标题"
+			}
+		}
+	]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

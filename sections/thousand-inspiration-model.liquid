@@ -1,0 +1,121 @@
+<style>
+  .thousand-inspiration-model {
+    padding: 40px 0 50px;
+    background: {{ section.settings.background_color }};
+  }
+  .thousand-inspiration-model .inspir-title{
+    text-align: center;
+    font-size: 36px;
+    font-size: {{ section.settings.title_fontsize }}px;
+  }
+  .thousand-inspiration-model .inspir-sub-title{
+    text-align: center;
+    font-size: {{ section.settings.sub_title_fontsize }}px;
+    line-height: 22px;
+    margin: 10px 0 13px;
+  }
+  .thousand-inspiration-content{
+    display:flex;
+    flex-wrap: wrap;
+  }
+  .thousand-inspiration-content .column{
+    width: 25%;
+    padding: 7px;
+  }
+  .thousand-inspiration-content .column-one{
+      margin-bottom:15px
+  }
+  @media screen and (max-width: 768px){
+      .thousand-inspiration-model {
+        padding: 20px 0 6px;
+      }
+      .thousand-inspiration-model .inspir-title{
+        font-size: 16px;
+      }
+      .thousand-inspiration-model .inspir-sub-title{
+        font-size: 14px;
+        margin-bottom: 6px
+      }
+      .thousand-inspiration-content .column{
+        width: 50%;
+        padding: 4px;
+      }
+      .thousand-inspiration-content .column-one{
+        margin-bottom:8px
+      }
+   }
+</style>
+<div class="thousand-inspiration-model">
+  <h3 class="inspir-title">{{ section.settings.title }}</h3>
+  <p class="inspir-sub-title">{{ section.settings.sub_title }}</p>
+  <ul class="fn-page-width thousand-inspiration-content">
+    {% for block in section.blocks %}
+      <li class="column">
+        <div class="column-one">
+          <img src="{{ block.settings.image_picker1 | img_url:'390x' }}">
+        </div>
+        <div>
+          <img src="{{ block.settings.image_picker2 | img_url:'390x' }}">
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% schema %}
+{
+  "name": "Thousand inspir model",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "background_color"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "text",
+      "id": "title_fontsize",
+      "label": "title_fontsize"
+    },
+    {
+      "type": "text",
+      "id": "sub_title",
+      "label": "sub_title"
+    },
+    {
+      "type": "text",
+      "id": "sub_title_fontsize",
+      "label": "sub_title_fontsize"
+    }
+  ],
+  "blocks":[{
+    "type": "image",
+    "name": "image",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image_picker1",
+        "label": "image1"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_picker2",
+        "label": "image2"
+      }
+    ]
+  }],
+  "presets": [{
+    "name": "Thousand inspir model"
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

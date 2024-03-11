@@ -1,0 +1,524 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} .member-stories{
+   background: {{ section.settings.bg_color }};
+   padding-bottom:{{section.settings.padding_bottom}}px;
+   padding-top:{{section.settings.padding_top}}px
+  }
+  #shopify-section-{{ section.id }} .member-stories-content{
+    width:{{section.settings.layout}}px;
+    margin:0 auto
+  }
+  #shopify-section-{{ section.id }} .member-stories-title{
+    font-size:{{section.settings.title_size}}px;
+    color:{{section.settings.title_color}};
+    font-weight:bold;
+    text-align:center;
+    line-height: 49px;
+  }
+  @media screen and (max-width: 1900px){
+    #shopify-section-{{ section.id }} .member-stories-content{
+      width:83.33%;
+    }
+  }
+  @media screen and (max-width: 750px){
+    #shopify-section-{{ section.id }} .member-stories-content{
+      width:93.6%;
+    }
+    #shopify-section-{{ section.id }} .member-stories{
+      padding-top:20px
+    }
+    #shopify-section-{{ section.id }} .member-stories-title{
+      font-size:18px;
+      line-height:24px
+    }
+  }
+{%- endstyle -%}
+<style>
+  .show-in-mobile{
+    display:none
+  }
+  .member-stories{
+    letter-spacing:0
+  }
+  .member-stories .member-stories-more{
+    width: 278px;
+    height: 50px;
+    margin:20px auto 0;
+    border-radius: 10px;
+    border: 1px solid #242424;
+    font-size: 18px;
+    font-weight: bold;
+    color: #242424;
+    line-height: 50px;
+    text-align:center;
+    cursor: pointer;
+  }
+
+  .member-stories .member-stories-layout{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .member-stories-layout>div:nth-child(1){
+    margin-right:20px
+  }
+  .member-stories-article{
+    margin-top:20px;
+
+  }
+  .breath:hover{
+    animation: breath 1s ease-in-out;
+  }
+  @keyframes breath {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  .member-stories-describe{
+    background: #FFFFFF;
+    border-radius: 0px 0px 10px 10px;
+    padding:19px 20px 22px 20px
+  }
+  .member-stories-reader{
+    width: 169px;
+    height: 40px;
+    background: #242424;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #FFFFFF;
+    line-height: 40px;
+    text-align:center;
+    cursor: pointer;
+  }
+  .member-stories-describe a:nth-child(1){
+    width:calc(100% - 185px)
+  }
+
+  .stories-article-title{
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 24px;
+    margin-bottom:6px;
+    cursor: pointer;
+     height: 24px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .stories-article-desc{
+    font-size: 14px;
+    color: #333333;
+    line-height: 19px;
+    cursor: pointer;
+  }
+  .member-stories-iamge{
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .member-stories-iamge .show-in-pc,.member-stories-iamge .show-in-mobile{
+    width:100%
+  }
+  .member-stories-player{
+    position: absolute;
+    left:8px;
+    bottom:8px;
+    cursor: pointer;
+  }
+  .fn-Stories-mask {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0;
+    top: 0;
+    z-index: 999;
+    display: none;
+  }
+  .fn-Stories-mask .fn-Storiesmask-main {
+    cursor: pointer;
+  }
+  .fn-Stories-Video {
+    width:100%;
+    height:653px;
+  }
+  .fn-Stories-Video iframe{
+    border-radius:10px
+  }
+  .fn-Stories-mask>div{
+    margin: 0 auto;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 3.9% 6.2%;
+    width: 74.85%;
+  }
+  .fn-Stories-mask .mask-close {
+    position: absolute;
+    top: 21px;
+    right: 25px;
+  }
+
+  @media screen and (max-width: 1440px){
+    .member-stories-describe{
+       padding: 10px 20px 10px 20px;
+    }
+    .stories-article-title{
+      margin-bottom:0
+    }
+  }
+  @media screen and (max-width: 1180px){
+    .stories-article-title{
+      font-size: 16px;
+      height: 19px;
+      line-height: 19px;
+      margin-bottom: 4px;
+    }
+    .fn-Stories-Video {
+        height:400px;
+      }
+    .stories-article-desc{
+      line-height: 17px;
+    }
+  }
+  @media screen and (max-width: 820px){
+    .member-stories-describe a:nth-child(1){
+      width:calc(100% - 137px)
+    }
+    .member-stories-reader{
+      width:121px;
+      height:30px;
+      line-height:30px;
+      border-radius: 4px;
+    }
+    .fn-Stories-Video {
+        height:300px;
+      }
+     .fn-Stories-mask .mask-close {
+        top: 5px;
+        right: 5px;
+      }
+  }
+  @media screen and (max-width: 750px){
+    .show-in-pc{
+      display:none
+    }
+    .show-in-mobile{
+      display:block
+    }
+    .member-stories .member-stories-layout{
+      display:block
+    }
+    .member-stories-layout>div:nth-child(1){
+      margin-right:0
+    }
+    .member-stories  .member-stories-describe {
+      display:flex;
+      padding: 12px 10px 12px 14px;
+    }
+    .member-stories-article{
+      margin-top:10px
+    }
+    .member-stories-player{
+      width:59px;
+      height:59px
+    }
+    .member-stories .member-stories-more{
+      margin-top:10px;
+      width:100%;
+      height:40px;
+      line-height:40px;
+      font-size:14px
+    }
+    .fn-Stories-mask>div{
+      width:100%;
+      border-radius: 0;
+      padding: 5.1% 6.9%;
+    }
+    .fn-Stories-mask-mobile>div{
+      width:93.6%;
+    }
+     .fn-Stories-mask .mask-close {
+        top: 3px;
+        right: 4px;
+      }
+    .fn-Stories-mask .mask-close img{
+      width:19px;
+      height:19px
+    }
+    .fn-Stories-Video {
+        height:230px;
+      }
+      .fn-Stories-Video iframe{
+        border-radius:0
+      }
+  }
+</style>
+<div class="member-stories">
+  <div class="member-stories-content">
+    <div class="member-stories-title">{{ section.settings.title }}</div>
+    <div class="member-stories-layout">
+      <div>
+        {% for block in section.blocks %}
+          {% if forloop.index == 1 %}
+            <div class="member-stories-article">
+              <div class="member-stories-iamge">
+                <a href="{{ block.settings.article_link }}">
+                  {% if block.settings.image != blank %}
+                    <img class="show-in-pc breath" src="{{ block.settings.image | img_url: '790x' }}">
+                  {% endif %}
+                  {% if block.settings.image_mobile != blank %}
+                    <img class="show-in-mobile" src="{{ block.settings.image_mobile | img_url: '351x' }}">
+                  {% endif %}
+                </a>
+                {% if block.settings.vedio_link != blank %}
+                  <img
+                    onclick="christmasFunction('1','{{ block.settings.vedio_link }}')"
+                    class="member-stories-player"
+                    src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/6_81350532-6fd6-4f4f-bce1-01737e29ac21.png?v=1683181871"
+                  >
+                {% endif %}
+              </div>
+              <div class="member-stories-layout member-stories-describe">
+                <a href="{{ block.settings.article_link }}">
+                  <p class="stories-article-title">{{ block.settings.title }}</p>
+                  <p class="stories-article-desc">{{ block.settings.desc }}</p>
+                </a>
+                <a href="{{ block.settings.article_link }}">
+                  <div class="member-stories-reader">Read</div>
+                </a>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div>
+        {% for block in section.blocks %}
+          {% if forloop.index >= 2 and forloop.index <= 3 %}
+            <div class="member-stories-article">
+              <div class="member-stories-iamge">
+                <a href="{{ block.settings.article_link }}">
+                  {% if block.settings.image != blank %}
+                    <img class="show-in-pc breath" src="{{ block.settings.image | img_url: '790x' }}">
+                  {% endif %}
+                  {% if block.settings.image_mobile != blank %}
+                    <img class="show-in-mobile" src="{{ block.settings.image_mobile | img_url: '351x' }}">
+                  {% endif %}
+                </a>
+                {% if block.settings.vedio_link != blank %}
+                  <img
+                    onclick="christmasFunction('1','{{ block.settings.vedio_link }}')"
+                    class="member-stories-player"
+                    src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/6_81350532-6fd6-4f4f-bce1-01737e29ac21.png?v=1683181871"
+                  >
+                {% endif %}
+              </div>
+              <div class="member-stories-layout member-stories-describe">
+                <a href="{{ block.settings.article_link }}">
+                  <p class="stories-article-title">{{ block.settings.title }}</p>
+                  <p class="stories-article-desc">{{ block.settings.desc }}</p>
+                </a>
+                <a href="{{ block.settings.article_link }}">
+                  <div class="member-stories-reader">Read</div>
+                </a>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="member-stories-layout">
+      {% for block in section.blocks %}
+        {% if forloop.index >= 4 and forloop.index <= 5 %}
+          <div class="member-stories-article">
+            <div class="member-stories-iamge">
+              <a href="{{ block.settings.article_link }}">
+                {% if block.settings.image != blank %}
+                  <img class="show-in-pc breath" src="{{ block.settings.image | img_url: '790x' }}">
+                {% endif %}
+                {% if block.settings.image_mobile != blank %}
+                  <img class="show-in-mobile" src="{{ block.settings.image_mobile | img_url: '351x' }}">
+                {% endif %}
+              </a>
+              {% if block.settings.vedio_link != blank %}
+                <img
+                  onclick="christmasFunction('1','{{ block.settings.vedio_link }}')"
+                  class="member-stories-player"
+                  src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/6_81350532-6fd6-4f4f-bce1-01737e29ac21.png?v=1683181871"
+                >
+              {% endif %}
+            </div>
+            <div class="member-stories-layout member-stories-describe">
+              <a href="{{ block.settings.article_link }}">
+                <p class="stories-article-title">{{ block.settings.title }}</p>
+                <p class="stories-article-desc">{{ block.settings.desc }}</p>
+              </a>
+              <a href="{{ block.settings.article_link }}">
+                <div class="member-stories-reader">Read</div>
+              </a>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <a href="{{ section.settings.more_link }}" class="member-stories-more">View More</a>
+  </div>
+</div>
+<div class="fn-Stories-mask">
+  <div>
+    <div class="fn-Storiesmask-main">
+      <div class="mask-close" onclick="christmasFunction('2')">
+        <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/7_8ba31ff8-9cdf-403b-ac36-d36b25abab80.png?v=1683355188">
+      </div>
+      <div class="fn-Stories-Video">
+        <iframe
+          id="stories-Video-Iframe"
+          width="100%"
+          height="100%"
+          src=""
+          title="YouTube video player"
+          frameborder="no"
+          border="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function christmasFunction(e,link){
+    if(e == 1 ) {
+      $('#stories-Video-Iframe').eq(0).attr('src',link)
+      $('.fn-Stories-mask').show();
+
+    }
+    if(e == 2 ) {
+      $('.fn-Stories-mask').hide();
+      $('#stories-Video-Iframe').eq(0).attr('src','')
+    }
+  }
+</script>
+{% schema %}
+{
+  "name":"Member Story",
+  "max_blocks":5,
+  "settings":[{
+            "type":"color",
+            "id":"bg_color",
+            "label":"背景颜色"
+        },{
+            "type":"range",
+            "id":"padding_top",
+            "min":0,
+            "max": 100,
+            "step":1,
+            "unit":"px",
+            "label":"padding_top",
+            "default": 36
+        },{
+            "type":"range",
+            "id":"padding_bottom",
+            "min":0,
+            "max": 100,
+            "step":1,
+            "unit":"px",
+            "label":"padding_bottom",
+            "default": 100
+        },{
+            "type":"range",
+            "id":"layout",
+            "min":1200,
+            "max": 1920,
+            "step":10,
+            "unit":"px",
+            "label":"内容显示宽度",
+            "default": 1600
+        },{
+            "type":"text",
+            "id":"title",
+            "label":"标题"
+        },{
+           "type":"color",
+            "id":"title_color",
+            "label":"标题颜色"
+        },{
+           "type":"number",
+            "id":"title_size",
+            "label":"标题大小"
+        },{
+            "type":"text",
+            "id":"more_link",
+            "label":"more_link"
+        }],
+  "blocks":[
+    {
+    "type":"brand",
+    "name":{
+      "en":"image",
+      "zh-CN":"image"
+    },
+    "settings":[
+      {
+      "type":"image_picker",
+      "id":"image",
+      "label":{
+        "en":"Image",
+        "zh-CN":"图片"
+        }
+      },{
+      "type":"image_picker",
+      "id":"image_mobile",
+      "label":{
+        "en":"Image Mobile",
+        "zh-CN":"手机端图片"
+        }
+      },{
+        "type":"text",
+         "id":"vedio_link",
+         "label":{
+            "en":"vedio link",
+            "zh-CN":"视频链接"
+          }
+      },{
+        "type":"text",
+         "id":"article_link",
+         "label":{
+            "en":"article link",
+            "zh-CN":"文章链接"
+          }
+      },{
+            "type":"text",
+            "id":"title",
+            "label":"文章标题"
+        },{
+            "type":"text",
+            "id":"desc",
+            "label":"文章描述"
+        }
+    ]
+    }
+  ],
+  "presets":[
+    {
+    "name":"Member Story",
+    "blocks":[
+        {
+        "type":"brand"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

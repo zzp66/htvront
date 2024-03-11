@@ -1,0 +1,839 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    {% render 'pagefly-head' %}
+    <script>
+      (function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"134630913",tm:"shpfy_ui", enableAutoSpaTracking: true};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-KBNQQ82');
+    </script>
+    <!-- End Google Tag Manager -->
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NSVG699V');</script>
+<!-- End Google Tag Manager -->
+    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-591809879"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-591809879',{'allow_enhanced_conversions':true});
+    </script>
+    <!-- Twitter conversion tracking base code -->
+    <script>
+      !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments); },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js', a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script'); twq('config','of6sc');
+    </script>
+    <!-- End Twitter conversion tracking base code -->
+
+    <script>
+      window.addEventListener('load', function(event) {
+      if(window.location.href.includes("https://www.htvront.com/cart")){
+      gtag('event', '加入购物车');
+      }
+      });
+    </script>
+    <!-- Reddit Pixel -->
+    <script>
+      !function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','t2_akibb9b9s', {"optOut":false,"useDecimalCurrencyValues":true,"aaid":"<AAID-HERE>","email":"<EMAIL-HERE>","externalId":"<EXTERNAL-ID-HERE>","idfa":"<IDFA-HERE>"});rdt('track', 'PageVisit');
+    </script>
+    <!-- DO NOT MODIFY UNLESS TO REPLACE A USER IDENTIFIER -->
+    <!-- End Reddit Pixel -->
+
+    <!-- Quora Pixel Code (JS Helper) -->
+    <script>
+      !function(q,e,v,n,t,s){if(q.qp) return; n=q.qp=function(){n.qp?n.qp.apply(n,arguments):n.queue.push(arguments);}; n.queue=[];t=document.createElement(e);t.async=!0;t.src=v; s=document.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s);}(window, 'script', 'https://a.quora.com/qevents.js');
+      qp('init', '1cfa3600e68943f89903e15eb590b1b0');
+      qp('track', 'ViewContent');
+    </script>
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display:none"
+        src="https://q.quora.com/_/ad/1cfa3600e68943f89903e15eb590b1b0/pixel?tag=ViewContent&noscript=1"
+    ></noscript>
+    <!-- End of Quora Pixel Code -->
+    <script>
+      window.addEventListener('load',function()
+      {
+      document.querySelectorAll(".fn-register-content-right-form-button").forEach(function(e){
+      e.addEventListener('click',function(){
+      var email = document.querySelector("[name='customer[email]']").value;
+      var password = document.querySelector("[name='customer[password]']").value;
+      var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      if(email != "" && email.match(mailformat) && password != "")
+      {
+      gtag('event', '注册新账户');
+      }
+      })
+      })
+      })
+    </script>
+    <!-- 加入购车 -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="">
+    <meta name="google-site-verification" content="6ou4mxdEnds7tV-iBJheFZbgRPSSxxDFBL9sSqZL3I8">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endunless -%}
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {% render 'meta-tags' %}
+
+    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+    {{ 'jquery.min.js' | asset_url | script_tag }}
+    <script src="{{ 'clipboard.js' | asset_url }}" async></script>
+    {% if template != 'page.new-arrival' or template != 'page.marketing' %}
+      {{ 'swiper.min.js' | asset_url | script_tag }}
+    {% endif %}
+    <script src="{{ 'jquery-ui.min.js' | asset_url }}" async></script>
+
+    {{ content_for_header }}
+    {%- liquid
+      assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
+      assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
+      assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+    %}
+
+    {% style %}
+      {{ settings.type_body_font | font_face: font_display: 'swap' }}
+      {{ body_font_bold | font_face: font_display: 'swap' }}
+      {{ body_font_italic | font_face: font_display: 'swap' }}
+      {{ body_font_bold_italic | font_face: font_display: 'swap' }}
+      {{ settings.type_header_font | font_face: font_display: 'swap' }}
+
+      :root {
+        --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+        --font-body-style: {{ settings.type_body_font.style }};
+        --font-body-weight: {{ settings.type_body_font.weight }};
+        --font-title-family: {{ settings.bold_font.family }}, {{ settings.bold_font.fallback_families }};
+        --font-title-style: {{ settings.bold_font.style }};
+        --font-title-weight: {{ settings.bold_font.weight }};
+        --font-extrabold-family: {{ settings.extrabold_font.family }}, {{ settings.extrabold_font.fallback_families }};
+        --font-extrabold-style: {{ settings.extrabold_font.style }};
+        --font-extrabold-weight: {{ settings.extrabold_font.weight }};
+
+        --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+        --font-heading-style: {{ settings.type_header_font.style }};
+        --font-heading-weight: {{ settings.type_header_font.weight }};
+
+        --font-body-scale: {{ settings.body_scale | divided_by: 100.0 }};
+        --font-heading-scale: {{ settings.heading_scale | times: 1.0 | divided_by: settings.body_scale }};
+
+        --color-base-text: {{ settings.colors_text.red }}, {{ settings.colors_text.green }}, {{ settings.colors_text.blue }};
+        --color-shadow: {{ settings.colors_text.red }}, {{ settings.colors_text.green }}, {{ settings.colors_text.blue }};
+        --color-base-background-1: {{ settings.colors_background_1.red }}, {{ settings.colors_background_1.green }}, {{ settings.colors_background_1.blue }};
+        --color-base-background-2: {{ settings.colors_background_2.red }}, {{ settings.colors_background_2.green }}, {{ settings.colors_background_2.blue }};
+        --color-base-solid-button-labels: {{ settings.colors_solid_button_labels.red }}, {{ settings.colors_solid_button_labels.green }}, {{ settings.colors_solid_button_labels.blue }};
+        --color-base-outline-button-labels: {{ settings.colors_outline_button_labels.red }}, {{ settings.colors_outline_button_labels.green }}, {{ settings.colors_outline_button_labels.blue }};
+        --color-base-accent-1: {{ settings.colors_accent_1.red }}, {{ settings.colors_accent_1.green }}, {{ settings.colors_accent_1.blue }};
+        --color-base-accent-2: {{ settings.colors_accent_2.red }}, {{ settings.colors_accent_2.green }}, {{ settings.colors_accent_2.blue }};
+        --payment-terms-background-color: {{ settings.colors_background_1 }};
+
+        --gradient-base-background-1: {% if settings.gradient_background_1 != blank %}{{ settings.gradient_background_1 }}{% else %}{{ settings.colors_background_1 }}{% endif %};
+        --gradient-base-background-2: {% if settings.gradient_background_2 != blank %}{{ settings.gradient_background_2 }}{% else %}{{ settings.colors_background_2 }}{% endif %};
+        --gradient-base-accent-1: {% if settings.gradient_accent_1 != blank %}{{ settings.gradient_accent_1 }}{% else %}{{ settings.colors_accent_1 }}{% endif %};
+        --gradient-base-accent-2: {% if settings.gradient_accent_2 != blank %}{{ settings.gradient_accent_2 }}{% else %}{{ settings.colors_accent_2 }}{% endif %};
+
+        --media-padding: {{ settings.media_padding }}px;
+        --media-border-opacity: {{ settings.media_border_opacity | divided_by: 100.0 }};
+        --media-border-width: {{ settings.media_border_thickness }}px;
+        --media-radius: {{ settings.media_radius }}px;
+        --media-shadow-opacity: {{ settings.media_shadow_opacity | divided_by: 100.0 }};
+        --media-shadow-horizontal-offset: {{ settings.media_shadow_horizontal_offset }}px;
+        --media-shadow-vertical-offset: {{ settings.media_shadow_vertical_offset }}px;
+        --media-shadow-blur-radius: {{ settings.media_shadow_blur }}px;
+
+        --page-width: {{ settings.page_width | divided_by: 10 }}rem;
+        --page-width-margin: {% if settings.page_width == '1600' %}2{% else %}0{% endif %}rem;
+
+        --card-image-padding: {{ settings.card_image_padding | divided_by: 10.0 }}rem;
+        --card-corner-radius: {{ settings.card_corner_radius | divided_by: 10.0 }}rem;
+        --card-text-alignment: {{ settings.card_text_alignment }};
+        --card-border-width: {{ settings.card_border_thickness | divided_by: 10.0 }}rem;
+        --card-border-opacity: {{ settings.card_border_opacity | divided_by: 100.0 }};
+        --card-shadow-opacity: {{ settings.card_shadow_opacity | divided_by: 100.0 }};
+        --card-shadow-horizontal-offset: {{ settings.card_shadow_horizontal_offset | divided_by: 10.0 }}rem;
+        --card-shadow-vertical-offset: {{ settings.card_shadow_vertical_offset | divided_by: 10.0 }}rem;
+        --card-shadow-blur-radius: {{ settings.card_shadow_blur | divided_by: 10.0 }}rem;
+
+        --badge-corner-radius: {{ settings.badge_corner_radius | divided_by: 10.0 }}rem;
+
+        --popup-border-width: {{ settings.popup_border_thickness }}px;
+        --popup-border-opacity: {{ settings.popup_border_opacity | divided_by: 100.0 }};
+        --popup-corner-radius: {{ settings.popup_corner_radius }}px;
+        --popup-shadow-opacity: {{ settings.popup_shadow_opacity | divided_by: 100.0 }};
+        --popup-shadow-horizontal-offset: {{ settings.popup_shadow_horizontal_offset }}px;
+        --popup-shadow-vertical-offset: {{ settings.popup_shadow_vertical_offset }}px;
+        --popup-shadow-blur-radius: {{ settings.popup_shadow_blur }}px;
+
+        --drawer-border-width: {{ settings.drawer_border_thickness }}px;
+        --drawer-border-opacity: {{ settings.drawer_border_opacity | divided_by: 100.0 }};
+        --drawer-shadow-opacity: {{ settings.drawer_shadow_opacity | divided_by: 100.0 }};
+        --drawer-shadow-horizontal-offset: {{ settings.drawer_shadow_horizontal_offset }}px;
+        --drawer-shadow-vertical-offset: {{ settings.drawer_shadow_vertical_offset }}px;
+        --drawer-shadow-blur-radius: {{ settings.drawer_shadow_blur }}px;
+
+        --spacing-sections-desktop: {{ settings.spacing_sections }}px;
+        --spacing-sections-mobile: {% if settings.spacing_sections < 24 %}{{ settings.spacing_sections }}{% else %}{{ settings.spacing_sections | times: 0.7 | round | at_least: 20 }}{% endif %}px;
+
+        --grid-desktop-vertical-spacing: {{ settings.spacing_grid_vertical }}px;
+        --grid-desktop-horizontal-spacing: {{ settings.spacing_grid_horizontal }}px;
+        --grid-mobile-vertical-spacing: {{ settings.spacing_grid_vertical | divided_by: 2 }}px;
+        --grid-mobile-horizontal-spacing: {{ settings.spacing_grid_horizontal | divided_by: 2 }}px;
+
+        --text-boxes-border-opacity: {{ settings.text_boxes_border_opacity | divided_by: 100.0 }};
+        --text-boxes-border-width: {{ settings.text_boxes_border_thickness }}px;
+        --text-boxes-radius: {{ settings.text_boxes_radius }}px;
+        --text-boxes-shadow-opacity: {{ settings.text_boxes_shadow_opacity | divided_by: 100.0 }};
+        --text-boxes-shadow-horizontal-offset: {{ settings.text_boxes_shadow_horizontal_offset }}px;
+        --text-boxes-shadow-vertical-offset: {{ settings.text_boxes_shadow_vertical_offset }}px;
+        --text-boxes-shadow-blur-radius: {{ settings.text_boxes_shadow_blur }}px;
+
+        --buttons-radius: {{ settings.buttons_radius }}px;
+        --buttons-radius-outset: {% if settings.buttons_radius > 0 %}{{ settings.buttons_radius | plus: settings.buttons_border_thickness }}{% else %}0{% endif %}px;
+        --buttons-border-width: {% if settings.buttons_border_opacity > 0 %}{{ settings.buttons_border_thickness }}{% else %}0{% endif %}px;
+        --buttons-border-opacity: {{ settings.buttons_border_opacity | divided_by: 100.0 }};
+        --buttons-shadow-opacity: {{ settings.buttons_shadow_opacity | divided_by: 100.0 }};
+        --buttons-shadow-horizontal-offset: {{ settings.buttons_shadow_horizontal_offset }}px;
+        --buttons-shadow-vertical-offset: {{ settings.buttons_shadow_vertical_offset }}px;
+        --buttons-shadow-blur-radius: {{ settings.buttons_shadow_blur }}px;
+        --buttons-border-offset: {% if settings.buttons_radius > 0 or settings.buttons_shadow_opacity > 0 %}0.3{% else %}0{% endif %}px;
+
+        --inputs-radius: {{ settings.inputs_radius }}px;
+        --inputs-border-width: {{ settings.inputs_border_thickness }}px;
+        --inputs-border-opacity: {{ settings.inputs_border_opacity | divided_by: 100.0 }};
+        --inputs-shadow-opacity: {{ settings.inputs_shadow_opacity | divided_by: 100.0 }};
+        --inputs-shadow-horizontal-offset: {{ settings.inputs_shadow_horizontal_offset }}px;
+        --inputs-margin-offset: {% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_opacity > 0 %}{{ settings.inputs_shadow_vertical_offset | abs }}{% else %}0{% endif %}px;
+        --inputs-shadow-vertical-offset: {{ settings.inputs_shadow_vertical_offset }}px;
+        --inputs-shadow-blur-radius: {{ settings.inputs_shadow_blur }}px;
+        --inputs-radius-outset: {% if settings.inputs_radius > 0 %}{{ settings.inputs_radius | plus: settings.inputs_border_thickness }}{% else %}0{% endif %}px;
+
+        --variant-pills-radius: {{ settings.variant_pills_radius }}px;
+        --variant-pills-border-width: {{ settings.variant_pills_border_thickness }}px;
+        --variant-pills-border-opacity: {{ settings.variant_pills_border_opacity | divided_by: 100.0 }};
+        --variant-pills-shadow-opacity: {{ settings.variant_pills_shadow_opacity | divided_by: 100.0 }};
+        --variant-pills-shadow-horizontal-offset: {{ settings.variant_pills_shadow_horizontal_offset }}px;
+        --variant-pills-shadow-vertical-offset: {{ settings.variant_pills_shadow_vertical_offset }}px;
+        --variant-pills-shadow-blur-radius: {{ settings.variant_pills_shadow_blur }}px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
+
+      html {
+        box-sizing: border-box;
+        font-size: calc(var(--font-body-scale) * 62.5%);
+        height: 100%;
+      }
+
+      body {
+        display: grid;
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-columns: 100%;
+        min-height: 100%;
+        margin: 0;
+        font-size: 1.5rem;
+        letter-spacing: 0.06rem;
+        line-height: calc(1 + 0.8 / var(--font-body-scale));
+        font-family: var(--font-body-family);
+        font-style: var(--font-body-style);
+        font-weight: var(--font-body-weight);
+      }
+      @media screen and (min-width: 750px) {
+        body {
+          font-size: 1.6rem;
+        }
+      }
+    {% endstyle %}
+
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {%- if template != 'page.new-arrival' or template != 'page.marketing' -%}
+      {{ 'swiper.min.css' | asset_url | stylesheet_tag }}
+    {%- endif -%}
+
+    {%- unless settings.type_body_font.system? -%}
+      <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
+    {%- endunless -%}
+    {%- unless settings.type_header_font.system? -%}
+      <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
+    {%- endunless -%}
+
+    {%- if settings.predictive_search_enabled -%}
+      <link
+        rel="stylesheet"
+        href="{{ 'component-predictive-search.css' | asset_url }}"
+        media="print"
+        onload="this.media='all'"
+      >
+    {%- endif -%}
+
+    <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+      if (Shopify.designMode) {
+        document.documentElement.classList.add('shopify-design-mode');
+      }
+    </script>
+    {% include 'kart_discount' %}
+
+    <script type="text/javascript">
+      (function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/0fVqC1OJ2YrfDM5Q9MAJZtL21NDt6y0229ElqWwr/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+    </script>
+    <script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/QLzitm9UQt9jKPY2DwxByA" async></script>
+    {% render 'qikify-apps' %}
+    {% include 'omega_multi_pixel' %}
+    <!-- Taboola Pixel Code -->
+    <script type="text/javascript">
+      window._tfa = window._tfa || [];
+      window._tfa.push({notify: 'event', name: 'page_view', id: 1465313});
+      !function (t, f, a, x) {
+             if (!document.getElementById(x)) {
+                t.async = 1;t.src = a;t.id=x;f.parentNode.insertBefore(t, f);
+             }
+      }(document.createElement('script'),
+      document.getElementsByTagName('script')[0],
+      '//cdn.taboola.com/libtrc/unip/1465313/tfa.js',
+      'tb_tfa_script');
+    </script>
+    <!-- End of Taboola Pixel Code -->
+    {% include 'omega_multi_pixel' %}
+
+    <script>
+      (function(w,e,b,g,a,i,n,s){w['ITCLKOBJ']=a;w[a]=w[a]||function(){(w[a].q=w[a].q||[]).push(arguments)},w[a].l=1*new Date();i=e.createElement(b),n=e.getElementsByTagName(b)[0];i.async=1;i.src=g;n.parentNode.insertBefore(i,n)})(window,document,'script','https://analytics.webgains.io/clk.min.js','ITCLKQ');
+
+      ITCLKQ('set', 'internal.cookie', true);
+
+      ITCLKQ('set', 'internal.api', true);
+
+      ITCLKQ('click');
+    </script>
+    <meta name="google-site-verification" content="ASnSq9GOm_ZogWpfhS4a-9P7AKU7oeoJLxRs-MQ0XmA">
+    {% render 'gsf-conversion-pixels' %}
+  
+                      {% include 'bss-product-labels-configs' %}
+                        </head>
+                 
+
+  <body class="gradient" {{ request.page_type | handle }}>
+    <script>
+      window.KlarnaThemeGlobals={};{%case template.name%} {%when"product"%} {% if product.first_available_variant.price %}window.KlarnaThemeGlobals.data_purchase_amount = {{ product.first_available_variant.price }};{% endif %}window.KlarnaThemeGlobals.productVariants={{product.variants|json}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%when"cart"%} window.KlarnaThemeGlobals.data_purchase_amount={{cart.total_price}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%endcase%}
+    </script>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-KBNQQ82"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+      {{ 'accessibility.skip_to_text' | t }}
+    </a>
+
+    {% section 'announcement-bar' %}
+    {% section 'header' %}
+    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {% section 'footer' %}
+    {% section 'my-machine' %}
+     {% section 'questionnaire' %}
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+    </ul>
+
+    <script>
+      
+      
+      
+      
+      window.shopUrl = '{{ request.origin }}';
+      window.routes = {
+        cart_add_url: '{{ routes.cart_add_url }}',
+        cart_change_url: '{{ routes.cart_change_url }}',
+        cart_update_url: '{{ routes.cart_update_url }}',
+        predictive_search_url: '{{ routes.predictive_search_url }}'
+      };
+
+      window.cartStrings = {
+        error: `{{ 'sections.cart.cart_error' | t }}`,
+        quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t: quantity: '[quantity]' }}`
+      }
+
+      window.variantStrings = {
+        addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+        soldOut: `{{ 'products.product.sold_out' | t }}`,
+        unavailable: `{{ 'products.product.unavailable' | t }}`,
+      }
+
+      window.accessibilityStrings = {
+        imageAvailable: `{{ 'products.product.media.image_available' | t: index: '[index]' }}`,
+        shareSuccess: `{{ 'general.share.success_message' | t }}`,
+        pauseSlideshow: `{{ 'sections.slideshow.pause_slideshow' | t }}`,
+        playSlideshow: `{{ 'sections.slideshow.play_slideshow' | t }}`,
+      }
+
+
+
+
+    </script>
+    <script>
+      $(function(){
+          $('.fn-header-top-content ul li a').each(function(){
+              $this = $(this);
+              var urlWindow = window.location.href;
+              if($this[0].href === urlWindow){
+                  $this.addClass('active');
+              }
+          });
+          $('.fn-header-link ul li a').each(function(){
+              $this = $(this);
+              var urlWindow = window.location.protocol+"//"+window.location.host+""+window.location.pathname;
+              if($this[0].href === urlWindow){
+                  $this.addClass('active');
+              }
+          });
+      });
+    </script>
+    {% if request.page_type != 'product' %}
+      <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+      <script>
+        function flyToCart(e){
+            var target = e.target;
+            var item = $(target).parents().find('.item');
+            var imgtodrag = item.find('.media img').first();
+            var cart = $('.fly-cart');
+            if (imgtodrag) {
+                var imgclone = imgtodrag.clone().offset({
+                    top: imgtodrag.offset().top,
+                    left: imgtodrag.offset().left
+                }).addClass('imgclone').css({
+                    'opacity': '0.5',
+                    'position': 'absolute',
+                    'height': '50px',
+                    'width': '50px',
+                    'z-index': '100',
+                    'border-radius':'50%'
+                }).appendTo($('body')).animate({
+                    'top': cart.offset().top,
+                    'left': cart.offset().left,
+                    'width': 30,
+                    'height': 30
+                }, 1000, 'easeInOutExpo');
+                setTimeout(function () {
+                    cart.effect('shake', { times: 2 }, 200);
+                }, 2000);
+                imgclone.animate({
+                    'width': 0,
+                    'height': 0
+                }, function () {
+                    $(this).detach();
+                });
+            }
+        }
+      </script>
+    {% else %}
+      <script>
+        function flyToCart(e){
+            var target = e.target;
+            var item = $(target).parents().siblings('.fn-detail-swiper').children().find('.item');
+            if (item.length === 0) {
+                item = $(target).parents().find('.item');
+            }
+            var imgtodrag = item.find('.media img').first();
+            var cart = $('.fly-cart');
+            if (imgtodrag) {
+                var imgclone = imgtodrag.clone().offset({
+                    top: imgtodrag.offset().top,
+                    left: imgtodrag.offset().left
+                }).addClass('imgclone').css({
+                    'opacity': '0.5',
+                    'position': 'absolute',
+                    'height': '50px',
+                    'width': '50px',
+                    'z-index': '100',
+                    'border-radius':'50%'
+                }).appendTo($('body')).animate({
+                    'top': cart.offset().top,
+                    'left': cart.offset().left,
+                    'width': 30,
+                    'height': 30
+                }, 1000, 'easeInOutExpo');
+                setTimeout(function () {
+                    cart.effect('shake', { times: 2 }, 200);
+                }, 2000);
+                imgclone.animate({
+                    'width': 0,
+                    'height': 0
+                }, function () {
+                    $(this).detach();
+                });
+            }
+        }
+      </script>
+    {% endif %}
+    {%- if settings.predictive_search_enabled -%}
+      <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+    <script type="text/javascript">
+      var scThemeConfig = {
+        "cartDiscountSelector":{
+          "path":".cart__blocks > .js-contents",
+          "type":0
+        },
+        "ajaxDicountSelector":{
+
+        },
+        "cartTotalSelector":{
+          path: '.totals__subtotal-value',
+          type: 0,
+        },
+        "ajaxTotalSelector":{
+
+        }
+      };
+    </script>
+    <!-- CRITEO START -->
+    {% render 'criteo-tracking' %}
+    <!-- CRITEO END -->
+
+    <script>
+      
+      
+      
+      
+    $(function(){
+        var tmpb = location.href;
+        if (tmpb.indexOf('collections') !== -1) {
+        } else {
+            localStorage.setItem("data",JSON.stringify(0))
+        }
+    });
+    function countDownTimerFriday(time) {
+    if(jQuery('#cart_djs_timer_box').length==0)return;
+    countDownTimerHandle = setInterval(function () { 
+        let nowTime = new Date();//当前时间
+        let startTime = new Date(time);//开始时间
+        //活动结束时间
+        let actEndTime = new Date(startTime.getTime() + 1*60*60*1000);
+        let t = 0;
+        let gift_status = 0;
+        
+        if ((actEndTime.getTime() - nowTime.getTime()) > 0) {
+            t = actEndTime.getTime() - nowTime.getTime();
+            gift_status = 1;
+        }
+        //判断是否超出活动时间
+            // if (gift_status === 0) {
+            //     clearInterval(countDownTimerHandle);
+            //     jQuery('#cart_djs_timer_box').hide();
+            //     jQuery.post('/cart/change.js', { quantity: 0, id: 39793160355973 });
+            //     return;
+            // }
+
+        // let timerHtml = [
+        //     '<span class="djs_timer_front">Checkout within</span>&nbsp;&nbsp;',
+        //     '<span class="djs_timer">'];
+              let timerHtml = ['<span class="djs_timer">'];
+        let d = 0, h = 0, m = 0, s,  second= 0;
+        if (t >= 0) {
+            d = Math.floor(t / 1000 / 60 / 60 / 24);
+            h = Math.floor(t / 1000 / 60 / 60 % 24);
+            m = Math.floor(t / 1000 / 60 % 60);
+            second = Math.floor(t / 1000 % 60);
+            s = second < 10 ? "0" + second : second;
+        }
+        //天
+        if (d > 0) {
+            timerHtml.push(`<span id="djs_timer_d"><span class="djs_timer_counter">${d}</span><span class="djs_timer_unit">day</span></span>`);
+        }
+        //时
+        if (h > 0) {
+            timerHtml.push(`<span id="djs_timer_h"><span class="djs_timer_counter">${h}</span><span class="djs_timer_unit">h</span></span>`);
+        }
+        //分
+        if (m > 0) {
+            timerHtml.push(`<span id="djs_timer_m"><span class="djs_timer_counter">${m}:</span><span class="djs_timer_unit"></span></span>`);
+        }
+        //秒
+        if (s > 0) {
+            timerHtml.push(`<span id="djs_timer_s"><span class="djs_timer_counter">${s}</span><span class="djs_timer_unit"></span></span>`);
+        }
+
+        // timerHtml.push(",Get a free gift worth $20!");
+        let gift_imgs = {
+            1: "{{ 'gift4.png' | asset_url }}",
+        };
+        let curr_gift_img = gift_imgs[gift_status];
+        if (jQuery('#cart_djs_timer_giftimg').attr("src") != curr_gift_img) {
+            jQuery('#cart_djs_timer_giftimg').attr('src', curr_gift_img);
+        }
+
+        //合并HTML并插入DOM
+        jQuery('#cart_djs_timer').html(timerHtml.join(''));
+        jQuery('#cart_djs_timer_box').show();
+
+    }, 200);
+}
+    function addCookie(objName, objValue, objHours){//添加cookie
+        var str = objName + "=" + escape(objValue);
+        if (objHours > 0) {//为0时不设定过期时间，浏览器关闭时cookie自动消失
+            var date = new Date();
+            var ms = objHours * 3600 * 1000;
+            date.setTime(date.getTime() + ms);
+            str += "; expires=" + date.toGMTString();
+        }
+        document.cookie = str;
+    }
+    function getCookie(objName){
+        var arrStr = document.cookie.split("; ");
+        for (var i = 0; i < arrStr.length; i++) {
+            var temp = arrStr[i].split("=");
+            if (temp[0] === objName)
+                return unescape(temp[1]);
+        }
+    }
+  //   查询购物车产品是否存在
+    function checkCartItems(callback,waittime){    
+      let userEmail='{{ customer.email }}'; 
+      //延时等待添加到购物车事件完成           
+        setTimeout(()=>{                
+          let cartItems=fetch('/cart.js')
+          .then(r=>r.json())
+          .then(async (currentCart) =>{
+              let cartItemKeyArr=[];
+              let cartProductKeyArr=[];
+              let cartProductQuantity={};
+
+              currentCart.items.map((item) => {
+                cartItemKeyArr.push(item.key);    
+                cartProductKeyArr.push(item.variant_id+'');  
+                cartProductQuantity[item.variant_id+'']=item.quantity;        
+              });
+              let cartItemKeysStr=cartItemKeyArr.join(",");
+              let cartToken = currentCart.token;
+              let totalPrice = currentCart.total_price
+              callback&&callback({userEmail,cartToken,cartItemKeysStr,cartProductKeyArr,cartProductQuantity,totalPrice});
+                    
+          });                      
+        },waittime||1000);
+  };
+<!--     自动添加免费礼品 -->
+    $(function(){
+        var sale_arr_cart = ['40148186660997', '40148187447429', '40148187349125'];
+      // 查询购物车产品方法
+      checkCartItems(({userEmail,cartToken,cartItemKeysStr,cartProductKeyArr,cartProductQuantity})=>{ 
+        if(cartProductQuantity['40013634470021'] > 0){
+          $.post('/cart/change.js', { quantity: 0, id: 40013634470021 });
+          $('#campaign_6752596328581').hide();
+          $('#campaign_conceal,.fn-Eventproducts-examine').show();
+        } else {
+          $('#campaign_6752596328581').show();
+          $('#campaign_conceal,.fn-Eventproducts-examine').hide();
+        }
+        if(cartProductQuantity['40013634470021'] !== 0){
+          $.post('/cart/change.js', { quantity: 0, id: 40013634470021 });
+        } else {
+          $.post('/cart/change.js', { quantity: 0, id: 40013634470021 });
+        }
+        if(cartProductQuantity.hasOwnProperty(40156309356677)) {
+            $('.fn-Coupon-product_button').hide();
+            $('.fn-Coupon_button_a').show();
+        }else {
+            $('.fn-Coupon-product_button').show();
+        }
+        if(cartProductQuantity.hasOwnProperty(40158144987269)) {
+            $('.fan-addcart-gift').hide();
+            $('.fan-addcart-gift-disabled').show();
+        }else {
+            $('.fan-addcart-gift').show();
+        }
+        // 七七促销节秒杀产品
+        if(cartProductQuantity.hasOwnProperty(40231640236165) || cartProductQuantity.hasOwnProperty(39880962408581) || cartProductQuantity.hasOwnProperty(40231640531077)) {
+            $('.seckill-addcart-sale').hide();
+            $('.seckill-sale_button').show();
+            $('.seckill-sale_button').attr('disabled',true);
+        }else {
+            $('.seckill-addcart-sale').show();
+        }
+        // 杯子热压机二级页面代金券产品
+        if(cartProductQuantity.hasOwnProperty(40245803417733)){
+            $('.addcart-sale').hide();
+            $('.cup-sale_button').css({'display':'inline-block','margin-right':'10px'});
+        }else{
+            $('.addcart-sale').show();
+        }
+         if(cartProductQuantity.hasOwnProperty(40174052704389) || cartProductQuantity.hasOwnProperty(40174061518981) || cartProductQuantity.hasOwnProperty(39783391035525) || 
+            cartProductQuantity.hasOwnProperty(39811285188741) || cartProductQuantity.hasOwnProperty(39811286237317) || cartProductQuantity.hasOwnProperty(39811285385349) || 
+            cartProductQuantity.hasOwnProperty(39811285516421) || cartProductQuantity.hasOwnProperty(39811285155973) || cartProductQuantity.hasOwnProperty(39811285942405) || 
+            cartProductQuantity.hasOwnProperty(39811285418117) || cartProductQuantity.hasOwnProperty(39783385530501) || cartProductQuantity.hasOwnProperty(40220915368069) || 
+            cartProductQuantity.hasOwnProperty(40223254577285) || cartProductQuantity.hasOwnProperty(40498426314885) || cartProductQuantity.hasOwnProperty(40498426347653) || 
+            cartProductQuantity.hasOwnProperty(40498428903557) || cartProductQuantity.hasOwnProperty(40498428936325) || cartProductQuantity.hasOwnProperty(40498430017669) ||
+            cartProductQuantity.hasOwnProperty(40498430050437) || cartProductQuantity.hasOwnProperty(40498430214277) || cartProductQuantity.hasOwnProperty(40498430247045)) 
+        {
+          $('#addtocart-seckill .campaign-product .product-form__submit').attr('disabled',true);
+          $('#addtocart-seckill .flash-sale-tips').show()
+        }else{
+          $('#addtocart-seckill .campaign-product .product-form__submit').attr('disabled',false);
+          $('#addtocart-seckill .flash-sale-tips').hide();
+          $('#addtocart-seckill .campaign-product .product-form__submit').children('.t').each(function(){
+           if($(this).text().indexOf('Sold out') != -1){  
+             $(this).parent('.product-form__submit').attr('disabled',true);
+           }
+         })
+        }
+         // thousand-five 免费礼物加购
+        if(cartProductQuantity.hasOwnProperty(39891898990725) || cartProductQuantity.hasOwnProperty(39891896172677) || cartProductQuantity.hasOwnProperty(39891892863109) || cartProductQuantity.hasOwnProperty(39891883688069) || cartProductQuantity.hasOwnProperty(40422213910661) || cartProductQuantity.hasOwnProperty(40422216073349) || cartProductQuantity.hasOwnProperty(40422238224517) || cartProductQuantity.hasOwnProperty(40422220497029)
+          || cartProductQuantity.hasOwnProperty(40231640236165) || cartProductQuantity.hasOwnProperty(39880962408581) || cartProductQuantity.hasOwnProperty(40231640531077)){
+          $('.thousand-free-gift .product-form__submit').attr('disabled',true);
+         $('.cup-presell-gift .product-form__submit').attr('disabled',true);
+          $('.zone-freegift .gift-width .product-form__submit').attr('disabled',true);
+         $('.caphotpress-freegift-swiper .product-form__submit').attr('disabled',true);
+        
+        }else{
+         $('.thousand-free-gift .product-form__submit').attr('disabled',false);
+         $('.cup-presell-gift .product-form__submit').attr('disabled',false);
+         $('.zone-freegift .gift-width .product-form__submit').attr('disabled',false);
+         $('.caphotpress-freegift-swiper .product-form__submit').attr('disabled',false);
+         $('.cup-presell-gift .product-form__submit').children('.t').each(function(){
+           if($(this).text().indexOf('Sold out') != -1){  
+             $(this).parent('.product-form__submit').attr('disabled',true);
+           }
+         })
+        $('.zone-freegift .product-form__submit').children('.t').each(function(){
+           if($(this).text().indexOf('Sold out') != -1){  
+             $(this).parent('.product-form__submit').attr('disabled',true);
+           }
+         })
+           $('.thousand-free-gift .product-form__submit').children('.t').each(function(){
+           if($(this).text().indexOf('Sold out') != -1){  
+             $(this).parent('.product-form__submit').attr('disabled',true);
+           }
+         }) 
+        $('.caphotpress-freegift-swiper .product-form__submit').children('.t').each(function(){
+           if($(this).text().indexOf('Sold out') != -1){  
+             $(this).parent('.product-form__submit').attr('disabled',true);
+           }
+         })
+        }
+        if(cartProductQuantity.hasOwnProperty(40402665570437)){
+             $('.cap-deposit-add .product-form__submit').attr('disabled',true);
+              $('.cap-press-deposit-tips').show()
+        }else{
+           $('.cap-deposit-addt .product-form__submit').children('.t').each(function(){
+           if($(this).text().indexOf('Sold out') != -1){  
+             $(this).parent('.product-form__submit').attr('disabled',true);
+           }
+         })
+         $('.cap-deposit-add .product-form__submit').attr('disabled',false);
+              $('.cap-press-deposit-tips').hide()
+        }
+        //特殊商品6696284455045加购处理
+        if(cartProductQuantity.hasOwnProperty(40396600737925) || cartProductQuantity.hasOwnProperty(40396600770693) || cartProductQuantity.hasOwnProperty(40396600803461) || cartProductQuantity.hasOwnProperty(40396600836229) || cartProductQuantity.hasOwnProperty(40396600868997) || cartProductQuantity.hasOwnProperty(40396602245253)){
+          $('[data-id="6696284455045"]  .product-form__submit').attr('disabled',true);
+          if($('[data-id="6696284455045"]  .product-form__submit').attr('disabled') == true){
+           $('.product-form__off').show()
+          }
+        }else{
+          $('[data-id="6696284455045"]  .product-form__submit').attr('disabled',false);
+          $('.product-form__off').hide()
+          $('[data-id="6696284455045"]  .product-form__submit').children('.t').each(function(){
+           if($(this).text().indexOf('Sold out') != -1){  
+             $(this).parent('.product-form__submit').attr('disabled',true);
+              $('.product-form__off').hide()
+           }
+         })
+        }
+    })
+        //特殊商品6696284455045切换处理
+      $('#option_6696284455045 input[type="radio"]').change(function(){
+        checkCartItems(({userEmail,cartToken,cartItemKeysStr,cartProductKeyArr,cartProductQuantity})=>{
+          if(cartProductQuantity.hasOwnProperty(40396600737925) || cartProductQuantity.hasOwnProperty(40396600770693) || cartProductQuantity.hasOwnProperty(40396600803461) || cartProductQuantity.hasOwnProperty(40396600836229) || cartProductQuantity.hasOwnProperty(40396600868997) || cartProductQuantity.hasOwnProperty(40396602245253)){
+           setTimeout(function(){
+            $('[data-id="6696284455045"] .product-form__submit').attr('disabled',true);
+           },500);
+             $('.product-form__off').show()
+          }else{
+            $('[data-id="6696284455045"] .product-form__submit').attr('disabled',false);
+             $('.product-form__off').hide()
+          }
+         })
+       })
+      //addtocart-seckill 新秒杀组件产品 一个产品多个变体
+       
+  })
+
+
+
+
+
+    </script>
+    <script>
+      (function () {
+          var s = document.createElement('script');
+          s.src = 'https://cdn.willdesk.com/wdc/willdesk.min.js?v='
+          s.src += new Date().getTime();
+          document.body.appendChild(s);
+        })();
+    </script>
+        <script>
+      (function () {
+          var s = document.createElement('script');
+          s.src = 'https://cdn.willdesk.com/wdc/willdesk.min.js?v='
+          s.src += new Date().getTime();
+          document.body.appendChild(s);
+        })();
+    </script>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSVG699V"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+   <script>
+(function(a,h,c,b,f,g){a["UdeskApiObject"]=f;a[f]=a[f]||function(){(a[f].d=a[f].d||[]).push(arguments)};g=h.createElement(c);g.async=1;g.charset="utf-8";g.src=b;c=h.getElementsByTagName(c)[0];c.parentNode.insertBefore(g,c)})(window,document,"script","https://assets-cli.s5.udesk.cn/im_client/js/udeskApi.js","ud");
+ud({
+    "code": "9g8a0h",
+    "link": "https://1896994.s5.udesk.cn/im_client/?web_plugin_id=1924&language=en-us"
+});
+</script>
+  {% if content_for_header contains 'product_label' %}{% include 'bss-product-label-js' %}{% include 'bss-label-style-css' %}{% include 'bss-product-label-fonts' %}{% endif %}</body>
+ 
+</html>

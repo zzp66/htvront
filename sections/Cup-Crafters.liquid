@@ -1,0 +1,99 @@
+<style>
+  .cup-crafters{
+    background: #FFFBF7;
+    padding:40px 0 29px;
+    display:flex;
+    align-items: center;
+  }
+  .cup-crafters-header{
+    width:640px;
+    text-align:center
+  }
+  .cup-crafters-title{
+    font-size: 36px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 49px;
+    margin-bottom:16px
+  }
+  .cup-crafters-desc{
+    font-size: 18px;
+    color: #333333;
+    line-height: 24px;
+  }
+   @media screen and (max-width: 1180px){
+      .cup-crafters-title{
+        font-size:28px;
+        line-height: 36px;
+        margin-bottom:7px
+      }
+     .cup-crafters-desc{
+       font-size:16px
+     }
+    }
+  @media screen and (max-width: 750px){
+    .cup-crafters-header{
+      width:100%;
+      margin-bottom:4px
+    }
+    .cup-crafters{
+      display:block;
+      padding:20px 10px 23px
+    }
+    .cup-crafters-title{
+        font-size:16px;
+        line-height: 22px;
+      }
+     .cup-crafters-desc{
+       font-size:14px;
+       line-height: 19px;
+     }
+  }
+</style>
+<div class="cup-crafters">
+  <div class="cup-crafters-header">
+    <p class="cup-crafters-title">{{ section.settings.title }}</p>
+    <p class="cup-crafters-desc">{{ section.settings.desc }}</p>
+  </div>
+  <div>
+    <picture>
+      <source media="(max-width: 750px)" srcset="{{ section.settings.image_mobile | img_url:'710x' }}">
+      <source media="(min-width: 751px)" srcset="{{ section.settings.image | img_url:'1104x' }}">
+      <img src="{{ section.settings.image | img_url:'1104x' }}">
+    </picture>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Cup-Crafters",
+  "settings": [
+    {
+      "type":"text",
+      "id":"title",
+      "label":"title"
+  },
+    {
+      "type":"text",
+      "id":"desc",
+      "label":"desc"
+  },{
+        "type":"image_picker",
+        "id":"image",
+        "label":"image"
+    },{
+        "type":"image_picker",
+        "id":"image_mobile",
+        "label":"image mobile"
+    }
+  ],
+  "presets":[{
+    "name":"Cup-Crafters"
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

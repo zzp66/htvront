@@ -1,0 +1,53 @@
+{% comment %}
+    Renders a product card
+
+    Accepts:
+    - card_product: {Object} Product Liquid object (optional)
+    - show_secondary_image: {Boolean} Show the secondary image on hover. Default: false (optional)
+    - extend_height: {Boolean} Card height extends to available container space. Default: true (optional)
+    - lazy_load: {Boolean} Image should be lazy loaded. Default: true (optional)
+
+    Usage:
+    {% render 'fn-card-product' %}
+{% endcomment %}
+
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+{%- if card_product and card_product != empty -%}
+  {%- liquid
+    assign ratio = 1
+    if card_product.featured_media and media_aspect_ratio == 'portrait'
+      assign ratio = 0.8
+    elsif card_product.featured_media and media_aspect_ratio == 'adapt'
+      assign ratio = card_product.featured_media.aspect_ratio
+    endif
+    if ratio == 0 or ratio == nil
+      assign ratio = 1
+    endif
+    if limit != blank
+      assign limit = limit
+    else
+      assign limit = 5
+    endif
+  -%}
+<div class="card-wrapper">
+  <div class="card">
+    <div class="fn-christmas-price">
+        {% render 'christmasproduct-price', product: card_product, price_class: '' %}
+    </div>
+    <div class="fn-christmasactivities-head">
+          {% render 'christmas-addcart', product: card_product%}
+    </div>
+ </div>
+</div>
+<div class="fn-sum" id="fn-sum_{{ card_product.id }}">{{ sum_inventory }}</div>
+<div class="fn-christmas-productssold">
+    {% for product_a in card_product.variants %}
+       Only <span class="fn-christmasproducts-inventory" id="fn-inventory_{{ card_product.id }}">{{ product_a.inventory_quantity  }}</span> left
+    {% endfor %}
+</div>
+  <div class="fn-christmas-progressbar">
+    <div class="fn-christmas-progressbarone" id="fn-christmas_{{ card_product.id }}"></div>
+    <div class="fn-main_list_content-progressbar"></div>
+  </div>
+  
+{%- endif -%}

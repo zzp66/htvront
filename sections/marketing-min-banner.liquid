@@ -1,0 +1,67 @@
+<style>
+    .fn-marketing-min-banner {
+        margin-top: 30px;
+        margin-bottom: 80px;
+        overflow: hidden;
+    }
+    .fn-marketing-min-banner .fn-page-width {
+        overflow: hidden;
+    }
+    .fn-marketing-min-banner img {
+        transition: all 0.3s;
+    }
+    .fn-marketing-min-banner:hover img {
+        transform: scale(1.1);
+    }
+    @media screen and (max-width: 750px) {
+        .fn-marketing-min-banner {
+          margin-top: 10px;
+            margin-bottom: 30px;
+        }
+    }
+  .marketing-product-text{
+        padding-top: 1px;
+  }
+</style>
+<div class="fn-marketing-min-banner">
+    <div class="fn-page-width">
+        {%- if section.settings.link != blank -%}
+        <a href="{{ section.settings.link }}">
+            {%- endif -%}
+            {%- if section.settings.image != blank -%}
+            <img src="{{ section.settings.image | img_url: '1600x' }}" alt="{{ section.settings.image.alt }}">
+            {%- endif -%}
+            {%- if section.settings.link != blank -%}
+        </a>
+        {%- endif -%}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name":"Marketing Min Banner",
+    "settings":[
+        {
+            "type":"image_picker",
+            "id":"image",
+            "label":{
+                "en":"Image",
+                "zh-CN":"图片"
+            }
+        },
+        {
+            "type":"url",
+            "id":"link",
+            "label":{
+                "en":"Links",
+                "zh-CN":"链接"
+            }
+        }
+    ],
+    "presets":[
+        {
+            "name":"Marketing Min Banner"
+        }
+    ]
+}
+{% endschema %}

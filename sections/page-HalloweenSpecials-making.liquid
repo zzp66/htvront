@@ -1,0 +1,234 @@
+<div class="fn-Halloween-making">
+  <div class="fn-making_head">
+    <div class="fn-making_headmain">
+       {% if section.settings.makingmain_headimg != blank %}
+                {% assign image = section.settings.makingmain_headimg | img_url: '480x' %}
+                <img class="fn-Specials-bannerimg" src="{{ image }}" alt="">
+        {% endif %}
+        <div class="fn-makingmain_headtitle t">{{ section.settings.makingmain_headtitle }}</div>
+    </div>
+  </div>
+  <div class="fn-making-main">
+    <div class="fn-makingmain_content fn-makingmain_topcontent">
+         {% if section.settings.contentleft_img != blank %}
+            {% assign image = section.settings.contentleft_img | img_url: '785x' %}
+            <img class="fn-Specials-bannerimg" src="{{ image }}" alt="">
+        {% endif %}
+        <div class="fn-makingmain_content_left">
+            <div class="fn-makingmain_contenttitle t">{{ section.settings.contentleft_title }}</div>
+            <div class="fn-makingmain_contenttext">{{ section.settings.contentleft_text }}</div>
+            <div class="fn-makingmain_button" onclick="myFunction('3')">View video</div>
+        </div>
+    </div>
+    <div class="fn-makingmain_content fn-makingmain_topcontent">
+        {% if section.settings.contentright_img != blank %}
+            {% assign image = section.settings.contentright_img | img_url: '785x' %}
+            <img class="fn-Specials-bannerimg" src="{{ image }}" alt="">
+        {% endif %}
+        <div class="fn-makingmain_content_right">
+            <div class="fn-makingmain_contenttitle t">{{ section.settings.contentright_title }}</div>
+            <div class="fn-makingmain_contenttext">{{ section.settings.contentright_text }}</div>
+            <div class="fn-makingmain_button" onclick="myFunction('4')">View video</div>
+        </div>
+    </div>
+  </div>
+  <div class="fn-making-main fn-making-main_order">
+    <div class="fn-makingmain_content fn-makingmain_content_orderleft">
+       {% if section.settings.orderleft_img != blank %}
+          {% assign image = section.settings.orderleft_img | img_url: '1089x' %}
+          <img class="fn-Specials-bannerimg" src="{{ image }}" alt="" id="fn-makingmain_times_imges">
+      {% endif %}
+      <div class="fn-makingmain_orderleft ">
+          {{ section.settings.orderleft_text }}
+      </div>
+    </div>
+    <div class="fn-makingmain_content fn-makingmain_content_times">
+              {% if section.settings.orderright_img != blank %}
+                  {% assign image = section.settings.orderright_img | img_url: '511x' %}
+                  <img class="fn-Specials-bannerimg" src="{{ image }}" alt="">
+              {% endif %}
+        <div class="fn-makingmain_orderright">
+                <div id="orderright_time">{{ section.settings.orderright_time}}</div>
+               <div class="fn-makingmain-time">
+                   <div class="fn-makingmain-times_title t">Submit your Halloween project</div>
+                   <div class="fn-makingmain-times_text">(Open submission entry on November 5-20)</div>
+                   <div class="fn-makingmain-timebody">
+                     <div >
+                          <div class="fn-time-format"><span class="days format_span">00</span></div>
+                          <div class="fn-time-format_text">
+                               Day
+                         </div>
+                     </div>
+                     <div class="fn-little"> : </div>
+                      <div >
+                          <div class="fn-time-format"><span class="hour format_span">00</span></div>
+                          <div class="fn-time-format_text">
+                               Hour
+                         </div>
+                     </div>
+                       <div class="fn-little"> : </div>
+                     <div >
+                          <div class="fn-time-format"><span class="minute format_span">00</span></div>
+                          <div class="fn-time-format_text">
+                               Minute
+                         </div>
+                     </div>
+                       
+                   </div>
+                    <div class="fn-makingmain-timeproject">
+                        <a href="mailto:pr@htront.com">Submit</a>
+                    </div>
+             </div>
+        </div>
+    </div>
+  </div>
+</div>
+ <script>
+     var index_time = $('#orderright_time').text();
+     //获取元素
+     var days  = document.querySelector(".days");
+     var hour = document.querySelector(".hour");
+     var minute = document.querySelector(".minute");
+     var second = document.querySelector(".second");
+     //获取截止时间的时间戳（单位毫秒）
+     var inputTime = +new Date(""+ index_time);
+     // var inputTime = +new Date("2022-10-24 18:59:00");
+     //我们先调用countDown函数，可以避免在打开界面后停一秒后才开始倒计时
+     countDown();
+     //定时器 每隔一秒变化一次
+     var timer = setInterval(countDown, 1000);
+     function countDown() {
+         //获取当前时间的时间戳（单位毫秒）
+         var nowTime = +new Date();
+         //把剩余时间毫秒数转化为秒
+         var times = (inputTime - nowTime) / 1000;
+   // console.log(times);
+         if (times > 0) {
+            var d = Math.floor(times /60 / 60 / 24 );
+         //计算小时数 转化为整数
+         //如果小时数小于 10，要变成 0 + 数字的形式 赋值给盒子
+         days.innerHTML = d < 10 ? "0" + d : d;
+         var h = Math.floor(times /60 / 60 % 24 );
+         //计算小时数 转化为整数
+         //如果小时数小于 10，要变成 0 + 数字的形式 赋值给盒子
+         hour.innerHTML = h < 10 ? "0" + h : h;
+         //计算分钟数 转化为整数
+         var m = parseInt(times / 60 % 60);
+         //如果分钟数小于 10，要变成 0 + 数字的形式 赋值给盒子
+         minute.innerHTML = m < 10 ? "0" + m : m;
+         //计算描述 转化为整数
+         // var s = parseInt(times % 60);
+         // //如果秒钟数小于 10，要变成 0 + 数字的形式 赋值给盒子
+         // second.innerHTML = s < 10 ? "0" + s : s;
+         } else {
+           clearInterval(timer); 
+           $('.fn-makingmain-times_text,.fn-makingmain-timebody').hide();
+           $('.fn-makingmain-timeproject').show();
+         }
+     }
+ </script>
+{% schema %}
+  {
+    "name": "Let Us Making ",
+    "settings": [
+        {
+			"type": "text",
+			"id": "makingmain_headtitle",
+			"label": {
+				"en": "title"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "makingmain_headimg",
+			"label": {
+				"en": "img"
+			}
+		},
+        {
+			"type": "text",
+			"id": "contentleft_title",
+			"label": {
+				"en": "title"
+			}
+		},
+        {
+			"type": "text",
+			"id": "contentleft_text",
+			"label": {
+				"en": "text"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "contentleft_img",
+			"label": {
+				"en": "The left background"
+			}
+		},
+        {
+			"type": "text",
+			"id": "contentright_title",
+			"label": {
+				"en": "title"
+			}
+		},
+        {
+			"type": "text",
+			"id": "contentright_text",
+			"label": {
+				"en": "text"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "contentright_img",
+			"label": {
+				"en": "The right background"
+			}
+		},
+        {
+			"type": "html",
+			"id": "orderleft_text",
+			"label": {
+				"en": "text"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "orderleft_img",
+			"label": {
+				"en": "The left background"
+			}
+		},
+        {
+			"type": "text",
+			"id": "orderright_text",
+			"label": {
+				"en": "text"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "orderright_img",
+			"label": {
+				"en": "The right background"
+			}
+		},
+        {
+			"type": "text",
+			"id": "orderright_time",
+			"label": {
+				"en": "count down"
+			}
+		}
+      
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

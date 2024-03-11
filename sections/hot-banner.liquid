@@ -1,0 +1,26 @@
+<div>
+  {% if section.settings.hot__pressImage != blank %}
+  <img src="{{ section.settings.hot__pressImage | img_url: '1920x' }}" alt="">
+  {% endif %}
+</div>
+{% schema %}
+  {
+    "name": "hot banner",
+    "settings": [
+        {
+            "type":"image_picker",
+            "id":"hot__pressImage",
+            "label":{
+                "en":"Hot press Image",
+                "zh-CN":"图片"
+            }
+        }
+     ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,98 @@
+{% style %}
+  .product-banner {
+    position: relative;
+  }
+  .product-banner .product-banner-text {
+    position: absolute;
+    top: 60%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+  }
+  .product-banner .mobile,.mobiles{
+    display:none;
+  }
+@media screen and (max-width: 1660px) {
+.product-banner .product-banner-text {
+  width:450px;
+  }
+}
+@media screen and (max-width: 1200px) {
+.product-banner .product-banner-text {
+  width:350px;
+  }
+}
+@media screen and (max-width: 990px) {
+  .product-banner .product-banner-text {
+    width: 280px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .product-banner .computer{
+    display:none;
+  }
+  .product-banner .mobile{
+    display:block;
+    width:100%;
+  }
+  .product-banner .product-banner-text {
+    width: 350px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .product-banner .computers{
+    display:none;
+  }
+  .product-banner .mobiles{
+    display:block;
+  }
+  .product-banner .product-banner-text {
+    width: max-content;
+  }
+}
+{% endstyle %}
+<div class="product-banner">
+  <img class="computer" src="{{ section.settings.image | img_url: '1920x' }}" alt="" loading="lazy">
+  <img class="mobile" src="{{ section.settings.cellphoneBackground | img_url: '768x' }}" alt="" loading="lazy">
+  <div class="product-banner-text">
+    <img class="computers" src="{{ section.settings.bannerTextImage | img_url: '1920x' }}" alt="" loading="lazy">
+    <img class="mobiles" src="{{ section.settings.cellphoneBannerTextImage | img_url: '768x' }}" alt="" loading="lazy">
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Blind Box Product Banner",
+    "settings": [
+      {
+      "type": "image_picker",
+      "id": "image",
+      "label": "banner"
+    },
+    {
+      "type": "image_picker",
+      "id": "cellphoneBackground",
+      "label": "cellphoneBackground"
+    },
+    {
+      "type": "image_picker",
+      "id": "bannerTextImage",
+      "label": "bannerTextImage"
+    },
+    {
+      "type": "image_picker",
+      "id": "cellphoneBannerTextImage",
+      "label": "cellphoneBannerTextImage"
+    }
+    ],
+  "presets": [
+    {
+      "name": "Blind Box Product Banner"
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

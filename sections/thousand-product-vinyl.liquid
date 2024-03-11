@@ -1,0 +1,235 @@
+{{ 'thousand-markpoint.js' | asset_url | script_tag }}
+<style>
+  #shopify-section-{{ section.id }} .thousand-product-vinyl {
+    padding-bottom: 50px;
+    background: {{ section.settings.background_color }};
+  }
+  #shopify-section-{{ section.id }} .thousand-product-vinyl-in {
+    display: flex;
+  }
+  #shopify-section-{{ section.id }} .Thousand-product-items {
+    padding: 20px;
+    background: #fff;
+  }
+  #shopify-section-{{ section.id }} .Thousand-product-items:last-child {
+    margin-left: 20px;
+  }
+  #shopify-section-{{ section.id }} .Thousand-product-items .fn-product-title {
+    width: 100%;
+  }
+  #shopify-section-{{ section.id }} .Thousand-product-items .fn-product-title .t {
+    height: auto;
+    line-height: 24px;
+    font-size: 18px;
+    -webkit-line-clamp: 1;
+    margin: 10px 0 5px;
+    color: {{ section.settings.product_title_color }};
+  }
+  #shopify-section-{{ section.id }} .Thousand-product-items .fn-product-price{
+    width: 100%;
+    margin-bottom: 8px;
+  }
+  #shopify-section-{{ section.id }} .Thousand-product-items .fn-product-price .fn-compareat_price {
+    flex-direction: row;
+  }
+  #shopify-section-{{ section.id }} .Thousand-product-items .fn-product-price span{
+    height: 28px;
+    font-size: 21px;
+    line-height: 28px;
+    margin-right: 10px;
+    color:{{ section.settings.price_color }};
+    float: none;
+  }
+  #shopify-section-{{ section.id }} .Thousand-product-items .fn-compare-at_price {
+    font-size: 14px;
+    font-weight: normal;
+    color: #333;
+  }
+  #shopify-section-{{ section.id }} .Thousand-product-items .button--full-width{
+    width: auto;
+    padding: 0 66px;
+    color:{{ section.settings.add_color }};
+    background: {{ section.settings.add_color_bg }};
+    border:1px solid {{ section.settings.add_color_border }};
+    border-radius: 6px;
+    --border-opacity: none;
+    --border-offset: none;
+  }
+  @media screen and (max-width: 768px){
+    #shopify-section-{{ section.id }} .thousand-product-vinyl {
+      padding-bottom: 20px;
+    }
+    #shopify-section-{{ section.id }} .thousand-product-vinyl-in {
+      flex-direction: column;
+    }
+    #shopify-section-{{ section.id }} .Thousand-product-items {
+      padding: 12px 6px 20px;
+    }
+    #shopify-section-{{ section.id }} .Thousand-product-items:last-child {
+      margin: 10px 0 0 0;
+    }
+     #shopify-section-{{ section.id }} .Thousand-product-items .fn-product-title .t {
+       -webkit-line-clamp: 2;
+     }
+    #shopify-section-{{ section.id }} .Thousand-product-items .button--full-width{
+      width: 100%;
+      border-radius: 2px;
+      min-height: 41px
+    }
+</style>
+
+<div class="thousand-product-vinyl">
+  <div class="fn-page-width thousand-product-vinyl-in">
+    {% for block in section.blocks %}
+      <div class="Thousand-product-items">
+        <img
+          class="img-first"
+          src="{{ block.settings.image_picker | img_url: '750x' }}"
+          alt="{{ block.settings.product.featured_image.alt | escape }}"
+          loading="lazy"
+        >
+        <div>
+          <div class="fn-product-title">
+            <a href="{{ block.settings.product.url }}" class="t">{{ block.settings.product.title | escape }}</a>
+          </div>
+          <div class="fn-product-price">
+            {% render 'sffers-price', product: block.settings.product, price_class: '' %}
+          </div>
+
+          <product-form class="product-form">
+            <div class="product-form__error-message-wrapper" role="alert" hidden>
+              <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-error" viewBox="0 0 13 13">
+                <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+                <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+                <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+                <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+              </svg>
+              <span class="product-form__error-message"></span>
+            </div>
+
+            {%- form 'product',
+              block.settings.product,
+              id: product_form_id,
+              class: 'form',
+              novalidate: 'novalidate',
+              data-type: 'add-to-cart-form'
+            -%}
+              <input
+                type="hidden"
+                name="id"
+                value="{{ block.settings.product.selected_or_first_available_variant.id }}"
+                disabled
+              >
+              <div class="product-form__buttons">
+                {% unless block.settings.product.tags contains 'wc_combo_bundle_cta' %}
+                <button
+                  type="submit"
+                  name="add"
+                  id="product_vinyl_{{ block.settings.product.id }}"
+                  onclick="
+                    thousandMarkPoint({
+                      id: '{{ block.settings.product.selected_or_first_available_variant.id }}',
+                      userEmail: '{{ customer.email }}',
+                      pageName: '{{page_title}}'
+                    })
+                  "
+                  class="product-form__submit button button--full-width {% if block.settings.show_dynamic_checkout and block.settings.product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}"
+                  {% if block.settings.product.selected_or_first_available_variant.available == false %}
+                    disabled
+                  {% endif %}
+                >
+                  <span class="t">
+                    {%- if block.settings.product.selected_or_first_available_variant.available -%}
+                      <!-- {{ 'products.product.add_to_cart' | t }} -->
+                      Add To Cart
+                    {%- else -%}
+                      {{ 'products.product.sold_out' | t }}
+                    {%- endif -%}
+                  </span>
+                  <div class="loading-overlay__spinner hidden">
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      role="presentation"
+                      class="spinner"
+                      viewBox="0 0 66 66"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                    </svg>
+                  </div>
+                </button>
+                  {% endunless %}
+
+                {% if block.settings.product.tags contains 'wc_combo_bundle_cta' %}
+                  <a href="{{ block.settings.product.url }}">
+                    <div class="button button--full-width button--primary"><strong>Add To Cart</strong></div>
+                  </a>
+                {% endif %}
+                
+                {%- if block.settings.show_dynamic_checkout -%}
+                  {{ form | payment_button }}
+                {%- endif -%}
+              </div>
+            {%- endform -%}
+          </product-form>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Thousand product vinyl",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "background_color"
+    },{
+        "type":"color",
+        "id":"price_color",
+        "label":"price_color"
+      },{
+        "type":"color",
+        "id":"add_color",
+        "label":"add_color"
+      },{
+        "type":"color",
+        "id":"add_color_bg",
+        "label":"add_color_bg"
+      },{
+        "type":"color",
+        "id":"add_color_border",
+        "label":"add_color_border"
+      },{
+        "type":"color",
+        "id":"product_title_color",
+        "label":"product_title_color"
+      }
+  ],
+  "blocks":[{
+    "type": "img",
+    "name": "img",
+    "settings": [{
+        "type": "product",
+        "id": "product",
+        "label": "product"
+      },{
+        "type": "image_picker",
+        "id": "image_picker",
+        "label": "img"
+      }]
+  }],
+  "presets": [{
+    "name": "Thousand product vinyl"
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

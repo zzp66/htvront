@@ -1,0 +1,206 @@
+{{ 'BlackFriday.css' | asset_url | stylesheet_tag }}
+  {% section 'BlackFriday-banner' %}
+  <div class="fn-BlackFriday-main">
+      <div class="fn-BlackFriday-content">
+         {% comment %}  {% section 'BlackFriday-Event-products' %} {% endcomment %}
+          {% section 'BlackFriday-Discount-lowprice' %}
+          {% section 'BlackFriday-Discount-product' %}
+          {% section 'BlackFriday-Discount-draw' %}
+          {% section 'BlackFriday-Clarence-Hui' %}
+      </div>
+  </div>
+  <div class="fn-BlackFriday-mask">
+    <div class="fn-BlackFridaymask-main" id="fn-BlackFridaymask-video">
+        <div class="mask-close" id="BlackFriday-close" >
+           {% render 'black-close' %}
+        </div>
+        <div class="fn-Specials-Video">
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/UyqFi3B8spo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div class="fn-BlackFridaymask-main" id="fn-BlackFridaymask-rule">
+        <div class="fn-rulemask-close">
+           {% render 'black-close' %}
+        </div>
+        <div class="fn-BlackFridaymask-head">
+          <img class="fn-BlackFridaymask-img" src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/7_516b0bb2-69d5-4d8b-a4e2-c0ec7d104580.png?v=1668134430" alt="">
+          <div class="fn-BlackFridaymask-title t">Pre-deposit $1 Rule</div>
+        </div>
+        <ul class="fn-BlackFridaymask-ruleul">
+          <li class="fn-BlackFridaymask-rulelist">1. Each person can only pre-deposit once, and it is non-refundable.</li>
+          <li class="fn-BlackFridaymask-rulelist">2. The $10 coupon is the only available coupon for Black Friday (Nov. 25th-30th). It will be out of date after November 30th.</li>
+        </ul>
+    </div>
+    <div class="fn-BlackFridaymask-main" id="fn-BlackFridaymask-awards">
+          <img class="fn-BlackFriday-prizeimg" src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/603772f77d142.png?v=1668512947" alt="">
+          <img class="fn-BlackFriday-prizeicon" src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/603772f77d142_332e849d-b4af-4453-b58f-ee6c8d252013.png?v=1668516137" alt="">
+    </div>
+    <div class="fn-BlackFridaymask-main" id="fn-BlackFridaymask-explain">
+        <div class="fn-rulemask-close">
+           {% render 'black-close' %}
+        </div>
+        <div class="fn-BlackFridaymask-head">
+          <img class="fn-BlackFridaymask-img" src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/7_516b0bb2-69d5-4d8b-a4e2-c0ec7d104580.png?v=1668134430" alt="">
+          <div class="fn-BlackFridaymask-title t">Gifts Shippment Rules</div>
+        </div>
+        <ul class="fn-BlackFridaymask-ruleul">
+          <li class="fn-BlackFridaymask-rulelist">1. Please draw your gifts within 24hrs after placing the order.</li>
+          <li class="fn-BlackFridaymask-rulelist">2. The gifts (Auto Heat Press / Easy Press / Lucky Bag / Vinyls/ Tools) will ship with your order. If your drawing time is out of 24hrs, the gifts will ship with your next order. The next order has to be placed before Dec. 15th, or you fail to get the gifts. </li>
+          <li class="fn-BlackFridaymask-rulelist">3. The gifts ($15 coupon) will send to your email <=48hrs (exceptweekends). </li>
+        </ul>
+        <div class="fn-BlackFridaymask-ruleultips">
+          Tips:&nbsp; Luck draw expiration date: Dec. 15th, 2022.<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If you cancel the order, the reward will be unavailable.
+        </div>
+    </div>
+  </div>
+  <div class="fn-BlackFriday-anchor">
+          <img class="fn-BlackFriday-anchorimg" src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/9_364797cf-20a4-4cc9-aad5-3a745f1c9e7a.png?v=1668738542" alt="">
+  </div>
+<script>
+   var encoded_state = 'US';
+   var div_content =document.getElementById("fn-scroll-content")
+   get_particulars();
+   function get_particulars(){
+         $.ajax({
+           type:'GET',
+           dataType:'jsonp',
+           data: {site: encoded_state},
+           url: 'https://qn.htvront.com:9000/prod-biz-api/htvront/lotteryBaseInfo/getWinningInfo',
+           jsonp :'callback',
+           jsonpCallback: 'handle',
+           success(result){
+                var draw_arr = result.data;
+                var a_ul ="<ul>"
+                var monthArr = new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Spt","Oct","November","Dec");
+                draw_arr.forEach((item, index) => {
+                  var date = new Date(item.updatedTime);
+                  var month = monthArr[date.getMonth()]; //月
+                  var ddate = date.getDate(); //日
+                  var item_name = item.user_email;
+                  if(item_name) {
+                      a_ul+="<li>" + item_name.substring(0,2) + "****" + " won the " + item.winning_product + " on " + month + " " + ddate + "</li>"
+                  } else {
+                      a_ul+="<li>" + "****" + " won the " + item.winning_product + " on " + month + " " + ddate + "</li>"
+                  }
+                  
+                  
+               })
+              a_ul+="</ul>"
+             div_content.innerHTML=a_ul; 
+          },
+          error(result){
+             console.log('Progress_arr');
+          }
+    });
+  }
+  
+  $('.product-form__submit').click(function(){
+    var campaign_id = $(this).attr('id');
+    var campaign_text = 'campaign_6752596328581';
+    if (campaign_id == campaign_text) {
+      $('#campaign_6752596328581').hide();
+      $('#campaign_conceal,.fn-Eventproducts-examine').show();
+      $('#cart-notification-form').hide();
+    } else {
+      $('#cart-notification-form').show();
+    }
+})
+  $('.mask-close,.fn-rulemask-close,.fn-BlackFriday-prizeicon').click(function(){
+           $('.fn-BlackFriday-mask').hide();
+  })
+ function blackFunction(e){
+  $('.fn-BlackFriday-mask').show();
+  $('.fn-BlackFridaymask-main').eq(e).show().siblings().hide();
+}
+ var draw_userEmail='{{ customer.email }}';
+  
+  var site_uk = encodeURIComponent(encoded_state);
+ $('#fn-BlackFriday-drawbutton').click(function(){
+    $('.fn-BlackFriday-errormessage,.fn-BlackFriday-already').hide();
+    var drawinput_val = $('.fn-BlackFriday-drawinput').val();
+    var encodedUrl = encodeURIComponent(drawinput_val);
+       $.ajax({
+         type:'GET',
+         dataType:'jsonp',
+         data: { site: site_uk,order_id: encodedUrl,user_email: draw_userEmail },
+         url: 'https://qn.htvront.com:9000/prod-biz-api/htvront/lotteryBaseInfo/lotteryActivity',
+         jsonp :'callback', //指定一个查询参数名称来覆盖默认的 jsonp 回调参数名 callback
+         jsonpCallback: 'handle', //设置回调函数名
+         success(result){
+           console.log('result',result.status);
+           if (result.status === 200 ){
+             let a = '2';
+             $('.fn-BlackFriday-mask').show();
+             $('.fn-BlackFridaymask-main').eq(a).show().siblings().hide();
+             $('.fn-BlackFriday-prizeimg').attr("src",""+ result.data.pic_path);
+           }
+           if (result.status === 500 ){
+            $('.fn-BlackFriday-already').hide();
+            $('.fn-BlackFriday-errormessage').show();
+           }
+           if (result.status === 501 ){
+            $('.fn-BlackFriday-already').show();
+            $('.fn-BlackFriday-errormessage').hide();
+           }
+        },
+        error(result){
+           console.log('Progress_arr');
+        }
+  });
+})
+ $('.fn-BlackFriday-anchor').click(function () {
+     var clientWidth_anchor = document.body.clientWidth;
+      if(clientWidth_anchor < '768' || clientWidth_anchor == '768') {
+        $('html, body').animate({
+          scrollTop: $('.fn-Discount-draw').offset().top - 20
+        });
+      } else {
+         $('html, body').animate({
+          scrollTop: $('.fn-Discount-draw').offset().top - 120
+        });
+      }
+
+});
+  // 导航标签
+// $('.fn-BlackFriday-bannerlist').click(function () {
+//      var banner_list = $(this).index();
+//      if( banner_list === 0 ) {
+//         $('html, body').animate({
+//           scrollTop: $('#shopify-section-BlackFriday-Event-products').offset().top - 50 //65为设置的偏移值
+//         });
+//      }
+//        if( banner_list === 1 ) {
+//         $('html, body').animate({
+//           scrollTop: $('#shopify-section-BlackFriday-Discount-product').offset().top - 50 //65为设置的偏移值
+//         });
+//      }
+//        if( banner_list === 2 ) {
+//         $('html, body').animate({
+//           scrollTop: $('#shopify-section-BlackFriday-Discount-draw').offset().top - 50 //65为设置的偏移值
+//         });
+//      }
+//        if( banner_list === 3 ) {
+//         $('html, body').animate({
+//           scrollTop: $('#shopify-section-BlackFriday-Clarence-Hui').offset().top - 50 //65为设置的偏移值
+//         });
+//      }
+// });
+ $(function(){
+     var url_blacks = window.location.toString();//进这个页面的url
+   // console.log('url_blacks',url_blacks);
+      if(url_blacks.indexOf("black-friday-2022") !== -1) {
+          $('html, body').animate({
+            scrollTop: $('#fn-Discount-product').offset().top - 120 //65为设置的偏移值
+          });
+      }
+         if(url_blacks.indexOf("black-friday-lucky-draw") !== -1) {
+          $('html, body').animate({
+            scrollTop: $('#shopify-section-BlackFriday-Discount-draw').offset().top - 50 //65为设置的偏移值
+          });
+      }
+   
+ })
+</script>             
+            
+
+

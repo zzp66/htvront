@@ -1,0 +1,187 @@
+<div class="blog-article">
+  <div id="blog_title" class="blog-title">{{ section.settings.blog_title }}</div>
+  <ul class="blog-content">
+    {% for block in section.blocks %}
+      <li class="blog-content-separate">
+        <picture>
+          {% assign image = block.settings.blog_image | img_url: '750x' %}
+          {% assign image_mobile = block.settings.blog_image_mobile | img_url: '330x' %}
+          <source media="(max-width: 480px)" srcset="{{ image_mobile }}">
+          <img src="{{ image }}" style="width: 100%;">
+        </picture>
+        <div class="blog-characters">{{ block.settings.blog_html }}</div>
+        <a href="{{ block.settings.blog_url }}" class="blog-details">View More >></a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% schema %}
+{
+  "name": "Section name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "blog_title",
+      "label": "blog title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "bundle",
+      "name": {
+        "en": "bundle"
+      },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "blog_image",
+          "label": {
+            "en": "blog image"
+          }
+        },
+        {
+          "type": "image_picker",
+          "id": "blog_image_mobile",
+          "label": {
+            "en": "blog image mobile"
+          }
+        },
+      {
+          "type": "html",
+          "id": "blog_html",
+          "label": "blog html"
+        },
+           {
+          "type": "url",
+          "id": "blog_url",
+          "label": "blog url"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "projects-using"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+       .blog-article{
+          background: #FBEBD5;
+         padding:50px 0 30px;
+          }
+         .blog-title{
+           font-size: 36px;
+           color: #333333;
+            font-weight: bold;
+          text-align:center;
+           margin-bottom:30px;
+        }
+          .blog-content{
+            width:1600px;
+            margin:0 auto;
+            display:flex;
+            flex-wrap: wrap;
+            overflow-x: hidden;
+        }
+        .blog-content-separate{
+          width:calc((100% - 20px) / 2);
+          margin-right:20px;
+         border-radius: 10px;
+           background: #FFFFFF;
+          padding:20px;
+          margin-bottom:20px;
+      }
+    .blog-content :nth-child(2n){
+       margin-right:0;
+    }
+    .blog-characters{
+      margin:24px 0 0 0;
+      color: #333333;
+    }
+      .blog-characters p{
+      font-size: 18px;
+      font-weight: bold;
+        margin-top:20px;
+      line-height: 24px;
+    }
+      .blog-characters div{
+        font-size: 16px;
+        margin:10px 0;
+     line-height: 24px;
+    }
+    .blog-characters a{
+     display: inline-block;
+      color: #FF7604 !important;
+      text-decoration:underline;
+      font-weight: bold;
+     line-height: 24px;
+    }
+   .blog-details{
+     font-size: 16px !important;
+     color: #FF7604 !important;
+     line-height: 24px !important;
+      cursor: pointer !important;
+    }
+  @media screen and (max-width:1660px){
+        .blog-content{
+            width:83.33%;
+            margin:0 auto;
+            display:flex;
+            flex-wrap: wrap;
+            overflow-x: hidden;
+        }
+     .blog-characters{
+        line-height: 20px;
+    }
+       .blog-title{
+           font-size: 30px;
+           color: #333333;
+            font-weight: bold;
+         text-align:center;
+           margin-bottom: 30px;
+        }
+  }
+    @media screen and (max-width:480px){
+       .blog-article{
+          padding:20px 0;
+      }
+      .blog-title{
+        width:73.87%;
+           font-size: 16px;
+           color: #333333;
+            font-weight: bold;
+          text-align:center;
+           margin:0 auto 20px;
+        }
+     .blog-content{
+         width:93.6%;
+         margin:0 auto;
+        }
+       .blog-content-separate{
+          width:100%;
+          border-radius: 6px;
+          margin: 0 0 10px 0;
+          background: #FFFFFF;
+          padding: 12px 10px 19px 11px
+      }
+       .blog-characters{
+         margin: 0;
+        color: #333333;
+      }
+      .blog-characters p{
+      font-size: 15px;
+      font-weight: bold;
+        margin-top:13px;
+      line-height: 20px;
+    }
+      .blog-characters div{
+        font-size: 14px;
+        margin:6px 0;
+      line-height: 24px;
+    }
+    }
+</style>

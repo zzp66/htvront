@@ -1,0 +1,291 @@
+<style>
+  .black-friday-time{
+     letter-spacing: 0;
+    padding-bottom:50px;
+  }
+  .black-friday-time .countdown {
+    position: relative;
+  }
+  .black-friday-time .black-friday-time-content{
+    position: absolute;
+    display: flex;
+    left: 50%;
+    top:  45%;
+    transform: translate(-50%,-50%);
+    align-items: center;
+    width: max-content;
+  }
+  .black-friday-time .black-friday-time-desc{
+    font-weight: bold;
+    color: #723600;
+    line-height: 41px;
+    font-size:24px;
+    margin-right:25px
+  }
+  .black-friday-time .timer-count {
+    display: flex;
+    align-items: center
+  }
+  .black-friday-time .format_span_time {
+    overflow: hidden;
+    font-size: 48px;
+    color: #000;
+    line-height: 56px;
+    padding-top: 18px;
+  }
+  .black-friday-time .format_span_time .t{
+    font-weight:700;
+  }
+  .black-friday-time .timer-count > div {
+    position: relative;   
+  }
+  .black-friday-time .timer-text {
+    font-size: 18px;
+    color: #FFF;
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .time-box{
+    width: 108px;
+    height: 97px;
+    background: linear-gradient(180deg, #828282 0%, #FFFFFF 100%);
+    box-shadow: inset 0px 3px 3px 0px rgba(49,49,49,0.64);
+    border-radius: 10px 10px 10px 10px;
+    opacity: 1;
+    border: 2px solid;
+    text-align: center;
+    margin-right:40px;
+  }
+  .time-box:nth-last-of-type(1){
+    margin-right:0;
+  }
+ .black-friday-time .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #914408;
+  }
+  .black-friday-time .timer-count p {
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+  .black-friday-time .timer-count p + p {
+    margin-top: 10px;
+  }
+  .black-friday-time .deal-timer-desc {
+    font-size: 16px;
+    color: #ff4042;
+    line-height: 22px;
+    text-align: center;
+  }
+  .black-friday-time .countdown img {
+    margin: 0 auto;
+  }
+  #countdown_time{
+    display:none
+  }
+  .image-balloon{
+    position: absolute;
+    top: -16%;
+    right: 23%;
+  }
+   @media screen and (max-width: 1660px){
+    .image-balloon{
+      right: 18%;
+    }
+   }
+  @media screen and (max-width: 1440px){
+    .black-friday-time .countdown{
+      width:65%;
+      margin:0 auto
+    }
+    .image-balloon{
+      right: -5%;
+    }
+  }
+  @media screen and (max-width: 1330px){
+    .black-friday-time .format_span_time{
+      font-size:30px
+    }
+    .black-friday-time .timer-text{
+      font-size:16px
+    }
+    .black-friday-time .black-friday-time-desc{
+      font-size:26px
+    }
+  }
+  @media screen and (max-width: 1024px){
+    .black-friday-time .countdown{
+      width:80%
+    }
+    .black-friday-time .format_span_time{
+      font-size:26px
+    }
+    .black-friday-time .timer-text{
+      font-size:14px
+    }
+    .black-friday-time .black-friday-time-desc{
+      font-size:24px
+    }
+    .black-friday-time .timer-count p{
+      margin-left: 12px;
+      margin-right: 12px;
+    }
+  }
+  @media screen and (max-width: 820px){
+    .black-friday-time{
+      padding-bottom:15px;
+    }
+    .black-friday-time .format_span_time{
+      font-size:22px;
+      padding-top: 3px;
+      line-height: 26px;
+    }
+    .black-friday-time .black-friday-time-desc{
+      font-size: 16px;
+      margin-right: 0;
+      line-height: 32px;
+    }
+    .black-friday-time .black-friday-time-content{
+      display:block;
+      text-align:center;
+      top: 45%;
+    }
+    .black-friday-time .countdown{
+      width:96%
+    }
+    .time-box {
+      width: 47px;
+      height: 42px;
+      margin-right:17px;
+    }
+    .black-friday-time .timer-text{
+      bottom:-30px;
+    }
+  }
+</style>
+<div class="black-friday-time">
+  <div class="deal-timer-countdown">
+    <div class="countdown">
+      <picture>
+        <source media="(max-width: 820px)" srcset="{{ section.settings.image_mobile | img_url:'328x' }}" />
+        <source media="(min-width: 821px)" srcset="{{ section.settings.image | img_url:'948x' }}">
+        <img src="{{ section.settings.image | img_url:'948x' }}"/>
+      </picture>
+      <div class="image-balloon show-in-821">
+         <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Group_238.png?v=1699581957"/>
+      </div>
+      <div class="black-friday-time-content">
+        <div class="black-friday-time-desc">{{ section.settings.desc_text }}</div>
+        <div class="timer-count">
+        <div class="time-box">
+          <div class="format_span_time">
+            <div>
+              <span id='days' class="day format_span t">23</span>
+            </div>       
+          </div>
+          <span class="timer-text">Days</span>
+        </div>
+        <div class="time-box">
+          <div class="format_span_time">
+            <div>
+              <span id='hour' class="hour format_span t">23</span>
+            </div>       
+          </div>
+          <span class="timer-text">Hours</span>
+        </div>
+        <div class="time-box">
+          <div class="format_span_time">
+            <div>
+            <span id='minute' class="minute format_span t">59</span>
+            </div>
+          </div>
+          <span class="timer-text">Mins</span>
+        </div>
+        <div class="time-box">
+          <div class="format_span_time">
+            <div>
+            <span id='second' class="second format_span t">59</span>
+            </div>
+           </div>
+          <span class="timer-text">Secs</span>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="countdown_time">{{ section.settings.countdown_time }}</div>
+<script>
+  // var p_times = '2023-3-10 14:35:00';
+  var p_times = $('#countdown_time').text();
+  //获取元素
+  var days  = $("#days")[0];
+  var hour = $("#hour")[0];
+  var minute = $("#minute")[0];
+  var second = $("#second")[0];
+  //获取截止时间的时间戳（单位毫秒）
+  var inputTime = new Date(""+ p_times.replace(/-/g, "/"));
+  //我们先调用countDown函数，可以避免在打开界面后停一秒后才开始倒计时
+  countDown();
+  //定时器 每隔一秒变化一次
+  var timer_s = setInterval(countDown, 1000);
+  function countDown() {
+      //获取当前时间的时间戳（单位毫秒）
+      var nowTime = +new Date();
+      //把剩余时间毫秒数转化为秒
+      var times = (inputTime - nowTime) / 1000;
+      if (times > 0) {
+         var d = Math.floor(times /60 / 60 / 24 );
+      //计算小时数 转化为整数
+      //如果小时数小于 10，要变成 0 + 数字的形式 赋值给盒子
+      days.innerHTML = d < 10 ? "0" + d : d;
+      var h = Math.floor(times /60 / 60 % 24 );
+      //计算小时数 转化为整数
+      //如果小时数小于 10，要变成 0 + 数字的形式 赋值给盒子
+      hour.innerHTML = h < 10 ? "0" + h : h;
+      //计算分钟数 转化为整数
+      var m = parseInt(times / 60 % 60);
+      //如果分钟数小于 10，要变成 0 + 数字的形式 赋值给盒子
+      minute.innerHTML = m < 10 ? "0" + m : m;
+      //计算描述 转化为整数
+      var s = parseInt(times % 60);
+      // //如果秒钟数小于 10，要变成 0 + 数字的形式 赋值给盒子
+      second.innerHTML = s < 10 ? "0" + s : s;
+      } else {
+        clearInterval(timer_s);
+      }
+  }
+</script>
+{% schema %}
+  {
+    "name": "Black Friday Time",
+     "settings": [
+        {
+        "type":"image_picker",
+        "id":"image",
+        "label":"image"
+      },   {
+        "type":"image_picker",
+        "id":"image_mobile",
+        "label":"image mobile"
+      }, 
+      {
+        "type":"text",
+        "id":"desc_text",
+        "label":"desc"
+      },{
+        "type":"text",
+        "id":"countdown_time",
+        "label":"text"
+      }]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

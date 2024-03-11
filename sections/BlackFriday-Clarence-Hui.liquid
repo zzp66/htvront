@@ -1,0 +1,92 @@
+<div class="fn-Clarence-Hui">
+  <div class="fn-ClarenceHui-title t">{{ section.settings.BlackFriday_title }}</div>
+  <div class="fn-ClarenceHui-main">
+       {% if section.settings.Clarence_img != blank %}
+          {% assign image = section.settings.Clarence_img | img_url: '1600x' %}
+          <img class="fn-ClarenceHui-img" src="{{ image }}" alt="">
+      {% endif %}
+      <div class="fn-ClarenceHui-body">
+          <div class="fn-ClarenceHui-bodyleft">
+              {% if section.settings.gift_img != blank %}
+              {% assign images = section.settings.gift_img | img_url: '450x' %}
+                <img class="fn-ClarenceHui-img" src="{{ images }}" alt="">
+              {% endif %}
+          </div>
+          <div class="fn-ClarenceHui-bodyright">
+              <div class="fn-bodyright-title t">{{ section.settings.bodyright_title }}</div>
+              <div class="fn-bodyright-content">
+                    <img class="fn-bodyright-imges" src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/14_d145a500-d104-4acc-b3b0-e83369d88b41.png?v=1667985900" alt="">
+                    <ul class="fn-bodyright-ul">
+                      <li class="fn-bodyright-list">
+                        Place an order from Nov. 14th - 30th EST to qualify for a wish (please make your desire relates to HTVRONT, products, coupon codes, or gift cards).
+                      </li>
+                      <li class="fn-bodyright-list fn-bodyright-Socialmedia">
+                        Share this event and @ HTVRONT official account on social media. Then, screenshot it.<br>
+                        <div class="fn-bodyright-listnav"> 
+                              <a class="icon icon-facebook" href="https://fb.watch/h0dfZ8ggkw/">
+                                <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/s_9106af12-a427-46f2-a9ec-4f943e3a5033.png?v=1667988864" alt="">
+                              </a>
+                               <a class="icon icon-instagram" href="https://vt.tiktok.com/ZS819fran/ ">
+                                 <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20221116-090212.png?v=1668561350" alt="">
+                              </a>
+                              <a class="icon icon-youtube" href="https://www.youtube.com/watch?v=D6CUDkRCbCQ">
+                                <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/s-youtube.png?v=1667988864" alt="">
+                              </a>
+                              <a class="icon icon-twitter" href="https://twitter.com/HtvRont_/status/1592453531549958144?s=20&t=Hw6d9_YhThH7JmRDmwR3BQ ">
+                                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/s-_-3.png?v=1667988864" alt="">
+                              </a>
+                        </div>
+                      </li>
+                      <li class="fn-bodyright-list">
+                        Email the screenshot picture and type in your wish to <a class="fn-mailto-link" href="mailto:rachel_lee@htvront.com">rachel_lee@htvront.com</a>
+                      </li>
+                       <li class="fn-bodyright-list">
+                        Waiting for the official announcement on the website on Dec. 5th. 
+                      </li>
+                    </ul>
+                </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": [
+        {
+			"type": "text",
+			"id": "BlackFriday_title",
+			"label": {
+				"en": "title"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "Clarence_img",
+			"label": {
+				"en": "The left background"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "gift_img",
+			"label": {
+				"en": "left imges"
+			}
+		},
+        {
+			"type": "text",
+			"id": "bodyright_title",
+			"label": {
+				"en": "gift title"
+			}
+		} 
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

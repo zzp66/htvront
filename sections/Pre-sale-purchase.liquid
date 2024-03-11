@@ -1,0 +1,87 @@
+<div class="fn-purchase">
+  <div class="fn-purchase-left">
+    {% if section.settings.image_purchase1 != blank %}
+        {% assign image = section.settings.image_purchase1 | img_url: '700x' %}
+        <img src="{{ image }}" alt="">
+    {% endif %}
+    <div class="t fn-purchase-title">Auto Heat Press(1Unit)+Free Gift</div>
+    <div class="fn-purchase-price"><span class="fn-purchase-text">$279.99</span></div>
+    <div>
+        <div class="fn-purchase-hue">
+            <div class="fn-purchase-leftattribute purchase_active">Light Blue</div>
+            <div class="fn-purchase-leftattribute">White</div>
+        </div>
+        <div id="main-leftbutton">
+            <div class="fn-purchase-button leftbutton" id="fn-left-lightblue">
+              {% render 'fn-purchase-lightblue'%}
+             </div>
+            <div class="fn-purchase-button leftbutton" id="fn-left-White">
+              {% render 'fn-purchase-White'%}
+            </div>
+        </div>
+        <ul class="fn-purchase-list">
+          <li>Buy 1 Get Gift for Free</li>
+          <li>Free Gift: HTV Roll (12"*5') x 4, Teflon Sheet (16"*20") x 3</li>
+        </ul>
+    </div>
+  </div>
+  <div class="fn-purchase-right">
+    {% if section.settings.image_purchase2 != blank %}
+        {% assign image = section.settings.image_purchase2 | img_url: '700x' %}
+        <img src="{{ image }}" alt="">
+    {% endif %}
+    <div class="t fn-purchase-title">Auto Heat Press (2Units) + Free Gift*2</div>
+    <div class="fn-purchase-price"><span class="fn-purchase-text">$529.99</span><span>$559.98<span class="Discount_price"></span></span></div>
+    <div>
+        <div class="fn-purchase-hue">
+            <div class="fn-purchase-rightattribute purchase_active">Light Blue</div>
+            <div class="fn-purchase-rightattribute">White</div>
+<!--             <div class="fn-purchase-rightattribute">White&Light Blue</div> -->
+        </div>
+        <div id="main-rightbutton">
+            <div class="fn-purchase-button rightbutton" id="fn-right-lightblue">
+              {% render 'fn-right-lightblue'%}
+             </div>
+            <div class="fn-purchase-button rightbutton" id="fn-right-White">
+              {% render 'fn-right-White'%}
+            </div>
+<!--             <div class="fn-purchase-button rightbutton" id="fn-right-multi">
+              {% render 'fn-right-multi'%}
+            </div> -->
+        </div>
+        <ul class="fn-purchase-list">
+          <li>Buy 2 Get 2 Gift for Free</li>
+          <li>Free Gift:HTV Roll (12"*5') x 8, Teflon Sheet (16"*20") x 6</li>
+        </ul>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "purchase",
+    "settings": [
+      {
+			"type": "image_picker",
+			"id": "image_purchase1",
+			"label": {
+				"en": "purchase Image",
+				"zh-CN": "图片"
+			}
+		},
+        {
+			"type": "image_picker",
+			"id": "image_purchase2",
+			"label": {
+				"en": "purchase Image",
+				"zh-CN": "图片"
+			}
+		}
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

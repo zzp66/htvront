@@ -1,0 +1,694 @@
+.fn-Newyear-swipe_three_mobile,
+.fn-Newyear-swiper_two_mobile,
+.fn-Newyear-swiper_mobile,
+.Newyear_make_mobile,
+.fn-gifimg_mobile,
+.fn-Newyear-banner_mobile {
+  display: none;
+}
+main#MainContent {
+  background: linear-gradient(180deg, #ffefdf 0%, #ffdabc 100%);
+}
+.fn-Newyear-banner {
+  position: relative;
+}
+.fn-head-content {
+  position: absolute;
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+}
+.fn-head-title.t {
+  font-size: 48px;
+  line-height: 58px;
+}
+.fn-head-gift {
+  font-size: 24px;
+  line-height: 29px;
+  margin-top: 15px;
+}
+.fn-Newyear-gif_img {
+  text-align: -webkit-center;
+  margin-top: 30px;
+}
+.fn-Newyear-Gift-making {
+  max-width: 83.33%;
+  margin: auto;
+  text-align: center;
+  background: #ec1d00;
+  border-radius: 16px;
+  padding: 33px 0;
+}
+.fn-Newyear-Gift-making_title.t {
+  font-size: 36px;
+  color: #fff;
+  line-height: 50px;
+}
+.fn-Newyear-Gift-making_text {
+  font-size: 18px;
+  color: #fff;
+  line-height: 24px;
+}
+.fn-Newyear-Gift-making_text span {
+  display: inline-block;
+  font-weight: bold;
+}
+ul.fn-Newyear-save_ul {
+  max-width: 81.25%;
+  display: flex;
+  margin: 0 auto 80px auto;
+  justify-content: space-between;
+  padding: 28px 30px 34px;
+  background: #ff3c20;
+}
+li.fn-Newyear-save_list {
+  width: 32.5%;
+}
+.card.save_cart {
+  /* background-color: #fff; */
+  background: #ffffff;
+  box-shadow: 0px 10px 21px 0px rgb(255 118 6 / 85%);
+  border-radius: 10px;
+  padding-bottom: 15px;
+}
+.fn-product-save_title a.t {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  margin: 10px 0 13px 0;
+}
+.fn-Newyear-save_ul .fn-color-attr {
+  height: 30px;
+  width: 250px;
+  margin: auto;
+}
+.fn-Newyear-save_ul .fn-color-attr ul li {
+  width: 30px;
+  height: 30px;
+}
+.fn-Newyear-save_ul .fn-color-attr ul li + li {
+  margin-left: 10px;
+}
+.fn-shirt_price,
+.fn-save_price span.save-sale,
+.fn-compareat_price span {
+  display: inline-block;
+}
+.fn-save-price {
+  max-width: 150px;
+  margin: 10px auto;
+  text-align: center;
+}
+.fn-save_price {
+  display: flex;
+  align-items: flex-end;
+}
+s.save-sale_old {
+  font-size: 14px;
+  color: #656565;
+  line-height: 19px;
+}
+span.price-item.price-item--regular,
+.fn-save_price span.save-sale {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ff7606;
+  line-height: 27px;
+  margin-right: 9px;
+}
+.fn-color-attr ul .color-quantity {
+  color: #333;
+  line-height: 30px;
+  font-size: 14px;
+  margin-left: 10px;
+}
+.save-form__buttons {
+  margin: auto;
+  width: 74.6%;
+}
+.button--full-width {
+  display: flex;
+  width: 100%;
+  font-size: 14px;
+  font-family: PingFangSC-Semibold, PingFang SC;
+}
+.save-form__buttons .button {
+  min-height: calc(3.8rem + var(--buttons-border-width) * 2);
+  border-radius: 4px;
+  --border-opacity: 4px;
+}
+.fn-Newyear-make_img {
+  margin-bottom: 36px;
+}
+
+.fn-button-two_save,
+.fn-button-three_save,
+.fn-button-prev_save {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 20px;
+}
+.swiper-button-next_two,
+.swiper-button-prev_two,
+.swiper-button-next_three,
+.swiper-button-prev_three,
+.swiper-button-next_save,
+.swiper-button-prev_save {
+  width: 48px;
+  height: 48px;
+  background-image: url(https://cdn.shopify.com/s/files/1/0356/5997/2741/files/7_9a9b4646-22b3-4c49-9cd4-a0586a0753de.png?v=1674025725);
+  border-radius: 4px;
+  background-repeat: no-repeat;
+  background-color: #ff7606;
+  background-position: center;
+}
+.swiper-button-prev_two,
+.swiper-button-prev_three,
+.swiper-button-prev_save {
+  background-image: url(https://cdn.shopify.com/s/files/1/0356/5997/2741/files/6_42303990-372f-4135-88ee-510a696fa2b1.png?v=1674025725);
+}
+.swiper-button-next_two.swiper-button-disabled,
+.swiper-button-prev_two.swiper-button-disabled,
+.swiper-button-next_three.swiper-button-disabled,
+.swiper-button-prev_three.swiper-button-disabled,
+.swiper-button-next_save.swiper-button-disabled,
+.swiper-button-prev_save.swiper-button-disabled {
+  background: #ffffff;
+  background-image: url(https://cdn.shopify.com/s/files/1/0356/5997/2741/files/7_9a9b4646-22b3-4c49-9cd4-a0586a0753de.png?v=1674025725);
+  border-radius: 4px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.swiper-button-next_two,
+.swiper-button-next_three,
+.swiper-button-next_save {
+  margin-right: 14px;
+  background-image: url(https://cdn.shopify.com/s/files/1/0356/5997/2741/files/6_42303990-372f-4135-88ee-510a696fa2b1.png?v=1674025725);
+  transform: rotate(180deg);
+}
+.swiper-button-next_two.swiper-button-disabled,
+.swiper-button-next_three.swiper-button-disabled,
+.swiper-button-next_save.swiper-button-disabled {
+  transform: rotate(0deg);
+}
+.swiper-button-prev_two.swiper-button-disabled,
+.swiper-button-prev_three.swiper-button-disabled,
+.swiper-button-prev_save.swiper-button-disabled {
+  transform: rotate(180deg);
+}
+.fn-shirt-main_wrapper .product-form__submit {
+  padding: 0;
+}
+.card.fn-shirt-main_wrapper {
+  background: #ffffff;
+  border-radius: 10px;
+}
+.fn-product-shirt_head {
+  padding: 13px 10px 25px 10px;
+}
+.fn-shirt-product_title {
+  height: 44px;
+  font-size: 16px;
+  line-height: 22px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  letter-spacing: -0.5px;
+}
+.fn-shirt_price span.price-item.price-item--regular,
+.fn-shirt_price span.t.price-item--sale.price-item--last {
+  font-size: 18px;
+  line-height: 24px;
+  color: #ff7606;
+}
+.fn-shirt_price s.fn-product-price_old.fn-compare-at_price {
+  font-size: 14px;
+  color: #656565;
+  line-height: 19px;
+}
+.fn--shirt-product_price {
+  margin: 4px 0 10px 0;
+}
+.fn-shirt-main_wrapper .fn-color-attr {
+  height: 30px;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+.fn-shirt-main_wrapper .fn-color-attr ul li {
+  width: 30px;
+  height: 30px;
+}
+.fn-shirt-main_wrapper .fn-color-attr ul li + li {
+  margin-left: 10px;
+}
+.fn-shirt-main_wrapper .shirt-form__buttons .button {
+  min-height: calc(3.8rem + var(--buttons-border-width) * 2);
+  border-radius: 4px;
+  --border-opacity: 4px;
+  background: #ff7606;
+}
+.fn-Newyear-shirt_three {
+  margin-bottom: 58px;
+}
+.fn-Newyear-save_ul .fn-color-attr ul {
+  justify-content: center;
+}
+
+@media screen and (max-width: 1440px) {
+  .fn-head-title.t {
+    font-size: 32px;
+    line-height: 42px;
+  }
+  .fn-head-gift {
+    font-size: 18px;
+    line-height: 23px;
+    margin-top: 5px;
+  }
+  .fn-Newyear-gif_img img {
+    max-width: 31%;
+  }
+  .fn-Newyear-Gift-making_title.t {
+    font-size: 28px;
+    line-height: 48px;
+  }
+  .fn-Newyear-Gift-making {
+    padding: 25px 0;
+  }
+  ul.fn-Newyear-save_ul {
+    margin: 0 auto 50px;
+    padding: 20px 25px 30px;
+  }
+  .fn-product-save_title a.t {
+    font-size: 16px;
+    line-height: 22px;
+    margin: 10px 0 10px;
+  }
+  .fn-product-save_head {
+    padding: 0 15px;
+  }
+  .save-form__buttons {
+    width: 90%;
+  }
+  .fn-shirt-main_wrapper .shirt-form__buttons .button {
+    min-height: calc(2.8rem + var(--buttons-border-width) * 2);
+  }
+  .save-form__buttons .button {
+    min-height: calc(3.3rem + var(--buttons-border-width) * 2);
+  }
+  .card.save_cart {
+    padding-bottom: 25px;
+  }
+  span.price-item.price-item--regular,
+  .fn-save_price span.save-sale {
+    font-size: 20px;
+  }
+  .fn-shirt_price span.price-item.price-item--regular,
+  .fn-shirt_price span.t.price-item--sale.price-item--last {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  .fn-shirt-product_title {
+    height: 22px;
+    font-size: 16px;
+    line-height: 22px;
+    -webkit-line-clamp: 1;
+  }
+  .fn-shirt-main_wrapper .fn-color-attr ul li {
+    width: 25px;
+    height: 25px;
+  }
+  .fn-shirt-main_wrapper .fn-color-attr {
+    height: 25px;
+  }
+  .fn-color-attr ul .color-quantity {
+    line-height: 25px;
+  }
+  .fn-button-two_save,
+  .fn-button-three_save,
+  .fn-button-prev_save {
+    margin-bottom: 15px;
+  }
+  .swiper-button-next_two,
+  .swiper-button-prev_two,
+  .swiper-button-next_three,
+  .swiper-button-prev_three,
+  .swiper-button-next_save,
+  .swiper-button-prev_save {
+    width: 35px;
+    height: 35px;
+  }
+  .fn-Newyear-save_ul .fn-color-attr ul li + li {
+    margin-left: 5px;
+  }
+  .fn-Newyear-save_ul .fn-color-attr {
+    width: 65%;
+    height: 25px;
+  }
+  .fn-Newyear-save_ul .fn-color-attr ul li {
+    width: 25px;
+    height: 25px;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .fn-Newyear-swiper_two,
+  .fn-Newyear-swipe_three,
+  .fn-Newyear-swiper {
+    max-width: 45.25%;
+  }
+  .swiper-button-next_two,
+  .swiper-button-prev_two,
+  .swiper-button-next_three,
+  .swiper-button-prev_three,
+  .swiper-button-next_save,
+  .swiper-button-prev_save {
+    width: 30px;
+    height: 30px;
+  }
+  .fn-button-two_save,
+  .fn-button-three_save,
+  .fn-button-prev_save {
+    margin-bottom: 10px;
+  }
+  /*   .fn-Newyear-swiper_two {
+    left: 4%;
+    top: 10px;
+  }
+  .fn-Newyear-swiper {
+    right: 4%;
+} */
+  .fn-shirt-product_title {
+    height: 20px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .fn--shirt-product_price span.price-item.price-item--regular,
+  .fn--shirt-product_price .fn-save_price span.save-sale,
+  .fn-shirt_price span.price-item.price-item--regular,
+  .fn-shirt_price span.t.price-item--sale.price-item--last {
+    font-size: 18px;
+    line-height: 22px;
+  }
+  .fn--shirt-product_price {
+    margin: 4px 0 8px;
+  }
+  .fn-color-attr ul li img {
+    width: 25px;
+    height: 25px;
+  }
+  .fn-shirt-main_wrapper .fn-color-attr {
+    height: 25px;
+    margin-bottom: 10px;
+  }
+  .fn-product-shirt_head {
+    padding: 10px 10px 15px;
+  }
+  .fn-shirt-main_wrapper .fn-color-attr ul li + li {
+    margin-left: 5px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .fn-Newyear-Gift-making {
+    padding: 20px 0;
+  }
+  .fn-Newyear-Gift-making_title.t {
+    font-size: 20px;
+    line-height: 40px;
+  }
+  .fn-Newyear-Gift-making_text {
+    font-size: 14px;
+    color: #fff;
+    line-height: 20px;
+  }
+  ul.fn-Newyear-save_ul {
+    margin: 0 auto 50px;
+    padding: 15px 20px 25px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .fn-Newyear-shirt_two,
+  .fn-Newyear-shirt_three,
+  .fn-Newyear-shirt_main {
+    position: relative;
+  }
+  .fn-Newyear-swiper {
+    position: absolute;
+    transform: translateY(-50%);
+    right: 8.1%;
+    top: 50%;
+    max-width: 56.25%;
+  }
+  .fn-Newyear-swiper_two {
+    position: absolute;
+    left: 8.1%;
+    top: 57px;
+    max-width: 56.25%;
+  }
+  .fn-Newyear-swipe_three {
+    position: absolute;
+    right: 8.1%;
+    top: 27px;
+    max-width: 56.25%;
+  }
+  .fn-Newyear-swipe_three,
+  .fn-Newyear-swiper_two {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+@media screen and (max-width: 768px) {
+  .Newyear_three_imgpc,
+  .fn-Newyear-swipe_three_pc,
+  .Newyear_two_imgpc,
+  .fn-Newyear-swiper_two_pc,
+  .Newyear_one_img_pc,
+  .fn-Newyear-swiper_pc,
+  .Newyear_make_pc,
+  .fn-gifimg_pc,
+  .fn-Newyear-banner_pc {
+    display: none;
+  }
+  .fn-Newyear-swipe_three_mobile,
+  .fn-Newyear-swiper_two_mobile,
+  .fn-Newyear-swiper_mobile,
+  .Newyear_make_mobile,
+  .fn-gifimg_mobile,
+  .fn-Newyear-banner_mobile {
+    display: block;
+    width: 100%;
+  }
+  .fn-Newyear-Gift-making {
+    max-width: 98.33%;
+    padding: 8px 0;
+  }
+  ul.fn-Newyear-save_ul {
+    max-width: 93.25%;
+    flex-wrap: wrap;
+    padding: 15px 15px 20px;
+  }
+  li.fn-Newyear-save_list {
+    width: 49%;
+  }
+  .fn-head-title.t {
+    font-size: 22px;
+    line-height: 32px;
+  }
+  .fn-head-gift {
+    font-size: 14px;
+    line-height: 19px;
+    margin-top: 5px;
+  }
+  .fn-Newyear-Gift-making_title.t {
+    font-size: 16px;
+    line-height: 26px;
+  }
+  .fn-Newyear-Gift-making_text {
+    font-size: 14px;
+    line-height: 19px;
+  }
+  .fn-Newyear-save_list:nth-child(3) {
+    margin-top: 10px;
+  }
+  .fn-product-save_title a.t {
+    font-size: 14px;
+    line-height: 20px;
+    margin: 5px 0;
+  }
+  .fn-Newyear-save_ul .fn-color-attr {
+    width: 100%;
+  }
+  .fn-color-attr ul .color-quantity {
+    font-size: 12px;
+  }
+  span.price-item.price-item--regular,
+  .fn-save_price span.save-sale {
+    font-size: 16px;
+    line-height: 23px;
+  }
+  s.save-sale_old {
+    font-size: 12px;
+    line-height: 17px;
+  }
+  .fn-save-price {
+    margin: 5px auto;
+  }
+  .button--full-width {
+    font-size: 12px;
+  }
+  .fn-Newyear-swiper_two,
+  .fn-Newyear-swipe_three,
+  .fn-Newyear-swiper {
+    max-width: calc(100% - 20px);
+    margin: auto;
+  }
+}
+@media screen and (max-width: 480px) {
+  .fn-head-title.t {
+    font-size: 24px;
+    line-height: 29px;
+    max-width: 279px;
+  }
+  .fn-head-gift {
+    font-size: 16px;
+    line-height: 18px;
+    margin-top: 8px;
+  }
+  .fn-head-content {
+    left: 45px;
+    top: 48px;
+    transform: translateY(0);
+  }
+  .fn-Newyear-gif_img {
+    margin-top: 20px;
+  }
+  .fn-Newyear-Gift-making_title.t {
+    font-size: 16px;
+    line-height: 22px;
+  }
+  .fn-Newyear-Gift-making_text {
+    letter-spacing: -0.1px;
+  }
+  .fn-Newyear-Gift-making {
+    max-width: 360px;
+    padding: 8px 15px;
+    border-radius: 4px;
+  }
+  ul.fn-Newyear-save_ul {
+    max-width: 351px;
+    flex-wrap: wrap;
+    padding: 10px 10px 15px;
+    border-radius: 0 0 4px 4px;
+    margin: 0 auto 20px;
+  }
+  li.fn-Newyear-save_list {
+    width: 100%;
+  }
+  .fn-Newyear-save_list + .fn-Newyear-save_list {
+    margin-top: 10px;
+  }
+  .fn-Newyear-save_ul .fn-color-attr ul li,
+  .fn-color-attr ul li img {
+    width: 22px;
+    height: 22px;
+  }
+  .fn-Newyear-save_ul .fn-color-attr {
+    height: 22px;
+  }
+  .fn-product-save_head {
+    padding: 0 10px;
+  }
+  .fn-color-attr ul .color-quantity {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .fn-Newyear-save_ul .fn-color-attr ul li + li {
+    margin-left: 7px;
+  }
+  .save-form__buttons {
+    width: 83.3%;
+  }
+  .save-form__buttons .button {
+    min-height: calc(2.7rem + var(--buttons-border-width) * 2);
+    padding: 0;
+  }
+  .card.save_cart {
+    padding-bottom: 10px;
+  }
+  .fn-shirt-main_wrapper .fn-color-attr ul li img,
+  .fn-shirt-main_wrapper .fn-color-attr ul li {
+    width: 18px;
+    height: 18px;
+  }
+  .fn-shirt-main_wrapper .fn-color-attr {
+    height: 18px;
+    margin-bottom: 7px;
+  }
+  .fn-shirt-main_wrapper .fn-color-attr ul li + li {
+    margin-left: 2px;
+  }
+  .fn-color-attr ul .color-quantity {
+    font-size: 12px;
+    line-height: 17px;
+  }
+  .fn-product-save_title a.t {
+    font-size: 16px;
+    line-height: 22px;
+    margin: 4px 0 5px 0;
+  }
+  li.color-quantity {
+    width: 30px !important;
+  }
+  img.Newyear_make_mobile {
+    margin-bottom: 5px;
+  }
+  ul.swiper-wrapper_ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  ul.swiper-wrapper_ul .swiper-slide_list {
+    width: 49%;
+    margin-bottom: 10px;
+  }
+  .fn-shirt-product_title {
+    height: 39px;
+    font-size: 14px;
+    line-height: 19px;
+    -webkit-line-clamp: 2;
+  }
+  .fn--shirt-product_price span.price-item.price-item--regular,
+  .fn--shirt-product_price .fn-save_price span.save-sale,
+  .fn-shirt_price span.price-item.price-item--regular,
+  .fn-shirt_price span.t.price-item--sale.price-item--last {
+    font-size: 14px;
+    line-height: 19px;
+  }
+  .fn-product-shirt_head {
+    padding: 4px 7px 10px;
+  }
+  .fn-shirt_price s.fn-product-price_old.fn-compare-at_price {
+    font-size: 12px;
+    color: #656565;
+    line-height: 17px;
+  }
+  .fn--shirt-product_price {
+    margin: 2px 0 6px;
+  }
+  .button--full-width {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .fn-Newyear-shirt_two {
+    margin: 10px 0;
+  }
+  img.Newyear_three_imgmobile,
+  img.Newyear_two_imgmobile,
+  img.Newyear_three_imgmobile {
+    height: 100%;
+  }
+}

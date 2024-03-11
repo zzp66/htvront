@@ -1,0 +1,212 @@
+<style>
+  .cup-selling-point{
+    background-color: {{ section.settings.bg_color }};
+    {% if section.settings.background_image != blank   %}
+      background-image:url('{{ section.settings.background_image | img_url:'1920x' }}');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    {% endif %}  
+    padding: 30px 0 40px 0;
+  }
+  .cup-selling-title{
+    font-size: {{ section.settings.title_fontsize }}px;
+    font-weight: bold;
+    color:{{ section.settings.title_color }};
+    line-height: 49px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .cup-selling-content{
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .cup-selling-item{
+    margin-bottom:19px;
+    position:relative;
+  }
+  .cup-selling-item:nth-of-type(n+3){
+    margin-bottom:0;
+  }
+  .cup-selling-item:nth-of-type(odd){
+    margin-right:19px;
+  }
+  .cup-selling-item>div{
+    position:absolute;
+    bottom: 0;
+    text-align: center;
+    opacity: 0;
+  }
+  .cup-selling-item>div>h1{
+    font-size:24px;
+    padding-bottom: 5px;
+    letter-spacing: 0;
+  }
+  .cup-selling-item>div>p{
+    font-size:16px;
+  }
+  @media screen and (max-width: 1720px){
+    .cup-selling-content{
+      width:83.33%
+    }
+    .cup-selling-item{
+      width:49%
+    }
+    .cup-selling-title{
+      font-size:28px;
+    }
+  }
+   @media screen and (max-width: 1440px){
+    .cup-selling-content{
+      width:83.33%
+    }
+  }
+  @media screen and (max-width: 1180px){
+    .cup-selling-item{
+      width: 48%;
+    }
+  }
+   @media screen and (max-width: 820px){
+     .cup-selling-point{
+       padding:15px 0 20px 0;
+     }
+     .cup-selling-title{
+       font-size:16px;
+       line-height:22px;
+       margin-bottom:10px;
+     }
+   }
+  @media screen and (max-width: 750px){
+    .cup-selling-point{
+     background:{{section.settings.bg_color}}
+    }
+    .cup-selling-title{
+      font-size:16px;
+      margin-bottom:10px;
+      line-height:22px
+    }
+    .cup-selling-point{
+      padding:20px 0
+    }
+    .cup-selling-content{
+      width:93.6%;
+    }
+    .cup-selling-item{
+      width:100%;
+      margin-bottom:8px
+    }
+    .cup-selling-item:nth-of-type(odd){
+      margin-right:0;
+    }
+    .cup-selling-item:nth-of-type(n+3){
+      margin-bottom:8px;
+    }
+    .cup-selling-item>picture>img{
+      margin:0 auto;
+    }
+  }
+</style>
+<div class="cup-selling-point">
+  <div class="cup-selling-title">
+    {{ section.settings.title }}
+  </div>
+  <div class="cup-selling-content">
+    {% for block in section.blocks %}
+      <div class="cup-selling-item">
+          <picture>
+            <source media="(max-width: 750px)" srcset="{{ block.settings.image_mobile | img_url:'666x' }}">
+            <source media="(min-width: 751px)" srcset="{{block.settings.image | img_url:'790x' }}">
+            <img src="{{ block.settings.image | img_url:'790x' }}" alt="{{ block.settings.image.alt }}">
+          </picture>
+          <div>
+            <h1>{{ block.settings.title }}</h1>
+            <p>{{ block.settings.text }}</p>
+          </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Group-Selling-Point",
+  "max_blocks":4,
+  "settings": [
+    {
+      "type":"color",
+      "id":"bg_color",
+      "label":"background color"
+    },
+    {
+      "type":"image_picker",
+      "id":"background_image",
+      "label":"background image"
+    }, {
+      "type":"image_picker",
+      "id":"background_image_mobile",
+      "label":"background image mobile"
+    },
+    {
+      "type":"text",
+      "id":"title",
+      "label":"title"
+    },{
+      "type":"number",
+      "id":"title_fontsize",
+      "label":"title fontsize"
+    },{
+      "type":"color",
+      "id":"title_color",
+      "label":"title color"
+    }
+  ],
+  "blocks":[
+    {
+      "type":"brand",
+      "name":{
+        "en":"image",
+        "zh-CN":"image"
+        },
+      "settings":[
+         {
+          "type":"image_picker",
+          "id":"image",
+          "label":{
+            "en":"Image",
+            "zh-CN":"图片"
+           }
+         },
+        {
+          "type":"image_picker",
+          "id":"image_mobile",
+          "label":"image mobile"
+        },
+        {
+          "type":"text",
+          "id":"title",
+          "label":"title"
+        },
+        {
+          "type":"text",
+          "id":"text",
+          "label":"text"
+        }
+      ]
+    }
+  ],
+  "presets":[{
+    "name":"Group-Selling-Point",
+    "blocks":[
+        {
+        "type":"brand"
+        }
+      ]
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
