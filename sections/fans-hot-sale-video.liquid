@@ -1,0 +1,114 @@
+<style>
+  .fans-hot-sale-video {
+    text-align: center;
+    background-color: #fffaee;
+    border-radius: 10px;
+    max-width: 1506px;
+    margin: 0 auto;
+  }
+  .video-content {
+    padding: 20px 96px 40px;
+  }
+  .video-title {
+    color: #7e3c00;
+    font-weight: bold;
+    font-size: 28px;
+  }
+  .video-second-title {
+    color: #7e3c00;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 15px;
+  }
+  .fans-hot-sale-video .video-box {
+    box-sizing: content-box;
+    position: relative;
+    max-width: 1307px;
+    margin: 0 auto;
+  }
+  .video-box .bg-mask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    opacity: 50%;
+  }
+  .video-box .btn-text {
+    color: #7e3c00;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 7px;
+  }
+  .fans-hot-sale-video .video-box .video-btn {
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+  }
+  .fans-hot-sale-video .video-box .video-btn img {
+    cursor: pointer;
+  }
+</style>
+<div class="fans-hot-sale-video hot-sale-style">
+  <div class="video-content">
+    <div class="video-title">{{ section.settings.title }}</div>
+    <div class="video-second-title">{{ section.settings.second_title }}</div>
+    <div class="video-box">
+      <picture>
+        <source media="(max-width: 750px)" srcset="{{ section.settings.image_mobile | img_url:'350x' }}">
+        <source media="(min-width: 751px)" srcset="{{ section.settings.image | img_url:'1313x' }}">
+        <img src="{{ section.settings.image | img_url:'1313x' }}">
+      </picture>
+      <div class="bg-mask"></div>
+      <div class="video-btn">
+        <img
+          onclick="christmasFunction('1','{{ section.settings.live_video }}')"
+          src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Group_388.jpg"
+        >
+        <p class="btn-text">Make A ‘Cooler’ Tumbler!</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Fans Hot Sale Video",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "Set Your Creativity Free!"
+    },
+    {
+      "type": "text",
+      "id": "second_title",
+      "label": "小标题",
+      "default": "Save up to XXX"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "PC端封面图"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "移动端封面图"
+    },
+    {
+      "type": "url",
+      "id": "live_video",
+      "label": "Video Url"
+    }
+  ]
+}
+{% endschema %}
