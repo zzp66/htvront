@@ -2,8 +2,8 @@
   li {
     list-style: none;
   }
-  img {
-    max-width: 100%;
+  .fans-hot-sale-luckydraw {
+    margin-bottom: 50px;
   }
   .luckydraw-box {
     display: flex;
@@ -50,7 +50,8 @@
     margin-left: 45px;
   }
   .luckydraw-headtext {
-    text-align: center;
+    margin: 10px 0;
+    text-align: center; 
   }
   .luckydraw-headtext .head {
     color: #7e3c00;
@@ -118,6 +119,87 @@
     justify-content: center;
     align-items: center;
     padding: 20px;
+  }
+  .submit-content {
+    max-width: 1382px;
+    background-color: #ffc99f;
+    border: 3px solid #b86d14;
+    border-radius: 4px;
+    margin: 0 auto;
+    text-align: center;
+    border-top: none;
+    /* box-shadow: 0 40px #b86d14; */
+  }
+  .submit-text {
+    color: #7e3c00;
+    font-weight: bold;
+    font-size: 22px;
+    padding: 25px 0 15px;
+  }
+  .submit-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 50px;
+  }
+  .draw-input {
+    height: 70px;
+    border: 2px solid #9b5400;
+    padding-left: 27px;
+    min-width: 641px;
+    border-radius: 6px;
+    background: #ffb57c;
+    color: #7e3c00;
+    font-size: 16px;
+    margin-right: 20px;
+  }
+  .join-draw {
+    background-color: #cb5700;
+    border: 2px solid #9b5400;
+    border-radius: 2px;
+    color: #ffe4a4;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 17px 50px;
+    cursor: pointer;
+  }
+  .rules-content {
+    max-width: 1382px;
+    background-color: #e9863c;
+    border: 3px solid #b86d14;
+    border-radius: 18px;
+    margin: 0 auto;
+    text-align: center;
+    border-top: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .rules-box {
+    color: #ffe1cb;
+    text-align: left;
+    width: 80%;
+    padding: 20px 40px 40px;
+  }
+  .rules-title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .rules-text {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .rules-text .text {
+    font-size: 16px;
+    width: 50%;
+  }
+  .rules-text .text1 {
+    padding-right: 20px;
+  }
+  .rules-img {
+    padding-right: 67px;
+    width: 20%;
   }
 </style>
 <div class="fans-hot-sale-luckydraw">
@@ -259,6 +341,43 @@
             </li>
           </ul>
         </div>
+      </div>
+    </div>
+    <div class="submit-content">
+      <p class="submit-text">Shopping the Best, Win the Gift</p>
+      <div class="submit-box">
+        <input class="draw-input" type="text" placeholder="Enter the order number">
+        <div class="join-draw" id="join_draw">
+          <span class="join-draw-text">Lottery</span>
+        </div>
+      </div>
+    </div>
+    <div class="rules-content">
+      <div class="rules-box">
+        <p class="rules-title">Rules:</p>
+        <div class="rules-text">
+          <div class="text text1">
+            <ul>
+              <li>1. You can use the order number to join the draw 10 minutes later after placing the order;</li>
+              <li>2. Any orders placed during the promotion are eligible for the draw;</li>
+              <li>3. One order, one chance.</li>
+              <li>4. Prizes: Free Auto Heat Press/ Random $10 Vinyl/ $10 OFF $69 Coupon(Materials only)</li>
+            </ul>
+          </div>
+          <div class="text">
+            <ul>
+              <li>
+                5. Redemption: - All the prizes will be sent in code. Please screenshot the code info promptly once you
+                win the prize. - Copy the prize code, click "Redeem Now" to claim your prize, or add the corresponding
+                product to your cart for later redemption. - Validity: Before 31st March, 2024
+              </li>
+              <li>6. Lucky Draw Date: 18th - 31st March, 2024</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="rules-img">
+        <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/rules.jpg" alt="">
       </div>
     </div>
   </div>
