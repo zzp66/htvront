@@ -124,11 +124,11 @@
     max-width: 1382px;
     background-color: #ffc99f;
     border: 3px solid #b86d14;
-    border-radius: 4px;
+    border-radius: 0 0 40px 40px;
     margin: 0 auto;
     text-align: center;
     border-top: none;
-    /* box-shadow: 0 40px #b86d14; */
+    box-shadow: 0 40px #b86d14;
   }
   .submit-text {
     color: #7e3c00;
@@ -151,17 +151,27 @@
     background: #ffb57c;
     color: #7e3c00;
     font-size: 16px;
-    margin-right: 20px;
+    margin-right: 15px;
   }
   .join-draw {
+    min-width: 168px;
+    max-height: 70px;
     background-color: #cb5700;
     border: 2px solid #9b5400;
-    border-radius: 2px;
+    border-radius: 6px;
     color: #ffe4a4;
     font-size: 18px;
     font-weight: bold;
     padding: 17px 50px;
     cursor: pointer;
+  }
+  .join-draw .loading-svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .join-draw .spinner {
+    height: 40px;
   }
   .rules-content {
     max-width: 1382px;
@@ -174,6 +184,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 40px;
   }
   .rules-box {
     color: #ffe1cb;
@@ -200,6 +211,8 @@
   .rules-img {
     padding-right: 67px;
     width: 20%;
+  }
+  @media screen and (min-width: 480px) {
   }
 </style>
 <div class="fans-hot-sale-luckydraw">
@@ -266,7 +279,17 @@
               <li></li>
             </ul>
           </div>
-          <div class="draw-swiper"></div>
+          <div class="draw-swiper-content">
+            <div class="draw-swiper">
+              <div class="swiper-wrapper swiper-wrapper-draw">
+                {% for block in section.blocks %}
+                  {% if block.type == 'scroll_text' %}
+                    <div class="swiper-slide draw-swiper-slide">{{ block.settings.text }}</div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
           <div class="draw-dot">
             <ul>
               <li></li>
@@ -346,9 +369,23 @@
     <div class="submit-content">
       <p class="submit-text">Shopping the Best, Win the Gift</p>
       <div class="submit-box">
-        <input class="draw-input" type="text" placeholder="Enter the order number">
+        <input class="draw-input" type="text" placeholder="Enter your order number">
         <div class="join-draw" id="join_draw">
           <span class="join-draw-text">Lottery</span>
+        </div>
+        <div class="join-draw" id="loading_draw" style="display:block">
+          <div class="loading-svg">
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              role="presentation"
+              class="spinner"
+              viewBox="0 0 66 66"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+            </svg>
+          </div>
         </div>
       </div>
     </div>
@@ -382,3 +419,50 @@
     </div>
   </div>
 </div>
+{% schema %}
+{
+  "name": "Fans Hot Sale LuckyDraw",
+  "settings": [
+    {
+      "type": "text",
+      "id": "id",
+      "label": "id(LuckyDraw部分的ID值，页面唯一性，全英文)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "scroll_text",
+      "name": "Scroll text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "text"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "scroll_text",
+        "settings": {
+          "text": "sou****phy@gmail.com won an Auto Tumbler Heat Press."
+        }
+      },
+      {
+        "type": "scroll_text",
+        "settings": {
+          "text": "wei****no@gmail.com won an Auto Tumbler Heat Press."
+        }
+      },
+      {
+        "type": "scroll_text",
+        "settings": {
+          "text": "tyk****hei@gmail.com won an Auto Tumbler Heat Press."
+        }
+      }
+    ]
+  }
+}
+{% endschema %}

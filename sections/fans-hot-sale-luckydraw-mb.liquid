@@ -1,0 +1,87 @@
+<style>
+  @media screen and (min-width: 480px) {
+    .dpn {
+      display: none;
+    }
+  }
+</style>
+<div class="fans-hot-sale-luckydraw-mb dpn">
+  <div class="luckydraw-content">
+    <div class="luckydraw-head">
+      <p class="head">Lucky Draw</p>
+      <p class="second-head">Enter the order number to join the draw</p>
+    </div>
+    <div class="draw-content">
+      <div class="draw-box">
+        <div class="draw-swiper-content">
+          <div class="draw-swiper">
+            <div class="swiper-wrapper swiper-wrapper-draw">
+              {% for block in section.blocks %}
+                {% if block.type == 'scroll_text' %}
+                  <div class="swiper-slide draw-swiper-slide">{{ block.settings.text }}</div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="prize-content">
+          <ul>
+            <li>
+              <div class="img-box">
+                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.jpg" alt="">
+              </div>
+            </li>
+            <li>
+              <div class="img-box">
+                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.jpg" alt="">
+              </div>
+            </li>
+            <li>
+              <div class="img-box">
+                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.jpg" alt="">
+              </div>
+            </li>
+            <li>
+              <div class="img-box">
+                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.jpg" alt="">
+              </div>
+            </li>
+            <li>
+              <div class="img-box">
+                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.jpg" alt="">
+              </div>
+            </li>
+            <li>
+              <div class="img-box">
+                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.jpg" alt="">
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="submit-content">
+      <p class="submit-text">Shopping the Best, Win the Gift</p>
+      <div class="submit-box">
+        <input class="draw-input" type="text" placeholder="Enter your order number">
+        <div class="join-draw" id="join_draw">
+          <span class="join-draw-text">Lottery</span>
+        </div>
+        <div class="join-draw" id="loading_draw" style="display:block">
+          <div class="loading-svg">
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              role="presentation"
+              class="spinner"
+              viewBox="0 0 66 66"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
