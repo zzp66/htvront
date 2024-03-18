@@ -28,6 +28,7 @@
         {% section 'fans-flash-sales' %}
         {% section 'fans-hot-sale-sellers' %}
         {% section 'fans-hot-sale-bundles' %}
+        {% section 'fans-hot-materials' %}
         {% section 'fans-hot-sale-luckydraw' %}
         {% section 'fans-hot-sale-luckydraw-mb' %}
         {% section 'fans-hot-sale-video' %}
@@ -90,7 +91,24 @@
       if(document.body.clientWidth >= 990){
         navheight = 60
       }else{
-        navheight = 45
+        navheight = 62
+      }
+      if(document.body.clientWidth <= 480){
+        if(scrollTop >= height + 110){  
+           $('.fans-hot-sale-nav').css({
+             position: "fixed",
+             top: navheight + "px",
+             zIndex: 3,
+             background:'#F3E7CB',
+             width:'100%'
+           })
+         }else{
+           $('.fans-hot-sale-nav').css({
+               position: "relative",
+               zIndex: 1,
+               top:'auto'
+             })
+         }
       }
       if(document.body.clientWidth <= 750){
          if(scrollTop >= height ){
@@ -98,13 +116,13 @@
               display:'none'
            }).addClass('nav-app-style');
            $('.fans-sale-nav-app-icon').css({display:'flex'})
-          
          }else{
            $('.fans-sale-first-nav').css({
             display:'block'
            }).removeClass('nav-app-style')
            $('.fans-sale-nav-app-icon').css({display:'none'})
          }
+        
       }else{
        $('.fans-sale-nav-app-icon').css({display:'none'})
         if(scrollTop >= height){  
@@ -153,10 +171,15 @@
     }
   });
   $("body").on('touchend',function(e) {
-     if(!$(e.target).closest(".fans-sale-nav-app-icon,.fans-sale-first-nav").length) {
-         $(".fans-sale-first-nav").hide();
-         $(".fans-sale-nav-app-icon").css({display:'flex'});
+    var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+    if(document.body.clientWidth <= 750){
+      if(scrollTop >= height + 110){
+       if(!$(e.target).closest(".fans-sale-nav-app-icon,.fans-sale-first-nav").length) {
+           $(".fans-sale-first-nav").hide();
+           $(".fans-sale-nav-app-icon").css({display:'flex'});
+        }
       }
+    }
   })
   // tab导航栏切换展示
   $('.fan-tab-content').eq(0).show()

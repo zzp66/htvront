@@ -332,6 +332,7 @@ body{
   .fans-sale-first-nav{
     bottom:0;
     height:44px;
+    z-index:2;
   }
   .back-to-top{
     display:none !important;
