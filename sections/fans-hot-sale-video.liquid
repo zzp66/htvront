@@ -1,9 +1,12 @@
 <style>
+  #shopify-section-fans-hot-sale-video {
+    padding-bottom: 73px;
+  }
   .fans-hot-sale-video {
     text-align: center;
     background-color: #fffaee;
     border-radius: 10px;
-    max-width: 1506px;
+    width: 1506px;
     margin: 0 auto;
   }
   .video-content {
@@ -56,6 +59,34 @@
   .fans-hot-sale-video .video-box .video-btn img {
     cursor: pointer;
   }
+  @media screen and (max-width: 1660px) {
+    .fans-hot-sale-video {
+      width: 83.3% !important;
+    }
+  }
+  @media screen and (max-width: 750px) {
+    #shopify-section-fans-hot-sale-video {
+      padding-bottom: 40px;
+    }
+    .fans-hot-sale-video {
+      width: 93.6% !important;
+    }
+    .video-content {
+      padding: 8px 12px 14px 8px;
+    }
+    .video-title {
+      font-size: 18px;
+    }
+    .video-second-title {
+      font-size: 14px;
+    }
+    .fans-hot-sale-video .video-box .video-btn img {
+      width: 46px;
+    }
+    .video-box .btn-text {
+      font-size: 14px;
+    }
+  }
 </style>
 <div class="fans-hot-sale-video hot-sale-style">
   <div class="video-content">
@@ -63,21 +94,55 @@
     <div class="video-second-title">{{ section.settings.second_title }}</div>
     <div class="video-box">
       <picture>
-        <source media="(max-width: 750px)" srcset="{{ section.settings.image_mobile | img_url:'350x' }}">
+        <source media="(max-width: 750px)" srcset="{{ section.settings.image_mobile | img_url:'750x' }}">
         <source media="(min-width: 751px)" srcset="{{ section.settings.image | img_url:'1313x' }}">
-        <img src="{{ section.settings.image | img_url:'1313x' }}">
+        <img src="{{ section.settings.image | img_url:'1426x' }}">
       </picture>
       <div class="bg-mask"></div>
       <div class="video-btn">
         <img
           onclick="christmasFunction('1','{{ section.settings.live_video }}')"
-          src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Group_388.jpg"
+          src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Group_388.png"
         >
         <p class="btn-text">Make A ‘Cooler’ Tumbler!</p>
       </div>
     </div>
   </div>
 </div>
+<div class="fn-Stories-mask">
+  <div>
+    <div class="fn-Storiesmask-main">
+      <div class="mask-close" onclick="christmasFunction('2')">
+        <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/7_8ba31ff8-9cdf-403b-ac36-d36b25abab80.png?v=1683355188">
+      </div>
+      <div class="fn-Stories-Video">
+        <iframe
+          id="stories-Video-Iframe"
+          width="100%"
+          height="100%"
+          src=""
+          title="YouTube video player"
+          frameborder="no"
+          border="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function christmasFunction(e, link) {
+    if (e == 1) {
+      $('#stories-Video-Iframe').eq(0).attr('src', link);
+      $('.fn-Stories-mask').show();
+    }
+    if (e == 2) {
+      $('.fn-Stories-mask').hide();
+      $('#stories-Video-Iframe').eq(0).attr('src', '');
+    }
+  }
+</script>
 {% schema %}
 {
   "name": "Fans Hot Sale Video",

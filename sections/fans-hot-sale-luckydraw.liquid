@@ -1,9 +1,6 @@
 <style>
-  li {
-    list-style: none;
-  }
   .fans-hot-sale-luckydraw {
-    margin-bottom: 50px;
+    margin: 0 auto 50px;
   }
   .luckydraw-box {
     display: flex;
@@ -72,7 +69,25 @@
   .draw-head {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 10px 40px;
+  }
+  .draw-swiper-content {
+    margin: 0 32px;
+    padding: 24px 27px;
+    background-color: #f1712a;
+    border: 3px solid #b86d14;
+    border-radius: 12px;
+    font-size: 16px;
+    color: #ffe6a5;
+    overflow: hidden;
+  }
+  .draw-swiper {
+    overflow: hidden;
+  }
+  .swiper-wrapper-draw .swiper-slide {
+    width: auto;
+    margin: 0 50px !important;
   }
   .draw-dot ul {
     display: flex;
@@ -90,6 +105,9 @@
     margin: 10px 40px;
     border: 3px solid #b86d14;
     border-radius: 18px;
+  }
+  .draw-tips {
+    display: none;
   }
   .prize-content {
     background-color: #d45924;
@@ -111,9 +129,6 @@
     margin: 0 10px 18px;
   }
 
-  .prize-content ul:first-of-type li {
-    margin-top: 18px;
-  }
   .prize-content ul li div {
     display: flex;
     justify-content: center;
@@ -137,10 +152,12 @@
     padding: 25px 0 15px;
   }
   .submit-box {
+    padding-bottom: 50px;
+  }
+  .submit-box .draw-form {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 50px;
   }
   .draw-input {
     height: 70px;
@@ -212,7 +229,65 @@
     padding-right: 67px;
     width: 20%;
   }
-  @media screen and (min-width: 480px) {
+  .draw-dialog {
+    width: 820px;
+    height: 787px;
+    background-color: #fff5fe;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    position: fixed;
+    z-index: 1000;
+    display: none;
+    padding: 36px 0 66px 0;
+  }
+  .tips-dialog {
+    width: 820px;
+    height: 362px;
+    background-color: #fff5fe;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    position: fixed;
+    z-index: 1000;
+    display: none;
+    padding: 36px 0 66px 0;
+  }
+  .tips-dialog,
+  .draw-dialog {
+    border-radius: 10px;
+    letter-spacing: 0;
+  }
+  .icon-draw-close {
+    position: absolute;
+    right: 25px;
+    top: 20px;
+    cursor: pointer;
+  }
+  .prize-drawn,
+  .no-qualification,
+  .try-later,
+  .no-draw {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 35px;
+    margin-top: 30px;
+  }
+  @media screen and (max-width: 1660px) {
+    .fans-hot-sale-luckydraw {
+      width: 83.3% !important;
+    }
+  }
+  @media screen and (max-width: 750px) {
+    .fans-hot-sale-luckydraw {
+      display: none;
+    }
+  }
+  @media screen and (min-width: 751px) {
+    .prize-content ul:first-of-type li {
+      margin-top: 18px;
+    }
   }
 </style>
 <div class="fans-hot-sale-luckydraw">
@@ -332,34 +407,34 @@
           <ul>
             <li>
               <div class="img-box">
-                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.jpg" alt="">
+                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.png" alt="">
               </div>
             </li>
             <li>
               <div class="img-box">
-                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.jpg" alt="">
+                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.png" alt="">
               </div>
             </li>
             <li>
               <div class="img-box">
-                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.jpg" alt="">
+                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.png" alt="">
               </div>
             </li>
           </ul>
           <ul>
             <li>
               <div class="img-box">
-                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.jpg" alt="">
+                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.png" alt="">
               </div>
             </li>
             <li>
               <div class="img-box">
-                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.jpg" alt="">
+                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.png" alt="">
               </div>
             </li>
             <li>
               <div class="img-box">
-                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.jpg" alt="">
+                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.png" alt="">
               </div>
             </li>
           </ul>
@@ -369,24 +444,27 @@
     <div class="submit-content">
       <p class="submit-text">Shopping the Best, Win the Gift</p>
       <div class="submit-box">
-        <input class="draw-input" type="text" placeholder="Enter your order number">
-        <div class="join-draw" id="join_draw">
-          <span class="join-draw-text">Lottery</span>
-        </div>
-        <div class="join-draw" id="loading_draw" style="display:block">
-          <div class="loading-svg">
-            <svg
-              aria-hidden="true"
-              focusable="false"
-              role="presentation"
-              class="spinner"
-              viewBox="0 0 66 66"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-            </svg>
+        <div class="draw-form">
+          <input class="draw-input" type="text" placeholder="Enter your order number">
+          <div class="join-draw" id="join_draw">
+            <span class="join-draw-text">Lottery</span>
+          </div>
+          <div class="join-draw" id="loading_draw" style="display:none">
+            <div class="loading-svg">
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                role="presentation"
+                class="spinner"
+                viewBox="0 0 66 66"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+              </svg>
+            </div>
           </div>
         </div>
+        <div class="draw-tips" style="color:red">*Please enter the order number.</div>
       </div>
     </div>
     <div class="rules-content">
@@ -414,11 +492,196 @@
         </div>
       </div>
       <div class="rules-img">
-        <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/rules.jpg" alt="">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/4_1_4fb8ec8a-3848-43de-8240-d8cae1bcf63d.png"
+          alt=""
+        >
       </div>
     </div>
   </div>
 </div>
+<div class="draw-dialog" id="win-product">
+  <img
+    class="icon-draw-close close-btn"
+    src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/a016b412f93b877a827866a90379da25_bdb00f39-8c50-49b2-9c37-32dca531ef89.png?v=1706083253"
+  >
+  <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/6585217-02_3.png?v=1707018035" class="flower-image">
+  <div class="win-title">
+    <p>Congratulations!</p>
+  </div>
+  <div class="win-message">You've just hit the jackpot - <span id="winAwardsEnglishName"></span> is yours now！</div>
+  <div class="win-code">
+    code:
+    <span id="winTicketCode"></span>
+    <img
+      src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Group_18_a82f9ba8-7950-4b28-a950-3f8eef610163.png?v=1708240517"
+      id="copy-click"
+    >
+  </div>
+  <div>
+    <img src="" class="draw-img-url">
+  </div>
+  <div class="productTips">
+    <p>- Please screenshot the prize info promptly.</p>
+    <p>
+      - Copy the prize code, then click "Redeem Now" to claim the prize now or add the winning products to the cart for
+      redemption later.
+    </p>
+    <p>- Code validity: Before 11 Mar. 2024.</p>
+  </div>
+  <div class="codeTips">
+    <p>- Please screenshot the prize info promptly.</p>
+    <p>- Coupon validity: 12 Mar. - 12 Apr. 2024.</p>
+  </div>
+  <a class="turn_url" target="_blank" href="javascript:;">Redeem Now</a>
+  <a class="bundle-close close-btn">Got it</a>
+</div>
+<div class="tips-dialog" id="tips">
+  <img
+    class="icon-draw-close close-btn"
+    src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/a016b412f93b877a827866a90379da25_bdb00f39-8c50-49b2-9c37-32dca531ef89.png?v=1706083253"
+  >
+  <div class="prize-drawn">
+    <div>
+      <p>Sorry !</p>
+      <p>This order has already joined the draw</p>
+    </div>
+    <p>One order, one chance</p>
+  </div>
+  <div class="no-qualification">
+    <p>Please use the order number</p>
+    <p>of Women's Day campaign items</p>
+    <p>for the draw.</p>
+  </div>
+  <div class="try-later">
+    <p>Please do not draw consecutively.</p>
+    <p>Please try again later.</p>
+  </div>
+  <div class="no-draw">
+    <p>There are no raffle prizes available at the site.</p>
+  </div>
+  <button class="win-button bundle-close close-btn">Got it</button>
+</div>
+<div class="draw-body-mask"></div>
+<script>
+   getDrawList();
+   function getDrawList(){
+    $.ajax({
+      url: "https://qn.htvront.com/woman/getDrawList",
+      method: "GET",
+      success: function (data) {
+         var arr = data.data
+         if(arr != null){
+           for (let i = 0; i < arr.length; i++) {
+            var div = '<div class="swiper-slide draw-swiper-slide">' + arr[i].winEmail + ' won a ' + arr[i].winAwardsEnglishName + '</div>'
+             $('.swiper-wrapper-draw').append(div)
+            }
+         }
+      },
+      error: function (xhr, status, error) {
+      }
+    });
+  }
+  $(function(){
+      var mySwiper_d = new Swiper('.draw-swiper', {
+        speed: 1500,
+        loop: true,
+        simulateTouch: false,
+        noSwiping: true,
+        allowTouchMove: false,
+        slidesPerView: 'auto',
+        autoplay: true
+    })
+    $('#join_draw').on('click',function(){
+      var inputVal = $('.draw-input').val()
+      if(inputVal.trim() == ''){
+        $('.draw-tips').show()
+        return false;
+      }else{
+        $('.draw-tips').hide()
+      }
+      var data = {market: "US_HTVRONT(shopify)",orderNo: inputVal}
+      var jsonData = JSON.stringify(data)
+      $('#join_draw').hide()
+      $('#loading_draw').show()
+      $.ajax({
+        url: "https://qn.htvront.com/fansPre/lottery",
+        method: "POST",
+        data: jsonData,
+        contentType: 'application/json',
+        success: function(res) {
+          $('#join_draw').show()
+          $('#loading_draw').hide()
+          $('.draw-body-mask').css('display',"block")
+          $('body').css({"overflow":"hidden"})
+          if(res.code == 20003){
+             $('.tips-dialog,.prize-drawn').show();
+             $('.win-button.bundle-close').show().css('cursor','pointer')
+          }else if(res.code == 20002){
+             $('.tips-dialog,.no-qualification').show();
+             $('.win-button.bundle-close').show().css('cursor','pointer')
+          }else if(res.code == 20004){
+             $('.tips-dialog,.no-draw').show();
+             $('.win-button.bundle-close').show().css('cursor','pointer')
+          }else if(res.code == 200 && res.data){
+             var arr2 = [res.data]
+             for (let j = 0; j < arr2.length; j++) {
+              $('.draw-dialog').css('display',"block");
+              $('#winAwardsEnglishName').text(arr2[j].winAwardsEnglishName);
+              $('#winTicketCode').text(arr2[j].winTicketCode)
+              $('.draw-img-url').attr('src',arr2[j].awardsImgPath);
+              if(arr2[j].turnUrl != null && arr2[j].turnUrl != ''){
+                $('.productTips').show();
+                $('.turn_url').attr('href',arr2[j].turnUrl).show().css('cursor','pointer');
+              }else{
+                $('.codeTips').show();
+                $('.bundle-close').show().css('cursor','pointer')
+              }
+            }
+          }else{
+             $('.tips-dialog,.try-later').show();
+             $('.win-button.bundle-close').show().css('cursor','pointer')
+          }
+        },
+        error:function(xhr,status,error){
+          $('#join_draw').show()
+          $('#loading_draw').hide()
+          console.log(xhr,status,error)
+        }
+      })
+     })
+     $('.close-btn').on('click',function(){
+       $('.draw-dialog,.tips-dialog,.prize-drawn,.no-qualification,.try-later,.no-draw,.draw-body-mask,.productTips,.codeTips,.turn_url,.bundle-close').hide()
+       $('.draw-input').val('')
+       $('body').css({"overflow":"auto"})
+     })
+    $('#copy-click').on('click',function(){
+      let url = $('#winTicketCode').text();
+      let copyInput = document.createElement('input');
+      document.body.appendChild(copyInput);
+      copyInput.setAttribute('value', url);
+      copyInput.select();
+      document.execCommand("Copy");
+      copyInput.remove();
+      alertMsg()
+    })
+     function alertMsg(){
+      var alertFram = document.createElement("DIV");
+      alertFram.id = "alertFram";
+      alertFram.style.position = "fixed";
+      alertFram.style.width = "100%";
+      alertFram.style.textAlign = "center";
+      alertFram.style.bottom = "40px";
+      alertFram.style.zIndex = "10001";
+      strHtml = " <span style=\"font-family: 微软雅黑;display:inline-block;background:#333;color:#fff;padding:0 20px;line-height:36px;border-radius:6px; \">Copied successfully</span>";
+      alertFram.innerHTML = strHtml;
+      document.body.appendChild(alertFram);
+      setTimeout((function(){
+        alertFram.style.display="none";
+      }),2000);
+    }
+  })
+</script>
 {% schema %}
 {
   "name": "Fans Hot Sale LuckyDraw",

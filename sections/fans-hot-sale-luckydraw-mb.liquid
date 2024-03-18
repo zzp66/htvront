@@ -4,6 +4,103 @@
       display: none;
     }
   }
+  @media screen and (max-width: 480px) {
+    .fans-hot-sale-luckydraw-mb {
+      max-width: 343px;
+      margin: 0 auto;
+    }
+    .luckydraw-content {
+      position: relative;
+    }
+    .luckydraw-head {
+      position: absolute;
+      top: -70px;
+      left: 30px;
+      text-align: center;
+      color: #7e3c00;
+      max-width: 285px;
+      border: 1px solid #b86d14;
+      padding: 4px 11px 6px;
+      border-bottom: 5px solid #b86d14;
+    }
+    .luckydraw-head .head {
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .luckydraw-head .second-head {
+      font-size: 14px;
+    }
+    .draw-content {
+      border: 1px solid #b86d14;
+      border-radius: 14px;
+      padding: 2px;
+    }
+    .draw-border {
+      border: 3px dotted white;
+      padding: 2px;
+      border-radius: 14px;
+    }
+    .draw-box {
+      background: #d45924;
+      border: 1px solid #b86d14;
+      border-radius: 14px;
+    }
+    .draw-swiper-content {
+      margin: 30px 11px 8px;
+      padding: 10px 0px 5px 8px;
+      border-radius: 8px;
+      border: 1px solid #b86d14;
+      background-color: #e97a27;
+    }
+    .swiper-wrapper-draw .swiper-slide {
+      margin: 0 !important;
+    }
+    .prize-content {
+      margin: 5px 5px 20px;
+      border: none;
+    }
+    .prize-content ul {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .prize-content ul li {
+      border: 1px solid #b86d14;
+      width: 33.333%;
+      margin: 7px 0px;
+    }
+    .prize-content ul li div {
+      padding: 12px 4px;
+    }
+    .submit-content {
+      box-shadow: 0 26px #b86d14;
+      border: 1px solid #b86d14;
+      border-radius: 14px;
+    }
+    .submit-box {
+      padding-bottom: 11px;
+    }
+    .submit-text {
+      padding: 5px 0;
+      font-size: 14px;
+    }
+    .draw-input {
+      min-width: auto;
+      border: 1px solid #9b5400;
+      height: 38px;
+      font-size: 14px;
+      margin-right: 9px;
+    }
+    .join-draw {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 20px;
+      min-width: auto;
+      max-height: 38px;
+      font-size: 14px;
+      border: 1px solid #9b5400;
+    }
+  }
 </style>
 <div class="fans-hot-sale-luckydraw-mb dpn">
   <div class="luckydraw-content">
@@ -12,75 +109,80 @@
       <p class="second-head">Enter the order number to join the draw</p>
     </div>
     <div class="draw-content">
-      <div class="draw-box">
-        <div class="draw-swiper-content">
-          <div class="draw-swiper">
-            <div class="swiper-wrapper swiper-wrapper-draw">
-              {% for block in section.blocks %}
-                {% if block.type == 'scroll_text' %}
-                  <div class="swiper-slide draw-swiper-slide">{{ block.settings.text }}</div>
-                {% endif %}
-              {% endfor %}
+      <div class="draw-border">
+        <div class="draw-box">
+          <div class="draw-swiper-content">
+            <div class="draw-swiper">
+              <div class="swiper-wrapper swiper-wrapper-draw">
+                {% for block in section.blocks %}
+                  {% if block.type == 'scroll_text' %}
+                    <div class="swiper-slide draw-swiper-slide">{{ block.settings.text }}</div>
+                  {% endif %}
+                {% endfor %}
+              </div>
             </div>
           </div>
-        </div>
-        <div class="prize-content">
-          <ul>
-            <li>
-              <div class="img-box">
-                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.jpg" alt="">
-              </div>
-            </li>
-            <li>
-              <div class="img-box">
-                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.jpg" alt="">
-              </div>
-            </li>
-            <li>
-              <div class="img-box">
-                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.jpg" alt="">
-              </div>
-            </li>
-            <li>
-              <div class="img-box">
-                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.jpg" alt="">
-              </div>
-            </li>
-            <li>
-              <div class="img-box">
-                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.jpg" alt="">
-              </div>
-            </li>
-            <li>
-              <div class="img-box">
-                <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.jpg" alt="">
-              </div>
-            </li>
-          </ul>
+          <div class="prize-content">
+            <ul>
+              <li>
+                <div class="img-box">
+                  <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.png" alt="">
+                </div>
+              </li>
+              <li>
+                <div class="img-box">
+                  <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.png" alt="">
+                </div>
+              </li>
+              <li>
+                <div class="img-box">
+                  <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.png" alt="">
+                </div>
+              </li>
+              <li>
+                <div class="img-box">
+                  <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.png" alt="">
+                </div>
+              </li>
+              <li>
+                <div class="img-box">
+                  <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.png" alt="">
+                </div>
+              </li>
+              <li>
+                <div class="img-box">
+                  <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.png" alt="">
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
     <div class="submit-content">
       <p class="submit-text">Shopping the Best, Win the Gift</p>
       <div class="submit-box">
-        <input class="draw-input" type="text" placeholder="Enter your order number">
-        <div class="join-draw" id="join_draw">
-          <span class="join-draw-text">Lottery</span>
-        </div>
-        <div class="join-draw" id="loading_draw" style="display:block">
-          <div class="loading-svg">
-            <svg
-              aria-hidden="true"
-              focusable="false"
-              role="presentation"
-              class="spinner"
-              viewBox="0 0 66 66"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-            </svg>
+        <div class="draw-form">
+          <input class="draw-input" type="text" placeholder="Enter your order number">
+          <div class="join-draw" id="join_draw">
+            <span class="join-draw-text">Lottery</span>
+          </div>
+          <div class="join-draw" id="loading_draw" style="display:none">
+            <div class="loading-svg">
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                role="presentation"
+                class="spinner"
+                viewBox="0 0 66 66"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+              </svg>
+            </div>
           </div>
         </div>
+        <div class="draw-tips" style="color:red">*Please enter the order number.</div>
       </div>
     </div>
   </div>
