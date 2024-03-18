@@ -78,6 +78,73 @@
   .swiper-container .swiper-wrapper .swiper-slide-prev{
     height: 560px !important;
   }
+}
+
+@media screen and (max-width:1024px){
+  .swiper-container .swiper-wrapper .swiper-slide {
+    width: 700px;
+  }
+  .swiper-container,
+  .swiper-container .swiper-wrapper .swiper-slide-next img,
+  .swiper-container .swiper-wrapper .swiper-slide-prev img,
+  .swiper-container .swiper-wrapper .swiper-slide img,
+  .swiper-container .swiper-wrapper .swiper-slide-next,
+  .swiper-container .swiper-wrapper .swiper-slide-prev{
+    height: 400px !important;
+  }
+  .fans-have-fun-swiper {
+    padding: 30px 0 20px;
+  }
+  .fans-have-fun-swiper .common-title{
+    margin-bottom:0;
+  }
+}
+@media screen and (max-width:750px){
+  .swiper-desc{
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+  }
+  .swiper-container .swiper-wrapper .swiper-slide{
+    width:300px;
+  }
+  .swiper-container,
+  .swiper-container .swiper-wrapper .swiper-slide-next img,
+  .swiper-container .swiper-wrapper .swiper-slide-prev img,
+  .swiper-container .swiper-wrapper .swiper-slide img,
+  .swiper-container .swiper-wrapper .swiper-slide-next,
+  .swiper-container .swiper-wrapper .swiper-slide-prev{
+    height: 160px !important;
+  }
+  .swiper-container{
+    margin-top:12px;
+    margin-bottom: 0;
+  }
+  .fans-have-fun-swiper .swiper-pagination .swiper-pagination-bullet {
+    width: 8px;
+    height: 4px;
+  }
+  .fans-have-fun-swiper .swiper-pagination .swiper-pagination-bullet-active {
+    width: 18px;
+    height: 4px;
+  }
+  .swiper-button-prev, .swiper-button-next {
+    width: 28px;
+    height: 28px;
+  }
+  .swiper-desc{
+    margin-top: 5px;
+    padding:0 12px;
+  }
+  .fans-have-fun-swiper {
+    padding: 25px 0 12px;
+  }
+}
+@media screen and (max-width:480px){
+  .fans-have-fun-swiper{
+    margin-bottom:0;
+  }
+}
 </style>
 <div class="fans-have-fun-swiper have-fun-style">
   <div class="common-title">
@@ -111,22 +178,30 @@
 </div>
 <script>
   $(document).ready(function(){
-   var mySwiper = new Swiper('.swiper-container', {
-      direction: 'horizontal',
-      loop: true,
-      autoplay: 5000,
-      slidesPerView: "auto",
-      centeredSlides:true,
-      spaceBetween: 20,
-      // 如果需要分页器
-      pagination: {
-        el: '.swiper-pagination',
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    })
+       // var mySwiper = new Swiper('.swiper-container', {
+       //    observer:true,
+       //    observeParents:true,
+       //    observeSlideChildren:true,
+       //    direction: 'horizontal',
+       //    loop: true,
+       //    autoplay: 5000,
+       //    slidesPerView: "auto",
+       //    centeredSlides:true,
+       //    spaceBetween: 20,
+       //    // 如果需要分页器
+       //    pagination: {
+       //      el: '.swiper-pagination',
+       //    },
+       //    navigation: {
+       //      nextEl: '.swiper-button-next',
+       //      prevEl: '.swiper-button-prev',
+       //    },
+       //    breakpoints:{
+       //      1024:{
+       //        spaceBetween:10,
+       //      }
+       //    }
+       //  })
   })
 </script>
 {% schema %}

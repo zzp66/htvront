@@ -3,37 +3,42 @@
   <div class="fans-sale-banner">
     {% section 'fans-banner-2024' %}
     <div class="fans-sale-first-nav">
-      <div class="scroll-nav-background">
-        <ul class="fan-tabs">
-          <li class="fan-tab" id="hotSale">
+      <ul class="fan-tabs">
+          <li class="fan-tab fan-tab-active" id="hotSale">
             <div class="fan-tab-title">Hot Sale</div>
           </li>
           <li class="fan-tab" id="haveFun">
             <div class="fan-tab-title">Have Fun</div>
           </li>
-          <li class="fan-tab fan-tab-active" id="buyMore">
+          <li class="fan-tab" id="buyMore">
             <div class="fan-tab-title">Buy More</div>
           </li>
         </ul>
-      </div>
     </div>
+  </div>
+  <div class="fans-sale-nav-app-icon icon-btn-app">
+     <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Group_376.png?v=1710231351">
   </div>
   <div class="fans-sale-background">
     <div class="fans-sale-main">
       <div class="fan-sale fan-tab-content" for="hotSale">
-        <div class="fans-hot-sale">
-          <div class="fans-hot-sale-content">
-            {% section 'fans-hot-sale' %}
-            {% section 'fans-hot-sale-luckydraw' %}
-            {% section 'fans-hot-sale-video' %}
-          </div>
+        {% section 'fans-hot-sale-nav' %}
+        {% section 'fans-hot-sale-share' %}
+        {% section 'fans-hot-sale-ad' %}
+        {% section 'fans-flash-sales' %}
+        {% section 'fans-hot-sale-sellers' %}
+        {% section 'fans-hot-sale-bundles' %}
+        {% section 'fans-hot-sale-luckydraw' %}
+        {% section 'fans-hot-sale-video' %}
+        <div class="back-to-top" id="go_top">
+          <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/20240314-152001.png?v=1710400848">
         </div>
       </div>
       <div class="fan-sale fan-tab-content" for="haveFun">
         <div class="fans-have-fun">
           <div class="fans-have-fun-content">
             {% section 'fans-have-fun-intro' %}
-            {% section 'fans-have-fun-interact' %}
+            {% section 'fans-have-fun-interact'%}
             {% section 'fans-have-fun-notice' %}
             {% section 'fans-have-fun-video' %}
             {% section 'fans-have-fun-swiper' %}
@@ -53,16 +58,153 @@
   </div>
 </div>
 <script>
-  $('.fan-tab-content').eq(0).show();
-  $('.fan-tab').click(function () {
-    let index = $(this).index();
-    let nowTab = $(this).context.id;
-    $('.fan-tab-content').eq(index).show().siblings().hide();
-    if (index !== 0) {
-      $('.fan-tab').eq(index).prev().addClass('fan-tab-prev').siblings().removeClass('fan-tab-prev');
-    } else {
-      $('.fan-tab').eq(index).siblings().removeClass('fan-tab-prev');
-    }
-    $('.fan-tab').eq(index).addClass('fan-tab-active').siblings().removeClass('fan-tab-active');
+   $(function(){
+     // tab导航栏pc和移动滑动样式
+      // 滚动超过一屏 返回顶部点击
+  // $(window).scroll(function() {
+  //   var scrollTop = $(this).scrollTop(); 
+  //   var windowHeight = $(this).height(); 
+  //   if (scrollTop > windowHeight) { 
+  //       $("#go_top").fadeIn(800);
+  //   }else{
+  //     $("#go_top").fadeOut(800);
+  //   }
+  // });
+  //返回顶部按钮点击
+  $("#go_top").click(function(){
+     $('body,html').animate({scrollTop:0},100);
+     return false;
   });
+    let height = $('.fans-sale-banner')[0].offsetHeight
+    window.addEventListener("scroll", function(event) {
+      var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+      var navheight = 0 
+     // tab导航栏pc和移动滑动样式
+      var windowHeight = $(this).height(); 
+      if (scrollTop > windowHeight) { 
+          $("#go_top").fadeIn(800);
+      }else{
+        $("#go_top").fadeOut(800);
+      }
+      if(document.body.clientWidth >= 990){
+        navheight = 60
+      }else{
+        navheight = 45
+      }
+      if(document.body.clientWidth <= 750){
+         if(scrollTop >= height ){
+            $('.fans-sale-first-nav').css({
+              display:'none'
+           }).addClass('nav-app-style');
+           $('.fans-sale-nav-app-icon').css({display:'flex'})
+          
+         }else{
+           $('.fans-sale-first-nav').css({
+            display:'block'
+           }).removeClass('nav-app-style')
+           $('.fans-sale-nav-app-icon').css({display:'none'})
+         }
+      }else{
+       $('.fans-sale-nav-app-icon').css({display:'none'})
+        if(scrollTop >= height){  
+           $('.fans-sale-first-nav').css({
+             position: "fixed",
+             top: navheight + "px",
+             zIndex: 3,
+             background: "#F1E6CA"
+           })
+       }else{
+         $('.fans-sale-first-nav').css({
+            position: "absolute",
+            bottom: "40px",
+            top:"auto",
+            background: "none"
+         })
+       }
+      }
+    });
+    var arr = document.getElementsByClassName('hoverLi')
+    var navName = document.getElementsByClassName('fans-sale-first-nav')[0]
+     for (let i = 0, length = arr.length; i < length; i++) {
+        arr[i].addEventListener("mouseover", function(event) { 
+          var navStyleFixed = $('.fans-sale-first-nav').attr("style").indexOf("fixed"); 
+          if(navStyleFixed != -1){
+            navName.style.display = 'none';
+          }else{
+            navName.style.display = 'block';
+          }
+        });
+         arr[i].addEventListener("mouseout", function(event) { 
+           navName.style.display = 'block';
+        });
+     }
+  })
+    //点击除按钮和div弹框之外任意地方时，隐藏弹框
+  $("body").click(function(e) {
+    var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+    if(document.body.clientWidth <= 750){
+      if(scrollTop >= height + 110){
+        if(!$(e.target).closest(".fans-sale-nav-app-icon,.fans-sale-first-nav").length) {
+           $(".fans-sale-first-nav").hide();
+           $(".fans-sale-nav-app-icon").css({display:'flex'});
+        }
+      }
+    }
+  });
+  $("body").on('touchend',function(e) {
+     if(!$(e.target).closest(".fans-sale-nav-app-icon,.fans-sale-first-nav").length) {
+         $(".fans-sale-first-nav").hide();
+         $(".fans-sale-nav-app-icon").css({display:'flex'});
+      }
+  })
+  // tab导航栏切换展示
+  $('.fan-tab-content').eq(0).show()
+  $('.fan-tab').click(function () {
+      let index = $(this).index()
+      let nowTab = $(this).context.id
+      $('.fan-tab-content').eq(index).show().siblings().hide()
+      if (index !== 0) {
+          $('.fan-tab').eq(index).prev().addClass('fan-tab-prev').siblings().removeClass('fan-tab-prev')
+      } else {
+          $('.fan-tab').eq(index).siblings().removeClass('fan-tab-prev')
+      }
+      $('.fans-sale-first-nav').removeClass('nav-app-style')
+      $('.fan-tab').eq(index).addClass('fan-tab-active').siblings().removeClass('fan-tab-active')
+      $('body,html').animate({scrollTop:0},100)
+    if(index == 1){
+       var mySwiper = new Swiper('.swiper-container', {
+          observer:true,
+          observeParents:true,
+          observeSlideChildren:true,
+          direction: 'horizontal',
+          loop: true,
+          autoplay: 5000,
+          slidesPerView: "auto",
+          centeredSlides:true,
+          spaceBetween: 20,
+          // 如果需要分页器
+          pagination: {
+            el: '.swiper-pagination',
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+          breakpoints:{
+            1024:{
+              spaceBetween:10,
+            }
+          }
+        })
+    }
+  })
+  // 移动端点击展示TAB 
+  $('.fans-sale-nav-app-icon').click(function(){
+    $('.fans-sale-first-nav').show();
+    $(this).hide();
+  })
+  
+ 
+  
+
 </script>

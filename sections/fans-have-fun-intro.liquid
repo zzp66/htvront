@@ -6,7 +6,8 @@
     border-radius: 10px 10px 10px 10px;
     padding:40px 135px;
     margin-bottom: 40px;
-    background-image:url('https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Frame_13.png?v=1709781445')
+    background-image:url('https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Frame_13.png?v=1709781445');
+    background-size:100% 100%;
   }
   .fans-have-fun-intro>p{
     font-weight: bold;
@@ -37,10 +38,42 @@
     padding: 10px 50px 0;
   }
 }
+@media screen and (max-width:1280px){
+  .fans-have-fun-intro>p{
+    font-size: 22px;
+  }
+  .fans-have-fun-intro>div{
+    font-size: 14px;
+  }
+}
+@media screen and (max-width:1024px){
+  .fans-have-fun-intro {
+    padding: 20px;
+  }
+  .fans-have-fun-intro>p {
+    font-size: 18px;
+    line-height: 21px;
+  }
+  .fans-have-fun-intro>div{
+    padding: 10px 20px 0;
+  }
+}
+@media screen and (max-width:750px){
+  .fans-have-fun-intro {
+    padding: 15px 10px;    
+    width: 93.6%;
+    margin: 0 auto 15px;
+  }
+  .fans-have-fun-intro>p {
+    font-size: 16px;
+    line-height: 19px;
+  }
+}
 </style>
 <div class="fans-have-fun-intro">
-  <p>{{ section.settings.title }}</p>
-  <div>{{ section.settings.desc }}</div>
+  <p class="show-in-pc">{{ section.settings.title }}</p>
+  <p class="show-in-app">{{ section.settings.title_app }}</p>
+  <div class="show-in-pc">{{ section.settings.desc }}</div>
 </div>
 {% schema %}
   {
@@ -50,6 +83,10 @@
         "type":"text",
         "id":"title",
         "label":"title"
+      },{
+        "type":"text",
+        "id":"title_app",
+        "label":"title app"
       },{
         "type":"text",
         "id":"desc",

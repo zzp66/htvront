@@ -1,0 +1,155 @@
+<style>
+  .fn-join-buttons{
+    width: 80px;
+    border-radius: 5px;
+    padding:10px 7px 7px 7px;
+    text-align: center;
+    position: fixed;
+    right: 0;
+    top: 40%;
+    z-index:5; 
+    background: #FFB278;
+    border: 2px solid #B86D14;
+  }
+  .share-buttons>a{
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .share-buttons>a:nth-child(1){
+    margin-bottom:5px;
+  }
+  .fn-join-buttons>a:nth-child(2){
+    margin-bottom:10px;
+  }
+  .fn-join-buttons>a>img{
+    margin:0 auto;
+    padding-top: 10px;
+  }
+  .fn-join-buttons>p{
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    letter-spacing: 0;    
+    color: #B86D14;
+  }
+  .share-buttons>a>img{
+    margin:0 auto;
+  }
+  @media screen and (max-width:750px){
+    .fn-join-buttons{
+      width: 49px;
+      height: 140px;
+      padding: 2px 5px 12px 4px;
+      box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.1);
+    }
+    .fn-join-buttons>a{
+      width: 40px;
+      height: 40px;
+      box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.1), 0px 2px 4px 0px rgba(0,0,0,0.18);
+    }
+    .fn-join-buttons>a>img{
+      width:28px;
+      padding-top: 7px;
+    }
+    .fn-join-buttons>a:nth-child(2){
+      margin-bottom:5px;
+    }
+    .fn-join-buttons>p{
+      line-height:19px;
+      padding-bottom: 3px;
+    }
+  }
+</style>
+<div class="share-icon-btn icon-btn-app">
+  <img src="{{ section.settings.share_icon | img_url:'35x' }}">
+</div>
+<div class="fn-join-buttons">
+  <p>Share on</p>
+  <div class="share-buttons">
+    <a href="{{ section.settings.twitter_link }}" target="_blank" onclick="getClick('{{ section.settings.twitter_id }}')">
+      <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Group_296.png?v=1710227848">
+    </a>
+    <a href="{{ section.settings.facebook_link }}" target="_blank" id="{{ section.settings.facebook_id }}"onclick="getClick('{{ section.settings.facebook_id }}')">
+      <img src="https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Group_295.png?v=1710227848">
+    </a>
+  </div>
+</div>
+<script>
+  function getClick(name){
+    $.ajax({
+      type: 'get',
+      dataType: 'json',
+      url: 'https://qn.htvront.com/htvront-blindBox/click',
+      data: {site: 'US',module:'运营资源位',clickName:name}
+    });
+  }
+   $(".share-icon-btn").click(function() {
+      $(".fn-join-buttons").show();
+      $(this).hide();
+   });
+    //点击除按钮和div弹框之外任意地方时，隐藏弹框
+    $("body").click(function(e) {
+        if(!$(e.target).closest(".share-icon-btn,.fn-join-buttons").length) {
+           $(".fn-join-buttons").hide();
+           $(".share-icon-btn").css({display:'flex'});
+        }
+    });
+  $(document).on('touchstart', function(e) {
+    if(!$(e.target).closest(".share-icon-btn,.fn-join-buttons").length) {
+           $(".fn-join-buttons").hide();
+           $(".share-icon-btn").css({display:'flex'});
+        }
+});
+  function screenFuc() {
+    var winWidth = $(window).innerWidth();
+    if(winWidth <= 750){
+      $(".share-icon-btn").css({display:'flex'});
+      $(".fn-join-buttons").hide();
+      $(document).on('swipeUp', function(e) {
+        $(".share-icon-btn").css({display:'flex'});
+        $(".fn-join-buttons").hide();
+      });
+    }
+    else{
+      $(".fn-join-buttons").show();
+      $(".share-icon-btn").css({display:'none'});
+    }
+  }
+  (window.onresize = function() {
+      screenFuc();
+  })();
+</script>
+{% schema %}
+  {
+    "name": "Fans-hot-sale-share",
+    "settings": [
+      {
+        "type":"image_picker",
+        "id":"share_icon",
+        "label":"share icon"
+      },
+      {
+        "type":"text",
+        "id":"twitter_id",
+        "label":"twitter id"
+      },{
+        "type":"url",
+        "id":"twitter_link",
+        "label":"Twitter Link"
+      },{
+        "type":"text",
+        "id":"facebook_id",
+        "label":"Facebook id"
+      },{
+        "type":"url",
+        "id":"facebook_link",
+        "label":"Facebook Link"
+      }
+    ],
+    "presets":[
+        {
+          "name":"Fans-hot-sale-share"
+        }
+    ]
+  }
+{% endschema %}

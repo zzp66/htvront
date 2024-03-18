@@ -1,0 +1,407 @@
+<style>
+  #shopify-section-{{ section.id }} .fans-hot-sale-bundles{
+    padding-top:{{section.settings.padding_top}}px;
+    padding-bottom:{{section.settings.padding_bottom}}px;
+  }
+  #shopify-section-{{ section.id }} .fans-hot-sale-bundles-box{
+    padding-bottom:40px;
+    width:{{ section.settings.model_width }}px;
+    background-color:{{ section.settings.bg_color }};
+    {% if section.settings.bg_border_color != blank %}
+      border:2px solid {{ section.settings.bg_border_color }};
+    {% endif %}
+    border-radius: 10px;
+    padding:20px 20px 15px;
+    margin: 0 auto;
+  }
+  .fans-bundles-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #shopify-section-{{ section.id }} .fans-bundles-title>p{
+    font-size: 28px;
+    line-height: 33px;
+    font-weight:bold;
+    color: {{ section.settings.title_color}};
+  }
+  .fans-bundles-title>span{
+    padding-right:5px;
+  }
+  #shopify-section-{{ section.id }} .fans-bundle-desc{
+    text-align:center;
+    font-size: 18px;
+    line-height: 21px;
+    color: {{ section.settings.desc_color}};
+    margin-top: 8px;
+  }
+  .fans-bundles{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 18px;
+  }
+  .fans-bundles-item{
+    width:49%;
+    background-color:#fff;
+    border-radius: 10px;
+    padding: 15px 25px 15px 15px;
+    margin-bottom:15px;
+    display:flex;
+  }
+  .fans-bundles-item .img-first{
+    width:316px;
+  }
+  .fans-bundles-item>a{
+    min-width:316px;
+    width:316px;
+  }
+  #shopify-section-{{ section.id }} .fans-sale-title>a{
+    font-size: 20px;
+    line-height: 23px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    color:{{section.settings.product_title_color}};
+  }
+  #shopify-section-{{ section.id }} .fans-product-layout .button--full-width{
+    border-radius: 8px;
+    --border-offset: none;
+    --border-opacity: none;
+    background:{{section.settings.button_bg_color}}
+  }
+  .fans-bundles-item .fans-addcart-sale{
+    position:absolute;
+    bottom:0;
+    width: 100%;
+  }
+  .fans-bundles-item .price-code{
+    color: #6D3309;
+  }
+  .fans-bundles-item .short-desc{
+    margin-top:10px;
+  }
+  .fans-bundles-item .short-desc>span{
+    font-size: 16px;
+    color: #6D3309;
+    line-height: 19px;
+    padding-left: 15px;
+    position: relative;
+    display:inline-block;
+  }
+  .fans-bundles-item .short-desc>span:before{
+    content:'';
+    position:absolute;
+    width: 4px;
+    height: 4px;
+    background: #6D3309;
+    border-radius: 100px;
+    left: 0;
+    top: 9px;
+  }
+  .fans-bundles-item .fn-compareat_price,.fans-bundles-item .price__regular .price-item--regular{
+    flex-direction: row;
+    color: #FF7500;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 28px;
+    align-items: baseline;
+  }
+  .fans-bundles-price{
+    position: absolute;
+    bottom: 50px;
+  }
+  .fans-bundles-price .fn-compareat_price .fn-compare-at_price{
+    color: #FF7500;
+    padding-left: 5px;
+    font-weight:400;
+  }
+ @media screen and (max-width: 1660px){
+   .fans-hot-sale-bundles-box{
+      width: 83.3% !important;
+    }
+ }
+   @media screen and (max-width: 1660px){
+   .fans-hot-sale-bundles-box{
+      width: 83.3% !important;
+    }
+ }
+  @media screen and (max-width: 1440px){
+    .fans-bundles-item>a {
+      min-width: 270px;
+      width: 270px;
+    }
+    .fans-bundles-item .img-first {
+      width: 100%;
+    }
+     #shopify-section-{{ section.id }} .fans-sale-title>a{
+       font-size: 18px;
+      line-height: 21px;
+     }
+    .fans-bundles-item .fn-compareat_price, .fans-bundles-item .price__regular .price-item--regular{
+      font-size: 22px;
+      line-height: 24px;
+    }
+  }
+   @media screen and (max-width: 1280px){
+    .fans-bundles-item>a {
+      min-width: 45%;
+      width: 45%;
+     }
+     .fans-bundles-item .fans-addcart-sale{
+      position: relative;
+      margin-top: 5px;
+     }
+     .fans-bundles-price{
+       position: relative;
+       bottom:0;
+        margin-top: 10px;
+     }
+    #shopify-section-{{ section.id }} .fans-sale-title>a{
+       font-size: 16px;
+    }
+     .fans-bundles-item{
+       padding:10px;
+     }
+  }
+   @media screen and (max-width: 820px){
+     .fans-bundles-item{
+        flex-direction: column;
+        border-width: 1px !important;
+        padding: 5px 5px 10px;
+     }
+     .fans-bundles-item>a {
+      min-width: 100%;
+      width: 100%;
+     }
+    #shopify-section-{{ section.id }} .fans-sale-title>a{
+       font-size: 14px;
+      line-height:18px;
+        margin-top: 5px;
+    }
+     #shopify-section-{{ section.id }} .fans-hot-sale-sellers-box{
+       border-radius:6px;
+     }
+     .fans-bundles-item .bottom-price>span:nth-child(2){
+         font-size: 16px;
+        line-height: 19px;
+     }
+     .fans-bundles-item .short-desc>span{
+        font-size: 14px;
+      line-height:18px;
+     }
+     .fans-bundles-item .fans-product-layout{
+       margin-left:0;
+     }
+   }
+  @media screen and (max-width: 750px){
+    .fans-hot-sale-bundles-box{
+      width: 93.6% !important;
+    }
+  }
+  @media screen and (max-width: 480px){
+    .fans-bundles-title>span{
+      width:20px;
+    }
+    #shopify-section-{{ section.id }} .fans-bundle-desc{
+      font-size:14px;
+      line-height: 16px;
+      margin-top: 2px;
+    }
+    #shopify-section-{{ section.id }} .fans-bundles-title>p{
+      font-size:16px;
+      line-height: 21px;
+    }
+    #shopify-section-{{ section.id }} .fans-hot-sale-bundles-box{
+      padding: 14px 4px 4px;
+    }
+    .fans-bundles{
+      margin-top:8px;
+    }
+    #shopify-section-{{ section.id }} .fans-product-layout .button--full-width{
+      height: 38px;
+      min-height: 38px;
+      font-size: 14px;
+    }
+    .fans-bundles-item .fn-compareat_price, .fans-bundles-item .price__regular .price-item--regular {
+      font-size: 16px;
+      line-height: 19px;
+    }
+    .fans-bundles-item .short-desc>span{
+      padding-left:8px;
+    }
+    .fans-bundles-item{
+       margin-bottom:8px;
+    }
+  }
+</style>
+<div class="fans-hot-sale-bundles" id="{{ section.settings.id }}">
+  <div class="fans-hot-sale-bundles-box">
+    <div class="fans-bundles-title">
+      {% if section.settings.title_icon != blank %}
+       <span>
+         <img src="{{ section.settings.title_icon | img_url}}">
+       </span>
+      {% endif %}
+      <p>{{ section.settings.title }}</p>
+    </div>
+    {% if section.settings.desc != blank %}
+    <div class="fans-bundle-desc">{{ section.settings.desc }}</div>
+    {% endif %}
+    <div class="fans-bundles">
+       {% for block in section.blocks %}
+        <div class="fans-bundles-item" style="{% if block.settings.bg_border_color != blank %}border:2px solid {{ block.settings.bg_border_color }};{% endif %}
+          {% if block.settings.bg_color != blank %}background:{{ block.settings.bg_color }};{% endif %}">
+            {%- if block.settings.product_item.featured_media -%}
+              <a href="{{ block.settings.product_item.url }}">
+                <img
+                  class="img-first"
+                  src="{{ block.settings.product_item.featured_media | img_url: '420x' }}"
+                  alt="{{ block.settings.product_item.featured_media.alt | escape }}"
+                  {% unless lazy_load == false %}
+                    loading="lazy"
+                  {% endunless %}
+                >
+              </a>
+            {%- endif -%}
+            <div class="fans-product-layout">
+              <div class="fans-sale-title t">
+                <a href="{{ block.settings.product_item.url }}" class="t">{{ block.settings.product_item.title | escape }}</a>
+              </div>
+              <div class="price-code">
+                {% if block.settings.desc %}
+                  <div class="short-desc">
+                    {{ block.settings.desc }}
+                  </div>
+                {% endif %}
+              </div>
+              <div class="fans-bundles-price">
+                {% render 'sffers-price', product: block.settings.product_item, price_class: '' %}
+              </div>
+               <div class="fans-addcart-sale">
+                {% render 'easter-addCart', product: block.settings.product_item %}
+              </div>
+           </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<script>
+  function copyticket(code){
+    let url = code;
+    let copyInput = document.createElement('input');
+    	document.body.appendChild(copyInput);
+    	copyInput.setAttribute('value', url);
+    	copyInput.select();
+    	document.execCommand("Copy");
+    	copyInput.remove();
+        alertMsg()
+  }
+   function alertMsg(){
+    var alertFram = document.createElement("DIV");
+    alertFram.id = "alertFram";
+    alertFram.style.position = "fixed";
+    alertFram.style.width = "100%";
+    alertFram.style.textAlign = "center";
+    alertFram.style.bottom = "40px";
+    alertFram.style.zIndex = "10001";
+    strHtml = " <span style=\"font-family: 微软雅黑;display:inline-block;background:#333;color:#fff;padding:0 20px;line-height:36px;border-radius:6px; \">Copied successfully</span>";
+    alertFram.innerHTML = strHtml;
+    document.body.appendChild(alertFram);
+    setTimeout((function(){
+      alertFram.style.display="none";
+    }),2000);
+  }
+</script>
+{% schema %}
+  {
+    "name": "Fans-hot-sale-bundles",
+    "settings": [{
+        "type": "text",
+        "id": "id",
+        "label": "id(页面唯一性，全英文)"
+      },
+      {
+        "type":"number",
+        "id":"padding_top",
+        "label":"模块上边距"
+      },{
+        "type":"number",
+        "id":"padding_bottom",
+        "label":"模块下边距"
+      },
+      {
+        "type":"number",
+        "id":"model_width",
+        "label":"model width"
+      },{
+        "type":"color",
+        "id":"bg_color",
+        "label":"background color"
+      },{
+        "type":"color",
+        "id":"bg_border_color",
+        "label":"background border color"
+      },{
+        "type":"image_picker",
+        "id":"title_icon",
+        "label":"title icon"
+      },{
+        "type":"text",
+        "id":"title",
+        "label":"title"
+      },{
+        "type":"text",
+        "id":"desc",
+        "label":"desc"
+      },{
+        "type":"color",
+        "id":"title_color",
+        "label":"title color"
+      },{
+        "type":"color",
+        "id":"desc_color",
+        "label":"desc color"
+      },{
+        "type":"text",
+        "id":"button_bg_color",
+        "label":"button background color"
+      },{
+        "type":"color",
+        "id":"product_title_color",
+        "label":"product title color"
+      }
+    ],
+    "blocks":[{
+      "name":"bundle",
+      "type":"bundle",
+       "settings":[{
+            "type":"text",
+            "id":"bg_color",
+            "label":"background color"
+          },{
+            "type":"color",
+            "id":"bg_border_color",
+            "label":"background border color"
+          },
+          {
+            "type": "product",
+            "id": "product_item",
+            "label": "product item"
+          },{
+            "type":"html",
+            "id":"desc",
+            "label":"desc"
+          }
+       ]
+    }],
+    "presets":[
+        {
+          "name":"Fans-hot-sale-bundles"
+        }
+    ]
+  }
+{% endschema %}

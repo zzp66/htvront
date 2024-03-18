@@ -80,6 +80,43 @@
     display: inline-block;
   }
 }
+@media screen and (max-width:768px){
+  .fans-have-fun-interact{
+    flex-direction: column-reverse;
+    padding: 12px 12px 15px;
+  }
+  .fans-have-fun-interact>img{
+    width: 100%;
+    margin-top: 15px;
+  }
+  .interact-content{
+    margin-left:0;
+  }
+  .interact-item-box{
+    margin-bottom:8px;
+  }
+  .interact-item>span{
+    width: 33px;
+    height: 33px;
+    border-radius: 100px 100px 0px 100px;
+    min-width: 33px;
+    font-size: 18px;
+    line-height: 33px;
+    margin-right: 12px;
+
+  }
+  .interact-item>div>p {
+    font-size: 16px;
+    line-height:19px;
+    margin-bottom: 5px;
+  }
+  .interact-item>div>span {
+    font-size: 12px;
+  }
+  .interact-item {
+    padding: 12px 12px 12px 18px;
+  }
+}
 </style>
 <div class="fans-have-fun-interact have-fun-style">
   <img src="{{ section.settings.image | img_url:'725x' }}">

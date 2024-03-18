@@ -92,7 +92,6 @@
   .step-list>div:nth-child(even) .step-content{
     color: #DE7340;
   }
-  .step-list>div:nth-child(odd):after{}
   .step-list>div:nth-child(even):after{
     background: #D54F10;
     right: -9px;
@@ -117,6 +116,106 @@
   .step-content{
     font-size:16px;
   }
+  .step-list{
+    width:70%;
+  }
+}
+@media screen and (max-width:1280px){
+  .step-content {
+    font-size: 14px;
+  }
+  .notice-title>p{
+    font-size:26px;
+  }
+}
+@media screen and (max-width:750px){
+  .step-box{
+    flex-direction: column-reverse;
+  }
+  .notice-title{
+    position: relative;
+  }
+  .notice-title>p{
+    text-align: center;
+    font-size: 16px;
+    line-height: 19px;
+  }
+  .fans-have-fun-notice .line-style>span{
+    margin-right: 0;
+  }
+  .notice-title>div>span{
+    margin-bottom:0;
+  }
+  .fans-have-fun-notice{
+    padding: 30px 0 15px;
+    background-image:url('https://cdn.shopifycdn.net/s/files/1/0356/5997/2741/files/Frame_35_2x_87271f4a-e637-4941-aa0e-9bbc93b08062.png?v=1710142915');
+    background-size:100% 100%;
+  }
+  .step-image-box{
+    margin-bottom:20px;
+  }
+  .fans-have-fun-notice .line-style{
+    position:absolute;
+  }
+  .fans-have-fun-notice .line-style:nth-child(2){
+    left: 20px;
+    top: -2px;
+  }
+  .fans-have-fun-notice .line-style:nth-child(4){
+    right: 20px;
+    top: -2px;
+  }
+  .step-list{
+    width:100%;
+    padding-left:40px;
+  }
+  .step-list>div:nth-child(odd),.step-list>div:nth-child(even){
+    align-self:normal;
+  }
+  .step-list>div:nth-child(even) .text-box{
+    text-align:left;
+  }
+  .step-list>div:nth-child(even):before {
+    right: auto;
+    left: 0;
+  }
+  .step-list>div:nth-child(even):after{
+    right:auto;
+    left:-6px;
+  }
+  .step-list>div:nth-child(even) .text-box {
+    padding: 0px 0 0 20px;
+  }
+  .step-list>div{
+    width:100%;
+  }
+}
+@media screen and (max-width:480px){
+  .step-time {
+    font-size: 14px;
+    line-height: 16px;
+  }
+  .step-content {
+    font-size: 12px;
+  }
+  .step-list>div:after{
+    content: '';
+    width: 9px;
+    height: 9px;
+    left: -3.5px;
+  }
+  .step-list>div:nth-child(even):after{
+    left: -3.5px;
+  }
+  .step-list>div:before{
+    /* height:85px; */
+  }
+  .step-list>div{
+    /* height:85px; */
+  }
+  .step-list>div:nth-child(1):before,.step-list>div:nth-last-child(1):before{
+    border-radius: 100px 100px 0 0;
+  }
 }
 </style>
 <div class="fans-have-fun-notice have-fun-style">
@@ -137,14 +236,24 @@
     </div>
     <div class="step-image-box">
       <div class="notice-title">
-        <div>
+        <div class="show-in-pc">
           <span class="horizontal-line-first"></span>
           <span class="horizontal-line-second"></span>
           <span class="horizontal-line-third"></span>
         </div>
+        <div class="line-style show-in-app">
+          <span class="line-first"></span>
+          <span class="line-second"></span>
+          <span class="line-third"></span>
+        </div>
         <p>{{ section.settings.title }}</p>
+        <div class="line-style show-in-app">
+          <span class="line-third"></span>
+          <span class="line-second"></span>
+          <span class="line-first"></span>
+        </div>
       </div>
-      <img src="{{ section.settings.image | img_url:'558x' }}">
+      <img src="{{ section.settings.image | img_url:'558x' }}" class="show-in-pc">
     </div>
   </div>
 </div>
