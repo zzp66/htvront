@@ -102,7 +102,7 @@
   }
   .draw-message {
     background-color: #ffe4d0;
-    margin: 10px 40px;
+    margin: 10px 35px;
     border: 3px solid #b86d14;
     border-radius: 18px;
   }
@@ -120,13 +120,18 @@
   }
   .prize-content ul {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   .prize-content ul li {
     background-color: #ffdabe;
     border: 3px solid #b86d14;
     border-radius: 18px;
-    max-width: 400px;
-    margin: 0 10px 18px;
+    width: 31%;
+    margin: 9px 10px;
+  }
+  .prize-box{
+    padding: 9px 10px;
   }
 
   .prize-content ul li div {
@@ -286,7 +291,7 @@
   }
   @media screen and (min-width: 751px) {
     .prize-content ul:first-of-type li {
-      margin-top: 18px;
+      /* margin-top: 18px; */
     }
   }
 </style>
@@ -404,7 +409,7 @@
           </div>
         </div>
         <div class="prize-content">
-          <ul>
+          <ul class="prize-box">
             <li>
               <div class="img-box">
                 <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.png" alt="">
@@ -420,8 +425,6 @@
                 <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.png" alt="">
               </div>
             </li>
-          </ul>
-          <ul>
             <li>
               <div class="img-box">
                 <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/20230206-110213_2.png" alt="">
@@ -564,123 +567,130 @@
 </div>
 <div class="draw-body-mask"></div>
 <script>
-   getDrawList();
-   function getDrawList(){
+  getDrawList();
+  function getDrawList() {
     $.ajax({
-      url: "https://qn.htvront.com/woman/getDrawList",
-      method: "GET",
+      url: 'https://qn.htvront.com/woman/getDrawList',
+      method: 'GET',
       success: function (data) {
-         var arr = data.data
-         if(arr != null){
-           for (let i = 0; i < arr.length; i++) {
-            var div = '<div class="swiper-slide draw-swiper-slide">' + arr[i].winEmail + ' won a ' + arr[i].winAwardsEnglishName + '</div>'
-             $('.swiper-wrapper-draw').append(div)
-            }
-         }
+        var arr = data.data;
+        if (arr != null) {
+          for (let i = 0; i < arr.length; i++) {
+            var div =
+              '<div class="swiper-slide draw-swiper-slide">' +
+              arr[i].winEmail +
+              ' won a ' +
+              arr[i].winAwardsEnglishName +
+              '</div>';
+            $('.swiper-wrapper-draw').append(div);
+          }
+        }
       },
-      error: function (xhr, status, error) {
-      }
+      error: function (xhr, status, error) {},
     });
   }
-  $(function(){
-      var mySwiper_d = new Swiper('.draw-swiper', {
-        speed: 1500,
-        loop: true,
-        simulateTouch: false,
-        noSwiping: true,
-        allowTouchMove: false,
-        slidesPerView: 'auto',
-        autoplay: true
-    })
-    $('#join_draw').on('click',function(){
-      var inputVal = $('.draw-input').val()
-      if(inputVal.trim() == ''){
-        $('.draw-tips').show()
+  $(function () {
+    var mySwiper_d = new Swiper('.draw-swiper', {
+      speed: 1500,
+      loop: true,
+      simulateTouch: false,
+      noSwiping: true,
+      allowTouchMove: false,
+      slidesPerView: 'auto',
+      autoplay: true,
+    });
+    $('#join_draw').on('click', function () {
+      var inputVal = $('.draw-input').val();
+      if (inputVal.trim() == '') {
+        $('.draw-tips').show();
         return false;
-      }else{
-        $('.draw-tips').hide()
+      } else {
+        $('.draw-tips').hide();
       }
-      var data = {market: "US_HTVRONT(shopify)",orderNo: inputVal}
-      var jsonData = JSON.stringify(data)
-      $('#join_draw').hide()
-      $('#loading_draw').show()
+      var data = { market: 'US_HTVRONT(shopify)', orderNo: inputVal };
+      var jsonData = JSON.stringify(data);
+      $('#join_draw').hide();
+      $('#loading_draw').show();
       $.ajax({
-        url: "https://qn.htvront.com/fansPre/lottery",
-        method: "POST",
+        url: 'https://qn.htvront.com/fansPre/lottery',
+        method: 'POST',
         data: jsonData,
         contentType: 'application/json',
-        success: function(res) {
-          $('#join_draw').show()
-          $('#loading_draw').hide()
-          $('.draw-body-mask').css('display',"block")
-          $('body').css({"overflow":"hidden"})
-          if(res.code == 20003){
-             $('.tips-dialog,.prize-drawn').show();
-             $('.win-button.bundle-close').show().css('cursor','pointer')
-          }else if(res.code == 20002){
-             $('.tips-dialog,.no-qualification').show();
-             $('.win-button.bundle-close').show().css('cursor','pointer')
-          }else if(res.code == 20004){
-             $('.tips-dialog,.no-draw').show();
-             $('.win-button.bundle-close').show().css('cursor','pointer')
-          }else if(res.code == 200 && res.data){
-             var arr2 = [res.data]
-             for (let j = 0; j < arr2.length; j++) {
-              $('.draw-dialog').css('display',"block");
+        success: function (res) {
+          $('#join_draw').show();
+          $('#loading_draw').hide();
+          $('.draw-body-mask').css('display', 'block');
+          $('body').css({ overflow: 'hidden' });
+          if (res.code == 20003) {
+            $('.tips-dialog,.prize-drawn').show();
+            $('.win-button.bundle-close').show().css('cursor', 'pointer');
+          } else if (res.code == 20002) {
+            $('.tips-dialog,.no-qualification').show();
+            $('.win-button.bundle-close').show().css('cursor', 'pointer');
+          } else if (res.code == 20004) {
+            $('.tips-dialog,.no-draw').show();
+            $('.win-button.bundle-close').show().css('cursor', 'pointer');
+          } else if (res.code == 200 && res.data) {
+            var arr2 = [res.data];
+            for (let j = 0; j < arr2.length; j++) {
+              $('.draw-dialog').css('display', 'block');
               $('#winAwardsEnglishName').text(arr2[j].winAwardsEnglishName);
-              $('#winTicketCode').text(arr2[j].winTicketCode)
-              $('.draw-img-url').attr('src',arr2[j].awardsImgPath);
-              if(arr2[j].turnUrl != null && arr2[j].turnUrl != ''){
+              $('#winTicketCode').text(arr2[j].winTicketCode);
+              $('.draw-img-url').attr('src', arr2[j].awardsImgPath);
+              if (arr2[j].turnUrl != null && arr2[j].turnUrl != '') {
                 $('.productTips').show();
-                $('.turn_url').attr('href',arr2[j].turnUrl).show().css('cursor','pointer');
-              }else{
+                $('.turn_url').attr('href', arr2[j].turnUrl).show().css('cursor', 'pointer');
+              } else {
                 $('.codeTips').show();
-                $('.bundle-close').show().css('cursor','pointer')
+                $('.bundle-close').show().css('cursor', 'pointer');
               }
             }
-          }else{
-             $('.tips-dialog,.try-later').show();
-             $('.win-button.bundle-close').show().css('cursor','pointer')
+          } else {
+            $('.tips-dialog,.try-later').show();
+            $('.win-button.bundle-close').show().css('cursor', 'pointer');
           }
         },
-        error:function(xhr,status,error){
-          $('#join_draw').show()
-          $('#loading_draw').hide()
-          console.log(xhr,status,error)
-        }
-      })
-     })
-     $('.close-btn').on('click',function(){
-       $('.draw-dialog,.tips-dialog,.prize-drawn,.no-qualification,.try-later,.no-draw,.draw-body-mask,.productTips,.codeTips,.turn_url,.bundle-close').hide()
-       $('.draw-input').val('')
-       $('body').css({"overflow":"auto"})
-     })
-    $('#copy-click').on('click',function(){
+        error: function (xhr, status, error) {
+          $('#join_draw').show();
+          $('#loading_draw').hide();
+          console.log(xhr, status, error);
+        },
+      });
+    });
+    $('.close-btn').on('click', function () {
+      $(
+        '.draw-dialog,.tips-dialog,.prize-drawn,.no-qualification,.try-later,.no-draw,.draw-body-mask,.productTips,.codeTips,.turn_url,.bundle-close'
+      ).hide();
+      $('.draw-input').val('');
+      $('body').css({ overflow: 'auto' });
+    });
+    $('#copy-click').on('click', function () {
       let url = $('#winTicketCode').text();
       let copyInput = document.createElement('input');
       document.body.appendChild(copyInput);
       copyInput.setAttribute('value', url);
       copyInput.select();
-      document.execCommand("Copy");
+      document.execCommand('Copy');
       copyInput.remove();
-      alertMsg()
-    })
-     function alertMsg(){
-      var alertFram = document.createElement("DIV");
-      alertFram.id = "alertFram";
-      alertFram.style.position = "fixed";
-      alertFram.style.width = "100%";
-      alertFram.style.textAlign = "center";
-      alertFram.style.bottom = "40px";
-      alertFram.style.zIndex = "10001";
-      strHtml = " <span style=\"font-family: 微软雅黑;display:inline-block;background:#333;color:#fff;padding:0 20px;line-height:36px;border-radius:6px; \">Copied successfully</span>";
+      alertMsg();
+    });
+    function alertMsg() {
+      var alertFram = document.createElement('DIV');
+      alertFram.id = 'alertFram';
+      alertFram.style.position = 'fixed';
+      alertFram.style.width = '100%';
+      alertFram.style.textAlign = 'center';
+      alertFram.style.bottom = '40px';
+      alertFram.style.zIndex = '10001';
+      strHtml =
+        ' <span style="font-family: 微软雅黑;display:inline-block;background:#333;color:#fff;padding:0 20px;line-height:36px;border-radius:6px; ">Copied successfully</span>';
       alertFram.innerHTML = strHtml;
       document.body.appendChild(alertFram);
-      setTimeout((function(){
-        alertFram.style.display="none";
-      }),2000);
+      setTimeout(function () {
+        alertFram.style.display = 'none';
+      }, 2000);
     }
-  })
+  });
 </script>
 {% schema %}
 {
