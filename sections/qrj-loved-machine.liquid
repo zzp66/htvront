@@ -1,0 +1,84 @@
+<style>
+  .loved-machine {
+    background-image: url('{{ section.settings.loved_machine_bg | img_url:'1920x' }}');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding: 12px 0 24px;
+  }
+  .title-content {
+    position: relative;
+  }
+  .title-content img {
+    margin: 0 auto;
+  }
+  .title-content .title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #fff;
+    margin: 0;
+    line-height: 42px;
+  }
+  .title-content .s_title {
+    font-size: 24px;
+    font-weight: normal;
+    color: #fff;
+    margin: 6px 0 0;
+    line-height: 28px;
+  }
+  .title-box {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 100%;
+  }
+</style>
+<div class="loved-machine">
+  <div class="title-content">
+    <picture>
+      <source media="(max-width: 750px)" srcset="{{ section.settings.lm_title_bg_mb | img_url:'592x' }}">
+      <source media="(min-width: 751px)" srcset="{{ section.settings.lm_title_bg_pc | img_url:'816x' }}">
+      <img src="{{ section.settings.lm_title_bg_pc | img_url:'816x' }}">
+    </picture>
+    <div class="title-box">
+      <p class="title">{{ section.settings.title }}</p>
+      <p class="s_title">{{ section.settings.s_title }}</p>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Loved Machine",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "loved_machine_bg",
+      "label": "该部分背景图"
+    },
+    {
+      "type": "image_picker",
+      "id": "lm_title_bg_mb",
+      "label": "标题部分背景图-移动端"
+    },
+    {
+      "type": "image_picker",
+      "id": "lm_title_bg_pc",
+      "label": "标题部分背景图-PC端"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "大标题"
+    },
+    {
+      "type": "text",
+      "id": "s_title",
+      "label": "小标题"
+    }
+  ]
+}
+{% endschema %}

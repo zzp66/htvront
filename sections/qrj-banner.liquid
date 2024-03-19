@@ -1,0 +1,24 @@
+<div class="qrj-banner">
+  <picture>
+    <source media="(max-width: 750px)" srcset="{{ section.settings.banner_mb | img_url:'750x' }}">
+    <source media="(min-width: 751px)" srcset="{{ section.settings.banner_pc | img_url:'1920x' }}">
+    <img src="{{ section.settings.banner_pc | img_url:'1920x' }}">
+  </picture>
+</div>
+{% schema %}
+{
+  "name": "QRJ-Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_pc",
+      "label": "PC端banner"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_mb",
+      "label": "移动端banner"
+    }
+  ]
+}
+{% endschema %}
