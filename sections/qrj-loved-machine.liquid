@@ -36,6 +36,11 @@
     text-align: center;
     height: 100%;
   }
+  .machine-content {
+    background-color: #fbb7c2;
+    max-width: 1600px;
+    border-radius: 10px;
+  }
 </style>
 <div class="loved-machine">
   <div class="title-content">
@@ -47,6 +52,32 @@
     <div class="title-box">
       <p class="title">{{ section.settings.title }}</p>
       <p class="s_title">{{ section.settings.s_title }}</p>
+    </div>
+  </div>
+  <div class="machine-content">
+    <div class="machine-grid">
+      {% for block in section.blocks %}
+        <div class="machine-grid-item">
+          <div class="item-left">
+            <img src="{{ block.settings.item_img | img_url:'810x' }}">
+          </div>
+          <div class="item-right">
+            <div class="item-grid">
+              <a href="" class="grid-img">
+                {%- if block.settings.item_product1.featured_media -%}
+                  <img src="{{ block.settings.item_product1.featured_media | img_url: '420x' }}">
+                {%- endif -%}
+              </a>
+              <div class="grid-info">
+                <a href="{{ block.settings.item_product1.url }}">
+                  <p class="info-title">{{ block.settings.item_product1.title | escape }}</p>
+                </a>
+                {% render 'sffers-price', product: block.settings.item_product1, price_class: '' %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
     </div>
   </div>
 </div>
@@ -78,6 +109,45 @@
       "type": "text",
       "id": "s_title",
       "label": "小标题"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Img + Machine",
+      "type": "img_machine",
+      "settings": [
+        {
+          "type": "select",
+          "label": "设置图片在左还是在右",
+          "id": "img_position",
+          "options": [
+            {
+              "value": "left",
+              "label": "图片在左"
+            },
+            {
+              "value": "right",
+              "label": "图片在右"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "product",
+          "id": "item_product1",
+          "label": "产品1"
+        },
+        {
+          "type": "product",
+          "id": "item_product2",
+          "label": "产品2"
+        },
+        {
+          "type": "image_picker",
+          "id": "item_img",
+          "label": "图片选择"
+        }
+      ]
     }
   ]
 }
