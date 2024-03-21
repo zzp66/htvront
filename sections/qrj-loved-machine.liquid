@@ -62,7 +62,7 @@
   .item-grid .grid-img img {
     max-width: 268px;
   }
-  .item-img img {
+  .item-img {
     min-width: 810px;
   }
   .item {
@@ -123,6 +123,7 @@
     border: 2px solid transparent;
   }
   .color-picker ul .img-picker img {
+    width: 40px;
     border-radius: 40px;
   }
   .color-picker ul .img-picker:hover {
@@ -143,12 +144,79 @@
   .item-form .button--full-width::after {
     box-shadow: none;
   }
-  @media screen and(max-width:1600px) {
+  @media screen and (max-width: 1600px) {
     .machine-content {
       width: 83.3% !important;
     }
-    .item-img img {
-      width: 50%;
+    .item-img {
+      min-width: 50% !important;
+    }
+
+    .item-form .button--full-width {
+      height: 47px;
+    }
+  }
+  @media screen and (max-width: 1599px) and (min-width: 1024px) {
+    .item-grid .grid-img img {
+      max-width: 190px;
+    }
+    .info-title {
+      font-size: 16px;
+    }
+    .grid-info .fn-compareat_price .price-item--sale {
+      font-size: 22px;
+    }
+    .grid-info .fn-compareat_price .fn-compare-at_price {
+      font-size: 14px;
+    }
+    .color-picker ul .img-picker img {
+      width: 25px;
+    }
+    .item-form .button--full-width {
+      height: 47px;
+    }
+  }
+  @media screen and (max-width: 1500px) and (min-width: 1024px) {
+    .item-grid .grid-img img {
+      max-width: 160px;
+    }
+    .info-title {
+      font-size: 14px;
+    }
+    .grid-info .fn-compareat_price .price-item--sale {
+      font-size: 16px;
+    }
+    .price {
+      line-height: 10px;
+    }
+  }
+  @media screen and (max-width: 990px) {
+    .machine-content{
+      padding: 133px 10px 0;
+    }
+    .machine-grid-item {
+      flex-direction: column;
+    }
+    .machine-grid-item .item {
+      flex-direction: row;
+    }
+    .machine-grid-item .item-img{
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+    .item-grid {
+      padding: 8px;
+      flex-direction: column;
+    }
+    .item-grid .grid-img img {
+      margin: 0 auto;
+      max-width: 100%;
+    }
+    .grid-info{
+      margin-left: 0;
+    }
+    .item .item-grid:first-of-type{
+      margin-bottom: 0;
     }
   }
 </style>
@@ -205,7 +273,7 @@
                             <a href="{{ block.settings.item_product1.url }}?variant={{ block.settings.item_product1.variants[forloop.index0].id }}">
                               {%- if block.settings.item_product1.variants[forloop.index0].featured_image != blank -%}
                                 <img
-                                  src="{{ block.settings.item_product1.variants[forloop.index0].featured_image | img_url: '50x50' }}"
+                                  src="{{ block.settings.item_product1.variants[forloop.index0].featured_image | img_url: '50x' }}"
                                   alt="{{ value }}"
                                 >
                               {% endif %}
@@ -264,7 +332,7 @@
                             <a href="{{ block.settings.item_product2.url }}?variant={{ block.settings.item_product2.variants[forloop.index0].id }}">
                               {%- if block.settings.item_product2.variants[forloop.index0].featured_image != blank -%}
                                 <img
-                                  src="{{ block.settings.item_product2.variants[forloop.index0].featured_image | img_url: '50x50' }}"
+                                  src="{{ block.settings.item_product2.variants[forloop.index0].featured_image | img_url: '40x' }}"
                                   alt="{{ value }}"
                                 >
                               {% endif %}
