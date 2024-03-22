@@ -1,3 +1,24 @@
 body {
     margin: 0 auto;
 }
+
+.qrj-ethan {
+    background-color: #FFD9E1;
+
+}
+
+@media screen and (max-width: 1660px) {
+    .qrj-ethan-width {
+        width: 83.3% !important;
+    }
+}
+
+@media screen and (max-width: 820px) {
+    .qrj-ethan-width {
+        width: 93.6% !important;
+    }
+
+    .qrj-ethan {
+        background: linear-gradient(180deg, #FFD2DC 0%, #FFE7EC 100%);
+    }
+}

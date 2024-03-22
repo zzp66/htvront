@@ -5,27 +5,27 @@
     background-size: 100% 100%;
     padding: 12px 0 24px;
   }
-  .title-content {
+  .loved-machine .title-content {
     position: relative;
   }
   .title-content img {
     margin: 0 auto;
   }
-  .title-content .title {
+  .loved-machine .title-content .title {
     font-size: 36px;
     font-weight: bold;
     color: #fff;
     margin: 0;
     line-height: 42px;
   }
-  .title-content .s_title {
+  .loved-machine .title-content .s_title {
     font-size: 24px;
     font-weight: normal;
     color: #fff;
     margin: 6px 0 0;
     line-height: 28px;
   }
-  .title-box {
+  .loved-machine .title-box {
     position: absolute;
     top: 0;
     left: 50%;
@@ -35,6 +35,7 @@
     flex-direction: column;
     text-align: center;
     height: 100%;
+    width: 100%;
   }
   .machine-content {
     background-color: #fbb7c2;
@@ -71,6 +72,7 @@
     align-items: flex-start;
   }
   .item-grid {
+    width: 100%;
     display: flex;
     padding: 10px 18px 10px 10px;
     background: #fff4f4;
@@ -190,8 +192,17 @@
       line-height: 10px;
     }
   }
+  @media screen and (max-width: 1024px) {
+    .machine-grid-item {
+      flex-direction: column;
+    }
+  }
   @media screen and (max-width: 990px) {
+    .item {
+      flex-wrap: nowrap;
+    }
     .machine-content {
+      width: auto !important;
       padding: 133px 10px 0;
     }
     .machine-grid-item {
@@ -204,7 +215,11 @@
       margin-right: 0;
       margin-bottom: 10px;
     }
+    .machine-grid-item.item-direction .item-img {
+      margin: 0 0 10px 0;
+    }
     .item-grid {
+      margin: 0 4px;
       padding: 8px;
       flex-direction: column;
     }
@@ -217,6 +232,30 @@
     }
     .item .item-grid:first-of-type {
       margin-bottom: 0;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .loved-machine {
+      background-image: none;
+    }
+    .loved-machine .title-content .title {
+      font-size: 16px;
+      line-height: 18px;
+    }
+    .loved-machine .title-content .s_title {
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 14px;
+    }
+    .machine-content {
+      margin: -50px 8px 0;
+      padding: 60px 6px 0;
+    }
+    .title-content > picture img {
+      width: 295px;
+    }
+    .loved-machine .title-box {
+      margin-top: 0;
     }
   }
 </style>
@@ -238,7 +277,7 @@
       <p class="s_title">Special Offer For Special YOU</p>
     </div>
   </div>
-  <div class="machine-content">
+  <div class="machine-content qrj-ethan-width">
     <div class="machine-grid">
       {% for block in section.blocks %}
         <div class="machine-grid-item {% if block.settings.img_position == 'right' %}item-direction{% endif %}">

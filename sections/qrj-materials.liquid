@@ -1,343 +1,353 @@
 <style>
-    .valentinesday-materials{
-      background-image:url('https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Slice_3_fa5c3a13-6842-46f6-90fe-6b8d4e81c267.png');
-      background-repeat: no-repeat;
-      background-size: 100% 100%;
-      padding-top:25px;
-    }
+  .qrj-materials {
+    background-image: url('https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Slice_3_fa5c3a13-6842-46f6-90fe-6b8d4e81c267.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding-top: 25px;
+  }
 
-      .title-desc-style{
-          text-align:center;
-          margin-top: 10px;
-          position: relative;
-      }
-      .title-desc-style>img{
-          margin:0 auto;
-      }
-      .valentinesday-materials .product-box{
-          width:1600px;
-          margin:0 auto;
-          background: #FBB7C2;
-          border-radius: 10px;
-          position: relative;
-          overflow:hidden;
-      }
-      .valentinesday-materials .product-box>img{
-          position:absolute;
-          top:0;
-      }
-      .title-desc-style>div{
-          display:inline-block;
-          position: relative;
-      }
-      .title-desc-style .title{
-        width: 100%;
-          position: absolute;
-          margin: 0;
-          top: 20px;
-          left: 50%;
-          transform: translateX(-50%);
-          font-size: 32px;
-          font-weight: bold;
-          color: #71132E;
-          line-height: 42px;
-      }
-      .title-desc-style>p{
-          font-size: 20px;
-          font-weight: 400;
-          color: #71132E;
-          line-height: 28px;
-          margin-top: -30px;
-      }
-      .position-box{
-          position: relative;
-      }
-      .position-box .product-item{
-          display:flex;
-          padding:20px 15px;
-      }
-      .valentinesday-materials .position-box .product-model-items{
-          flex:1;
-          margin-right: 15px;
-          background: #FFF4F4;
-          padding: 16px 14px;
-          border-radius: 6px;
-      }
-      .valentinesday-materials .position-box .product-model-items:nth-last-child(1){
-          margin-right:0;
-      }
-      .valentinesday-materials .product-model-items .fn-product-price{
-          width:28%;
-      }
-      .valentinesday-materials .product-model-items .fn-compareat_price{
-          text-align:right;
-      }
-      .valentinesday-materials .fn-product-title{
-          line-height: 22px;
-      }
-      .valentinesday-materials .product-model-items .fn-product-title .t{
-          color: #71132E;
-          font-size: 16px;
-      }
-      .valentinesday-materials .product-model-items .fn-product-price span{
-          color: #FF708A;
-          font-size: 22px;
-      }
-      .valentinesday-materials .product-model-items .fn-compareat_price .fn-compare-at_price{
-          color: #71132E;
-      }
-      .valentinesday-materials .product-model-items .fn-color-attr{
-          margin: 10px 0 12px 0;
-      }
-      .valentinesday-materials .product-model-items .button--full-width{
-          border-radius: 4px;
-          height: 46px;
-          background: linear-gradient(270deg, #FF7D9A 0%, #FF8EA7 100%);
-          --border-offset: none;
-          --border-opacity: none;
-          font-size: 18px;
-      }
-      .product-items-box {
-          padding:13px 13px 18px;
-          background: #FFF4F4;
-          border-radius: 6px;
-      }
-      .product-items-box .button--full-width{
-          padding:0;
-          border-radius: 4px;
-          height: 46px;
-          background: linear-gradient(270deg, #FF7D9A 0%, #FF8EA7 100%);
-          --border-offset: none;
-          --border-opacity: none;
-          font-size: 18px;
-      }
-      .presell-product-items .fn-color-attr{
-          margin:15px 0;
-      }
-      .presell-product-items .fn-product-price span{
-          color: #FF708A;
-          font-size: 22px;
-      }
-      .presell-product-items .fn-product-price{
-          width: 30%;
-          text-align: right;
-      }
-      .presell-product-items .fn-compareat_price .fn-compare-at_price{
-          color: #71132E;
-          font-size: 18px;
-          font-weight: 400;
-      }
-      .presell-product-items:nth-child(3n){
-          margin-right:0;
-      }
-      .valentinesday-materials .position-box{
-          padding: 0 45px 30px;
-      }
-      .deposit-module-coupon{
-          margin-top:25px;
-      }
-      .coupons-item{
-          position: relative;
-          max-width:454px;
-      }
-      .coupons-item .item-module{
-          position: absolute;
-          display: flex;
-          top: 0;
-          color: #000;
-          align-items: center;
-          height:100%;
-          width: 100%;
-          left: 0;
-          justify-content: space-between;
-      }
-      .coupons-money{
-          width: 34.3%;
-          text-align:center;
-          color:#71132E;
-      }
-      .coupons-money>div {
-          line-height: 36px;
-      }
-      .coupons-money>div>span:nth-child(1){
-          font-size: 30px;
-          font-weight: bold;
-      }
-      .coupons-money>div>span:nth-child(2){
-          font-size: 48px;
-          font-weight: bold;
-      }
-      .coupons-money>span{
-          font-size: 24px;
-          font-weight: bold;
-          color: #670000;
-          line-height: 28px;
-          margin-top: 6px;
-      }
-      .coupons-rules>.rules-div>p{
-          font-size: 14px;
-          font-weight: 400;
-          color: #71132E;
-          line-height: 16px;
-          padding-bottom: 12px;
-          position:relative;
-      }
-      .coupons-rules>.rules-div>p:nth-last-child(1){
-          padding-bottom:0;
-      }
-      .coupons-rules{
-          width: calc(65.7% - 40px);
-          word-wrap: break-word;
-      }
-      .coupon-code{
-          position: relative;
-          margin-bottom: 20px;
-          color:#71132E;
-      }
-      .coupon-code:before{
-          content:"";
-          width: 6px;
-          height: 6px;
-          background: #691300;
-          border-radius: 50%;
-          position:absolute;
-          left: -15px;
-          top: 10px;
-      }
-      .coupons-rules>.rules-div>p:before{
-          content:"";
-          width: 6px;
-          height: 6px;
-          background: #691300;
-          border-radius: 50%;
-          position:absolute;
-          left: -15px;
-          top: 5px;
-      }
-      .coupon-code>img{
-          display:inline-block;
-          cursor: pointer;
-          vertical-align: baseline;
-      }
-      .deposit-module-coupon .swiper-wrapper{
-          justify-content: center;
-      }
-      .coupons-item:nth-last-child(1){
-          margin-right:0 !important;
-      }
-      @media screen and (max-width: 1440px){
-          .coupons-money>div>span:nth-child(1) {
-              font-size: 24px;
-          }
-          .coupons-money>div>span:nth-child(2) {
-              font-size: 40px;
-          }
-          .coupons-money>span {
-              font-size: 22px;
-          }
-      }
-      @media screen and (max-width: 1024px){
-          .coupons-item .item-module{
-              flex-direction: column;
-            justify-content: normal;
-          }
-          .coupons-money{
-              width:100%;
-              padding: 30px 0;
-          }
-          .coupons-rules {
-              padding: 0 20px 0 25px;
-              width: calc(100% - 45px);
-          }
-          .coupon-code{
-              margin-bottom:10px;
-          }
-          .product-items-box{
-              padding:5px 5px 8px;
-          }
-          .product-items-box .button--full-width{
-              height: 40px;
-              font-size: 14px;
-              min-height: 40px;
-          }
-          .presell-product-items .fn-product-price span{
-              font-size: 16px;
-          }
-          .presell-product-items .fn-compareat_price .fn-compare-at_price{
-              font-size: 14px;
-          }
-          .valentinesday-materials .position-box{
-              padding:0 5px 12px;
-          }
-      }
-      @media screen and (max-width: 820px){
-          .valentinesday-materials{
-              {% if section.settings.background_color_mobile != blank %}
-                  background:{{section.settings.background_color_mobile}}
-              {% else %}
-                  background:none;
-              {% endif %}
-          }
-        .coupons-money{
+  .title-box {
+    text-align: center;
+    margin-top: 10px;
+    position: relative;
+  }
+  .title-box > img {
+    margin: 0 auto;
+  }
+  .qrj-materials .product-box {
+    width: 1600px;
+    margin: 0 auto;
+    background: #fbb7c2;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+  .qrj-materials .product-box > img {
+    position: absolute;
+    top: 0;
+  }
+  .title-box > div {
+    display: inline-block;
+    position: relative;
+  }
+  .qrj-materials .title-box .title {
+    width: 100%;
+    position: absolute;
+    margin: 0;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 32px;
+    font-weight: bold;
+    color: #71132e;
+    line-height: 42px;
+  }
+  .title-box > p {
+    font-size: 20px;
+    font-weight: 400;
+    color: #71132e;
+    line-height: 28px;
+    margin-top: -30px;
+  }
+  .title-content {
+    position: relative;
+  }
+  .title-content .product-item {
+    display: flex;
+    padding: 20px 15px;
+  }
+  .qrj-materials .title-content .product-model-items {
+    flex: 1;
+    margin-right: 15px;
+    background: #fff4f4;
+    padding: 16px 14px;
+    border-radius: 6px;
+  }
+  .qrj-materials .title-content .product-model-items:nth-last-child(1) {
+    margin-right: 0;
+  }
+  .qrj-materials .product-model-items .fn-product-price {
+    width: 28%;
+  }
+  .qrj-materials .product-model-items .fn-compareat_price {
+    text-align: right;
+  }
+  .qrj-materials .fn-product-title {
+    line-height: 22px;
+  }
+  .qrj-materials .product-model-items .fn-product-title .t {
+    color: #71132e;
+    font-size: 16px;
+  }
+  .qrj-materials .product-model-items .fn-product-price span {
+    color: #ff708a;
+    font-size: 22px;
+  }
+  .qrj-materials .product-model-items .fn-compareat_price .fn-compare-at_price {
+    color: #71132e;
+  }
+  .qrj-materials .product-model-items .fn-color-attr {
+    margin: 10px 0 12px 0;
+  }
+  .qrj-materials .product-model-items .button--full-width {
+    border-radius: 4px;
+    height: 46px;
+    background: linear-gradient(270deg, #ff7d9a 0%, #ff8ea7 100%);
+    --border-offset: none;
+    --border-opacity: none;
+    font-size: 18px;
+  }
+  .product-items-box {
+    padding: 13px 13px 18px;
+    background: #fff4f4;
+    border-radius: 6px;
+  }
+  .product-items-box .button--full-width {
+    padding: 0;
+    border-radius: 4px;
+    height: 46px;
+    background: linear-gradient(270deg, #ff7d9a 0%, #ff8ea7 100%);
+    --border-offset: none;
+    --border-opacity: none;
+    font-size: 18px;
+  }
+  .presell-product-items .fn-color-attr {
+    margin: 15px 0;
+  }
+  .presell-product-items .fn-product-price span {
+    color: #ff708a;
+    font-size: 22px;
+  }
+  .presell-product-items .fn-product-price {
+    width: 30%;
+    text-align: right;
+  }
+  .presell-product-items .fn-compareat_price .fn-compare-at_price {
+    color: #71132e;
+    font-size: 18px;
+    font-weight: 400;
+  }
+  .presell-product-items:nth-child(3n) {
+    margin-right: 0;
+  }
+  .qrj-materials .title-content {
+    padding: 0 45px 30px;
+  }
+  .coupon-content {
+    margin: 30px 0;
+  }
+  .coupons-item {
+    position: relative;
+    max-width: 454px;
+  }
+  .coupons-item .coupon-item-grid {
+    position: absolute;
+    display: flex;
+    top: 0;
+    color: #000;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    justify-content: space-between;
+  }
+  .coupons-money {
+    width: 34.3%;
+    text-align: center;
+    color: #71132e;
+  }
+  .coupons-money > div {
+    line-height: 36px;
+  }
+  .coupons-money > div > span:nth-child(1) {
+    font-size: 30px;
+    font-weight: bold;
+  }
+  .coupons-money > div > span:nth-child(2) {
+    font-size: 48px;
+    font-weight: bold;
+  }
+  .coupons-money > span {
+    font-size: 24px;
+    font-weight: bold;
+    color: #670000;
+    line-height: 28px;
+    margin-top: 6px;
+  }
+  .coupons-rules > .rules-div > p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #71132e;
+    line-height: 16px;
+    padding-bottom: 12px;
+    position: relative;
+  }
+  .coupons-rules > .rules-div > p:nth-last-child(1) {
+    padding-bottom: 0;
+  }
+  .coupons-rules {
+    width: calc(65.7% - 40px);
+    word-wrap: break-word;
+  }
+  .coupon-code {
+    position: relative;
+    margin-bottom: 20px;
+    color: #71132e;
+  }
+  .coupon-code:before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: #691300;
+    border-radius: 50%;
+    position: absolute;
+    left: -15px;
+    top: 10px;
+  }
+  .coupons-rules > .rules-div > p:before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: #691300;
+    border-radius: 50%;
+    position: absolute;
+    left: -15px;
+    top: 5px;
+  }
+  .coupon-code > img {
+    display: inline-block;
+    cursor: pointer;
+    vertical-align: baseline;
+  }
+  .coupon-content .swiper-wrapper {
+    justify-content: center;
+  }
+  .coupons-item:nth-last-child(1) {
+    margin-right: 0 !important;
+  }
+  @media screen and (max-width: 1440px) {
+    .coupons-money > div > span:nth-child(1) {
+      font-size: 24px;
+    }
+    .coupons-money > div > span:nth-child(2) {
+      font-size: 40px;
+    }
+    .coupons-money > span {
+      font-size: 22px;
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    .coupons-item .coupon-item-grid {
+      flex-direction: column;
+      justify-content: normal;
+    }
+    .coupons-money {
+      width: 100%;
+      padding: 30px 0;
+    }
+    .coupons-rules {
+      padding: 0 20px 0 25px;
+      width: calc(100% - 45px);
+    }
+    .coupon-code {
+      margin-bottom: 10px;
+    }
+    .product-items-box {
+      padding: 5px 5px 8px;
+    }
+    .product-items-box .button--full-width {
+      height: 40px;
+      font-size: 14px;
+      min-height: 40px;
+    }
+    .presell-product-items .fn-product-price span {
+      font-size: 16px;
+    }
+    .presell-product-items .fn-compareat_price .fn-compare-at_price {
+      font-size: 14px;
+    }
+    .qrj-materials .title-content {
+      padding: 0 5px 12px;
+    }
+  }
+  @media screen and (max-width: 820px) {
+    .qrj-materials .product-box {
+      width: 93.6% !important;
+    }
+    .coupons-money {
       padding: 20px 0 30px;
-        }
-      }
-      @media screen and (max-width: 750px){
-          .coupons-money>div>span:nth-child(2){
-              line-height: 60px;
-          }
-    .coupons-money{
+    }
+  }
+  @media screen and (max-width: 750px) {
+    .coupons-money > div > span:nth-child(2) {
+      line-height: 60px;
+    }
+    .coupons-money {
       padding: 0 0 30px;
     }
-      }
-      @media screen and (max-width: 480px){
-          .valentinesday-product-swiper {
-              margin-top: 10px;
-          }
-          .deposit-module-coupon .swiper-wrapper {
-              justify-content: start;
-          }
-          .coupons-money>div>span:nth-child(2) {
-              line-height: 32px;
-              font-size: 28px;
-          }
-          .deposit-module-coupon{
-              margin-top:10px;
-          }
-          .coupons-money>span {
-              font-size: 18px;
-          }
-        .coupons-money{
-          padding:10px 0 15px;
-        }
-      }
-
-      @media screen and (max-width: 410px){
-          .valentinesday-materials{
-              padding-top:0;
-          }
-        .coupons-money>div {
-      line-height: 25px;
   }
-      }
-     @media screen and (max-width: 375px){
-        .coupons-money{
-              padding-bottom: 5px;
-          }
-     }
+  @media screen and (max-width: 480px) {
+    .valentinesday-product-swiper {
+      margin-top: 10px;
+    }
+    .coupon-content .swiper-wrapper {
+      justify-content: start;
+    }
+    .coupons-money > div > span:nth-child(2) {
+      line-height: 32px;
+      font-size: 28px;
+    }
+    .coupon-content {
+      margin-top: 10px;
+    }
+    .coupons-money > span {
+      font-size: 18px;
+    }
+    .coupons-money {
+      padding: 10px 0 15px;
+    }
+    .qrj-materials .title-content .title-bg {
+      display: none;
+    }
+    .qrj-materials .title-box .title {
+      position: relative;
+      font-size: 16px;
+      line-height: 18px;
+      top: 0;
+    }
+    .qrj-materials .title-box .s-title {
+      margin-top: 0;
+      font-size: 14px;
+      line-height: 14px;
+    }
+  }
+
+  @media screen and (max-width: 410px) {
+    .qrj-materials {
+      padding-top: 0;
+    }
+    .coupons-money > div {
+      line-height: 25px;
+    }
+  }
+  @media screen and (max-width: 375px) {
+    .coupons-money {
+      padding-bottom: 5px;
+    }
+  }
 </style>
-<div class="valentinesday-materials" id="{{ section.settings.id }}">
-  <div class="product-box valentinesday-width">
+<div class="qrj-materials">
+  <div class="product-box qrj-ethan-width">
     <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Mask_group_56d9177c-6c5b-4817-ac25-77e7f0b8601f.png">
-    <div class="position-box">
-      <div class="title-desc-style">
+    <div class="title-content">
+      <div class="title-box">
         <div>
-          <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Group_303_2fa8abb7-94c0-45d1-aa63-630d585253f4.png">
+          <img class="title-bg" src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Group_303_2fa8abb7-94c0-45d1-aa63-630d585253f4.png">
           <p class="title">Valued Materials, Great Deals</p>
         </div>
-        <p class="desc">Save up to 50%</p>
+        <p class="s-title">Save up to 50%</p>
       </div>
-      <div class="swiper-container deposit-module-coupon">
+      <div class="swiper-container coupon-content">
         <div class="swiper-wrapper">
           {% for block in section.blocks %}
             <div class="coupons-item swiper-slide">
@@ -352,7 +362,7 @@
                 >
                 <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Group_254_3ae21423-d59e-40bd-a8d1-f9a754ca9206.png">
               </picture>
-              <div class="item-module deposit-item">
+              <div class="coupon-item-grid">
                 <div class="coupons-money">
                   <div>
                     <span>{{ block.settings.currency }}</span><span>{{ block.settings.money }}</span>
@@ -388,7 +398,6 @@
                   {% render 'product-Model-custom',
                     card_product: item,
                     progress: false,
-                    show_secondary_image: section.settings.show_secondary_off,
                     colorSize: true,
                     buttonSeat: 'fileSteam',
                     buttonText: 'ADD TO CART',
@@ -425,7 +434,7 @@
       },
     },
   });
-  var mySwiper_s = new Swiper('.deposit-module-coupon', {
+  var mySwiper_s = new Swiper('.coupon-content', {
     slidesPerView: 3,
     spaceBetween: 40,
     scrollbar: {
@@ -480,60 +489,44 @@
       "label": "id(页面唯一性，全英文)"
     },
     {
-      "type": "color",
-      "id": "background_color",
-      "label": "background color(PC)"
-    },
-    {
-      "type": "color",
-      "id": "background_color_mobile",
-      "label": "background color(mobile)"
-    },
-    {
       "type": "image_picker",
       "id": "background_image",
-      "label": "background image"
+      "label": "该部分背景图"
     },
     {
       "type": "image_picker",
       "id": "image",
-      "label": "image"
+      "label": "内容背景图"
     },
     {
       "type": "image_picker",
       "id": "title_image",
-      "label": "title image"
+      "label": "标题区域背景图"
     },
     {
       "type": "text",
       "id": "title",
-      "label": "title"
+      "label": "大标题"
     },
     {
       "type": "text",
-      "id": "desc",
-      "label": "desc"
+      "id": "s-title",
+      "label": "小标题"
     },
     {
       "type": "image_picker",
       "id": "coupon_image",
-      "label": "coupon image"
+      "label": "折扣码区域背景图（PC端）"
     },
     {
       "type": "image_picker",
       "id": "coupons_image_mobile",
-      "label": "coupons image mobile"
+      "label": "折扣码区域背景图（移动端）"
     },
     {
       "type": "collection",
       "id": "product_collection",
-      "label": "product collection"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_secondary_off",
-      "default": false,
-      "label": "show_secondary_off_iamge"
+      "label": "请选择一个产品集合"
     },
     {
       "type": "range",
@@ -549,32 +542,35 @@
   "blocks": [
     {
       "type": "coupon",
-      "name": "coupon",
+      "name": "复制折扣码小组件",
       "settings": [
         {
           "type": "text",
           "id": "currency",
-          "label": "currency"
+          "label": "货币符号",
+          "default": "$"
         },
         {
           "type": "text",
           "id": "money",
-          "label": "money"
+          "label": "享受多少折扣",
+          "default": "10"
         },
         {
           "type": "text",
           "id": "coupon",
-          "label": "coupon"
+          "label": "达到多少金额",
+          "default": "OFF $69"
         },
         {
           "type": "text",
           "id": "coupon_code",
-          "label": "coupon code"
+          "label": "折扣码"
         },
         {
           "type": "html",
           "id": "coupons_rules",
-          "label": "coupons rules"
+          "label": "折扣备注、有效期限等"
         }
       ]
     }

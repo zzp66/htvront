@@ -1,14 +1,10 @@
 <style>
-    .valentinesday-subscribe{
-      background-image:url('{{ section.settings.background_image | img_url:'1920x' }}');
+    .qrj-subscribe{
+      background-image:url('https://www.htvront.com/cdn/shop/files/Slice_5_1920x.png');
       background-repeat: no-repeat;
       background-size: 100% 100%;
-      {% if section.settings.background_color != blank %}
-        background:{{section.settings.background_color}};
-      {% endif %}
-      padding:40px 0 23px;
     }
-    .valentinesday-subscribe>div{
+    .qrj-subscribe>div{
       display: flex;
       justify-content: center;
       margin:0 auto;
@@ -40,10 +36,10 @@
       left: 0;
       bottom: -31px;
     }
-    .valentinesday-subscribe>div .left{
+    .qrj-subscribe>div .left{
       position:relative;
     }
-    .valentinesday-subscribe>div .rules{
+    .qrj-subscribe>div .rules{
       position: absolute;
       font-size: 18px;
       font-weight: 400;
@@ -52,14 +48,14 @@
       top: 320px;
       padding: 0 18px 0 63px;
     }
-    .valentinesday-subscribe>div .rules>span{
+    .qrj-subscribe>div .rules>span{
       display:block;
       margin-top: 10px;
     }
-    .valentinesday-subscribe>div .rules>strong{
+    .qrj-subscribe>div .rules>strong{
       font-size: 20px;
     }
-    .valentinesday-subscribe .newsletter-form__field-wrapper>div{
+    .qrj-subscribe .newsletter-form__field-wrapper>div{
       display:flex;
     }
     .subscribe-form{
@@ -100,12 +96,12 @@
       font-size: 20px;
       line-height: 28px;
         }
-       .valentinesday-subscribe>div .rules{
+       .qrj-subscribe>div .rules{
           top: 42%;
        }
      }
      @media screen and (max-width: 1660px) and (min-width: 1521px){
-       .valentinesday-subscribe>div .rules{
+       .qrj-subscribe>div .rules{
           top: 36%;
        }
        .subscribe-form .newsletter-form__field-wrapper .field__input {
@@ -121,7 +117,7 @@
       bottom: 50px;
       left: 50px;
   }
-       .valentinesday-subscribe>div .rules {
+       .qrj-subscribe>div .rules {
       top: 45%;
       line-height: 24px;
          padding: 0 20px 0 50px;
@@ -131,11 +127,11 @@
       .subscribe-form {
           bottom: 8%;
       }
-          .valentinesday-subscribe>div .rules {
+          .qrj-subscribe>div .rules {
               font-size: 14px;
               line-height: 20px;
           }
-          .valentinesday-subscribe>div .rules>span {
+          .qrj-subscribe>div .rules>span {
               margin-top: 5px;
           }
      }
@@ -144,7 +140,7 @@
          width: 490px;
          padding: 20px 0 20px 50px;
        }
-       .valentinesday-subscribe>div .rules {
+       .qrj-subscribe>div .rules {
          top: 43%;
          padding-left: 30px;
       }
@@ -160,7 +156,7 @@
           line-height: 22px;
           top: 17%;
       }
-        .valentinesday-subscribe>div .rules {
+        .qrj-subscribe>div .rules {
       top: 38%;
           padding-left: 10px;
   }
@@ -172,22 +168,22 @@
   }
       }
      @media screen and (max-width: 1024px){
-      .valentinesday-subscribe{
+      .qrj-subscribe{
          background:{{section.settings.background_color_mobile}}
       }
-       .valentinesday-subscribe>div{
+       .qrj-subscribe>div{
           flex-direction: column;
           width: 702px !important;
        }
-       .valentinesday-subscribe .valentinesday-width>picture>img{
+       .qrj-subscribe .qrj-ethan-width>picture>img{
          margin:0 auto;
        }
-       .valentinesday-subscribe>div .left>picture>img{
+       .qrj-subscribe>div .left>picture>img{
          margin:0 auto;
        }
      }
      @media screen and (max-width: 820px){
-         .valentinesday-subscribe{
+         .qrj-subscribe{
           {% if section.settings.background_color_mobile != blank %}
             background:{{section.settings.background_color_mobile}}
           {% else %}
@@ -196,7 +192,7 @@
         }
      }
      @media screen and (max-width: 750px){
-      .valentinesday-subscribe>div{
+      .qrj-subscribe>div{
         width: 90% !important;
       }
       .subscribe-title {
@@ -220,7 +216,7 @@
           line-height: 19px;
           padding: 10px 0 10px 30px;
        }
-       .valentinesday-subscribe>div .rules{
+       .qrj-subscribe>div .rules{
           font-size: 14px;
           padding-left: 12px;
           line-height: 18px;
@@ -243,7 +239,7 @@
       .subscribe-form .newsletter-form__field-wrapper{
         max-width:100%;
       }
-      .valentinesday-subscribe{
+      .qrj-subscribe{
         padding-top:0;
       }
     }
@@ -259,20 +255,19 @@
       }
     }
 </style>
-<div class="valentinesday-subscribe " id="{{ section.settings.id }}">
-  <div class="valentinesday-width">
+<div class="qrj-subscribe" id="{{ section.settings.id }}">
+  <div class="qrj-ethan-width">
     <div class="left">
       <picture>
-        <source media="(max-width: 1024px)" srcset="{{ section.settings.left_image_mobile | img_url:'1024x' }}">
-        <source media="(min-width: 1025px)" srcset="{{ section.settings.left_image | img_url:'704x' }}">
-        <img src="{{ section.settings.left_image | img_url:'1024x' }}">
+        <source
+          media="(max-width: 1024px)"
+          srcset="//www.htvront.com/cdn/shop/files/Group_299_2x_fcbe582d-4d36-4c0a-9424-d6b847ccfab2_1024x.png"
+        >
+        <source media="(min-width: 1025px)" srcset="//www.htvront.com/cdn/shop/files/Group_291_704x.png">
+        <img src="//www.htvront.com/cdn/shop/files/Group_299_2x_fcbe582d-4d36-4c0a-9424-d6b847ccfab2_1024x.png">
       </picture>
-      <div class="subscribe-title">
-        {{ section.settings.title }}
-      </div>
-      <div class="rules">
-        {{ section.settings.rules }}
-      </div>
+      <div class="subscribe-title">Subscribe and Get 100+ free Valentine's SVGs!</div>
+      <div class="rules">123</div>
       <div class="subscribe-form">
         {% form 'customer', class: 'newsletter-form' %}
           <input type="hidden" name="contact[tags]" value="newsletter,Valentine_Day">
@@ -337,9 +332,12 @@
       </div>
     </div>
     <picture>
-      <source media="(max-width: 1024px)" srcset="{{ section.settings.right_image_mobile | img_url:'702x' }}">
-      <source media="(min-width: 1025px)" srcset="{{ section.settings.right_image | img_url:'896x' }}">
-      <img src="{{ section.settings.right_image | img_url:'896x' }}">
+      <source
+        media="(max-width: 1024px)"
+        srcset="//www.htvront.com/cdn/shop/files/Group_301_2x_3ddeef3a-c872-4416-8b62-e66177e2413c_702x.png"
+      >
+      <source media="(min-width: 1025px)" srcset="//www.htvront.com/cdn/shop/files/Group_290_896x.png">
+      <img src="//www.htvront.com/cdn/shop/files/Group_290_896x.png">
     </picture>
   </div>
 </div>

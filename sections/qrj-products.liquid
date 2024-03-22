@@ -1,197 +1,193 @@
 <style>
-  .valentinesday-product{
-    background-image:url('https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Slice_2_d1b8238c-5a90-454e-8a2a-25d93914c9bb.png');
+  .qrj-products {
+    background-image: url('https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Slice_2_d1b8238c-5a90-454e-8a2a-25d93914c9bb.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    padding:25px 0;
+    padding: 25px 0;
   }
-  .title-box{
-    text-align:center;
+  .title-box {
+    text-align: center;
     margin-top: 10px;
     position: relative;
   }
-  .title-box>img{
-    margin:0 auto;
+  .title-box > img {
+    margin: 0 auto;
   }
-  .product-box{
-    width:1600px;
-    margin:0 auto;
-    background: #FBB7C2;
+  .product-box {
+    width: 1600px;
+    margin: 0 auto;
+    background: #fbb7c2;
     border-radius: 10px;
     position: relative;
-    overflow:hidden;
+    overflow: hidden;
   }
-  .product-box>img{
-    position:absolute;
-    top:0;
+  .product-box > img {
+    position: absolute;
+    top: 0;
   }
-  .title-box .title-content{
-    display:inline-block;
+  .title-box .title-content {
+    display: inline-block;
     position: relative;
   }
-  .title-box .title{
+  .qrj-products .title-box .title {
+    color: #71132e;
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 42px;
+    width: 100%;
     position: absolute;
     margin: 0;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 36px;
-    font-weight: bold;
-    color: #71132E;
-    line-height: 42px;
-    width:100%;
   }
-  .title-box>p{
+  .qrj-products .title-box .s-title {
+    color: #71132e;
     font-size: 24px;
     font-weight: 400;
-    color: #71132E;
     line-height: 28px;
     margin-top: -30px;
   }
-  .position-box{
+  .position-box {
     position: relative;
   }
-  .position-box .product-item{
-    display:flex;
-    padding:20px 15px;
+  .position-box .product-item {
+    display: flex;
+    padding: 20px 15px;
   }
-  .position-box .product-model-items{
-    flex:1;
+  .position-box .product-model-items {
+    flex: 1;
     margin-right: 15px;
-    background: #FFF4F4;
+    background: #fff4f4;
     padding: 16px 14px;
     border-radius: 6px;
-    width:0;
+    width: 0;
   }
-  .position-box .product-model-items:nth-last-child(1){
-    margin-right:0;
+  .position-box .product-model-items:nth-last-child(1) {
+    margin-right: 0;
   }
-  .valentinesday-product .product-model-items .fn-product-price{
-    width:35%;
+  .qrj-products .product-model-items .fn-product-price {
+    width: 35%;
   }
-  .product-model-items .fn-compareat_price{
-    text-align:right;
+  .product-model-items .fn-compareat_price {
+    text-align: right;
   }
-  .product-model-items .fn-product-title{
+  .product-model-items .fn-product-title {
     line-height: 22px;
   }
-  .product-model-items .fn-product-title .t{
-    color: #71132E;
+  .product-model-items .fn-product-title .t {
+    color: #71132e;
     font-size: 14px;
   }
-  .product-model-items .fn-product-price span{
-    color: #FF708A;
+  .product-model-items .fn-product-price span {
+    color: #ff708a;
     font-size: 22px;
   }
-  .product-model-items .fn-compareat_price .fn-compare-at_price{
-    color: #71132E;
+  .product-model-items .fn-compareat_price .fn-compare-at_price {
+    color: #71132e;
     font-size: 18px;
     font-weight: 400;
   }
-  .product-model-items .fn-color-attr{
+  .product-model-items .fn-color-attr {
     margin: 10px 0 12px 0;
   }
-  .product-model-items .button--full-width{
+  .product-model-items .button--full-width {
     border-radius: 4px;
     height: 46px;
-    background: linear-gradient(270deg, #FF7D9A 0%, #FF8EA7 100%);
+    background: linear-gradient(270deg, #ff7d9a 0%, #ff8ea7 100%);
     --border-offset: none;
     --border-opacity: none;
     font-size: 18px;
   }
-  .valentinesday-product-swiper{
-    margin-top:30px;
+  .qrj-products-swiper {
+    margin-top: 30px;
   }
-   @media screen and (max-width: 1024px){
-    .valentinesday-product{
-       background:{{section.settings.background_color_mobile}}
+  @media screen and (max-width: 1024px) {
+    .product-box {
+      width: auto;
     }
-     .position-box .product-model-items{
-        padding: 5px 5px 8px;
-        margin:0 8px 8px 0;
-        flex: 1 1 49%;
-     }
-     .position-box .product-model-items:nth-child(2n){
-       margin-right:0;
-     }
-    .valentinesday-product .position-box .product-item{
-      flex-wrap:wrap;
+    .position-box .product-model-items {
+      padding: 5px 5px 8px;
+      margin: 0 8px 8px 0;
+      flex: 1 1 49%;
+    }
+    .position-box .product-model-items:nth-child(2n) {
+      margin-right: 0;
+    }
+    .qrj-products .position-box .product-item {
+      flex-wrap: wrap;
       padding: 20px 5px 12px;
     }
-    .product-box .fn-product-layout{
+    .product-box .fn-product-layout {
       flex-direction: column;
       justify-content: center;
-     }
-    .product-box .fn-product-title{
-        width: 100%;
-     }
-     .product-box .fn-product-price{
-        width: 100%;
-     }
-     .product-box .fn-compareat_price{
-        text-align: left;
-        flex-direction: row;
-        align-items: baseline;
-        margin-top: 5px;
-     }
-     .product-box .fn-product-title .t{
-       font-size:14px;
-     }
-     .product-box .fn-product-price span {
-       font-size: 16px;
-     }
-     .product-box .fn-compareat_price .fn-compare-at_price{
-       font-size:14px;
-     }
-     .product-model-items .button--full-width{
-       height: 40px;
+    }
+    .product-box .fn-product-title {
+      width: 100%;
+    }
+    .product-box .fn-product-price {
+      width: 100%;
+    }
+    .product-box .fn-compareat_price {
+      text-align: left;
+      flex-direction: row;
+      align-items: baseline;
+      margin-top: 5px;
+    }
+    .product-box .fn-product-title .t {
+      font-size: 14px;
+    }
+    .product-box .fn-product-price span {
+      font-size: 16px;
+    }
+    .product-box .fn-compareat_price .fn-compare-at_price {
+      font-size: 14px;
+    }
+    .product-model-items .button--full-width {
+      height: 40px;
       font-size: 14px;
       min-height: 40px;
-     }
-   }
-   @media screen and (max-width: 820px){
-    .valentinesday-product{
-       {% if section.settings.background_color_mobile != blank %}
-          background:{{section.settings.background_color_mobile}}
-        {% else %}
-          background:none;
-        {% endif %}
     }
-    .position-box .title-box>div>img{
-      display:none;
+  }
+  @media screen and (max-width: 820px) {
+    .qrj-products {
+      background-image: none;
     }
-    .position-box .title-box .title{
-       font-size:26px;
-        position: relative;
-        top: 0;
-     }
-     .position-box .title-box>p{
-       font-size:20px;
+    .qrj-products .position-box .title-box > div > img {
+      display: none;
+    }
+    .qrj-products .position-box .title-box .title {
+      font-size: 26px;
+      position: relative;
+      top: 0;
+    }
+    .qrj-products .position-box .title-box > p {
+      font-size: 20px;
       margin-top: 0;
-     }
-   }
-   @media screen and (max-width: 480px){
-    .position-box .title-box .title{
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .qrj-products .position-box .title-box .title {
       font-size: 16px;
       line-height: 19px;
     }
-    .position-box .title-box>p {
+    .qrj-products .position-box .title-box > p {
       font-size: 14px;
       line-height: 16px;
     }
-     .valentinesday-product .position-box .product-item{
-       padding-top:10px;
-     }
-     .position-box .product-model-items{
-        flex: 1 1 48%;
-     }
-     .valentinesday-product{
-       padding-top:0;
-     }
-   }
+    .qrj-products .position-box .product-item {
+      padding-top: 10px;
+    }
+    .position-box .product-model-items {
+      flex: 1 1 48%;
+    }
+    .qrj-products {
+      padding-top: 0;
+    }
+  }
 </style>
-<div class="valentinesday-product " id="{{ section.settings.id }}">
-  <div class="product-box valentinesday-width">
+<div class="qrj-products" id="{{ section.settings.id }}">
+  <div class="product-box qrj-ethan-width">
     <img src="https://cdn.shopify.com/s/files/1/0356/5997/2741/files/Mask_group_56d9177c-6c5b-4817-ac25-77e7f0b8601f.png">
     <div class="position-box">
       <div class="title-box">
@@ -223,29 +219,9 @@
   "name": "QRJ-Products",
   "settings": [
     {
-      "type": "text",
-      "id": "id",
-      "label": "id(页面唯一性，全英文)"
-    },
-    {
-      "type": "color",
-      "id": "background_color",
-      "label": "background color(PC)"
-    },
-    {
-      "type": "color",
-      "id": "background_color_mobile",
-      "label": "background color(mobile)"
-    },
-    {
       "type": "image_picker",
-      "id": "background_image",
-      "label": "background image"
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "image"
+      "id": "bg_image",
+      "label": "该部分背景图"
     },
     {
       "type": "image_picker",
@@ -265,7 +241,7 @@
   ],
   "blocks": [
     {
-      "name": "product",
+      "name": "产品",
       "type": "product",
       "settings": [
         {
