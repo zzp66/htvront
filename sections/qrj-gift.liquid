@@ -92,6 +92,9 @@
         bottom: 28px;
         right: 18px;
     }
+  .draw-rules{
+    width: 80%;
+  }
     .draw-rules .rules{
         display:flex;
     }
@@ -348,6 +351,9 @@
         .draw-gifts{
             min-width:100%;
         }
+        .draw-rules{
+            width: 100%;
+        }
         .draw-gifts>img{
             margin:0 auto;
         }
@@ -531,7 +537,7 @@
                   >
                 </div>
               </div>
-              123
+              {{ section.settings.draw_rules }}
             </div>
             <div class="draw-from">
               <input class="draw-input" type="text" placeholder="Enter the order number">
